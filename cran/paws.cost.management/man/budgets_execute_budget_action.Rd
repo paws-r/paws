@@ -18,6 +18,6 @@ budgets_execute_budget_action(AccountId, BudgetName, ActionId, ExecutionType)
 \description{
 Executes a budget action.
 
-See \url{https://paws-r.github.io/docs/budgets/execute_budget_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_execute_budget_action/} for full documentation.
 }
 \keyword{internal}

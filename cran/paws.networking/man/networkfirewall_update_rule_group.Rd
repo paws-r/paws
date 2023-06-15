@@ -89,6 +89,6 @@ updates made to the originating rule group.}
 \description{
 Updates the rule settings for the specified rule group. You use a rule group by reference in one or more firewall policies. When you modify a rule group, you modify all firewall policies that use the rule group.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_rule_group/} for full documentation.
 }
 \keyword{internal}

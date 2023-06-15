@@ -23,6 +23,6 @@ results.}
 \description{
 Retrieves all versions of an association for a specific association ID.
 
-See \url{https://paws-r.github.io/docs/ssm/list_association_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_association_versions/} for full documentation.
 }
 \keyword{internal}

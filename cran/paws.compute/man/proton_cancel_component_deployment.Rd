@@ -13,6 +13,6 @@ proton_cancel_component_deployment(componentName)
 \description{
 Attempts to cancel a component deployment (for a component that is in the \code{IN_PROGRESS} deployment status).
 
-See \url{https://paws-r.github.io/docs/proton/cancel_component_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_cancel_component_deployment/} for full documentation.
 }
 \keyword{internal}

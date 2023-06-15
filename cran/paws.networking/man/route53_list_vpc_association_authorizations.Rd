@@ -30,6 +30,6 @@ you want Amazon Route 53 to return. If you don't specify a value for
 \description{
 Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted zone because you've submitted one or more \code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}} requests.
 
-See \url{https://paws-r.github.io/docs/route53/list_vpc_association_authorizations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_vpc_association_authorizations/} for full documentation.
 }
 \keyword{internal}

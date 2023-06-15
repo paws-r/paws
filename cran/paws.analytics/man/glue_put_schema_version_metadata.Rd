@@ -23,6 +23,6 @@ glue_put_schema_version_metadata(
 \description{
 Puts the metadata key value pair for a specified schema version ID. A maximum of 10 key value pairs will be allowed per schema version. They can be added over one or more calls.
 
-See \url{https://paws-r.github.io/docs/glue/put_schema_version_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_put_schema_version_metadata/} for full documentation.
 }
 \keyword{internal}

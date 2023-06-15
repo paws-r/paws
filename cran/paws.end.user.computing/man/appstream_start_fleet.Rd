@@ -12,6 +12,6 @@ appstream_start_fleet(Name)
 \description{
 Starts the specified fleet.
 
-See \url{https://paws-r.github.io/docs/appstream/start_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_start_fleet/} for full documentation.
 }
 \keyword{internal}

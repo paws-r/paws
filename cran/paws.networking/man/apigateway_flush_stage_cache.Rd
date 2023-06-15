@@ -14,6 +14,6 @@ apigateway_flush_stage_cache(restApiId, stageName)
 \description{
 Flushes a stage's cache.
 
-See \url{https://paws-r.github.io/docs/apigateway/flush_stage_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_flush_stage_cache/} for full documentation.
 }
 \keyword{internal}

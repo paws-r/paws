@@ -28,6 +28,6 @@ characters.}
 \description{
 Updates the settings for an allow list.
 
-See \url{https://paws-r.github.io/docs/macie2/update_allow_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_allow_list/} for full documentation.
 }
 \keyword{internal}

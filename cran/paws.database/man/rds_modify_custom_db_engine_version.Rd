@@ -45,6 +45,6 @@ automated backup.}
 \description{
 Modifies the status of a custom engine version (CEV). You can find CEVs to modify by calling \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.
 
-See \url{https://paws-r.github.io/docs/rds/modify_custom_db_engine_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_custom_db_engine_version/} for full documentation.
 }
 \keyword{internal}

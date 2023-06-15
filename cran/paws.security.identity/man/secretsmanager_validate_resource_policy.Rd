@@ -18,6 +18,6 @@ access or manage this secret and its versions. For example policies, see
 \description{
 Validates that a resource policy does not grant a wide range of principals access to your secret. A resource-based policy is optional for secrets.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/validate_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_validate_resource_policy/} for full documentation.
 }
 \keyword{internal}

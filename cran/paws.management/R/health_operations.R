@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns a list of accounts in the organization from Organizations that are affected by the provided event. For more information about the different types of Health events, see [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
 #'
-#' See [https://paws-r.github.io/docs/health/describe_affected_accounts_for_organization.html](https://paws-r.github.io/docs/health/describe_affected_accounts_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_affected_accounts_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_affected_accounts_for_organization/) for full documentation.
 #'
 #' @param eventArn &#91;required&#93; The unique identifier for the event. The event ARN has the
 #' `arn:aws:health:event-region::event/SERVICE/EVENT_TYPE_CODE/EVENT_TYPE_PLUS_ID `
@@ -52,7 +52,7 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' @description
 #' Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_affected_entities.html](https://paws-r.github.io/docs/health/describe_affected_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities/) for full documentation.
 #'
 #' @param filter &#91;required&#93; Values to narrow the results returned. At least one event ARN is
 #' required.
@@ -93,7 +93,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' @description
 #' Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_affected_entities_for_organization.html](https://paws-r.github.io/docs/health/describe_affected_entities_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/) for full documentation.
 #'
 #' @param organizationEntityFilters &#91;required&#93; A JSON set of elements including the `awsAccountId` and the `eventArn`.
 #' @param locale The locale (language) to return information in. English (en) is the
@@ -132,7 +132,7 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
 #' @description
 #' Returns the number of entities that are affected by each of the specified events.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_entity_aggregates.html](https://paws-r.github.io/docs/health/describe_entity_aggregates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates/](https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates/) for full documentation.
 #'
 #' @param eventArns A list of event ARNs (unique identifiers). For example:
 #' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
@@ -163,7 +163,7 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #' @description
 #' Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_event_aggregates.html](https://paws-r.github.io/docs/health/describe_event_aggregates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_event_aggregates/](https://www.paws-r-sdk.com/docs/health_describe_event_aggregates/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
 #' @param aggregateField &#91;required&#93; The only currently supported value is `eventTypeCategory`.
@@ -200,7 +200,7 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' @description
 #' Returns detailed information about one or more specified events. Information includes standard event data (Amazon Web Services Region, service, and so on, as returned by [`describe_events`][health_describe_events]), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included. To retrieve the entities, use the [`describe_affected_entities`][health_describe_affected_entities] operation.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_event_details.html](https://paws-r.github.io/docs/health/describe_event_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_event_details/](https://www.paws-r-sdk.com/docs/health_describe_event_details/) for full documentation.
 #'
 #' @param eventArns &#91;required&#93; A list of event ARNs (unique identifiers). For example:
 #' `"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"`
@@ -233,7 +233,7 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' @description
 #' Returns detailed information about one or more specified events for one or more Amazon Web Services accounts in your organization. This information includes standard event data (such as the Amazon Web Services Region and service), an event description, and (depending on the event) possible metadata. This operation doesn't return affected entities, such as the resources related to the event. To return affected entities, use the [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization] operation.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_event_details_for_organization.html](https://paws-r.github.io/docs/health/describe_event_details_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_event_details_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_event_details_for_organization/) for full documentation.
 #'
 #' @param organizationEventDetailFilters &#91;required&#93; A set of JSON elements that includes the `awsAccountId` and the
 #' `eventArn`.
@@ -265,7 +265,7 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' @description
 #' Returns the event types that meet the specified filter criteria. You can use this API operation to find information about the Health event, such as the category, Amazon Web Service, and event code. The metadata for each event appears in the [EventType](https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html) object.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_event_types.html](https://paws-r.github.io/docs/health/describe_event_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_event_types/](https://www.paws-r-sdk.com/docs/health_describe_event_types/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
 #' @param locale The locale (language) to return information in. English (en) is the
@@ -306,7 +306,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' @description
 #' Returns information about events that meet the specified filter criteria. Events are returned in a summary form and do not include the detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the [`describe_event_details`][health_describe_event_details] and [`describe_affected_entities`][health_describe_affected_entities] operations.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_events.html](https://paws-r.github.io/docs/health/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_events/](https://www.paws-r-sdk.com/docs/health_describe_events/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
 #' @param nextToken If the results of a search are large, only a portion of the results are
@@ -345,7 +345,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' @description
 #' Returns information about events across your organization in Organizations. You can use the`filters` parameter to specify the events that you want to return. Events are returned in a summary form and don't include the affected accounts, detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the following operations:
 #'
-#' See [https://paws-r.github.io/docs/health/describe_events_for_organization.html](https://paws-r.github.io/docs/health/describe_events_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_events_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_events_for_organization/) for full documentation.
 #'
 #' @param filter Values to narrow the results returned.
 #' @param nextToken If the results of a search are large, only a portion of the results are
@@ -384,7 +384,7 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #' @description
 #' This operation provides status information on enabling or disabling Health to work with your organization. To call this operation, you must use the organization's management account.
 #'
-#' See [https://paws-r.github.io/docs/health/describe_health_service_status_for_organization.html](https://paws-r.github.io/docs/health/describe_health_service_status_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_describe_health_service_status_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_health_service_status_for_organization/) for full documentation.
 #'
 
 #'
@@ -413,7 +413,7 @@ health_describe_health_service_status_for_organization <- function() {
 #' @description
 #' Disables Health from working with Organizations. To call this operation, you must sign in to the organization's management account. For more information, see [Aggregating Health events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html) in the *Health User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/health/disable_health_service_access_for_organization.html](https://paws-r.github.io/docs/health/disable_health_service_access_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_disable_health_service_access_for_organization/](https://www.paws-r-sdk.com/docs/health_disable_health_service_access_for_organization/) for full documentation.
 #'
 
 #'
@@ -442,7 +442,7 @@ health_disable_health_service_access_for_organization <- function() {
 #' @description
 #' Enables Health to work with Organizations. You can use the organizational view feature to aggregate events from all Amazon Web Services accounts in your organization in a centralized location.
 #'
-#' See [https://paws-r.github.io/docs/health/enable_health_service_access_for_organization.html](https://paws-r.github.io/docs/health/enable_health_service_access_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/health_enable_health_service_access_for_organization/](https://www.paws-r-sdk.com/docs/health_enable_health_service_access_for_organization/) for full documentation.
 #'
 
 #'

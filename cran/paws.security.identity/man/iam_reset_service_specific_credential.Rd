@@ -26,6 +26,6 @@ that can consist of any upper or lowercased letter or digit.}
 \description{
 Resets the password for a service-specific credential. The new password is Amazon Web Services generated and cryptographically strong. It cannot be configured by the user. Resetting the password immediately invalidates the previous password associated with this user.
 
-See \url{https://paws-r.github.io/docs/iam/reset_service_specific_credential.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_reset_service_specific_credential/} for full documentation.
 }
 \keyword{internal}

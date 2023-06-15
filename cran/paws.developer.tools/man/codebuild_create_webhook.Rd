@@ -37,6 +37,6 @@ filters must pass.}
 \description{
 For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
 
-See \url{https://paws-r.github.io/docs/codebuild/create_webhook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_create_webhook/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ results.}
 \description{
 Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.
 
-See \url{https://paws-r.github.io/docs/codecommit/list_pull_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_list_pull_requests/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ workspacesweb_delete_portal(portalArn)
 \description{
 Deletes a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/delete_portal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_delete_portal/} for full documentation.
 }
 \keyword{internal}

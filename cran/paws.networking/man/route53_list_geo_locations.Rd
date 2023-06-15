@@ -46,6 +46,6 @@ response is \code{true}.}
 \description{
 Retrieves a list of supported geographic locations.
 
-See \url{https://paws-r.github.io/docs/route53/list_geo_locations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_geo_locations/} for full documentation.
 }
 \keyword{internal}

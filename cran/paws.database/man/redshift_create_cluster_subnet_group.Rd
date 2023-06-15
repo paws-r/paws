@@ -35,6 +35,6 @@ single request.}
 \description{
 Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
 
-See \url{https://paws-r.github.io/docs/redshift/create_cluster_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_cluster_subnet_group/} for full documentation.
 }
 \keyword{internal}

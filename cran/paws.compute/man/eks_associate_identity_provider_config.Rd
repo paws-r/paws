@@ -27,6 +27,6 @@ idempotency of the request.}
 \description{
 Associate an identity provider configuration to a cluster.
 
-See \url{https://paws-r.github.io/docs/eks/associate_identity_provider_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_associate_identity_provider_config/} for full documentation.
 }
 \keyword{internal}

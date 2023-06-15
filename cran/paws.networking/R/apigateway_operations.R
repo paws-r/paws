@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Create an ApiKey resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_api_key.html](https://paws-r.github.io/docs/apigateway/create_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_api_key/](https://www.paws-r-sdk.com/docs/apigateway_create_api_key/) for full documentation.
 #'
 #' @param name The name of the ApiKey.
 #' @param description The description of the ApiKey.
@@ -50,7 +50,7 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #' @description
 #' Adds a new Authorizer resource to an existing RestApi resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_authorizer.html](https://paws-r.github.io/docs/apigateway/create_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_authorizer/](https://www.paws-r-sdk.com/docs/apigateway_create_authorizer/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param name &#91;required&#93; The name of the authorizer.
@@ -137,7 +137,7 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' @description
 #' Creates a new BasePathMapping resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/create_base_path_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_create_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to create.
 #' @param basePath The base path name that callers of the API must provide as part of the
@@ -175,7 +175,7 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' @description
 #' Creates a Deployment resource, which makes a specified RestApi callable over the internet.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_deployment.html](https://paws-r.github.io/docs/apigateway/create_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_deployment/](https://www.paws-r-sdk.com/docs/apigateway_create_deployment/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName The name of the Stage resource for the Deployment resource to create.
@@ -219,7 +219,7 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 #' @description
 #' Creates a documentation part.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_documentation_part.html](https://paws-r.github.io/docs/apigateway/create_documentation_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_documentation_part/](https://www.paws-r-sdk.com/docs/apigateway_create_documentation_part/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param location &#91;required&#93; The location of the targeted API entity of the to-be-created
@@ -253,7 +253,7 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 #' @description
 #' Creates a documentation version
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_documentation_version.html](https://paws-r.github.io/docs/apigateway/create_documentation_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_documentation_version/](https://www.paws-r-sdk.com/docs/apigateway_create_documentation_version/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationVersion &#91;required&#93; The version identifier of the new snapshot.
@@ -285,7 +285,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @description
 #' Creates a new domain name.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_domain_name.html](https://paws-r.github.io/docs/apigateway/create_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_create_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
@@ -348,7 +348,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @description
 #' Adds a new Model resource to an existing RestApi resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_model.html](https://paws-r.github.io/docs/apigateway/create_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_model/](https://www.paws-r-sdk.com/docs/apigateway_create_model/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The RestApi identifier under which the Model will be created.
 #' @param name &#91;required&#93; The name of the model. Must be alphanumeric.
@@ -382,7 +382,7 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
 #' @description
 #' Creates a RequestValidator of a given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_request_validator.html](https://paws-r.github.io/docs/apigateway/create_request_validator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_request_validator/](https://www.paws-r-sdk.com/docs/apigateway_create_request_validator/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param name The name of the to-be-created RequestValidator.
@@ -416,7 +416,7 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 #' @description
 #' Creates a Resource resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_resource.html](https://paws-r.github.io/docs/apigateway/create_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_resource/](https://www.paws-r-sdk.com/docs/apigateway_create_resource/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param parentId &#91;required&#93; The parent resource's identifier.
@@ -447,7 +447,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @description
 #' Creates a new RestApi resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_rest_api.html](https://paws-r.github.io/docs/apigateway/create_rest_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_rest_api/](https://www.paws-r-sdk.com/docs/apigateway_create_rest_api/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the RestApi.
 #' @param description The description of the RestApi.
@@ -504,7 +504,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' @description
 #' Creates a new Stage resource that references a pre-existing Deployment for the API.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_stage.html](https://paws-r.github.io/docs/apigateway/create_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_stage/](https://www.paws-r-sdk.com/docs/apigateway_create_stage/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name for the Stage resource. Stage names can only contain
@@ -552,7 +552,7 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' @description
 #' Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_usage_plan.html](https://paws-r.github.io/docs/apigateway/create_usage_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_usage_plan/](https://www.paws-r-sdk.com/docs/apigateway_create_usage_plan/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the usage plan.
 #' @param description The description of the usage plan.
@@ -588,7 +588,7 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
 #' @description
 #' Creates a usage plan key for adding an existing API key to a usage plan.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_usage_plan_key.html](https://paws-r.github.io/docs/apigateway/create_usage_plan_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_usage_plan_key/](https://www.paws-r-sdk.com/docs/apigateway_create_usage_plan_key/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
 #' the to-be-created UsagePlanKey resource representing a plan customer.
@@ -622,7 +622,7 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' @description
 #' Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/create_vpc_link.html](https://paws-r.github.io/docs/apigateway/create_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_vpc_link/](https://www.paws-r-sdk.com/docs/apigateway_create_vpc_link/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name used to label and identify the VPC link.
 #' @param description The description of the VPC link.
@@ -658,7 +658,7 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tag
 #' @description
 #' Deletes the ApiKey resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_api_key.html](https://paws-r.github.io/docs/apigateway/delete_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_api_key/](https://www.paws-r-sdk.com/docs/apigateway_delete_api_key/) for full documentation.
 #'
 #' @param apiKey &#91;required&#93; The identifier of the ApiKey resource to be deleted.
 #'
@@ -687,7 +687,7 @@ apigateway_delete_api_key <- function(apiKey) {
 #' @description
 #' Deletes an existing Authorizer resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_authorizer.html](https://paws-r.github.io/docs/apigateway/delete_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_authorizer/](https://www.paws-r-sdk.com/docs/apigateway_delete_authorizer/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param authorizerId &#91;required&#93; The identifier of the Authorizer resource.
@@ -717,7 +717,7 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' @description
 #' Deletes the BasePathMapping resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/delete_base_path_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_delete_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to delete.
 #' @param basePath &#91;required&#93; The base path name of the BasePathMapping resource to delete.
@@ -749,7 +749,7 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
 #' @description
 #' Deletes the ClientCertificate resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_client_certificate.html](https://paws-r.github.io/docs/apigateway/delete_client_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_client_certificate/](https://www.paws-r-sdk.com/docs/apigateway_delete_client_certificate/) for full documentation.
 #'
 #' @param clientCertificateId &#91;required&#93; The identifier of the ClientCertificate resource to be deleted.
 #'
@@ -778,7 +778,7 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
 #' @description
 #' Deletes a Deployment resource. Deleting a deployment will only succeed if there are no Stage resources associated with it.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_deployment.html](https://paws-r.github.io/docs/apigateway/delete_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_deployment/](https://www.paws-r-sdk.com/docs/apigateway_delete_deployment/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param deploymentId &#91;required&#93; The identifier of the Deployment resource to delete.
@@ -808,7 +808,7 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 #' @description
 #' Deletes a documentation part
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_documentation_part.html](https://paws-r.github.io/docs/apigateway/delete_documentation_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_documentation_part/](https://www.paws-r-sdk.com/docs/apigateway_delete_documentation_part/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationPartId &#91;required&#93; The identifier of the to-be-deleted documentation part.
@@ -838,7 +838,7 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 #' @description
 #' Deletes a documentation version.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_documentation_version.html](https://paws-r.github.io/docs/apigateway/delete_documentation_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_documentation_version/](https://www.paws-r-sdk.com/docs/apigateway_delete_documentation_version/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationVersion &#91;required&#93; The version identifier of a to-be-deleted documentation snapshot.
@@ -868,7 +868,7 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 #' @description
 #' Deletes the DomainName resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_domain_name.html](https://paws-r.github.io/docs/apigateway/delete_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource to be deleted.
 #'
@@ -898,7 +898,7 @@ apigateway_delete_domain_name <- function(domainName) {
 #' @description
 #' Clears any customization of a GatewayResponse of a specified response type on the given RestApi and resets it with the default settings.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_gateway_response.html](https://paws-r.github.io/docs/apigateway/delete_gateway_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_gateway_response/](https://www.paws-r-sdk.com/docs/apigateway_delete_gateway_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param responseType &#91;required&#93; The response type of the associated GatewayResponse.
@@ -928,7 +928,7 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
 #' @description
 #' Represents a delete integration.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_integration.html](https://paws-r.github.io/docs/apigateway/delete_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_integration/](https://www.paws-r-sdk.com/docs/apigateway_delete_integration/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a delete integration request's resource identifier.
@@ -959,7 +959,7 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Represents a delete integration response.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_integration_response.html](https://paws-r.github.io/docs/apigateway/delete_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_integration_response/](https://www.paws-r-sdk.com/docs/apigateway_delete_integration_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a delete integration response request's resource identifier.
@@ -991,7 +991,7 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
 #' @description
 #' Deletes an existing Method resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_method.html](https://paws-r.github.io/docs/apigateway/delete_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_method/](https://www.paws-r-sdk.com/docs/apigateway_delete_method/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
@@ -1022,7 +1022,7 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Deletes an existing MethodResponse resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_method_response.html](https://paws-r.github.io/docs/apigateway/delete_method_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_method_response/](https://www.paws-r-sdk.com/docs/apigateway_delete_method_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the MethodResponse resource.
@@ -1054,7 +1054,7 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
 #' @description
 #' Deletes a model.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_model.html](https://paws-r.github.io/docs/apigateway/delete_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_model/](https://www.paws-r-sdk.com/docs/apigateway_delete_model/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param modelName &#91;required&#93; The name of the model to delete.
@@ -1084,7 +1084,7 @@ apigateway_delete_model <- function(restApiId, modelName) {
 #' @description
 #' Deletes a RequestValidator of a given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_request_validator.html](https://paws-r.github.io/docs/apigateway/delete_request_validator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_request_validator/](https://www.paws-r-sdk.com/docs/apigateway_delete_request_validator/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param requestValidatorId &#91;required&#93; The identifier of the RequestValidator to be deleted.
@@ -1114,7 +1114,7 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
 #' @description
 #' Deletes a Resource resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_resource.html](https://paws-r.github.io/docs/apigateway/delete_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_resource/](https://www.paws-r-sdk.com/docs/apigateway_delete_resource/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The identifier of the Resource resource.
@@ -1144,7 +1144,7 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
 #' @description
 #' Deletes the specified API.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_rest_api.html](https://paws-r.github.io/docs/apigateway/delete_rest_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_rest_api/](https://www.paws-r-sdk.com/docs/apigateway_delete_rest_api/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #'
@@ -1173,7 +1173,7 @@ apigateway_delete_rest_api <- function(restApiId) {
 #' @description
 #' Deletes a Stage resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_stage.html](https://paws-r.github.io/docs/apigateway/delete_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_stage/](https://www.paws-r-sdk.com/docs/apigateway_delete_stage/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the Stage resource to delete.
@@ -1203,7 +1203,7 @@ apigateway_delete_stage <- function(restApiId, stageName) {
 #' @description
 #' Deletes a usage plan of a given plan Id.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_usage_plan.html](https://paws-r.github.io/docs/apigateway/delete_usage_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_usage_plan/](https://www.paws-r-sdk.com/docs/apigateway_delete_usage_plan/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the to-be-deleted usage plan.
 #'
@@ -1233,7 +1233,7 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
 #' @description
 #' Deletes a usage plan key and remove the underlying API key from the associated usage plan.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_usage_plan_key.html](https://paws-r.github.io/docs/apigateway/delete_usage_plan_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_usage_plan_key/](https://www.paws-r-sdk.com/docs/apigateway_delete_usage_plan_key/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
 #' the to-be-deleted UsagePlanKey resource representing a plan customer.
@@ -1264,7 +1264,7 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
 #' @description
 #' Deletes an existing VpcLink of a specified identifier.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/delete_vpc_link.html](https://paws-r.github.io/docs/apigateway/delete_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_vpc_link/](https://www.paws-r-sdk.com/docs/apigateway_delete_vpc_link/) for full documentation.
 #'
 #' @param vpcLinkId &#91;required&#93; The identifier of the VpcLink. It is used in an Integration to reference
 #' this VpcLink.
@@ -1294,7 +1294,7 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
 #' @description
 #' Flushes all authorizer cache entries on a stage.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/flush_stage_authorizers_cache.html](https://paws-r.github.io/docs/apigateway/flush_stage_authorizers_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_flush_stage_authorizers_cache/](https://www.paws-r-sdk.com/docs/apigateway_flush_stage_authorizers_cache/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the stage to flush.
@@ -1324,7 +1324,7 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
 #' @description
 #' Flushes a stage's cache.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/flush_stage_cache.html](https://paws-r.github.io/docs/apigateway/flush_stage_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_flush_stage_cache/](https://www.paws-r-sdk.com/docs/apigateway_flush_stage_cache/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the stage to flush its cache.
@@ -1354,7 +1354,7 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 #' @description
 #' Generates a ClientCertificate resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/generate_client_certificate.html](https://paws-r.github.io/docs/apigateway/generate_client_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_generate_client_certificate/](https://www.paws-r-sdk.com/docs/apigateway_generate_client_certificate/) for full documentation.
 #'
 #' @param description The description of the ClientCertificate.
 #' @param tags The key-value map of strings. The valid character set is
@@ -1386,7 +1386,7 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
 #' @description
 #' Gets information about the current Account resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_account.html](https://paws-r.github.io/docs/apigateway/get_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_account/](https://www.paws-r-sdk.com/docs/apigateway_get_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1413,7 +1413,7 @@ apigateway_get_account <- function() {
 #' @description
 #' Gets information about the current ApiKey resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_api_key.html](https://paws-r.github.io/docs/apigateway/get_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_api_key/](https://www.paws-r-sdk.com/docs/apigateway_get_api_key/) for full documentation.
 #'
 #' @param apiKey &#91;required&#93; The identifier of the ApiKey resource.
 #' @param includeValue A boolean flag to specify whether (`true`) or not (`false`) the result
@@ -1444,7 +1444,7 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #' @description
 #' Gets information about the current ApiKeys resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_api_keys.html](https://paws-r.github.io/docs/apigateway/get_api_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_api_keys/](https://www.paws-r-sdk.com/docs/apigateway_get_api_keys/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -1480,7 +1480,7 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 #' @description
 #' Describe an existing Authorizer resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_authorizer.html](https://paws-r.github.io/docs/apigateway/get_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_authorizer/](https://www.paws-r-sdk.com/docs/apigateway_get_authorizer/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param authorizerId &#91;required&#93; The identifier of the Authorizer resource.
@@ -1510,7 +1510,7 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 #' @description
 #' Describe an existing Authorizers resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_authorizers.html](https://paws-r.github.io/docs/apigateway/get_authorizers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_authorizers/](https://www.paws-r-sdk.com/docs/apigateway_get_authorizers/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
@@ -1542,7 +1542,7 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' @description
 #' Describe a BasePathMapping resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/get_base_path_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to be described.
 #' @param basePath &#91;required&#93; The base path name that callers of the API must provide as part of the
@@ -1575,7 +1575,7 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #' @description
 #' Represents a collection of BasePathMapping resources.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_base_path_mappings.html](https://paws-r.github.io/docs/apigateway/get_base_path_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mappings/](https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mappings/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of a BasePathMapping resource.
 #' @param position The current pagination position in the paged result set.
@@ -1607,7 +1607,7 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
 #' @description
 #' Gets information about the current ClientCertificate resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_client_certificate.html](https://paws-r.github.io/docs/apigateway/get_client_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_client_certificate/](https://www.paws-r-sdk.com/docs/apigateway_get_client_certificate/) for full documentation.
 #'
 #' @param clientCertificateId &#91;required&#93; The identifier of the ClientCertificate resource to be described.
 #'
@@ -1636,7 +1636,7 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
 #' @description
 #' Gets a collection of ClientCertificate resources.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_client_certificates.html](https://paws-r.github.io/docs/apigateway/get_client_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_client_certificates/](https://www.paws-r-sdk.com/docs/apigateway_get_client_certificates/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -1667,7 +1667,7 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 #' @description
 #' Gets information about a Deployment resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_deployment.html](https://paws-r.github.io/docs/apigateway/get_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_deployment/](https://www.paws-r-sdk.com/docs/apigateway_get_deployment/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param deploymentId &#91;required&#93; The identifier of the Deployment resource to get information about.
@@ -1707,7 +1707,7 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
 #' @description
 #' Gets information about a Deployments collection.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_deployments.html](https://paws-r.github.io/docs/apigateway/get_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_deployments/](https://www.paws-r-sdk.com/docs/apigateway_get_deployments/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
@@ -1739,7 +1739,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 #' @description
 #' Gets a documentation part.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_documentation_part.html](https://paws-r.github.io/docs/apigateway/get_documentation_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_documentation_part/](https://www.paws-r-sdk.com/docs/apigateway_get_documentation_part/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationPartId &#91;required&#93; The string identifier of the associated RestApi.
@@ -1769,7 +1769,7 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 #' @description
 #' Gets documentation parts.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_documentation_parts.html](https://paws-r.github.io/docs/apigateway/get_documentation_parts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_documentation_parts/](https://www.paws-r-sdk.com/docs/apigateway_get_documentation_parts/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param type The type of API entities of the to-be-retrieved documentation parts.
@@ -1807,7 +1807,7 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 #' @description
 #' Gets a documentation version.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_documentation_version.html](https://paws-r.github.io/docs/apigateway/get_documentation_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_documentation_version/](https://www.paws-r-sdk.com/docs/apigateway_get_documentation_version/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationVersion &#91;required&#93; The version identifier of the to-be-retrieved documentation snapshot.
@@ -1837,7 +1837,7 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 #' @description
 #' Gets documentation versions.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_documentation_versions.html](https://paws-r.github.io/docs/apigateway/get_documentation_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_documentation_versions/](https://www.paws-r-sdk.com/docs/apigateway_get_documentation_versions/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
@@ -1870,7 +1870,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #' @description
 #' Represents a domain name that is contained in a simpler, more intuitive URL that can be called.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_domain_name.html](https://paws-r.github.io/docs/apigateway/get_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_get_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource.
 #'
@@ -1899,7 +1899,7 @@ apigateway_get_domain_name <- function(domainName) {
 #' @description
 #' Represents a collection of DomainName resources.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_domain_names.html](https://paws-r.github.io/docs/apigateway/get_domain_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_domain_names/](https://www.paws-r-sdk.com/docs/apigateway_get_domain_names/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -1930,7 +1930,7 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 #' @description
 #' Exports a deployed version of a RestApi in a specified format.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_export.html](https://paws-r.github.io/docs/apigateway/get_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_export/](https://www.paws-r-sdk.com/docs/apigateway_get_export/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the Stage that will be exported.
@@ -1974,7 +1974,7 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
 #' @description
 #' Gets a GatewayResponse of a specified response type on the given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_gateway_response.html](https://paws-r.github.io/docs/apigateway/get_gateway_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_gateway_response/](https://www.paws-r-sdk.com/docs/apigateway_get_gateway_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param responseType &#91;required&#93; The response type of the associated GatewayResponse.
@@ -2004,7 +2004,7 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
 #' @description
 #' Gets the GatewayResponses collection on the given RestApi. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default GatewayResponses collection for the supported response types.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_gateway_responses.html](https://paws-r.github.io/docs/apigateway/get_gateway_responses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_gateway_responses/](https://www.paws-r-sdk.com/docs/apigateway_get_gateway_responses/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set. The
@@ -2039,7 +2039,7 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 #' @description
 #' Get the integration settings.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_integration.html](https://paws-r.github.io/docs/apigateway/get_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_integration/](https://www.paws-r-sdk.com/docs/apigateway_get_integration/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a get integration request's resource identifier
@@ -2070,7 +2070,7 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Represents a get integration response.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_integration_response.html](https://paws-r.github.io/docs/apigateway/get_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_integration_response/](https://www.paws-r-sdk.com/docs/apigateway_get_integration_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a get integration response request's resource identifier.
@@ -2102,7 +2102,7 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 #' @description
 #' Describe an existing Method resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_method.html](https://paws-r.github.io/docs/apigateway/get_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_method/](https://www.paws-r-sdk.com/docs/apigateway_get_method/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
@@ -2133,7 +2133,7 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
 #' @description
 #' Describes a MethodResponse resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_method_response.html](https://paws-r.github.io/docs/apigateway/get_method_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_method_response/](https://www.paws-r-sdk.com/docs/apigateway_get_method_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the MethodResponse resource.
@@ -2165,7 +2165,7 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
 #' @description
 #' Describes an existing model defined for a RestApi resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_model.html](https://paws-r.github.io/docs/apigateway/get_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_model/](https://www.paws-r-sdk.com/docs/apigateway_get_model/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The RestApi identifier under which the Model exists.
 #' @param modelName &#91;required&#93; The name of the model as an identifier.
@@ -2199,7 +2199,7 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
 #' @description
 #' Generates a sample mapping template that can be used to transform a payload into the structure of a model.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_model_template.html](https://paws-r.github.io/docs/apigateway/get_model_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_model_template/](https://www.paws-r-sdk.com/docs/apigateway_get_model_template/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param modelName &#91;required&#93; The name of the model for which to generate a template.
@@ -2229,7 +2229,7 @@ apigateway_get_model_template <- function(restApiId, modelName) {
 #' @description
 #' Describes existing Models defined for a RestApi resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_models.html](https://paws-r.github.io/docs/apigateway/get_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_models/](https://www.paws-r-sdk.com/docs/apigateway_get_models/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
@@ -2261,7 +2261,7 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
 #' @description
 #' Gets a RequestValidator of a given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_request_validator.html](https://paws-r.github.io/docs/apigateway/get_request_validator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_request_validator/](https://www.paws-r-sdk.com/docs/apigateway_get_request_validator/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param requestValidatorId &#91;required&#93; The identifier of the RequestValidator to be retrieved.
@@ -2291,7 +2291,7 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
 #' @description
 #' Gets the RequestValidators collection of a given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_request_validators.html](https://paws-r.github.io/docs/apigateway/get_request_validators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_request_validators/](https://www.paws-r-sdk.com/docs/apigateway_get_request_validators/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
@@ -2323,7 +2323,7 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #' @description
 #' Lists information about a resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_resource.html](https://paws-r.github.io/docs/apigateway/get_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_resource/](https://www.paws-r-sdk.com/docs/apigateway_get_resource/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The identifier for the Resource resource.
@@ -2360,7 +2360,7 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #' @description
 #' Lists information about a collection of Resource resources.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_resources.html](https://paws-r.github.io/docs/apigateway/get_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_resources/](https://www.paws-r-sdk.com/docs/apigateway_get_resources/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param position The current pagination position in the paged result set.
@@ -2399,7 +2399,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #' @description
 #' Lists the RestApi resource in the collection.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_rest_api.html](https://paws-r.github.io/docs/apigateway/get_rest_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_rest_api/](https://www.paws-r-sdk.com/docs/apigateway_get_rest_api/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #'
@@ -2428,7 +2428,7 @@ apigateway_get_rest_api <- function(restApiId) {
 #' @description
 #' Lists the RestApis resources for your collection.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_rest_apis.html](https://paws-r.github.io/docs/apigateway/get_rest_apis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_rest_apis/](https://www.paws-r-sdk.com/docs/apigateway_get_rest_apis/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -2459,7 +2459,7 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
 #' @description
 #' Generates a client SDK for a RestApi and Stage.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_sdk.html](https://paws-r.github.io/docs/apigateway/get_sdk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_sdk/](https://www.paws-r-sdk.com/docs/apigateway_get_sdk/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the Stage that the SDK will use.
@@ -2498,7 +2498,7 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 #' @description
 #' Gets an SDK type.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_sdk_type.html](https://paws-r.github.io/docs/apigateway/get_sdk_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_sdk_type/](https://www.paws-r-sdk.com/docs/apigateway_get_sdk_type/) for full documentation.
 #'
 #' @param id &#91;required&#93; The identifier of the queried SdkType instance.
 #'
@@ -2527,7 +2527,7 @@ apigateway_get_sdk_type <- function(id) {
 #' @description
 #' Gets SDK types
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_sdk_types.html](https://paws-r.github.io/docs/apigateway/get_sdk_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_sdk_types/](https://www.paws-r-sdk.com/docs/apigateway_get_sdk_types/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -2558,7 +2558,7 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
 #' @description
 #' Gets information about a Stage resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_stage.html](https://paws-r.github.io/docs/apigateway/get_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_stage/](https://www.paws-r-sdk.com/docs/apigateway_get_stage/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the Stage resource to get information about.
@@ -2588,7 +2588,7 @@ apigateway_get_stage <- function(restApiId, stageName) {
 #' @description
 #' Gets information about one or more Stage resources.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_stages.html](https://paws-r.github.io/docs/apigateway/get_stages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_stages/](https://www.paws-r-sdk.com/docs/apigateway_get_stages/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param deploymentId The stages' deployment identifiers.
@@ -2618,7 +2618,7 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #' @description
 #' Gets the Tags collection for a given resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_tags.html](https://paws-r.github.io/docs/apigateway/get_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_tags/](https://www.paws-r-sdk.com/docs/apigateway_get_tags/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of a resource that can be tagged.
 #' @param position (Not currently supported) The current pagination position in the paged
@@ -2651,7 +2651,7 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
 #' @description
 #' Gets the usage data of a usage plan in a specified time interval.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_usage.html](https://paws-r.github.io/docs/apigateway/get_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_usage/](https://www.paws-r-sdk.com/docs/apigateway_get_usage/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the usage plan associated with the usage data.
 #' @param keyId The Id of the API key associated with the resultant usage data.
@@ -2686,7 +2686,7 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
 #' @description
 #' Gets a usage plan of a given plan identifier.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_usage_plan.html](https://paws-r.github.io/docs/apigateway/get_usage_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan/](https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The identifier of the UsagePlan resource to be retrieved.
 #'
@@ -2715,7 +2715,7 @@ apigateway_get_usage_plan <- function(usagePlanId) {
 #' @description
 #' Gets a usage plan key of a given key identifier.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_usage_plan_key.html](https://paws-r.github.io/docs/apigateway/get_usage_plan_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan_key/](https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan_key/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
 #' the to-be-retrieved UsagePlanKey resource representing a plan customer.
@@ -2748,7 +2748,7 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
 #' @description
 #' Gets all the usage plan keys representing the API keys added to a specified usage plan.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_usage_plan_keys.html](https://paws-r.github.io/docs/apigateway/get_usage_plan_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan_keys/](https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan_keys/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the UsagePlan resource representing the usage plan containing
 #' the to-be-retrieved UsagePlanKey resource representing a plan customer.
@@ -2783,7 +2783,7 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
 #' @description
 #' Gets all the usage plans of the caller's account.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_usage_plans.html](https://paws-r.github.io/docs/apigateway/get_usage_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_usage_plans/](https://www.paws-r-sdk.com/docs/apigateway_get_usage_plans/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param keyId The identifier of the API key associated with the usage plans.
@@ -2815,7 +2815,7 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
 #' @description
 #' Gets a specified VPC link under the caller's account in a region.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_vpc_link.html](https://paws-r.github.io/docs/apigateway/get_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_vpc_link/](https://www.paws-r-sdk.com/docs/apigateway_get_vpc_link/) for full documentation.
 #'
 #' @param vpcLinkId &#91;required&#93; The identifier of the VpcLink. It is used in an Integration to reference
 #' this VpcLink.
@@ -2846,7 +2846,7 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
 #' @description
 #' Gets the VpcLinks collection under the caller's account in a selected region.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/get_vpc_links.html](https://paws-r.github.io/docs/apigateway/get_vpc_links.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_vpc_links/](https://www.paws-r-sdk.com/docs/apigateway_get_vpc_links/) for full documentation.
 #'
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
@@ -2877,7 +2877,7 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
 #' @description
 #' Import API keys from an external source, such as a CSV-formatted file.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/import_api_keys.html](https://paws-r.github.io/docs/apigateway/import_api_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_import_api_keys/](https://www.paws-r-sdk.com/docs/apigateway_import_api_keys/) for full documentation.
 #'
 #' @param body &#91;required&#93; The payload of the POST request to import API keys. For the payload
 #' format, see API Key File Format.
@@ -2911,7 +2911,7 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 #' @description
 #' Imports documentation parts
 #'
-#' See [https://paws-r.github.io/docs/apigateway/import_documentation_parts.html](https://paws-r.github.io/docs/apigateway/import_documentation_parts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_import_documentation_parts/](https://www.paws-r-sdk.com/docs/apigateway_import_documentation_parts/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param mode A query parameter to indicate whether to overwrite (`OVERWRITE`) any
@@ -2949,7 +2949,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' @description
 #' A feature of the API Gateway control service for creating a new API from an external API definition file.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/import_rest_api.html](https://paws-r.github.io/docs/apigateway/import_rest_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_import_rest_api/](https://www.paws-r-sdk.com/docs/apigateway_import_rest_api/) for full documentation.
 #'
 #' @param failOnWarnings A query parameter to indicate whether to rollback the API creation
 #' (`true`) or not (`false`) when a warning is encountered. The default
@@ -3004,7 +3004,7 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
 #' @description
 #' Creates a customization of a GatewayResponse of a specified response type and status code on the given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/put_gateway_response.html](https://paws-r.github.io/docs/apigateway/put_gateway_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_put_gateway_response/](https://www.paws-r-sdk.com/docs/apigateway_put_gateway_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param responseType &#91;required&#93; The response type of the associated GatewayResponse
@@ -3039,7 +3039,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @description
 #' Sets up a method's integration.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/put_integration.html](https://paws-r.github.io/docs/apigateway/put_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_put_integration/](https://www.paws-r-sdk.com/docs/apigateway_put_integration/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a put integration request's resource ID.
@@ -3137,7 +3137,7 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #' @description
 #' Represents a put integration.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/put_integration_response.html](https://paws-r.github.io/docs/apigateway/put_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_put_integration_response/](https://www.paws-r-sdk.com/docs/apigateway_put_integration_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a put integration response request's resource identifier.
@@ -3190,7 +3190,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' @description
 #' Add a method to an existing Resource resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/put_method.html](https://paws-r.github.io/docs/apigateway/put_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_put_method/](https://www.paws-r-sdk.com/docs/apigateway_put_method/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the new Method resource.
@@ -3253,7 +3253,7 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 #' @description
 #' Adds a MethodResponse to an existing Method resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/put_method_response.html](https://paws-r.github.io/docs/apigateway/put_method_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_put_method_response/](https://www.paws-r-sdk.com/docs/apigateway_put_method_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
@@ -3302,7 +3302,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' @description
 #' A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/put_rest_api.html](https://paws-r.github.io/docs/apigateway/put_rest_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_put_rest_api/](https://www.paws-r-sdk.com/docs/apigateway_put_rest_api/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param mode The `mode` query parameter to specify the update mode. Valid values are
@@ -3343,7 +3343,7 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #' @description
 #' Adds or updates a tag on a given resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/tag_resource.html](https://paws-r.github.io/docs/apigateway/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_tag_resource/](https://www.paws-r-sdk.com/docs/apigateway_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of a resource that can be tagged.
 #' @param tags &#91;required&#93; The key-value map of strings. The valid character set is
@@ -3376,7 +3376,7 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/test_invoke_authorizer.html](https://paws-r.github.io/docs/apigateway/test_invoke_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_test_invoke_authorizer/](https://www.paws-r-sdk.com/docs/apigateway_test_invoke_authorizer/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param authorizerId &#91;required&#93; Specifies a test invoke authorizer request's Authorizer ID.
@@ -3420,7 +3420,7 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 #' @description
 #' Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming request body.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/test_invoke_method.html](https://paws-r.github.io/docs/apigateway/test_invoke_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_test_invoke_method/](https://www.paws-r-sdk.com/docs/apigateway_test_invoke_method/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies a test invoke method request's resource ID.
@@ -3463,7 +3463,7 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #' @description
 #' Removes a tag from a given resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/untag_resource.html](https://paws-r.github.io/docs/apigateway/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_untag_resource/](https://www.paws-r-sdk.com/docs/apigateway_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of a resource that can be tagged.
 #' @param tagKeys &#91;required&#93; The Tag keys to delete.
@@ -3493,7 +3493,7 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Changes information about the current Account resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_account.html](https://paws-r.github.io/docs/apigateway/update_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_account/](https://www.paws-r-sdk.com/docs/apigateway_update_account/) for full documentation.
 #'
 #' @param patchOperations For more information about supported patch operations, see [Patch
 #' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
@@ -3523,7 +3523,7 @@ apigateway_update_account <- function(patchOperations = NULL) {
 #' @description
 #' Changes information about an ApiKey resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_api_key.html](https://paws-r.github.io/docs/apigateway/update_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_api_key/](https://www.paws-r-sdk.com/docs/apigateway_update_api_key/) for full documentation.
 #'
 #' @param apiKey &#91;required&#93; The identifier of the ApiKey resource to be updated.
 #' @param patchOperations For more information about supported patch operations, see [Patch
@@ -3554,7 +3554,7 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 #' @description
 #' Updates an existing Authorizer resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_authorizer.html](https://paws-r.github.io/docs/apigateway/update_authorizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_authorizer/](https://www.paws-r-sdk.com/docs/apigateway_update_authorizer/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param authorizerId &#91;required&#93; The identifier of the Authorizer resource.
@@ -3586,7 +3586,7 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #' @description
 #' Changes information about the BasePathMapping resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_base_path_mapping.html](https://paws-r.github.io/docs/apigateway/update_base_path_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_update_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to change.
 #' @param basePath &#91;required&#93; The base path of the BasePathMapping resource to change.
@@ -3620,7 +3620,7 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
 #' @description
 #' Changes information about an ClientCertificate resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_client_certificate.html](https://paws-r.github.io/docs/apigateway/update_client_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_client_certificate/](https://www.paws-r-sdk.com/docs/apigateway_update_client_certificate/) for full documentation.
 #'
 #' @param clientCertificateId &#91;required&#93; The identifier of the ClientCertificate resource to be updated.
 #' @param patchOperations For more information about supported patch operations, see [Patch
@@ -3651,7 +3651,7 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
 #' @description
 #' Changes information about a Deployment resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_deployment.html](https://paws-r.github.io/docs/apigateway/update_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_deployment/](https://www.paws-r-sdk.com/docs/apigateway_update_deployment/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param deploymentId &#91;required&#93; The replacement identifier for the Deployment resource to change
@@ -3684,7 +3684,7 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 #' @description
 #' Updates a documentation part.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_documentation_part.html](https://paws-r.github.io/docs/apigateway/update_documentation_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_documentation_part/](https://www.paws-r-sdk.com/docs/apigateway_update_documentation_part/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationPartId &#91;required&#93; The identifier of the to-be-updated documentation part.
@@ -3716,7 +3716,7 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 #' @description
 #' Updates a documentation version.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_documentation_version.html](https://paws-r.github.io/docs/apigateway/update_documentation_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_documentation_version/](https://www.paws-r-sdk.com/docs/apigateway_update_documentation_version/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi..
 #' @param documentationVersion &#91;required&#93; The version identifier of the to-be-updated documentation version.
@@ -3748,7 +3748,7 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #' @description
 #' Changes information about the DomainName resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_domain_name.html](https://paws-r.github.io/docs/apigateway/update_domain_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_update_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource to be changed.
 #' @param patchOperations For more information about supported patch operations, see [Patch
@@ -3780,7 +3780,7 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
 #' @description
 #' Updates a GatewayResponse of a specified response type on the given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_gateway_response.html](https://paws-r.github.io/docs/apigateway/update_gateway_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_gateway_response/](https://www.paws-r-sdk.com/docs/apigateway_update_gateway_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param responseType &#91;required&#93; The response type of the associated GatewayResponse.
@@ -3812,7 +3812,7 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 #' @description
 #' Represents an update integration.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_integration.html](https://paws-r.github.io/docs/apigateway/update_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_integration/](https://www.paws-r-sdk.com/docs/apigateway_update_integration/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Represents an update integration request's resource identifier.
@@ -3845,7 +3845,7 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
 #' @description
 #' Represents an update integration response.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_integration_response.html](https://paws-r.github.io/docs/apigateway/update_integration_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_integration_response/](https://www.paws-r-sdk.com/docs/apigateway_update_integration_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; Specifies an update integration response request's resource identifier.
@@ -3879,7 +3879,7 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 #' @description
 #' Updates an existing Method resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_method.html](https://paws-r.github.io/docs/apigateway/update_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_method/](https://www.paws-r-sdk.com/docs/apigateway_update_method/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the Method resource.
@@ -3912,7 +3912,7 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
 #' @description
 #' Updates an existing MethodResponse resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_method_response.html](https://paws-r.github.io/docs/apigateway/update_method_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_method_response/](https://www.paws-r-sdk.com/docs/apigateway_update_method_response/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The Resource identifier for the MethodResponse resource.
@@ -3946,7 +3946,7 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 #' @description
 #' Changes information about a model.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_model.html](https://paws-r.github.io/docs/apigateway/update_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_model/](https://www.paws-r-sdk.com/docs/apigateway_update_model/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param modelName &#91;required&#93; The name of the model to update.
@@ -3978,7 +3978,7 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
 #' @description
 #' Updates a RequestValidator of a given RestApi.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_request_validator.html](https://paws-r.github.io/docs/apigateway/update_request_validator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_request_validator/](https://www.paws-r-sdk.com/docs/apigateway_update_request_validator/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param requestValidatorId &#91;required&#93; The identifier of RequestValidator to be updated.
@@ -4010,7 +4010,7 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 #' @description
 #' Changes information about a Resource resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_resource.html](https://paws-r.github.io/docs/apigateway/update_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_resource/](https://www.paws-r-sdk.com/docs/apigateway_update_resource/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param resourceId &#91;required&#93; The identifier of the Resource resource.
@@ -4042,7 +4042,7 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #' @description
 #' Changes information about the specified API.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_rest_api.html](https://paws-r.github.io/docs/apigateway/update_rest_api.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_rest_api/](https://www.paws-r-sdk.com/docs/apigateway_update_rest_api/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param patchOperations For more information about supported patch operations, see [Patch
@@ -4073,7 +4073,7 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
 #' @description
 #' Changes information about a Stage resource.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_stage.html](https://paws-r.github.io/docs/apigateway/update_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_stage/](https://www.paws-r-sdk.com/docs/apigateway_update_stage/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param stageName &#91;required&#93; The name of the Stage resource to change information about.
@@ -4106,7 +4106,7 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
 #' @description
 #' Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_usage.html](https://paws-r.github.io/docs/apigateway/update_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_usage/](https://www.paws-r-sdk.com/docs/apigateway_update_usage/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the usage plan associated with the usage data.
 #' @param keyId &#91;required&#93; The identifier of the API key associated with the usage plan in which a
@@ -4139,7 +4139,7 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
 #' @description
 #' Updates a usage plan of a given plan Id.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_usage_plan.html](https://paws-r.github.io/docs/apigateway/update_usage_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_usage_plan/](https://www.paws-r-sdk.com/docs/apigateway_update_usage_plan/) for full documentation.
 #'
 #' @param usagePlanId &#91;required&#93; The Id of the to-be-updated usage plan.
 #' @param patchOperations For more information about supported patch operations, see [Patch
@@ -4170,7 +4170,7 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
 #' @description
 #' Updates an existing VpcLink of a specified identifier.
 #'
-#' See [https://paws-r.github.io/docs/apigateway/update_vpc_link.html](https://paws-r.github.io/docs/apigateway/update_vpc_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/apigateway_update_vpc_link/](https://www.paws-r-sdk.com/docs/apigateway_update_vpc_link/) for full documentation.
 #'
 #' @param vpcLinkId &#91;required&#93; The identifier of the VpcLink. It is used in an Integration to reference
 #' this VpcLink.

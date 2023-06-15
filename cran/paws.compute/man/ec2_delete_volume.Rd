@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified EBS volume. The volume must be in the \code{available} state (not attached to an instance).
 
-See \url{https://paws-r.github.io/docs/ec2/delete_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_volume/} for full documentation.
 }
 \keyword{internal}

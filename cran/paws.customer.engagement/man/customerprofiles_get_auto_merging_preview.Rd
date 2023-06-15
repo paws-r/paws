@@ -26,6 +26,6 @@ to be merged during the auto-merge process.}
 \description{
 Tests the auto-merging settings of your Identity Resolution Job without merging your data. It randomly selects a sample of matching groups from the existing matching results, and applies the automerging settings that you provided. You can then view the number of profiles in the sample, the number of matches, and the number of profiles identified to be merged. This enables you to evaluate the accuracy of the attributes in your matching list.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/get_auto_merging_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_get_auto_merging_preview/} for full documentation.
 }
 \keyword{internal}

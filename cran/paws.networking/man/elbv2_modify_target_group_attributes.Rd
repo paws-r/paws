@@ -14,6 +14,6 @@ elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
 \description{
 Modifies the specified attributes of the specified target group.
 
-See \url{https://paws-r.github.io/docs/elbv2/modify_target_group_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_modify_target_group_attributes/} for full documentation.
 }
 \keyword{internal}

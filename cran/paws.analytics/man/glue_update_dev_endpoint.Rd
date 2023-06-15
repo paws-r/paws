@@ -49,6 +49,6 @@ are provided, the version defaults to Python 2.}
 \description{
 Updates a specified development endpoint.
 
-See \url{https://paws-r.github.io/docs/glue/update_dev_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_dev_endpoint/} for full documentation.
 }
 \keyword{internal}

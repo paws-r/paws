@@ -34,6 +34,6 @@ labels based on the assumed threshold of each label.}
 \description{
 Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model.
 
-See \url{https://paws-r.github.io/docs/rekognition/detect_custom_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_custom_labels/} for full documentation.
 }
 \keyword{internal}

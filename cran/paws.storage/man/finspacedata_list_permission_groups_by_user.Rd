@@ -21,6 +21,6 @@ finspacedata_list_permission_groups_by_user(
 \description{
 Lists all the permission groups that are associated with a specific user account.
 
-See \url{https://paws-r.github.io/docs/finspacedata/list_permission_groups_by_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups_by_user/} for full documentation.
 }
 \keyword{internal}

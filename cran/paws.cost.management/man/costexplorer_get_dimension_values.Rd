@@ -183,6 +183,6 @@ results than the maximum page size.}
 \description{
 Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_dimension_values.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_dimension_values/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ ID.}
 \description{
 Returns detailed information about an extension that has been registered.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_type/} for full documentation.
 }
 \keyword{internal}

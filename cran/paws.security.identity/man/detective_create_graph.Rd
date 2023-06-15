@@ -16,6 +16,6 @@ characters.}
 \description{
 Creates a new behavior graph for the calling account, and sets that account as the administrator account. This operation is called by the account that is enabling Detective.
 
-See \url{https://paws-r.github.io/docs/detective/create_graph.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_create_graph/} for full documentation.
 }
 \keyword{internal}

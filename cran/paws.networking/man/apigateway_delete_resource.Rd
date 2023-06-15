@@ -14,6 +14,6 @@ apigateway_delete_resource(restApiId, resourceId)
 \description{
 Deletes a Resource resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_resource/} for full documentation.
 }
 \keyword{internal}

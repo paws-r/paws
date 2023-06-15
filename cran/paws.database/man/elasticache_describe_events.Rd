@@ -50,6 +50,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns events related to clusters, cache security groups, and cache parameter groups. You can obtain events specific to a particular cluster, cache security group, or cache parameter group by providing the name as a parameter.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_events/} for full documentation.
 }
 \keyword{internal}

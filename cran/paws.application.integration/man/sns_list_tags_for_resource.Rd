@@ -12,6 +12,6 @@ sns_list_tags_for_resource(ResourceArn)
 \description{
 List all tags added to the specified Amazon SNS topic. For an overview, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in the \emph{Amazon Simple Notification Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sns/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

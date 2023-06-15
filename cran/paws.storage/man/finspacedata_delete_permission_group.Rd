@@ -14,6 +14,6 @@ finspacedata_delete_permission_group(permissionGroupId, clientToken = NULL)
 \description{
 Deletes a permission group. This action is irreversible.
 
-See \url{https://paws-r.github.io/docs/finspacedata/delete_permission_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_delete_permission_group/} for full documentation.
 }
 \keyword{internal}

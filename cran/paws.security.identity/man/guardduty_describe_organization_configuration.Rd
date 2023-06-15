@@ -27,6 +27,6 @@ data.}
 \description{
 Returns information about the account selected as the delegated administrator for GuardDuty.
 
-See \url{https://paws-r.github.io/docs/guardduty/describe_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_describe_organization_configuration/} for full documentation.
 }
 \keyword{internal}

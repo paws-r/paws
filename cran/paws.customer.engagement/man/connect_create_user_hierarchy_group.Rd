@@ -27,6 +27,6 @@ For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 \description{
 Creates a new user hierarchy group.
 
-See \url{https://paws-r.github.io/docs/connect/create_user_hierarchy_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_user_hierarchy_group/} for full documentation.
 }
 \keyword{internal}

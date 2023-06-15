@@ -34,6 +34,6 @@ create. Each tag is a key-value pair.}
 \description{
 Creates a framework with one or more controls. A framework is a collection of controls that you can use to evaluate your backup practices. By using pre-built customizable controls to define your policies, you can evaluate whether your backup practices comply with your policies and which resources are not yet in compliance.
 
-See \url{https://paws-r.github.io/docs/backup/create_framework.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_create_framework/} for full documentation.
 }
 \keyword{internal}

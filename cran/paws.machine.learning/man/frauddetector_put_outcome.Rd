@@ -16,6 +16,6 @@ frauddetector_put_outcome(name, description = NULL, tags = NULL)
 \description{
 Creates or updates an outcome.
 
-See \url{https://paws-r.github.io/docs/frauddetector/put_outcome.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_put_outcome/} for full documentation.
 }
 \keyword{internal}

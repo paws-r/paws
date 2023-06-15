@@ -87,6 +87,6 @@ uploads to Amazon S3.}
 \description{
 Creates a canary. Canaries are scripts that monitor your endpoints and APIs from the outside-in. Canaries help you check the availability and latency of your web services and troubleshoot anomalies by investigating load time data, screenshots of the UI, logs, and metrics. You can set up a canary to run continuously or just once.
 
-See \url{https://paws-r.github.io/docs/synthetics/create_canary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_create_canary/} for full documentation.
 }
 \keyword{internal}

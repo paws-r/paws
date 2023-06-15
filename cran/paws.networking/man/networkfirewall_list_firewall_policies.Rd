@@ -21,6 +21,6 @@ subsequent call to get the next batch of objects.}
 \description{
 Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/list_firewall_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_list_firewall_policies/} for full documentation.
 }
 \keyword{internal}

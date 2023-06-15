@@ -13,6 +13,6 @@ opsworkscm_delete_server(ServerName)
 \description{
 Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance). When you run this command, the server state is updated to \code{DELETING}. After the server is deleted, it is no longer returned by \code{DescribeServer} requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/delete_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_delete_server/} for full documentation.
 }
 \keyword{internal}

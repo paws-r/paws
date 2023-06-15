@@ -12,6 +12,6 @@ ssmcontacts_get_contact(ContactId)
 \description{
 Retrieves information about the specified contact or escalation plan.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/get_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact/} for full documentation.
 }
 \keyword{internal}

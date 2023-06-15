@@ -30,6 +30,6 @@ QuickSight account.}
 \description{
 Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_user_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_user_groups/} for full documentation.
 }
 \keyword{internal}

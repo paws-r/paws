@@ -32,6 +32,6 @@ backupstorage_put_chunk(
 \description{
 Upload chunk.
 
-See \url{https://paws-r.github.io/docs/backupstorage/put_chunk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_put_chunk/} for full documentation.
 }
 \keyword{internal}

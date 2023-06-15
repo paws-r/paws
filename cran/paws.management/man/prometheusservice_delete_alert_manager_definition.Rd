@@ -18,6 +18,6 @@ idempotency of the request.}
 \description{
 Deletes an alert manager definition.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/delete_alert_manager_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_alert_manager_definition/} for full documentation.
 }
 \keyword{internal}

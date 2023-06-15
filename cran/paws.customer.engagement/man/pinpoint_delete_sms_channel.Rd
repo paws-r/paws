@@ -14,6 +14,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Disables the SMS channel for an application and deletes any existing settings for the channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_sms_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_sms_channel/} for full documentation.
 }
 \keyword{internal}

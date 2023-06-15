@@ -13,6 +13,6 @@ opsworks_get_hostname_suggestion(LayerId)
 \description{
 Gets a generated host name for the specified layer, based on the current host name theme.
 
-See \url{https://paws-r.github.io/docs/opsworks/get_hostname_suggestion.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_get_hostname_suggestion/} for full documentation.
 }
 \keyword{internal}

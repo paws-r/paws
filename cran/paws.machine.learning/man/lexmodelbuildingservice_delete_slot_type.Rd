@@ -12,6 +12,6 @@ lexmodelbuildingservice_delete_slot_type(name)
 \description{
 Deletes all versions of the slot type, including the \verb{$LATEST} version. To delete a specific version of the slot type, use the \code{\link[=lexmodelbuildingservice_delete_slot_type_version]{delete_slot_type_version}} operation.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_slot_type/} for full documentation.
 }
 \keyword{internal}

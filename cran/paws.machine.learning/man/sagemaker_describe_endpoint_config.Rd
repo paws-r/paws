@@ -13,6 +13,6 @@ sagemaker_describe_endpoint_config(EndpointConfigName)
 \description{
 Returns the description of an endpoint configuration created using the \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_endpoint_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_endpoint_config/} for full documentation.
 }
 \keyword{internal}

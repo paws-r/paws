@@ -19,6 +19,6 @@ previous page call.}
 \description{
 Lists the databases in the specified data catalog.
 
-See \url{https://paws-r.github.io/docs/athena/list_databases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_databases/} for full documentation.
 }
 \keyword{internal}

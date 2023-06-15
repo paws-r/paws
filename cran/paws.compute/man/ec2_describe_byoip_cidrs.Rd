@@ -22,6 +22,6 @@ value.}
 \description{
 Describes the IP address ranges that were specified in calls to \code{\link[=ec2_provision_byoip_cidr]{provision_byoip_cidr}}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_byoip_cidrs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_byoip_cidrs/} for full documentation.
 }
 \keyword{internal}

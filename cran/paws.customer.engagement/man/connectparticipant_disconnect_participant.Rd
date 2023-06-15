@@ -17,6 +17,6 @@ populates this field. For more information about idempotency, see
 \description{
 Disconnects a participant.
 
-See \url{https://paws-r.github.io/docs/connectparticipant/disconnect_participant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectparticipant_disconnect_participant/} for full documentation.
 }
 \keyword{internal}

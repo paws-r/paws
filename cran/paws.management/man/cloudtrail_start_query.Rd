@@ -4,16 +4,25 @@
 \alias{cloudtrail_start_query}
 \title{Starts a CloudTrail Lake query}
 \usage{
-cloudtrail_start_query(QueryStatement, DeliveryS3Uri = NULL)
+cloudtrail_start_query(
+  QueryStatement = NULL,
+  DeliveryS3Uri = NULL,
+  QueryAlias = NULL,
+  QueryParameters = NULL
+)
 }
 \arguments{
-\item{QueryStatement}{[required] The SQL code of your query.}
+\item{QueryStatement}{The SQL code of your query.}
 
 \item{DeliveryS3Uri}{The URI for the S3 bucket where CloudTrail delivers the query results.}
+
+\item{QueryAlias}{The alias that identifies a query template.}
+
+\item{QueryParameters}{The query parameters for the specified \code{QueryAlias}.}
 }
 \description{
-Starts a CloudTrail Lake query. The required \code{QueryStatement} parameter provides your SQL query, enclosed in single quotation marks. Use the optional \code{DeliveryS3Uri} parameter to deliver the query results to an S3 bucket.
+Starts a CloudTrail Lake query. Use the \code{QueryStatement} parameter to provide your SQL query, enclosed in single quotation marks. Use the optional \code{DeliveryS3Uri} parameter to deliver the query results to an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/start_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_start_query/} for full documentation.
 }
 \keyword{internal}

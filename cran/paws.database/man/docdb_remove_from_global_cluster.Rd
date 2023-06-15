@@ -16,6 +16,6 @@ from the Amazon DocumentDB global cluster.}
 \description{
 Detaches an Amazon DocumentDB secondary cluster from a global cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary in a different region.
 
-See \url{https://paws-r.github.io/docs/docdb/remove_from_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_remove_from_global_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ elasticsearchservice_update_package(
 \description{
 Updates a package for use with Amazon ES domains.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/update_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_update_package/} for full documentation.
 }
 \keyword{internal}

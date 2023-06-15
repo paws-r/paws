@@ -75,6 +75,6 @@ in the \emph{Amazon EC2 Windows Guide} for Windows instances.
 \description{
 Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/update_infrastructure_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_infrastructure_configuration/} for full documentation.
 }
 \keyword{internal}

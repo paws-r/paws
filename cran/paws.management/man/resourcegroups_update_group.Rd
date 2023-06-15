@@ -18,6 +18,6 @@ periods, and spaces.}
 \description{
 Updates the description for an existing group. You cannot update the name of a resource group.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/update_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_update_group/} for full documentation.
 }
 \keyword{internal}

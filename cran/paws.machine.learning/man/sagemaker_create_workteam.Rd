@@ -53,6 +53,6 @@ in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 \description{
 Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_workteam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_workteam/} for full documentation.
 }
 \keyword{internal}

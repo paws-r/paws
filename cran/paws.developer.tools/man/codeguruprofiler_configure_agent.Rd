@@ -44,6 +44,6 @@ collecting profiling data.}
 \description{
 Used by profiler agents to report their current state and to receive remote configuration updates. For example, \code{\link[=codeguruprofiler_configure_agent]{configure_agent}} can be used to tell an agent whether to profile or not and for how long to return profiling data.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/configure_agent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_configure_agent/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ specifies to continue the list from where the previous call left off.}
 \description{
 DEPRECATED - The \code{\link[=efs_describe_tags]{describe_tags}} action is deprecated and not maintained. To view tags associated with EFS resources, use the \code{\link[=efs_list_tags_for_resource]{list_tags_for_resource}} API action.
 
-See \url{https://paws-r.github.io/docs/efs/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_tags/} for full documentation.
 }
 \keyword{internal}

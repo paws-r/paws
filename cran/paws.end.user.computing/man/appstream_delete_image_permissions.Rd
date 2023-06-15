@@ -15,6 +15,6 @@ permissions.}
 \description{
 Deletes permissions for the specified private image. After you delete permissions for an image, AWS accounts to which you previously granted these permissions can no longer use the image.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_image_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_image_permissions/} for full documentation.
 }
 \keyword{internal}

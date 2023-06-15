@@ -103,6 +103,6 @@ environment.}
 \description{
 Creates an Batch compute environment. You can create \code{MANAGED} or \code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use Amazon EC2 or Fargate resources. \code{UNMANAGED} compute environments can only use EC2 resources.
 
-See \url{https://paws-r.github.io/docs/batch/create_compute_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_create_compute_environment/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ mq_describe_configuration(ConfigurationId)
 \description{
 Returns information about the specified configuration.
 
-See \url{https://paws-r.github.io/docs/mq/describe_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_describe_configuration/} for full documentation.
 }
 \keyword{internal}

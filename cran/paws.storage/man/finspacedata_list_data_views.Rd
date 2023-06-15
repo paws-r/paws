@@ -16,6 +16,6 @@ finspacedata_list_data_views(datasetId, nextToken = NULL, maxResults = NULL)
 \description{
 Lists all available Dataviews for a Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/list_data_views.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_data_views/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ different account, the request fails with the HTTP status code
 \description{
 Gets a metrics configuration (specified by the metrics configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_metrics_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_metrics_configuration/} for full documentation.
 }
 \keyword{internal}

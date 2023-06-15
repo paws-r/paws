@@ -65,6 +65,6 @@ accounts.}
 \description{
 Returns information about Amazon Aurora DB clusters and Multi-AZ DB clusters. This API supports pagination.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_clusters/} for full documentation.
 }
 \keyword{internal}

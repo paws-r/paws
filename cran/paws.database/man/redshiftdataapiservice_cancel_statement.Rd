@@ -16,6 +16,6 @@ API. This identifier is returned by \code{BatchExecuteStatment},
 \description{
 Cancels a running query. To be canceled, a query must be running.
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/cancel_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_cancel_statement/} for full documentation.
 }
 \keyword{internal}

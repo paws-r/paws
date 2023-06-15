@@ -17,6 +17,6 @@ digits.}
 \description{
 Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request.
 
-See \url{https://paws-r.github.io/docs/organizations/accept_handshake.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_accept_handshake/} for full documentation.
 }
 \keyword{internal}

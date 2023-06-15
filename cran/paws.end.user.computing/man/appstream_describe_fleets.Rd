@@ -16,6 +16,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_fleets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_fleets/} for full documentation.
 }
 \keyword{internal}

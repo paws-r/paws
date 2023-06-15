@@ -25,6 +25,6 @@ identify a commit (for example, a branch name or a full commit ID).}
 \description{
 Merges two branches using the fast-forward merge strategy.
 
-See \url{https://paws-r.github.io/docs/codecommit/merge_branches_by_fast_forward.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_fast_forward/} for full documentation.
 }
 \keyword{internal}

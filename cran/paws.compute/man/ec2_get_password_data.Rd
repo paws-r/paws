@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Retrieves the encrypted administrator password for a running Windows instance.
 
-See \url{https://paws-r.github.io/docs/ec2/get_password_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_password_data/} for full documentation.
 }
 \keyword{internal}

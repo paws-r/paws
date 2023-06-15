@@ -74,7 +74,7 @@ rollback operation with nested stacks, see \href{https://docs.aws.amazon.com/AWS
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
 request. Specify this token if you plan to retry requests so that
-CloudFormationknows that you're not attempting to continue the rollback
+CloudFormation knows that you're not attempting to continue the rollback
 to a stack with the same name. You might retry
 \code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
 requests to ensure that CloudFormation successfully received them.}
@@ -82,6 +82,6 @@ requests to ensure that CloudFormation successfully received them.}
 \description{
 For a specified stack that's in the \code{UPDATE_ROLLBACK_FAILED} state, continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state. Depending on the cause of the failure, you can manually \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{fix the error} and continue the rollback. By continuing the rollback, you can return your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state), and then try to update the stack again.
 
-See \url{https://paws-r.github.io/docs/cloudformation/continue_update_rollback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_continue_update_rollback/} for full documentation.
 }
 \keyword{internal}

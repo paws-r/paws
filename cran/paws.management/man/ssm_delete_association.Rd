@@ -26,6 +26,6 @@ must use the \code{Targets} parameter.}
 \description{
 Disassociates the specified Amazon Web Services Systems Manager document (SSM document) from the specified managed node. If you created the association by using the \code{Targets} parameter, then you must delete the association by using the association ID.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_association/} for full documentation.
 }
 \keyword{internal}

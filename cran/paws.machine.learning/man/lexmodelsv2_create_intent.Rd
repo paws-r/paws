@@ -101,7 +101,7 @@ determine another intent to invoke.}
 
 \item{botId}{[required] The identifier of the bot associated with this intent.}
 
-\item{botVersion}{[required] The identifier of the version of the bot associated with this intent.}
+\item{botVersion}{[required] The version of the bot associated with this intent.}
 
 \item{localeId}{[required] The identifier of the language and locale where this intent is used. All
 of the bots, slot types, and slots used by the intent must have the same
@@ -113,6 +113,6 @@ beginning of a conversation, before eliciting slot values.}
 \description{
 Creates an intent.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_intent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_intent/} for full documentation.
 }
 \keyword{internal}

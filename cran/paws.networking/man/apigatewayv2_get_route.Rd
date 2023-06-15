@@ -14,6 +14,6 @@ apigatewayv2_get_route(ApiId, RouteId)
 \description{
 Gets a Route.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_route/} for full documentation.
 }
 \keyword{internal}

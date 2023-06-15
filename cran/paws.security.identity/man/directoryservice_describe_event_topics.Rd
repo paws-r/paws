@@ -21,6 +21,6 @@ An empty list results in an \code{InvalidParameterException} being thrown.}
 \description{
 Obtains information about which Amazon SNS topics receive status messages from the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_event_topics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_event_topics/} for full documentation.
 }
 \keyword{internal}

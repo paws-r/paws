@@ -28,6 +28,6 @@ from this call.}
 \description{
 Retrieves the quota increase requests for the specified quota.
 
-See \url{https://paws-r.github.io/docs/servicequotas/list_requested_service_quota_change_history_by_quota.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/} for full documentation.
 }
 \keyword{internal}

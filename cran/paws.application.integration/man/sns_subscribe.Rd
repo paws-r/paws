@@ -113,6 +113,6 @@ The default value is \code{false}.}
 \description{
 Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or if the endpoint and the topic are not in the same Amazon Web Services account, the endpoint owner must run the \code{\link[=sns_confirm_subscription]{confirm_subscription}} action to confirm the subscription.
 
-See \url{https://paws-r.github.io/docs/sns/subscribe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_subscribe/} for full documentation.
 }
 \keyword{internal}

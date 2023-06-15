@@ -12,6 +12,6 @@ efs_describe_backup_policy(FileSystemId)
 \description{
 Returns the backup policy for the specified EFS file system.
 
-See \url{https://paws-r.github.io/docs/efs/describe_backup_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_backup_policy/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ associated with the resource, the value of the tag is updated.}
 \description{
 Add tags to, or update the tag values of, an App Runner resource. A tag is a key-value pair.
 
-See \url{https://paws-r.github.io/docs/apprunner/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_tag_resource/} for full documentation.
 }
 \keyword{internal}

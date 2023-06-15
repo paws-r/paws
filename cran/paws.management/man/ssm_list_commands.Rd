@@ -34,6 +34,6 @@ list of results.}
 \description{
 Lists the commands requested by users of the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/ssm/list_commands.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_commands/} for full documentation.
 }
 \keyword{internal}

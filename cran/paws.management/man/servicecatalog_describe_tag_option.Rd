@@ -12,6 +12,6 @@ servicecatalog_describe_tag_option(Id)
 \description{
 Gets information about the specified TagOption.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_tag_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_tag_option/} for full documentation.
 }
 \keyword{internal}

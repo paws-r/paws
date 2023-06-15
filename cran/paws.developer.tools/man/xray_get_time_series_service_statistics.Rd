@@ -40,6 +40,6 @@ requests require the EntitySelectorExpression ID be provided.}
 \description{
 Get an aggregation of service statistics defined by a specific time range.
 
-See \url{https://paws-r.github.io/docs/xray/get_time_series_service_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_time_series_service_statistics/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ or
 \description{
 Returns the content of a comment made on a change, file, or commit in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_comment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_comment/} for full documentation.
 }
 \keyword{internal}

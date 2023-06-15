@@ -16,6 +16,6 @@ retrieval for.}
 \description{
 Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated. The virtual tape is returned to the VTS. This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/cancel_retrieval.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_cancel_retrieval/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ characters.}
 \description{
 Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects medical entities in English language texts.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/detect_entities_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_detect_entities_v2/} for full documentation.
 }
 \keyword{internal}

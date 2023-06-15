@@ -63,6 +63,6 @@ training.}
 \description{
 Creates a \code{DataSource} from a database hosted on an Amazon Redshift cluster. A \code{DataSource} references data that can be used to perform either \code{\link[=machinelearning_create_ml_model]{create_ml_model}}, \code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or \code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}} operations.
 
-See \url{https://paws-r.github.io/docs/machinelearning/create_data_source_from_redshift.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_redshift/} for full documentation.
 }
 \keyword{internal}

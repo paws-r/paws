@@ -15,6 +15,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Deletes an endpoint from an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_endpoint/} for full documentation.
 }
 \keyword{internal}

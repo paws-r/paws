@@ -35,6 +35,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns the detailed parameter list for a particular cache parameter group.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_cache_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_cache_parameters/} for full documentation.
 }
 \keyword{internal}

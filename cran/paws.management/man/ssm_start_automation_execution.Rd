@@ -93,6 +93,6 @@ To add tags to an existing automation, use the
 \description{
 Initiates execution of an Automation runbook.
 
-See \url{https://paws-r.github.io/docs/ssm/start_automation_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_start_automation_execution/} for full documentation.
 }
 \keyword{internal}

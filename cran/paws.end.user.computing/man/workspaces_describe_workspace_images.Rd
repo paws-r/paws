@@ -25,6 +25,6 @@ provide this token to receive the next set of results.}
 \description{
 Retrieves a list that describes one or more specified images, if the image identifiers are provided. Otherwise, all images in the account are described.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_images/} for full documentation.
 }
 \keyword{internal}

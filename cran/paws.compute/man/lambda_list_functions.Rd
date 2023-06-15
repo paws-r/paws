@@ -32,6 +32,6 @@ in each response, even if you set the number higher.}
 \description{
 Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
 
-See \url{https://paws-r.github.io/docs/lambda/list_functions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_functions/} for full documentation.
 }
 \keyword{internal}

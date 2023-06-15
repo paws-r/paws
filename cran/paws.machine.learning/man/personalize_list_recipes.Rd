@@ -27,6 +27,6 @@ the response. If you don't specify a domain, all recipes are returned.}
 \description{
 Returns a list of available recipes. The response provides the properties for each recipe, including the recipe's Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/personalize/list_recipes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_recipes/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ opsworks_unassign_volume(VolumeId)
 \description{
 Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/unassign_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_unassign_volume/} for full documentation.
 }
 \keyword{internal}

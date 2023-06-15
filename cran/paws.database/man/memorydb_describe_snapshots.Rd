@@ -41,6 +41,6 @@ the snapshot description.}
 \description{
 Returns information about cluster snapshots. By default, DescribeSnapshots lists all of your snapshots; it can optionally describe a single snapshot, or just the snapshots associated with a particular cluster.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_snapshots/} for full documentation.
 }
 \keyword{internal}

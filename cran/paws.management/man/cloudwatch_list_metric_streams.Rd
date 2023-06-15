@@ -15,6 +15,6 @@ next set of metric streams.}
 \description{
 Returns a list of metric streams in this account.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/list_metric_streams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_list_metric_streams/} for full documentation.
 }
 \keyword{internal}

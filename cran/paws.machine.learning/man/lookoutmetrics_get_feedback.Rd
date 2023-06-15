@@ -24,6 +24,6 @@ retrieve the next page of results.}
 \description{
 Get feedback for an anomaly group.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/get_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_get_feedback/} for full documentation.
 }
 \keyword{internal}

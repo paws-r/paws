@@ -15,6 +15,6 @@ letters, numbers, and hyphens.}
 \description{
 Deletes event notifications for the specified backup vault.
 
-See \url{https://paws-r.github.io/docs/backup/delete_backup_vault_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_backup_vault_notifications/} for full documentation.
 }
 \keyword{internal}

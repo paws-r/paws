@@ -21,6 +21,6 @@ time is used.}
 \description{
 Returns all public keys whose private keys were used to sign the digest files within the specified time range. The public key is needed to validate digest files that were signed with its corresponding private key.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/list_public_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_public_keys/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ the file system.}
 \description{
 Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system. If you attempt to disassociate a DNS alias that is not associated with the file system, Amazon FSx responds with a 400 Bad Request. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html}{Working with DNS Aliases}.
 
-See \url{https://paws-r.github.io/docs/fsx/disassociate_file_system_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_disassociate_file_system_aliases/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ tokens.}
 \description{
 Unlinks a federated identity from an existing account. Unlinked logins will be considered new identities next time they are seen. Removing the last linked login will make this identity inaccessible.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/unlink_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_identity/} for full documentation.
 }
 \keyword{internal}

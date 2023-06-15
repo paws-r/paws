@@ -102,6 +102,6 @@ address pool (CoIP pool).}
 \description{
 Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 
-See \url{https://paws-r.github.io/docs/elbv2/create_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_create_load_balancer/} for full documentation.
 }
 \keyword{internal}

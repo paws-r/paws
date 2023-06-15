@@ -12,6 +12,6 @@ ecr_batch_get_repository_scanning_configuration(repositoryNames)
 \description{
 Gets the scanning configuration for one or more repositories.
 
-See \url{https://paws-r.github.io/docs/ecr/batch_get_repository_scanning_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_batch_get_repository_scanning_configuration/} for full documentation.
 }
 \keyword{internal}

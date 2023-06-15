@@ -33,6 +33,6 @@ exists on the profiling group, you must specify the \code{revisionId}.}
 \description{
 Adds permissions to a profiling group's resource-based policy that are provided using an action group. If a profiling group doesn't have a resource-based policy, one is created for it using the permissions in the action group and the roles and users in the \code{principals} parameter.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/put_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_put_permission/} for full documentation.
 }
 \keyword{internal}

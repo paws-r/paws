@@ -44,6 +44,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group. For each parameter the response includes information such as parameter name, description, data type, value, whether the parameter value is modifiable, and so on.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_parameters/} for full documentation.
 }
 \keyword{internal}

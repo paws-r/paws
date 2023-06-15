@@ -27,6 +27,6 @@ server.properties can be in plaintext.}
 \description{
 Creates a new MSK configuration.
 
-See \url{https://paws-r.github.io/docs/kafka/create_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_create_configuration/} for full documentation.
 }
 \keyword{internal}

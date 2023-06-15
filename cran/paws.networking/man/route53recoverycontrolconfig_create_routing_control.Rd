@@ -27,6 +27,6 @@ routing control.}
 \description{
 Creates a new routing control.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/create_routing_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_routing_control/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ nimblestudio_get_studio(studioId)
 \description{
 Get a studio resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_studio/} for full documentation.
 }
 \keyword{internal}

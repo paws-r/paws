@@ -12,6 +12,6 @@ route53recoverycontrolconfig_list_tags_for_resource(ResourceArn)
 \description{
 Lists the tags for a resource.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
 
-See \url{https://paws-r.github.io/docs/lambda/put_function_concurrency.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_put_function_concurrency/} for full documentation.
 }
 \keyword{internal}

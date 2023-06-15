@@ -14,6 +14,6 @@ Cognito. GUID generation is unique within a region.}
 \description{
 Get the status of the last BulkPublish operation for an identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitosync/get_bulk_publish_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_get_bulk_publish_details/} for full documentation.
 }
 \keyword{internal}

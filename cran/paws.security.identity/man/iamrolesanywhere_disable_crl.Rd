@@ -12,6 +12,6 @@ iamrolesanywhere_disable_crl(crlId)
 \description{
 Disables a certificate revocation list (CRL).
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/disable_crl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_disable_crl/} for full documentation.
 }
 \keyword{internal}

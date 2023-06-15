@@ -16,6 +16,6 @@ returns.}
 \description{
 Lists the calling Amazon Web Services account's current verified and pending destination phone numbers in the SMS sandbox.
 
-See \url{https://paws-r.github.io/docs/sns/list_sms_sandbox_phone_numbers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_sms_sandbox_phone_numbers/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ created.}
 \description{
 Updates details about a specific task template in the specified Amazon Connect instance. This operation does not support partial updates. Instead it does a full update of template content.
 
-See \url{https://paws-r.github.io/docs/connect/update_task_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_task_template/} for full documentation.
 }
 \keyword{internal}

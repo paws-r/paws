@@ -44,6 +44,6 @@ The default value is \code{ALL}.}
 \description{
 Lists the resource types that can be shared by RAM.
 
-See \url{https://paws-r.github.io/docs/ram/list_resource_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_resource_types/} for full documentation.
 }
 \keyword{internal}

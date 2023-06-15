@@ -47,6 +47,6 @@ different parameters, the retry fails with an
 \description{
 Deletes one version of a customer managed permission. The version you specify must not be attached to any resource share and must not be the default version for the permission.
 
-See \url{https://paws-r.github.io/docs/ram/delete_permission_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_delete_permission_version/} for full documentation.
 }
 \keyword{internal}

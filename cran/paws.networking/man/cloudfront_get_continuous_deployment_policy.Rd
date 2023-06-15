@@ -13,6 +13,6 @@ cloudfront_get_continuous_deployment_policy(Id)
 \description{
 Gets a continuous deployment policy, including metadata (the policy's identifier and the date and time when the policy was last modified).
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_continuous_deployment_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_continuous_deployment_policy/} for full documentation.
 }
 \keyword{internal}

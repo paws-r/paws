@@ -23,6 +23,6 @@ call.}
 \description{
 Returns a list of the frameworks that are available in the Audit Manager framework library.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_assessment_frameworks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_frameworks/} for full documentation.
 }
 \keyword{internal}

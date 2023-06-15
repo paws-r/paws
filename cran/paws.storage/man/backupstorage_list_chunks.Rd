@@ -23,6 +23,6 @@ backupstorage_list_chunks(
 \description{
 List chunks in a given Object
 
-See \url{https://paws-r.github.io/docs/backupstorage/list_chunks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_list_chunks/} for full documentation.
 }
 \keyword{internal}

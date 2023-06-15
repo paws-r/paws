@@ -20,6 +20,6 @@ kendra_batch_delete_document(
 \description{
 Removes one or more documents from an index. The documents must have been added with the \code{\link[=kendra_batch_put_document]{batch_put_document}} API.
 
-See \url{https://paws-r.github.io/docs/kendra/batch_delete_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_batch_delete_document/} for full documentation.
 }
 \keyword{internal}

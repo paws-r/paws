@@ -19,6 +19,6 @@ the calling account.}
 \description{
 Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account.
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_values.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_tag_values/} for full documentation.
 }
 \keyword{internal}

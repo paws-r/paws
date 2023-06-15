@@ -28,6 +28,6 @@ servicecatalog_delete_portfolio_share(
 \description{
 Stops sharing the specified portfolio with the specified account or organization node. Shares to an organization node can only be deleted by the management account of an organization or by a delegated administrator.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/delete_portfolio_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio_share/} for full documentation.
 }
 \keyword{internal}

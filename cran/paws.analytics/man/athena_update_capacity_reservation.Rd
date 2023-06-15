@@ -15,6 +15,6 @@ athena_update_capacity_reservation(TargetDpus, Name)
 \description{
 Updates the number of requested data processing units for the capacity reservation with the specified name.
 
-See \url{https://paws-r.github.io/docs/athena/update_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_update_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

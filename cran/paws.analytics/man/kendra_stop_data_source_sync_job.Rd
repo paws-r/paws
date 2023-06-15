@@ -15,6 +15,6 @@ synchronization jobs.}
 \description{
 Stops a synchronization job that is currently running. You can't stop a scheduled synchronization job.
 
-See \url{https://paws-r.github.io/docs/kendra/stop_data_source_sync_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_stop_data_source_sync_job/} for full documentation.
 }
 \keyword{internal}

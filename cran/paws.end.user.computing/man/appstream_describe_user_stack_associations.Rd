@@ -30,6 +30,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes the UserStackAssociation objects. You must specify either or both of the following:
 
-See \url{https://paws-r.github.io/docs/appstream/describe_user_stack_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_user_stack_associations/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ You can't delete default option groups.}
 \description{
 Deletes an existing option group.
 
-See \url{https://paws-r.github.io/docs/rds/delete_option_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_option_group/} for full documentation.
 }
 \keyword{internal}

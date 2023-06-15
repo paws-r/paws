@@ -12,6 +12,6 @@ route53recoveryreadiness_delete_readiness_check(ReadinessCheckName)
 \description{
 Deletes a readiness check.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/delete_readiness_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_readiness_check/} for full documentation.
 }
 \keyword{internal}

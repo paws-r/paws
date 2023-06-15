@@ -65,6 +65,6 @@ target groups with a protocol of GENEVE, the range is 200-399.}
 \description{
 Modifies the health checks used when evaluating the health state of the targets in the specified target group.
 
-See \url{https://paws-r.github.io/docs/elbv2/modify_target_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_modify_target_group/} for full documentation.
 }
 \keyword{internal}

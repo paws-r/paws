@@ -57,6 +57,6 @@ your customers.}
 \description{
 Defines the versions of your managed rule set that you are offering to the customers. Customers see your offerings as managed rule groups with versioning.
 
-See \url{https://paws-r.github.io/docs/wafv2/put_managed_rule_set_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_put_managed_rule_set_versions/} for full documentation.
 }
 \keyword{internal}

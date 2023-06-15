@@ -12,6 +12,6 @@ sagemaker_describe_labeling_job(LabelingJobName)
 \description{
 Gets information about a labeling job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_labeling_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_labeling_job/} for full documentation.
 }
 \keyword{internal}

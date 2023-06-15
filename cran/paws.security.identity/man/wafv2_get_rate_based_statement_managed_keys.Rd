@@ -47,6 +47,6 @@ parameter \code{RuleGroupRuleName}.}
 \description{
 Retrieves the IP addresses that are currently blocked by a rate-based rule instance. This is only available for rate-based rules that aggregate solely on the IP address or on the forwarded IP address.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_rate_based_statement_managed_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_rate_based_statement_managed_keys/} for full documentation.
 }
 \keyword{internal}

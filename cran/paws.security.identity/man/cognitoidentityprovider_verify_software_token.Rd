@@ -28,6 +28,6 @@ to the service.}
 \description{
 Use this API to register a user's entered time-based one-time password (TOTP) code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/verify_software_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_software_token/} for full documentation.
 }
 \keyword{internal}

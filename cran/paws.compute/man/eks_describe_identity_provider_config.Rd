@@ -15,6 +15,6 @@ to.}
 \description{
 Returns descriptive information about an identity provider configuration.
 
-See \url{https://paws-r.github.io/docs/eks/describe_identity_provider_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_identity_provider_config/} for full documentation.
 }
 \keyword{internal}

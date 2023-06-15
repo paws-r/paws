@@ -20,6 +20,6 @@ finspacedata_disassociate_user_from_permission_group(
 \description{
 Removes a user account from a permission group.
 
-See \url{https://paws-r.github.io/docs/finspacedata/disassociate_user_from_permission_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_disassociate_user_from_permission_group/} for full documentation.
 }
 \keyword{internal}

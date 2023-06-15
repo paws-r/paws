@@ -22,6 +22,6 @@ body.}
 \description{
 Lists origin access identities.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_cloud_front_origin_access_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_cloud_front_origin_access_identities/} for full documentation.
 }
 \keyword{internal}

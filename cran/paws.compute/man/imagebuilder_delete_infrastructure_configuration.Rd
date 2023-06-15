@@ -15,6 +15,6 @@ delete.}
 \description{
 Deletes an infrastructure configuration.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_infrastructure_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_infrastructure_configuration/} for full documentation.
 }
 \keyword{internal}

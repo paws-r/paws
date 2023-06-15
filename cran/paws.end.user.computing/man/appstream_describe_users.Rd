@@ -23,6 +23,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes one or more specified users in the user pool.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_users/} for full documentation.
 }
 \keyword{internal}

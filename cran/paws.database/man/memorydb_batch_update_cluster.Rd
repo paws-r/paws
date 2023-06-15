@@ -14,6 +14,6 @@ memorydb_batch_update_cluster(ClusterNames, ServiceUpdate = NULL)
 \description{
 Apply the service update to a list of clusters supplied. For more information on service updates and applying them, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/managing-updates.html#applying-updates}{Applying the service updates}.
 
-See \url{https://paws-r.github.io/docs/memorydb/batch_update_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_batch_update_cluster/} for full documentation.
 }
 \keyword{internal}

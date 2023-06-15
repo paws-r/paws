@@ -15,6 +15,6 @@ recommendation, and the short description that identifies the finding.}
 \description{
 Describes the findings that are specified by the ARNs of the findings.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_findings/} for full documentation.
 }
 \keyword{internal}

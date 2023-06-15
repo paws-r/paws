@@ -14,6 +14,6 @@ describe.}
 \description{
 Describes the assessment targets that are specified by the ARNs of the assessment targets.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_assessment_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_assessment_targets/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ consist of lowercase letters, numbers, and hyphens.}
 \description{
 Returns the access policy document that is associated with the named backup vault.
 
-See \url{https://paws-r.github.io/docs/backup/get_backup_vault_access_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_backup_vault_access_policy/} for full documentation.
 }
 \keyword{internal}

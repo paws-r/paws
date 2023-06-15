@@ -13,6 +13,6 @@ to get information about.}
 \description{
 Returns information about a worker configuration.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/describe_worker_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_describe_worker_configuration/} for full documentation.
 }
 \keyword{internal}

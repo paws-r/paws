@@ -12,6 +12,6 @@ savingsplans_delete_queued_savings_plan(savingsPlanId)
 \description{
 Deletes the queued purchase for the specified Savings Plan.
 
-See \url{https://paws-r.github.io/docs/savingsplans/delete_queued_savings_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/savingsplans_delete_queued_savings_plan/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ than one time.}
 \description{
 Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters. When a callback step is run, the pipeline generates a callback token and includes the token in a message sent to Amazon Simple Queue Service (Amazon SQS).
 
-See \url{https://paws-r.github.io/docs/sagemaker/send_pipeline_execution_step_success.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_send_pipeline_execution_step_success/} for full documentation.
 }
 \keyword{internal}

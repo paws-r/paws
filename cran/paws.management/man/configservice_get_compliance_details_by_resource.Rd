@@ -38,6 +38,6 @@ You need to only provide either a \code{ResourceEvaluationID} or a
 \description{
 Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last invoked, and whether the resource complies with each rule.
 
-See \url{https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_resource/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ elasticache_modify_user(
 \description{
 Changes user password(s) and/or access string.
 
-See \url{https://paws-r.github.io/docs/elasticache/modify_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_user/} for full documentation.
 }
 \keyword{internal}

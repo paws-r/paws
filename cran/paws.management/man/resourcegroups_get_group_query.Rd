@@ -15,6 +15,6 @@ resourcegroups_get_group_query(GroupName = NULL, Group = NULL)
 \description{
 Retrieves the resource query associated with the specified resource group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/get_group_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_get_group_query/} for full documentation.
 }
 \keyword{internal}

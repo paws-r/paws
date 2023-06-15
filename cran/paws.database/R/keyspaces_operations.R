@@ -8,7 +8,7 @@ NULL
 #' @description
 #' The [`create_keyspace`][keyspaces_create_keyspace] operation adds a new keyspace to your account. In an Amazon Web Services account, keyspace names must be unique within each Region.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/create_keyspace.html](https://paws-r.github.io/docs/keyspaces/create_keyspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_create_keyspace/](https://www.paws-r-sdk.com/docs/keyspaces_create_keyspace/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace to be created.
 #' @param tags A list of key-value pair tags to be attached to the keyspace.
@@ -16,18 +16,28 @@ NULL
 #' For more information, see [Adding tags and labels to Amazon Keyspaces
 #' resources](https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html)
 #' in the *Amazon Keyspaces Developer Guide*.
+#' @param replicationSpecification The replication specification of the keyspace includes:
+#' 
+#' -   `replicationStrategy` - the required value is `SINGLE_REGION` or
+#'     `MULTI_REGION`.
+#' 
+#' -   `regionList` - if the `replicationStrategy` is `MULTI_REGION`, the
+#'     `regionList` requires the current Region and at least one additional
+#'     Amazon Web Services Region where the keyspace is going to be
+#'     replicated in. The maximum number of supported replication Regions
+#'     including the current Region is six.
 #'
 #' @keywords internal
 #'
 #' @rdname keyspaces_create_keyspace
-keyspaces_create_keyspace <- function(keyspaceName, tags = NULL) {
+keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpecification = NULL) {
   op <- new_operation(
     name = "CreateKeyspace",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags)
+  input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags, replicationSpecification = replicationSpecification)
   output <- .keyspaces$create_keyspace_output()
   config <- get_config()
   svc <- .keyspaces$service(config)
@@ -42,7 +52,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL) {
 #' @description
 #' The [`create_table`][keyspaces_create_table] operation adds a new table to the specified keyspace. Within a keyspace, table names must be unique.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/create_table.html](https://paws-r.github.io/docs/keyspaces/create_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_create_table/](https://www.paws-r-sdk.com/docs/keyspaces_create_table/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace that the table is going to be created in.
 #' @param tableName &#91;required&#93; The name of the table.
@@ -179,7 +189,7 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
 #' @description
 #' The [`delete_keyspace`][keyspaces_delete_keyspace] operation deletes a keyspace and all of its tables.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/delete_keyspace.html](https://paws-r.github.io/docs/keyspaces/delete_keyspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_delete_keyspace/](https://www.paws-r-sdk.com/docs/keyspaces_delete_keyspace/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace to be deleted.
 #'
@@ -208,7 +218,7 @@ keyspaces_delete_keyspace <- function(keyspaceName) {
 #' @description
 #' The [`delete_table`][keyspaces_delete_table] operation deletes a table and all of its data. After a [`delete_table`][keyspaces_delete_table] request is received, the specified table is in the `DELETING` state until Amazon Keyspaces completes the deletion. If the table is in the `ACTIVE` state, you can delete it. If a table is either in the `CREATING` or `UPDATING` states, then Amazon Keyspaces returns a `ResourceInUseException`. If the specified table does not exist, Amazon Keyspaces returns a `ResourceNotFoundException`. If the table is already in the `DELETING` state, no error is returned.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/delete_table.html](https://paws-r.github.io/docs/keyspaces/delete_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_delete_table/](https://www.paws-r-sdk.com/docs/keyspaces_delete_table/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace of the to be deleted table.
 #' @param tableName &#91;required&#93; The name of the table to be deleted.
@@ -239,7 +249,7 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
 #' @description
 #' Returns the name and the Amazon Resource Name (ARN) of the specified table.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/get_keyspace.html](https://paws-r.github.io/docs/keyspaces/get_keyspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_get_keyspace/](https://www.paws-r-sdk.com/docs/keyspaces_get_keyspace/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace.
 #'
@@ -269,7 +279,7 @@ keyspaces_get_keyspace <- function(keyspaceName) {
 #' @description
 #' Returns information about the table, including the table's name and current status, the keyspace name, configuration settings, and metadata.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/get_table.html](https://paws-r.github.io/docs/keyspaces/get_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_get_table/](https://www.paws-r-sdk.com/docs/keyspaces_get_table/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace that the table is stored in.
 #' @param tableName &#91;required&#93; The name of the table.
@@ -299,7 +309,7 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
 #' @description
 #' Returns a list of keyspaces.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/list_keyspaces.html](https://paws-r.github.io/docs/keyspaces/list_keyspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_list_keyspaces/](https://www.paws-r-sdk.com/docs/keyspaces_list_keyspaces/) for full documentation.
 #'
 #' @param nextToken The pagination token. To resume pagination, provide the `NextToken`
 #' value as argument of a subsequent API invocation.
@@ -333,7 +343,7 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Returns a list of tables for a specified keyspace.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/list_tables.html](https://paws-r.github.io/docs/keyspaces/list_tables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_list_tables/](https://www.paws-r-sdk.com/docs/keyspaces_list_tables/) for full documentation.
 #'
 #' @param nextToken The pagination token. To resume pagination, provide the `NextToken`
 #' value as an argument of a subsequent API invocation.
@@ -369,7 +379,7 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
 #' @description
 #' Returns a list of all tags associated with the specified Amazon Keyspaces resource.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/list_tags_for_resource.html](https://paws-r.github.io/docs/keyspaces/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/keyspaces_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Keyspaces resource.
 #' @param nextToken The pagination token. To resume pagination, provide the `NextToken`
@@ -405,7 +415,7 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' @description
 #' Restores the specified table to the specified point in time within the `earliest_restorable_timestamp` and the current time. For more information about restore points, see [Time window for PITR continuous backups](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_window) in the *Amazon Keyspaces Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/restore_table.html](https://paws-r.github.io/docs/keyspaces/restore_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_restore_table/](https://www.paws-r-sdk.com/docs/keyspaces_restore_table/) for full documentation.
 #'
 #' @param sourceKeyspaceName &#91;required&#93; The keyspace name of the source table.
 #' @param sourceTableName &#91;required&#93; The name of the source table.
@@ -483,7 +493,7 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
 #' @description
 #' Associates a set of tags with a Amazon Keyspaces resource. You can then activate these user-defined tags so that they appear on the Cost Management Console for cost allocation tracking. For more information, see [Adding tags and labels to Amazon Keyspaces resources](https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html) in the *Amazon Keyspaces Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/tag_resource.html](https://paws-r.github.io/docs/keyspaces/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_tag_resource/](https://www.paws-r-sdk.com/docs/keyspaces_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Keyspaces resource to which
 #' to add tags.
@@ -514,7 +524,7 @@ keyspaces_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes the association of tags from a Amazon Keyspaces resource.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/untag_resource.html](https://paws-r.github.io/docs/keyspaces/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_untag_resource/](https://www.paws-r-sdk.com/docs/keyspaces_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Keyspaces resource that the tags will be removed from. This
 #' value is an Amazon Resource Name (ARN).
@@ -548,7 +558,7 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @description
 #' Adds new columns to the table or updates one of the table's settings, for example capacity mode, encryption, point-in-time recovery, or ttl settings. Note that you can only update one specific table setting per update operation.
 #'
-#' See [https://paws-r.github.io/docs/keyspaces/update_table.html](https://paws-r.github.io/docs/keyspaces/update_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/keyspaces_update_table/](https://www.paws-r-sdk.com/docs/keyspaces_update_table/) for full documentation.
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace the specified table is stored in.
 #' @param tableName &#91;required&#93; The name of the table.

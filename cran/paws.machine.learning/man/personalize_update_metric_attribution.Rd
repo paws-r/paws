@@ -23,6 +23,6 @@ personalize_update_metric_attribution(
 \description{
 Updates a metric attribution.
 
-See \url{https://paws-r.github.io/docs/personalize/update_metric_attribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_update_metric_attribution/} for full documentation.
 }
 \keyword{internal}

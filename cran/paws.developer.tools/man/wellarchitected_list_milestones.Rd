@@ -20,6 +20,6 @@ wellarchitected_list_milestones(
 \description{
 List all milestones for an existing workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_milestones.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_milestones/} for full documentation.
 }
 \keyword{internal}

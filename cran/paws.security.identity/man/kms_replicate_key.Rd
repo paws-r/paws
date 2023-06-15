@@ -155,6 +155,6 @@ key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguid
 \description{
 Replicates a multi-Region key into the specified Region. This operation creates a multi-Region replica key based on a multi-Region primary key in a different Region of the same Amazon Web Services partition. You can create multiple replicas of a primary key, but each must be in a different Region. To create a multi-Region primary key, use the \code{\link[=kms_create_key]{create_key}} operation.
 
-See \url{https://paws-r.github.io/docs/kms/replicate_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_replicate_key/} for full documentation.
 }
 \keyword{internal}

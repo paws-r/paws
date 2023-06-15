@@ -23,6 +23,6 @@ networkmanager_get_connect_peer_associations(
 \description{
 Returns information about a core network Connect peer associations.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_connect_peer_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_connect_peer_associations/} for full documentation.
 }
 \keyword{internal}

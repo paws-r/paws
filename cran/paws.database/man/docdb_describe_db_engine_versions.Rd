@@ -61,6 +61,6 @@ a list of supported time zones for each engine version.}
 \description{
 Returns a list of the available engines.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_db_engine_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_db_engine_versions/} for full documentation.
 }
 \keyword{internal}

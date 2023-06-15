@@ -14,6 +14,6 @@ swf_untag_resource(resourceArn, tagKeys)
 \description{
 Remove a tag from a Amazon SWF domain.
 
-See \url{https://paws-r.github.io/docs/swf/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ call.}
 \description{
 Returns a list of current and past assessments from Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_assessments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_assessments/} for full documentation.
 }
 \keyword{internal}

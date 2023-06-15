@@ -13,6 +13,6 @@ emr_describe_security_configuration(Name)
 \description{
 Provides the details of a security configuration by returning the configuration JSON.
 
-See \url{https://paws-r.github.io/docs/emr/describe_security_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_describe_security_configuration/} for full documentation.
 }
 \keyword{internal}

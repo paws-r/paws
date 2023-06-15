@@ -20,6 +20,6 @@ default and the only supported value at this time.}
 \description{
 Returns detailed information about one or more specified events for one or more Amazon Web Services accounts in your organization. This information includes standard event data (such as the Amazon Web Services Region and service), an event description, and (depending on the event) possible metadata. This operation doesn't return affected entities, such as the resources related to the event. To return affected entities, use the \code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}} operation.
 
-See \url{https://paws-r.github.io/docs/health/describe_event_details_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_event_details_for_organization/} for full documentation.
 }
 \keyword{internal}

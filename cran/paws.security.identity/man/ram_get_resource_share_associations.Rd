@@ -63,6 +63,6 @@ receive all of the results.}
 \description{
 Retrieves the lists of resources and principals that associated for resource shares that you own.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_share_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_share_associations/} for full documentation.
 }
 \keyword{internal}

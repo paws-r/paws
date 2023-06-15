@@ -27,6 +27,6 @@ It can take some time for the status change to be completed.}
 \description{
 Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 
-See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_config/} for full documentation.
 }
 \keyword{internal}

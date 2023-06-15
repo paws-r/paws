@@ -23,6 +23,6 @@ results.}
 \description{
 Lists all of the VPC connections in the current set Amazon Web Services Region of an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_vpc_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_vpc_connections/} for full documentation.
 }
 \keyword{internal}

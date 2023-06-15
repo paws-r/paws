@@ -28,6 +28,6 @@ values from the API.}
 \description{
 Updates the specified attributes of the specified folder. The user must have access to both the folder and its parent folder, if applicable.
 
-See \url{https://paws-r.github.io/docs/workdocs/update_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_update_folder/} for full documentation.
 }
 \keyword{internal}

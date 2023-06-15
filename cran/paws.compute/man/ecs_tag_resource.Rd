@@ -37,6 +37,6 @@ your tags per resource limit.
 \description{
 Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well.
 
-See \url{https://paws-r.github.io/docs/ecs/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_tag_resource/} for full documentation.
 }
 \keyword{internal}

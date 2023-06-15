@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Describes a contact evaluation in the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/describe_contact_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_contact_evaluation/} for full documentation.
 }
 \keyword{internal}

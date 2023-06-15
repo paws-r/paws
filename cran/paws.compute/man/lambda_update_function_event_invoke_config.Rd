@@ -50,6 +50,6 @@ processing.
 \description{
 Updates the configuration for asynchronous invocation for a function, version, or alias.
 
-See \url{https://paws-r.github.io/docs/lambda/update_function_event_invoke_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_function_event_invoke_config/} for full documentation.
 }
 \keyword{internal}

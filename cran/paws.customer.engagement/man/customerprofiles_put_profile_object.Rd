@@ -16,6 +16,6 @@ customerprofiles_put_profile_object(ObjectTypeName, Object, DomainName)
 \description{
 Adds additional objects to customer profiles of a given ObjectType.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/put_profile_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_put_profile_object/} for full documentation.
 }
 \keyword{internal}

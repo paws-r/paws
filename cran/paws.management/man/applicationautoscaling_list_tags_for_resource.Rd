@@ -19,6 +19,6 @@ To get the ARN for a scalable target, use
 \description{
 Returns all the tags on the specified Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

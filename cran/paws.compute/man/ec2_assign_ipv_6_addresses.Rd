@@ -35,6 +35,6 @@ use this option if you use the \code{Ipv6PrefixCount} option.}
 \description{
 Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type. For information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per Network Interface Per Instance Type} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/assign_ipv_6_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_assign_ipv_6_addresses/} for full documentation.
 }
 \keyword{internal}

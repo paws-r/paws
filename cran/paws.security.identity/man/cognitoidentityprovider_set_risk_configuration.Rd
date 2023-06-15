@@ -32,6 +32,6 @@ configuration for the client is used instead.}
 \description{
 Configures actions on detected risks. To delete the risk configuration for \code{UserPoolId} or \code{ClientId}, pass null values for all four configuration types.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_risk_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_risk_configuration/} for full documentation.
 }
 \keyword{internal}

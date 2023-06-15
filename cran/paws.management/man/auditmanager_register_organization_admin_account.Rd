@@ -13,6 +13,6 @@ auditmanager_register_organization_admin_account(adminAccountId)
 \description{
 Enables an Amazon Web Services account within the organization as the delegated administrator for Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/register_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_register_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

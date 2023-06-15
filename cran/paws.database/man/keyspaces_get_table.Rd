@@ -15,6 +15,6 @@ keyspaces_get_table(keyspaceName, tableName)
 \description{
 Returns information about the table, including the table's name and current status, the keyspace name, configuration settings, and metadata.
 
-See \url{https://paws-r.github.io/docs/keyspaces/get_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_get_table/} for full documentation.
 }
 \keyword{internal}

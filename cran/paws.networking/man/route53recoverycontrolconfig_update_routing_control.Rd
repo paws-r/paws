@@ -17,6 +17,6 @@ route53recoverycontrolconfig_update_routing_control(
 \description{
 Updates a routing control. You can only update the name of the routing control. To get or update the routing control state, see the Recovery Cluster (data plane) API actions for Amazon Route 53 Application Recovery Controller.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/update_routing_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_routing_control/} for full documentation.
 }
 \keyword{internal}

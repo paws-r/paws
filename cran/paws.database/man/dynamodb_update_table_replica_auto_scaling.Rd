@@ -25,6 +25,6 @@ be modified.}
 \description{
 Updates auto scaling settings on your global tables at once.
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_table_replica_auto_scaling.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_table_replica_auto_scaling/} for full documentation.
 }
 \keyword{internal}

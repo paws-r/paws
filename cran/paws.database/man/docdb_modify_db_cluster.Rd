@@ -128,6 +128,6 @@ from being accidentally deleted.}
 \description{
 Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster/} for full documentation.
 }
 \keyword{internal}

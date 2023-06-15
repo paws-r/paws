@@ -46,6 +46,6 @@ token, Amazon Comprehend generates one.}
 \description{
 A flywheel is an Amazon Web Services resource that orchestrates the ongoing training of a model for custom classification or custom entity recognition. You can create a flywheel to start with an existing trained model, or Comprehend can create and train a new model.
 
-See \url{https://paws-r.github.io/docs/comprehend/create_flywheel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_create_flywheel/} for full documentation.
 }
 \keyword{internal}

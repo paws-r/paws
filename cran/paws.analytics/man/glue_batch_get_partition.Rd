@@ -24,6 +24,6 @@ none is supplied, the Amazon Web Services account ID is used by default.}
 \description{
 Retrieves partitions in a batch request.
 
-See \url{https://paws-r.github.io/docs/glue/batch_get_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_get_partition/} for full documentation.
 }
 \keyword{internal}

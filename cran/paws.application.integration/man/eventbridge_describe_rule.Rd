@@ -15,6 +15,6 @@ this, the default event bus is used.}
 \description{
 Describes the specified rule.
 
-See \url{https://paws-r.github.io/docs/eventbridge/describe_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_describe_rule/} for full documentation.
 }
 \keyword{internal}

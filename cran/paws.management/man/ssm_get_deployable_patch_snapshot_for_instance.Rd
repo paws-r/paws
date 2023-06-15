@@ -23,6 +23,6 @@ should be retrieved.}
 \description{
 Retrieves the current snapshot for the patch baseline the managed node uses. This API is primarily used by the \code{AWS-RunPatchBaseline} Systems Manager document (SSM document).
 
-See \url{https://paws-r.github.io/docs/ssm/get_deployable_patch_snapshot_for_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_deployable_patch_snapshot_for_instance/} for full documentation.
 }
 \keyword{internal}

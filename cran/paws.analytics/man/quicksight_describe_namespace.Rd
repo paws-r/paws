@@ -15,6 +15,6 @@ QuickSight namespace that you want to describe.}
 \description{
 Describes the current namespace.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_namespace/} for full documentation.
 }
 \keyword{internal}

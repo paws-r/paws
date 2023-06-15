@@ -25,6 +25,6 @@ example,
 \description{
 Gets information about a Deployment resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_deployment/} for full documentation.
 }
 \keyword{internal}

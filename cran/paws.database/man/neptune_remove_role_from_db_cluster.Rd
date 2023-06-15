@@ -25,6 +25,6 @@ disassociated from. For the list of supported feature names, see
 \description{
 Disassociates an Identity and Access Management (IAM) role from a DB cluster.
 
-See \url{https://paws-r.github.io/docs/neptune/remove_role_from_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_remove_role_from_db_cluster/} for full documentation.
 }
 \keyword{internal}

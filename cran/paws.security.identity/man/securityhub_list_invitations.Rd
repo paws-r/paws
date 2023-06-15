@@ -21,6 +21,6 @@ response.}
 \description{
 Lists all Security Hub membership invitations that were sent to the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_invitations/} for full documentation.
 }
 \keyword{internal}

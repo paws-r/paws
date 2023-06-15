@@ -24,6 +24,6 @@ result.}
 \description{
 Retrieve a list of sessions.
 
-See \url{https://paws-r.github.io/docs/glue/list_sessions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_sessions/} for full documentation.
 }
 \keyword{internal}

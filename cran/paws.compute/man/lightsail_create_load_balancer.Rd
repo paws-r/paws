@@ -69,6 +69,6 @@ TLS security policies on your Amazon Lightsail load balancers in the
 \description{
 Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see Configure your Lightsail instances for load balancing. You can create up to 5 load balancers per AWS Region in your account.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ container instance health status aren't included in the response.}
 \description{
 Describes one or more container instances. Returns metadata about each container instance requested.
 
-See \url{https://paws-r.github.io/docs/ecs/describe_container_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_describe_container_instances/} for full documentation.
 }
 \keyword{internal}

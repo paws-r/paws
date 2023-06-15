@@ -15,6 +15,6 @@ to manually deploy to.}
 \description{
 Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository to an App Runner service.
 
-See \url{https://paws-r.github.io/docs/apprunner/start_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_start_deployment/} for full documentation.
 }
 \keyword{internal}

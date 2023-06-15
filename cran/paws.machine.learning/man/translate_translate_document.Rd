@@ -40,6 +40,6 @@ supported language codes, see \href{https://docs.aws.amazon.com/translate/latest
 \description{
 Translates the input document from the source language to the target language. This synchronous operation supports plain text or HTML for the input document. \code{\link[=translate_translate_document]{translate_document}} supports translations from English to any supported language, and from any supported language to English. Therefore, specify either the source language code or the target language code as “en” (English).
 
-See \url{https://paws-r.github.io/docs/translate/translate_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_translate_document/} for full documentation.
 }
 \keyword{internal}

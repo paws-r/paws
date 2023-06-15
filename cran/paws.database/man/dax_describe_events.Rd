@@ -43,6 +43,6 @@ specified by \code{MaxResults}.}
 \description{
 Returns events related to DAX clusters and parameter groups. You can obtain events specific to a particular DAX cluster or parameter group by providing the name as a parameter.
 
-See \url{https://paws-r.github.io/docs/dax/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_describe_events/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ Valid values: \code{db-instance} | \code{db-cluster} | \code{db-parameter-group}
 \description{
 Displays a list of categories for all event source types, or, if specified, for a specified source type. You can also see this list in the "Amazon RDS event categories and event messages" section of the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html}{\emph{Amazon RDS User Guide}} or the \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html}{\emph{Amazon Aurora User Guide}} .
 
-See \url{https://paws-r.github.io/docs/rds/describe_event_categories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_event_categories/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ elb_delete_load_balancer_listeners(LoadBalancerName, LoadBalancerPorts)
 \description{
 Deletes the specified listeners from the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/delete_load_balancer_listeners.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_delete_load_balancer_listeners/} for full documentation.
 }
 \keyword{internal}

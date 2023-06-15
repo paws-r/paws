@@ -115,6 +115,6 @@ support payload pass-through.}
 \description{
 Sets up a method's integration.
 
-See \url{https://paws-r.github.io/docs/apigateway/put_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_put_integration/} for full documentation.
 }
 \keyword{internal}

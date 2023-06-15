@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified attribute of the specified AMI. You can specify only one attribute at a time.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_image_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_image_attribute/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ IDs are CloudFormation stack IDs. Their target type is
 \description{
 Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated \code{\link[=codedeploy_batch_get_deployment_instances]{batch_get_deployment_instances}}. The maximum number of targets that can be returned is 25.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_deployment_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_targets/} for full documentation.
 }
 \keyword{internal}

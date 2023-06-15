@@ -82,6 +82,6 @@ the \emph{Amazon SNS Developer Guide}.}
 \description{
 Use this request to set the default settings for sending SMS messages and receiving daily SMS usage reports.
 
-See \url{https://paws-r.github.io/docs/sns/set_sms_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_set_sms_attributes/} for full documentation.
 }
 \keyword{internal}

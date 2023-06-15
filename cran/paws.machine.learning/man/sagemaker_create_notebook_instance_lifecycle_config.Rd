@@ -24,6 +24,6 @@ be a base64-encoded string.}
 \description{
 Creates a lifecycle configuration that you can associate with a notebook instance. A \emph{lifecycle configuration} is a collection of shell scripts that run when you create or start a notebook instance.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_notebook_instance_lifecycle_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance_lifecycle_config/} for full documentation.
 }
 \keyword{internal}

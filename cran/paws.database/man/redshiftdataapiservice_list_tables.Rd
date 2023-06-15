@@ -68,6 +68,6 @@ authenticating using either Secrets Manager or temporary credentials.}
 \description{
 List the tables in a database. If neither \code{SchemaPattern} nor \code{TablePattern} are specified, then all tables in the database are returned. A token is returned to page through the table list. Depending on the authorization method, use one of the following combinations of request parameters:
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/list_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_tables/} for full documentation.
 }
 \keyword{internal}

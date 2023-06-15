@@ -23,6 +23,6 @@ its own set of category codes.}
 \description{
 Returns a list of supported languages for a specified \code{categoryCode}, \code{issueType} and \code{serviceCode}. The returned supported languages will include a ISO 639-1 code for the \code{language}, and the language display name.
 
-See \url{https://paws-r.github.io/docs/support/describe_supported_languages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_supported_languages/} for full documentation.
 }
 \keyword{internal}

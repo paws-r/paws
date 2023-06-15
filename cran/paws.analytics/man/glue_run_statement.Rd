@@ -16,6 +16,6 @@ glue_run_statement(SessionId, Code, RequestOrigin = NULL)
 \description{
 Executes the statement.
 
-See \url{https://paws-r.github.io/docs/glue/run_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_run_statement/} for full documentation.
 }
 \keyword{internal}

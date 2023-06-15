@@ -12,6 +12,6 @@ sagemaker_describe_data_quality_job_definition(JobDefinitionName)
 \description{
 Gets the details of a data quality monitoring job definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_data_quality_job_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_data_quality_job_definition/} for full documentation.
 }
 \keyword{internal}

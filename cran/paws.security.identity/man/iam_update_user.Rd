@@ -34,6 +34,6 @@ create resources named both "MyResource" and "myresource".}
 \description{
 Updates the name and/or the path of the specified IAM user.
 
-See \url{https://paws-r.github.io/docs/iam/update_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_user/} for full documentation.
 }
 \keyword{internal}

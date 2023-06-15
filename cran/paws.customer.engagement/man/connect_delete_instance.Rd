@@ -14,6 +14,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/delete_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_delete_instance/} for full documentation.
 }
 \keyword{internal}

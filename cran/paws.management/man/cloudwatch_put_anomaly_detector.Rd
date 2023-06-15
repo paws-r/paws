@@ -64,6 +64,6 @@ the property \code{MetricMathAnomalyDetector}.}
 \description{
 Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ resource for which the notification is created.}
 \description{
 Updates a notification rule for a resource. You can change the events that trigger the notification rule, the status of the rule, and the targets that receive the notifications.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/update_notification_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_update_notification_rule/} for full documentation.
 }
 \keyword{internal}

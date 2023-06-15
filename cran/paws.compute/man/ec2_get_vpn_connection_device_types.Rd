@@ -40,6 +40,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Obtain a list of customer gateway devices for which sample configuration files can be provided. The request has no additional parameters. You can also see the list of device types with sample configuration files available under \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html}{Your customer gateway device} in the \emph{Amazon Web Services Site-to-Site VPN User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/get_vpn_connection_device_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_vpn_connection_device_types/} for full documentation.
 }
 \keyword{internal}

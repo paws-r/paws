@@ -23,6 +23,6 @@ of alerts in the history, use the token in the next request.}
 \description{
 Gets the alerts for a single monitoring schedule.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_monitoring_alerts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_alerts/} for full documentation.
 }
 \keyword{internal}

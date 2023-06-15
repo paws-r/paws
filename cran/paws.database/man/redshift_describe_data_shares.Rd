@@ -31,6 +31,6 @@ parameter and retrying the request.}
 \description{
 Shows the status of any inbound or outbound datashares available in the specified account.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_data_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_data_shares/} for full documentation.
 }
 \keyword{internal}

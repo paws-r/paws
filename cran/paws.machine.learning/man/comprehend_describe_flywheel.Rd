@@ -12,6 +12,6 @@ comprehend_describe_flywheel(FlywheelArn)
 \description{
 Provides configuration information about the flywheel. For more information about flywheels, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_flywheel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_flywheel/} for full documentation.
 }
 \keyword{internal}

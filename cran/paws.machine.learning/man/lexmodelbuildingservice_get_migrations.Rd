@@ -35,6 +35,6 @@ pagination token in the request.}
 \description{
 Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_migrations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_migrations/} for full documentation.
 }
 \keyword{internal}

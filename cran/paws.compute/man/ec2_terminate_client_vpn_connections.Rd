@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Terminates active Client VPN endpoint connections. This action can be used to terminate a specific client connection, or up to five connections established by a specific user.
 
-See \url{https://paws-r.github.io/docs/ec2/terminate_client_vpn_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_terminate_client_vpn_connections/} for full documentation.
 }
 \keyword{internal}

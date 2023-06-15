@@ -55,6 +55,6 @@ well as the tables in yor local account.
 \description{
 Searches a set of tables based on properties in the table metadata as well as on the parent database. You can search against text or filter conditions.
 
-See \url{https://paws-r.github.io/docs/glue/search_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_search_tables/} for full documentation.
 }
 \keyword{internal}

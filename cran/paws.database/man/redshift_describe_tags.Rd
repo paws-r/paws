@@ -66,6 +66,6 @@ either or both of these tag values associated with them.}
 \description{
 Returns a list of tags. You can return tags from a specific resource by specifying an ARN, or you can return all tags for a given type of resource, such as clusters, snapshots, and so on.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_tags/} for full documentation.
 }
 \keyword{internal}

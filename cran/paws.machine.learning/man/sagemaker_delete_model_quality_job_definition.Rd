@@ -12,6 +12,6 @@ sagemaker_delete_model_quality_job_definition(JobDefinitionName)
 \description{
 Deletes the secified model quality monitoring job definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model_quality_job_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_quality_job_definition/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ and \code{emails.value}.}
 \description{
 Retrieves the \code{UserId} in an identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/get_user_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_get_user_id/} for full documentation.
 }
 \keyword{internal}

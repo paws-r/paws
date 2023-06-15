@@ -12,6 +12,6 @@ inspector2_cancel_findings_report(reportId)
 \description{
 Cancels the given findings report.
 
-See \url{https://paws-r.github.io/docs/inspector2/cancel_findings_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_cancel_findings_report/} for full documentation.
 }
 \keyword{internal}

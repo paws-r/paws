@@ -31,6 +31,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator.
 
-See \url{https://paws-r.github.io/docs/configservice/get_aggregate_config_rule_compliance_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_aggregate_config_rule_compliance_summary/} for full documentation.
 }
 \keyword{internal}

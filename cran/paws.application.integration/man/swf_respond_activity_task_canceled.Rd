@@ -20,6 +20,6 @@ with results.}
 \description{
 Used by workers to tell the service that the ActivityTask identified by the \code{taskToken} was successfully canceled. Additional \code{details} can be provided using the \code{details} argument.
 
-See \url{https://paws-r.github.io/docs/swf/respond_activity_task_canceled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_respond_activity_task_canceled/} for full documentation.
 }
 \keyword{internal}

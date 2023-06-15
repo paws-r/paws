@@ -19,6 +19,6 @@ none is provided, the Amazon Web Services account ID is used by default.}
 \description{
 Retrieves information about a specified partition.
 
-See \url{https://paws-r.github.io/docs/glue/get_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_partition/} for full documentation.
 }
 \keyword{internal}

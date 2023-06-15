@@ -18,6 +18,6 @@ environment's operations role.}
 \description{
 Add or change the operations role used by an environment. After this call is made, Elastic Beanstalk uses the associated operations role for permissions to downstream services during subsequent calls acting on this environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{Operations roles} in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/associate_environment_operations_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_associate_environment_operations_role/} for full documentation.
 }
 \keyword{internal}

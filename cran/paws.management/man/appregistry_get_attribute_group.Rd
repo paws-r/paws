@@ -13,6 +13,6 @@ describe the application.}
 \description{
 Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name.
 
-See \url{https://paws-r.github.io/docs/appregistry/get_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_get_attribute_group/} for full documentation.
 }
 \keyword{internal}

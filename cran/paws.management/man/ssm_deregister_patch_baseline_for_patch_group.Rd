@@ -15,6 +15,6 @@ baseline.}
 \description{
 Removes a patch group from a patch baseline.
 
-See \url{https://paws-r.github.io/docs/ssm/deregister_patch_baseline_for_patch_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_deregister_patch_baseline_for_patch_group/} for full documentation.
 }
 \keyword{internal}

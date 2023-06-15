@@ -16,6 +16,6 @@ the latest published version is returned.}
 \description{
 Returns the definition of a specific DataBrew recipe corresponding to a particular version.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_recipe/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ document version.}
 \description{
 Adds one or more custom properties to the specified resource (a folder, document, or version).
 
-See \url{https://paws-r.github.io/docs/workdocs/create_custom_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_create_custom_metadata/} for full documentation.
 }
 \keyword{internal}

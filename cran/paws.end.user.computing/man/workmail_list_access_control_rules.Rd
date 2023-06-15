@@ -12,6 +12,6 @@ workmail_list_access_control_rules(OrganizationId)
 \description{
 Lists the access control rules for the specified organization.
 
-See \url{https://paws-r.github.io/docs/workmail/list_access_control_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_access_control_rules/} for full documentation.
 }
 \keyword{internal}

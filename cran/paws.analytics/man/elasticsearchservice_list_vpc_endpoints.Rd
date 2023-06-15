@@ -13,6 +13,6 @@ elasticsearchservice_list_vpc_endpoints(NextToken = NULL)
 \description{
 Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoints/} for full documentation.
 }
 \keyword{internal}

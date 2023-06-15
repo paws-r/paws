@@ -49,6 +49,6 @@ of processing jobs, use the token in the next request.}
 \description{
 Lists processing jobs that satisfy various filters.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_processing_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_processing_jobs/} for full documentation.
 }
 \keyword{internal}

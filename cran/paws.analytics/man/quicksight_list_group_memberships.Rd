@@ -28,6 +28,6 @@ contains your Amazon QuickSight account.}
 \description{
 Lists member users in a group.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_group_memberships.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_group_memberships/} for full documentation.
 }
 \keyword{internal}

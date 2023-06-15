@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC. After the operation completes, the subnet or gateway uses the routes in the new route table. For more information about route tables, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route tables} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/replace_route_table_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_replace_route_table_association/} for full documentation.
 }
 \keyword{internal}

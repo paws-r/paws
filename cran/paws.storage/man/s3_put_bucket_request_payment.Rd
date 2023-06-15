@@ -43,6 +43,6 @@ different account, the request fails with the HTTP status code
 \description{
 Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html}{Requester Pays Buckets}.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_request_payment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ apigatewayv2_create_domain_name(
 \description{
 Creates a domain name.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/create_domain_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_create_domain_name/} for full documentation.
 }
 \keyword{internal}

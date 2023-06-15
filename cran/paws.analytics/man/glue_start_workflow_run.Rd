@@ -14,6 +14,6 @@ glue_start_workflow_run(Name, RunProperties = NULL)
 \description{
 Starts a new run of the specified workflow.
 
-See \url{https://paws-r.github.io/docs/glue/start_workflow_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_workflow_run/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \description{
 Adds one or more tags to an ACM certificate. Tags are labels that you can use to identify and organize your Amazon Web Services resources. Each tag consists of a \code{key} and an optional \code{value}. You specify the certificate on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair.
 
-See \url{https://paws-r.github.io/docs/acm/add_tags_to_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_add_tags_to_certificate/} for full documentation.
 }
 \keyword{internal}

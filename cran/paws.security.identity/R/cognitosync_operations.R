@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Initiates a bulk publish of all existing datasets for an Identity Pool to the configured stream. Customers are limited to one successful bulk publish per 24 hours. Bulk publish is an asynchronous request, customers can see the status of the request via the GetBulkPublishDetails operation.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/bulk_publish.html](https://paws-r.github.io/docs/cognitosync/bulk_publish.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_bulk_publish/](https://www.paws-r-sdk.com/docs/cognitosync_bulk_publish/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -40,7 +40,7 @@ cognitosync_bulk_publish <- function(IdentityPoolId) {
 #' @description
 #' Deletes the specific dataset. The dataset will be deleted permanently, and the action can't be undone. Datasets that this dataset was merged with will no longer report the merge. Any subsequent operation on this dataset will result in a ResourceNotFoundException.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/delete_dataset.html](https://paws-r.github.io/docs/cognitosync/delete_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_delete_dataset/](https://www.paws-r-sdk.com/docs/cognitosync_delete_dataset/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -76,7 +76,7 @@ cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) 
 #' @description
 #' Gets meta data about a dataset by identity and dataset name. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/describe_dataset.html](https://paws-r.github.io/docs/cognitosync/describe_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_describe_dataset/](https://www.paws-r-sdk.com/docs/cognitosync_describe_dataset/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -113,7 +113,7 @@ cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName
 #' @description
 #' Gets usage details (for example, data storage) about a particular identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/describe_identity_pool_usage.html](https://paws-r.github.io/docs/cognitosync/describe_identity_pool_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_describe_identity_pool_usage/](https://www.paws-r-sdk.com/docs/cognitosync_describe_identity_pool_usage/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -145,7 +145,7 @@ cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
 #' @description
 #' Gets usage information for an identity, including number of datasets and data usage.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/describe_identity_usage.html](https://paws-r.github.io/docs/cognitosync/describe_identity_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_describe_identity_usage/](https://www.paws-r-sdk.com/docs/cognitosync_describe_identity_usage/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -179,7 +179,7 @@ cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
 #' @description
 #' Get the status of the last BulkPublish operation for an identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/get_bulk_publish_details.html](https://paws-r.github.io/docs/cognitosync/get_bulk_publish_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_get_bulk_publish_details/](https://www.paws-r-sdk.com/docs/cognitosync_get_bulk_publish_details/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -211,7 +211,7 @@ cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
 #' @description
 #' Gets the events and the corresponding Lambda functions associated with an identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/get_cognito_events.html](https://paws-r.github.io/docs/cognitosync/get_cognito_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_get_cognito_events/](https://www.paws-r-sdk.com/docs/cognitosync_get_cognito_events/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; The Cognito Identity Pool ID for the request
 #'
@@ -240,7 +240,7 @@ cognitosync_get_cognito_events <- function(IdentityPoolId) {
 #' @description
 #' Gets the configuration settings of an identity pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/get_identity_pool_configuration.html](https://paws-r.github.io/docs/cognitosync/get_identity_pool_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_get_identity_pool_configuration/](https://www.paws-r-sdk.com/docs/cognitosync_get_identity_pool_configuration/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -271,7 +271,7 @@ cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
 #' @description
 #' Lists datasets for an identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/list_datasets.html](https://paws-r.github.io/docs/cognitosync/list_datasets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_list_datasets/](https://www.paws-r-sdk.com/docs/cognitosync_list_datasets/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -307,7 +307,7 @@ cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NU
 #' @description
 #' Gets a list of identity pools registered with Cognito.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/list_identity_pool_usage.html](https://paws-r.github.io/docs/cognitosync/list_identity_pool_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_list_identity_pool_usage/](https://www.paws-r-sdk.com/docs/cognitosync_list_identity_pool_usage/) for full documentation.
 #'
 #' @param NextToken A pagination token for obtaining the next page of results.
 #' @param MaxResults The maximum number of results to be returned.
@@ -338,7 +338,7 @@ cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = 
 #' @description
 #' Gets paginated records, optionally changed after a particular sync count for a dataset and identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/list_records.html](https://paws-r.github.io/docs/cognitosync/list_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_list_records/](https://www.paws-r-sdk.com/docs/cognitosync_list_records/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -378,7 +378,7 @@ cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, La
 #' @description
 #' Registers a device to receive push sync notifications.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/register_device.html](https://paws-r.github.io/docs/cognitosync/register_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_register_device/](https://www.paws-r-sdk.com/docs/cognitosync_register_device/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -412,7 +412,7 @@ cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, To
 #' @description
 #' Sets the AWS Lambda function for a given event type for an identity pool. This request only updates the key/value pair specified. Other key/values pairs are not updated. To remove a key value pair, pass a empty value for the particular key.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/set_cognito_events.html](https://paws-r.github.io/docs/cognitosync/set_cognito_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_set_cognito_events/](https://www.paws-r-sdk.com/docs/cognitosync_set_cognito_events/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; The Cognito Identity Pool to use when configuring Cognito Events
 #' @param Events &#91;required&#93; The events to configure
@@ -442,7 +442,7 @@ cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
 #' @description
 #' Sets the necessary configuration for push sync.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/set_identity_pool_configuration.html](https://paws-r.github.io/docs/cognitosync/set_identity_pool_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_set_identity_pool_configuration/](https://www.paws-r-sdk.com/docs/cognitosync_set_identity_pool_configuration/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -476,7 +476,7 @@ cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync
 #' @description
 #' Subscribes to receive notifications when a dataset is modified by another device.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/subscribe_to_dataset.html](https://paws-r.github.io/docs/cognitosync/subscribe_to_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_subscribe_to_dataset/](https://www.paws-r-sdk.com/docs/cognitosync_subscribe_to_dataset/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -511,7 +511,7 @@ cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, Dataset
 #' @description
 #' Unsubscribes from receiving notifications when a dataset is modified by another device.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/unsubscribe_from_dataset.html](https://paws-r.github.io/docs/cognitosync/unsubscribe_from_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_unsubscribe_from_dataset/](https://www.paws-r-sdk.com/docs/cognitosync_unsubscribe_from_dataset/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
@@ -546,7 +546,7 @@ cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, Dat
 #' @description
 #' Posts updates to records and adds and deletes records for a dataset and user.
 #'
-#' See [https://paws-r.github.io/docs/cognitosync/update_records.html](https://paws-r.github.io/docs/cognitosync/update_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitosync_update_records/](https://www.paws-r-sdk.com/docs/cognitosync_update_records/) for full documentation.
 #'
 #' @param IdentityPoolId &#91;required&#93; A name-spaced GUID (for example,
 #' us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon

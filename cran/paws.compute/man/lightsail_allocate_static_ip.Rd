@@ -12,6 +12,6 @@ lightsail_allocate_static_ip(staticIpName)
 \description{
 Allocates a static IP address.
 
-See \url{https://paws-r.github.io/docs/lightsail/allocate_static_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_allocate_static_ip/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ appstream_associate_fleet(FleetName, StackName)
 \description{
 Associates the specified fleet with the specified stack.
 
-See \url{https://paws-r.github.io/docs/appstream/associate_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_associate_fleet/} for full documentation.
 }
 \keyword{internal}

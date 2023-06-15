@@ -165,6 +165,6 @@ in the \emph{Amazon S3 User Guide}.}
 \description{
 This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see \code{\link[=s3_upload_part]{upload_part}}). You also include this upload ID in the final request to either complete or abort the multipart upload request.
 
-See \url{https://paws-r.github.io/docs/s3/create_multipart_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/} for full documentation.
 }
 \keyword{internal}

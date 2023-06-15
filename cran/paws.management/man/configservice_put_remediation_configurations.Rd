@@ -13,6 +13,6 @@ configservice_put_remediation_configurations(RemediationConfigurations)
 \description{
 Adds or updates the remediation configuration with a specific Config rule with the selected target or action. The API creates the \code{RemediationConfiguration} object for the Config rule. The Config rule must already exist for you to add a remediation configuration. The target (SSM document) must exist and have permissions to use the target.
 
-See \url{https://paws-r.github.io/docs/configservice/put_remediation_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_remediation_configurations/} for full documentation.
 }
 \keyword{internal}

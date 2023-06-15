@@ -34,6 +34,6 @@ existing health check, Route 53 creates the health check.
 \description{
 Creates a new health check.
 
-See \url{https://paws-r.github.io/docs/route53/create_health_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_health_check/} for full documentation.
 }
 \keyword{internal}

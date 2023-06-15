@@ -112,6 +112,6 @@ error results.}
 \description{
 Creates an application, optionally including an AWS SAM file to create the first application version in the same call.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_application/} for full documentation.
 }
 \keyword{internal}

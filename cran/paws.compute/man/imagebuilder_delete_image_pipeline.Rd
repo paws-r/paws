@@ -12,6 +12,6 @@ imagebuilder_delete_image_pipeline(imagePipelineArn)
 \description{
 Deletes an image pipeline.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_image_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_pipeline/} for full documentation.
 }
 \keyword{internal}

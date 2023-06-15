@@ -27,6 +27,6 @@ function name, it is limited to 64 characters in length.}
 \description{
 Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy} for a function, version, or alias.
 
-See \url{https://paws-r.github.io/docs/lambda/get_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_policy/} for full documentation.
 }
 \keyword{internal}

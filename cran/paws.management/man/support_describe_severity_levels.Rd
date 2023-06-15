@@ -17,6 +17,6 @@ language.}
 \description{
 Returns the list of severity levels that you can assign to a support case. The severity level for a case is also a field in the CaseDetails data type that you include for a \code{\link[=support_create_case]{create_case}} request.
 
-See \url{https://paws-r.github.io/docs/support/describe_severity_levels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_severity_levels/} for full documentation.
 }
 \keyword{internal}

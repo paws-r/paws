@@ -18,6 +18,6 @@ configservice_get_aggregate_resource_config(
 \description{
 Returns configuration item that is aggregated for your specific resource in a specific source account and region.
 
-See \url{https://paws-r.github.io/docs/configservice/get_aggregate_resource_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_aggregate_resource_config/} for full documentation.
 }
 \keyword{internal}

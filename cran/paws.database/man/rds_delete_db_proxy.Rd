@@ -12,6 +12,6 @@ rds_delete_db_proxy(DBProxyName)
 \description{
 Deletes an existing DB proxy.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_proxy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_proxy/} for full documentation.
 }
 \keyword{internal}

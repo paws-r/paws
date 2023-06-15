@@ -24,6 +24,6 @@ Default: There is no default value.}
 \description{
 Returns a description of the specified resource in the specified stack.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resource/} for full documentation.
 }
 \keyword{internal}

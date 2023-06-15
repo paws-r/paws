@@ -14,6 +14,6 @@ servicediscovery_update_service(Id, Service)
 \description{
 Submits a request to perform the following operations:
 
-See \url{https://paws-r.github.io/docs/servicediscovery/update_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_update_service/} for full documentation.
 }
 \keyword{internal}

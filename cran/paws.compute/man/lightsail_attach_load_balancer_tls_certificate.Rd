@@ -19,6 +19,6 @@ certificate.}
 \description{
 Attaches a Transport Layer Security (TLS) certificate to your load balancer. TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 
-See \url{https://paws-r.github.io/docs/lightsail/attach_load_balancer_tls_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_attach_load_balancer_tls_certificate/} for full documentation.
 }
 \keyword{internal}

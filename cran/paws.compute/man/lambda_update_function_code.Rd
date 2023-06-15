@@ -67,6 +67,6 @@ value is \code{x86_64}.}
 \description{
 Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{Configuring code signing for Lambda}.
 
-See \url{https://paws-r.github.io/docs/lambda/update_function_code.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_function_code/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ glue_update_classifier(
 \description{
 Modifies an existing classifier (a \code{GrokClassifier}, an \code{XMLClassifier}, a \code{JsonClassifier}, or a \code{CsvClassifier}, depending on which field is present).
 
-See \url{https://paws-r.github.io/docs/glue/update_classifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_classifier/} for full documentation.
 }
 \keyword{internal}

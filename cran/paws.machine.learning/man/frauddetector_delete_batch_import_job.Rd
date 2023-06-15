@@ -12,6 +12,6 @@ frauddetector_delete_batch_import_job(jobId)
 \description{
 Deletes the specified batch import job ID record. This action does not delete the data that was batch imported.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_batch_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_batch_import_job/} for full documentation.
 }
 \keyword{internal}

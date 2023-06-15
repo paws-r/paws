@@ -36,6 +36,6 @@ include this parameter in your request, you must also include the
 \description{
 Lists the specified metric filters. You can list all of the metric filters or filter the results by log name, prefix, metric name, or metric namespace. The results are ASCII-sorted by filter name.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_metric_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_metric_filters/} for full documentation.
 }
 \keyword{internal}

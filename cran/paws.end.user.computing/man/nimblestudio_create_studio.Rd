@@ -39,6 +39,6 @@ Studio portal.}
 \description{
 Create a new studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/create_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_create_studio/} for full documentation.
 }
 \keyword{internal}

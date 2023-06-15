@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a Recycle Bin retention rule. For more information, see [Create Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/create_rule.html](https://paws-r.github.io/docs/recyclebin/create_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_create_rule/](https://www.paws-r-sdk.com/docs/recyclebin_create_rule/) for full documentation.
 #'
 #' @param RetentionPeriod &#91;required&#93; Information about the retention period for which the retention rule is
 #' to retain resources.
@@ -61,7 +61,7 @@ recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = N
 #' @description
 #' Deletes a Recycle Bin retention rule. For more information, see [Delete Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-delete-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/delete_rule.html](https://paws-r.github.io/docs/recyclebin/delete_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_delete_rule/](https://www.paws-r-sdk.com/docs/recyclebin_delete_rule/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; The unique ID of the retention rule.
 #'
@@ -90,7 +90,7 @@ recyclebin_delete_rule <- function(Identifier) {
 #' @description
 #' Gets information about a Recycle Bin retention rule.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/get_rule.html](https://paws-r.github.io/docs/recyclebin/get_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_get_rule/](https://www.paws-r-sdk.com/docs/recyclebin_get_rule/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; The unique ID of the retention rule.
 #'
@@ -119,7 +119,7 @@ recyclebin_get_rule <- function(Identifier) {
 #' @description
 #' Lists the Recycle Bin retention rules in the Region.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/list_rules.html](https://paws-r.github.io/docs/recyclebin/list_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_list_rules/](https://www.paws-r-sdk.com/docs/recyclebin_list_rules/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
@@ -160,7 +160,7 @@ recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceT
 #' @description
 #' Lists the tags assigned to a retention rule.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/list_tags_for_resource.html](https://paws-r.github.io/docs/recyclebin/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/recyclebin_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the retention rule.
 #'
@@ -189,7 +189,7 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Locks a retention rule. A locked retention rule can't be modified or deleted.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/lock_rule.html](https://paws-r.github.io/docs/recyclebin/lock_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_lock_rule/](https://www.paws-r-sdk.com/docs/recyclebin_lock_rule/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; The unique ID of the retention rule.
 #' @param LockConfiguration &#91;required&#93; Information about the retention rule lock configuration.
@@ -219,7 +219,7 @@ recyclebin_lock_rule <- function(Identifier, LockConfiguration) {
 #' @description
 #' Assigns tags to the specified retention rule.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/tag_resource.html](https://paws-r.github.io/docs/recyclebin/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_tag_resource/](https://www.paws-r-sdk.com/docs/recyclebin_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the retention rule.
 #' @param Tags &#91;required&#93; Information about the tags to assign to the retention rule.
@@ -249,7 +249,7 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Unlocks a retention rule. After a retention rule is unlocked, it can be modified or deleted only after the unlock delay period expires.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/unlock_rule.html](https://paws-r.github.io/docs/recyclebin/unlock_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_unlock_rule/](https://www.paws-r-sdk.com/docs/recyclebin_unlock_rule/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; The unique ID of the retention rule.
 #'
@@ -278,7 +278,7 @@ recyclebin_unlock_rule <- function(Identifier) {
 #' @description
 #' Unassigns a tag from a retention rule.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/untag_resource.html](https://paws-r.github.io/docs/recyclebin/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_untag_resource/](https://www.paws-r-sdk.com/docs/recyclebin_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the retention rule.
 #' @param TagKeys &#91;required&#93; The tag keys of the tags to unassign. All tags that have the specified
@@ -309,7 +309,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see [Update Recycle Bin retention rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/recyclebin/update_rule.html](https://paws-r.github.io/docs/recyclebin/update_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/recyclebin_update_rule/](https://www.paws-r-sdk.com/docs/recyclebin_update_rule/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; The unique ID of the retention rule.
 #' @param RetentionPeriod Information about the retention period for which the retention rule is

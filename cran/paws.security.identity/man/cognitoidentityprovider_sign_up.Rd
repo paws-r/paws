@@ -75,6 +75,6 @@ provide sensitive information.
 \description{
 Registers the user in the specified user pool and creates a user name, password, and user attributes.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/sign_up.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_sign_up/} for full documentation.
 }
 \keyword{internal}

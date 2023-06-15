@@ -18,6 +18,6 @@ alias already exists.}
 \description{
 Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as \verb{http://<alias>.awsapps.com}.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_alias/} for full documentation.
 }
 \keyword{internal}

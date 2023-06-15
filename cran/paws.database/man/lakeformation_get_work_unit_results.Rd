@@ -20,6 +20,6 @@ enumerating \code{WorkUnitIdMin} to \code{WorkUnitIdMax} (inclusive) from the
 \description{
 Returns the work units resulting from the query. Work units can be executed in any order and in parallel.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_work_unit_results.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_work_unit_results/} for full documentation.
 }
 \keyword{internal}

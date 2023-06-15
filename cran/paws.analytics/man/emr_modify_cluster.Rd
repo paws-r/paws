@@ -19,6 +19,6 @@ information see Step$ActionOnFailure.}
 \description{
 Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID.
 
-See \url{https://paws-r.github.io/docs/emr/modify_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_modify_cluster/} for full documentation.
 }
 \keyword{internal}

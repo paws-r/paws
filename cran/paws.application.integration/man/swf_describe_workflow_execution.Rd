@@ -15,6 +15,6 @@ swf_describe_workflow_execution(domain, execution)
 \description{
 Returns information about the specified workflow execution including its type and some statistics.
 
-See \url{https://paws-r.github.io/docs/swf/describe_workflow_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_describe_workflow_execution/} for full documentation.
 }
 \keyword{internal}

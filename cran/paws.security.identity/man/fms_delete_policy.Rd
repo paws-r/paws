@@ -41,6 +41,6 @@ accounts, all resources are in scope.}
 \description{
 Permanently deletes an Firewall Manager policy.
 
-See \url{https://paws-r.github.io/docs/fms/delete_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_delete_policy/} for full documentation.
 }
 \keyword{internal}

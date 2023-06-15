@@ -69,6 +69,6 @@ output. For more information, see
 \description{
 Describes one or more of your VPCs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpcs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpcs/} for full documentation.
 }
 \keyword{internal}

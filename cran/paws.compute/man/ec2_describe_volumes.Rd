@@ -72,6 +72,6 @@ continues from the end of the items returned from the previous request.}
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_volumes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_volumes/} for full documentation.
 }
 \keyword{internal}

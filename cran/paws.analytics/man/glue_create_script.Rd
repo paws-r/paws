@@ -16,6 +16,6 @@ glue_create_script(DagNodes = NULL, DagEdges = NULL, Language = NULL)
 \description{
 Transforms a directed acyclic graph (DAG) into code.
 
-See \url{https://paws-r.github.io/docs/glue/create_script.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_script/} for full documentation.
 }
 \keyword{internal}

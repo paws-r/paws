@@ -28,6 +28,6 @@ provider resource. For more information about client IDs, see
 \description{
 Removes the specified client ID (also known as audience) from the list of client IDs registered for the specified IAM OpenID Connect (OIDC) provider resource object.
 
-See \url{https://paws-r.github.io/docs/iam/remove_client_id_from_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_remove_client_id_from_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

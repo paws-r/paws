@@ -47,6 +47,6 @@ different account, the request fails with the HTTP status code
 \description{
 Sets the versioning state of an existing bucket.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_versioning.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Starts an Amazon EBS-backed instance that you've previously stopped.
 
-See \url{https://paws-r.github.io/docs/ec2/start_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_start_instances/} for full documentation.
 }
 \keyword{internal}

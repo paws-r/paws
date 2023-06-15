@@ -26,6 +26,6 @@ matching private key.}
 \description{
 Pushes an SSH public key to the specified EC2 instance for use by the specified user. The key remains for 60 seconds. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html}{Connect to your Linux instance using EC2 Instance Connect} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2instanceconnect/send_ssh_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2instanceconnect_send_ssh_public_key/} for full documentation.
 }
 \keyword{internal}

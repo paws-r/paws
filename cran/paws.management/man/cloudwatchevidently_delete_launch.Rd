@@ -14,6 +14,6 @@ cloudwatchevidently_delete_launch(launch, project)
 \description{
 Deletes an Evidently launch. The feature used for the launch is not deleted.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/delete_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_launch/} for full documentation.
 }
 \keyword{internal}

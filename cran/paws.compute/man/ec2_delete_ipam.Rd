@@ -35,6 +35,6 @@ scopes.
 \description{
 Delete an IPAM. Deleting an IPAM removes all monitored data associated with the IPAM including the historical data for CIDRs.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_ipam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_ipam/} for full documentation.
 }
 \keyword{internal}

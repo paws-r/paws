@@ -20,6 +20,6 @@ to \code{Reviewing}
 \description{
 The \code{\link[=mturk_update_hit_review_status]{update_hit_review_status}} operation updates the status of a HIT. If the status is Reviewable, this operation can update the status to Reviewing, or it can revert a Reviewing HIT back to the Reviewable status.
 
-See \url{https://paws-r.github.io/docs/mturk/update_hit_review_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_update_hit_review_status/} for full documentation.
 }
 \keyword{internal}

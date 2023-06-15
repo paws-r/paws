@@ -20,6 +20,6 @@ To successfully call this API, you must own the identity.}
 \description{
 Deletes the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist.
 
-See \url{https://paws-r.github.io/docs/ses/delete_identity_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_identity_policy/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ operation returns descriptions of all registered Amazon RDS instances.}
 \description{
 Describes Amazon RDS instances.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_rds_db_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_rds_db_instances/} for full documentation.
 }
 \keyword{internal}

@@ -70,6 +70,6 @@ the 2011-11-01 API version, you only have access to the
 \description{
 Describes one or more of the Reserved Instances that you purchased.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_reserved_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_reserved_instances/} for full documentation.
 }
 \keyword{internal}

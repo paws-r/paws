@@ -33,6 +33,6 @@ results, use null.}
 \description{
 Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_service_actions_for_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions_for_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

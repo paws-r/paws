@@ -14,6 +14,6 @@ customerprofiles_get_profile_object_type(DomainName, ObjectTypeName)
 \description{
 Returns the object types for a specific domain.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/get_profile_object_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_get_profile_object_type/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ emr_list_instance_groups(ClusterId, Marker = NULL)
 \description{
 Provides all available details about the instance groups in a cluster.
 
-See \url{https://paws-r.github.io/docs/emr/list_instance_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_instance_groups/} for full documentation.
 }
 \keyword{internal}

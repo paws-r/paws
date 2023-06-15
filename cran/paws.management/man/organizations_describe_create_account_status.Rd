@@ -22,6 +22,6 @@ lowercase letters or digits.}
 \description{
 Retrieves the current status of an asynchronous request to create an account.
 
-See \url{https://paws-r.github.io/docs/organizations/describe_create_account_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_describe_create_account_status/} for full documentation.
 }
 \keyword{internal}

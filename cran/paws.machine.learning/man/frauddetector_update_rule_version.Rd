@@ -29,6 +29,6 @@ frauddetector_update_rule_version(
 \description{
 Updates a rule version resulting in a new rule version. Updates a rule version resulting in a new rule version (version 1, 2, 3 ...).
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_rule_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_rule_version/} for full documentation.
 }
 \keyword{internal}

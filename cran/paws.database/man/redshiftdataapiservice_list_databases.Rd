@@ -47,6 +47,6 @@ authenticating using either Secrets Manager or temporary credentials.}
 \description{
 List the databases in a cluster. A token is returned to page through the database list. Depending on the authorization method, use one of the following combinations of request parameters:
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/list_databases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_databases/} for full documentation.
 }
 \keyword{internal}

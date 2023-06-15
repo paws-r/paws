@@ -35,6 +35,6 @@ one \code{EVENT} \code{WebhookFilter}.}
 \description{
 Updates the webhook associated with an CodeBuild build project.
 
-See \url{https://paws-r.github.io/docs/codebuild/update_webhook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_update_webhook/} for full documentation.
 }
 \keyword{internal}

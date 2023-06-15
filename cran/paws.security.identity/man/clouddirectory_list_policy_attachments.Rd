@@ -30,6 +30,6 @@ object.}
 \description{
 Returns all of the \code{ObjectIdentifiers} to which a given policy is attached.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_policy_attachments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_policy_attachments/} for full documentation.
 }
 \keyword{internal}

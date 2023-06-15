@@ -12,6 +12,6 @@ sagemaker_get_device_fleet_report(DeviceFleetName)
 \description{
 Describes a fleet.
 
-See \url{https://paws-r.github.io/docs/sagemaker/get_device_fleet_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_get_device_fleet_report/} for full documentation.
 }
 \keyword{internal}

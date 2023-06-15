@@ -35,6 +35,6 @@ attaches to the instance.}
 \description{
 Attaches a network interface to an instance.
 
-See \url{https://paws-r.github.io/docs/ec2/attach_network_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_attach_network_interface/} for full documentation.
 }
 \keyword{internal}

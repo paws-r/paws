@@ -12,6 +12,6 @@ route53domains_retrieve_domain_auth_code(DomainName)
 \description{
 This operation returns the authorization code for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 
-See \url{https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_retrieve_domain_auth_code/} for full documentation.
 }
 \keyword{internal}

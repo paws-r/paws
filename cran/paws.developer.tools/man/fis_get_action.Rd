@@ -12,6 +12,6 @@ fis_get_action(id)
 \description{
 Gets information about the specified FIS action.
 
-See \url{https://paws-r.github.io/docs/fis/get_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_get_action/} for full documentation.
 }
 \keyword{internal}

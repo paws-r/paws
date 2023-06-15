@@ -26,6 +26,6 @@ values are case sensitive.
 \description{
 Adds one or more tags to an associated repository.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_tag_resource/} for full documentation.
 }
 \keyword{internal}

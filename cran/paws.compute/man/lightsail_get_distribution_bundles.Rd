@@ -10,6 +10,6 @@ lightsail_get_distribution_bundles()
 \description{
 Returns the bundles that can be applied to your Amazon Lightsail content delivery network (CDN) distributions.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_distribution_bundles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_distribution_bundles/} for full documentation.
 }
 \keyword{internal}

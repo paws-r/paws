@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Uploads a client certificate revocation list to the specified Client VPN endpoint. Uploading a client certificate revocation list overwrites the existing client certificate revocation list.
 
-See \url{https://paws-r.github.io/docs/ec2/import_client_vpn_client_certificate_revocation_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_import_client_vpn_client_certificate_revocation_list/} for full documentation.
 }
 \keyword{internal}

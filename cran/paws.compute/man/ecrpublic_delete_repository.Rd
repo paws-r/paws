@@ -20,6 +20,6 @@ prior to deletion.}
 \description{
 Deletes a repository in a public registry. If the repository contains images, you must either manually delete all images in the repository or use the \code{force} option. This option deletes all images on your behalf before deleting the repository.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/delete_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_delete_repository/} for full documentation.
 }
 \keyword{internal}

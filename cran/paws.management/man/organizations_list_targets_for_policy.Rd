@@ -39,6 +39,6 @@ results.}
 \description{
 Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to.
 
-See \url{https://paws-r.github.io/docs/organizations/list_targets_for_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_targets_for_policy/} for full documentation.
 }
 \keyword{internal}

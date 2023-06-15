@@ -47,6 +47,6 @@ vocabularies are exported.}
 \description{
 Lists the exports for a bot, bot locale, or custom vocabulary. Exports are kept in the list for 7 days.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_exports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_exports/} for full documentation.
 }
 \keyword{internal}

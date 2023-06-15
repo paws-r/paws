@@ -31,6 +31,6 @@ information, see Supported languages
 \description{
 Paginated list of custom vocabulary items for a given bot locale's custom vocabulary.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_custom_vocabulary_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_custom_vocabulary_items/} for full documentation.
 }
 \keyword{internal}

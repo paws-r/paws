@@ -12,6 +12,6 @@ personalize_delete_campaign(campaignArn)
 \description{
 Removes a campaign by deleting the solution deployment. The solution that the campaign is based on is not deleted and can be redeployed when needed. A deleted campaign can no longer be specified in a \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations} request. For information on creating campaigns, see \code{\link[=personalize_create_campaign]{create_campaign}}.
 
-See \url{https://paws-r.github.io/docs/personalize/delete_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_delete_campaign/} for full documentation.
 }
 \keyword{internal}

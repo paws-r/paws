@@ -46,6 +46,6 @@ images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-
 \description{
 Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is registered. If this is the first time you are registering a directory, you will need to create the workspaces_DefaultRole role before you can register a directory. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role}{Creating the workspaces_DefaultRole Role}.
 
-See \url{https://paws-r.github.io/docs/workspaces/register_workspace_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_register_workspace_directory/} for full documentation.
 }
 \keyword{internal}

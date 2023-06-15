@@ -48,6 +48,6 @@ pods that are scheduled with it.}
 \description{
 Creates an Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a cluster to be able to run pods on Fargate.
 
-See \url{https://paws-r.github.io/docs/eks/create_fargate_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_create_fargate_profile/} for full documentation.
 }
 \keyword{internal}

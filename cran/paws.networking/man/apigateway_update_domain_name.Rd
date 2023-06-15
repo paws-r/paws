@@ -14,6 +14,6 @@ apigateway_update_domain_name(domainName, patchOperations = NULL)
 \description{
 Changes information about the DomainName resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_domain_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_domain_name/} for full documentation.
 }
 \keyword{internal}

@@ -77,6 +77,6 @@ interval. Higher confidence levels result in wider prediction intervals.}
 \description{
 Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_cost_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_cost_forecast/} for full documentation.
 }
 \keyword{internal}

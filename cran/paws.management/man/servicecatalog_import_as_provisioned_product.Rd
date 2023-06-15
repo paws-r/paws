@@ -40,6 +40,6 @@ returned for each repeated request.}
 \description{
 Requests the import of a resource as an Service Catalog provisioned product that is associated to an Service Catalog product and provisioning artifact. Once imported, all supported governance actions are supported on the provisioned product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_import_as_provisioned_product/} for full documentation.
 }
 \keyword{internal}

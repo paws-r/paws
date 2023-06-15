@@ -30,11 +30,13 @@ One of the following (case insensitive) values:
 \item Users
 }}
 
-\item{tags}{A list of tags to apply to the dataset.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the dataset.}
 }
 \description{
 Creates an empty dataset and adds it to the specified dataset group. Use \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}} to import your training data to a dataset.
 
-See \url{https://paws-r.github.io/docs/personalize/create_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_dataset/} for full documentation.
 }
 \keyword{internal}

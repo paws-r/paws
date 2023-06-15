@@ -114,6 +114,6 @@ notification channels are added.}
 \description{
 Creates a \emph{workspace}. In a workspace, you can create Grafana dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to run the Grafana server.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/create_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace/} for full documentation.
 }
 \keyword{internal}

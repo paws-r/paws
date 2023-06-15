@@ -12,6 +12,6 @@ rekognition_delete_collection(CollectionId)
 \description{
 Deletes the specified collection. Note that this operation removes all faces in the collection. For an example, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/delete-collection-procedure.html}{Deleting a collection}.
 
-See \url{https://paws-r.github.io/docs/rekognition/delete_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_collection/} for full documentation.
 }
 \keyword{internal}

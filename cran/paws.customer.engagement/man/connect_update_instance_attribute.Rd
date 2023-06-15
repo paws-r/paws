@@ -21,6 +21,6 @@ this feature, contact Amazon Web Services Support for allowlisting.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/update_instance_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_instance_attribute/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ locationservice_delete_key(KeyName)
 \description{
 Deletes the specified API key. The API key must have been deactivated more than 90 days previously.
 
-See \url{https://paws-r.github.io/docs/locationservice/delete_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_key/} for full documentation.
 }
 \keyword{internal}

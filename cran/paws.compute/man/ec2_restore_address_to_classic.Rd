@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_restore_address_to_classic}
 \alias{ec2_restore_address_to_classic}
-\title{Restores an Elastic IP address that was previously moved to the EC2-VPC
-platform back to the EC2-Classic platform}
+\title{This action is deprecated}
 \usage{
 ec2_restore_address_to_classic(DryRun = NULL, PublicIp)
 }
@@ -16,8 +15,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PublicIp}{[required] The Elastic IP address.}
 }
 \description{
-Restores an Elastic IP address that was previously moved to the EC2-VPC platform back to the EC2-Classic platform. You cannot move an Elastic IP address that was originally allocated for use in EC2-VPC. The Elastic IP address must not be associated with an instance or network interface.
+This action is deprecated.
 
-See \url{https://paws-r.github.io/docs/ec2/restore_address_to_classic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_restore_address_to_classic/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ populates this field. For more information about idempotency, see
 \description{
 Initiates real-time message streaming for a new chat contact.
 
-See \url{https://paws-r.github.io/docs/connect/start_contact_streaming.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_start_contact_streaming/} for full documentation.
 }
 \keyword{internal}

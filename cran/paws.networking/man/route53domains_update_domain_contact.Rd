@@ -26,6 +26,6 @@ route53domains_update_domain_contact(
 \description{
 This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
 
-See \url{https://paws-r.github.io/docs/route53domains/update_domain_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact/} for full documentation.
 }
 \keyword{internal}

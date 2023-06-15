@@ -31,6 +31,6 @@ creation.}
 \description{
 Returns communications and attachments for one or more support cases. Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You can use the \code{caseId} parameter to restrict the results to a specific case.
 
-See \url{https://paws-r.github.io/docs/support/describe_communications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_communications/} for full documentation.
 }
 \keyword{internal}

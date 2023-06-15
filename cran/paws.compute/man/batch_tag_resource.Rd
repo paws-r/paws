@@ -21,6 +21,6 @@ in \emph{Amazon Web Services General Reference}.}
 \description{
 Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
 
-See \url{https://paws-r.github.io/docs/batch/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_tag_resource/} for full documentation.
 }
 \keyword{internal}

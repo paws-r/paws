@@ -12,6 +12,6 @@ storagegateway_delete_tape_pool(PoolARN)
 \description{
 Delete a custom tape pool. A custom tape pool can only be deleted if there are no tapes in the pool and if there are no automatic tape creation policies that reference the custom tape pool.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_tape_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_tape_pool/} for full documentation.
 }
 \keyword{internal}

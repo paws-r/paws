@@ -16,6 +16,6 @@ supplied, this will be defaulted to 25 per page.}
 \description{
 Returns a list of registries that you have created, with minimal registry information. Registries in the \code{Deleting} status will not be included in the results. Empty results will be returned if there are no registries available.
 
-See \url{https://paws-r.github.io/docs/glue/list_registries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_registries/} for full documentation.
 }
 \keyword{internal}

@@ -17,8 +17,8 @@ your Lake Formation environment.}
 as data lake administrators.}
 }
 \description{
-Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html}{Granting Lake Formation Permissions}.
+Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/}{Granting Lake Formation Permissions}.
 
-See \url{https://paws-r.github.io/docs/lakeformation/put_data_lake_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_put_data_lake_settings/} for full documentation.
 }
 \keyword{internal}

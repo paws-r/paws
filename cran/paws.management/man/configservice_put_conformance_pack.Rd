@@ -49,8 +49,8 @@ Manager document (SSM document) and the version of the SSM document that
 is used to create a conformance pack.}
 }
 \description{
-Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the Config Developer Guide.
+Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/configservice/put_conformance_pack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_conformance_pack/} for full documentation.
 }
 \keyword{internal}

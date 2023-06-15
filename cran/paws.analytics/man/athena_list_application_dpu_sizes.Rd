@@ -16,6 +16,6 @@ pagination if a previous request was truncated.}
 \description{
 Returns the supported DPU sizes for the supported application runtimes (for example, \verb{Athena notebook version 1}).
 
-See \url{https://paws-r.github.io/docs/athena/list_application_dpu_sizes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_application_dpu_sizes/} for full documentation.
 }
 \keyword{internal}

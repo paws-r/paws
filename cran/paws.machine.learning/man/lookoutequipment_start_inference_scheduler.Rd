@@ -12,6 +12,6 @@ lookoutequipment_start_inference_scheduler(InferenceSchedulerName)
 \description{
 Starts an inference scheduler.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/start_inference_scheduler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_start_inference_scheduler/} for full documentation.
 }
 \keyword{internal}

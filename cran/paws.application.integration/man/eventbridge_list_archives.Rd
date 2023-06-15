@@ -28,6 +28,6 @@ results.}
 \description{
 Lists your archives. You can either list all the archives or you can provide a prefix to match to the archive names. Filter parameters are exclusive.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_archives.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_archives/} for full documentation.
 }
 \keyword{internal}

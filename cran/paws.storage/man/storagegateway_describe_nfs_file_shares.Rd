@@ -14,6 +14,6 @@ be described.}
 \description{
 Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway. This operation is only supported for S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_nfs_file_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_nfs_file_shares/} for full documentation.
 }
 \keyword{internal}

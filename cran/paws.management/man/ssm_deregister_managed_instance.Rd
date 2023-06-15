@@ -14,6 +14,6 @@ activation process.}
 \description{
 Removes the server or virtual machine from the list of registered servers. You can reregister the node again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
 
-See \url{https://paws-r.github.io/docs/ssm/deregister_managed_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_deregister_managed_instance/} for full documentation.
 }
 \keyword{internal}

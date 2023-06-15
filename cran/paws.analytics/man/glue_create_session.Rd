@@ -79,6 +79,6 @@ Glue supports. The GlueVersion must be greater than 2.0.}
 \description{
 Creates a new session.
 
-See \url{https://paws-r.github.io/docs/glue/create_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_session/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ specified by \code{MaxRecords}.}
 \description{
 Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is specified, the list will contain only the descriptions of the specified DBSubnetGroup.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_db_subnet_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_db_subnet_groups/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ braket_get_job(jobArn)
 \description{
 Retrieves the specified Amazon Braket job.
 
-See \url{https://paws-r.github.io/docs/braket/get_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_get_job/} for full documentation.
 }
 \keyword{internal}

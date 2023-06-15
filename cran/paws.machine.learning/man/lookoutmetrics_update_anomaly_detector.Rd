@@ -24,6 +24,6 @@ be updated.}
 \description{
 Updates a detector. After activation, you can only change a detector's ingestion delay and description.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/update_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_update_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

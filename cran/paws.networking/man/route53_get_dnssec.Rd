@@ -13,6 +13,6 @@ route53_get_dnssec(HostedZoneId)
 \description{
 Returns information about DNSSEC for a specific hosted zone, including the key-signing keys (KSKs) in the hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/get_dnssec.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_dnssec/} for full documentation.
 }
 \keyword{internal}

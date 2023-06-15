@@ -36,6 +36,6 @@ idempotency of the request.}
 \description{
 Creates a new version of the specified grant. For more information, see \href{https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html}{Granted licenses in License Manager} in the \emph{License Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/licensemanager/create_grant_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_create_grant_version/} for full documentation.
 }
 \keyword{internal}

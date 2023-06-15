@@ -16,6 +16,6 @@ streams that you list in the operation will stop streaming.}
 \description{
 Stops the streaming of metrics for one or more of your metric streams.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/stop_metric_streams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_stop_metric_streams/} for full documentation.
 }
 \keyword{internal}

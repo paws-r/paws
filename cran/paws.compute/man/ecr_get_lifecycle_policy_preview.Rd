@@ -48,6 +48,6 @@ all tags, if tagged.}
 \description{
 Retrieves the results of the lifecycle policy preview request for the specified repository.
 
-See \url{https://paws-r.github.io/docs/ecr/get_lifecycle_policy_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_get_lifecycle_policy_preview/} for full documentation.
 }
 \keyword{internal}

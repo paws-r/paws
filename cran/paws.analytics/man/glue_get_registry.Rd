@@ -13,6 +13,6 @@ Amazon Resource Name (ARN).}
 \description{
 Describes the specified registry in detail.
 
-See \url{https://paws-r.github.io/docs/glue/get_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_registry/} for full documentation.
 }
 \keyword{internal}

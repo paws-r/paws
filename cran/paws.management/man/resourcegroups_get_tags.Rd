@@ -13,6 +13,6 @@ resourcegroups_get_tags(Arn)
 \description{
 Returns a list of tags that are associated with a resource group, specified by an ARN.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/get_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_get_tags/} for full documentation.
 }
 \keyword{internal}

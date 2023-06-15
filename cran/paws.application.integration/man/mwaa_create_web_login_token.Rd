@@ -13,6 +13,6 @@ mwaa_create_web_login_token(Name)
 \description{
 Creates a web login token for the Airflow Web UI. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html}{Creating an Apache Airflow web login token}.
 
-See \url{https://paws-r.github.io/docs/mwaa/create_web_login_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_create_web_login_token/} for full documentation.
 }
 \keyword{internal}

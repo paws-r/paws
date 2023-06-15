@@ -12,6 +12,6 @@ forecastservice_resume_resource(ResourceArn)
 \description{
 Resumes a stopped monitor resource.
 
-See \url{https://paws-r.github.io/docs/forecastservice/resume_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_resume_resource/} for full documentation.
 }
 \keyword{internal}

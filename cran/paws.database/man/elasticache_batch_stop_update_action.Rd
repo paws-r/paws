@@ -20,6 +20,6 @@ elasticache_batch_stop_update_action(
 \description{
 Stop the service update. For more information on service updates and stopping them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Stopping Service Updates}.
 
-See \url{https://paws-r.github.io/docs/elasticache/batch_stop_update_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_batch_stop_update_action/} for full documentation.
 }
 \keyword{internal}

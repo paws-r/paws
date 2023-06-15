@@ -90,6 +90,6 @@ see \code{\link[=proton_create_repository]{create_repository}}.}
 \description{
 Update an environment.
 
-See \url{https://paws-r.github.io/docs/proton/update_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_environment/} for full documentation.
 }
 \keyword{internal}

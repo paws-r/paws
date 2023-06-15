@@ -24,6 +24,6 @@ Comprehend permission to access the flywheel data.}
 \description{
 Update the configuration information for an existing flywheel.
 
-See \url{https://paws-r.github.io/docs/comprehend/update_flywheel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_update_flywheel/} for full documentation.
 }
 \keyword{internal}

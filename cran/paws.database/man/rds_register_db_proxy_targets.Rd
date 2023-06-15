@@ -25,6 +25,6 @@ rds_register_db_proxy_targets(
 \description{
 Associate one or more \code{DBProxyTarget} data structures with a \code{DBProxyTargetGroup}.
 
-See \url{https://paws-r.github.io/docs/rds/register_db_proxy_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_register_db_proxy_targets/} for full documentation.
 }
 \keyword{internal}

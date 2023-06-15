@@ -15,6 +15,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_data_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_data_set/} for full documentation.
 }
 \keyword{internal}

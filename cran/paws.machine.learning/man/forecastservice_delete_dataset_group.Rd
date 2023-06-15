@@ -12,6 +12,6 @@ forecastservice_delete_dataset_group(DatasetGroupArn)
 \description{
 Deletes a dataset group created using the \code{\link[=forecastservice_create_dataset_group]{create_dataset_group}} operation. You can only delete dataset groups that have a status of \code{ACTIVE}, \code{CREATE_FAILED}, or \code{UPDATE_FAILED}. To get the status, use the \code{\link[=forecastservice_describe_dataset_group]{describe_dataset_group}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_dataset_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset_group/} for full documentation.
 }
 \keyword{internal}

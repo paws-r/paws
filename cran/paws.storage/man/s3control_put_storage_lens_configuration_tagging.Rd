@@ -18,6 +18,6 @@ You can set up to a maximum of 50 tags.}
 \description{
 Put or replace tags on an existing Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Assessing your storage activity and usage with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_storage_lens_configuration_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration_tagging/} for full documentation.
 }
 \keyword{internal}

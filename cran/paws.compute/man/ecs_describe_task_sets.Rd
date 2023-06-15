@@ -22,6 +22,6 @@ omitted, tags aren't included in the response.}
 \description{
 Describes the task sets in the specified cluster and service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/describe_task_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_describe_task_sets/} for full documentation.
 }
 \keyword{internal}

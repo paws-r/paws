@@ -29,6 +29,6 @@ kafka_create_vpc_connection(
 \description{
 Creates a new MSK VPC connection.
 
-See \url{https://paws-r.github.io/docs/kafka/create_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_create_vpc_connection/} for full documentation.
 }
 \keyword{internal}

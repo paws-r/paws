@@ -12,6 +12,6 @@ gluedatabrew_describe_project(Name)
 \description{
 Returns the definition of a specific DataBrew project.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_project/} for full documentation.
 }
 \keyword{internal}

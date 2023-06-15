@@ -16,6 +16,6 @@ Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 \description{
 Obtains the inline policy assigned to the permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/get_inline_policy_for_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_get_inline_policy_for_permission_set/} for full documentation.
 }
 \keyword{internal}

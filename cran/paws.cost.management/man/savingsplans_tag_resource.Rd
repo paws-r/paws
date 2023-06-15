@@ -15,6 +15,6 @@ savingsplans_tag_resource(resourceArn, tags)
 \description{
 Adds the specified tags to the specified resource.
 
-See \url{https://paws-r.github.io/docs/savingsplans/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/savingsplans_tag_resource/} for full documentation.
 }
 \keyword{internal}

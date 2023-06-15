@@ -30,6 +30,6 @@ languages for Trusted Advisor:
 \description{
 Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata. You must specify a language code.
 
-See \url{https://paws-r.github.io/docs/support/describe_trusted_advisor_checks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_checks/} for full documentation.
 }
 \keyword{internal}

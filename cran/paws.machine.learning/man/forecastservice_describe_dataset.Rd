@@ -13,6 +13,6 @@ forecastservice_describe_dataset(DatasetArn)
 \description{
 Describes an Amazon Forecast dataset created using the \code{\link[=forecastservice_create_dataset]{create_dataset}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_dataset/} for full documentation.
 }
 \keyword{internal}

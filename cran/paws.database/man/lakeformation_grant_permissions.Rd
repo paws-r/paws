@@ -43,6 +43,6 @@ permissions granted in the \code{Privileges}.}
 \description{
 Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
 
-See \url{https://paws-r.github.io/docs/lakeformation/grant_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_grant_permissions/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/associate_user_to_permission_group.html](https://paws-r.github.io/docs/finspacedata/associate_user_to_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_associate_user_to_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_associate_user_to_permission_group/) for full documentation.
 #'
 #' @param permissionGroupId &#91;required&#93; The unique identifier for the permission group.
 #' @param userId &#91;required&#93; The unique identifier for the user.
@@ -40,7 +40,7 @@ finspacedata_associate_user_to_permission_group <- function(permissionGroupId, u
 #' @description
 #' Creates a new Changeset in a FinSpace Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/create_changeset.html](https://paws-r.github.io/docs/finspacedata/create_changeset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_create_changeset/](https://www.paws-r-sdk.com/docs/finspacedata_create_changeset/) for full documentation.
 #'
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param datasetId &#91;required&#93; The unique identifier for the FinSpace Dataset where the Changeset will
@@ -123,7 +123,7 @@ finspacedata_create_changeset <- function(clientToken = NULL, datasetId, changeT
 #' @description
 #' Creates a Dataview for a Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/create_data_view.html](https://paws-r.github.io/docs/finspacedata/create_data_view.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_create_data_view/](https://www.paws-r-sdk.com/docs/finspacedata_create_data_view/) for full documentation.
 #'
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param datasetId &#91;required&#93; The unique Dataset identifier that is used to create a Dataview.
@@ -160,7 +160,7 @@ finspacedata_create_data_view <- function(clientToken = NULL, datasetId, autoUpd
 #' @description
 #' Creates a new FinSpace Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/create_dataset.html](https://paws-r.github.io/docs/finspacedata/create_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_create_dataset/](https://www.paws-r-sdk.com/docs/finspacedata_create_dataset/) for full documentation.
 #'
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param datasetTitle &#91;required&#93; Display title for a FinSpace Dataset.
@@ -201,7 +201,7 @@ finspacedata_create_dataset <- function(clientToken = NULL, datasetTitle, kind, 
 #' @description
 #' Creates a group of permissions for various actions that a user can perform in FinSpace.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/create_permission_group.html](https://paws-r.github.io/docs/finspacedata/create_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_create_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_create_permission_group/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the permission group.
 #' @param description A brief description for the permission group.
@@ -260,7 +260,7 @@ finspacedata_create_permission_group <- function(name, description = NULL, appli
 #' @description
 #' Creates a new user in FinSpace.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/create_user.html](https://paws-r.github.io/docs/finspacedata/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_create_user/](https://www.paws-r-sdk.com/docs/finspacedata_create_user/) for full documentation.
 #'
 #' @param emailAddress &#91;required&#93; The email address of the user that you want to register. The email
 #' address serves as a uniquer identifier for each user and cannot be
@@ -314,7 +314,7 @@ finspacedata_create_user <- function(emailAddress, type, firstName = NULL, lastN
 #' @description
 #' Deletes a FinSpace Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/delete_dataset.html](https://paws-r.github.io/docs/finspacedata/delete_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_delete_dataset/](https://www.paws-r-sdk.com/docs/finspacedata_delete_dataset/) for full documentation.
 #'
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param datasetId &#91;required&#93; The unique identifier of the Dataset to be deleted.
@@ -344,7 +344,7 @@ finspacedata_delete_dataset <- function(clientToken = NULL, datasetId) {
 #' @description
 #' Deletes a permission group. This action is irreversible.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/delete_permission_group.html](https://paws-r.github.io/docs/finspacedata/delete_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_delete_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_delete_permission_group/) for full documentation.
 #'
 #' @param permissionGroupId &#91;required&#93; The unique identifier for the permission group that you want to delete.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
@@ -375,7 +375,7 @@ finspacedata_delete_permission_group <- function(permissionGroupId, clientToken 
 #' @description
 #' Denies access to the FinSpace web application and API for the specified user.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/disable_user.html](https://paws-r.github.io/docs/finspacedata/disable_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_disable_user/](https://www.paws-r-sdk.com/docs/finspacedata_disable_user/) for full documentation.
 #'
 #' @param userId &#91;required&#93; The unique identifier for the user account that you want to disable.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
@@ -405,7 +405,7 @@ finspacedata_disable_user <- function(userId, clientToken = NULL) {
 #' @description
 #' Removes a user account from a permission group.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/disassociate_user_from_permission_group.html](https://paws-r.github.io/docs/finspacedata/disassociate_user_from_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_disassociate_user_from_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_disassociate_user_from_permission_group/) for full documentation.
 #'
 #' @param permissionGroupId &#91;required&#93; The unique identifier for the permission group.
 #' @param userId &#91;required&#93; The unique identifier for the user.
@@ -436,7 +436,7 @@ finspacedata_disassociate_user_from_permission_group <- function(permissionGroup
 #' @description
 #' Allows the specified user to access the FinSpace web application and API.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/enable_user.html](https://paws-r.github.io/docs/finspacedata/enable_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_enable_user/](https://www.paws-r-sdk.com/docs/finspacedata_enable_user/) for full documentation.
 #'
 #' @param userId &#91;required&#93; The unique identifier for the user account that you want to enable.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
@@ -466,7 +466,7 @@ finspacedata_enable_user <- function(userId, clientToken = NULL) {
 #' @description
 #' Get information about a Changeset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_changeset.html](https://paws-r.github.io/docs/finspacedata/get_changeset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_changeset/](https://www.paws-r-sdk.com/docs/finspacedata_get_changeset/) for full documentation.
 #'
 #' @param datasetId &#91;required&#93; The unique identifier for the FinSpace Dataset where the Changeset is
 #' created.
@@ -497,7 +497,7 @@ finspacedata_get_changeset <- function(datasetId, changesetId) {
 #' @description
 #' Gets information about a Dataview.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_data_view.html](https://paws-r.github.io/docs/finspacedata/get_data_view.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_data_view/](https://www.paws-r-sdk.com/docs/finspacedata_get_data_view/) for full documentation.
 #'
 #' @param dataViewId &#91;required&#93; The unique identifier for the Dataview.
 #' @param datasetId &#91;required&#93; The unique identifier for the Dataset used in the Dataview.
@@ -527,7 +527,7 @@ finspacedata_get_data_view <- function(dataViewId, datasetId) {
 #' @description
 #' Returns information about a Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_dataset.html](https://paws-r.github.io/docs/finspacedata/get_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_dataset/](https://www.paws-r-sdk.com/docs/finspacedata_get_dataset/) for full documentation.
 #'
 #' @param datasetId &#91;required&#93; The unique identifier for a Dataset.
 #'
@@ -557,7 +557,7 @@ finspacedata_get_dataset <- function(datasetId) {
 #' @description
 #' Returns the credentials to access the external Dataview from an S3 location. To call this API:
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_external_data_view_access_details.html](https://paws-r.github.io/docs/finspacedata/get_external_data_view_access_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_external_data_view_access_details/](https://www.paws-r-sdk.com/docs/finspacedata_get_external_data_view_access_details/) for full documentation.
 #'
 #' @param dataViewId &#91;required&#93; The unique identifier for the Dataview that you want to access.
 #' @param datasetId &#91;required&#93; The unique identifier for the Dataset.
@@ -587,7 +587,7 @@ finspacedata_get_external_data_view_access_details <- function(dataViewId, datas
 #' @description
 #' Retrieves the details of a specific permission group.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_permission_group.html](https://paws-r.github.io/docs/finspacedata/get_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_get_permission_group/) for full documentation.
 #'
 #' @param permissionGroupId &#91;required&#93; The unique identifier for the permission group.
 #'
@@ -616,7 +616,7 @@ finspacedata_get_permission_group <- function(permissionGroupId) {
 #' @description
 #' Request programmatic credentials to use with FinSpace SDK.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_programmatic_access_credentials.html](https://paws-r.github.io/docs/finspacedata/get_programmatic_access_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_programmatic_access_credentials/](https://www.paws-r-sdk.com/docs/finspacedata_get_programmatic_access_credentials/) for full documentation.
 #'
 #' @param durationInMinutes The time duration in which the credentials remain valid.
 #' @param environmentId &#91;required&#93; The FinSpace environment identifier.
@@ -646,7 +646,7 @@ finspacedata_get_programmatic_access_credentials <- function(durationInMinutes =
 #' @description
 #' Retrieves details for a specific user.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_user.html](https://paws-r.github.io/docs/finspacedata/get_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_user/](https://www.paws-r-sdk.com/docs/finspacedata_get_user/) for full documentation.
 #'
 #' @param userId &#91;required&#93; The unique identifier of the user to get data for.
 #'
@@ -676,7 +676,7 @@ finspacedata_get_user <- function(userId) {
 #' @description
 #' A temporary Amazon S3 location, where you can copy your files from a source location to stage or use as a scratch space in FinSpace notebook.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/get_working_location.html](https://paws-r.github.io/docs/finspacedata/get_working_location.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_get_working_location/](https://www.paws-r-sdk.com/docs/finspacedata_get_working_location/) for full documentation.
 #'
 #' @param locationType Specify the type of the working location.
 #' 
@@ -713,7 +713,7 @@ finspacedata_get_working_location <- function(locationType = NULL) {
 #' @description
 #' Lists the FinSpace Changesets for a Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_changesets.html](https://paws-r.github.io/docs/finspacedata/list_changesets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_changesets/](https://www.paws-r-sdk.com/docs/finspacedata_list_changesets/) for full documentation.
 #'
 #' @param datasetId &#91;required&#93; The unique identifier for the FinSpace Dataset to which the Changeset
 #' belongs.
@@ -745,7 +745,7 @@ finspacedata_list_changesets <- function(datasetId, maxResults = NULL, nextToken
 #' @description
 #' Lists all available Dataviews for a Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_data_views.html](https://paws-r.github.io/docs/finspacedata/list_data_views.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_data_views/](https://www.paws-r-sdk.com/docs/finspacedata_list_data_views/) for full documentation.
 #'
 #' @param datasetId &#91;required&#93; The unique identifier of the Dataset for which to retrieve Dataviews.
 #' @param nextToken A token that indicates where a results page should begin.
@@ -776,7 +776,7 @@ finspacedata_list_data_views <- function(datasetId, nextToken = NULL, maxResults
 #' @description
 #' Lists all of the active Datasets that a user has access to.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_datasets.html](https://paws-r.github.io/docs/finspacedata/list_datasets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_datasets/](https://www.paws-r-sdk.com/docs/finspacedata_list_datasets/) for full documentation.
 #'
 #' @param nextToken A token that indicates where a results page should begin.
 #' @param maxResults The maximum number of results per page.
@@ -806,7 +806,7 @@ finspacedata_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Lists all available permission groups in FinSpace.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_permission_groups.html](https://paws-r.github.io/docs/finspacedata/list_permission_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups/](https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups/) for full documentation.
 #'
 #' @param nextToken A token that indicates where a results page should begin.
 #' @param maxResults &#91;required&#93; The maximum number of results per page.
@@ -837,7 +837,7 @@ finspacedata_list_permission_groups <- function(nextToken = NULL, maxResults) {
 #' @description
 #' Lists all the permission groups that are associated with a specific user account.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_permission_groups_by_user.html](https://paws-r.github.io/docs/finspacedata/list_permission_groups_by_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups_by_user/](https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups_by_user/) for full documentation.
 #'
 #' @param userId &#91;required&#93; The unique identifier for the user.
 #' @param nextToken A token that indicates where a results page should begin.
@@ -868,7 +868,7 @@ finspacedata_list_permission_groups_by_user <- function(userId, nextToken = NULL
 #' @description
 #' Lists all available user accounts in FinSpace.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_users.html](https://paws-r.github.io/docs/finspacedata/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_users/](https://www.paws-r-sdk.com/docs/finspacedata_list_users/) for full documentation.
 #'
 #' @param nextToken A token that indicates where a results page should begin.
 #' @param maxResults &#91;required&#93; The maximum number of results per page.
@@ -898,7 +898,7 @@ finspacedata_list_users <- function(nextToken = NULL, maxResults) {
 #' @description
 #' Lists details of all the users in a specific permission group.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/list_users_by_permission_group.html](https://paws-r.github.io/docs/finspacedata/list_users_by_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_list_users_by_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_list_users_by_permission_group/) for full documentation.
 #'
 #' @param permissionGroupId &#91;required&#93; The unique identifier for the permission group.
 #' @param nextToken A token that indicates where a results page should begin.
@@ -930,7 +930,7 @@ finspacedata_list_users_by_permission_group <- function(permissionGroupId, nextT
 #' @description
 #' Resets the password for a specified user ID and generates a temporary one. Only a superuser can reset password for other users. Resetting the password immediately invalidates the previous password associated with the user.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/reset_user_password.html](https://paws-r.github.io/docs/finspacedata/reset_user_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_reset_user_password/](https://www.paws-r-sdk.com/docs/finspacedata_reset_user_password/) for full documentation.
 #'
 #' @param userId &#91;required&#93; The unique identifier of the user that a temporary password is requested
 #' for.
@@ -961,7 +961,7 @@ finspacedata_reset_user_password <- function(userId, clientToken = NULL) {
 #' @description
 #' Updates a FinSpace Changeset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/update_changeset.html](https://paws-r.github.io/docs/finspacedata/update_changeset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_update_changeset/](https://www.paws-r-sdk.com/docs/finspacedata_update_changeset/) for full documentation.
 #'
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param datasetId &#91;required&#93; The unique identifier for the FinSpace Dataset in which the Changeset is
@@ -1034,7 +1034,7 @@ finspacedata_update_changeset <- function(clientToken = NULL, datasetId, changes
 #' @description
 #' Updates a FinSpace Dataset.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/update_dataset.html](https://paws-r.github.io/docs/finspacedata/update_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_update_dataset/](https://www.paws-r-sdk.com/docs/finspacedata_update_dataset/) for full documentation.
 #'
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param datasetId &#91;required&#93; The unique identifier for the Dataset to update.
@@ -1073,7 +1073,7 @@ finspacedata_update_dataset <- function(clientToken = NULL, datasetId, datasetTi
 #' @description
 #' Modifies the details of a permission group. You cannot modify a `permissionGroupID`.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/update_permission_group.html](https://paws-r.github.io/docs/finspacedata/update_permission_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_update_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_update_permission_group/) for full documentation.
 #'
 #' @param permissionGroupId &#91;required&#93; The unique identifier for the permission group to update.
 #' @param name The name of the permission group.
@@ -1133,7 +1133,7 @@ finspacedata_update_permission_group <- function(permissionGroupId, name = NULL,
 #' @description
 #' Modifies the details of the specified user account. You cannot update the `userId` for a user.
 #'
-#' See [https://paws-r.github.io/docs/finspacedata/update_user.html](https://paws-r.github.io/docs/finspacedata/update_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/finspacedata_update_user/](https://www.paws-r-sdk.com/docs/finspacedata_update_user/) for full documentation.
 #'
 #' @param userId &#91;required&#93; The unique identifier for the user account to update.
 #' @param type The option to indicate the type of user.

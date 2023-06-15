@@ -13,6 +13,6 @@ rds_cancel_export_task(ExportTaskIdentifier)
 \description{
 Cancels an export task in progress that is exporting a snapshot or cluster to Amazon S3. Any data that has already been written to the S3 bucket isn't removed.
 
-See \url{https://paws-r.github.io/docs/rds/cancel_export_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_cancel_export_task/} for full documentation.
 }
 \keyword{internal}

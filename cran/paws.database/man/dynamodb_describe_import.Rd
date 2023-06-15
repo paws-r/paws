@@ -13,6 +13,6 @@ importing to.}
 \description{
 Represents the properties of the import.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_import/} for full documentation.
 }
 \keyword{internal}

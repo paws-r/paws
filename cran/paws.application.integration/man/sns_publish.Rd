@@ -139,6 +139,6 @@ groups might be processed out of order). Every message must include a
 \description{
 Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone number, or a message to a mobile platform endpoint (when you specify the \code{TargetArn}).
 
-See \url{https://paws-r.github.io/docs/sns/publish.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_publish/} for full documentation.
 }
 \keyword{internal}

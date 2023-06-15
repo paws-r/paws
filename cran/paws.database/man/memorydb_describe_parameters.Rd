@@ -26,6 +26,6 @@ the next page. Keep all other arguments unchanged.}
 \description{
 Returns the detailed parameter list for a particular parameter group.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_parameters/} for full documentation.
 }
 \keyword{internal}

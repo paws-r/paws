@@ -50,6 +50,6 @@ jobs whose name contains the specified string.}
 \description{
 Gets a list of labeling jobs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_labeling_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_labeling_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ invitations from.}
 \description{
 Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/delete_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_delete_invitations/} for full documentation.
 }
 \keyword{internal}

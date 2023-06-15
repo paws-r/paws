@@ -14,6 +14,6 @@ s3outposts_delete_endpoint(EndpointId, OutpostId)
 \description{
 Deletes an endpoint.
 
-See \url{https://paws-r.github.io/docs/s3outposts/delete_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3outposts_delete_endpoint/} for full documentation.
 }
 \keyword{internal}

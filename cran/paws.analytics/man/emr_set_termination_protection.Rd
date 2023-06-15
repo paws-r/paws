@@ -20,6 +20,6 @@ user intervention, or job-flow error.}
 \description{
 SetTerminationProtection locks a cluster (job flow) so the Amazon EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling \code{\link[=emr_set_termination_protection]{set_termination_protection}} on a cluster is similar to calling the Amazon EC2 \code{DisableAPITermination} API on all Amazon EC2 instances in a cluster.
 
-See \url{https://paws-r.github.io/docs/emr/set_termination_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_set_termination_protection/} for full documentation.
 }
 \keyword{internal}

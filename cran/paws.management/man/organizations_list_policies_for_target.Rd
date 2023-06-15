@@ -57,6 +57,6 @@ results.}
 \description{
 Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account. You must specify the policy type that you want included in the returned list.
 
-See \url{https://paws-r.github.io/docs/organizations/list_policies_for_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_policies_for_target/} for full documentation.
 }
 \keyword{internal}

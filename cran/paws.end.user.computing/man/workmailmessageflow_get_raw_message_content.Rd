@@ -12,6 +12,6 @@ workmailmessageflow_get_raw_message_content(messageId)
 \description{
 Retrieves the raw content of an in-transit email message, in MIME format.
 
-See \url{https://paws-r.github.io/docs/workmailmessageflow/get_raw_message_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmailmessageflow_get_raw_message_content/} for full documentation.
 }
 \keyword{internal}

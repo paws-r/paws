@@ -24,6 +24,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Cancels the deletion of a KMS key. When this operation succeeds, the key state of the KMS key is \code{Disabled}. To enable the KMS key, use \code{\link[=kms_enable_key]{enable_key}}.
 
-See \url{https://paws-r.github.io/docs/kms/cancel_key_deletion.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_cancel_key_deletion/} for full documentation.
 }
 \keyword{internal}

@@ -51,6 +51,6 @@ need tokening.}
 \description{
 Returns the list of all inference experiments.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_inference_experiments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_inference_experiments/} for full documentation.
 }
 \keyword{internal}

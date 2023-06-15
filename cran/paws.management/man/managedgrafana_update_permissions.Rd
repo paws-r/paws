@@ -15,6 +15,6 @@ managedgrafana_update_permissions(updateInstructionBatch, workspaceId)
 \description{
 Updates which users in a workspace have the Grafana \code{Admin} or \code{Editor} roles.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/update_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_update_permissions/} for full documentation.
 }
 \keyword{internal}

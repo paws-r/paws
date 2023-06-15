@@ -42,6 +42,6 @@ different account, the request fails with the HTTP status code
 \description{
 No longer used, see the \code{\link[=s3_put_bucket_notification_configuration]{put_bucket_notification_configuration}} operation.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_notification/} for full documentation.
 }
 \keyword{internal}

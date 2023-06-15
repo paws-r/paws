@@ -24,6 +24,6 @@ quicksight_search_data_sources(
 \description{
 Use the \code{\link[=quicksight_search_data_sources]{search_data_sources}} operation to search for data sources that belong to an account.
 
-See \url{https://paws-r.github.io/docs/quicksight/search_data_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_search_data_sources/} for full documentation.
 }
 \keyword{internal}

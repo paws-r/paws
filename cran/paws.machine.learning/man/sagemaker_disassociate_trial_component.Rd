@@ -14,6 +14,6 @@ sagemaker_disassociate_trial_component(TrialComponentName, TrialName)
 \description{
 Disassociates a trial component from a trial. This doesn't effect other trials the component is associated with. Before you can delete a component, you must disassociate the component from all trials it is associated with. To associate a trial component with a trial, call the \code{\link[=sagemaker_associate_trial_component]{associate_trial_component}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/disassociate_trial_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_disassociate_trial_component/} for full documentation.
 }
 \keyword{internal}

@@ -1039,6 +1039,6 @@ in the \emph{Amazon Aurora User Guide}.}
 \description{
 Creates a new DB instance.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_instance/} for full documentation.
 }
 \keyword{internal}

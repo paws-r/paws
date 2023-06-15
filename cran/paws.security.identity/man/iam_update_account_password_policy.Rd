@@ -97,6 +97,6 @@ own expired console password using the CLI or API.}
 \description{
 Updates the password policy settings for the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/iam/update_account_password_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_account_password_policy/} for full documentation.
 }
 \keyword{internal}

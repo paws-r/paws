@@ -12,6 +12,6 @@ machinelearning_delete_data_source(DataSourceId)
 \description{
 Assigns the DELETED status to a \code{DataSource}, rendering it unusable.
 
-See \url{https://paws-r.github.io/docs/machinelearning/delete_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_delete_data_source/} for full documentation.
 }
 \keyword{internal}

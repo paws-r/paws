@@ -23,6 +23,6 @@ emr_describe_job_flows(
 \description{
 This API is no longer supported and will eventually be removed. We recommend you use \code{\link[=emr_list_clusters]{list_clusters}}, \code{\link[=emr_describe_cluster]{describe_cluster}}, \code{\link[=emr_list_steps]{list_steps}}, \code{\link[=emr_list_instance_groups]{list_instance_groups}} and \code{\link[=emr_list_bootstrap_actions]{list_bootstrap_actions}} instead.
 
-See \url{https://paws-r.github.io/docs/emr/describe_job_flows.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_describe_job_flows/} for full documentation.
 }
 \keyword{internal}

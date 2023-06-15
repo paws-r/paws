@@ -22,6 +22,6 @@ before your read.}
 \description{
 The \code{\link[=simpledb_select]{select}} operation returns a set of attributes for \code{ItemNames} that match the select expression. \code{\link[=simpledb_select]{select}} is similar to the standard SQL SELECT statement.
 
-See \url{https://paws-r.github.io/docs/simpledb/select.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_select/} for full documentation.
 }
 \keyword{internal}

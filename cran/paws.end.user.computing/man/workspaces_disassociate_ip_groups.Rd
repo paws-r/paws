@@ -15,6 +15,6 @@ workspaces_disassociate_ip_groups(DirectoryId, GroupIds)
 \description{
 Disassociates the specified IP access control group from the specified directory.
 
-See \url{https://paws-r.github.io/docs/workspaces/disassociate_ip_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_disassociate_ip_groups/} for full documentation.
 }
 \keyword{internal}

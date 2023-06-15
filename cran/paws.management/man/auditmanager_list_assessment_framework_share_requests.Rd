@@ -23,6 +23,6 @@ call.}
 \description{
 Returns a list of sent or received share requests for custom frameworks in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_assessment_framework_share_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_framework_share_requests/} for full documentation.
 }
 \keyword{internal}

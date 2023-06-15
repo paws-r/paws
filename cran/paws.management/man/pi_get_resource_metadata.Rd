@@ -19,6 +19,6 @@ source. To use a DB instance as a data source, specify its
 \description{
 Retrieve the metadata for different features. For example, the metadata might indicate that a feature is turned on or off on a specific DB instance.
 
-See \url{https://paws-r.github.io/docs/pi/get_resource_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pi_get_resource_metadata/} for full documentation.
 }
 \keyword{internal}

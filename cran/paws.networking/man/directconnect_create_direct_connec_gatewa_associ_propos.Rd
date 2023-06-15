@@ -29,6 +29,6 @@ gateway.}
 \description{
 Creates a proposal to associate the specified virtual private gateway or transit gateway with the specified Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association_proposal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway_association_proposal/} for full documentation.
 }
 \keyword{internal}

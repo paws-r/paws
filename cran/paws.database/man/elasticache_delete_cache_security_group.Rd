@@ -14,6 +14,6 @@ You cannot delete the default security group.}
 \description{
 Deletes a cache security group.
 
-See \url{https://paws-r.github.io/docs/elasticache/delete_cache_security_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_cache_security_group/} for full documentation.
 }
 \keyword{internal}

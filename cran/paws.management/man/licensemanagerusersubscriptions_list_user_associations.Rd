@@ -27,6 +27,6 @@ that match one or more sets of key-value pairs that you specify.}
 \description{
 Lists user associations for an identity provider.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_user_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_user_associations/} for full documentation.
 }
 \keyword{internal}

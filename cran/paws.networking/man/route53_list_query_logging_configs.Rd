@@ -46,6 +46,6 @@ If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 \description{
 Lists the configurations for DNS query logging that are associated with the current Amazon Web Services account or the configuration that is associated with a specified hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/list_query_logging_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_query_logging_configs/} for full documentation.
 }
 \keyword{internal}

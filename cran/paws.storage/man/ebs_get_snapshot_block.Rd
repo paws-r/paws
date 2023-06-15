@@ -28,6 +28,6 @@ the data must be \code{512} KiB aligned.}
 \description{
 Returns the data in a block in an Amazon Elastic Block Store snapshot.
 
-See \url{https://paws-r.github.io/docs/ebs/get_snapshot_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ebs_get_snapshot_block/} for full documentation.
 }
 \keyword{internal}

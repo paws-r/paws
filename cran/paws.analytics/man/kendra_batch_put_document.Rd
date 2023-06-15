@@ -40,6 +40,6 @@ into Amazon Kendra, see \href{https://docs.aws.amazon.com/kendra/latest/dg/custo
 \description{
 Adds one or more documents to an index.
 
-See \url{https://paws-r.github.io/docs/kendra/batch_put_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_batch_put_document/} for full documentation.
 }
 \keyword{internal}

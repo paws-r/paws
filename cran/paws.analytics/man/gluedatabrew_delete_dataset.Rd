@@ -12,6 +12,6 @@ gluedatabrew_delete_dataset(Name)
 \description{
 Deletes a dataset from DataBrew.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_delete_dataset/} for full documentation.
 }
 \keyword{internal}

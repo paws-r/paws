@@ -54,6 +54,6 @@ different parameters, the retry fails with an
 \description{
 Creates a new version of the specified customer managed permission. The new version is automatically set as the default version of the customer managed permission. New resource shares automatically use the default permission. Existing resource shares continue to use their original permission versions, but you can use \code{\link[=ram_replace_permission_associations]{replace_permission_associations}} to update them.
 
-See \url{https://paws-r.github.io/docs/ram/create_permission_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_create_permission_version/} for full documentation.
 }
 \keyword{internal}

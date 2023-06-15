@@ -12,6 +12,6 @@ worklink_describe_device_policy_configuration(FleetArn)
 \description{
 Describes the device policy configuration for the specified fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/describe_device_policy_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_describe_device_policy_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns an inventory configuration (identified by the inventory configuration ID) from the bucket.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_inventory_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_inventory_configuration/} for full documentation.
 }
 \keyword{internal}

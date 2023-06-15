@@ -18,6 +18,6 @@ configservice_delete_aggregation_authorization(
 \description{
 Deletes the authorization granted to the specified configuration aggregator account in a specified region.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_aggregation_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_aggregation_authorization/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ configservice_delete_config_rule(ConfigRuleName)
 \description{
 Deletes the specified Config rule and all of its evaluation results.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_config_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_config_rule/} for full documentation.
 }
 \keyword{internal}

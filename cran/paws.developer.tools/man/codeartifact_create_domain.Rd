@@ -32,6 +32,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Creates a domain. CodeArtifact \emph{domains} make it easier to manage multiple repositories across an organization. You can use a domain to apply permissions across many repositories owned by different Amazon Web Services accounts. An asset is stored only once in a domain, even if it's in multiple repositories.
 
-See \url{https://paws-r.github.io/docs/codeartifact/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_create_domain/} for full documentation.
 }
 \keyword{internal}

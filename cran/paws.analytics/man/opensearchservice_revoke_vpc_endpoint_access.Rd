@@ -15,6 +15,6 @@ opensearchservice_revoke_vpc_endpoint_access(DomainName, Account)
 \description{
 Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/revoke_vpc_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_revoke_vpc_endpoint_access/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ route53resolver_get_resolver_endpoint(ResolverEndpointId)
 \description{
 Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_endpoint/} for full documentation.
 }
 \keyword{internal}

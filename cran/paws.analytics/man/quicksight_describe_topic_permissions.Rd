@@ -16,6 +16,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Describes the permissions of a topic.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_topic_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_topic_permissions/} for full documentation.
 }
 \keyword{internal}

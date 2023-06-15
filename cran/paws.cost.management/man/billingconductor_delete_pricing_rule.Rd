@@ -14,6 +14,6 @@ deleting.}
 \description{
 Deletes the pricing rule that's identified by the input Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/billingconductor/delete_pricing_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_delete_pricing_rule/} for full documentation.
 }
 \keyword{internal}

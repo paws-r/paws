@@ -12,6 +12,6 @@ ssm_start_associations_once(AssociationIds)
 \description{
 Runs an association immediately and only one time. This operation can be helpful when troubleshooting associations.
 
-See \url{https://paws-r.github.io/docs/ssm/start_associations_once.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_start_associations_once/} for full documentation.
 }
 \keyword{internal}

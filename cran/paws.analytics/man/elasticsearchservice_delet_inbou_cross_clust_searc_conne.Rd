@@ -15,6 +15,6 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection(
 \description{
 Allows the destination domain owner to delete an existing inbound cross-cluster search connection.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/delete_inbound_cross_cluster_search_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_inbound_cross_cluster_search_connection/} for full documentation.
 }
 \keyword{internal}

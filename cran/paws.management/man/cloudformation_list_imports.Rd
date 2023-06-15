@@ -17,6 +17,6 @@ importing the specified exported output value.}
 \description{
 Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first use this action to see which stacks are using it. To see the exported output values in your account, see \code{\link[=cloudformation_list_exports]{list_exports}}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_imports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_imports/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about the settings for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_application_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_application_settings/} for full documentation.
 }
 \keyword{internal}

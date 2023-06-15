@@ -17,6 +17,6 @@ the mesh with your account. For more information about mesh sharing, see
 \description{
 Describes an existing service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/describe_mesh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_describe_mesh/} for full documentation.
 }
 \keyword{internal}

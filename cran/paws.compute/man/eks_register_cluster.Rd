@@ -28,6 +28,6 @@ resources associated with the cluster.}
 \description{
 Connects a Kubernetes cluster to the Amazon EKS control plane.
 
-See \url{https://paws-r.github.io/docs/eks/register_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_register_cluster/} for full documentation.
 }
 \keyword{internal}

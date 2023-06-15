@@ -8,7 +8,7 @@ NULL
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/add_tags_to_resource.html](https://paws-r.github.io/docs/cloudhsm/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/cloudhsm_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
 #' @param TagList &#91;required&#93; One or more tags.
@@ -38,7 +38,7 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/create_hapg.html](https://paws-r.github.io/docs/cloudhsm/create_hapg.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_create_hapg/](https://www.paws-r-sdk.com/docs/cloudhsm_create_hapg/) for full documentation.
 #'
 #' @param Label &#91;required&#93; The label of the new high-availability partition group.
 #'
@@ -67,7 +67,7 @@ cloudhsm_create_hapg <- function(Label) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/create_hsm.html](https://paws-r.github.io/docs/cloudhsm/create_hsm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_create_hsm/](https://www.paws-r-sdk.com/docs/cloudhsm_create_hsm/) for full documentation.
 #'
 #' @param SubnetId &#91;required&#93; The identifier of the subnet in your VPC in which to place the HSM.
 #' @param SshKey &#91;required&#93; The SSH public key to install on the HSM.
@@ -109,7 +109,7 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/create_luna_client.html](https://paws-r.github.io/docs/cloudhsm/create_luna_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_create_luna_client/](https://www.paws-r-sdk.com/docs/cloudhsm_create_luna_client/) for full documentation.
 #'
 #' @param Label The label for the client.
 #' @param Certificate &#91;required&#93; The contents of a Base64-Encoded X.509 v3 certificate to be installed on
@@ -140,7 +140,7 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/delete_hapg.html](https://paws-r.github.io/docs/cloudhsm/delete_hapg.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_delete_hapg/](https://www.paws-r-sdk.com/docs/cloudhsm_delete_hapg/) for full documentation.
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to delete.
 #'
@@ -169,7 +169,7 @@ cloudhsm_delete_hapg <- function(HapgArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/delete_hsm.html](https://paws-r.github.io/docs/cloudhsm/delete_hsm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_delete_hsm/](https://www.paws-r-sdk.com/docs/cloudhsm_delete_hsm/) for full documentation.
 #'
 #' @param HsmArn &#91;required&#93; The ARN of the HSM to delete.
 #'
@@ -198,7 +198,7 @@ cloudhsm_delete_hsm <- function(HsmArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/delete_luna_client.html](https://paws-r.github.io/docs/cloudhsm/delete_luna_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_delete_luna_client/](https://www.paws-r-sdk.com/docs/cloudhsm_delete_luna_client/) for full documentation.
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client to delete.
 #'
@@ -227,7 +227,7 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/describe_hapg.html](https://paws-r.github.io/docs/cloudhsm/describe_hapg.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_describe_hapg/](https://www.paws-r-sdk.com/docs/cloudhsm_describe_hapg/) for full documentation.
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to describe.
 #'
@@ -256,7 +256,7 @@ cloudhsm_describe_hapg <- function(HapgArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/describe_hsm.html](https://paws-r.github.io/docs/cloudhsm/describe_hsm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_describe_hsm/](https://www.paws-r-sdk.com/docs/cloudhsm_describe_hsm/) for full documentation.
 #'
 #' @param HsmArn The ARN of the HSM. Either the `HsmArn` or the `SerialNumber` parameter
 #' must be specified.
@@ -288,7 +288,7 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/describe_luna_client.html](https://paws-r.github.io/docs/cloudhsm/describe_luna_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_describe_luna_client/](https://www.paws-r-sdk.com/docs/cloudhsm_describe_luna_client/) for full documentation.
 #'
 #' @param ClientArn The ARN of the client.
 #' @param CertificateFingerprint The certificate fingerprint.
@@ -318,7 +318,7 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/get_config.html](https://paws-r.github.io/docs/cloudhsm/get_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_get_config/](https://www.paws-r-sdk.com/docs/cloudhsm_get_config/) for full documentation.
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client.
 #' @param ClientVersion &#91;required&#93; The client version.
@@ -350,7 +350,7 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/list_available_zones.html](https://paws-r.github.io/docs/cloudhsm/list_available_zones.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_list_available_zones/](https://www.paws-r-sdk.com/docs/cloudhsm_list_available_zones/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -377,7 +377,7 @@ cloudhsm_list_available_zones <- function() {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/list_hapgs.html](https://paws-r.github.io/docs/cloudhsm/list_hapgs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_list_hapgs/](https://www.paws-r-sdk.com/docs/cloudhsm_list_hapgs/) for full documentation.
 #'
 #' @param NextToken The `NextToken` value from a previous call to
 #' [`list_hapgs`][cloudhsm_list_hapgs]. Pass null if this is the first
@@ -408,7 +408,7 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/list_hsms.html](https://paws-r.github.io/docs/cloudhsm/list_hsms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_list_hsms/](https://www.paws-r-sdk.com/docs/cloudhsm_list_hsms/) for full documentation.
 #'
 #' @param NextToken The `NextToken` value from a previous call to
 #' [`list_hsms`][cloudhsm_list_hsms]. Pass null if this is the first call.
@@ -438,7 +438,7 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/list_luna_clients.html](https://paws-r.github.io/docs/cloudhsm/list_luna_clients.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_list_luna_clients/](https://www.paws-r-sdk.com/docs/cloudhsm_list_luna_clients/) for full documentation.
 #'
 #' @param NextToken The `NextToken` value from a previous call to
 #' [`list_luna_clients`][cloudhsm_list_luna_clients]. Pass null if this is
@@ -469,7 +469,7 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudhsm/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cloudhsm_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
 #'
@@ -498,7 +498,7 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/modify_hapg.html](https://paws-r.github.io/docs/cloudhsm/modify_hapg.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_modify_hapg/](https://www.paws-r-sdk.com/docs/cloudhsm_modify_hapg/) for full documentation.
 #'
 #' @param HapgArn &#91;required&#93; The ARN of the high-availability partition group to modify.
 #' @param Label The new label for the high-availability partition group.
@@ -530,7 +530,7 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/modify_hsm.html](https://paws-r.github.io/docs/cloudhsm/modify_hsm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_modify_hsm/](https://www.paws-r-sdk.com/docs/cloudhsm_modify_hsm/) for full documentation.
 #'
 #' @param HsmArn &#91;required&#93; The ARN of the HSM to modify.
 #' @param SubnetId The new identifier of the subnet that the HSM is in. The new subnet must
@@ -571,7 +571,7 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/modify_luna_client.html](https://paws-r.github.io/docs/cloudhsm/modify_luna_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_modify_luna_client/](https://www.paws-r-sdk.com/docs/cloudhsm_modify_luna_client/) for full documentation.
 #'
 #' @param ClientArn &#91;required&#93; The ARN of the client.
 #' @param Certificate &#91;required&#93; The new certificate for the client.
@@ -601,7 +601,7 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more information, see [AWS CloudHSM Classic FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic User Guide, and the [AWS CloudHSM Classic API Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #'
-#' See [https://paws-r.github.io/docs/cloudhsm/remove_tags_from_resource.html](https://paws-r.github.io/docs/cloudhsm/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsm_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/cloudhsm_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS CloudHSM resource.
 #' @param TagKeyList &#91;required&#93; The tag key or keys to remove.

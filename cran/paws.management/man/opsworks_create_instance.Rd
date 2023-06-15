@@ -144,6 +144,6 @@ information about dedicated instances, see \href{https://docs.aws.amazon.com/vpc
 \description{
 Creates an instance in a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{Adding an Instance to a Layer}.
 
-See \url{https://paws-r.github.io/docs/opsworks/create_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_create_instance/} for full documentation.
 }
 \keyword{internal}

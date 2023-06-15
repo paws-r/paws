@@ -24,6 +24,6 @@ Services administrator credentials to access the API.}
 \description{
 Creates a set of permissions for the specified folder or document. The resource permissions are overwritten if the principals already have different permissions.
 
-See \url{https://paws-r.github.io/docs/workdocs/add_resource_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_add_resource_permissions/} for full documentation.
 }
 \keyword{internal}

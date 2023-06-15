@@ -38,6 +38,6 @@ Example: \code{my-option-group}}
 \description{
 Copies the specified option group.
 
-See \url{https://paws-r.github.io/docs/rds/copy_option_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_copy_option_group/} for full documentation.
 }
 \keyword{internal}

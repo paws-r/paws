@@ -5,17 +5,23 @@
 \title{Returns metadata about a query, including query run time in
 milliseconds, number of events scanned and matched, and query status}
 \usage{
-cloudtrail_describe_query(EventDataStore = NULL, QueryId)
+cloudtrail_describe_query(
+  EventDataStore = NULL,
+  QueryId = NULL,
+  QueryAlias = NULL
+)
 }
 \arguments{
 \item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which
 the specified query was run.}
 
-\item{QueryId}{[required] The query ID.}
+\item{QueryId}{The query ID.}
+
+\item{QueryAlias}{The alias that identifies a query template.}
 }
 \description{
-Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. You must specify an ARN for \code{EventDataStore}, and a value for \code{QueryID}.
+Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/describe_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_describe_query/} for full documentation.
 }
 \keyword{internal}

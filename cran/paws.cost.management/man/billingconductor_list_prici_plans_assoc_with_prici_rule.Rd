@@ -24,6 +24,6 @@ be listed.}
 \description{
 A list of the pricing plans that are associated with a pricing rule.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_pricing_plans_associated_with_pricing_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_plans_associated_with_pricing_rule/} for full documentation.
 }
 \keyword{internal}

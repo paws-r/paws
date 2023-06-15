@@ -39,6 +39,6 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of \code{DBParameterGroup} descriptions. If a \code{DBParameterGroupName} is specified, the list will contain only the description of the specified DB parameter group.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_parameter_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_parameter_groups/} for full documentation.
 }
 \keyword{internal}

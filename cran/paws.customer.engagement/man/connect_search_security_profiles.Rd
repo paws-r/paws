@@ -36,6 +36,6 @@ The currently supported value for \code{FieldName}: \code{name}}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/search_security_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_search_security_profiles/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ locationservice_describe_tracker(TrackerName)
 \description{
 Retrieves the tracker resource details.
 
-See \url{https://paws-r.github.io/docs/locationservice/describe_tracker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_tracker/} for full documentation.
 }
 \keyword{internal}

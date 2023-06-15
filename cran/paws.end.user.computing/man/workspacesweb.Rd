@@ -65,12 +65,14 @@ images.
 
 \tabular{ll}{
 \link[=workspacesweb_associate_browser_settings]{associate_browser_settings} \tab Associates a browser settings resource with a web portal\cr
+\link[=workspacesweb_associate_ip_access_settings]{associate_ip_access_settings} \tab Associates an IP access settings resource with a web portal\cr
 \link[=workspacesweb_associate_network_settings]{associate_network_settings} \tab Associates a network settings resource with a web portal\cr
 \link[=workspacesweb_associate_trust_store]{associate_trust_store} \tab Associates a trust store with a web portal\cr
 \link[=workspacesweb_associate_user_access_logging_settings]{associate_user_access_logging_settings} \tab Associates a user access logging settings resource with a web portal\cr
 \link[=workspacesweb_associate_user_settings]{associate_user_settings} \tab Associates a user settings resource with a web portal\cr
 \link[=workspacesweb_create_browser_settings]{create_browser_settings} \tab Creates a browser settings resource that can be associated with a web portal\cr
 \link[=workspacesweb_create_identity_provider]{create_identity_provider} \tab Creates an identity provider resource that is then associated with a web portal\cr
+\link[=workspacesweb_create_ip_access_settings]{create_ip_access_settings} \tab Creates an IP access settings resource that can be associated with a web portal\cr
 \link[=workspacesweb_create_network_settings]{create_network_settings} \tab Creates a network settings resource that can be associated with a web portal\cr
 \link[=workspacesweb_create_portal]{create_portal} \tab Creates a web portal\cr
 \link[=workspacesweb_create_trust_store]{create_trust_store} \tab Creates a trust store that can be associated with a web portal\cr
@@ -78,18 +80,21 @@ images.
 \link[=workspacesweb_create_user_settings]{create_user_settings} \tab Creates a user settings resource that can be associated with a web portal\cr
 \link[=workspacesweb_delete_browser_settings]{delete_browser_settings} \tab Deletes browser settings\cr
 \link[=workspacesweb_delete_identity_provider]{delete_identity_provider} \tab Deletes the identity provider\cr
+\link[=workspacesweb_delete_ip_access_settings]{delete_ip_access_settings} \tab Deletes IP access settings\cr
 \link[=workspacesweb_delete_network_settings]{delete_network_settings} \tab Deletes network settings\cr
 \link[=workspacesweb_delete_portal]{delete_portal} \tab Deletes a web portal\cr
 \link[=workspacesweb_delete_trust_store]{delete_trust_store} \tab Deletes the trust store\cr
 \link[=workspacesweb_delete_user_access_logging_settings]{delete_user_access_logging_settings} \tab Deletes user access logging settings\cr
 \link[=workspacesweb_delete_user_settings]{delete_user_settings} \tab Deletes user settings\cr
 \link[=workspacesweb_disassociate_browser_settings]{disassociate_browser_settings} \tab Disassociates browser settings from a web portal\cr
+\link[=workspacesweb_disassociate_ip_access_settings]{disassociate_ip_access_settings} \tab Disassociates IP access settings from a web portal\cr
 \link[=workspacesweb_disassociate_network_settings]{disassociate_network_settings} \tab Disassociates network settings from a web portal\cr
 \link[=workspacesweb_disassociate_trust_store]{disassociate_trust_store} \tab Disassociates a trust store from a web portal\cr
 \link[=workspacesweb_disassociate_user_access_logging_settings]{disassociate_user_access_logging_settings} \tab Disassociates user access logging settings from a web portal\cr
 \link[=workspacesweb_disassociate_user_settings]{disassociate_user_settings} \tab Disassociates user settings from a web portal\cr
 \link[=workspacesweb_get_browser_settings]{get_browser_settings} \tab Gets browser settings\cr
 \link[=workspacesweb_get_identity_provider]{get_identity_provider} \tab Gets the identity provider\cr
+\link[=workspacesweb_get_ip_access_settings]{get_ip_access_settings} \tab Gets the IP access settings\cr
 \link[=workspacesweb_get_network_settings]{get_network_settings} \tab Gets the network settings\cr
 \link[=workspacesweb_get_portal]{get_portal} \tab Gets the web portal\cr
 \link[=workspacesweb_get_portal_service_provider_metadata]{get_portal_service_provider_metadata} \tab Gets the service provider metadata\cr
@@ -99,6 +104,7 @@ images.
 \link[=workspacesweb_get_user_settings]{get_user_settings} \tab Gets user settings\cr
 \link[=workspacesweb_list_browser_settings]{list_browser_settings} \tab Retrieves a list of browser settings\cr
 \link[=workspacesweb_list_identity_providers]{list_identity_providers} \tab Retrieves a list of identity providers for a specific web portal\cr
+\link[=workspacesweb_list_ip_access_settings]{list_ip_access_settings} \tab Retrieves a list of IP access settings\cr
 \link[=workspacesweb_list_network_settings]{list_network_settings} \tab Retrieves a list of network settings\cr
 \link[=workspacesweb_list_portals]{list_portals} \tab Retrieves a list or web portals\cr
 \link[=workspacesweb_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
@@ -110,6 +116,7 @@ images.
 \link[=workspacesweb_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 \link[=workspacesweb_update_browser_settings]{update_browser_settings} \tab Updates browser settings\cr
 \link[=workspacesweb_update_identity_provider]{update_identity_provider} \tab Updates the identity provider\cr
+\link[=workspacesweb_update_ip_access_settings]{update_ip_access_settings} \tab Updates IP access settings\cr
 \link[=workspacesweb_update_network_settings]{update_network_settings} \tab Updates network settings\cr
 \link[=workspacesweb_update_portal]{update_portal} \tab Updates a web portal\cr
 \link[=workspacesweb_update_trust_store]{update_trust_store} \tab Updates the trust store\cr

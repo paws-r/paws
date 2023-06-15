@@ -14,6 +14,6 @@ auditmanager_untag_resource(resourceArn, tagKeys)
 \description{
 Removes a tag from a resource in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_untag_resource/} for full documentation.
 }
 \keyword{internal}

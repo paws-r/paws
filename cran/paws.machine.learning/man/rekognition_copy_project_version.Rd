@@ -53,6 +53,6 @@ service are encrypted using a key that AWS owns and manages.}
 \description{
 Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project. The source and destination projects can be in different AWS accounts but must be in the same AWS Region. You can't copy a model to another AWS service.
 
-See \url{https://paws-r.github.io/docs/rekognition/copy_project_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_copy_project_version/} for full documentation.
 }
 \keyword{internal}

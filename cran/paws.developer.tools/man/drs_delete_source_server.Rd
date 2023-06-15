@@ -12,6 +12,6 @@ drs_delete_source_server(sourceServerID)
 \description{
 Deletes a single Source Server by ID. The Source Server must be disconnected first.
 
-See \url{https://paws-r.github.io/docs/drs/delete_source_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_delete_source_server/} for full documentation.
 }
 \keyword{internal}

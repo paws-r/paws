@@ -12,6 +12,6 @@ sagemaker_delete_device_fleet(DeviceFleetName)
 \description{
 Deletes a fleet.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_device_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_device_fleet/} for full documentation.
 }
 \keyword{internal}

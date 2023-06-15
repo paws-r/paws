@@ -241,6 +241,6 @@ target Availability Zone.}
 \description{
 Modifies the settings for a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -47,6 +47,6 @@ specified.}
 \description{
 Describes the specified placement groups or all of your placement groups. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_placement_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_placement_groups/} for full documentation.
 }
 \keyword{internal}

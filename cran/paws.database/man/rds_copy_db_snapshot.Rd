@@ -172,6 +172,6 @@ can be copied only with cross-account snapshot copy calls.}
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the \code{available} state.
 
-See \url{https://paws-r.github.io/docs/rds/copy_db_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_copy_db_snapshot/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ kinesisanalyticsv2_create_application_snapshot(ApplicationName, SnapshotName)
 \description{
 Creates a snapshot of the application's state data.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application_snapshot/} for full documentation.
 }
 \keyword{internal}

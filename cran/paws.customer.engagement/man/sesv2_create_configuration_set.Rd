@@ -43,6 +43,6 @@ the configuration set.}
 \description{
 Create a configuration set. \emph{Configuration sets} are groups of rules that you can apply to the emails that you send. You apply a configuration set to an email by specifying the name of the configuration set when you call the Amazon SES API v2. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
 
-See \url{https://paws-r.github.io/docs/sesv2/create_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_configuration_set/} for full documentation.
 }
 \keyword{internal}

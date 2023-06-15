@@ -75,6 +75,6 @@ resource share.}
 \description{
 Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
 
-See \url{https://paws-r.github.io/docs/ram/create_resource_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_create_resource_share/} for full documentation.
 }
 \keyword{internal}

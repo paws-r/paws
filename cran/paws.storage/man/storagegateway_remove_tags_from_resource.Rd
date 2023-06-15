@@ -16,6 +16,6 @@ tag is composed of a key-value pair.}
 \description{
 Removes one or more tags from the specified resource. This operation is supported in storage gateways of all types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/remove_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_remove_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

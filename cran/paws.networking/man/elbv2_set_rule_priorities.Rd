@@ -12,6 +12,6 @@ elbv2_set_rule_priorities(RulePriorities)
 \description{
 Sets the priorities of the specified rules.
 
-See \url{https://paws-r.github.io/docs/elbv2/set_rule_priorities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_set_rule_priorities/} for full documentation.
 }
 \keyword{internal}

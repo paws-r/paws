@@ -15,6 +15,6 @@ policy to delete.}
 \description{
 Deletes a resource-based policy that is attached to a custom model.
 
-See \url{https://paws-r.github.io/docs/comprehend/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

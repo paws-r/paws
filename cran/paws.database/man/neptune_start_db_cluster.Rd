@@ -15,6 +15,6 @@ parameter is stored as a lowercase string.}
 \description{
 Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API.
 
-See \url{https://paws-r.github.io/docs/neptune/start_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_start_db_cluster/} for full documentation.
 }
 \keyword{internal}

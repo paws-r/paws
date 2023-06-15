@@ -23,6 +23,6 @@ and groups.}
 \description{
 Returns a list of all user or group session mappings for the Amazon EMR Studio specified by \code{StudioId}.
 
-See \url{https://paws-r.github.io/docs/emr/list_studio_session_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_studio_session_mappings/} for full documentation.
 }
 \keyword{internal}

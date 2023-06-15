@@ -30,6 +30,6 @@ request.}
 \description{
 Gets information about the latest version for every traffic policy that is associated with the current Amazon Web Services account. Policies are listed in the order that they were created in.
 
-See \url{https://paws-r.github.io/docs/route53/list_traffic_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_traffic_policies/} for full documentation.
 }
 \keyword{internal}

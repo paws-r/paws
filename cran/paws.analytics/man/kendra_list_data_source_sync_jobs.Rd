@@ -35,6 +35,6 @@ specified status.}
 \description{
 Gets statistics about synchronizing a data source connector.
 
-See \url{https://paws-r.github.io/docs/kendra/list_data_source_sync_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_data_source_sync_jobs/} for full documentation.
 }
 \keyword{internal}

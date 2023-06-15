@@ -27,6 +27,6 @@ authentication settings.}
 \description{
 Registers a certificate for a secure LDAP or client certificate authentication.
 
-See \url{https://paws-r.github.io/docs/directoryservice/register_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_register_certificate/} for full documentation.
 }
 \keyword{internal}

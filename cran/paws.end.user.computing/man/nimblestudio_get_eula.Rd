@@ -12,6 +12,6 @@ nimblestudio_get_eula(eulaId)
 \description{
 Get EULA.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_eula.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_eula/} for full documentation.
 }
 \keyword{internal}

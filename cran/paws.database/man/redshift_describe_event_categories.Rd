@@ -17,6 +17,6 @@ cluster-security-group, and scheduled-action.}
 \description{
 Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html}{Amazon Redshift Event Notifications}.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_event_categories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_event_categories/} for full documentation.
 }
 \keyword{internal}

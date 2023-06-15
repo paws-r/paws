@@ -42,6 +42,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Creates a friendly name for a KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/create_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_create_alias/} for full documentation.
 }
 \keyword{internal}

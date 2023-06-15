@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/associate_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/associate_firewall_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_associate_firewall_rule_group/](https://www.paws-r-sdk.com/docs/route53resolver_associate_firewall_rule_group/) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
@@ -63,7 +63,7 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
 #' @description
 #' Adds IP addresses to an inbound or an outbound Resolver endpoint. If you want to add more than one IP address, submit one [`associate_resolver_endpoint_ip_address`][route53resolver_associate_resolver_endpoint_ip_address] request for each IP address.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/associate_resolver_endpoint_ip_address.html](https://paws-r.github.io/docs/route53resolver/associate_resolver_endpoint_ip_address.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_endpoint_ip_address/](https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_endpoint_ip_address/) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to associate IP addresses
 #' with.
@@ -96,7 +96,7 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #' @description
 #' Associates an Amazon VPC with a specified query logging configuration. Route 53 Resolver logs DNS queries that originate in all of the Amazon VPCs that are associated with a specified query logging configuration. To associate more than one VPC with a configuration, submit one [`associate_resolver_query_log_config`][route53resolver_associate_resolver_query_log_config] request for each VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/associate_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/associate_resolver_query_log_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_query_log_config/](https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_query_log_config/) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to associate a
 #' VPC with.
@@ -130,7 +130,7 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' @description
 #' Associates a Resolver rule with a VPC. When you associate a rule with a VPC, Resolver forwards all DNS queries for the domain name that is specified in the rule and that originate in the VPC. The queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For more information about rules, see [`create_resolver_rule`][route53resolver_create_resolver_rule].
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/associate_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/associate_resolver_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_rule/](https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_rule/) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to associate with the VPC. To
 #' list the existing Resolver rules, use
@@ -164,7 +164,7 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #' @description
 #' Creates an empty firewall domain list for use in DNS Firewall rules. You can populate the domains for the new list with a file, using [`import_firewall_domains`][route53resolver_import_firewall_domains], or with domain strings, using [`update_firewall_domains`][route53resolver_update_firewall_domains].
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/create_firewall_domain_list.html](https://paws-r.github.io/docs/route53resolver/create_firewall_domain_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_domain_list/](https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_domain_list/) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows you to retry
 #' failed requests without the risk of running the operation twice.
@@ -200,7 +200,7 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @description
 #' Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/create_firewall_rule.html](https://paws-r.github.io/docs/route53resolver/create_firewall_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_rule/](https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_rule/) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows you to retry
 #' failed requests without the risk of running the operation twice.
@@ -283,7 +283,7 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
 #' @description
 #' Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC. You can add rules to the new rule group by calling [`create_firewall_rule`][route53resolver_create_firewall_rule].
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/create_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/create_firewall_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_rule_group/](https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_rule_group/) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string defined by you to identify the request. This allows you
 #' to retry failed requests without the risk of running the operation
@@ -317,7 +317,7 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #' @description
 #' Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/create_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/create_resolver_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_endpoint/](https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_endpoint/) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
@@ -373,7 +373,7 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' @description
 #' Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs. Resolver can log queries only for VPCs that are in the same Region as the query logging configuration.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/create_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/create_resolver_query_log_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_query_log_config/](https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_query_log_config/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name that you want to give the query logging configuration.
 #' @param DestinationArn &#91;required&#93; The ARN of the resource that you want Resolver to send query logs. You
@@ -431,7 +431,7 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' @description
 #' For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/create_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/create_resolver_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_rule/](https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_rule/) for full documentation.
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
@@ -493,7 +493,7 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 #' @description
 #' Deletes the specified domain list.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/delete_firewall_domain_list.html](https://paws-r.github.io/docs/route53resolver/delete_firewall_domain_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_domain_list/](https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_domain_list/) for full documentation.
 #'
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that you want to delete.
 #'
@@ -522,7 +522,7 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' @description
 #' Deletes the specified firewall rule.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/delete_firewall_rule.html](https://paws-r.github.io/docs/route53resolver/delete_firewall_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule/](https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule/) for full documentation.
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to delete
 #' the rule from.
@@ -553,7 +553,7 @@ route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
 #' @description
 #' Deletes the specified firewall rule group.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/delete_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/delete_firewall_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule_group/](https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule_group/) for full documentation.
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to
 #' delete.
@@ -583,7 +583,7 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
 #' @description
 #' Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint depends on whether it's an inbound or an outbound Resolver endpoint:
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/delete_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/delete_resolver_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_endpoint/](https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_endpoint/) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to delete.
 #'
@@ -612,7 +612,7 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 #' @description
 #' Deletes a query logging configuration. When you delete a configuration, Resolver stops logging DNS queries for all of the Amazon VPCs that are associated with the configuration. This also applies if the query logging configuration is shared with other Amazon Web Services accounts, and the other accounts have associated VPCs with the shared configuration.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/delete_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/delete_resolver_query_log_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_query_log_config/](https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_query_log_config/) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to delete.
 #'
@@ -641,7 +641,7 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #' @description
 #' Deletes a Resolver rule. Before you can delete a Resolver rule, you must disassociate it from all the VPCs that you associated the Resolver rule with. For more information, see [`disassociate_resolver_rule`][route53resolver_disassociate_resolver_rule].
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/delete_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/delete_resolver_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_rule/](https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_rule/) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to delete.
 #'
@@ -671,7 +671,7 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 #' @description
 #' Disassociates a FirewallRuleGroup from a VPC, to remove DNS filtering from the VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/disassociate_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/disassociate_firewall_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_disassociate_firewall_rule_group/](https://www.paws-r-sdk.com/docs/route53resolver_disassociate_firewall_rule_group/) for full documentation.
 #'
 #' @param FirewallRuleGroupAssociationId &#91;required&#93; The identifier of the FirewallRuleGroupAssociation.
 #'
@@ -700,7 +700,7 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
 #' @description
 #' Removes IP addresses from an inbound or an outbound Resolver endpoint. If you want to remove more than one IP address, submit one [`disassociate_resolver_endpoint_ip_address`][route53resolver_disassociate_resolver_endpoint_ip_address] request for each IP address.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/disassociate_resolver_endpoint_ip_address.html](https://paws-r.github.io/docs/route53resolver/disassociate_resolver_endpoint_ip_address.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_endpoint_ip_address/](https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_endpoint_ip_address/) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to disassociate an IP
 #' address from.
@@ -731,7 +731,7 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 #' @description
 #' Disassociates a VPC from a query logging configuration.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/disassociate_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/disassociate_resolver_query_log_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_query_log_config/](https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_query_log_config/) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the query logging configuration that you want to disassociate
 #' a specified VPC from.
@@ -764,7 +764,7 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
 #' @description
 #' Removes the association between a specified Resolver rule and a specified VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/disassociate_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/disassociate_resolver_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_rule/](https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_rule/) for full documentation.
 #'
 #' @param VPCId &#91;required&#93; The ID of the VPC that you want to disassociate the Resolver rule from.
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to disassociate from the
@@ -796,7 +796,7 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 #' @description
 #' Retrieves the configuration of the firewall behavior provided by DNS Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_config.html](https://paws-r.github.io/docs/route53resolver/get_firewall_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_config/](https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_config/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the VPC from Amazon VPC that the configuration is for.
 #'
@@ -825,7 +825,7 @@ route53resolver_get_firewall_config <- function(ResourceId) {
 #' @description
 #' Retrieves the specified firewall domain list.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_domain_list.html](https://paws-r.github.io/docs/route53resolver/get_firewall_domain_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_domain_list/](https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_domain_list/) for full documentation.
 #'
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list.
 #'
@@ -854,7 +854,7 @@ route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
 #' @description
 #' Retrieves the specified firewall rule group.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group.html](https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group/](https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group/) for full documentation.
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group.
 #'
@@ -884,7 +884,7 @@ route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
 #' @description
 #' Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule group. A VPC can have more than one firewall rule group association, and a rule group can be associated with more than one VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_association.html](https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group_association/](https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group_association/) for full documentation.
 #'
 #' @param FirewallRuleGroupAssociationId &#91;required&#93; The identifier of the FirewallRuleGroupAssociation.
 #'
@@ -914,7 +914,7 @@ route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGrou
 #' @description
 #' Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_policy.html](https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group_policy/](https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group_policy/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN (Amazon Resource Name) for the rule group.
 #'
@@ -944,7 +944,7 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
 #' @description
 #' Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_config/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_config/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Resource ID of the Amazon VPC that you want to get information about.
 #'
@@ -973,7 +973,7 @@ route53resolver_get_resolver_config <- function(ResourceId) {
 #' @description
 #' Gets DNSSEC validation information for a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_dnssec_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_dnssec_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_dnssec_config/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_dnssec_config/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) for the DNSSEC validation
 #' status.
@@ -1005,7 +1005,7 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #' @description
 #' Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/get_resolver_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_endpoint/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_endpoint/) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get information about.
 #'
@@ -1036,7 +1036,7 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
 #' @description
 #' Gets information about a specified Resolver query logging configuration, such as the number of VPCs that the configuration is logging queries for and the location that logs are sent to.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config/) for full documentation.
 #'
 #' @param ResolverQueryLogConfigId &#91;required&#93; The ID of the Resolver query logging configuration that you want to get
 #' information about.
@@ -1067,7 +1067,7 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
 #' @description
 #' Gets information about a specified association between a Resolver query logging configuration and an Amazon VPC. When you associate a VPC with a query logging configuration, Resolver logs DNS queries that originate in that VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_association.html](https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config_association/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config_association/) for full documentation.
 #'
 #' @param ResolverQueryLogConfigAssociationId &#91;required&#93; The ID of the Resolver query logging configuration association that you
 #' want to get information about.
@@ -1097,7 +1097,7 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
 #' @description
 #' Gets information about a query logging policy. A query logging policy specifies the Resolver query logging operations and resources that you want to allow another Amazon Web Services account to be able to use.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_policy.html](https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config_policy/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config_policy/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the query logging configuration that you want to get the
 #' query logging policy for.
@@ -1129,7 +1129,7 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #' @description
 #' Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound Resolver endpoint that the rule is associated with.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/get_resolver_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule/) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to get information about.
 #'
@@ -1159,7 +1159,7 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 #' @description
 #' Gets information about an association between a specified Resolver rule and a VPC. You associate a Resolver rule and a VPC using [`associate_resolver_rule`][route53resolver_associate_resolver_rule].
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_rule_association.html](https://paws-r.github.io/docs/route53resolver/get_resolver_rule_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule_association/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule_association/) for full documentation.
 #'
 #' @param ResolverRuleAssociationId &#91;required&#93; The ID of the Resolver rule association that you want to get information
 #' about.
@@ -1189,7 +1189,7 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
 #' @description
 #' Gets information about the Resolver rule policy for a specified rule. A Resolver rule policy includes the rule that you want to share with another account, the account that you want to share the rule with, and the Resolver operations that you want to allow the account to use.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/get_resolver_rule_policy.html](https://paws-r.github.io/docs/route53resolver/get_resolver_rule_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule_policy/](https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule_policy/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ID of the Resolver rule that you want to get the Resolver rule
 #' policy for.
@@ -1220,7 +1220,7 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' @description
 #' Imports domain names from a file into a domain list, for use in a DNS firewall rule group.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/import_firewall_domains.html](https://paws-r.github.io/docs/route53resolver/import_firewall_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_import_firewall_domains/](https://www.paws-r-sdk.com/docs/route53resolver_import_firewall_domains/) for full documentation.
 #'
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that you want to modify with the import
 #' operation.
@@ -1259,7 +1259,7 @@ route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operat
 #' @description
 #' Retrieves the firewall configurations that you have defined. DNS Firewall uses the configurations to manage firewall behavior for your VPCs.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_configs.html](https://paws-r.github.io/docs/route53resolver/list_firewall_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_configs/](https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_configs/) for full documentation.
 #'
 #' @param MaxResults The maximum number of objects that you want Resolver to return for this
 #' request. If more objects are available, in the response, Resolver
@@ -1301,7 +1301,7 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
 #' @description
 #' Retrieves the firewall domain lists that you have defined. For each firewall domain list, you can retrieve the domains that are defined for a list by calling [`list_firewall_domains`][route53resolver_list_firewall_domains].
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_domain_lists.html](https://paws-r.github.io/docs/route53resolver/list_firewall_domain_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_domain_lists/](https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_domain_lists/) for full documentation.
 #'
 #' @param MaxResults The maximum number of objects that you want Resolver to return for this
 #' request. If more objects are available, in the response, Resolver
@@ -1344,7 +1344,7 @@ route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextTo
 #' @description
 #' Retrieves the domains that you have defined for the specified firewall domain list.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_domains.html](https://paws-r.github.io/docs/route53resolver/list_firewall_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_domains/](https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_domains/) for full documentation.
 #'
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list whose domains you want to retrieve.
 #' @param MaxResults The maximum number of objects that you want Resolver to return for this
@@ -1387,7 +1387,7 @@ route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResul
 #' @description
 #' Retrieves the firewall rule group associations that you have defined. Each association enables DNS filtering for a VPC with one rule group.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_rule_group_associations.html](https://paws-r.github.io/docs/route53resolver/list_firewall_rule_group_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rule_group_associations/](https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rule_group_associations/) for full documentation.
 #'
 #' @param FirewallRuleGroupId The unique identifier of the firewall rule group that you want to
 #' retrieve the associations for. Leave this blank to retrieve associations
@@ -1442,7 +1442,7 @@ route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGr
 #' @description
 #' Retrieves the minimal high-level information for the rule groups that you have defined.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_rule_groups.html](https://paws-r.github.io/docs/route53resolver/list_firewall_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rule_groups/](https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rule_groups/) for full documentation.
 #'
 #' @param MaxResults The maximum number of objects that you want Resolver to return for this
 #' request. If more objects are available, in the response, Resolver
@@ -1485,7 +1485,7 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #' @description
 #' Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_firewall_rules.html](https://paws-r.github.io/docs/route53resolver/list_firewall_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rules/](https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rules/) for full documentation.
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to
 #' retrieve the rules for.
@@ -1546,7 +1546,7 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
 #' @description
 #' Retrieves the Resolver configurations that you have defined. Route 53 Resolver uses the configurations to manage DNS resolution behavior for your VPCs.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_configs/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_configs/) for full documentation.
 #'
 #' @param MaxResults The maximum number of Resolver configurations that you want to return in
 #' the response to a
@@ -1591,7 +1591,7 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
 #' @description
 #' Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_dnssec_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_dnssec_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_dnssec_configs/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_dnssec_configs/) for full documentation.
 #'
 #' @param MaxResults *Optional*: An integer that specifies the maximum number of DNSSEC
 #' configuration results that you want Amazon Route 53 to return. If you
@@ -1635,7 +1635,7 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #' @description
 #' Gets the IP addresses for a specified Resolver endpoint.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_endpoint_ip_addresses.html](https://paws-r.github.io/docs/route53resolver/list_resolver_endpoint_ip_addresses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_endpoint_ip_addresses/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_endpoint_ip_addresses/) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to get IP addresses for.
 #' @param MaxResults The maximum number of IP addresses that you want to return in the
@@ -1679,7 +1679,7 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #' @description
 #' Lists all the Resolver endpoints that were created using the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_endpoints.html](https://paws-r.github.io/docs/route53resolver/list_resolver_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_endpoints/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_endpoints/) for full documentation.
 #'
 #' @param MaxResults The maximum number of Resolver endpoints that you want to return in the
 #' response to a
@@ -1729,7 +1729,7 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' @description
 #' Lists information about associations between Amazon VPCs and query logging configurations.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_config_associations.html](https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_config_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_query_log_config_associations/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_query_log_config_associations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of query logging associations that you want to return
 #' in the response to a
@@ -1835,7 +1835,7 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' @description
 #' Lists information about the specified query logging configurations. Each configuration defines where you want Resolver to save DNS query logs and specifies the VPCs that you want to log queries for.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_query_log_configs/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_query_log_configs/) for full documentation.
 #'
 #' @param MaxResults The maximum number of query logging configurations that you want to
 #' return in the response to a
@@ -1947,7 +1947,7 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 #' @description
 #' Lists the associations that were created between Resolver rules and VPCs using the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_rule_associations.html](https://paws-r.github.io/docs/route53resolver/list_resolver_rule_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_rule_associations/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_rule_associations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of rule associations that you want to return in the
 #' response to a
@@ -1994,7 +1994,7 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #' @description
 #' Lists the Resolver rules that were created using the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_resolver_rules.html](https://paws-r.github.io/docs/route53resolver/list_resolver_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_rules/](https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_rules/) for full documentation.
 #'
 #' @param MaxResults The maximum number of Resolver rules that you want to return in the
 #' response to a
@@ -2042,7 +2042,7 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the tags that you associated with the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/list_tags_for_resource.html](https://paws-r.github.io/docs/route53resolver/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/route53resolver_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to list
 #' tags for.
@@ -2085,7 +2085,7 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 #' @description
 #' Attaches an Identity and Access Management (Amazon Web Services IAM) policy for sharing the rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/put_firewall_rule_group_policy.html](https://paws-r.github.io/docs/route53resolver/put_firewall_rule_group_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_put_firewall_rule_group_policy/](https://www.paws-r-sdk.com/docs/route53resolver_put_firewall_rule_group_policy/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN (Amazon Resource Name) for the rule group that you want to
 #' share.
@@ -2120,7 +2120,7 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
 #' @description
 #' Specifies an Amazon Web Services account that you want to share a query logging configuration with, the query logging configuration that you want to share, and the operations that you want the account to be able to perform on the configuration.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/put_resolver_query_log_config_policy.html](https://paws-r.github.io/docs/route53resolver/put_resolver_query_log_config_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_put_resolver_query_log_config_policy/](https://www.paws-r-sdk.com/docs/route53resolver_put_resolver_query_log_config_policy/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to share
 #' rules with.
@@ -2170,7 +2170,7 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
 #' @description
 #' Specifies an Amazon Web Services rule that you want to share with another account, the account that you want to share the rule with, and the operations that you want the account to be able to perform on the rule.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/put_resolver_rule_policy.html](https://paws-r.github.io/docs/route53resolver/put_resolver_rule_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_put_resolver_rule_policy/](https://www.paws-r-sdk.com/docs/route53resolver_put_resolver_rule_policy/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the rule that you want to share with
 #' another account.
@@ -2219,7 +2219,7 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' @description
 #' Adds one or more tags to a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/tag_resource.html](https://paws-r.github.io/docs/route53resolver/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_tag_resource/](https://www.paws-r-sdk.com/docs/route53resolver_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to add
 #' tags to. To get the ARN for a resource, use the applicable `Get` or
@@ -2263,7 +2263,7 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/untag_resource.html](https://paws-r.github.io/docs/route53resolver/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_untag_resource/](https://www.paws-r-sdk.com/docs/route53resolver_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource that you want to remove
 #' tags from. To get the ARN for a resource, use the applicable `Get` or
@@ -2308,7 +2308,7 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the configuration of the firewall behavior provided by DNS Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_config.html](https://paws-r.github.io/docs/route53resolver/update_firewall_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_config/](https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_config/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the VPC that the configuration is for.
 #' @param FirewallFailOpen &#91;required&#93; Determines how Route 53 Resolver handles queries during failures, for
@@ -2351,7 +2351,7 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
 #' @description
 #' Updates the firewall domain list from an array of domain specifications.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_domains.html](https://paws-r.github.io/docs/route53resolver/update_firewall_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_domains/](https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_domains/) for full documentation.
 #'
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list whose domains you want to update.
 #' @param Operation &#91;required&#93; What you want DNS Firewall to do with the domains that you are
@@ -2404,7 +2404,7 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @description
 #' Updates the specified firewall rule.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_rule.html](https://paws-r.github.io/docs/route53resolver/update_firewall_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule/](https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule/) for full documentation.
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group for the rule.
 #' @param FirewallDomainListId &#91;required&#93; The ID of the domain list to use in the rule.
@@ -2473,7 +2473,7 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
 #' @description
 #' Changes the association of a FirewallRuleGroup with a VPC. The association enables DNS filtering for the VPC.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_firewall_rule_group_association.html](https://paws-r.github.io/docs/route53resolver/update_firewall_rule_group_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule_group_association/](https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule_group_association/) for full documentation.
 #'
 #' @param FirewallRuleGroupAssociationId &#91;required&#93; The identifier of the FirewallRuleGroupAssociation.
 #' @param Priority The setting that determines the processing order of the rule group among
@@ -2517,7 +2517,7 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #' @description
 #' Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_config.html](https://paws-r.github.io/docs/route53resolver/update_resolver_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_config/](https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_config/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Resource ID of the Amazon VPC that you want to update the Resolver
 #' configuration for.
@@ -2563,7 +2563,7 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
 #' @description
 #' Updates an existing DNSSEC validation configuration. If there is no existing DNSSEC validation configuration, one is created.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_dnssec_config.html](https://paws-r.github.io/docs/route53resolver/update_resolver_dnssec_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_dnssec_config/](https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_dnssec_config/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the virtual private cloud (VPC) that you're updating the
 #' DNSSEC validation status for.
@@ -2597,7 +2597,7 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @description
 #' Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_endpoint/](https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_endpoint/) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
 #' @param Name The name of the Resolver endpoint that you want to update.
@@ -2630,7 +2630,7 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #' @description
 #' Updates settings for a specified Resolver rule. `ResolverRuleId` is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.
 #'
-#' See [https://paws-r.github.io/docs/route53resolver/update_resolver_rule.html](https://paws-r.github.io/docs/route53resolver/update_resolver_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_rule/](https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_rule/) for full documentation.
 #'
 #' @param ResolverRuleId &#91;required&#93; The ID of the Resolver rule that you want to update.
 #' @param Config &#91;required&#93; The new settings for the Resolver rule.

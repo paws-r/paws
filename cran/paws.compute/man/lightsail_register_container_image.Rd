@@ -41,6 +41,6 @@ version number will be \code{3}, and so on.}
 \description{
 Registers a container image to your Amazon Lightsail container service.
 
-See \url{https://paws-r.github.io/docs/lightsail/register_container_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_register_container_image/} for full documentation.
 }
 \keyword{internal}

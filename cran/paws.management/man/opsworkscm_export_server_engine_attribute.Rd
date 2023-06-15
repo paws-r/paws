@@ -39,6 +39,6 @@ Puppet, this parameter is ignored.
 \description{
 Exports a specified server engine attribute as a base64-encoded string. For example, you can export user data that you can use in EC2 to associate nodes with a server.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/export_server_engine_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_export_server_engine_attribute/} for full documentation.
 }
 \keyword{internal}

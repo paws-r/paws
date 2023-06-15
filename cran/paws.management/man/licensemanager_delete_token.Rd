@@ -12,6 +12,6 @@ licensemanager_delete_token(TokenId)
 \description{
 Deletes the specified token. Must be called in the license home Region.
 
-See \url{https://paws-r.github.io/docs/licensemanager/delete_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_delete_token/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ For example, \code{nginx:latest} or \code{nginx}.}
 \description{
 Deletes a container image that is registered to your Amazon Lightsail container service.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_container_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_container_image/} for full documentation.
 }
 \keyword{internal}

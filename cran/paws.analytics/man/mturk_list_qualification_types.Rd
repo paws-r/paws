@@ -34,6 +34,6 @@ returned. If false, the operation returns all Qualification types.}
 \description{
 The \code{\link[=mturk_list_qualification_types]{list_qualification_types}} operation returns a list of Qualification types, filtered by an optional search term.
 
-See \url{https://paws-r.github.io/docs/mturk/list_qualification_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_qualification_types/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ for.}
 \description{
 Add up to 2 anomaly notifications channels for a profiling group.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/add_notification_channels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_add_notification_channels/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ returned \code{nextToken} value.}
 \description{
 Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your account is an organization management account.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_enrollment_statuses_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_enrollment_statuses_for_organization/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ glue_list_data_quality_results(
 \description{
 Returns all data quality execution results for your account.
 
-See \url{https://paws-r.github.io/docs/glue/list_data_quality_results.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_data_quality_results/} for full documentation.
 }
 \keyword{internal}

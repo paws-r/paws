@@ -24,6 +24,6 @@ The value you specify has to be at least 0, and can be no more than
 \description{
 Returns a list of all of the email identities that are associated with your Amazon Pinpoint account. An identity can be either an email address or a domain. This operation returns identities that are verified as well as those that aren't.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/list_email_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_list_email_identities/} for full documentation.
 }
 \keyword{internal}

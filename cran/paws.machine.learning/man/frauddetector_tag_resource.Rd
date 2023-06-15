@@ -14,6 +14,6 @@ frauddetector_tag_resource(resourceARN, tags)
 \description{
 Assigns tags to a resource.
 
-See \url{https://paws-r.github.io/docs/frauddetector/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_tag_resource/} for full documentation.
 }
 \keyword{internal}

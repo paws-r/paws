@@ -86,6 +86,6 @@ example, \verb{eiffel tow}.}
 \description{
 Generates suggestions for addresses and points of interest based on partial or misspelled free-form text. This operation is also known as autocomplete, autosuggest, or fuzzy matching.
 
-See \url{https://paws-r.github.io/docs/locationservice/search_place_index_for_suggestions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_suggestions/} for full documentation.
 }
 \keyword{internal}

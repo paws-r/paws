@@ -28,6 +28,6 @@ in the \emph{CloudFormation CLI User Guide}.}
 \description{
 Registers your account as a publisher of public extensions in the CloudFormation registry. Public extensions are available for use by all CloudFormation users. This publisher ID applies to your account in all Amazon Web Services Regions.
 
-See \url{https://paws-r.github.io/docs/cloudformation/register_publisher.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_register_publisher/} for full documentation.
 }
 \keyword{internal}

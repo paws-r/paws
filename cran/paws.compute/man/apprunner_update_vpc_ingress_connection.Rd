@@ -20,6 +20,6 @@ Ingress Connection resource.}
 \description{
 Update an existing App Runner VPC Ingress Connection resource. The VPC Ingress Connection must be in one of the following states to be updated:
 
-See \url{https://paws-r.github.io/docs/apprunner/update_vpc_ingress_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_update_vpc_ingress_connection/} for full documentation.
 }
 \keyword{internal}

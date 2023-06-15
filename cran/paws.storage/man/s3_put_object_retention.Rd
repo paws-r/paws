@@ -65,6 +65,6 @@ different account, the request fails with the HTTP status code
 \description{
 Places an Object Retention configuration on an object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}. Users or accounts require the \code{s3:PutObjectRetention} permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the \code{s3:BypassGovernanceRetention} permission.
 
-See \url{https://paws-r.github.io/docs/s3/put_object_retention.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_object_retention/} for full documentation.
 }
 \keyword{internal}

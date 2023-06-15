@@ -27,6 +27,6 @@ batch, provide this token in your next request.}
 \description{
 Returns a list of all the MSK clusters in the current Region.
 
-See \url{https://paws-r.github.io/docs/kafka/list_clusters_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_list_clusters_v2/} for full documentation.
 }
 \keyword{internal}

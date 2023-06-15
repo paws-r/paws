@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an experiment template.
 #'
-#' See [https://paws-r.github.io/docs/fis/create_experiment_template.html](https://paws-r.github.io/docs/fis/create_experiment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_create_experiment_template/](https://www.paws-r-sdk.com/docs/fis_create_experiment_template/) for full documentation.
 #'
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -46,7 +46,7 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
 #' @description
 #' Deletes the specified experiment template.
 #'
-#' See [https://paws-r.github.io/docs/fis/delete_experiment_template.html](https://paws-r.github.io/docs/fis/delete_experiment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_delete_experiment_template/](https://www.paws-r-sdk.com/docs/fis_delete_experiment_template/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the experiment template.
 #'
@@ -75,7 +75,7 @@ fis_delete_experiment_template <- function(id) {
 #' @description
 #' Gets information about the specified FIS action.
 #'
-#' See [https://paws-r.github.io/docs/fis/get_action.html](https://paws-r.github.io/docs/fis/get_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_get_action/](https://www.paws-r-sdk.com/docs/fis_get_action/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the action.
 #'
@@ -104,7 +104,7 @@ fis_get_action <- function(id) {
 #' @description
 #' Gets information about the specified experiment.
 #'
-#' See [https://paws-r.github.io/docs/fis/get_experiment.html](https://paws-r.github.io/docs/fis/get_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_get_experiment/](https://www.paws-r-sdk.com/docs/fis_get_experiment/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the experiment.
 #'
@@ -133,7 +133,7 @@ fis_get_experiment <- function(id) {
 #' @description
 #' Gets information about the specified experiment template.
 #'
-#' See [https://paws-r.github.io/docs/fis/get_experiment_template.html](https://paws-r.github.io/docs/fis/get_experiment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_get_experiment_template/](https://www.paws-r-sdk.com/docs/fis_get_experiment_template/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the experiment template.
 #'
@@ -162,7 +162,7 @@ fis_get_experiment_template <- function(id) {
 #' @description
 #' Gets information about the specified resource type.
 #'
-#' See [https://paws-r.github.io/docs/fis/get_target_resource_type.html](https://paws-r.github.io/docs/fis/get_target_resource_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_get_target_resource_type/](https://www.paws-r-sdk.com/docs/fis_get_target_resource_type/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #'
@@ -191,7 +191,7 @@ fis_get_target_resource_type <- function(resourceType) {
 #' @description
 #' Lists the available FIS actions.
 #'
-#' See [https://paws-r.github.io/docs/fis/list_actions.html](https://paws-r.github.io/docs/fis/list_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_list_actions/](https://www.paws-r-sdk.com/docs/fis_list_actions/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -223,7 +223,7 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Lists your experiment templates.
 #'
-#' See [https://paws-r.github.io/docs/fis/list_experiment_templates.html](https://paws-r.github.io/docs/fis/list_experiment_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_list_experiment_templates/](https://www.paws-r-sdk.com/docs/fis_list_experiment_templates/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -255,7 +255,7 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Lists your experiments.
 #'
-#' See [https://paws-r.github.io/docs/fis/list_experiments.html](https://paws-r.github.io/docs/fis/list_experiments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_list_experiments/](https://www.paws-r-sdk.com/docs/fis_list_experiments/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -287,7 +287,7 @@ fis_list_experiments <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Lists the tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/fis/list_tags_for_resource.html](https://paws-r.github.io/docs/fis/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/fis_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -316,7 +316,7 @@ fis_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists the target resource types.
 #'
-#' See [https://paws-r.github.io/docs/fis/list_target_resource_types.html](https://paws-r.github.io/docs/fis/list_target_resource_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_list_target_resource_types/](https://www.paws-r-sdk.com/docs/fis_list_target_resource_types/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -348,7 +348,7 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' @description
 #' Starts running an experiment from the specified experiment template.
 #'
-#' See [https://paws-r.github.io/docs/fis/start_experiment.html](https://paws-r.github.io/docs/fis/start_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_start_experiment/](https://www.paws-r-sdk.com/docs/fis_start_experiment/) for full documentation.
 #'
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -380,7 +380,7 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL)
 #' @description
 #' Stops the specified experiment.
 #'
-#' See [https://paws-r.github.io/docs/fis/stop_experiment.html](https://paws-r.github.io/docs/fis/stop_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_stop_experiment/](https://www.paws-r-sdk.com/docs/fis_stop_experiment/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the experiment.
 #'
@@ -409,7 +409,7 @@ fis_stop_experiment <- function(id) {
 #' @description
 #' Applies the specified tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/fis/tag_resource.html](https://paws-r.github.io/docs/fis/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_tag_resource/](https://www.paws-r-sdk.com/docs/fis_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; The tags for the resource.
@@ -439,7 +439,7 @@ fis_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes the specified tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/fis/untag_resource.html](https://paws-r.github.io/docs/fis/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_untag_resource/](https://www.paws-r-sdk.com/docs/fis_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys The tag keys to remove.
@@ -469,7 +469,7 @@ fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
 #' @description
 #' Updates the specified experiment template.
 #'
-#' See [https://paws-r.github.io/docs/fis/update_experiment_template.html](https://paws-r.github.io/docs/fis/update_experiment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fis_update_experiment_template/](https://www.paws-r-sdk.com/docs/fis_update_experiment_template/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the experiment template.
 #' @param description A description for the template.

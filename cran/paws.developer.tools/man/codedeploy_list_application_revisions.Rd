@@ -65,6 +65,6 @@ call. It can be used to return the next set of applications in the list.}
 \description{
 Lists information about revisions for an application.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_application_revisions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_application_revisions/} for full documentation.
 }
 \keyword{internal}

@@ -46,6 +46,6 @@ or 3). For example, specify 31536000 for one year.}
 \description{
 Describes the Dedicated Host reservations that are available to purchase.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_host_reservation_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_host_reservation_offerings/} for full documentation.
 }
 \keyword{internal}

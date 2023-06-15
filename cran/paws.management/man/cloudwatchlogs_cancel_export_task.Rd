@@ -12,6 +12,6 @@ cloudwatchlogs_cancel_export_task(taskId)
 \description{
 Cancels the specified export task.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/cancel_export_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_cancel_export_task/} for full documentation.
 }
 \keyword{internal}

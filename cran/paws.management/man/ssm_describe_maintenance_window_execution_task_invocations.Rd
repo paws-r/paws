@@ -34,6 +34,6 @@ from a previous call.)}
 \description{
 Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_task_invocations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_execution_task_invocations/} for full documentation.
 }
 \keyword{internal}

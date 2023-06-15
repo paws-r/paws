@@ -20,6 +20,6 @@ route53recoverycontrolconfig_list_control_panels(
 \description{
 Returns an array of control panels in an account or in a cluster.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/list_control_panels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_control_panels/} for full documentation.
 }
 \keyword{internal}

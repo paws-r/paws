@@ -42,6 +42,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more local gateway route tables. By default, all local gateway route tables are described. Alternatively, you can filter the results.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_route_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_local_gateway_route_tables/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ has been transitioned to cold.}
 \description{
 Sets the transition lifecycle of a recovery point.
 
-See \url{https://paws-r.github.io/docs/backup/update_recovery_point_lifecycle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_update_recovery_point_lifecycle/} for full documentation.
 }
 \keyword{internal}

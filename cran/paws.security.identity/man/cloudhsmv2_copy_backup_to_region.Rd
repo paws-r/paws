@@ -19,6 +19,6 @@ the destination backup.}
 \description{
 Copy an AWS CloudHSM cluster backup to a different region.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/copy_backup_to_region.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_copy_backup_to_region/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ to resume.}
 \description{
 Resume an active App Runner service. App Runner provisions compute capacity for the service.
 
-See \url{https://paws-r.github.io/docs/apprunner/resume_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_resume_service/} for full documentation.
 }
 \keyword{internal}

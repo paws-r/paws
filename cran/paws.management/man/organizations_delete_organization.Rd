@@ -9,6 +9,6 @@ organizations_delete_organization()
 \description{
 Deletes the organization. You can delete an organization only by using credentials from the management account. The organization must be empty of member accounts.
 
-See \url{https://paws-r.github.io/docs/organizations/delete_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_delete_organization/} for full documentation.
 }
 \keyword{internal}

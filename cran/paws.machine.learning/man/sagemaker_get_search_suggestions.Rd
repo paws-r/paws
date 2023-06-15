@@ -15,6 +15,6 @@ sagemaker_get_search_suggestions(Resource, SuggestionQuery = NULL)
 \description{
 An auto-complete API for the search functionality in the SageMaker console. It returns suggestions of possible matches for the property name to use in \code{\link[=sagemaker_search]{search}} queries. Provides suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/get_search_suggestions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_get_search_suggestions/} for full documentation.
 }
 \keyword{internal}

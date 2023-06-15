@@ -20,6 +20,6 @@ specified IP address range to Amazon using BYOIP.}
 \description{
 Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using \href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{AdvertiseByoipCidr}.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/provision_byoip_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_provision_byoip_cidr/} for full documentation.
 }
 \keyword{internal}

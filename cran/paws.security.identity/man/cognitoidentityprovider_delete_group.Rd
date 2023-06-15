@@ -14,6 +14,6 @@ cognitoidentityprovider_delete_group(GroupName, UserPoolId)
 \description{
 Deletes a group.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_group/} for full documentation.
 }
 \keyword{internal}

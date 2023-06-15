@@ -10,6 +10,6 @@ route53_get_checker_ip_ranges()
 \description{
 Route 53 does not perform authorization for this API because it retrieves information that is already available to the public.
 
-See \url{https://paws-r.github.io/docs/route53/get_checker_ip_ranges.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_checker_ip_ranges/} for full documentation.
 }
 \keyword{internal}

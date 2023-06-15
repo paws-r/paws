@@ -12,6 +12,6 @@ opsworks_stop_stack(StackId)
 \description{
 Stops a specified stack.
 
-See \url{https://paws-r.github.io/docs/opsworks/stop_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_stop_stack/} for full documentation.
 }
 \keyword{internal}

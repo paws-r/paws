@@ -40,6 +40,6 @@ results.}
 \description{
 Lists the handshakes that are associated with the organization that the requesting user is part of. The \code{\link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization}} operation returns a list of handshake structures. Each structure contains details and status about a handshake.
 
-See \url{https://paws-r.github.io/docs/organizations/list_handshakes_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_handshakes_for_organization/} for full documentation.
 }
 \keyword{internal}

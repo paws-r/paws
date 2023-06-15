@@ -32,6 +32,6 @@ cleared and publishing is disabled.}
 \description{
 Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When you use this operation, you specify a verified identity, such as an email address or domain. When you send an email that uses the chosen identity in the Source field, Amazon SES sends notifications to the topic you specified. You can send bounce, complaint, or delivery notifications (or any combination of the three) to the Amazon SNS topic that you specify.
 
-See \url{https://paws-r.github.io/docs/ses/set_identity_notification_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_set_identity_notification_topic/} for full documentation.
 }
 \keyword{internal}

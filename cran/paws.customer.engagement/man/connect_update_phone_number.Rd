@@ -23,6 +23,6 @@ populates this field. For more information about idempotency, see
 \description{
 Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/connect/update_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_phone_number/} for full documentation.
 }
 \keyword{internal}

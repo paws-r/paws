@@ -43,6 +43,6 @@ zone in the next group of \code{maxitems} hosted zones.}
 \description{
 Retrieves a list of your hosted zones in lexicographic order. The response includes a \code{HostedZones} child element for each hosted zone created by the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/list_hosted_zones_by_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_hosted_zones_by_name/} for full documentation.
 }
 \keyword{internal}

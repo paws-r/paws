@@ -14,6 +14,6 @@ returned by the operation.}
 \description{
 Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex V2 bot. Use this operation to view the migration alerts and warnings related to the migration.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_migration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_migration/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ definitions returned.}
 \description{
 Retrieves multiple function definitions from the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/get_user_defined_functions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_user_defined_functions/} for full documentation.
 }
 \keyword{internal}

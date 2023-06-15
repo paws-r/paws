@@ -42,6 +42,6 @@ objects. The default value is 100.}
 \description{
 Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_shared_report_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_shared_report_groups/} for full documentation.
 }
 \keyword{internal}

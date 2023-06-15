@@ -13,6 +13,6 @@ eks_deregister_cluster(name)
 \description{
 Deregisters a connected cluster to remove it from the Amazon EKS control plane.
 
-See \url{https://paws-r.github.io/docs/eks/deregister_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_deregister_cluster/} for full documentation.
 }
 \keyword{internal}

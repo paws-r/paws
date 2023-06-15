@@ -32,6 +32,6 @@ discovering the schema of the records.}
 \description{
 Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object. In the response, the operation returns the inferred schema and also the sample records that the operation used to infer the schema.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/discover_input_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_discover_input_schema/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ account that sent an invitation to decline.}
 \description{
 Declines Amazon Macie membership invitations that were received from specific accounts.
 
-See \url{https://paws-r.github.io/docs/macie2/decline_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_decline_invitations/} for full documentation.
 }
 \keyword{internal}

@@ -47,6 +47,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the specified tags for your EC2 resources.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_tags/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ lookoutmetrics_describe_anomaly_detector(AnomalyDetectorArn)
 \description{
 Describes a detector.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/describe_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_describe_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

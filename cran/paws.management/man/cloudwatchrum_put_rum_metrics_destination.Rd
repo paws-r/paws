@@ -35,6 +35,6 @@ role must have permission to write to that experiment.}
 \description{
 Creates or updates a destination to receive extended metrics from CloudWatch RUM. You can send extended metrics to CloudWatch or to a CloudWatch Evidently experiment.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/put_rum_metrics_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_metrics_destination/} for full documentation.
 }
 \keyword{internal}

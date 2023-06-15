@@ -15,6 +15,6 @@ rule you want to delete.}
 \description{
 Deletes an approval rule from a specified pull request. Approval rules can be deleted from a pull request only if the pull request is open, and if the approval rule was created specifically for a pull request and not generated from an approval rule template associated with the repository where the pull request was created. You cannot delete an approval rule from a merged or closed pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/delete_pull_request_approval_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_delete_pull_request_approval_rule/} for full documentation.
 }
 \keyword{internal}

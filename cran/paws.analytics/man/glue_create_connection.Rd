@@ -17,6 +17,6 @@ provided, the Amazon Web Services account ID is used by default.}
 \description{
 Creates a connection definition in the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/create_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_connection/} for full documentation.
 }
 \keyword{internal}

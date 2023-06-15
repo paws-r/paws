@@ -22,6 +22,6 @@ health check that you want to change the status for.}
 \description{
 Submits a request to change the health status of a custom health check to healthy or unhealthy.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/update_instance_custom_health_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_update_instance_custom_health_status/} for full documentation.
 }
 \keyword{internal}

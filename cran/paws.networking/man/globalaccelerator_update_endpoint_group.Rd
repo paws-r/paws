@@ -63,6 +63,6 @@ in the \emph{Global Accelerator Developer Guide}.}
 \description{
 Update an endpoint group. A resource must be valid and active when you add it as an endpoint.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/update_endpoint_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_update_endpoint_group/} for full documentation.
 }
 \keyword{internal}

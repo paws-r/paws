@@ -16,6 +16,6 @@ glue_get_blueprint(Name, IncludeBlueprint = NULL, IncludeParameterSpec = NULL)
 \description{
 Retrieves the details of a blueprint.
 
-See \url{https://paws-r.github.io/docs/glue/get_blueprint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_blueprint/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ workspaces_reboot_workspaces(RebootWorkspaceRequests)
 \description{
 Reboots the specified WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/reboot_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_reboot_workspaces/} for full documentation.
 }
 \keyword{internal}

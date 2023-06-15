@@ -12,6 +12,6 @@ cloudwatch_delete_dashboards(DashboardNames)
 \description{
 Deletes all dashboards that you specify. You can specify up to 100 dashboards to delete. If there is an error during this call, no dashboards are deleted.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/delete_dashboards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_delete_dashboards/} for full documentation.
 }
 \keyword{internal}

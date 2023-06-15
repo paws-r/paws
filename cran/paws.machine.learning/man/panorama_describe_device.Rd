@@ -12,6 +12,6 @@ panorama_describe_device(DeviceId)
 \description{
 Returns information about a device.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_device/} for full documentation.
 }
 \keyword{internal}

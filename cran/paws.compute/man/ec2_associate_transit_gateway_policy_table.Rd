@@ -26,6 +26,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates the specified transit gateway attachment with a transit gateway policy table.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_transit_gateway_policy_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_transit_gateway_policy_table/} for full documentation.
 }
 \keyword{internal}

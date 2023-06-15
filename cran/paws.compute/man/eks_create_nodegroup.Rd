@@ -142,6 +142,6 @@ in the \emph{Amazon EKS User Guide}.}
 \description{
 Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI release version for the respective minor Kubernetes version of the cluster, unless you deploy a custom AMI using a launch template. For more information about using launch templates, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}.
 
-See \url{https://paws-r.github.io/docs/eks/create_nodegroup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_create_nodegroup/} for full documentation.
 }
 \keyword{internal}

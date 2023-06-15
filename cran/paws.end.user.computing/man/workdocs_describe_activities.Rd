@@ -53,6 +53,6 @@ within the parent folder (the indirect activity).}
 \description{
 Describes the user activities in a specified time period.
 
-See \url{https://paws-r.github.io/docs/workdocs/describe_activities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_describe_activities/} for full documentation.
 }
 \keyword{internal}

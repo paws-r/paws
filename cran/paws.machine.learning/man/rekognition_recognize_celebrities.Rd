@@ -18,6 +18,6 @@ more information, see Images in the Amazon Rekognition developer guide.}
 \description{
 Returns an array of celebrities recognized in the input image. For more information, see Recognizing celebrities in the Amazon Rekognition Developer Guide.
 
-See \url{https://paws-r.github.io/docs/rekognition/recognize_celebrities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_recognize_celebrities/} for full documentation.
 }
 \keyword{internal}

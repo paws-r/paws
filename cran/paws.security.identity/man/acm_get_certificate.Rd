@@ -16,6 +16,6 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \description{
 Retrieves an Amazon-issued certificate and its certificate chain. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use \href{https://wiki.openssl.org/index.php/Command_Line_Utilities}{OpenSSL} to decode the certificates and inspect individual fields.
 
-See \url{https://paws-r.github.io/docs/acm/get_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_get_certificate/} for full documentation.
 }
 \keyword{internal}

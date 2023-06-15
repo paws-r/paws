@@ -16,6 +16,6 @@ characters.}
 \description{
 Inspects the clinical text for protected health information (PHI) entities and returns the entity category, location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English language texts.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/detect_phi.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_detect_phi/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disassociates the specified subnets from the transit gateway multicast domain.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_transit_gateway_multicast_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_transit_gateway_multicast_domain/} for full documentation.
 }
 \keyword{internal}

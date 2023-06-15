@@ -32,6 +32,6 @@ after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
 \description{
 Lists your delivery streams in alphabetical order of their names.
 
-See \url{https://paws-r.github.io/docs/firehose/list_delivery_streams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_list_delivery_streams/} for full documentation.
 }
 \keyword{internal}

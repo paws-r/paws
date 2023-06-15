@@ -25,6 +25,6 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Deletes the provisioned concurrency configuration for a function.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_provisioned_concurrency_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_provisioned_concurrency_config/} for full documentation.
 }
 \keyword{internal}

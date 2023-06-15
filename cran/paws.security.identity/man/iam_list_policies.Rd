@@ -69,6 +69,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists all the managed policies that are available in your Amazon Web Services account, including your own customer-defined managed policies and all Amazon Web Services managed policies.
 
-See \url{https://paws-r.github.io/docs/iam/list_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_policies/} for full documentation.
 }
 \keyword{internal}

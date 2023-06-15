@@ -12,6 +12,6 @@ machinelearning_delete_realtime_endpoint(MLModelId)
 \description{
 Deletes a real time endpoint of an \code{MLModel}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/delete_realtime_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_delete_realtime_endpoint/} for full documentation.
 }
 \keyword{internal}

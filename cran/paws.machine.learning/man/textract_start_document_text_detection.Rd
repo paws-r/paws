@@ -44,6 +44,6 @@ server side,using SSE-S3.}
 \description{
 Starts the asynchronous detection of text in a document. Amazon Textract can detect lines of text and the words that make up a line of text.
 
-See \url{https://paws-r.github.io/docs/textract/start_document_text_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_start_document_text_detection/} for full documentation.
 }
 \keyword{internal}

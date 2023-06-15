@@ -37,6 +37,6 @@ value.}
 \description{
 Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_managed_prefix_lists.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_managed_prefix_lists/} for full documentation.
 }
 \keyword{internal}

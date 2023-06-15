@@ -12,6 +12,6 @@ gluedatabrew_describe_schedule(Name)
 \description{
 Returns the definition of a specific DataBrew schedule.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_schedule/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ this VpcLink.}
 \description{
 Deletes an existing VpcLink of a specified identifier.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_vpc_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_vpc_link/} for full documentation.
 }
 \keyword{internal}

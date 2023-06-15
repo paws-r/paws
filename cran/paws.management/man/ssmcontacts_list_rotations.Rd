@@ -25,6 +25,6 @@ next set of results.}
 \description{
 Retrieves a list of on-call rotations.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_rotations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotations/} for full documentation.
 }
 \keyword{internal}

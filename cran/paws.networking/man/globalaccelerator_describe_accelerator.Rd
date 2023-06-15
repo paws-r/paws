@@ -12,6 +12,6 @@ globalaccelerator_describe_accelerator(AcceleratorArn)
 \description{
 Describe an accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/describe_accelerator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_describe_accelerator/} for full documentation.
 }
 \keyword{internal}

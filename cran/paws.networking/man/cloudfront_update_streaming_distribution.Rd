@@ -21,6 +21,6 @@ streaming distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Update a streaming distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_streaming_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_streaming_distribution/} for full documentation.
 }
 \keyword{internal}

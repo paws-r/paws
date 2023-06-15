@@ -52,6 +52,6 @@ namespace.
 \description{
 Deletes the assets in package versions and sets the package versions' status to \code{Disposed}. A disposed package version cannot be restored in your repository because its assets are deleted.
 
-See \url{https://paws-r.github.io/docs/codeartifact/dispose_package_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_dispose_package_versions/} for full documentation.
 }
 \keyword{internal}

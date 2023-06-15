@@ -15,6 +15,6 @@ use the latest version of the AppStream 2.0 agent, specify [LATEST].}
 \description{
 Starts the specified image builder.
 
-See \url{https://paws-r.github.io/docs/appstream/start_image_builder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_start_image_builder/} for full documentation.
 }
 \keyword{internal}

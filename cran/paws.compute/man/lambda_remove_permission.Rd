@@ -40,6 +40,6 @@ since you last read it.}
 \description{
 Revokes function-use permission from an Amazon Web Service or another Amazon Web Services account. You can get the ID of the statement from the output of \code{\link[=lambda_get_policy]{get_policy}}.
 
-See \url{https://paws-r.github.io/docs/lambda/remove_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_remove_permission/} for full documentation.
 }
 \keyword{internal}

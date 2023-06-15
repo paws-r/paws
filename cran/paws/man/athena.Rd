@@ -84,6 +84,7 @@ in the \emph{Amazon Athena User Guide}.
 \link[paws.analytics:athena_create_prepared_statement]{create_prepared_statement} \tab Creates a prepared statement for use with SQL queries in Athena\cr
 \link[paws.analytics:athena_create_presigned_notebook_url]{create_presigned_notebook_url} \tab Gets an authentication token and the URL at which the notebook can be accessed\cr
 \link[paws.analytics:athena_create_work_group]{create_work_group} \tab Creates a workgroup with the specified name\cr
+\link[paws.analytics:athena_delete_capacity_reservation]{delete_capacity_reservation} \tab Deletes a cancelled capacity reservation\cr
 \link[paws.analytics:athena_delete_data_catalog]{delete_data_catalog} \tab Deletes a data catalog\cr
 \link[paws.analytics:athena_delete_named_query]{delete_named_query} \tab Deletes the named query if you have access to the workgroup in which the query was saved\cr
 \link[paws.analytics:athena_delete_notebook]{delete_notebook} \tab Deletes the specified notebook\cr

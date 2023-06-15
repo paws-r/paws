@@ -14,6 +14,6 @@ kendra_describe_faq(Id, IndexId)
 \description{
 Gets information about an FAQ list.
 
-See \url{https://paws-r.github.io/docs/kendra/describe_faq.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_describe_faq/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ To see the list of available versions, use
 \description{
 Retrieves the contents of a managed permission in JSON format.
 
-See \url{https://paws-r.github.io/docs/ram/get_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_permission/} for full documentation.
 }
 \keyword{internal}

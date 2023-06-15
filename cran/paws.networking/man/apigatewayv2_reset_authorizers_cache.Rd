@@ -16,6 +16,6 @@ characters.}
 \description{
 Resets all authorizer cache entries on a stage. Supported only for HTTP APIs.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/reset_authorizers_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_reset_authorizers_cache/} for full documentation.
 }
 \keyword{internal}

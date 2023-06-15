@@ -39,6 +39,6 @@ batch of objects.}
 \description{
 Retrieves an array of managed rule groups that are available for you to use. This list includes all Amazon Web Services Managed Rules rule groups and all of the Amazon Web Services Marketplace managed rule groups that you're subscribed to.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_available_managed_rule_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_groups/} for full documentation.
 }
 \keyword{internal}

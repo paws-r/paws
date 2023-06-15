@@ -22,6 +22,6 @@ value can only be set to \code{false} when Amazon SNS topics are set for both
 \description{
 Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints.
 
-See \url{https://paws-r.github.io/docs/ses/set_identity_feedback_forwarding_enabled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_set_identity_feedback_forwarding_enabled/} for full documentation.
 }
 \keyword{internal}

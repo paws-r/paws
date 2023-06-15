@@ -21,6 +21,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Attaches the specified managed policy to the specified IAM role. When you attach a managed policy to a role, the managed policy becomes part of the role's permission (access) policy.
 
-See \url{https://paws-r.github.io/docs/iam/attach_role_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_attach_role_policy/} for full documentation.
 }
 \keyword{internal}

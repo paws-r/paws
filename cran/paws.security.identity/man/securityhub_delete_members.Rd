@@ -12,6 +12,6 @@ securityhub_delete_members(AccountIds)
 \description{
 Deletes the specified member accounts from Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/delete_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_members/} for full documentation.
 }
 \keyword{internal}

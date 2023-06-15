@@ -20,6 +20,6 @@ description.}
 \description{
 Provides a detailed description of a specified version of the application. To see a list of all the versions of an application, invoke the \code{\link[=kinesisanalyticsv2_list_application_versions]{list_application_versions}} operation.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_version/} for full documentation.
 }
 \keyword{internal}

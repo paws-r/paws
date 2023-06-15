@@ -21,6 +21,6 @@ SAML-based authorization providers.}
 \description{
 Associates a website authorization provider with a specified fleet. This is used to authorize users against associated websites in the company network.
 
-See \url{https://paws-r.github.io/docs/worklink/associate_website_authorization_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_associate_website_authorization_provider/} for full documentation.
 }
 \keyword{internal}

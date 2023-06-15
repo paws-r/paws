@@ -21,6 +21,6 @@ results.}
 \description{
 Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account. You can limit the results to events associated with specific OpsItems by specifying a filter.
 
-See \url{https://paws-r.github.io/docs/ssm/list_ops_item_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_ops_item_events/} for full documentation.
 }
 \keyword{internal}

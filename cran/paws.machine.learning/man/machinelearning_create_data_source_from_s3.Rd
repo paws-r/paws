@@ -38,6 +38,6 @@ training.}
 \description{
 Creates a \code{DataSource} object. A \code{DataSource} references data that can be used to perform \code{\link[=machinelearning_create_ml_model]{create_ml_model}}, \code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or \code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}} operations.
 
-See \url{https://paws-r.github.io/docs/machinelearning/create_data_source_from_s3.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_s3/} for full documentation.
 }
 \keyword{internal}

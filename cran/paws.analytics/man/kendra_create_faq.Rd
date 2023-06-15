@@ -52,6 +52,6 @@ supported languages, including their codes, see \href{https://docs.aws.amazon.co
 \description{
 Creates a set of frequently ask questions (FAQs) using a specified FAQ file stored in an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/kendra/create_faq.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_create_faq/} for full documentation.
 }
 \keyword{internal}

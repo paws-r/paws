@@ -20,6 +20,6 @@ GetActivityTaskOutput$taskToken.}
 \description{
 Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report that the task identified by the \code{taskToken} failed.
 
-See \url{https://paws-r.github.io/docs/sfn/send_task_failure.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_send_task_failure/} for full documentation.
 }
 \keyword{internal}

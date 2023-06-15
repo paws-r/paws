@@ -12,6 +12,6 @@ datapipeline_delete_pipeline(pipelineId)
 \description{
 Deletes a pipeline, its pipeline definition, and its run history. AWS Data Pipeline attempts to cancel instances associated with the pipeline that are currently being processed by task runners.
 
-See \url{https://paws-r.github.io/docs/datapipeline/delete_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_delete_pipeline/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ The schema used in creating the \code{MLModel} must match the schema of the
 \description{
 Creates a new \code{Evaluation} of an \code{MLModel}. An \code{MLModel} is evaluated on a set of observations associated to a \code{DataSource}. Like a \code{DataSource} for an \code{MLModel}, the \code{DataSource} for an \code{Evaluation} contains values for the \verb{Target Variable}. The \code{Evaluation} compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the \code{MLModel} functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding \code{MLModelType}: \code{BINARY}, \code{REGRESSION} or \code{MULTICLASS}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/create_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_create_evaluation/} for full documentation.
 }
 \keyword{internal}

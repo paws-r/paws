@@ -16,6 +16,6 @@ the existing value is replaced with the new value.}
 \description{
 Adds the specified tags to the specified resource. If a tag key already exists, the existing value is replaced with the new value.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_tag_resource/} for full documentation.
 }
 \keyword{internal}

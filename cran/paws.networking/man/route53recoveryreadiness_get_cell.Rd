@@ -14,6 +14,6 @@ route53recoveryreadiness_get_cell(CellName)
 \description{
 Gets information about a cell including cell name, cell Amazon Resource Name (ARN), ARNs of nested cells for this cell, and a list of those cell ARNs with their associated recovery group ARNs.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/get_cell.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_cell/} for full documentation.
 }
 \keyword{internal}

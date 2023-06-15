@@ -41,6 +41,6 @@ configuration has changed since you last updated it.}
 \description{
 Creates a \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{version} from the current code and configuration of a function. Use versions to create a snapshot of your function code and configuration that doesn't change.
 
-See \url{https://paws-r.github.io/docs/lambda/publish_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_publish_version/} for full documentation.
 }
 \keyword{internal}

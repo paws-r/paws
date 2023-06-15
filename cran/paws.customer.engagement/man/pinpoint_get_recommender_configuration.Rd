@@ -15,6 +15,6 @@ console.}
 \description{
 Retrieves information about an Amazon Pinpoint configuration for a recommender model.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_recommender_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_recommender_configuration/} for full documentation.
 }
 \keyword{internal}

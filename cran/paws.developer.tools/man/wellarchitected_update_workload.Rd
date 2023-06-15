@@ -68,6 +68,6 @@ workload.}
 \description{
 Update an existing workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/update_workload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_update_workload/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ elbv2_describe_load_balancer_attributes(LoadBalancerArn)
 \description{
 Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 
-See \url{https://paws-r.github.io/docs/elbv2/describe_load_balancer_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_load_balancer_attributes/} for full documentation.
 }
 \keyword{internal}

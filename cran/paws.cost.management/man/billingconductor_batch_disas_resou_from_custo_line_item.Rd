@@ -20,6 +20,6 @@ billingconductor_batch_disassociate_resources_from_custom_line_item(
 \description{
 Disassociates a batch of resources from a percentage custom line item.
 
-See \url{https://paws-r.github.io/docs/billingconductor/batch_disassociate_resources_from_custom_line_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_batch_disassociate_resources_from_custom_line_item/} for full documentation.
 }
 \keyword{internal}

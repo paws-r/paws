@@ -44,6 +44,6 @@ in the \emph{Network Firewall Developer Guide}.}
 \description{
 Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains the Certificate Manager certificate references that Network Firewall uses to decrypt and re-encrypt inbound traffic.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/create_tls_inspection_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_create_tls_inspection_configuration/} for full documentation.
 }
 \keyword{internal}

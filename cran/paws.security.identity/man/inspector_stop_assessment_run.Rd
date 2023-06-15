@@ -19,6 +19,6 @@ immediately, after which no findings are generated.}
 \description{
 Stops the assessment run that is specified by the ARN of the assessment run.
 
-See \url{https://paws-r.github.io/docs/inspector/stop_assessment_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_stop_assessment_run/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ dax_update_subnet_group(SubnetGroupName, Description = NULL, SubnetIds = NULL)
 \description{
 Modifies an existing subnet group.
 
-See \url{https://paws-r.github.io/docs/dax/update_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_update_subnet_group/} for full documentation.
 }
 \keyword{internal}

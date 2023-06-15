@@ -13,6 +13,6 @@ Custom medical vocabulary names are case sensitive.}
 \description{
 Provides information about the specified custom medical vocabulary.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/get_medical_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_vocabulary/} for full documentation.
 }
 \keyword{internal}

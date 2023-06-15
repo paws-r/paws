@@ -17,6 +17,6 @@ metadata to return.}
 \description{
 Returns table metadata for the specified catalog, database, and table.
 
-See \url{https://paws-r.github.io/docs/athena/get_table_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_table_metadata/} for full documentation.
 }
 \keyword{internal}

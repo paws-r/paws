@@ -30,6 +30,6 @@ types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).}
 \description{
 Provides information about the quick connects for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_quick_connects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_quick_connects/} for full documentation.
 }
 \keyword{internal}

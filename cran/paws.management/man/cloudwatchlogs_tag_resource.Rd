@@ -23,6 +23,6 @@ For more information about ARN format, see \href{https://docs.aws.amazon.com/Ama
 \description{
 Assigns one or more tags (key-value pairs) to the specified CloudWatch Logs resource. Currently, the only CloudWatch Logs resources that can be tagged are log groups and destinations.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_tag_resource/} for full documentation.
 }
 \keyword{internal}

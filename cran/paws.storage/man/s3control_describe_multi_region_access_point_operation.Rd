@@ -22,6 +22,6 @@ of the asynchronous action.}
 \description{
 Retrieves the status of an asynchronous request to manage a Multi-Region Access Point. For more information about managing Multi-Region Access Points and how asynchronous requests work, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Managing Multi-Region Access Points} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/describe_multi_region_access_point_operation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_describe_multi_region_access_point_operation/} for full documentation.
 }
 \keyword{internal}

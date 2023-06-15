@@ -20,6 +20,6 @@ in the \emph{Amazon S3 User Guide}.}
 \description{
 Indicates whether the specified Multi-Region Access Point has an access control policy that allows public access.
 
-See \url{https://paws-r.github.io/docs/s3control/get_multi_region_access_point_policy_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy_status/} for full documentation.
 }
 \keyword{internal}

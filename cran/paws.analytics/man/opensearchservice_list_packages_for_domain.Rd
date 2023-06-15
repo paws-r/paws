@@ -26,6 +26,6 @@ operations, which returns results in the next page.}
 \description{
 Lists all packages associated with an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_packages_for_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_packages_for_domain/} for full documentation.
 }
 \keyword{internal}

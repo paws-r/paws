@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified Connect peer.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_connect_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_connect_peer/} for full documentation.
 }
 \keyword{internal}

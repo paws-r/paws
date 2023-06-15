@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes a distribution configuration.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_distribution_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_distribution_configuration/} for full documentation.
 }
 \keyword{internal}

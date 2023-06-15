@@ -15,6 +15,6 @@ location.}
 \description{
 Gets information about an application revision.
 
-See \url{https://paws-r.github.io/docs/codedeploy/get_application_revision.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_get_application_revision/} for full documentation.
 }
 \keyword{internal}

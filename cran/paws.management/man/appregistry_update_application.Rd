@@ -18,6 +18,6 @@ this field as we have stopped supporting name updates.}
 \description{
 Updates an existing application with new attributes.
 
-See \url{https://paws-r.github.io/docs/appregistry/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_update_application/} for full documentation.
 }
 \keyword{internal}

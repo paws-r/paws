@@ -13,6 +13,6 @@ information about.}
 \description{
 List details about a specific contact channel.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/get_contact_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact_channel/} for full documentation.
 }
 \keyword{internal}

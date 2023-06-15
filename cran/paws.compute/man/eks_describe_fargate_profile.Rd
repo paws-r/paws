@@ -14,6 +14,6 @@ eks_describe_fargate_profile(clusterName, fargateProfileName)
 \description{
 Returns descriptive information about an Fargate profile.
 
-See \url{https://paws-r.github.io/docs/eks/describe_fargate_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_fargate_profile/} for full documentation.
 }
 \keyword{internal}

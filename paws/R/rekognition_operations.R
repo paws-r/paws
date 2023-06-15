@@ -3,6 +3,131 @@
 #' @include rekognition_service.R
 NULL
 
+#' Associates one or more faces with an existing UserID
+#'
+#' @description
+#' Associates one or more faces with an existing UserID. Takes an array of
+#' `FaceIds`. Each `FaceId` that are present in the `FaceIds` list is
+#' associated with the provided UserID. The maximum number of total
+#' `FaceIds` per UserID is 100.
+#' 
+#' The `UserMatchThreshold` parameter specifies the minimum user match
+#' confidence required for the face to be associated with a UserID that has
+#' at least one `FaceID` already associated. This ensures that the
+#' `FaceIds` are associated with the right UserID. The value ranges from
+#' 0-100 and default value is 75.
+#' 
+#' If successful, an array of `AssociatedFace` objects containing the
+#' associated `FaceIds` is returned. If a given face is already associated
+#' with the given `UserID`, it will be ignored and will not be returned in
+#' the response. If a given face is already associated to a different
+#' `UserID`, isn't found in the collection, doesn’t meet the
+#' `UserMatchThreshold`, or there are already 100 faces associated with the
+#' `UserID`, it will be returned as part of an array of
+#' `UnsuccessfulFaceAssociations.`
+#' 
+#' The `UserStatus` reflects the status of an operation which updates a
+#' UserID representation with a list of given faces. The `UserStatus` can
+#' be:
+#' 
+#' -   ACTIVE - All associations or disassociations of FaceID(s) for a
+#'     UserID are complete.
+#' 
+#' -   CREATED - A UserID has been created, but has no FaceID(s) associated
+#'     with it.
+#' 
+#' -   UPDATING - A UserID is being updated and there are current
+#'     associations or disassociations of FaceID(s) taking place.
+#'
+#' @usage
+#' rekognition_associate_faces(CollectionId, UserId, FaceIds,
+#'   UserMatchThreshold, ClientRequestToken)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID.
+#' @param UserId &#91;required&#93; The ID for the existing UserID.
+#' @param FaceIds &#91;required&#93; An array of FaceIDs to associate with the UserID.
+#' @param UserMatchThreshold An optional value specifying the minimum confidence in the UserID match
+#' to return. The default value is 75.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`associate_faces`][rekognition_associate_faces]. If you use the same
+#' token with multiple [`associate_faces`][rekognition_associate_faces]
+#' requests, the same response is returned. Use ClientRequestToken to
+#' prevent the same request from being processed more than once.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AssociatedFaces = list(
+#'     list(
+#'       FaceId = "string"
+#'     )
+#'   ),
+#'   UnsuccessfulFaceAssociations = list(
+#'     list(
+#'       FaceId = "string",
+#'       UserId = "string",
+#'       Confidence = 123.0,
+#'       Reasons = list(
+#'         "FACE_NOT_FOUND"|"ASSOCIATED_TO_A_DIFFERENT_USER"|"LOW_MATCH_CONFIDENCE"
+#'       )
+#'     )
+#'   ),
+#'   UserStatus = "ACTIVE"|"UPDATING"|"CREATING"|"CREATED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_faces(
+#'   CollectionId = "string",
+#'   UserId = "string",
+#'   FaceIds = list(
+#'     "string"
+#'   ),
+#'   UserMatchThreshold = 123.0,
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation associates one or more faces with an existing UserID.
+#' svc$associate_faces(
+#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440002",
+#'   CollectionId = "MyCollection",
+#'   FaceIds = list(
+#'     "f5817d37-94f6-4335-bfee-6cf79a3d806e",
+#'     "851cb847-dccc-4fea-9309-9f4805967855",
+#'     "35ebbb41-7f67-4263-908d-dd0ecba05ab9"
+#'   ),
+#'   UserId = "DemoUser",
+#'   UserMatchThreshold = 70L
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_associate_faces
+#'
+#' @aliases rekognition_associate_faces
+rekognition_associate_faces <- function(CollectionId, UserId, FaceIds, UserMatchThreshold = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "AssociateFaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$associate_faces_input(CollectionId = CollectionId, UserId = UserId, FaceIds = FaceIds, UserMatchThreshold = UserMatchThreshold, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$associate_faces_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$associate_faces <- rekognition_associate_faces
+
 #' Compares a face in the source input image with each of the 100 largest
 #' faces detected in the target input image
 #'
@@ -1048,6 +1173,76 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 }
 .rekognition$operations$create_stream_processor <- rekognition_create_stream_processor
 
+#' Creates a new User within a collection specified by CollectionId
+#'
+#' @description
+#' Creates a new User within a collection specified by `CollectionId`.
+#' Takes `UserId` as a parameter, which is a user provided ID which should
+#' be unique within the collection. The provided `UserId` will alias the
+#' system generated UUID to make the `UserId` more user friendly.
+#' 
+#' Uses a `ClientToken`, an idempotency token that ensures a call to
+#' [`create_user`][rekognition_create_user] completes only once. If the
+#' value is not supplied, the AWS SDK generates an idempotency token for
+#' the requests. This prevents retries after a network error results from
+#' making multiple [`create_user`][rekognition_create_user] calls.
+#'
+#' @usage
+#' rekognition_create_user(CollectionId, UserId, ClientRequestToken)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection to which the new UserID needs to be
+#' created.
+#' @param UserId &#91;required&#93; ID for the UserID to be created. This ID needs to be unique within the
+#' collection.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`create_user`][rekognition_create_user]. If you use the same token with
+#' multiple [`create_user`][rekognition_create_user] requests, the same
+#' response is returned. Use ClientRequestToken to prevent the same request
+#' from being processed more than once.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_user(
+#'   CollectionId = "string",
+#'   UserId = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Creates a new User within a collection specified by CollectionId.
+#' svc$create_user(
+#'   CollectionId = "MyCollection",
+#'   UserId = "DemoUser"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_create_user
+#'
+#' @aliases rekognition_create_user
+rekognition_create_user <- function(CollectionId, UserId, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$create_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$create_user_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$create_user <- rekognition_create_user
+
 #' Deletes the specified collection
 #'
 #' @description
@@ -1184,6 +1379,15 @@ rekognition_delete_dataset <- function(DatasetArn) {
 #' list(
 #'   DeletedFaces = list(
 #'     "string"
+#'   ),
+#'   UnsuccessfulFaceDeletions = list(
+#'     list(
+#'       FaceId = "string",
+#'       UserId = "string",
+#'       Reasons = list(
+#'         "ASSOCIATED_TO_AN_EXISTING_USER"|"FACE_NOT_FOUND"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1463,6 +1667,72 @@ rekognition_delete_stream_processor <- function(Name) {
 }
 .rekognition$operations$delete_stream_processor <- rekognition_delete_stream_processor
 
+#' Deletes the specified UserID within the collection
+#'
+#' @description
+#' Deletes the specified UserID within the collection. Faces that are
+#' associated with the UserID are disassociated from the UserID before
+#' deleting the specified UserID. If the specified `Collection` or `UserID`
+#' is already deleted or not found, a `ResourceNotFoundException` will be
+#' thrown. If the action is successful with a 200 response, an empty HTTP
+#' body is returned.
+#'
+#' @usage
+#' rekognition_delete_user(CollectionId, UserId, ClientRequestToken)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection from which the UserID needs to be
+#' deleted.
+#' @param UserId &#91;required&#93; ID for the UserID to be deleted.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`delete_user`][rekognition_delete_user]. If you use the same token with
+#' multiple [`delete_user`][rekognition_delete_user]requests, the same
+#' response is returned. Use ClientRequestToken to prevent the same request
+#' from being processed more than once.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_user(
+#'   CollectionId = "string",
+#'   UserId = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Deletes the specified UserID within the collection.
+#' svc$delete_user(
+#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440001",
+#'   CollectionId = "MyCollection",
+#'   UserId = "DemoUser"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_delete_user
+#'
+#' @aliases rekognition_delete_user
+rekognition_delete_user <- function(CollectionId, UserId, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "DeleteUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$delete_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$delete_user_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$delete_user <- rekognition_delete_user
+
 #' Describes the specified collection
 #'
 #' @description
@@ -1488,7 +1758,8 @@ rekognition_delete_stream_processor <- function(Name) {
 #'   CollectionARN = "string",
 #'   CreationTimestamp = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   UserCount = 123
 #' )
 #' ```
 #'
@@ -3035,6 +3306,105 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 }
 .rekognition$operations$detect_text <- rekognition_detect_text
 
+#' Removes the association between a Face supplied in an array of FaceIds
+#' and the User
+#'
+#' @description
+#' Removes the association between a `Face` supplied in an array of
+#' `FaceIds` and the User. If the User is not present already, then a
+#' `ResourceNotFound` exception is thrown. If successful, an array of faces
+#' that are disassociated from the User is returned. If a given face is
+#' already disassociated from the given UserID, it will be ignored and not
+#' be returned in the response. If a given face is already associated with
+#' a different User or not found in the collection it will be returned as
+#' part of `UnsuccessfulDisassociations`. You can remove 1 - 100 face IDs
+#' from a user at one time.
+#'
+#' @usage
+#' rekognition_disassociate_faces(CollectionId, UserId, ClientRequestToken,
+#'   FaceIds)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID.
+#' @param UserId &#91;required&#93; ID for the existing UserID.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`disassociate_faces`][rekognition_disassociate_faces]. If you use the
+#' same token with multiple
+#' [`disassociate_faces`][rekognition_disassociate_faces] requests, the
+#' same response is returned. Use ClientRequestToken to prevent the same
+#' request from being processed more than once.
+#' @param FaceIds &#91;required&#93; An array of face IDs to disassociate from the UserID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DisassociatedFaces = list(
+#'     list(
+#'       FaceId = "string"
+#'     )
+#'   ),
+#'   UnsuccessfulFaceDisassociations = list(
+#'     list(
+#'       FaceId = "string",
+#'       UserId = "string",
+#'       Reasons = list(
+#'         "FACE_NOT_FOUND"|"ASSOCIATED_TO_A_DIFFERENT_USER"
+#'       )
+#'     )
+#'   ),
+#'   UserStatus = "ACTIVE"|"UPDATING"|"CREATING"|"CREATED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_faces(
+#'   CollectionId = "string",
+#'   UserId = "string",
+#'   ClientRequestToken = "string",
+#'   FaceIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Removes the association between a Face supplied in an array of FaceIds
+#' # and the User.
+#' svc$disassociate_faces(
+#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440003",
+#'   CollectionId = "MyCollection",
+#'   FaceIds = list(
+#'     "f5817d37-94f6-4335-bfee-6cf79a3d806e",
+#'     "c92265d4-5f9c-43af-a58e-12be0ce02bc3"
+#'   ),
+#'   UserId = "DemoUser"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_disassociate_faces
+#'
+#' @aliases rekognition_disassociate_faces
+rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestToken = NULL, FaceIds) {
+  op <- new_operation(
+    name = "DisassociateFaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$disassociate_faces_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken, FaceIds = FaceIds)
+  output <- .rekognition$disassociate_faces_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$disassociate_faces <- rekognition_disassociate_faces
+
 #' Distributes the entries (images) in a training dataset across the
 #' training dataset and the test dataset for a project
 #'
@@ -4009,7 +4379,8 @@ rekognition_get_face_liveness_session_results <- function(SessionId) {
 #'             ImageId = "string",
 #'             ExternalImageId = "string",
 #'             Confidence = 123.0,
-#'             IndexFacesModelVersion = "string"
+#'             IndexFacesModelVersion = "string",
+#'             UserId = "string"
 #'           )
 #'         )
 #'       )
@@ -4974,7 +5345,8 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'         ImageId = "string",
 #'         ExternalImageId = "string",
 #'         Confidence = 123.0,
-#'         IndexFacesModelVersion = "string"
+#'         IndexFacesModelVersion = "string",
+#'         UserId = "string"
 #'       ),
 #'       FaceDetail = list(
 #'         BoundingBox = list(
@@ -5453,7 +5825,8 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' `rekognition:ListFaces` action.
 #'
 #' @usage
-#' rekognition_list_faces(CollectionId, NextToken, MaxResults)
+#' rekognition_list_faces(CollectionId, NextToken, MaxResults, UserId,
+#'   FaceIds)
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection from which to list the faces.
 #' @param NextToken If the previous response was incomplete (because there is more data to
@@ -5461,6 +5834,8 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' response. You can use this pagination token to retrieve the next set of
 #' faces.
 #' @param MaxResults Maximum number of faces to return.
+#' @param UserId An array of user IDs to match when listing faces in a collection.
+#' @param FaceIds An array of face IDs to match when listing faces in a collection.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5478,7 +5853,8 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #'       ImageId = "string",
 #'       ExternalImageId = "string",
 #'       Confidence = 123.0,
-#'       IndexFacesModelVersion = "string"
+#'       IndexFacesModelVersion = "string",
+#'       UserId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -5491,7 +5867,11 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' svc$list_faces(
 #'   CollectionId = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   UserId = "string",
+#'   FaceIds = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5509,14 +5889,14 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' @rdname rekognition_list_faces
 #'
 #' @aliases rekognition_list_faces
-rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = NULL) {
+rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = NULL, UserId = NULL, FaceIds = NULL) {
   op <- new_operation(
     name = "ListFaces",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults, UserId = UserId, FaceIds = FaceIds)
   output <- .rekognition$list_faces_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -5730,6 +6110,76 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .rekognition$operations$list_tags_for_resource <- rekognition_list_tags_for_resource
+
+#' Returns metadata of the User such as UserID in the specified collection
+#'
+#' @description
+#' Returns metadata of the User such as `UserID` in the specified
+#' collection. Anonymous User (to reserve faces without any identity) is
+#' not returned as part of this request. The results are sorted by system
+#' generated primary key ID. If the response is truncated, `NextToken` is
+#' returned in the response that can be used in the subsequent request to
+#' retrieve the next set of identities.
+#'
+#' @usage
+#' rekognition_list_users(CollectionId, MaxResults, NextToken)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection.
+#' @param MaxResults Maximum number of UsersID to return.
+#' @param NextToken Pagingation token to receive the next set of UsersID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Users = list(
+#'     list(
+#'       UserId = "string",
+#'       UserStatus = "ACTIVE"|"UPDATING"|"CREATING"|"CREATED"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_users(
+#'   CollectionId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Returns metadata of the User such as UserID in the specified collection.
+#' svc$list_users(
+#'   CollectionId = "MyCollection"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_users
+#'
+#' @aliases rekognition_list_users
+rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListUsers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$list_users_input(CollectionId = CollectionId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .rekognition$list_users_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_users <- rekognition_list_users
 
 #' Attaches a project policy to a Amazon Rekognition Custom Labels project
 #' in a trusting AWS account
@@ -6068,7 +6518,8 @@ rekognition_recognize_celebrities <- function(Image) {
 #'         ImageId = "string",
 #'         ExternalImageId = "string",
 #'         Confidence = 123.0,
-#'         IndexFacesModelVersion = "string"
+#'         IndexFacesModelVersion = "string",
+#'         UserId = "string"
 #'       )
 #'     )
 #'   ),
@@ -6230,7 +6681,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #'         ImageId = "string",
 #'         ExternalImageId = "string",
 #'         Confidence = 123.0,
-#'         IndexFacesModelVersion = "string"
+#'         IndexFacesModelVersion = "string",
+#'         UserId = "string"
 #'       )
 #'     )
 #'   ),
@@ -6294,6 +6746,361 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
   return(response)
 }
 .rekognition$operations$search_faces_by_image <- rekognition_search_faces_by_image
+
+#' Searches for UserIDs within a collection based on a FaceId or UserId
+#'
+#' @description
+#' Searches for UserIDs within a collection based on a `FaceId` or
+#' `UserId`. This API can be used to find the closest UserID (with a
+#' highest similarity) to associate a face. The request must be provided
+#' with either `FaceId` or `UserId`. The operation returns an array of
+#' UserID that match the `FaceId` or `UserId`, ordered by similarity score
+#' with the highest similarity first.
+#'
+#' @usage
+#' rekognition_search_users(CollectionId, UserId, FaceId,
+#'   UserMatchThreshold, MaxUsers)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID, used with a
+#' UserId or FaceId. If a FaceId is provided, UserId isn’t required to be
+#' present in the Collection.
+#' @param UserId ID for the existing User.
+#' @param FaceId ID for the existing face.
+#' @param UserMatchThreshold Optional value that specifies the minimum confidence in the matched
+#' UserID to return. Default value of 80.
+#' @param MaxUsers Maximum number of identities to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserMatches = list(
+#'     list(
+#'       Similarity = 123.0,
+#'       User = list(
+#'         UserId = "string",
+#'         UserStatus = "ACTIVE"|"UPDATING"|"CREATING"|"CREATED"
+#'       )
+#'     )
+#'   ),
+#'   FaceModelVersion = "string",
+#'   SearchedFace = list(
+#'     FaceId = "string"
+#'   ),
+#'   SearchedUser = list(
+#'     UserId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_users(
+#'   CollectionId = "string",
+#'   UserId = "string",
+#'   FaceId = "string",
+#'   UserMatchThreshold = 123.0,
+#'   MaxUsers = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Searches for UserIDs within a collection based on a FaceId or UserId.
+#' svc$search_users(
+#'   CollectionId = "MyCollection",
+#'   MaxUsers = 2L,
+#'   UserId = "DemoUser",
+#'   UserMatchThreshold = 70L
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_search_users
+#'
+#' @aliases rekognition_search_users
+rekognition_search_users <- function(CollectionId, UserId = NULL, FaceId = NULL, UserMatchThreshold = NULL, MaxUsers = NULL) {
+  op <- new_operation(
+    name = "SearchUsers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$search_users_input(CollectionId = CollectionId, UserId = UserId, FaceId = FaceId, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers)
+  output <- .rekognition$search_users_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$search_users <- rekognition_search_users
+
+#' Searches for UserIDs using a supplied image
+#'
+#' @description
+#' Searches for UserIDs using a supplied image. It first detects the
+#' largest face in the image, and then searches a specified collection for
+#' matching UserIDs.
+#' 
+#' The operation returns an array of UserIDs that match the face in the
+#' supplied image, ordered by similarity score with the highest similarity
+#' first. It also returns a bounding box for the face found in the input
+#' image.
+#' 
+#' Information about faces detected in the supplied image, but not used for
+#' the search, is returned in an array of `UnsearchedFace` objects. If no
+#' valid face is detected in the image, the response will contain an empty
+#' `UserMatches` list and no `SearchedFace` object.
+#'
+#' @usage
+#' rekognition_search_users_by_image(CollectionId, Image,
+#'   UserMatchThreshold, MaxUsers, QualityFilter)
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID.
+#' @param Image &#91;required&#93; 
+#' @param UserMatchThreshold Specifies the minimum confidence in the UserID match to return. Default
+#' value is 80.
+#' @param MaxUsers Maximum number of UserIDs to return.
+#' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
+#' identify faces. Filtered faces aren't searched for in the collection.
+#' The default value is NONE.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserMatches = list(
+#'     list(
+#'       Similarity = 123.0,
+#'       User = list(
+#'         UserId = "string",
+#'         UserStatus = "ACTIVE"|"UPDATING"|"CREATING"|"CREATED"
+#'       )
+#'     )
+#'   ),
+#'   FaceModelVersion = "string",
+#'   SearchedFace = list(
+#'     FaceDetail = list(
+#'       BoundingBox = list(
+#'         Width = 123.0,
+#'         Height = 123.0,
+#'         Left = 123.0,
+#'         Top = 123.0
+#'       ),
+#'       AgeRange = list(
+#'         Low = 123,
+#'         High = 123
+#'       ),
+#'       Smile = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Eyeglasses = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Sunglasses = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Gender = list(
+#'         Value = "Male"|"Female",
+#'         Confidence = 123.0
+#'       ),
+#'       Beard = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Mustache = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       EyesOpen = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       MouthOpen = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       Emotions = list(
+#'         list(
+#'           Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       Landmarks = list(
+#'         list(
+#'           Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'           X = 123.0,
+#'           Y = 123.0
+#'         )
+#'       ),
+#'       Pose = list(
+#'         Roll = 123.0,
+#'         Yaw = 123.0,
+#'         Pitch = 123.0
+#'       ),
+#'       Quality = list(
+#'         Brightness = 123.0,
+#'         Sharpness = 123.0
+#'       ),
+#'       Confidence = 123.0,
+#'       FaceOccluded = list(
+#'         Value = TRUE|FALSE,
+#'         Confidence = 123.0
+#'       ),
+#'       EyeDirection = list(
+#'         Yaw = 123.0,
+#'         Pitch = 123.0,
+#'         Confidence = 123.0
+#'       )
+#'     )
+#'   ),
+#'   UnsearchedFaces = list(
+#'     list(
+#'       FaceDetails = list(
+#'         BoundingBox = list(
+#'           Width = 123.0,
+#'           Height = 123.0,
+#'           Left = 123.0,
+#'           Top = 123.0
+#'         ),
+#'         AgeRange = list(
+#'           Low = 123,
+#'           High = 123
+#'         ),
+#'         Smile = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Eyeglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Sunglasses = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Gender = list(
+#'           Value = "Male"|"Female",
+#'           Confidence = 123.0
+#'         ),
+#'         Beard = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Mustache = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         EyesOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         MouthOpen = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         Emotions = list(
+#'           list(
+#'             Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         Landmarks = list(
+#'           list(
+#'             Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
+#'             X = 123.0,
+#'             Y = 123.0
+#'           )
+#'         ),
+#'         Pose = list(
+#'           Roll = 123.0,
+#'           Yaw = 123.0,
+#'           Pitch = 123.0
+#'         ),
+#'         Quality = list(
+#'           Brightness = 123.0,
+#'           Sharpness = 123.0
+#'         ),
+#'         Confidence = 123.0,
+#'         FaceOccluded = list(
+#'           Value = TRUE|FALSE,
+#'           Confidence = 123.0
+#'         ),
+#'         EyeDirection = list(
+#'           Yaw = 123.0,
+#'           Pitch = 123.0,
+#'           Confidence = 123.0
+#'         )
+#'       ),
+#'       Reasons = list(
+#'         "FACE_NOT_LARGEST"|"EXCEEDS_MAX_FACES"|"EXTREME_POSE"|"LOW_BRIGHTNESS"|"LOW_SHARPNESS"|"LOW_CONFIDENCE"|"SMALL_BOUNDING_BOX"|"LOW_FACE_QUALITY"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_users_by_image(
+#'   CollectionId = "string",
+#'   Image = list(
+#'     Bytes = raw,
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   UserMatchThreshold = 123.0,
+#'   MaxUsers = 123,
+#'   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Searches for UserIDs using a supplied image.
+#' svc$search_users_by_image(
+#'   CollectionId = "MyCollection",
+#'   Image = list(
+#'     S3Object = list(
+#'       Bucket = "bucket",
+#'       Name = "input.jpg"
+#'     )
+#'   ),
+#'   MaxUsers = 2L,
+#'   QualityFilter = "MEDIUM",
+#'   UserMatchThreshold = 70L
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_search_users_by_image
+#'
+#' @aliases rekognition_search_users_by_image
+rekognition_search_users_by_image <- function(CollectionId, Image, UserMatchThreshold = NULL, MaxUsers = NULL, QualityFilter = NULL) {
+  op <- new_operation(
+    name = "SearchUsersByImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$search_users_by_image_input(CollectionId = CollectionId, Image = Image, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers, QualityFilter = QualityFilter)
+  output <- .rekognition$search_users_by_image_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$search_users_by_image <- rekognition_search_users_by_image
 
 #' Starts asynchronous recognition of celebrities in a stored video
 #'

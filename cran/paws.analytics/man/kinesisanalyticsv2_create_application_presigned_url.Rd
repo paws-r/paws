@@ -22,6 +22,6 @@ Currently, the only valid extension URL type is \code{FLINK_DASHBOARD_URL}.}
 \description{
 Creates and returns a URL that you can use to connect to an application's extension.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_presigned_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application_presigned_url/} for full documentation.
 }
 \keyword{internal}

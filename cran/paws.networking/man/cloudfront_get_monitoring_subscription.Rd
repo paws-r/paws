@@ -13,6 +13,6 @@ cloudfront_get_monitoring_subscription(DistributionId)
 \description{
 Gets information about whether additional CloudWatch metrics are enabled for the specified CloudFront distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_monitoring_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_monitoring_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you. These descriptions help you determine which reserve node offering you want to purchase. You then use the unique offering ID in you call to \code{\link[=redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering}} to reserve one or more nodes for your Amazon Redshift cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_reserved_node_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_reserved_node_offerings/} for full documentation.
 }
 \keyword{internal}

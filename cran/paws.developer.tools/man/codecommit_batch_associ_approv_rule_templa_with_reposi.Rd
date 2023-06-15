@@ -22,6 +22,6 @@ itself can be empty.}
 \description{
 Creates an association between an approval rule template and one or more specified repositories.
 
-See \url{https://paws-r.github.io/docs/codecommit/batch_associate_approval_rule_template_with_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_batch_associate_approval_rule_template_with_repositories/} for full documentation.
 }
 \keyword{internal}

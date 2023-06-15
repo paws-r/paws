@@ -13,6 +13,6 @@ maximum string size is 100 KB.}
 \description{
 Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
 
-See \url{https://paws-r.github.io/docs/comprehend/detect_dominant_language.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_detect_dominant_language/} for full documentation.
 }
 \keyword{internal}

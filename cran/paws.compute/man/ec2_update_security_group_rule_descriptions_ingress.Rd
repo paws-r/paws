@@ -36,6 +36,6 @@ must specify either a description or IP permissions.}
 \description{
 Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.
 
-See \url{https://paws-r.github.io/docs/ec2/update_security_group_rule_descriptions_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_update_security_group_rule_descriptions_ingress/} for full documentation.
 }
 \keyword{internal}

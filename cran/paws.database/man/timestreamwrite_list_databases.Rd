@@ -18,6 +18,6 @@ value as argument of a subsequent API invocation.}
 \description{
 Returns a list of your Timestream databases. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-db.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/list_databases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_list_databases/} for full documentation.
 }
 \keyword{internal}

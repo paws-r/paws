@@ -21,6 +21,6 @@ Disabled, or Deleted.}
 \description{
 Lists directories created within an account.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_directories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_directories/} for full documentation.
 }
 \keyword{internal}

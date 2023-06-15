@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 You can no longer purchase Scheduled Instances.
 
-See \url{https://paws-r.github.io/docs/ec2/purchase_scheduled_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_purchase_scheduled_instances/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ lakeformation_commit_transaction(TransactionId)
 \description{
 Attempts to commit the specified transaction. Returns an exception if the transaction was previously aborted. This API action is idempotent if called multiple times for the same transaction.
 
-See \url{https://paws-r.github.io/docs/lakeformation/commit_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_commit_transaction/} for full documentation.
 }
 \keyword{internal}

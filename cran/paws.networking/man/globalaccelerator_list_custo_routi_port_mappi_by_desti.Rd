@@ -27,6 +27,6 @@ previous call.}
 \description{
 List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that span multiple custom routing accelerators in your account, or for scenarios where you only want to list the port mappings for a specific destination instance.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings_by_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_port_mappings_by_destination/} for full documentation.
 }
 \keyword{internal}

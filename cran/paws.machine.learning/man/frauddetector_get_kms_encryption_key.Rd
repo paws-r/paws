@@ -10,6 +10,6 @@ frauddetector_get_kms_encryption_key()
 \description{
 Gets the encryption key if a KMS key has been specified to be used to encrypt content in Amazon Fraud Detector.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_kms_encryption_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_kms_encryption_key/} for full documentation.
 }
 \keyword{internal}

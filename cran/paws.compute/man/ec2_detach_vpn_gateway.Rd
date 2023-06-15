@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Detaches a virtual private gateway from a VPC. You do this if you're planning to turn off the VPC and not use it anymore. You can confirm a virtual private gateway has been completely detached from a VPC by describing the virtual private gateway (any attachments to the virtual private gateway are also described).
 
-See \url{https://paws-r.github.io/docs/ec2/detach_vpn_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_detach_vpn_gateway/} for full documentation.
 }
 \keyword{internal}

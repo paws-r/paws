@@ -12,6 +12,6 @@ personalize_describe_filter(filterArn)
 \description{
 Describes a filter's properties.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_filter/} for full documentation.
 }
 \keyword{internal}

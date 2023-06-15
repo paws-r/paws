@@ -15,6 +15,6 @@ replication group.}
 \description{
 Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.
 
-See \url{https://paws-r.github.io/docs/dax/create_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_create_parameter_group/} for full documentation.
 }
 \keyword{internal}

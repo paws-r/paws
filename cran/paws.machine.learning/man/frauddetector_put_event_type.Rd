@@ -11,7 +11,8 @@ frauddetector_put_event_type(
   labels = NULL,
   entityTypes,
   eventIngestion = NULL,
-  tags = NULL
+  tags = NULL,
+  eventOrchestration = NULL
 )
 }
 \arguments{
@@ -26,13 +27,17 @@ frauddetector_put_event_type(
 \item{entityTypes}{[required] The entity type for the event type. Example entity types: customer,
 merchant, account.}
 
-\item{eventIngestion}{Specifies if ingenstion is enabled or disabled.}
+\item{eventIngestion}{Specifies if ingestion is enabled or disabled.}
 
 \item{tags}{A collection of key and value pairs.}
+
+\item{eventOrchestration}{Enables or disables event orchestration. If enabled, you can send event
+predictions to select AWS services for downstream processing of the
+events.}
 }
 \description{
 Creates or updates an event type. An event is a business activity that is evaluated for fraud risk. With Amazon Fraud Detector, you generate fraud predictions for events. An event type defines the structure for an event sent to Amazon Fraud Detector. This includes the variables sent as part of the event, the entity performing the event (such as a customer), and the labels that classify the event. Example event types include online payment transactions, account registrations, and authentications.
 
-See \url{https://paws-r.github.io/docs/frauddetector/put_event_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_put_event_type/} for full documentation.
 }
 \keyword{internal}

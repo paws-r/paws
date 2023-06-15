@@ -25,6 +25,6 @@ event source that the new event bus will be matched with.}
 \description{
 Creates a new event bus within your account. This can be a custom event bus which you can use to receive events from your custom applications and services, or it can be a partner event bus which can be matched to a partner event source.
 
-See \url{https://paws-r.github.io/docs/eventbridge/create_event_bus.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_create_event_bus/} for full documentation.
 }
 \keyword{internal}

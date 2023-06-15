@@ -15,6 +15,6 @@ currently associated.}
 \description{
 Removes a specific tag from a given resource. The tag is specified by its key.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_untag_resource/} for full documentation.
 }
 \keyword{internal}

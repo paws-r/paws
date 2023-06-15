@@ -36,6 +36,6 @@ MAIL FROM domain setup is in the \code{Pending}, \code{Failed}, and
 \description{
 Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain).
 
-See \url{https://paws-r.github.io/docs/ses/set_identity_mail_from_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_set_identity_mail_from_domain/} for full documentation.
 }
 \keyword{internal}

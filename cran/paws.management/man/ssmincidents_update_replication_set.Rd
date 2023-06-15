@@ -17,6 +17,6 @@ specified details.}
 \description{
 Add or delete Regions from your replication set.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/update_replication_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_update_replication_set/} for full documentation.
 }
 \keyword{internal}

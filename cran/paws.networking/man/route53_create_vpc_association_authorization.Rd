@@ -18,6 +18,6 @@ want to authorize associating with your hosted zone.}
 \description{
 Authorizes the Amazon Web Services account that created a specified VPC to submit an \code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}} request to associate the VPC with a specified hosted zone that was created by a different account. To submit a \code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}} request, you must use the account that created the hosted zone. After you authorize the association, use the account that created the VPC to submit an \code{\link[=route53_associate_vpc_with_hosted_zone]{associate_vpc_with_hosted_zone}} request.
 
-See \url{https://paws-r.github.io/docs/route53/create_vpc_association_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_vpc_association_authorization/} for full documentation.
 }
 \keyword{internal}

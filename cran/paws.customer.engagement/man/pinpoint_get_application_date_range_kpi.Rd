@@ -47,6 +47,6 @@ should also be fewer than 90 days from the current day.}
 \description{
 Retrieves (queries) pre-aggregated data for a standard metric that applies to an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_application_date_range_kpi.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_application_date_range_kpi/} for full documentation.
 }
 \keyword{internal}

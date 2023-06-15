@@ -13,6 +13,6 @@ forecastservice_delete_predictor(PredictorArn)
 \description{
 Deletes a predictor created using the \code{\link[=forecastservice_describe_predictor]{describe_predictor}} or \code{\link[=forecastservice_create_predictor]{create_predictor}} operations. You can delete only predictor that have a status of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the \code{\link[=forecastservice_describe_predictor]{describe_predictor}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_predictor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_predictor/} for full documentation.
 }
 \keyword{internal}

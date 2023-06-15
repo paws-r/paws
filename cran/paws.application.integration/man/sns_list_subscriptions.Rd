@@ -13,6 +13,6 @@ sns_list_subscriptions(NextToken = NULL)
 \description{
 Returns a list of the requester's subscriptions. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken} parameter in a new \code{\link[=sns_list_subscriptions]{list_subscriptions}} call to get further results.
 
-See \url{https://paws-r.github.io/docs/sns/list_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_subscriptions/} for full documentation.
 }
 \keyword{internal}

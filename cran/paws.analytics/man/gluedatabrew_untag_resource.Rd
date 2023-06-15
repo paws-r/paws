@@ -15,6 +15,6 @@ value for this parameter is an Amazon Resource Name (ARN).}
 \description{
 Removes metadata tags from a DataBrew resource.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_untag_resource/} for full documentation.
 }
 \keyword{internal}

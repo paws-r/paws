@@ -59,6 +59,6 @@ both.}
 \description{
 You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/create_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_create_job/} for full documentation.
 }
 \keyword{internal}

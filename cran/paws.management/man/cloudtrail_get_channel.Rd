@@ -12,6 +12,6 @@ cloudtrail_get_channel(Channel)
 \description{
 Returns information about a specific channel.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/get_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_channel/} for full documentation.
 }
 \keyword{internal}

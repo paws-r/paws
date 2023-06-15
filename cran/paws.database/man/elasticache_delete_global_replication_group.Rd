@@ -18,6 +18,6 @@ group.}
 \description{
 Deleting a Global datastore is a two-step process:
 
-See \url{https://paws-r.github.io/docs/elasticache/delete_global_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_global_replication_group/} for full documentation.
 }
 \keyword{internal}

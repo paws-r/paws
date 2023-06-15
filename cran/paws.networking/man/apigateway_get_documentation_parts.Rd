@@ -35,6 +35,6 @@ and the maximum value is 500.}
 \description{
 Gets documentation parts.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_documentation_parts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_documentation_parts/} for full documentation.
 }
 \keyword{internal}

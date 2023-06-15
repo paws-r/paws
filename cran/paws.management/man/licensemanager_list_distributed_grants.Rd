@@ -30,6 +30,6 @@ licensemanager_list_distributed_grants(
 \description{
 Lists the grants distributed for the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_distributed_grants.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_distributed_grants/} for full documentation.
 }
 \keyword{internal}

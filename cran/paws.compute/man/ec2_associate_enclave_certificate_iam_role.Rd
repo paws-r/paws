@@ -25,6 +25,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates an Identity and Access Management (IAM) role with an Certificate Manager (ACM) certificate. This enables the certificate to be used by the ACM for Nitro Enclaves application inside an enclave. For more information, see \href{https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html}{Certificate Manager for Nitro Enclaves} in the \emph{Amazon Web Services Nitro Enclaves User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_enclave_certificate_iam_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_enclave_certificate_iam_role/} for full documentation.
 }
 \keyword{internal}

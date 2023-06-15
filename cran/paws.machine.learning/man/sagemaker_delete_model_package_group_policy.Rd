@@ -12,6 +12,6 @@ sagemaker_delete_model_package_group_policy(ModelPackageGroupName)
 \description{
 Deletes a model group resource policy.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model_package_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package_group_policy/} for full documentation.
 }
 \keyword{internal}

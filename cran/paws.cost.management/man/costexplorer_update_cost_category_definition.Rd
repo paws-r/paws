@@ -36,6 +36,6 @@ Category values.}
 \description{
 Updates an existing Cost Category. Changes made to the Cost Category rules will be used to categorize the current month’s expenses and future expenses. This won’t change categorization for the previous months.
 
-See \url{https://paws-r.github.io/docs/costexplorer/update_cost_category_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_update_cost_category_definition/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ results.}
 \description{
 Lists the backups of a streaming session in a studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_streaming_session_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_session_backups/} for full documentation.
 }
 \keyword{internal}

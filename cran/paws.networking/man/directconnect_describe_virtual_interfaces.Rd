@@ -17,6 +17,6 @@ directconnect_describe_virtual_interfaces(
 \description{
 Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_virtual_interfaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_interfaces/} for full documentation.
 }
 \keyword{internal}

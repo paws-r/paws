@@ -37,6 +37,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns a list of datashares where the account identifier being called is a consumer account identifier.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_data_shares_for_consumer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_data_shares_for_consumer/} for full documentation.
 }
 \keyword{internal}

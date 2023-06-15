@@ -30,6 +30,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists all the permission sets that are provisioned to a specified AWS account.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_permission_sets_provisioned_to_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets_provisioned_to_account/} for full documentation.
 }
 \keyword{internal}

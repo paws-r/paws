@@ -15,6 +15,6 @@ kendra_describe_query_suggestions_block_list(IndexId, Id)
 \description{
 Gets information about a block list used for query suggestions for an index.
 
-See \url{https://paws-r.github.io/docs/kendra/describe_query_suggestions_block_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_describe_query_suggestions_block_list/} for full documentation.
 }
 \keyword{internal}

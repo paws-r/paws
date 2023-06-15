@@ -22,6 +22,6 @@ call.}
 \description{
 Returns a list of keywords that are pre-mapped to the specified control data source.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_keywords_for_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_keywords_for_data_source/} for full documentation.
 }
 \keyword{internal}

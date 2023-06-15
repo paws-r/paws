@@ -32,6 +32,6 @@ the response.}
 \description{
 Gets a list of response headers policies.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_response_headers_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_response_headers_policies/} for full documentation.
 }
 \keyword{internal}

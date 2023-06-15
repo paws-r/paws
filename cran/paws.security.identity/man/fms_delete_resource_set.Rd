@@ -13,6 +13,6 @@ the resource set.}
 \description{
 Deletes the specified ResourceSet.
 
-See \url{https://paws-r.github.io/docs/fms/delete_resource_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_delete_resource_set/} for full documentation.
 }
 \keyword{internal}

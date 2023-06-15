@@ -46,6 +46,6 @@ timeline event.}
 \description{
 Lists timeline events for the specified incident record.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/list_timeline_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_list_timeline_events/} for full documentation.
 }
 \keyword{internal}

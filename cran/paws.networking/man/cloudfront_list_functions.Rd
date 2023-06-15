@@ -22,6 +22,6 @@ specified stage, either \code{DEVELOPMENT} or \code{LIVE}.}
 \description{
 Gets a list of all CloudFront functions in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_functions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_functions/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ comprehend_delete_flywheel(FlywheelArn)
 \description{
 Deletes a flywheel. When you delete the flywheel, Amazon Comprehend does not delete the data lake or the model associated with the flywheel.
 
-See \url{https://paws-r.github.io/docs/comprehend/delete_flywheel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_delete_flywheel/} for full documentation.
 }
 \keyword{internal}

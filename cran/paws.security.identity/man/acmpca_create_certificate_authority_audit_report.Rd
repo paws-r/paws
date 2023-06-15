@@ -25,6 +25,6 @@ form:
 \description{
 Creates an audit report that lists every time that your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The \code{\link[=acmpca_issue_certificate]{issue_certificate}} and \code{\link[=acmpca_revoke_certificate]{revoke_certificate}} actions use the private key.
 
-See \url{https://paws-r.github.io/docs/acmpca/create_certificate_authority_audit_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/} for full documentation.
 }
 \keyword{internal}

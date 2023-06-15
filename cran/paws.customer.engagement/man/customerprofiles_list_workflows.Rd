@@ -34,6 +34,6 @@ results.}
 \description{
 Query to list all workflows.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/list_workflows.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_list_workflows/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ operation.}
 \description{
 Retrieves a list of user settings.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/list_user_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_list_user_settings/} for full documentation.
 }
 \keyword{internal}

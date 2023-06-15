@@ -13,6 +13,6 @@ URLs cannot contain the ARN.}
 \description{
 Retrieves information about the knowledge base.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/get_knowledge_base.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_get_knowledge_base/} for full documentation.
 }
 \keyword{internal}

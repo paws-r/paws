@@ -22,6 +22,6 @@ return the next page of results.}
 \description{
 Gets a list of aliases for the specified bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_bot_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_aliases/} for full documentation.
 }
 \keyword{internal}

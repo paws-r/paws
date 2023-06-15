@@ -12,7 +12,8 @@ cloudtrail_create_event_data_store(
   RetentionPeriod = NULL,
   TerminationProtectionEnabled = NULL,
   TagsList = NULL,
-  KmsKeyId = NULL
+  KmsKeyId = NULL,
+  StartIngestion = NULL
 )
 }
 \arguments{
@@ -35,8 +36,8 @@ include non-Amazon Web Services events in your event data store, see
 \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-lake-cli.html#lake-cli-create-integration}{Create an integration to log events from outside Amazon Web Services}
 in the CloudTrail User Guide.}
 
-\item{MultiRegionEnabled}{Specifies whether the event data store includes events from all regions,
-or only from the region in which the event data store is created.}
+\item{MultiRegionEnabled}{Specifies whether the event data store includes events from all Regions,
+or only from the Region in which the event data store is created.}
 
 \item{OrganizationEnabled}{Specifies whether an event data store collects events logged for an
 organization in Organizations.}
@@ -74,10 +75,13 @@ Examples:
 \item \code{arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012}
 \item \code{12345678-1234-1234-1234-123456789012}
 }}
+
+\item{StartIngestion}{Specifies whether the event data store should start ingesting live
+events. The default is true.}
 }
 \description{
 Creates a new event data store.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/create_event_data_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_create_event_data_store/} for full documentation.
 }
 \keyword{internal}

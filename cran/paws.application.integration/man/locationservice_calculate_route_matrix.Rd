@@ -114,6 +114,6 @@ Requirements: \code{TravelMode} must be specified as \code{Truck}.}
 \description{
 \href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html}{Calculates a route matrix} given the following required parameters: \code{DeparturePositions} and \code{DestinationPositions}. \code{\link[=locationservice_calculate_route_matrix]{calculate_route_matrix}} calculates routes and returns the travel time and travel distance from each departure position to each destination position in the request. For example, given departure positions A and B, and destination positions X and Y, \code{\link[=locationservice_calculate_route_matrix]{calculate_route_matrix}} will return time and distance for routes from A to X, A to Y, B to X, and B to Y (in that order). The number of results returned (and routes calculated) will be the number of \code{DeparturePositions} times the number of \code{DestinationPositions}.
 
-See \url{https://paws-r.github.io/docs/locationservice/calculate_route_matrix.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_calculate_route_matrix/} for full documentation.
 }
 \keyword{internal}

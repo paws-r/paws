@@ -38,6 +38,6 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \description{
 Updates the cluster.
 
-See \url{https://paws-r.github.io/docs/ecs/update_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_cluster/} for full documentation.
 }
 \keyword{internal}

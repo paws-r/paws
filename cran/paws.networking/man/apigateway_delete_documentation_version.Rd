@@ -14,6 +14,6 @@ apigateway_delete_documentation_version(restApiId, documentationVersion)
 \description{
 Deletes a documentation version.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_documentation_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_documentation_version/} for full documentation.
 }
 \keyword{internal}

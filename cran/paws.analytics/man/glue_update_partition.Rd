@@ -30,6 +30,6 @@ partition key values for a partition, delete and recreate the partition.}
 \description{
 Updates a partition.
 
-See \url{https://paws-r.github.io/docs/glue/update_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_partition/} for full documentation.
 }
 \keyword{internal}

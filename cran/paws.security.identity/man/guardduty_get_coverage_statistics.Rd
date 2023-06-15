@@ -21,6 +21,6 @@ statistics.}
 \description{
 Retrieves aggregated statistics for your account. If you are a GuardDuty administrator, you can retrieve the statistics for all the resources associated with the active member accounts in your organization who have enabled EKS Runtime Monitoring and have the GuardDuty agent running on their EKS nodes.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_coverage_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_coverage_statistics/} for full documentation.
 }
 \keyword{internal}

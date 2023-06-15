@@ -28,6 +28,6 @@ application.}
 \description{
 Lists all the input sources of the Resilience Hub application. For more information about the input sources supported by Resilience Hub, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html}{Discover the structure and describe your Resilience Hub application}.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_app_input_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_input_sources/} for full documentation.
 }
 \keyword{internal}

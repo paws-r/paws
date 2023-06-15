@@ -15,6 +15,6 @@ removed from the specified resource.}
 \description{
 Removes one or more tags from an Athena resource.
 
-See \url{https://paws-r.github.io/docs/athena/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_untag_resource/} for full documentation.
 }
 \keyword{internal}

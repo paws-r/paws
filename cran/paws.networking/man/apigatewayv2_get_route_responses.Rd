@@ -24,6 +24,6 @@ element of the collection.}
 \description{
 Gets the RouteResponses for a Route.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_route_responses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_route_responses/} for full documentation.
 }
 \keyword{internal}

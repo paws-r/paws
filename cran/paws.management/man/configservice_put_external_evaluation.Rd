@@ -14,6 +14,6 @@ configservice_put_external_evaluation(ConfigRuleName, ExternalEvaluation)
 \description{
 Add or updates the evaluations for process checks. This API checks if the rule is a process check when the name of the Config rule is provided.
 
-See \url{https://paws-r.github.io/docs/configservice/put_external_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_external_evaluation/} for full documentation.
 }
 \keyword{internal}

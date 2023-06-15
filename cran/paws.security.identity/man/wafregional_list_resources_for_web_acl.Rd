@@ -16,6 +16,6 @@ Amazon API Gateway.}
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/wafregional/list_resources_for_web_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafregional_list_resources_for_web_acl/} for full documentation.
 }
 \keyword{internal}

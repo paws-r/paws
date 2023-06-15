@@ -42,6 +42,6 @@ provide this token to receive the next set of results.}
 \description{
 Describes the specified WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces/} for full documentation.
 }
 \keyword{internal}

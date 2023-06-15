@@ -22,6 +22,6 @@ already be connected to the VPC.}
 \description{
 Updates a specified host with the provided configurations.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/update_host.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_update_host/} for full documentation.
 }
 \keyword{internal}

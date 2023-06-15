@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Get details of available tunnel endpoint maintenance.
 
-See \url{https://paws-r.github.io/docs/ec2/get_vpn_tunnel_replacement_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_vpn_tunnel_replacement_status/} for full documentation.
 }
 \keyword{internal}

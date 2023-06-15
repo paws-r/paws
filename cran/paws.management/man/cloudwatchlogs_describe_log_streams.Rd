@@ -58,6 +58,6 @@ default is up to 50 items.}
 \description{
 Lists the log streams for the specified log group. You can list all the log streams or filter the results by prefix. You can also control how the results are ordered.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_log_streams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_streams/} for full documentation.
 }
 \keyword{internal}

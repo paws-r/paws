@@ -30,6 +30,6 @@ the AWS SDK.}
 \description{
 Updates the trust store.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/update_trust_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_update_trust_store/} for full documentation.
 }
 \keyword{internal}

@@ -57,6 +57,6 @@ service that the pipeline is associated with.}
 \description{
 Update the service pipeline.
 
-See \url{https://paws-r.github.io/docs/proton/update_service_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_service_pipeline/} for full documentation.
 }
 \keyword{internal}

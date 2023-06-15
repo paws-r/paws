@@ -139,6 +139,6 @@ in the request takes precedence over the role tag.}
 \description{
 Returns a set of temporary security credentials (consisting of an access key ID, a secret access key, and a security token) for a user. A typical use is in a proxy application that gets temporary security credentials on behalf of distributed applications inside a corporate network.
 
-See \url{https://paws-r.github.io/docs/sts/get_federation_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_get_federation_token/} for full documentation.
 }
 \keyword{internal}

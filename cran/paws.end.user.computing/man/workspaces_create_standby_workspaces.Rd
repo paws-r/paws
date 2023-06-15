@@ -14,6 +14,6 @@ workspaces_create_standby_workspaces(PrimaryRegion, StandbyWorkspaces)
 \description{
 Creates a standby WorkSpace in a secondary Region.
 
-See \url{https://paws-r.github.io/docs/workspaces/create_standby_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_create_standby_workspaces/} for full documentation.
 }
 \keyword{internal}

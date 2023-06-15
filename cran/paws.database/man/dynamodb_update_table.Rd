@@ -80,6 +80,6 @@ disabled (false) on the table.}
 \description{
 Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_table/} for full documentation.
 }
 \keyword{internal}

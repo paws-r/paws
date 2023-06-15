@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels a bundling operation for an instance store-backed Windows instance.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_bundle_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_bundle_task/} for full documentation.
 }
 \keyword{internal}

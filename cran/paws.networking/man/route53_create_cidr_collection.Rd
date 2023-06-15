@@ -17,6 +17,6 @@ similar response, and there are no additional edge cases to handle.}
 \description{
 Creates a CIDR collection in the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/create_cidr_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_cidr_collection/} for full documentation.
 }
 \keyword{internal}

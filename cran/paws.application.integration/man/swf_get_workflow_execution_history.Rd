@@ -37,6 +37,6 @@ events.}
 \description{
 Returns the history of the specified workflow execution. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the \code{nextPageToken} returned by the initial call.
 
-See \url{https://paws-r.github.io/docs/swf/get_workflow_execution_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_get_workflow_execution_history/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ ssm_register_default_patch_baseline(BaselineId)
 \description{
 Defines the default patch baseline for the relevant operating system.
 
-See \url{https://paws-r.github.io/docs/ssm/register_default_patch_baseline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_register_default_patch_baseline/} for full documentation.
 }
 \keyword{internal}

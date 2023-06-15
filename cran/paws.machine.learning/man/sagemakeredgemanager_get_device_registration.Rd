@@ -15,6 +15,6 @@ from.}
 \description{
 Use to check if a device is registered with SageMaker Edge Manager.
 
-See \url{https://paws-r.github.io/docs/sagemakeredgemanager/get_device_registration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakeredgemanager_get_device_registration/} for full documentation.
 }
 \keyword{internal}

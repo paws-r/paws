@@ -43,6 +43,6 @@ the completion notification.}
 \description{
 Starts asynchronous detection of faces in a stored video.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_face_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_face_detection/} for full documentation.
 }
 \keyword{internal}

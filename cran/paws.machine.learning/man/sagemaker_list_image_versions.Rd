@@ -46,6 +46,6 @@ of versions.}
 \description{
 Lists the versions of a specified image and their properties. The list can be filtered by creation time or modified time.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_image_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_image_versions/} for full documentation.
 }
 \keyword{internal}

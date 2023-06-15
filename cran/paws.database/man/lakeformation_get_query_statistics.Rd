@@ -12,6 +12,6 @@ lakeformation_get_query_statistics(QueryId)
 \description{
 Retrieves statistics on the planning and execution of a query.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_query_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_query_statistics/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ keyword, such as ADX.}
 \description{
 From a data producer account, authorizes the sharing of a datashare with one or more consumer accounts or managing entities. To authorize a datashare for a data consumer, the producer account must have the correct access permissions.
 
-See \url{https://paws-r.github.io/docs/redshift/authorize_data_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_authorize_data_share/} for full documentation.
 }
 \keyword{internal}

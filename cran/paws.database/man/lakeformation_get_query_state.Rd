@@ -12,6 +12,6 @@ lakeformation_get_query_state(QueryId)
 \description{
 Returns the state of a query previously submitted. Clients are expected to poll \code{\link[=lakeformation_get_query_state]{get_query_state}} to monitor the current state of the planning before retrieving the work units. A query state is only visible to the principal that made the initial call to \code{\link[=lakeformation_start_query_planning]{start_query_planning}}.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_query_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_query_state/} for full documentation.
 }
 \keyword{internal}

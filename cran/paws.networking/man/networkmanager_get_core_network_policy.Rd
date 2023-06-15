@@ -20,6 +20,6 @@ networkmanager_get_core_network_policy(
 \description{
 Returns details about a core network policy. You can get details about your current live policy or any previous policy version.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_core_network_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_policy/} for full documentation.
 }
 \keyword{internal}

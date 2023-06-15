@@ -36,6 +36,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Adds or removes permission settings for the specified snapshot. You may add or remove specified Amazon Web Services account IDs from a snapshot's list of create volume permissions, but you cannot do both in a single operation. If you need to both add and remove account IDs for a snapshot, you must use multiple operations. You can make up to 500 modifications to a snapshot in a single operation.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_snapshot_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_snapshot_attribute/} for full documentation.
 }
 \keyword{internal}

@@ -63,6 +63,6 @@ account with the \code{logs:Unmask} permission.}
 \description{
 Lists log events from the specified log stream. You can list all of the log events or filter using a time range.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_log_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_events/} for full documentation.
 }
 \keyword{internal}

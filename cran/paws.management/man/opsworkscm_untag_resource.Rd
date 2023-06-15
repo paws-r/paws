@@ -16,6 +16,6 @@ remove tags. For example,
 \description{
 Removes specified tags from an AWS OpsWorks-CM server or backup.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_untag_resource/} for full documentation.
 }
 \keyword{internal}

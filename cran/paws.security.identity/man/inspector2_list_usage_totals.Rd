@@ -23,6 +23,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists the Amazon Inspector usage totals over the last 30 days.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_usage_totals.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/} for full documentation.
 }
 \keyword{internal}

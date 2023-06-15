@@ -18,6 +18,6 @@ lexruntimev2_delete_session(botId, botAliasId, localeId, sessionId)
 \description{
 Removes session information for a specified bot, alias, and user ID.
 
-See \url{https://paws-r.github.io/docs/lexruntimev2/delete_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexruntimev2_delete_session/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ adult content.}
 \description{
 Starts a human loop, provided that at least one activation condition is met.
 
-See \url{https://paws-r.github.io/docs/augmentedairuntime/start_human_loop.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/augmentedairuntime_start_human_loop/} for full documentation.
 }
 \keyword{internal}

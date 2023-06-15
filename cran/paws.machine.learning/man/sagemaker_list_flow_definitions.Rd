@@ -32,6 +32,6 @@ pagination.}
 \description{
 Returns information about the flow definitions in your account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_flow_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_flow_definitions/} for full documentation.
 }
 \keyword{internal}

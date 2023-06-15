@@ -15,6 +15,6 @@ description, and recommendation.}
 \description{
 Describes the exclusions that are specified by the exclusions' ARNs.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_exclusions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_exclusions/} for full documentation.
 }
 \keyword{internal}

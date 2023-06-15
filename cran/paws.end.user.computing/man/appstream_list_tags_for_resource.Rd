@@ -12,6 +12,6 @@ appstream_list_tags_for_resource(ResourceArn)
 \description{
 Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 
-See \url{https://paws-r.github.io/docs/appstream/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

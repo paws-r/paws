@@ -23,6 +23,6 @@ action.}
 \description{
 Lists information about a specific audit report created by calling the \code{\link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report}} action. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the \code{\link[=acmpca_issue_certificate]{issue_certificate}} action or the \code{\link[=acmpca_revoke_certificate]{revoke_certificate}} action.
 
-See \url{https://paws-r.github.io/docs/acmpca/describe_certificate_authority_audit_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority_audit_report/} for full documentation.
 }
 \keyword{internal}

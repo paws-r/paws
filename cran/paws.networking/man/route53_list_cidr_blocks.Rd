@@ -24,6 +24,6 @@ enumerating results.}
 \description{
 Returns a paginated list of location objects and their CIDR blocks.
 
-See \url{https://paws-r.github.io/docs/route53/list_cidr_blocks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_cidr_blocks/} for full documentation.
 }
 \keyword{internal}

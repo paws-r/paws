@@ -33,6 +33,6 @@ or engine and major version combination is to be returned.}
 \description{
 Returns a list of the available Redis engine versions.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_engine_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_engine_versions/} for full documentation.
 }
 \keyword{internal}

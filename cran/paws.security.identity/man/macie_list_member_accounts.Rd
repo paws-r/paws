@@ -20,6 +20,6 @@ items that you want in the response. The default value is 250.}
 \description{
 (Discontinued) Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account.
 
-See \url{https://paws-r.github.io/docs/macie/list_member_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_list_member_accounts/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ For example: \verb{\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49\}}.}
 \description{
 Returns a revision data object for a specified document ID and block address. Also returns a proof of the specified revision for verification if \code{DigestTipAddress} is provided.
 
-See \url{https://paws-r.github.io/docs/qldb/get_revision.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_get_revision/} for full documentation.
 }
 \keyword{internal}

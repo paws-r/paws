@@ -26,6 +26,6 @@ previous page call.}
 \description{
 List all rulesets available in the current account or rulesets associated with a specific resource (dataset).
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_rulesets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_rulesets/} for full documentation.
 }
 \keyword{internal}

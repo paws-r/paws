@@ -15,6 +15,6 @@ directconnect_associate_virtual_interface(virtualInterfaceId, connectionId)
 \description{
 Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to Amazon Web Services is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails.
 
-See \url{https://paws-r.github.io/docs/directconnect/associate_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_associate_virtual_interface/} for full documentation.
 }
 \keyword{internal}

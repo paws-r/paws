@@ -44,6 +44,6 @@ case sensitive. If \code{true}, the names are case sensitive. If \code{false}
 \description{
 Creates a new table from a table in an Amazon Redshift cluster snapshot. You must create the new table within the Amazon Redshift cluster that the snapshot was taken from.
 
-See \url{https://paws-r.github.io/docs/redshift/restore_table_from_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_restore_table_from_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

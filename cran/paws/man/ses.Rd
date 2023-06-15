@@ -28,8 +28,9 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This document contains reference information for the \href{https://aws.amazon.com/ses/}{Amazon Simple Email Service} (Amazon SES) API, version
-2010-12-01. This document is best used in conjunction with the \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
+This document contains reference information for the Amazon Simple Email
+Service (Amazon SES) API, version 2010-12-01. This document is best used
+in conjunction with the \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
 
 For a list of Amazon SES endpoints to use in service requests, see
 \href{https://docs.aws.amazon.com/ses/latest/dg/regions.html}{Regions and Amazon SES} in the

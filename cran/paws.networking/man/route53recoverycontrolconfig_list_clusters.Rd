@@ -14,6 +14,6 @@ route53recoverycontrolconfig_list_clusters(MaxResults = NULL, NextToken = NULL)
 \description{
 Returns an array of all the clusters in an account.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/list_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_clusters/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ cloudfront_create_distribution(DistributionConfig)
 \description{
 Creates a CloudFront distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_distribution/} for full documentation.
 }
 \keyword{internal}

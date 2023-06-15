@@ -17,6 +17,6 @@ athena_create_capacity_reservation(TargetDpus, Name, Tags = NULL)
 \description{
 Creates a capacity reservation with the specified name and number of requested data processing units.
 
-See \url{https://paws-r.github.io/docs/athena/create_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_create_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

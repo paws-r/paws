@@ -38,6 +38,6 @@ with the environment account connection to update.}
 \description{
 In an environment account, update an environment account connection to use a new IAM role.
 
-See \url{https://paws-r.github.io/docs/proton/update_environment_account_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_environment_account_connection/} for full documentation.
 }
 \keyword{internal}

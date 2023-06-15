@@ -20,6 +20,6 @@ Portuguese ("pt"). All documents must be in the same language.}
 \description{
 Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html}{Syntax} in the Comprehend Developer Guide.
 
-See \url{https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_batch_detect_syntax/} for full documentation.
 }
 \keyword{internal}

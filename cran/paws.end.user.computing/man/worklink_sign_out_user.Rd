@@ -14,6 +14,6 @@ worklink_sign_out_user(FleetArn, Username)
 \description{
 Signs the user out from all of their devices. The user can sign in again if they have valid credentials.
 
-See \url{https://paws-r.github.io/docs/worklink/sign_out_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_sign_out_user/} for full documentation.
 }
 \keyword{internal}

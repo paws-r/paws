@@ -28,6 +28,6 @@ type or the resource type.}
 \description{
 Updates the specified lifecycle policy.
 
-See \url{https://paws-r.github.io/docs/dlm/update_lifecycle_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dlm_update_lifecycle_policy/} for full documentation.
 }
 \keyword{internal}

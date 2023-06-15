@@ -16,6 +16,6 @@ workmail_associate_delegate_to_resource(OrganizationId, ResourceId, EntityId)
 \description{
 Adds a member (user or group) to the resource's set of delegates.
 
-See \url{https://paws-r.github.io/docs/workmail/associate_delegate_to_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_associate_delegate_to_resource/} for full documentation.
 }
 \keyword{internal}

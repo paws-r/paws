@@ -14,6 +14,6 @@ opsworks_register_elastic_ip(ElasticIp, StackId)
 \description{
 Registers an Elastic IP address with a specified stack. An address can be registered with only one stack at a time. If the address is already registered, you must first deregister it by calling \code{\link[=opsworks_deregister_elastic_ip]{deregister_elastic_ip}}. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/register_elastic_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_register_elastic_ip/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ the next request.}
 \description{
 Gets a list of built-in intents that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intents/} for full documentation.
 }
 \keyword{internal}

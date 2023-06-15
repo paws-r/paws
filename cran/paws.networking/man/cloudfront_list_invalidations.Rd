@@ -23,6 +23,6 @@ body.}
 \description{
 Lists invalidation batches.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_invalidations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_invalidations/} for full documentation.
 }
 \keyword{internal}

@@ -46,6 +46,6 @@ added to a resource to indicate its use by the sales department.}
 \description{
 Creates a new custom model that replicates a source custom model that you import. The source model can be in your Amazon Web Services account or another one.
 
-See \url{https://paws-r.github.io/docs/comprehend/import_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_import_model/} for full documentation.
 }
 \keyword{internal}

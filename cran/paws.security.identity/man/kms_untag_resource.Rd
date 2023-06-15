@@ -26,6 +26,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}. To delete a tag, specify the tag key and the KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -43,6 +43,6 @@ different account, the request fails with the HTTP status code
 \description{
 Removes the entire tag set from the specified object. For more information about managing object tags, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html}{Object Tagging}.
 
-See \url{https://paws-r.github.io/docs/s3/delete_object_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_object_tagging/} for full documentation.
 }
 \keyword{internal}

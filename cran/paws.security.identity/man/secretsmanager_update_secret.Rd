@@ -77,6 +77,6 @@ Either \code{SecretBinary} or \code{SecretString} must have a value, but not bot
 \description{
 Modifies the details of a secret, including metadata and the secret value. To change the secret value, you can also use \code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/update_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_update_secret/} for full documentation.
 }
 \keyword{internal}

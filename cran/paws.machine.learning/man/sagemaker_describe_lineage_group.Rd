@@ -12,6 +12,6 @@ sagemaker_describe_lineage_group(LineageGroupName)
 \description{
 Provides a list of properties for the requested lineage group. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html}{Cross-Account Lineage Tracking} in the \emph{Amazon SageMaker Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_lineage_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_lineage_group/} for full documentation.
 }
 \keyword{internal}

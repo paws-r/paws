@@ -17,6 +17,6 @@ connectcampaignservice_start_instance_onboarding_job(
 \description{
 Onboard the specific Amazon Connect instance to Connect Campaigns.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/start_instance_onboarding_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_start_instance_onboarding_job/} for full documentation.
 }
 \keyword{internal}

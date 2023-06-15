@@ -9,6 +9,6 @@ rds_describe_account_attributes()
 \description{
 Lists all of the attributes for a customer account. The attributes include Amazon RDS quotas for the account, such as the number of DB instances allowed. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 
-See \url{https://paws-r.github.io/docs/rds/describe_account_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_account_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ want in the response. The default value is 10. The maximum value is 500.}
 \description{
 Lists all available Amazon Inspector rules packages.
 
-See \url{https://paws-r.github.io/docs/inspector/list_rules_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_list_rules_packages/} for full documentation.
 }
 \keyword{internal}

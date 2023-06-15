@@ -14,6 +14,6 @@ devopsguru_describe_anomaly(Id, AccountId = NULL)
 \description{
 Returns details about an anomaly that you specify using its ID.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_anomaly.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_anomaly/} for full documentation.
 }
 \keyword{internal}

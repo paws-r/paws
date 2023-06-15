@@ -17,6 +17,6 @@ datapipeline_evaluate_expression(pipelineId, objectId, expression)
 \description{
 Task runners call \code{\link[=datapipeline_evaluate_expression]{evaluate_expression}} to evaluate a string in the context of the specified object. For example, a task runner can evaluate SQL queries stored in Amazon S3.
 
-See \url{https://paws-r.github.io/docs/datapipeline/evaluate_expression.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_evaluate_expression/} for full documentation.
 }
 \keyword{internal}

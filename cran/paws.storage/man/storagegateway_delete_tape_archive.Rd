@@ -18,6 +18,6 @@ lock set to \code{compliance} can't be deleted.}
 \description{
 Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_tape_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_tape_archive/} for full documentation.
 }
 \keyword{internal}

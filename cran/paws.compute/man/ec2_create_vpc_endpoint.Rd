@@ -77,6 +77,6 @@ Default: \code{true}}
 \description{
 Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpc_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpc_endpoint/} for full documentation.
 }
 \keyword{internal}

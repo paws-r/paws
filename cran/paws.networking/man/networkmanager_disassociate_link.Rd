@@ -16,6 +16,6 @@ networkmanager_disassociate_link(GlobalNetworkId, DeviceId, LinkId)
 \description{
 Disassociates an existing device from a link. You must first disassociate any customer gateways that are associated with the link.
 
-See \url{https://paws-r.github.io/docs/networkmanager/disassociate_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_disassociate_link/} for full documentation.
 }
 \keyword{internal}

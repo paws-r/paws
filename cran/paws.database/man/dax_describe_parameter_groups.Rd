@@ -27,6 +27,6 @@ specified by \code{MaxResults}.}
 \description{
 Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.
 
-See \url{https://paws-r.github.io/docs/dax/describe_parameter_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_describe_parameter_groups/} for full documentation.
 }
 \keyword{internal}

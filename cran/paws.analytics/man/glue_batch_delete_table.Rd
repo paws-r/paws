@@ -25,6 +25,6 @@ For Hive compatibility, this name is entirely lowercase.}
 \description{
 Deletes multiple tables at once.
 
-See \url{https://paws-r.github.io/docs/glue/batch_delete_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_delete_table/} for full documentation.
 }
 \keyword{internal}

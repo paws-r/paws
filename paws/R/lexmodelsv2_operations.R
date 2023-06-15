@@ -836,9 +836,12 @@ lexmodelsv2_create_bot_version <- function(botId, description = NULL, botVersion
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetExportSpecification = list(
+#'       testSetId = "string"
 #'     )
 #'   ),
-#'   fileFormat = "LexJson"|"TSV",
+#'   fileFormat = "LexJson"|"TSV"|"CSV",
 #'   exportStatus = "InProgress"|"Completed"|"Failed"|"Deleting",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
@@ -863,9 +866,12 @@ lexmodelsv2_create_bot_version <- function(botId, description = NULL, botVersion
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetExportSpecification = list(
+#'       testSetId = "string"
 #'     )
 #'   ),
-#'   fileFormat = "LexJson"|"TSV",
+#'   fileFormat = "LexJson"|"TSV"|"CSV",
 #'   filePassword = "string"
 #' )
 #' ```
@@ -999,7 +1005,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' The `AMAZON.KendraSearchIntent` intent is called when Amazon Lex can't
 #' determine another intent to invoke.
 #' @param botId &#91;required&#93; The identifier of the bot associated with this intent.
-#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this intent.
+#' @param botVersion &#91;required&#93; The version of the bot associated with this intent.
 #' @param localeId &#91;required&#93; The identifier of the language and locale where this intent is used. All
 #' of the bots, slot types, and slots used by the intent must have the same
 #' locale. For more information, see [Supported
@@ -8468,9 +8474,9 @@ lexmodelsv2_create_resource_policy <- function(resourceArn, policy) {
 #' Sid](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_sid.html).
 #' @param effect &#91;required&#93; Determines whether the statement allows or denies access to the
 #' resource.
-#' @param principal &#91;required&#93; An IAM principal, such as an IAM users, IAM roles, or AWS services that
-#' is allowed or denied access to a resource. For more information, see
-#' [AWS JSON policy elements:
+#' @param principal &#91;required&#93; An IAM principal, such as an IAM user, IAM role, or Amazon Web Services
+#' services that is allowed or denied access to a resource. For more
+#' information, see [Amazon Web Services JSON policy elements:
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html).
 #' @param action &#91;required&#93; The Amazon Lex action that this policy either allows or denies. The
 #' action must apply to the resource type of the specified ARN. For more
@@ -8581,7 +8587,7 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param intentId &#91;required&#93; The identifier of the intent that contains the slot.
 #' @param multipleValuesSetting Indicates whether the slot returns multiple values in one response.
-#' Multi-value slots are only available in the en-US locale. If you set
+#' Multi-value slots are only available in the `en-US` locale. If you set
 #' this value to `true` in any other locale, Amazon Lex throws a
 #' `ValidationException`.
 #' 
@@ -12184,7 +12190,7 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #'   localeId, externalSourceSetting, compositeSlotTypeSetting)
 #'
 #' @param slotTypeName &#91;required&#93; The name for the slot. A slot type name must be unique within the
-#' account.
+#' intent.
 #' @param description A description of the slot type. Use the description to help identify the
 #' slot type in lists.
 #' @param slotTypeValues A list of `SlotTypeValue` objects that defines the values that the slot
@@ -12195,15 +12201,15 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #' list of possible values. The field can be set to one of the following
 #' values:
 #' 
-#' -   `OriginalValue` - Returns the value entered by the user, if the user
-#'     value is similar to the slot value.
+#' -   `ORIGINAL_VALUE` - Returns the value entered by the user, if the
+#'     user value is similar to the slot value.
 #' 
-#' -   `TopResolution` - If there is a resolution list for the slot, return
-#'     the first value in the resolution list. If there is no resolution
-#'     list, return null.
+#' -   `TOP_RESOLUTION` - If there is a resolution list for the slot,
+#'     return the first value in the resolution list. If there is no
+#'     resolution list, return null.
 #' 
 #' If you don't specify the `valueSelectionSetting` parameter, the default
-#' is `OriginalValue`.
+#' is `ORIGINAL_VALUE`.
 #' @param parentSlotTypeSignature The built-in slot type used as a parent of this slot type. When you
 #' define a parent slot type, the new slot type has the configuration of
 #' the parent slot type.
@@ -12345,6 +12351,74 @@ lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotT
   return(response)
 }
 .lexmodelsv2$operations$create_slot_type <- lexmodelsv2_create_slot_type
+
+#' Create a report that describes the differences between the bot and the
+#' test set
+#'
+#' @description
+#' Create a report that describes the differences between the bot and the
+#' test set.
+#'
+#' @usage
+#' lexmodelsv2_create_test_set_discrepancy_report(testSetId, target)
+#'
+#' @param testSetId &#91;required&#93; The test set Id for the test set discrepancy report.
+#' @param target &#91;required&#93; The target bot for the test set discrepancy report.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetDiscrepancyReportId = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   testSetId = "string",
+#'   target = list(
+#'     botAliasTarget = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_test_set_discrepancy_report(
+#'   testSetId = "string",
+#'   target = list(
+#'     botAliasTarget = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_create_test_set_discrepancy_report
+#'
+#' @aliases lexmodelsv2_create_test_set_discrepancy_report
+lexmodelsv2_create_test_set_discrepancy_report <- function(testSetId, target) {
+  op <- new_operation(
+    name = "CreateTestSetDiscrepancyReport",
+    http_method = "POST",
+    http_path = "/testsets/{testSetId}/testsetdiscrepancy",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$create_test_set_discrepancy_report_input(testSetId = testSetId, target = target)
+  output <- .lexmodelsv2$create_test_set_discrepancy_report_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$create_test_set_discrepancy_report <- lexmodelsv2_create_test_set_discrepancy_report
 
 #' Gets a pre-signed S3 write URL that you use to upload the zip archive
 #' when importing a bot or a bot locale
@@ -13075,6 +13149,48 @@ lexmodelsv2_delete_slot_type <- function(slotTypeId, botId, botVersion, localeId
 }
 .lexmodelsv2$operations$delete_slot_type <- lexmodelsv2_delete_slot_type
 
+#' The action to delete the selected test set
+#'
+#' @description
+#' The action to delete the selected test set.
+#'
+#' @usage
+#' lexmodelsv2_delete_test_set(testSetId)
+#'
+#' @param testSetId &#91;required&#93; The test set Id of the test set to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_test_set(
+#'   testSetId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_delete_test_set
+#'
+#' @aliases lexmodelsv2_delete_test_set
+lexmodelsv2_delete_test_set <- function(testSetId) {
+  op <- new_operation(
+    name = "DeleteTestSet",
+    http_method = "DELETE",
+    http_path = "/testsets/{testSetId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$delete_test_set_input(testSetId = testSetId)
+  output <- .lexmodelsv2$delete_test_set_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$delete_test_set <- lexmodelsv2_delete_test_set
+
 #' Deletes stored utterances
 #'
 #' @description
@@ -13342,7 +13458,7 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #' lexmodelsv2_describe_bot_locale(botId, botVersion, localeId)
 #'
 #' @param botId &#91;required&#93; The identifier of the bot associated with the locale.
-#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with the locale.
+#' @param botVersion &#91;required&#93; The version of the bot associated with the locale.
 #' @param localeId &#91;required&#93; The unique identifier of the locale to describe. The string must match
 #' one of the supported locales. For more information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
@@ -13706,9 +13822,12 @@ lexmodelsv2_describe_custom_vocabulary_metadata <- function(botId, botVersion, l
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetExportSpecification = list(
+#'       testSetId = "string"
 #'     )
 #'   ),
-#'   fileFormat = "LexJson"|"TSV",
+#'   fileFormat = "LexJson"|"TSV"|"CSV",
 #'   exportStatus = "InProgress"|"Completed"|"Failed"|"Deleting",
 #'   failureReasons = list(
 #'     "string"
@@ -13796,6 +13915,24 @@ lexmodelsv2_describe_export <- function(exportId) {
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetImportResourceSpecification = list(
+#'       testSetName = "string",
+#'       description = "string",
+#'       roleArn = "string",
+#'       storageLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string",
+#'         kmsKeyArn = "string"
+#'       ),
+#'       importInputLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string"
+#'       ),
+#'       modality = "Text"|"Audio",
+#'       testSetTags = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   importedResourceId = "string",
@@ -19573,6 +19710,352 @@ lexmodelsv2_describe_slot_type <- function(slotTypeId, botId, botVersion, locale
 }
 .lexmodelsv2$operations$describe_slot_type <- lexmodelsv2_describe_slot_type
 
+#' Gets metadata information about the test execution
+#'
+#' @description
+#' Gets metadata information about the test execution.
+#'
+#' @usage
+#' lexmodelsv2_describe_test_execution(testExecutionId)
+#'
+#' @param testExecutionId &#91;required&#93; The execution Id of the test set execution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testExecutionId = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   testExecutionStatus = "Pending"|"Waiting"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'   testSetId = "string",
+#'   testSetName = "string",
+#'   target = list(
+#'     botAliasTarget = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string"
+#'     )
+#'   ),
+#'   apiMode = "Streaming"|"NonStreaming",
+#'   testExecutionModality = "Text"|"Audio",
+#'   failureReasons = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_test_execution(
+#'   testExecutionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_test_execution
+#'
+#' @aliases lexmodelsv2_describe_test_execution
+lexmodelsv2_describe_test_execution <- function(testExecutionId) {
+  op <- new_operation(
+    name = "DescribeTestExecution",
+    http_method = "GET",
+    http_path = "/testexecutions/{testExecutionId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$describe_test_execution_input(testExecutionId = testExecutionId)
+  output <- .lexmodelsv2$describe_test_execution_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_test_execution <- lexmodelsv2_describe_test_execution
+
+#' Gets metadata information about the test set
+#'
+#' @description
+#' Gets metadata information about the test set.
+#'
+#' @usage
+#' lexmodelsv2_describe_test_set(testSetId)
+#'
+#' @param testSetId &#91;required&#93; The test set Id for the test set request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetId = "string",
+#'   testSetName = "string",
+#'   description = "string",
+#'   modality = "Text"|"Audio",
+#'   status = "Importing"|"PendingAnnotation"|"Deleting"|"ValidationError"|"Ready",
+#'   roleArn = "string",
+#'   numTurns = 123,
+#'   storageLocation = list(
+#'     s3BucketName = "string",
+#'     s3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_test_set(
+#'   testSetId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_test_set
+#'
+#' @aliases lexmodelsv2_describe_test_set
+lexmodelsv2_describe_test_set <- function(testSetId) {
+  op <- new_operation(
+    name = "DescribeTestSet",
+    http_method = "GET",
+    http_path = "/testsets/{testSetId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$describe_test_set_input(testSetId = testSetId)
+  output <- .lexmodelsv2$describe_test_set_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_test_set <- lexmodelsv2_describe_test_set
+
+#' Gets metadata information about the test set discrepancy report
+#'
+#' @description
+#' Gets metadata information about the test set discrepancy report.
+#'
+#' @usage
+#' lexmodelsv2_describe_test_set_discrepancy_report(
+#'   testSetDiscrepancyReportId)
+#'
+#' @param testSetDiscrepancyReportId &#91;required&#93; The unique identifier of the test set discrepancy report.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetDiscrepancyReportId = "string",
+#'   testSetId = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   target = list(
+#'     botAliasTarget = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string"
+#'     )
+#'   ),
+#'   testSetDiscrepancyReportStatus = "InProgress"|"Completed"|"Failed",
+#'   lastUpdatedDataTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   testSetDiscrepancyTopErrors = list(
+#'     intentDiscrepancies = list(
+#'       list(
+#'         intentName = "string",
+#'         errorMessage = "string"
+#'       )
+#'     ),
+#'     slotDiscrepancies = list(
+#'       list(
+#'         intentName = "string",
+#'         slotName = "string",
+#'         errorMessage = "string"
+#'       )
+#'     )
+#'   ),
+#'   testSetDiscrepancyRawOutputUrl = "string",
+#'   failureReasons = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_test_set_discrepancy_report(
+#'   testSetDiscrepancyReportId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_test_set_discrepancy_report
+#'
+#' @aliases lexmodelsv2_describe_test_set_discrepancy_report
+lexmodelsv2_describe_test_set_discrepancy_report <- function(testSetDiscrepancyReportId) {
+  op <- new_operation(
+    name = "DescribeTestSetDiscrepancyReport",
+    http_method = "GET",
+    http_path = "/testsetdiscrepancy/{testSetDiscrepancyReportId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$describe_test_set_discrepancy_report_input(testSetDiscrepancyReportId = testSetDiscrepancyReportId)
+  output <- .lexmodelsv2$describe_test_set_discrepancy_report_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_test_set_discrepancy_report <- lexmodelsv2_describe_test_set_discrepancy_report
+
+#' Gets metadata information about the test set generation
+#'
+#' @description
+#' Gets metadata information about the test set generation.
+#'
+#' @usage
+#' lexmodelsv2_describe_test_set_generation(testSetGenerationId)
+#'
+#' @param testSetGenerationId &#91;required&#93; The unique identifier of the test set generation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetGenerationId = "string",
+#'   testSetGenerationStatus = "Generating"|"Ready"|"Failed"|"Pending",
+#'   failureReasons = list(
+#'     "string"
+#'   ),
+#'   testSetId = "string",
+#'   testSetName = "string",
+#'   description = "string",
+#'   storageLocation = list(
+#'     s3BucketName = "string",
+#'     s3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   generationDataSource = list(
+#'     conversationLogsDataSource = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string",
+#'       filter = list(
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         inputMode = "Speech"|"Text"
+#'       )
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_test_set_generation(
+#'   testSetGenerationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_describe_test_set_generation
+#'
+#' @aliases lexmodelsv2_describe_test_set_generation
+lexmodelsv2_describe_test_set_generation <- function(testSetGenerationId) {
+  op <- new_operation(
+    name = "DescribeTestSetGeneration",
+    http_method = "GET",
+    http_path = "/testsetgenerations/{testSetGenerationId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$describe_test_set_generation_input(testSetGenerationId = testSetGenerationId)
+  output <- .lexmodelsv2$describe_test_set_generation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$describe_test_set_generation <- lexmodelsv2_describe_test_set_generation
+
+#' The pre-signed Amazon S3 URL to download the test execution result
+#' artifacts
+#'
+#' @description
+#' The pre-signed Amazon S3 URL to download the test execution result
+#' artifacts.
+#'
+#' @usage
+#' lexmodelsv2_get_test_execution_artifacts_url(testExecutionId)
+#'
+#' @param testExecutionId &#91;required&#93; The unique identifier of the completed test execution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testExecutionId = "string",
+#'   downloadArtifactsUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_test_execution_artifacts_url(
+#'   testExecutionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_get_test_execution_artifacts_url
+#'
+#' @aliases lexmodelsv2_get_test_execution_artifacts_url
+lexmodelsv2_get_test_execution_artifacts_url <- function(testExecutionId) {
+  op <- new_operation(
+    name = "GetTestExecutionArtifactsUrl",
+    http_method = "GET",
+    http_path = "/testexecutions/{testExecutionId}/artifacturl",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$get_test_execution_artifacts_url_input(testExecutionId = testExecutionId)
+  output <- .lexmodelsv2$get_test_execution_artifacts_url_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$get_test_execution_artifacts_url <- lexmodelsv2_get_test_execution_artifacts_url
+
 #' Provides a list of utterances that users have sent to the bot
 #'
 #' @description
@@ -20429,9 +20912,12 @@ lexmodelsv2_list_custom_vocabulary_items <- function(botId, botVersion, localeId
 #'           botId = "string",
 #'           botVersion = "string",
 #'           localeId = "string"
+#'         ),
+#'         testSetExportSpecification = list(
+#'           testSetId = "string"
 #'         )
 #'       ),
-#'       fileFormat = "LexJson"|"TSV",
+#'       fileFormat = "LexJson"|"TSV"|"CSV",
 #'       exportStatus = "InProgress"|"Completed"|"Failed"|"Deleting",
 #'       creationDateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -20544,7 +21030,7 @@ lexmodelsv2_list_exports <- function(botId = NULL, botVersion = NULL, sortBy = N
 #'       lastUpdatedDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       importedResourceType = "Bot"|"BotLocale"|"CustomVocabulary"
+#'       importedResourceType = "Bot"|"BotLocale"|"CustomVocabulary"|"TestSet"
 #'     )
 #'   ),
 #'   nextToken = "string",
@@ -21125,6 +21611,545 @@ lexmodelsv2_list_tags_for_resource <- function(resourceARN) {
 }
 .lexmodelsv2$operations$list_tags_for_resource <- lexmodelsv2_list_tags_for_resource
 
+#' Gets a list of test execution result items
+#'
+#' @description
+#' Gets a list of test execution result items.
+#'
+#' @usage
+#' lexmodelsv2_list_test_execution_result_items(testExecutionId,
+#'   resultFilterBy, maxResults, nextToken)
+#'
+#' @param testExecutionId &#91;required&#93; The unique identifier of the test execution to list the result items.
+#' @param resultFilterBy &#91;required&#93; The filter for the list of results from the test set execution.
+#' @param maxResults The maximum number of test execution result items to return in each
+#' page. If there are fewer results than the max page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the
+#' [`list_test_execution_result_items`][lexmodelsv2_list_test_execution_result_items]
+#' operation contains more results than specified in the `maxResults`
+#' parameter, a token is returned in the response. Use that token in the
+#' `nextToken` parameter to return the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testExecutionResults = list(
+#'     overallTestResults = list(
+#'       items = list(
+#'         list(
+#'           multiTurnConversation = TRUE|FALSE,
+#'           totalResultCount = 123,
+#'           speechTranscriptionResultCounts = list(
+#'             123
+#'           ),
+#'           endToEndResultCounts = list(
+#'             123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     conversationLevelTestResults = list(
+#'       items = list(
+#'         list(
+#'           conversationId = "string",
+#'           endToEndResult = "Matched"|"Mismatched"|"ExecutionError",
+#'           speechTranscriptionResult = "Matched"|"Mismatched"|"ExecutionError",
+#'           intentClassificationResults = list(
+#'             list(
+#'               intentName = "string",
+#'               matchResult = "Matched"|"Mismatched"|"ExecutionError"
+#'             )
+#'           ),
+#'           slotResolutionResults = list(
+#'             list(
+#'               intentName = "string",
+#'               slotName = "string",
+#'               matchResult = "Matched"|"Mismatched"|"ExecutionError"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     intentClassificationTestResults = list(
+#'       items = list(
+#'         list(
+#'           intentName = "string",
+#'           multiTurnConversation = TRUE|FALSE,
+#'           resultCounts = list(
+#'             totalResultCount = 123,
+#'             speechTranscriptionResultCounts = list(
+#'               123
+#'             ),
+#'             intentMatchResultCounts = list(
+#'               123
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     intentLevelSlotResolutionTestResults = list(
+#'       items = list(
+#'         list(
+#'           intentName = "string",
+#'           multiTurnConversation = TRUE|FALSE,
+#'           slotResolutionResults = list(
+#'             list(
+#'               slotName = "string",
+#'               resultCounts = list(
+#'                 totalResultCount = 123,
+#'                 speechTranscriptionResultCounts = list(
+#'                   123
+#'                 ),
+#'                 slotMatchResultCounts = list(
+#'                   123
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     utteranceLevelTestResults = list(
+#'       items = list(
+#'         list(
+#'           recordNumber = 123,
+#'           conversationId = "string",
+#'           turnResult = list(
+#'             agent = list(
+#'               expectedAgentPrompt = "string",
+#'               actualAgentPrompt = "string",
+#'               errorDetails = list(
+#'                 errorCode = "string",
+#'                 errorMessage = "string"
+#'               ),
+#'               actualElicitedSlot = "string",
+#'               actualIntent = "string"
+#'             ),
+#'             user = list(
+#'               input = list(
+#'                 utteranceInput = list(
+#'                   textInput = "string",
+#'                   audioInput = list(
+#'                     audioFileS3Location = "string"
+#'                   )
+#'                 ),
+#'                 requestAttributes = list(
+#'                   "string"
+#'                 ),
+#'                 sessionState = list(
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   ),
+#'                   activeContexts = list(
+#'                     list(
+#'                       name = "string"
+#'                     )
+#'                   ),
+#'                   runtimeHints = list(
+#'                     slotHints = list(
+#'                       list(
+#'                         list(
+#'                           runtimeHintValues = list(
+#'                             list(
+#'                               phrase = "string"
+#'                             )
+#'                           ),
+#'                           subSlotHints = list()
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               expectedOutput = list(
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       value = "string",
+#'                       values = list(
+#'                         list()
+#'                       ),
+#'                       subSlots = list()
+#'                     )
+#'                   )
+#'                 ),
+#'                 activeContexts = list(
+#'                   list(
+#'                     name = "string"
+#'                   )
+#'                 ),
+#'                 transcript = "string"
+#'               ),
+#'               actualOutput = list(
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       value = "string",
+#'                       values = list(
+#'                         list()
+#'                       ),
+#'                       subSlots = list()
+#'                     )
+#'                   )
+#'                 ),
+#'                 activeContexts = list(
+#'                   list(
+#'                     name = "string"
+#'                   )
+#'                 ),
+#'                 transcript = "string"
+#'               ),
+#'               errorDetails = list(
+#'                 errorCode = "string",
+#'                 errorMessage = "string"
+#'               ),
+#'               endToEndResult = "Matched"|"Mismatched"|"ExecutionError",
+#'               intentMatchResult = "Matched"|"Mismatched"|"ExecutionError",
+#'               slotMatchResult = "Matched"|"Mismatched"|"ExecutionError",
+#'               speechTranscriptionResult = "Matched"|"Mismatched"|"ExecutionError",
+#'               conversationLevelResult = list(
+#'                 endToEndResult = "Matched"|"Mismatched"|"ExecutionError",
+#'                 speechTranscriptionResult = "Matched"|"Mismatched"|"ExecutionError"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_execution_result_items(
+#'   testExecutionId = "string",
+#'   resultFilterBy = list(
+#'     resultTypeFilter = "OverallTestResults"|"ConversationLevelTestResults"|"IntentClassificationTestResults"|"SlotResolutionTestResults"|"UtteranceLevelResults",
+#'     conversationLevelTestResultsFilterBy = list(
+#'       endToEndResult = "Matched"|"Mismatched"|"ExecutionError"
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_test_execution_result_items
+#'
+#' @aliases lexmodelsv2_list_test_execution_result_items
+lexmodelsv2_list_test_execution_result_items <- function(testExecutionId, resultFilterBy, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestExecutionResultItems",
+    http_method = "POST",
+    http_path = "/testexecutions/{testExecutionId}/results",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_test_execution_result_items_input(testExecutionId = testExecutionId, resultFilterBy = resultFilterBy, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_test_execution_result_items_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_test_execution_result_items <- lexmodelsv2_list_test_execution_result_items
+
+#' The list of test set executions
+#'
+#' @description
+#' The list of test set executions.
+#'
+#' @usage
+#' lexmodelsv2_list_test_executions(sortBy, maxResults, nextToken)
+#'
+#' @param sortBy The sort order of the test set executions.
+#' @param maxResults The maximum number of test executions to return in each page. If there
+#' are fewer results than the max page size, only the actual number of
+#' results are returned.
+#' @param nextToken If the response from the ListTestExecutions operation contains more
+#' results than specified in the maxResults parameter, a token is returned
+#' in the response. Use that token in the nextToken parameter to return the
+#' next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testExecutions = list(
+#'     list(
+#'       testExecutionId = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       testExecutionStatus = "Pending"|"Waiting"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'       testSetId = "string",
+#'       testSetName = "string",
+#'       target = list(
+#'         botAliasTarget = list(
+#'           botId = "string",
+#'           botAliasId = "string",
+#'           localeId = "string"
+#'         )
+#'       ),
+#'       apiMode = "Streaming"|"NonStreaming",
+#'       testExecutionModality = "Text"|"Audio"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_executions(
+#'   sortBy = list(
+#'     attribute = "TestSetName"|"CreationDateTime",
+#'     order = "Ascending"|"Descending"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_test_executions
+#'
+#' @aliases lexmodelsv2_list_test_executions
+lexmodelsv2_list_test_executions <- function(sortBy = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestExecutions",
+    http_method = "POST",
+    http_path = "/testexecutions",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_test_executions_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_test_executions_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_test_executions <- lexmodelsv2_list_test_executions
+
+#' The list of test set records
+#'
+#' @description
+#' The list of test set records.
+#'
+#' @usage
+#' lexmodelsv2_list_test_set_records(testSetId, maxResults, nextToken)
+#'
+#' @param testSetId &#91;required&#93; The identifier of the test set to list its test set records.
+#' @param maxResults The maximum number of test set records to return in each page. If there
+#' are fewer records than the max page size, only the actual number of
+#' records are returned.
+#' @param nextToken If the response from the ListTestSetRecords operation contains more
+#' results than specified in the maxResults parameter, a token is returned
+#' in the response. Use that token in the nextToken parameter to return the
+#' next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetRecords = list(
+#'     list(
+#'       recordNumber = 123,
+#'       conversationId = "string",
+#'       turnNumber = 123,
+#'       turnSpecification = list(
+#'         agentTurn = list(
+#'           agentPrompt = "string"
+#'         ),
+#'         userTurn = list(
+#'           input = list(
+#'             utteranceInput = list(
+#'               textInput = "string",
+#'               audioInput = list(
+#'                 audioFileS3Location = "string"
+#'               )
+#'             ),
+#'             requestAttributes = list(
+#'               "string"
+#'             ),
+#'             sessionState = list(
+#'               sessionAttributes = list(
+#'                 "string"
+#'               ),
+#'               activeContexts = list(
+#'                 list(
+#'                   name = "string"
+#'                 )
+#'               ),
+#'               runtimeHints = list(
+#'                 slotHints = list(
+#'                   list(
+#'                     list(
+#'                       runtimeHintValues = list(
+#'                         list(
+#'                           phrase = "string"
+#'                         )
+#'                       ),
+#'                       subSlotHints = list()
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           expected = list(
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   value = "string",
+#'                   values = list(
+#'                     list()
+#'                   ),
+#'                   subSlots = list()
+#'                 )
+#'               )
+#'             ),
+#'             activeContexts = list(
+#'               list(
+#'                 name = "string"
+#'               )
+#'             ),
+#'             transcript = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_set_records(
+#'   testSetId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_test_set_records
+#'
+#' @aliases lexmodelsv2_list_test_set_records
+lexmodelsv2_list_test_set_records <- function(testSetId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestSetRecords",
+    http_method = "POST",
+    http_path = "/testsets/{testSetId}/records",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_test_set_records_input(testSetId = testSetId, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_test_set_records_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_test_set_records <- lexmodelsv2_list_test_set_records
+
+#' The list of the test sets
+#'
+#' @description
+#' The list of the test sets
+#'
+#' @usage
+#' lexmodelsv2_list_test_sets(sortBy, maxResults, nextToken)
+#'
+#' @param sortBy The sort order for the list of test sets.
+#' @param maxResults The maximum number of test sets to return in each page. If there are
+#' fewer results than the max page size, only the actual number of results
+#' are returned.
+#' @param nextToken If the response from the ListTestSets operation contains more results
+#' than specified in the maxResults parameter, a token is returned in the
+#' response. Use that token in the nextToken parameter to return the next
+#' page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSets = list(
+#'     list(
+#'       testSetId = "string",
+#'       testSetName = "string",
+#'       description = "string",
+#'       modality = "Text"|"Audio",
+#'       status = "Importing"|"PendingAnnotation"|"Deleting"|"ValidationError"|"Ready",
+#'       roleArn = "string",
+#'       numTurns = 123,
+#'       storageLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string",
+#'         kmsKeyArn = "string"
+#'       ),
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_test_sets(
+#'   sortBy = list(
+#'     attribute = "TestSetName"|"LastUpdatedDateTime",
+#'     order = "Ascending"|"Descending"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_test_sets
+#'
+#' @aliases lexmodelsv2_list_test_sets
+lexmodelsv2_list_test_sets <- function(sortBy = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTestSets",
+    http_method = "POST",
+    http_path = "/testsets",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_test_sets_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_test_sets_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_test_sets <- lexmodelsv2_list_test_sets
+
 #' Search for associated transcripts that meet the specified criteria
 #'
 #' @description
@@ -21399,6 +22424,24 @@ lexmodelsv2_start_bot_recommendation <- function(botId, botVersion, localeId, tr
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetImportResourceSpecification = list(
+#'       testSetName = "string",
+#'       description = "string",
+#'       roleArn = "string",
+#'       storageLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string",
+#'         kmsKeyArn = "string"
+#'       ),
+#'       importInputLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string"
+#'       ),
+#'       modality = "Text"|"Audio",
+#'       testSetTags = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   mergeStrategy = "Overwrite"|"FailOnConflict"|"Append",
@@ -21442,6 +22485,24 @@ lexmodelsv2_start_bot_recommendation <- function(botId, botVersion, localeId, tr
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetImportResourceSpecification = list(
+#'       testSetName = "string",
+#'       description = "string",
+#'       roleArn = "string",
+#'       storageLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string",
+#'         kmsKeyArn = "string"
+#'       ),
+#'       importInputLocation = list(
+#'         s3BucketName = "string",
+#'         s3Path = "string"
+#'       ),
+#'       modality = "Text"|"Audio",
+#'       testSetTags = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   mergeStrategy = "Overwrite"|"FailOnConflict"|"Append",
@@ -21470,6 +22531,197 @@ lexmodelsv2_start_import <- function(importId, resourceSpecification, mergeStrat
   return(response)
 }
 .lexmodelsv2$operations$start_import <- lexmodelsv2_start_import
+
+#' The action to start test set execution
+#'
+#' @description
+#' The action to start test set execution.
+#'
+#' @usage
+#' lexmodelsv2_start_test_execution(testSetId, target, apiMode,
+#'   testExecutionModality)
+#'
+#' @param testSetId &#91;required&#93; The test set Id for the test set execution.
+#' @param target &#91;required&#93; The target bot for the test set execution.
+#' @param apiMode &#91;required&#93; Indicates whether we use streaming or non-streaming APIs for the test
+#' set execution. For streaming, StartConversation Runtime API is used.
+#' Whereas, for non-streaming, RecognizeUtterance and RecognizeText Amazon
+#' Lex Runtime API are used.
+#' @param testExecutionModality Indicates whether audio or text is used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testExecutionId = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   testSetId = "string",
+#'   target = list(
+#'     botAliasTarget = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string"
+#'     )
+#'   ),
+#'   apiMode = "Streaming"|"NonStreaming",
+#'   testExecutionModality = "Text"|"Audio"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_test_execution(
+#'   testSetId = "string",
+#'   target = list(
+#'     botAliasTarget = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string"
+#'     )
+#'   ),
+#'   apiMode = "Streaming"|"NonStreaming",
+#'   testExecutionModality = "Text"|"Audio"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_start_test_execution
+#'
+#' @aliases lexmodelsv2_start_test_execution
+lexmodelsv2_start_test_execution <- function(testSetId, target, apiMode, testExecutionModality = NULL) {
+  op <- new_operation(
+    name = "StartTestExecution",
+    http_method = "POST",
+    http_path = "/testsets/{testSetId}/testexecutions",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$start_test_execution_input(testSetId = testSetId, target = target, apiMode = apiMode, testExecutionModality = testExecutionModality)
+  output <- .lexmodelsv2$start_test_execution_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$start_test_execution <- lexmodelsv2_start_test_execution
+
+#' The action to start the generation of test set
+#'
+#' @description
+#' The action to start the generation of test set.
+#'
+#' @usage
+#' lexmodelsv2_start_test_set_generation(testSetName, description,
+#'   storageLocation, generationDataSource, roleArn, testSetTags)
+#'
+#' @param testSetName &#91;required&#93; The test set name for the test set generation request.
+#' @param description The test set description for the test set generation request.
+#' @param storageLocation &#91;required&#93; The Amazon S3 storage location for the test set generation.
+#' @param generationDataSource &#91;required&#93; The data source for the test set generation.
+#' @param roleArn &#91;required&#93; The roleARN used for any operation in the test set to access resources
+#' in the Amazon Web Services account.
+#' @param testSetTags A list of tags to add to the test set. You can only add tags when you
+#' import/generate a new test set. You can't use the
+#' [`update_test_set`][lexmodelsv2_update_test_set] operation to update
+#' tags. To update tags, use the [`tag_resource`][lexmodelsv2_tag_resource]
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetGenerationId = "string",
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   testSetGenerationStatus = "Generating"|"Ready"|"Failed"|"Pending",
+#'   testSetName = "string",
+#'   description = "string",
+#'   storageLocation = list(
+#'     s3BucketName = "string",
+#'     s3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   generationDataSource = list(
+#'     conversationLogsDataSource = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string",
+#'       filter = list(
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         inputMode = "Speech"|"Text"
+#'       )
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   testSetTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_test_set_generation(
+#'   testSetName = "string",
+#'   description = "string",
+#'   storageLocation = list(
+#'     s3BucketName = "string",
+#'     s3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   generationDataSource = list(
+#'     conversationLogsDataSource = list(
+#'       botId = "string",
+#'       botAliasId = "string",
+#'       localeId = "string",
+#'       filter = list(
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         inputMode = "Speech"|"Text"
+#'       )
+#'     )
+#'   ),
+#'   roleArn = "string",
+#'   testSetTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_start_test_set_generation
+#'
+#' @aliases lexmodelsv2_start_test_set_generation
+lexmodelsv2_start_test_set_generation <- function(testSetName, description = NULL, storageLocation, generationDataSource, roleArn, testSetTags = NULL) {
+  op <- new_operation(
+    name = "StartTestSetGeneration",
+    http_method = "PUT",
+    http_path = "/testsetgenerations",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$start_test_set_generation_input(testSetName = testSetName, description = description, storageLocation = storageLocation, generationDataSource = generationDataSource, roleArn = roleArn, testSetTags = testSetTags)
+  output <- .lexmodelsv2$start_test_set_generation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$start_test_set_generation <- lexmodelsv2_start_test_set_generation
 
 #' Stop an already running Bot Recommendation request
 #'
@@ -22116,9 +23368,12 @@ lexmodelsv2_update_bot_recommendation <- function(botId, botVersion, localeId, b
 #'       botId = "string",
 #'       botVersion = "string",
 #'       localeId = "string"
+#'     ),
+#'     testSetExportSpecification = list(
+#'       testSetId = "string"
 #'     )
 #'   ),
-#'   fileFormat = "LexJson"|"TSV",
+#'   fileFormat = "LexJson"|"TSV"|"CSV",
 #'   exportStatus = "InProgress"|"Completed"|"Failed"|"Deleting",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
@@ -22199,7 +23454,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' string must match one of the supported locales. For more information,
 #' see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
-#' @param initialResponseSetting 
+#' @param initialResponseSetting Configuration settings for a response sent to the user before Amazon Lex
+#' starts eliciting slots.
 #'
 #' @return
 #' A list with the following syntax:
@@ -33443,3 +34699,71 @@ lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description =
   return(response)
 }
 .lexmodelsv2$operations$update_slot_type <- lexmodelsv2_update_slot_type
+
+#' The action to update the test set
+#'
+#' @description
+#' The action to update the test set.
+#'
+#' @usage
+#' lexmodelsv2_update_test_set(testSetId, testSetName, description)
+#'
+#' @param testSetId &#91;required&#93; The test set Id for which update test operation to be performed.
+#' @param testSetName &#91;required&#93; The new test set name.
+#' @param description The new test set description.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   testSetId = "string",
+#'   testSetName = "string",
+#'   description = "string",
+#'   modality = "Text"|"Audio",
+#'   status = "Importing"|"PendingAnnotation"|"Deleting"|"ValidationError"|"Ready",
+#'   roleArn = "string",
+#'   numTurns = 123,
+#'   storageLocation = list(
+#'     s3BucketName = "string",
+#'     s3Path = "string",
+#'     kmsKeyArn = "string"
+#'   ),
+#'   creationDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedDateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_test_set(
+#'   testSetId = "string",
+#'   testSetName = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_update_test_set
+#'
+#' @aliases lexmodelsv2_update_test_set
+lexmodelsv2_update_test_set <- function(testSetId, testSetName, description = NULL) {
+  op <- new_operation(
+    name = "UpdateTestSet",
+    http_method = "PUT",
+    http_path = "/testsets/{testSetId}",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$update_test_set_input(testSetId = testSetId, testSetName = testSetName, description = description)
+  output <- .lexmodelsv2$update_test_set_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$update_test_set <- lexmodelsv2_update_test_set

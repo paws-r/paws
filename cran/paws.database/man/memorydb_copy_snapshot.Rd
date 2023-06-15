@@ -32,6 +32,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Makes a copy of an existing snapshot.
 
-See \url{https://paws-r.github.io/docs/memorydb/copy_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_copy_snapshot/} for full documentation.
 }
 \keyword{internal}

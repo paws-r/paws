@@ -37,6 +37,6 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
 \description{
 Specifies a user's permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
 
-See \url{https://paws-r.github.io/docs/opsworks/set_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_set_permission/} for full documentation.
 }
 \keyword{internal}

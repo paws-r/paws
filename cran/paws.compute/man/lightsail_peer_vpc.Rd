@@ -9,6 +9,6 @@ lightsail_peer_vpc()
 \description{
 Peers the Lightsail VPC with the user's default VPC.
 
-See \url{https://paws-r.github.io/docs/lightsail/peer_vpc.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_peer_vpc/} for full documentation.
 }
 \keyword{internal}

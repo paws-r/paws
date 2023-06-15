@@ -29,6 +29,6 @@ per line.}
 \description{
 Imports domain names from a file into a domain list, for use in a DNS firewall rule group.
 
-See \url{https://paws-r.github.io/docs/route53resolver/import_firewall_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_import_firewall_domains/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ confirmation email to the registrant contact.}
 \description{
 For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation resends the confirmation email to the current email address for the registrant contact.
 
-See \url{https://paws-r.github.io/docs/route53domains/resend_contact_reachability_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_resend_contact_reachability_email/} for full documentation.
 }
 \keyword{internal}

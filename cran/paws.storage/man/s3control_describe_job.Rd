@@ -16,6 +16,6 @@ Operations job.}
 \description{
 Retrieves the configuration parameters and status for a Batch Operations job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/describe_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_describe_job/} for full documentation.
 }
 \keyword{internal}

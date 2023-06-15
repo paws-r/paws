@@ -18,6 +18,6 @@ previous request ended.}
 \description{
 Searches for devices using the specified filters.
 
-See \url{https://paws-r.github.io/docs/braket/search_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_search_devices/} for full documentation.
 }
 \keyword{internal}

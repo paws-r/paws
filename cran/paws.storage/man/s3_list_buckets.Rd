@@ -10,6 +10,6 @@ s3_list_buckets()
 \description{
 Returns a list of all buckets owned by the authenticated sender of the request. To use this operation, you must have the \code{s3:ListAllMyBuckets} permission.
 
-See \url{https://paws-r.github.io/docs/s3/list_buckets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_buckets/} for full documentation.
 }
 \keyword{internal}

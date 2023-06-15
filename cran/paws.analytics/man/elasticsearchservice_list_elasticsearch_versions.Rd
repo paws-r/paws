@@ -18,6 +18,6 @@ must be greater than 10 else it wont be honored.}
 \description{
 List all supported Elasticsearch versions
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_list_elasticsearch_versions/} for full documentation.
 }
 \keyword{internal}

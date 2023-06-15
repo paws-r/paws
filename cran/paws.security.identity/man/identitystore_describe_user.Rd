@@ -19,6 +19,6 @@ identity store is created.}
 \description{
 Retrieves the user metadata and attributes from the \code{UserId} in an identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/describe_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_describe_user/} for full documentation.
 }
 \keyword{internal}

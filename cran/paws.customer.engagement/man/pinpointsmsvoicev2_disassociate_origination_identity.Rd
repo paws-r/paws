@@ -32,6 +32,6 @@ generated token is used for the request to ensure idempotency.}
 \description{
 Removes the specified origination identity from an existing pool.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/disassociate_origination_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_disassociate_origination_identity/} for full documentation.
 }
 \keyword{internal}

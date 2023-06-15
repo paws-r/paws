@@ -46,6 +46,6 @@ this resource.}
 \description{
 Create a launch profile.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/create_launch_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_create_launch_profile/} for full documentation.
 }
 \keyword{internal}

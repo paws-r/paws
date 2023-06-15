@@ -121,6 +121,6 @@ in the \emph{VM Import/Export User Guide}.}
 \description{
 To import your virtual machines (VMs) with a console-based experience, you can use the \emph{Import virtual machine images to Amazon Web Services} template in the Migration Hub Orchestrator console. For more information, see the \href{https://docs.aws.amazon.com/migrationhub-orchestrator/latest/userguide/import-vm-images.html}{\emph{Migration Hub Orchestrator User Guide}} .
 
-See \url{https://paws-r.github.io/docs/ec2/import_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_import_image/} for full documentation.
 }
 \keyword{internal}

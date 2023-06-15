@@ -49,6 +49,6 @@ You can't specify \strong{RemoveEndDate} and \strong{EndDate} in the same reques
 \description{
 Modifies a Capacity Reservation Fleet.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_capacity_reservation_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_capacity_reservation_fleet/} for full documentation.
 }
 \keyword{internal}

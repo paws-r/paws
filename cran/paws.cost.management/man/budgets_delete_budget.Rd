@@ -15,6 +15,6 @@ delete.}
 \description{
 Deletes a budget. You can delete your budget at any time.
 
-See \url{https://paws-r.github.io/docs/budgets/delete_budget.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_delete_budget/} for full documentation.
 }
 \keyword{internal}

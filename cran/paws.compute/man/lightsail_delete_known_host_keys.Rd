@@ -14,6 +14,6 @@ certificate.}
 \description{
 Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to authenticate an instance. This operation enables the Lightsail browser-based SSH or RDP clients to connect to the instance after a host key mismatch.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_known_host_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_known_host_keys/} for full documentation.
 }
 \keyword{internal}

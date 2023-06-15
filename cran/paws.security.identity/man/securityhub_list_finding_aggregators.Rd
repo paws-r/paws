@@ -17,6 +17,6 @@ returns a single result.}
 \description{
 If finding aggregation is enabled, then \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}} returns the ARN of the finding aggregator. You can run this operation from any Region.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_finding_aggregators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_finding_aggregators/} for full documentation.
 }
 \keyword{internal}

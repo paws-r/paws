@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/accept_inbound_connection.html](https://paws-r.github.io/docs/opensearchservice/accept_inbound_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_accept_inbound_connection/](https://www.paws-r-sdk.com/docs/opensearchservice_accept_inbound_connection/) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; The ID of the inbound connection to accept.
 #'
@@ -38,7 +38,7 @@ opensearchservice_accept_inbound_connection <- function(ConnectionId) {
 #' @description
 #' Attaches tags to an existing Amazon OpenSearch Service domain. Tags are a set of case-sensitive key-value pairs. A domain can have up to 10 tags. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/add_tags.html](https://paws-r.github.io/docs/opensearchservice/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_add_tags/](https://www.paws-r-sdk.com/docs/opensearchservice_add_tags/) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the OpenSearch Service domain to which
 #' you want to attach resource tags.
@@ -69,7 +69,7 @@ opensearchservice_add_tags <- function(ARN, TagList) {
 #' @description
 #' Associates a package with an Amazon OpenSearch Service domain. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/associate_package.html](https://paws-r.github.io/docs/opensearchservice/associate_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_associate_package/](https://www.paws-r-sdk.com/docs/opensearchservice_associate_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package to associate with a domain. Use
 #' [`describe_packages`][opensearchservice_describe_packages] to find this
@@ -102,7 +102,7 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
 #' @description
 #' Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/authorize_vpc_endpoint_access.html](https://paws-r.github.io/docs/opensearchservice/authorize_vpc_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_authorize_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/opensearchservice_authorize_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to provide access to.
 #' @param Account &#91;required&#93; The Amazon Web Services account ID to grant access to.
@@ -133,7 +133,7 @@ opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account)
 #' @description
 #' Cancels a scheduled service software update for an Amazon OpenSearch Service domain. You can only perform this operation before the `AutomatedUpdateDate` and when the domain's `UpdateStatus` is `PENDING_UPDATE`. For more information, see [Service software updates in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/cancel_service_software_update.html](https://paws-r.github.io/docs/opensearchservice/cancel_service_software_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_cancel_service_software_update/](https://www.paws-r-sdk.com/docs/opensearchservice_cancel_service_software_update/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain that you want to cancel the
 #' service software update on.
@@ -163,7 +163,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @description
 #' Creates an Amazon OpenSearch Service domain. For more information, see [Creating and managing Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/create_domain.html](https://paws-r.github.io/docs/opensearchservice/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_create_domain/](https://www.paws-r-sdk.com/docs/opensearchservice_create_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain to create. Domain names are unique
 #' across the domains owned by an account within an Amazon Web Services
@@ -258,24 +258,25 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 #' @description
 #' Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/create_outbound_connection.html](https://paws-r.github.io/docs/opensearchservice/create_outbound_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_create_outbound_connection/](https://www.paws-r-sdk.com/docs/opensearchservice_create_outbound_connection/) for full documentation.
 #'
 #' @param LocalDomainInfo &#91;required&#93; Name and Region of the source (local) domain.
 #' @param RemoteDomainInfo &#91;required&#93; Name and Region of the destination (remote) domain.
 #' @param ConnectionAlias &#91;required&#93; Name of the connection.
 #' @param ConnectionMode The connection mode.
+#' @param ConnectionProperties The `ConnectionProperties` for the outbound connection.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_outbound_connection
-opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias, ConnectionMode = NULL) {
+opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias, ConnectionMode = NULL, ConnectionProperties = NULL) {
   op <- new_operation(
     name = "CreateOutboundConnection",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection",
     paginator = list()
   )
-  input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode)
+  input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode, ConnectionProperties = ConnectionProperties)
   output <- .opensearchservice$create_outbound_connection_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -290,7 +291,7 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 #' @description
 #' Creates a package for use with Amazon OpenSearch Service domains. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/create_package.html](https://paws-r.github.io/docs/opensearchservice/create_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_create_package/](https://www.paws-r-sdk.com/docs/opensearchservice_create_package/) for full documentation.
 #'
 #' @param PackageName &#91;required&#93; Unique name for the package.
 #' @param PackageType &#91;required&#93; The type of package.
@@ -322,7 +323,7 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
 #' @description
 #' Creates an Amazon OpenSearch Service-managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/create_vpc_endpoint.html](https://paws-r.github.io/docs/opensearchservice/create_vpc_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_create_vpc_endpoint/](https://www.paws-r-sdk.com/docs/opensearchservice_create_vpc_endpoint/) for full documentation.
 #'
 #' @param DomainArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain to create the endpoint for.
 #' @param VpcOptions &#91;required&#93; Options to specify the subnets and security groups for the endpoint.
@@ -353,7 +354,7 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
 #' @description
 #' Deletes an Amazon OpenSearch Service domain and all of its data. You can't recover a domain after you delete it.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/delete_domain.html](https://paws-r.github.io/docs/opensearchservice/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_domain/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to permanently delete.
 #'
@@ -383,7 +384,7 @@ opensearchservice_delete_domain <- function(DomainName) {
 #' @description
 #' Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/delete_inbound_connection.html](https://paws-r.github.io/docs/opensearchservice/delete_inbound_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_inbound_connection/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_inbound_connection/) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; The ID of the inbound connection to permanently delete.
 #'
@@ -413,7 +414,7 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
 #' @description
 #' Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/delete_outbound_connection.html](https://paws-r.github.io/docs/opensearchservice/delete_outbound_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_outbound_connection/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_outbound_connection/) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; The ID of the outbound connection you want to permanently delete.
 #'
@@ -442,7 +443,7 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
 #' @description
 #' Deletes an Amazon OpenSearch Service package. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/delete_package.html](https://paws-r.github.io/docs/opensearchservice/delete_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_package/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The internal ID of the package you want to delete. Use
 #' [`describe_packages`][opensearchservice_describe_packages] to find this
@@ -473,7 +474,7 @@ opensearchservice_delete_package <- function(PackageID) {
 #' @description
 #' Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/delete_vpc_endpoint.html](https://paws-r.github.io/docs/opensearchservice/delete_vpc_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_vpc_endpoint/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_vpc_endpoint/) for full documentation.
 #'
 #' @param VpcEndpointId &#91;required&#93; The unique identifier of the endpoint.
 #'
@@ -504,7 +505,7 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #' @description
 #' Describes the domain configuration for the specified Amazon OpenSearch Service domain, including the domain ID, domain service endpoint, and domain ARN.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain.html](https://paws-r.github.io/docs/opensearchservice/describe_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want information about.
 #'
@@ -534,7 +535,7 @@ opensearchservice_describe_domain <- function(DomainName) {
 #' @description
 #' Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain. For more information, see [Auto-Tune for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_auto_tunes.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_auto_tunes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_auto_tunes/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_auto_tunes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the domain that you want Auto-Tune details about.
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
@@ -572,7 +573,7 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
 #' @description
 #' Returns information about the current blue/green deployment happening on an Amazon OpenSearch Service domain. For more information, see [Making configuration changes in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_change_progress.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_change_progress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_change_progress/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_change_progress/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to get progress information for.
 #' @param ChangeId The specific change ID for which you want to get progress information.
@@ -604,7 +605,7 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #' @description
 #' Returns the configuration of an Amazon OpenSearch Service domain.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_config.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_config/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_config/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain configuration that you want to
 #' describe.
@@ -636,7 +637,7 @@ opensearchservice_describe_domain_config <- function(DomainName) {
 #' @description
 #' Returns information about domain and node health, the standby Availability Zone, number of nodes per Availability Zone, and shard count per node.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_health.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_health/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_health/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain.
 #'
@@ -667,7 +668,7 @@ opensearchservice_describe_domain_health <- function(DomainName) {
 #' @description
 #' Returns information about domain and nodes, including data nodes, master nodes, ultrawarm nodes, Availability Zone(s), standby nodes, node configurations, and node states.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_nodes.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_nodes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_nodes/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_nodes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain.
 #'
@@ -697,7 +698,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #' @description
 #' Returns domain configuration information about the specified Amazon OpenSearch Service domains.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_domains.html](https://paws-r.github.io/docs/opensearchservice/describe_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domains/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domains/) for full documentation.
 #'
 #' @param DomainNames &#91;required&#93; Array of OpenSearch Service domain names that you want information
 #' about. If you don't specify any domains, OpenSearch Service returns
@@ -729,7 +730,7 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #' @description
 #' Describes the progress of a pre-update dry run analysis on an Amazon OpenSearch Service domain. For more information, see [Determining whether a change will cause a blue/green deployment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#dryrun).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_dry_run_progress.html](https://paws-r.github.io/docs/opensearchservice/describe_dry_run_progress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_dry_run_progress/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_dry_run_progress/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain.
 #' @param DryRunId The unique identifier of the dry run.
@@ -763,7 +764,7 @@ opensearchservice_describe_dry_run_progress <- function(DomainName, DryRunId = N
 #' @description
 #' Lists all the inbound cross-cluster search connections for a destination (remote) Amazon OpenSearch Service domain. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_inbound_connections.html](https://paws-r.github.io/docs/opensearchservice/describe_inbound_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_inbound_connections/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_inbound_connections/) for full documentation.
 #'
 #' @param Filters A list of filters used to match properties for inbound cross-cluster
 #' connections.
@@ -802,7 +803,7 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
 #' @description
 #' Describes the instance count, storage, and master node limits for a given OpenSearch or Elasticsearch version and instance type.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_instance_type_limits.html](https://paws-r.github.io/docs/opensearchservice/describe_instance_type_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_instance_type_limits/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_instance_type_limits/) for full documentation.
 #'
 #' @param DomainName The name of the domain. Only specify if you need the limits for an
 #' existing domain.
@@ -837,7 +838,7 @@ opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, I
 #' @description
 #' Lists all the outbound cross-cluster connections for a local (source) Amazon OpenSearch Service domain. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_outbound_connections.html](https://paws-r.github.io/docs/opensearchservice/describe_outbound_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_outbound_connections/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_outbound_connections/) for full documentation.
 #'
 #' @param Filters List of filter names and values that you can use for requests.
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
@@ -874,7 +875,7 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
 #' @description
 #' Describes all packages available to OpenSearch Service. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_packages.html](https://paws-r.github.io/docs/opensearchservice/describe_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_packages/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_packages/) for full documentation.
 #'
 #' @param Filters Only returns packages that match the `DescribePackagesFilterList`
 #' values.
@@ -911,7 +912,7 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
 #' @description
 #' Describes the available Amazon OpenSearch Service Reserved Instance offerings for a given Region. For more information, see [Reserved Instances in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_reserved_instance_offerings.html](https://paws-r.github.io/docs/opensearchservice/describe_reserved_instance_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_reserved_instance_offerings/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_reserved_instance_offerings/) for full documentation.
 #'
 #' @param ReservedInstanceOfferingId The Reserved Instance identifier filter value. Use this parameter to
 #' show only the available instance types that match the specified
@@ -951,7 +952,7 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
 #' @description
 #' Describes the Amazon OpenSearch Service instances that you have reserved in a given Region. For more information, see [Reserved Instances in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_reserved_instances.html](https://paws-r.github.io/docs/opensearchservice/describe_reserved_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_reserved_instances/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_reserved_instances/) for full documentation.
 #'
 #' @param ReservedInstanceId The reserved instance identifier filter value. Use this parameter to
 #' show only the reservation that matches the specified reserved OpenSearch
@@ -990,7 +991,7 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
 #' @description
 #' Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/describe_vpc_endpoints.html](https://paws-r.github.io/docs/opensearchservice/describe_vpc_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_vpc_endpoints/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_vpc_endpoints/) for full documentation.
 #'
 #' @param VpcEndpointIds &#91;required&#93; The unique identifiers of the endpoints to get information about.
 #'
@@ -1019,7 +1020,7 @@ opensearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
 #' @description
 #' Removes a package from the specified Amazon OpenSearch Service domain. The package can't be in use with any OpenSearch index for the dissociation to succeed. The package is still available in OpenSearch Service for association later. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/dissociate_package.html](https://paws-r.github.io/docs/opensearchservice/dissociate_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_package/](https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package to dissociate from the domain. Use
 #' [`list_packages_for_domain`][opensearchservice_list_packages_for_domain]
@@ -1052,7 +1053,7 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
 #' @description
 #' Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/get_compatible_versions.html](https://paws-r.github.io/docs/opensearchservice/get_compatible_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_compatible_versions/](https://www.paws-r-sdk.com/docs/opensearchservice_get_compatible_versions/) for full documentation.
 #'
 #' @param DomainName The name of an existing domain. Provide this parameter to limit the
 #' results to a single domain.
@@ -1084,7 +1085,7 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 #' @description
 #' Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package). For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/get_package_version_history.html](https://paws-r.github.io/docs/opensearchservice/get_package_version_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_package_version_history/](https://www.paws-r-sdk.com/docs/opensearchservice_get_package_version_history/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The unique identifier of the package.
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
@@ -1122,7 +1123,7 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
 #' @description
 #' Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/get_upgrade_history.html](https://paws-r.github.io/docs/opensearchservice/get_upgrade_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_upgrade_history/](https://www.paws-r-sdk.com/docs/opensearchservice_get_upgrade_history/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of an existing domain.
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
@@ -1160,7 +1161,7 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
 #' @description
 #' Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/get_upgrade_status.html](https://paws-r.github.io/docs/opensearchservice/get_upgrade_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_upgrade_status/](https://www.paws-r-sdk.com/docs/opensearchservice_get_upgrade_status/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain of the domain to get upgrade status information for.
 #'
@@ -1190,7 +1191,7 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 #' @description
 #' Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_domain_names.html](https://paws-r.github.io/docs/opensearchservice/list_domain_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_domain_names/](https://www.paws-r-sdk.com/docs/opensearchservice_list_domain_names/) for full documentation.
 #'
 #' @param EngineType Filters the output by domain engine type.
 #'
@@ -1220,7 +1221,7 @@ opensearchservice_list_domain_names <- function(EngineType = NULL) {
 #' @description
 #' Lists all Amazon OpenSearch Service domains associated with a given package. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_domains_for_package.html](https://paws-r.github.io/docs/opensearchservice/list_domains_for_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_domains_for_package/](https://www.paws-r-sdk.com/docs/opensearchservice_list_domains_for_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The unique identifier of the package for which to list associated
 #' domains.
@@ -1259,7 +1260,7 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
 #' @description
 #' Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_instance_type_details.html](https://paws-r.github.io/docs/opensearchservice/list_instance_type_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_instance_type_details/](https://www.paws-r-sdk.com/docs/opensearchservice_list_instance_type_details/) for full documentation.
 #'
 #' @param EngineVersion &#91;required&#93; The version of OpenSearch or Elasticsearch, in the format
 #' Elasticsearch_X.Y or OpenSearch_X.Y. Defaults to the latest version of
@@ -1302,7 +1303,7 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
 #' @description
 #' Lists all packages associated with an Amazon OpenSearch Service domain. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_packages_for_domain.html](https://paws-r.github.io/docs/opensearchservice/list_packages_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_packages_for_domain/](https://www.paws-r-sdk.com/docs/opensearchservice_list_packages_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to list associated packages.
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
@@ -1340,7 +1341,7 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
 #' @description
 #' Retrieves a list of configuration changes that are scheduled for a domain. These changes can be [service software updates](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html) or [blue/green Auto-Tune enhancements](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_scheduled_actions.html](https://paws-r.github.io/docs/opensearchservice/list_scheduled_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_scheduled_actions/](https://www.paws-r-sdk.com/docs/opensearchservice_list_scheduled_actions/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain.
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
@@ -1377,7 +1378,7 @@ opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NU
 #' @description
 #' Returns all resource tags for an Amazon OpenSearch Service domain. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_tags.html](https://paws-r.github.io/docs/opensearchservice/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_tags/](https://www.paws-r-sdk.com/docs/opensearchservice_list_tags/) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the domain to view tags for.
 #'
@@ -1407,7 +1408,7 @@ opensearchservice_list_tags <- function(ARN) {
 #' @description
 #' Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_versions.html](https://paws-r.github.io/docs/opensearchservice/list_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_versions/](https://www.paws-r-sdk.com/docs/opensearchservice_list_versions/) for full documentation.
 #'
 #' @param MaxResults An optional parameter that specifies the maximum number of results to
 #' return. You can use `nextToken` to get the next page of results.
@@ -1444,7 +1445,7 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
 #' @description
 #' Retrieves information about each Amazon Web Services principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoint_access.html](https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to retrieve access information
 #' for.
@@ -1481,7 +1482,7 @@ opensearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken = N
 #' @description
 #' Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Amazon Web Services account and Region.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints.html](https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoints/](https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoints/) for full documentation.
 #'
 #' @param NextToken If your initial
 #' [`list_vpc_endpoints`][opensearchservice_list_vpc_endpoints] operation
@@ -1515,7 +1516,7 @@ opensearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
 #' @description
 #' Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints_for_domain.html](https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoints_for_domain/](https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoints_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to list associated VPC endpoints for.
 #' @param NextToken If your initial `ListEndpointsForDomain` operation returns a
@@ -1548,7 +1549,7 @@ opensearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextToke
 #' @description
 #' Allows you to purchase Amazon OpenSearch Service Reserved Instances.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/purchase_reserved_instance_offering.html](https://paws-r.github.io/docs/opensearchservice/purchase_reserved_instance_offering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_purchase_reserved_instance_offering/](https://www.paws-r-sdk.com/docs/opensearchservice_purchase_reserved_instance_offering/) for full documentation.
 #'
 #' @param ReservedInstanceOfferingId &#91;required&#93; The ID of the Reserved Instance offering to purchase.
 #' @param ReservationName &#91;required&#93; A customer-specified identifier to track this reservation.
@@ -1580,7 +1581,7 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
 #' @description
 #' Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/reject_inbound_connection.html](https://paws-r.github.io/docs/opensearchservice/reject_inbound_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_reject_inbound_connection/](https://www.paws-r-sdk.com/docs/opensearchservice_reject_inbound_connection/) for full documentation.
 #'
 #' @param ConnectionId &#91;required&#93; The unique identifier of the inbound connection to reject.
 #'
@@ -1610,7 +1611,7 @@ opensearchservice_reject_inbound_connection <- function(ConnectionId) {
 #' @description
 #' Removes the specified set of tags from an Amazon OpenSearch Service domain. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/remove_tags.html](https://paws-r.github.io/docs/opensearchservice/remove_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_remove_tags/](https://www.paws-r-sdk.com/docs/opensearchservice_remove_tags/) for full documentation.
 #'
 #' @param ARN &#91;required&#93; The Amazon Resource Name (ARN) of the domain from which you want to
 #' delete the specified tags.
@@ -1642,7 +1643,7 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 #' @description
 #' Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/revoke_vpc_endpoint_access.html](https://paws-r.github.io/docs/opensearchservice/revoke_vpc_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_revoke_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/opensearchservice_revoke_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain.
 #' @param Account &#91;required&#93; The account ID to revoke access from.
@@ -1673,7 +1674,7 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
 #' @description
 #' Schedules a service software update for an Amazon OpenSearch Service domain. For more information, see [Service software updates in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/start_service_software_update.html](https://paws-r.github.io/docs/opensearchservice/start_service_software_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_start_service_software_update/](https://www.paws-r-sdk.com/docs/opensearchservice_start_service_software_update/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update to the latest service
 #' software.
@@ -1723,7 +1724,7 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' @description
 #' Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.sl
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/update_domain_config.html](https://paws-r.github.io/docs/opensearchservice/update_domain_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_domain_config/](https://www.paws-r-sdk.com/docs/opensearchservice_update_domain_config/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you're updating.
 #' @param ClusterConfig Changes that you want to make to the cluster configuration, such as the
@@ -1809,7 +1810,7 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
 #' @description
 #' Updates a package for use with Amazon OpenSearch Service domains. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/update_package.html](https://paws-r.github.io/docs/opensearchservice/update_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_package/](https://www.paws-r-sdk.com/docs/opensearchservice_update_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The unique identifier for the package.
 #' @param PackageSource &#91;required&#93; Amazon S3 bucket and key for the package.
@@ -1842,7 +1843,7 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
 #' @description
 #' Reschedules a planned domain configuration change for a later time. This change can be a scheduled [service software update](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html) or a [blue/green Auto-Tune enhancement](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types).
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/update_scheduled_action.html](https://paws-r.github.io/docs/opensearchservice/update_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_scheduled_action/](https://www.paws-r-sdk.com/docs/opensearchservice_update_scheduled_action/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to reschedule an action for.
 #' @param ActionID &#91;required&#93; The unique identifier of the action to reschedule. To retrieve this ID,
@@ -1895,7 +1896,7 @@ opensearchservice_update_scheduled_action <- function(DomainName, ActionID, Acti
 #' @description
 #' Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/update_vpc_endpoint.html](https://paws-r.github.io/docs/opensearchservice/update_vpc_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_vpc_endpoint/](https://www.paws-r-sdk.com/docs/opensearchservice_update_vpc_endpoint/) for full documentation.
 #'
 #' @param VpcEndpointId &#91;required&#93; The unique identifier of the endpoint.
 #' @param VpcOptions &#91;required&#93; The security groups and/or subnets to add, remove, or modify.
@@ -1927,7 +1928,7 @@ opensearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) {
 #' @description
 #' Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
 #'
-#' See [https://paws-r.github.io/docs/opensearchservice/upgrade_domain.html](https://paws-r.github.io/docs/opensearchservice/upgrade_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_upgrade_domain/](https://www.paws-r-sdk.com/docs/opensearchservice_upgrade_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain that you want to upgrade.
 #' @param TargetVersion &#91;required&#93; OpenSearch or Elasticsearch version to which you want to upgrade, in the

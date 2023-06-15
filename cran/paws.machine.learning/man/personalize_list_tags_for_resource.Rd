@@ -10,8 +10,8 @@ personalize_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The resource's Amazon Resource Name.}
 }
 \description{
-Get a list of tags attached to a resource.
+Get a list of \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags} attached to a resource.
 
-See \url{https://paws-r.github.io/docs/personalize/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes the specified firewall rule group.
 
-See \url{https://paws-r.github.io/docs/route53resolver/delete_firewall_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule_group/} for full documentation.
 }
 \keyword{internal}

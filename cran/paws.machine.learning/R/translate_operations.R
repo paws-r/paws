@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates a parallel data resource in Amazon Translate by importing an input file from Amazon S3. Parallel data files contain examples that show how you want segments of text to be translated. By adding parallel data, you can influence the style, tone, and word choice in your translation output.
 #'
-#' See [https://paws-r.github.io/docs/translate/create_parallel_data.html](https://paws-r.github.io/docs/translate/create_parallel_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_create_parallel_data/](https://www.paws-r-sdk.com/docs/translate_create_parallel_data/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A custom name for the parallel data resource in Amazon Translate. You
 #' must assign a name that is unique in the account and region.
@@ -48,7 +48,7 @@ translate_create_parallel_data <- function(Name, Description = NULL, ParallelDat
 #' @description
 #' Deletes a parallel data resource in Amazon Translate.
 #'
-#' See [https://paws-r.github.io/docs/translate/delete_parallel_data.html](https://paws-r.github.io/docs/translate/delete_parallel_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_delete_parallel_data/](https://www.paws-r-sdk.com/docs/translate_delete_parallel_data/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parallel data resource that is being deleted.
 #'
@@ -77,7 +77,7 @@ translate_delete_parallel_data <- function(Name) {
 #' @description
 #' A synchronous action that deletes a custom terminology.
 #'
-#' See [https://paws-r.github.io/docs/translate/delete_terminology.html](https://paws-r.github.io/docs/translate/delete_terminology.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_delete_terminology/](https://www.paws-r-sdk.com/docs/translate_delete_terminology/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being deleted.
 #'
@@ -108,7 +108,7 @@ translate_delete_terminology <- function(Name) {
 #' @description
 #' Gets the properties associated with an asynchronous batch translation job including name, ID, status, source and target languages, input/output S3 buckets, and so on.
 #'
-#' See [https://paws-r.github.io/docs/translate/describe_text_translation_job.html](https://paws-r.github.io/docs/translate/describe_text_translation_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_describe_text_translation_job/](https://www.paws-r-sdk.com/docs/translate_describe_text_translation_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Translate generated for the job. The
 #' [`start_text_translation_job`][translate_start_text_translation_job]
@@ -139,7 +139,7 @@ translate_describe_text_translation_job <- function(JobId) {
 #' @description
 #' Provides information about a parallel data resource.
 #'
-#' See [https://paws-r.github.io/docs/translate/get_parallel_data.html](https://paws-r.github.io/docs/translate/get_parallel_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_get_parallel_data/](https://www.paws-r-sdk.com/docs/translate_get_parallel_data/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parallel data resource that is being retrieved.
 #'
@@ -168,7 +168,7 @@ translate_get_parallel_data <- function(Name) {
 #' @description
 #' Retrieves a custom terminology.
 #'
-#' See [https://paws-r.github.io/docs/translate/get_terminology.html](https://paws-r.github.io/docs/translate/get_terminology.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_get_terminology/](https://www.paws-r-sdk.com/docs/translate_get_terminology/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being retrieved.
 #' @param TerminologyDataFormat The data format of the custom terminology being retrieved.
@@ -208,7 +208,7 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
 #' @description
 #' Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name.
 #'
-#' See [https://paws-r.github.io/docs/translate/import_terminology.html](https://paws-r.github.io/docs/translate/import_terminology.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_import_terminology/](https://www.paws-r-sdk.com/docs/translate_import_terminology/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being imported.
 #' @param MergeStrategy &#91;required&#93; The merge strategy of the custom terminology being imported. Currently,
@@ -249,7 +249,7 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
 #' @description
 #' Provides a list of languages (RFC-5646 codes and names) that Amazon Translate supports.
 #'
-#' See [https://paws-r.github.io/docs/translate/list_languages.html](https://paws-r.github.io/docs/translate/list_languages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_list_languages/](https://www.paws-r-sdk.com/docs/translate_list_languages/) for full documentation.
 #'
 #' @param DisplayLanguageCode The language code for the language to use to display the language names
 #' in the response. The language code is `en` by default.
@@ -282,7 +282,7 @@ translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NUL
 #' @description
 #' Provides a list of your parallel data resources in Amazon Translate.
 #'
-#' See [https://paws-r.github.io/docs/translate/list_parallel_data.html](https://paws-r.github.io/docs/translate/list_parallel_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_list_parallel_data/](https://www.paws-r-sdk.com/docs/translate_list_parallel_data/) for full documentation.
 #'
 #' @param NextToken A string that specifies the next page of results to return in a
 #' paginated response.
@@ -313,7 +313,7 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists all tags associated with a given Amazon Translate resource. For more information, see [Tagging your resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/translate/list_tags_for_resource.html](https://paws-r.github.io/docs/translate/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/translate_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Translate resource
 #' you are querying.
@@ -343,7 +343,7 @@ translate_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Provides a list of custom terminologies associated with your account.
 #'
-#' See [https://paws-r.github.io/docs/translate/list_terminologies.html](https://paws-r.github.io/docs/translate/list_terminologies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_list_terminologies/](https://www.paws-r-sdk.com/docs/translate_list_terminologies/) for full documentation.
 #'
 #' @param NextToken If the result of the request to ListTerminologies was truncated, include
 #' the NextToken to fetch the next group of custom terminologies.
@@ -374,7 +374,7 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Gets a list of the batch translation jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/translate/list_text_translation_jobs.html](https://paws-r.github.io/docs/translate/list_text_translation_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_list_text_translation_jobs/](https://www.paws-r-sdk.com/docs/translate_list_text_translation_jobs/) for full documentation.
 #'
 #' @param Filter The parameters that specify which batch translation jobs to retrieve.
 #' Filters include job name, job status, and submission time. You can only
@@ -408,7 +408,7 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' @description
 #' Starts an asynchronous batch translation job. Use batch translation jobs to translate large volumes of text across multiple documents at once. For batch translation, you can input documents with different source languages (specify `auto` as the source language). You can specify one or more target languages. Batch translation translates each input document into each of the target languages. For more information, see [Asynchronous batch processing](https://docs.aws.amazon.com/translate/latest/dg/async.html).
 #'
-#' See [https://paws-r.github.io/docs/translate/start_text_translation_job.html](https://paws-r.github.io/docs/translate/start_text_translation_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_start_text_translation_job/](https://www.paws-r-sdk.com/docs/translate_start_text_translation_job/) for full documentation.
 #'
 #' @param JobName The name of the batch translation job to be performed.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input documents for the
@@ -497,7 +497,7 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 #' @description
 #' Stops an asynchronous batch translation job that is in progress.
 #'
-#' See [https://paws-r.github.io/docs/translate/stop_text_translation_job.html](https://paws-r.github.io/docs/translate/stop_text_translation_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_stop_text_translation_job/](https://www.paws-r-sdk.com/docs/translate_stop_text_translation_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job ID of the job to be stopped.
 #'
@@ -526,7 +526,7 @@ translate_stop_text_translation_job <- function(JobId) {
 #' @description
 #' Associates a specific tag with a resource. A tag is a key-value pair that adds as a metadata to a resource. For more information, see [Tagging your resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/translate/tag_resource.html](https://paws-r.github.io/docs/translate/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_tag_resource/](https://www.paws-r-sdk.com/docs/translate_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Translate resource to
 #' which you want to associate the tags.
@@ -560,7 +560,7 @@ translate_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Translates the input document from the source language to the target language. This synchronous operation supports plain text or HTML for the input document. [`translate_document`][translate_translate_document] supports translations from English to any supported language, and from any supported language to English. Therefore, specify either the source language code or the target language code as “en” (English).
 #'
-#' See [https://paws-r.github.io/docs/translate/translate_document.html](https://paws-r.github.io/docs/translate/translate_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_translate_document/](https://www.paws-r-sdk.com/docs/translate_translate_document/) for full documentation.
 #'
 #' @param Document &#91;required&#93; The content and content type for the document to be translated. The
 #' document size must not exceed 100 KB.
@@ -609,7 +609,7 @@ translate_translate_document <- function(Document, TerminologyNames = NULL, Sour
 #' @description
 #' Translates input text from the source language to the target language. For a list of available languages and language codes, see [Supported languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
 #'
-#' See [https://paws-r.github.io/docs/translate/translate_text.html](https://paws-r.github.io/docs/translate/translate_text.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_translate_text/](https://www.paws-r-sdk.com/docs/translate_translate_text/) for full documentation.
 #'
 #' @param Text &#91;required&#93; The text to translate. The text string can be a maximum of 10,000 bytes
 #' long. Depending on your character set, this may be fewer than 10,000
@@ -670,7 +670,7 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
 #' @description
 #' Removes a specific tag associated with an Amazon Translate resource. For more information, see [Tagging your resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/translate/untag_resource.html](https://paws-r.github.io/docs/translate/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_untag_resource/](https://www.paws-r-sdk.com/docs/translate_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Translate resource
 #' from which you want to remove the tags.
@@ -704,7 +704,7 @@ translate_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates a previously created parallel data resource by importing a new input file from Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/translate/update_parallel_data.html](https://paws-r.github.io/docs/translate/update_parallel_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/translate_update_parallel_data/](https://www.paws-r-sdk.com/docs/translate_update_parallel_data/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parallel data resource being updated.
 #' @param Description A custom description for the parallel data resource in Amazon Translate.

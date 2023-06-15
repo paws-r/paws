@@ -12,6 +12,6 @@ appstream_delete_app_block(Name)
 \description{
 Deletes an app block.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_app_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_app_block/} for full documentation.
 }
 \keyword{internal}

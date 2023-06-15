@@ -14,6 +14,6 @@ licensemanager_get_access_token(Token, TokenProperties = NULL)
 \description{
 Gets a temporary access token to use with AssumeRoleWithWebIdentity. Access tokens are valid for one hour.
 
-See \url{https://paws-r.github.io/docs/licensemanager/get_access_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_get_access_token/} for full documentation.
 }
 \keyword{internal}

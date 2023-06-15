@@ -16,6 +16,6 @@ already exists, the existing value is replaced with the new value.}
 \description{
 Adds the specified tag to the specified index, FAQ, or data source resource. If the tag already exists, the existing value is replaced with the new value.
 
-See \url{https://paws-r.github.io/docs/kendra/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_tag_resource/} for full documentation.
 }
 \keyword{internal}

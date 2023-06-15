@@ -17,6 +17,6 @@ in the \emph{Amazon EMR Management Guide}.}
 \description{
 Creates a security configuration, which is stored in the service and can be specified when a cluster is created.
 
-See \url{https://paws-r.github.io/docs/emr/create_security_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_create_security_configuration/} for full documentation.
 }
 \keyword{internal}

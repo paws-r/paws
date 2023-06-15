@@ -24,6 +24,6 @@ starting at the location pointed to by the next token.}
 \description{
 Lists your virtual machines.
 
-See \url{https://paws-r.github.io/docs/backupgateway/list_virtual_machines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_list_virtual_machines/} for full documentation.
 }
 \keyword{internal}

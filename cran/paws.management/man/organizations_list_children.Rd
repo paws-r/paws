@@ -49,6 +49,6 @@ results.}
 \description{
 Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root. This operation, along with \code{\link[=organizations_list_parents]{list_parents}} enables you to traverse the tree structure that makes up this root.
 
-See \url{https://paws-r.github.io/docs/organizations/list_children.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_children/} for full documentation.
 }
 \keyword{internal}

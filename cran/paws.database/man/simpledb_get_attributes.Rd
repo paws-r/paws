@@ -27,6 +27,6 @@ before your read.}
 \description{
 Returns all of the attributes associated with the specified item. Optionally, the attributes returned can be limited to one or more attributes by specifying an attribute name parameter.
 
-See \url{https://paws-r.github.io/docs/simpledb/get_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_get_attributes/} for full documentation.
 }
 \keyword{internal}

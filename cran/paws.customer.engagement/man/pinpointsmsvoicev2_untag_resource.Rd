@@ -15,6 +15,6 @@ pinpointsmsvoicev2_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes the association of the specified tags from an Amazon Pinpoint SMS Voice V2 resource. For more information on tags see \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/tagging-resources.html}{Tagging Amazon Pinpoint resources} in the \emph{Amazon Pinpoint Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_untag_resource/} for full documentation.
 }
 \keyword{internal}

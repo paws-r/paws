@@ -50,6 +50,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_attachments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_transit_gateway_attachments/} for full documentation.
 }
 \keyword{internal}

@@ -4,9 +4,17 @@
 \alias{locationservice_update_map}
 \title{Updates the specified properties of a given map resource}
 \usage{
-locationservice_update_map(Description = NULL, MapName, PricingPlan = NULL)
+locationservice_update_map(
+  ConfigurationUpdate = NULL,
+  Description = NULL,
+  MapName,
+  PricingPlan = NULL
+)
 }
 \arguments{
+\item{ConfigurationUpdate}{Updates the parts of the map configuration that can be updated,
+including the political view.}
+
 \item{Description}{Updates the description for the map resource.}
 
 \item{MapName}{[required] The name of the map resource to update.}
@@ -17,6 +25,6 @@ locationservice_update_map(Description = NULL, MapName, PricingPlan = NULL)
 \description{
 Updates the specified properties of a given map resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/update_map.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_update_map/} for full documentation.
 }
 \keyword{internal}

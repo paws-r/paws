@@ -20,6 +20,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Adds one or more tags to the specified resource. You use tags to add metadata to resources, which you can use to categorize these resources. For example, you can categorize resources by purpose, owner, environment, or team. Each tag consists of a key and a value, which you define. You can add tags to the following Storage Gateway resources:
 
-See \url{https://paws-r.github.io/docs/storagegateway/add_tags_to_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_add_tags_to_resource/} for full documentation.
 }
 \keyword{internal}

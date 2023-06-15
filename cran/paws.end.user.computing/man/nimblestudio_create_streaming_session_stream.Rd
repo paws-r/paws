@@ -26,6 +26,6 @@ it for the request to ensure idempotency.}
 \description{
 Creates a streaming session stream for a streaming session.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/create_streaming_session_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_session_stream/} for full documentation.
 }
 \keyword{internal}

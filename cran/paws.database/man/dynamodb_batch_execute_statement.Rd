@@ -15,6 +15,6 @@ dynamodb_batch_execute_statement(Statements, ReturnConsumedCapacity = NULL)
 \description{
 This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL. Each read statement in a \code{\link[=dynamodb_batch_execute_statement]{batch_execute_statement}} must specify an equality condition on all key attributes. This enforces that each \code{SELECT} statement in a batch returns at most a single item.
 
-See \url{https://paws-r.github.io/docs/dynamodb/batch_execute_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_batch_execute_statement/} for full documentation.
 }
 \keyword{internal}

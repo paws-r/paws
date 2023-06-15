@@ -12,6 +12,6 @@ iamrolesanywhere_enable_profile(profileId)
 \description{
 Enables temporary credential requests for a profile.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/enable_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_profile/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ this list is used to restrict permissions when granting an access token.}
 \description{
 Registers a client with IAM Identity Center. This allows clients to initiate device authorization. The output should be persisted for reuse through many authentication requests.
 
-See \url{https://paws-r.github.io/docs/ssooidc/register_client.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssooidc_register_client/} for full documentation.
 }
 \keyword{internal}

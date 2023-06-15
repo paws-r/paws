@@ -26,6 +26,6 @@ Cognito. The ID of the pool to which the identity belongs.}
 \description{
 Subscribes to receive notifications when a dataset is modified by another device.
 
-See \url{https://paws-r.github.io/docs/cognitosync/subscribe_to_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_subscribe_to_dataset/} for full documentation.
 }
 \keyword{internal}

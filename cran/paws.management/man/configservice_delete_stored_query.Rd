@@ -13,6 +13,6 @@ configservice_delete_stored_query(QueryName)
 \description{
 Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_stored_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_stored_query/} for full documentation.
 }
 \keyword{internal}

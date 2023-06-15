@@ -15,6 +15,6 @@ that you're describing permissions for.}
 \description{
 Describes read and write permissions for a dashboard.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_dashboard_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard_permissions/} for full documentation.
 }
 \keyword{internal}

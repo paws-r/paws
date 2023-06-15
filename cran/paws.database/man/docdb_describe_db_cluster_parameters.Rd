@@ -44,6 +44,6 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns the detailed parameter list for a particular cluster parameter group.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_db_cluster_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_parameters/} for full documentation.
 }
 \keyword{internal}

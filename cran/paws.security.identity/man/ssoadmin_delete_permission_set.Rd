@@ -16,6 +16,6 @@ Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 \description{
 Deletes the specified permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/delete_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_delete_permission_set/} for full documentation.
 }
 \keyword{internal}

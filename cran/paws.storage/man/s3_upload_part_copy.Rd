@@ -147,6 +147,6 @@ code \verb{403 Forbidden} (access denied).}
 \description{
 Uploads a part by copying data from an existing object as data source. You specify the data source by adding the request header \code{x-amz-copy-source} in your request and a byte range by adding the request header \code{x-amz-copy-source-range} in your request.
 
-See \url{https://paws-r.github.io/docs/s3/upload_part_copy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_upload_part_copy/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ enable you to retrieve the next page of results.}
 \description{
 Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/list_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_list_jobs/} for full documentation.
 }
 \keyword{internal}

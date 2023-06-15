@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified route from the specified route table.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_route/} for full documentation.
 }
 \keyword{internal}

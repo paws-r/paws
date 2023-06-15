@@ -18,6 +18,6 @@ must be unique and cannot be duplicated for a particular resource.}
 \description{
 Removes a specific tag associated with an Amazon Comprehend resource.
 
-See \url{https://paws-r.github.io/docs/comprehend/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_untag_resource/} for full documentation.
 }
 \keyword{internal}

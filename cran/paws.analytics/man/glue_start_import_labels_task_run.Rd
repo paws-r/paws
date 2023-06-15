@@ -22,6 +22,6 @@ the labels.}
 \description{
 Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality. This API operation is generally used as part of the active learning workflow that starts with the \code{\link[=glue_start_ml_labeling_set_generation_task_run]{start_ml_labeling_set_generation_task_run}} call and that ultimately results in improving the quality of your machine learning transform.
 
-See \url{https://paws-r.github.io/docs/glue/start_import_labels_task_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_import_labels_task_run/} for full documentation.
 }
 \keyword{internal}

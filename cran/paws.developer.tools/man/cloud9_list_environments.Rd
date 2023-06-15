@@ -19,6 +19,6 @@ token that is returned, until no more next tokens are returned.}
 \description{
 Gets a list of Cloud9 development environment identifiers.
 
-See \url{https://paws-r.github.io/docs/cloud9/list_environments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_list_environments/} for full documentation.
 }
 \keyword{internal}

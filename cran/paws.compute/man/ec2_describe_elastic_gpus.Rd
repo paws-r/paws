@@ -44,6 +44,6 @@ value. This value can be between 5 and 1000.}
 \description{
 Describes the Elastic Graphics accelerator associated with your instances. For more information about Elastic Graphics, see \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html}{Amazon Elastic Graphics}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_elastic_gpus.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_elastic_gpus/} for full documentation.
 }
 \keyword{internal}

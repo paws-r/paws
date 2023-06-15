@@ -38,6 +38,6 @@ language.}
 \description{
 Starts an asynchronous job to detect medical conditions and link them to the ICD-10-CM ontology. Use the \code{\link[=comprehendmedical_describe_icd10cm_inference_job]{describe_icd10cm_inference_job}} operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/start_icd10cm_inference_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_start_icd10cm_inference_job/} for full documentation.
 }
 \keyword{internal}

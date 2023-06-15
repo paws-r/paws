@@ -15,6 +15,6 @@ the rule from.}
 \description{
 Deletes the specified firewall rule.
 
-See \url{https://paws-r.github.io/docs/route53resolver/delete_firewall_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_delete_firewall_rule/} for full documentation.
 }
 \keyword{internal}

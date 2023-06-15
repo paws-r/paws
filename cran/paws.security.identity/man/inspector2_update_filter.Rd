@@ -31,6 +31,6 @@ the filter.}
 \description{
 Specifies the action that is to be applied to the findings that match the filter.
 
-See \url{https://paws-r.github.io/docs/inspector2/update_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_update_filter/} for full documentation.
 }
 \keyword{internal}

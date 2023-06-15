@@ -12,6 +12,6 @@ redshift_reject_data_share(DataShareArn)
 \description{
 From a datashare consumer account, rejects the specified datashare.
 
-See \url{https://paws-r.github.io/docs/redshift/reject_data_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_reject_data_share/} for full documentation.
 }
 \keyword{internal}

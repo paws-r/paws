@@ -13,6 +13,6 @@ directconnect_describe_hosted_connections(connectionId)
 \description{
 Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG).
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_hosted_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_hosted_connections/} for full documentation.
 }
 \keyword{internal}

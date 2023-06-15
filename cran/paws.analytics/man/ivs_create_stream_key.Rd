@@ -19,6 +19,6 @@ constraints beyond what is documented there.}
 \description{
 Creates a stream key, used to initiate a stream, for the specified channel ARN.
 
-See \url{https://paws-r.github.io/docs/ivs/create_stream_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_create_stream_key/} for full documentation.
 }
 \keyword{internal}

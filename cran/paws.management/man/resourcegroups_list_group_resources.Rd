@@ -69,6 +69,6 @@ output should continue from.}
 \description{
 Returns a list of ARNs of the resources that are members of a specified resource group.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/list_group_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_list_group_resources/} for full documentation.
 }
 \keyword{internal}

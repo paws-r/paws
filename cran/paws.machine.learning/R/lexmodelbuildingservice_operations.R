@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a new version of the bot based on the `$LATEST` version. If the `$LATEST` version of this resource hasn't changed since you created the last version, Amazon Lex doesn't create a new version. It returns the last created version.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/create_bot_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/create_bot_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_bot_version/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_bot_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot that you want to create a new version of. The name
 #' is case sensitive.
@@ -44,7 +44,7 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' @description
 #' Creates a new version of an intent based on the `$LATEST` version of the intent. If the `$LATEST` version of this intent hasn't changed since you last updated it, Amazon Lex doesn't create a new version. It returns the last version you created.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/create_intent_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/create_intent_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_intent_version/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_intent_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent that you want to create a new version of. The
 #' name is case sensitive.
@@ -81,7 +81,7 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' @description
 #' Creates a new version of a slot type based on the `$LATEST` version of the specified slot type. If the `$LATEST` version of this resource has not changed since the last version that you created, Amazon Lex doesn't create a new version. It returns the last version that you created.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/create_slot_type_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/create_slot_type_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_slot_type_version/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_slot_type_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type that you want to create a new version for. The
 #' name is case sensitive.
@@ -117,7 +117,7 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #' @description
 #' Deletes all versions of the bot, including the `$LATEST` version. To delete a specific version of the bot, use the [`delete_bot_version`][lexmodelbuildingservice_delete_bot_version] operation. The [`delete_bot`][lexmodelbuildingservice_delete_bot] operation doesn't immediately remove the bot schema. Instead, it is marked for deletion and removed later.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is case sensitive.
 #'
@@ -146,7 +146,7 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 #' @description
 #' Deletes an alias for the specified bot.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_alias.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_alias/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_alias/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the alias to delete. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the bot that the alias points to.
@@ -177,7 +177,7 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
 #' @description
 #' Deletes the association between an Amazon Lex bot and a messaging platform.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_channel_association.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_channel_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_channel_association/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_channel_association/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the association. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
@@ -209,7 +209,7 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #' @description
 #' Deletes a specific version of a bot. To delete all versions of a bot, use the [`delete_bot`][lexmodelbuildingservice_delete_bot] operation.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_version/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot.
 #' @param version &#91;required&#93; The version of the bot to delete. You cannot delete the `$LATEST`
@@ -241,7 +241,7 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #' @description
 #' Deletes all versions of the intent, including the `$LATEST` version. To delete a specific version of the intent, use the [`delete_intent_version`][lexmodelbuildingservice_delete_intent_version] operation.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_intent/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is case sensitive.
 #'
@@ -270,7 +270,7 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #' @description
 #' Deletes a specific version of an intent. To delete all versions of a intent, use the [`delete_intent`][lexmodelbuildingservice_delete_intent] operation.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_intent_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_intent_version/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_intent_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent.
 #' @param version &#91;required&#93; The version of the intent to delete. You cannot delete the `$LATEST`
@@ -302,7 +302,7 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #' @description
 #' Deletes all versions of the slot type, including the `$LATEST` version. To delete a specific version of the slot type, use the [`delete_slot_type_version`][lexmodelbuildingservice_delete_slot_type_version] operation.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_slot_type/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_slot_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is case sensitive.
 #'
@@ -331,7 +331,7 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #' @description
 #' Deletes a specific version of a slot type. To delete all versions of a slot type, use the [`delete_slot_type`][lexmodelbuildingservice_delete_slot_type] operation.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type_version.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_slot_type_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_slot_type_version/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_slot_type_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type.
 #' @param version &#91;required&#93; The version of the slot type to delete. You cannot delete the `$LATEST`
@@ -364,7 +364,7 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' @description
 #' Deletes stored utterances.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/delete_utterances.html](https://paws-r.github.io/docs/lexmodelbuildingservice/delete_utterances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_utterances/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_utterances/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot that stored the utterances.
 #' @param userId &#91;required&#93; The unique identifier for the user that made the utterances. This is the
@@ -399,7 +399,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #' @description
 #' Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is case sensitive.
 #' @param versionOrAlias &#91;required&#93; The version or alias of the bot.
@@ -429,7 +429,7 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
 #' @description
 #' Returns information about an Amazon Lex bot alias. For more information about aliases, see versioning-aliases.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_alias.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_alias/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_alias/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot alias. The name is case sensitive.
 #' @param botName &#91;required&#93; The name of the bot.
@@ -459,7 +459,7 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 #' @description
 #' Returns a list of aliases for a specified Amazon Lex bot.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_aliases.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_aliases/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_aliases/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot.
 #' @param nextToken A pagination token for fetching the next page of aliases. If the
@@ -498,7 +498,7 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
 #' @description
 #' Returns information about the association between an Amazon Lex bot and a messaging platform.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_association.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_channel_association/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_channel_association/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the association between the bot and the channel. The name is
 #' case sensitive.
@@ -531,7 +531,7 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #' @description
 #' Returns a list of all of the channels associated with the specified bot.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_associations.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_channel_associations/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_channel_associations/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot in the association.
 #' @param botAlias &#91;required&#93; An alias pointing to the specific version of the Amazon Lex bot to which
@@ -572,7 +572,7 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #' @description
 #' Gets information about all of the versions of a bot.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_versions.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_versions/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_versions/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot for which versions should be returned.
 #' @param nextToken A pagination token for fetching the next page of bot versions. If the
@@ -607,7 +607,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #' @description
 #' Returns bot information as follows:
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_bots.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_bots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bots/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bots/) for full documentation.
 #'
 #' @param nextToken A pagination token that fetches the next page of bots. If the response
 #' to this call is truncated, Amazon Lex returns a pagination token in the
@@ -644,7 +644,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' @description
 #' Returns information about a built-in intent.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/) for full documentation.
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
 #' an intent, see [Standard Built-in
@@ -676,7 +676,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @description
 #' Gets a list of built-in intents that meet the specified criteria.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intents.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intents/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intents/) for full documentation.
 #'
 #' @param locale A list of locales that the intent supports.
 #' @param signatureContains Substring to match in built-in intent signatures. An intent will be
@@ -717,7 +717,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @description
 #' Gets a list of built-in slot types that meet the specified criteria.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_slot_types.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_slot_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_slot_types/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_slot_types/) for full documentation.
 #'
 #' @param locale A list of locales that the slot type supports.
 #' @param signatureContains Substring to match in built-in slot type signatures. A slot type will be
@@ -755,7 +755,7 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
 #' @description
 #' Exports the contents of a Amazon Lex resource in a specified format.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_export.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_export.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_export/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_export/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot to export.
 #' @param version &#91;required&#93; The version of the bot to export.
@@ -788,7 +788,7 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #' @description
 #' Gets information about an import job started with the [`start_import`][lexmodelbuildingservice_start_import] operation.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_import.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_import.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_import/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_import/) for full documentation.
 #'
 #' @param importId &#91;required&#93; The identifier of the import job information to return.
 #'
@@ -817,7 +817,7 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #' @description
 #' Returns information about an intent. In addition to the intent name, you must specify the intent version.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intent/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is case sensitive.
 #' @param version &#91;required&#93; The version of the intent.
@@ -847,7 +847,7 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #' @description
 #' Gets information about all of the versions of an intent.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent_versions.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intent_versions/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intent_versions/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent for which versions should be returned.
 #' @param nextToken A pagination token for fetching the next page of intent versions. If the
@@ -882,7 +882,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' @description
 #' Returns intent information as follows:
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_intents.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_intents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intents/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intents/) for full documentation.
 #'
 #' @param nextToken A pagination token that fetches the next page of intents. If the
 #' response to this API call is truncated, Amazon Lex returns a pagination
@@ -920,7 +920,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #' @description
 #' Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex V2 bot. Use this operation to view the migration alerts and warnings related to the migration.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_migration.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_migration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_migration/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_migration/) for full documentation.
 #'
 #' @param migrationId &#91;required&#93; The unique identifier of the migration to view. The `migrationID` is
 #' returned by the operation.
@@ -950,7 +950,7 @@ lexmodelbuildingservice_get_migration <- function(migrationId) {
 #' @description
 #' Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_migrations.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_migrations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_migrations/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_migrations/) for full documentation.
 #'
 #' @param sortByAttribute The field to sort the list of migrations by. You can sort by the Amazon
 #' Lex V1 bot name or the date and time that the migration was started.
@@ -990,7 +990,7 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
 #' @description
 #' Returns information about a specific version of a slot type. In addition to specifying the slot type name, you must specify the slot type version.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_type/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is case sensitive.
 #' @param version &#91;required&#93; The version of the slot type.
@@ -1020,7 +1020,7 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #' @description
 #' Gets information about all versions of a slot type.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type_versions.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_type_versions/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_type_versions/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type for which versions should be returned.
 #' @param nextToken A pagination token for fetching the next page of slot type versions. If
@@ -1055,7 +1055,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' @description
 #' Returns slot type information as follows:
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_types.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_types/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_slot_types/) for full documentation.
 #'
 #' @param nextToken A pagination token that fetches the next page of slot types. If the
 #' response to this API call is truncated, Amazon Lex returns a pagination
@@ -1093,7 +1093,7 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' @description
 #' Use the [`get_utterances_view`][lexmodelbuildingservice_get_utterances_view] operation to get information about the utterances that your users have made to your bot. You can use this list to tune the utterances that your bot responds to.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/get_utterances_view.html](https://paws-r.github.io/docs/lexmodelbuildingservice/get_utterances_view.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_utterances_view/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_utterances_view/) for full documentation.
 #'
 #' @param botName &#91;required&#93; The name of the bot for which utterance information should be returned.
 #' @param botVersions &#91;required&#93; An array of bot versions for which utterance information should be
@@ -1126,7 +1126,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' @description
 #' Gets a list of tags associated with the specified resource. Only bots, bot aliases, and bot channels can have tags associated with them.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/list_tags_for_resource.html](https://paws-r.github.io/docs/lexmodelbuildingservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get a list of tags
 #' for.
@@ -1156,7 +1156,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `` response `FAILED`. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the bot. The name is *not* case sensitive.
 #' @param description A description of the bot.
@@ -1384,7 +1384,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' @description
 #' Creates an alias for the specified version of the bot or replaces an alias for the specified bot. To change the version of the bot that the alias points to, replace the alias. For more information about aliases, see versioning-aliases.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot_alias.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot_alias/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot_alias/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the alias. The name is *not* case sensitive.
 #' @param description A description of the alias.
@@ -1432,7 +1432,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @description
 #' Creates an intent or replaces an existing intent.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_intent.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_intent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_intent/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is *not* case sensitive.
 #' 
@@ -1572,7 +1572,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @description
 #' Creates a custom slot type or replaces an existing custom slot type.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/put_slot_type.html](https://paws-r.github.io/docs/lexmodelbuildingservice/put_slot_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_slot_type/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_slot_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the slot type. The name is *not* case sensitive.
 #' 
@@ -1660,7 +1660,7 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' @description
 #' Starts a job to import a resource to Amazon Lex.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/start_import.html](https://paws-r.github.io/docs/lexmodelbuildingservice/start_import.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_start_import/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_start_import/) for full documentation.
 #'
 #' @param payload &#91;required&#93; A zip archive in binary format. The archive should contain one file, a
 #' JSON file containing the resource to import. The resource should match
@@ -1712,7 +1712,7 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 #' @description
 #' Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2. Migrate your bot when you want to take advantage of the new features of Amazon Lex V2.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/start_migration.html](https://paws-r.github.io/docs/lexmodelbuildingservice/start_migration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_start_migration/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_start_migration/) for full documentation.
 #'
 #' @param v1BotName &#91;required&#93; The name of the Amazon Lex V1 bot that you are migrating to Amazon Lex
 #' V2.
@@ -1762,7 +1762,7 @@ lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2B
 #' @description
 #' Adds the specified tags to the specified resource. If a tag key already exists, the existing value is replaced with the new value.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/tag_resource.html](https://paws-r.github.io/docs/lexmodelbuildingservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_tag_resource/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the bot, bot alias, or bot channel to
 #' tag.
@@ -1794,7 +1794,7 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from a bot, bot alias or bot channel.
 #'
-#' See [https://paws-r.github.io/docs/lexmodelbuildingservice/untag_resource.html](https://paws-r.github.io/docs/lexmodelbuildingservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_untag_resource/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove the tags from.
 #' @param tagKeys &#91;required&#93; A list of tag keys to remove from the resource. If a tag key does not

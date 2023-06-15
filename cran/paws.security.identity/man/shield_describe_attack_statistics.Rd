@@ -11,6 +11,6 @@ shield_describe_attack_statistics()
 \description{
 Provides information about the number and type of attacks Shield has detected in the last year for all resources that belong to your account, regardless of whether you've defined Shield protections for them. This operation is available to Shield customers as well as to Shield Advanced customers.
 
-See \url{https://paws-r.github.io/docs/shield/describe_attack_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_attack_statistics/} for full documentation.
 }
 \keyword{internal}

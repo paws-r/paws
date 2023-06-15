@@ -62,6 +62,6 @@ included in the request.}
 \description{
 Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys. A search key is a data type pair that consists of a \code{KeyName} and \code{Values} list.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/search_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_search_profiles/} for full documentation.
 }
 \keyword{internal}

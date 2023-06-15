@@ -40,6 +40,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action is useful to determine if a bucket exists and you have permission to access it. The action returns a \verb{200 OK} if the bucket exists and you have permission to access it.
 
-See \url{https://paws-r.github.io/docs/s3/head_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_head_bucket/} for full documentation.
 }
 \keyword{internal}

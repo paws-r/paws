@@ -24,6 +24,6 @@ more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguid
 \description{
 Manually starts server maintenance. This command can be useful if an earlier maintenance attempt failed, and the underlying cause of maintenance failure has been resolved. The server is in an \code{UNDER_MAINTENANCE} state while maintenance is in progress.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/start_maintenance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_start_maintenance/} for full documentation.
 }
 \keyword{internal}

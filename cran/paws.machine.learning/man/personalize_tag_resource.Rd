@@ -9,12 +9,11 @@ personalize_tag_resource(resourceArn, tags)
 \arguments{
 \item{resourceArn}{[required] The resource's Amazon Resource Name (ARN).}
 
-\item{tags}{[required] Tags to apply to the resource. For more information see Tagging
-Personalize resources.}
+\item{tags}{[required] Tags to apply to the resource. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{Tagging Amazon Personalize recources}.}
 }
 \description{
 Add a list of tags to a resource.
 
-See \url{https://paws-r.github.io/docs/personalize/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_tag_resource/} for full documentation.
 }
 \keyword{internal}

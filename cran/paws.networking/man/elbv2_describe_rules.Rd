@@ -24,6 +24,6 @@ previous call.)}
 \description{
 Describes the specified rules or the rules for the specified listener. You must specify either a listener or one or more rules.
 
-See \url{https://paws-r.github.io/docs/elbv2/describe_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_rules/} for full documentation.
 }
 \keyword{internal}

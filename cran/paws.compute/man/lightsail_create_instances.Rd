@@ -74,6 +74,6 @@ The default value is \code{dualstack}.}
 \description{
 Creates one or more Amazon Lightsail instances.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_instances/} for full documentation.
 }
 \keyword{internal}

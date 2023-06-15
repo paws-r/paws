@@ -23,6 +23,6 @@ multiple AZs.}
 \description{
 Adds one or more nodes to a DAX cluster.
 
-See \url{https://paws-r.github.io/docs/dax/increase_replication_factor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_increase_replication_factor/} for full documentation.
 }
 \keyword{internal}

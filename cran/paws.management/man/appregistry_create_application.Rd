@@ -29,6 +29,6 @@ but one or more of the parameters are different, the retry fails.}
 \description{
 Creates a new application that is the top-level node in a hierarchy of related cloud resource abstractions.
 
-See \url{https://paws-r.github.io/docs/appregistry/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_create_application/} for full documentation.
 }
 \keyword{internal}

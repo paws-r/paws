@@ -82,6 +82,6 @@ endpoint.}
 \description{
 Creates a new Elasticsearch domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_create_elasticsearch_domain/} for full documentation.
 }
 \keyword{internal}

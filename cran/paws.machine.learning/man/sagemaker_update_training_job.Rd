@@ -27,6 +27,6 @@ profiling system and framework metrics.}
 \description{
 Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_training_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_training_job/} for full documentation.
 }
 \keyword{internal}

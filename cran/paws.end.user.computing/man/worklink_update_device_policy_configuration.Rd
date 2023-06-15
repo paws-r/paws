@@ -18,6 +18,6 @@ certificate authority certificate used to issue device certificates.}
 \description{
 Updates the device policy configuration for the fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/update_device_policy_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_update_device_policy_configuration/} for full documentation.
 }
 \keyword{internal}

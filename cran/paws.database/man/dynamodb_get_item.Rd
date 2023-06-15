@@ -89,6 +89,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \description{
 The \code{\link[=dynamodb_get_item]{get_item}} operation returns a set of attributes for the item with the given primary key. If there is no matching item, \code{\link[=dynamodb_get_item]{get_item}} does not return any data and there will be no \code{Item} element in the response.
 
-See \url{https://paws-r.github.io/docs/dynamodb/get_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_get_item/} for full documentation.
 }
 \keyword{internal}

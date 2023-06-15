@@ -19,6 +19,6 @@ consists of a key name and an associated value.}
 \description{
 Adds one or more tags to an IAM user. If a tag with the same key name already exists, then that tag is overwritten with the new value.
 
-See \url{https://paws-r.github.io/docs/iam/tag_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_tag_user/} for full documentation.
 }
 \keyword{internal}

@@ -86,6 +86,6 @@ text format. For example, \verb{123 Any Street}.}
 \description{
 Geocodes free-form text, such as an address, name, city, or region to allow you to search for Places or points of interest.
 
-See \url{https://paws-r.github.io/docs/locationservice/search_place_index_for_text.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_text/} for full documentation.
 }
 \keyword{internal}

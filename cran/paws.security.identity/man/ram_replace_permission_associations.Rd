@@ -44,6 +44,6 @@ different parameters, the retry fails with an
 \description{
 Updates all resource shares that use a managed permission to a different managed permission. This operation always applies the default version of the target managed permission. You can optionally specify that the update applies to only resource shares that currently use a specified version. This enables you to update to the latest version, without changing the which managed permission is used.
 
-See \url{https://paws-r.github.io/docs/ram/replace_permission_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_replace_permission_associations/} for full documentation.
 }
 \keyword{internal}

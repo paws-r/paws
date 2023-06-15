@@ -19,6 +19,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_segment_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_segment_version/} for full documentation.
 }
 \keyword{internal}

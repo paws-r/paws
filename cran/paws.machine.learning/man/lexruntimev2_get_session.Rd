@@ -18,6 +18,6 @@ lexruntimev2_get_session(botId, botAliasId, localeId, sessionId)
 \description{
 Returns session information for a specified bot, alias, and user.
 
-See \url{https://paws-r.github.io/docs/lexruntimev2/get_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexruntimev2_get_session/} for full documentation.
 }
 \keyword{internal}

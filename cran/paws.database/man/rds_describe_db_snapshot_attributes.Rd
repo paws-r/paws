@@ -13,6 +13,6 @@ rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
 \description{
 Returns a list of DB snapshot attribute names and values for a manual DB snapshot.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_snapshot_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_snapshot_attributes/} for full documentation.
 }
 \keyword{internal}

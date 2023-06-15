@@ -14,6 +14,6 @@ backup_update_global_settings(GlobalSettings = NULL)
 \description{
 Updates whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not an Organizations management account. Use the \code{\link[=backup_describe_global_settings]{describe_global_settings}} API to determine the current settings.
 
-See \url{https://paws-r.github.io/docs/backup/update_global_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_update_global_settings/} for full documentation.
 }
 \keyword{internal}

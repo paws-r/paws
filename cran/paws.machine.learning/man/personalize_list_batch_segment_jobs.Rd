@@ -23,6 +23,6 @@ The default value is 100.}
 \description{
 Gets a list of the batch segment jobs that have been performed off of a solution version that you specify.
 
-See \url{https://paws-r.github.io/docs/personalize/list_batch_segment_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_batch_segment_jobs/} for full documentation.
 }
 \keyword{internal}

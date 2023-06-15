@@ -23,6 +23,6 @@ customerprofiles_delete_profile_object(
 \description{
 Removes an object associated with a profile of a given ProfileObjectType.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/delete_profile_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_object/} for full documentation.
 }
 \keyword{internal}

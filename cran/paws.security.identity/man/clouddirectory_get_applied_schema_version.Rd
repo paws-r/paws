@@ -13,6 +13,6 @@ clouddirectory_get_applied_schema_version(SchemaArn)
 \description{
 Returns current applied schema version ARN, including the minor version in use.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/get_applied_schema_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_get_applied_schema_version/} for full documentation.
 }
 \keyword{internal}

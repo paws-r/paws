@@ -21,6 +21,6 @@ Amazon Web Services tags.}
 \description{
 This action sets the property mappings for the specified hypervisor. A hypervisor property mapping displays the relationship of entity properties available from the on-premises hypervisor to the properties available in Amazon Web Services.
 
-See \url{https://paws-r.github.io/docs/backupgateway/put_hypervisor_property_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_put_hypervisor_property_mappings/} for full documentation.
 }
 \keyword{internal}

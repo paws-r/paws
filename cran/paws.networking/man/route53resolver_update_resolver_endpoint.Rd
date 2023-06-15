@@ -25,6 +25,6 @@ uses to forward DNS queries.}
 \description{
 Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
 
-See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_endpoint/} for full documentation.
 }
 \keyword{internal}

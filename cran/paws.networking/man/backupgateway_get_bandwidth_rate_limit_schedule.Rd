@@ -15,6 +15,6 @@ Services Region.}
 \description{
 Retrieves the bandwidth rate limit schedule for a specified gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. Use this to get a gateway's bandwidth rate limit schedule.
 
-See \url{https://paws-r.github.io/docs/backupgateway/get_bandwidth_rate_limit_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_get_bandwidth_rate_limit_schedule/} for full documentation.
 }
 \keyword{internal}

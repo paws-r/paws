@@ -49,6 +49,6 @@ the prior request in your next request.}
 \description{
 Retrieves the firewall rule group associations that you have defined. Each association enables DNS filtering for a VPC with one rule group.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_firewall_rule_group_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rule_group_associations/} for full documentation.
 }
 \keyword{internal}

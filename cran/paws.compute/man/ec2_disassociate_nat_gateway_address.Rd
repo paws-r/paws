@@ -30,6 +30,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway. You cannot disassociate your primary EIP. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary}{Edit secondary IP address associations} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_nat_gateway_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_nat_gateway_address/} for full documentation.
 }
 \keyword{internal}

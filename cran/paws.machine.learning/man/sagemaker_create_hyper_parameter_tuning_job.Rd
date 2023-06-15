@@ -89,6 +89,6 @@ model convergence.
 \description{
 Starts a hyperparameter tuning job. A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm you choose and values for hyperparameters within ranges that you specify. It then chooses the hyperparameter values that result in a model that performs the best, as measured by an objective metric that you choose.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_hyper_parameter_tuning_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_hyper_parameter_tuning_job/} for full documentation.
 }
 \keyword{internal}

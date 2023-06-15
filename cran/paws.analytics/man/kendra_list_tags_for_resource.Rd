@@ -13,6 +13,6 @@ a list of tags for.}
 \description{
 Gets a list of tags associated with a specified resource. Indexes, FAQs, and data sources can have tags associated with them.
 
-See \url{https://paws-r.github.io/docs/kendra/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

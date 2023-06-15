@@ -12,6 +12,6 @@ ivs_get_channel(arn)
 \description{
 Gets the channel configuration for the specified channel ARN. See also \code{\link[=ivs_batch_get_channel]{batch_get_channel}}.
 
-See \url{https://paws-r.github.io/docs/ivs/get_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_get_channel/} for full documentation.
 }
 \keyword{internal}

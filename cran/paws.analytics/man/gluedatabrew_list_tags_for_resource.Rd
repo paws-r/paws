@@ -13,6 +13,6 @@ DataBrew resource.}
 \description{
 Lists all the tags for a DataBrew resource.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -50,6 +50,6 @@ the same client token for other API requests.}
 \description{
 Adds a resource to the Resilience Hub application and assigns it to the specified Application Components. If you specify a new Application Component, Resilience Hub will automatically create the Application Component.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/create_app_version_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_create_app_version_resource/} for full documentation.
 }
 \keyword{internal}

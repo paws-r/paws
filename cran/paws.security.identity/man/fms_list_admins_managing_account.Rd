@@ -22,6 +22,6 @@ subsequent call to get the next batch of objects.}
 \description{
 Lists the accounts that are managing the specified Organizations member account. This is useful for any member account so that they can view the accounts who are managing their account. This operation only returns the managing administrators that have the requested account within their AdminScope.
 
-See \url{https://paws-r.github.io/docs/fms/list_admins_managing_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_admins_managing_account/} for full documentation.
 }
 \keyword{internal}

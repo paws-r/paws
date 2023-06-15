@@ -31,6 +31,6 @@ lakeformation_list_table_storage_optimizers(
 \description{
 Returns the configuration of all storage optimizers associated with a specified table.
 
-See \url{https://paws-r.github.io/docs/lakeformation/list_table_storage_optimizers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_list_table_storage_optimizers/} for full documentation.
 }
 \keyword{internal}

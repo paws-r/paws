@@ -29,6 +29,6 @@ key name, and the resulting in-application table that is created.}
 \description{
 Adds a reference data source to an existing SQL-based Kinesis Data Analytics application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_reference_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_reference_data_source/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ person are sorted by detection confidence. The default sort is by
 \description{
 Gets the path tracking results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_person_tracking]{start_person_tracking}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_person_tracking.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_person_tracking/} for full documentation.
 }
 \keyword{internal}

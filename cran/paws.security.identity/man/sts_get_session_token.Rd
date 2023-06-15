@@ -47,6 +47,6 @@ sequence of six numeric digits.}
 \description{
 Returns a set of temporary credentials for an Amazon Web Services account or IAM user. The credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_get_session_token]{get_session_token}} if you want to use MFA to protect programmatic calls to specific Amazon Web Services API operations like Amazon EC2 \code{StopInstances}.
 
-See \url{https://paws-r.github.io/docs/sts/get_session_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_get_session_token/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ environments per page.}
 \description{
 Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments.
 
-See \url{https://paws-r.github.io/docs/mwaa/list_environments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_list_environments/} for full documentation.
 }
 \keyword{internal}

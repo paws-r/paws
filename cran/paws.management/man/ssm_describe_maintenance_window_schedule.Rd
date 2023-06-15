@@ -35,6 +35,6 @@ from a previous call.)}
 \description{
 Retrieves information about upcoming executions of a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_schedule/} for full documentation.
 }
 \keyword{internal}

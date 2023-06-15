@@ -14,6 +14,6 @@ panorama_tag_resource(ResourceArn, Tags)
 \description{
 Tags a resource.
 
-See \url{https://paws-r.github.io/docs/panorama/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_tag_resource/} for full documentation.
 }
 \keyword{internal}

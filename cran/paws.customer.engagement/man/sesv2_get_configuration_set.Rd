@@ -14,6 +14,6 @@ sesv2_get_configuration_set(ConfigurationSetName)
 \description{
 Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_configuration_set/} for full documentation.
 }
 \keyword{internal}

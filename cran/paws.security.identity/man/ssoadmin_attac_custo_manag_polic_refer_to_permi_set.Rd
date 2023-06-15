@@ -24,6 +24,6 @@ you want to deploy your permission set.}
 \description{
 Attaches the specified customer managed policy to the specified PermissionSet.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/attach_customer_managed_policy_reference_to_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_attach_customer_managed_policy_reference_to_permission_set/} for full documentation.
 }
 \keyword{internal}

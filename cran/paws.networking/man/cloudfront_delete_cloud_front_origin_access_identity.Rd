@@ -15,6 +15,6 @@ cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch = NULL)
 \description{
 Delete an origin access identity.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_cloud_front_origin_access_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_cloud_front_origin_access_identity/} for full documentation.
 }
 \keyword{internal}

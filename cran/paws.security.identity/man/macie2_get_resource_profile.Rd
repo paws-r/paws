@@ -14,6 +14,6 @@ to.}
 \description{
 Retrieves (queries) sensitive data discovery statistics and the sensitivity score for an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/macie2/get_resource_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_resource_profile/} for full documentation.
 }
 \keyword{internal}

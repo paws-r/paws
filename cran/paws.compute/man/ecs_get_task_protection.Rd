@@ -15,6 +15,6 @@ hosts the service that the task sets exist in.}
 \description{
 Retrieves the protection status of tasks in an Amazon ECS service.
 
-See \url{https://paws-r.github.io/docs/ecs/get_task_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_get_task_protection/} for full documentation.
 }
 \keyword{internal}

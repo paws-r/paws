@@ -25,6 +25,6 @@ directconnect_update_virtual_interface_attributes(
 \description{
 Updates the specified attributes of the specified virtual private interface.
 
-See \url{https://paws-r.github.io/docs/directconnect/update_virtual_interface_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_update_virtual_interface_attributes/} for full documentation.
 }
 \keyword{internal}

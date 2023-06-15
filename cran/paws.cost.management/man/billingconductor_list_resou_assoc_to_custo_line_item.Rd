@@ -28,6 +28,6 @@ specify the types of resources that should be retrieved.}
 \description{
 List the resources that are associated to a custom line item.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_resources_associated_to_custom_line_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_resources_associated_to_custom_line_item/} for full documentation.
 }
 \keyword{internal}

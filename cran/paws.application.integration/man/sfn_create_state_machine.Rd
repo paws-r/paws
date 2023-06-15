@@ -60,6 +60,6 @@ symbols: \verb{_ . : / = + - @}.}
 \description{
 Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} in the Step Functions User Guide.
 
-See \url{https://paws-r.github.io/docs/sfn/create_state_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_create_state_machine/} for full documentation.
 }
 \keyword{internal}

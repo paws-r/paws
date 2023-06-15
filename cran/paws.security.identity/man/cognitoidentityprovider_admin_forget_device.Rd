@@ -16,6 +16,6 @@ cognitoidentityprovider_admin_forget_device(UserPoolId, Username, DeviceKey)
 \description{
 Forgets the device, as an administrator.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_forget_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_forget_device/} for full documentation.
 }
 \keyword{internal}

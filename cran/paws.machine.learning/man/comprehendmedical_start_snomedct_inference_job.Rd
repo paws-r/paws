@@ -38,6 +38,6 @@ language.}
 \description{
 Starts an asynchronous job to detect medical concepts and link them to the SNOMED-CT ontology. Use the DescribeSNOMEDCTInferenceJob operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/start_snomedct_inference_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_start_snomedct_inference_job/} for full documentation.
 }
 \keyword{internal}

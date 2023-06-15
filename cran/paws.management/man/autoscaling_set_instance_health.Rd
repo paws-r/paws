@@ -30,6 +30,6 @@ the \emph{Amazon EC2 Auto Scaling API Reference}.}
 \description{
 Sets the health status of the specified instance.
 
-See \url{https://paws-r.github.io/docs/autoscaling/set_instance_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_set_instance_health/} for full documentation.
 }
 \keyword{internal}

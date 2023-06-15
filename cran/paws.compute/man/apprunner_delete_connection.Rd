@@ -13,6 +13,6 @@ want to delete.}
 \description{
 Delete an App Runner connection. You must first ensure that there are no running App Runner services that use this connection. If there are any, the \code{\link[=apprunner_delete_connection]{delete_connection}} action fails.
 
-See \url{https://paws-r.github.io/docs/apprunner/delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_delete_connection/} for full documentation.
 }
 \keyword{internal}

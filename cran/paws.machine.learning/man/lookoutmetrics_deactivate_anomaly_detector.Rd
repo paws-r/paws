@@ -12,6 +12,6 @@ lookoutmetrics_deactivate_anomaly_detector(AnomalyDetectorArn)
 \description{
 Deactivates an anomaly detector.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/deactivate_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_deactivate_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

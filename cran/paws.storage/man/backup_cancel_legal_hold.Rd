@@ -22,6 +22,6 @@ operation to remove legal hold.}
 \description{
 This action removes the specified legal hold on a recovery point. This action can only be performed by a user with sufficient permissions.
 
-See \url{https://paws-r.github.io/docs/backup/cancel_legal_hold.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_cancel_legal_hold/} for full documentation.
 }
 \keyword{internal}

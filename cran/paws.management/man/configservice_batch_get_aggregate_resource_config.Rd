@@ -18,6 +18,6 @@ configservice_batch_get_aggregate_resource_config(
 \description{
 Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty \code{unprocessedResourceIdentifiers} list.
 
-See \url{https://paws-r.github.io/docs/configservice/batch_get_aggregate_resource_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_batch_get_aggregate_resource_config/} for full documentation.
 }
 \keyword{internal}

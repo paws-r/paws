@@ -49,6 +49,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Creates a new version of the specified managed policy. To update a managed policy, you create a new policy version. A managed policy can have up to five versions. If the policy has five versions, you must delete an existing version using \code{\link[=iam_delete_policy_version]{delete_policy_version}} before you create a new version.
 
-See \url{https://paws-r.github.io/docs/iam/create_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_policy_version/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#tagging.ARN.Cons
 \description{
 Removes metadata tags from an Amazon Neptune resource.
 
-See \url{https://paws-r.github.io/docs/neptune/remove_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_remove_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

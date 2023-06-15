@@ -20,6 +20,6 @@ opsworkscm_update_server_engine_attributes(
 \description{
 Updates engine-specific attributes on a specified server. The server enters the \code{MODIFYING} state when this operation is in progress. Only one update can occur at a time. You can use this command to reset a Chef server's public key (\code{CHEF_PIVOTAL_KEY}) or a Puppet server's admin password (\code{PUPPET_ADMIN_PASSWORD}).
 
-See \url{https://paws-r.github.io/docs/opsworkscm/update_server_engine_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_update_server_engine_attributes/} for full documentation.
 }
 \keyword{internal}

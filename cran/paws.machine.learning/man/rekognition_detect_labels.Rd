@@ -47,6 +47,6 @@ For a full list of labels and label categories, see \href{https://docs.aws.amazo
 \description{
 Detects instances of real-world entities within an image (JPEG or PNG) provided as input. This includes objects like flower, tree, and table; events like wedding, graduation, and birthday party; and concepts like landscape, evening, and nature.
 
-See \url{https://paws-r.github.io/docs/rekognition/detect_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_labels/} for full documentation.
 }
 \keyword{internal}

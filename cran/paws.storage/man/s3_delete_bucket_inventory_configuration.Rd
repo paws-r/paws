@@ -23,6 +23,6 @@ different account, the request fails with the HTTP status code
 \description{
 Deletes an inventory configuration (identified by the inventory ID) from the bucket.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_inventory_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_inventory_configuration/} for full documentation.
 }
 \keyword{internal}

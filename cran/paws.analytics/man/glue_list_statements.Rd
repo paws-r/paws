@@ -16,6 +16,6 @@ glue_list_statements(SessionId, RequestOrigin = NULL, NextToken = NULL)
 \description{
 Lists statements for the session.
 
-See \url{https://paws-r.github.io/docs/glue/list_statements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_statements/} for full documentation.
 }
 \keyword{internal}

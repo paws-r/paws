@@ -12,6 +12,6 @@ securityhub_disable_import_findings_for_product(ProductSubscriptionArn)
 \description{
 Disables the integration of the specified product with Security Hub. After the integration is disabled, findings from that product are no longer sent to Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/disable_import_findings_for_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_import_findings_for_product/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ dynamodb_delete_backup(BackupArn)
 \description{
 Deletes an existing backup of a table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/delete_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_delete_backup/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ cloudwatch_enable_alarm_actions(AlarmNames)
 \description{
 Enables the actions for the specified alarms.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/enable_alarm_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_enable_alarm_actions/} for full documentation.
 }
 \keyword{internal}

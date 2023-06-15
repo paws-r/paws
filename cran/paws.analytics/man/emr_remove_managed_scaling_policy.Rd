@@ -13,6 +13,6 @@ will be removed.}
 \description{
 Removes a managed scaling policy from a specified Amazon EMR cluster.
 
-See \url{https://paws-r.github.io/docs/emr/remove_managed_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_remove_managed_scaling_policy/} for full documentation.
 }
 \keyword{internal}

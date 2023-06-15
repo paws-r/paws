@@ -15,6 +15,6 @@ tags to.}
 \description{
 Adds a tag to a response plan.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_tag_resource/} for full documentation.
 }
 \keyword{internal}

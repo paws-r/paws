@@ -13,6 +13,6 @@ information.}
 \description{
 Retrieves a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window/} for full documentation.
 }
 \keyword{internal}

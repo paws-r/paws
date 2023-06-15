@@ -19,6 +19,6 @@ policy.}
 \description{
 Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com).
 
-See \url{https://paws-r.github.io/docs/route53/create_traffic_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_traffic_policy/} for full documentation.
 }
 \keyword{internal}

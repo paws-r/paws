@@ -23,6 +23,6 @@ this is the first call.}
 \description{
 Retrieves information about the configurable settings for the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_settings/} for full documentation.
 }
 \keyword{internal}

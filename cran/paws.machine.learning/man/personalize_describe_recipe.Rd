@@ -12,6 +12,6 @@ personalize_describe_recipe(recipeArn)
 \description{
 Describes a recipe.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_recipe/} for full documentation.
 }
 \keyword{internal}

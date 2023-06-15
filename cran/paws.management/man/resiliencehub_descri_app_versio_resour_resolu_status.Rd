@@ -25,6 +25,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Returns the resolution status for the specified resolution identifier for an application version. If \code{resolutionId} is not specified, the current resolution status is returned.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_app_version_resources_resolution_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resources_resolution_status/} for full documentation.
 }
 \keyword{internal}

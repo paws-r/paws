@@ -22,6 +22,6 @@ This can be anywhere from 7 to 30 days, with 30 being the default.}
 \description{
 Deletes a private certificate authority (CA). You must provide the Amazon Resource Name (ARN) of the private CA that you want to delete. You can find the ARN by calling the \code{\link[=acmpca_list_certificate_authorities]{list_certificate_authorities}} action.
 
-See \url{https://paws-r.github.io/docs/acmpca/delete_certificate_authority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_delete_certificate_authority/} for full documentation.
 }
 \keyword{internal}

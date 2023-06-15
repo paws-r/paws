@@ -39,6 +39,6 @@ custom line item.}
 \description{
 Creates a custom line item that can be used to create a one-time fixed charge that can be applied to a single billing group for the current or previous billing period. The one-time fixed charge is either a fee or discount.
 
-See \url{https://paws-r.github.io/docs/billingconductor/create_custom_line_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_create_custom_line_item/} for full documentation.
 }
 \keyword{internal}

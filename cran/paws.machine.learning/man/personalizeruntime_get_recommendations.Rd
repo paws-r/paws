@@ -65,6 +65,6 @@ recommended items.}
 \description{
 Returns a list of recommended items. For campaigns, the campaign's Amazon Resource Name (ARN) is required and the required user and item input depends on the recipe type used to create the solution backing the campaign as follows:
 
-See \url{https://paws-r.github.io/docs/personalizeruntime/get_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalizeruntime_get_recommendations/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ page.}
 \description{
 Returns a list of App Runner VPC connectors in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/apprunner/list_vpc_connectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_list_vpc_connectors/} for full documentation.
 }
 \keyword{internal}

@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_move_address_to_vpc}
 \alias{ec2_move_address_to_vpc}
-\title{Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC
-platform}
+\title{This action is deprecated}
 \usage{
 ec2_move_address_to_vpc(DryRun = NULL, PublicIp)
 }
@@ -16,8 +15,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PublicIp}{[required] The Elastic IP address.}
 }
 \description{
-Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address must be allocated to your account for more than 24 hours, and it must not be associated with an instance. After the Elastic IP address is moved, it is no longer available for use in the EC2-Classic platform, unless you move it back using the \code{\link[=ec2_restore_address_to_classic]{restore_address_to_classic}} request. You cannot move an Elastic IP address that was originally allocated for use in the EC2-VPC platform to the EC2-Classic platform.
+This action is deprecated.
 
-See \url{https://paws-r.github.io/docs/ec2/move_address_to_vpc.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_move_address_to_vpc/} for full documentation.
 }
 \keyword{internal}

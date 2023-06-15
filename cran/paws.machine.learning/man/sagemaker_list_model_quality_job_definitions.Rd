@@ -45,6 +45,6 @@ created after the specified time.}
 \description{
 Gets a list of model quality monitoring job definitions in your account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_quality_job_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_quality_job_definitions/} for full documentation.
 }
 \keyword{internal}

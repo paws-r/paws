@@ -12,6 +12,6 @@ machinelearning_delete_evaluation(EvaluationId)
 \description{
 Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable.
 
-See \url{https://paws-r.github.io/docs/machinelearning/delete_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_delete_evaluation/} for full documentation.
 }
 \keyword{internal}

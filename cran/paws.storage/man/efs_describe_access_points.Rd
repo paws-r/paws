@@ -30,6 +30,6 @@ points for that file system; mutually exclusive with \code{AccessPointId}.}
 \description{
 Returns the description of a specific Amazon EFS access point if the \code{AccessPointId} is provided. If you provide an EFS \code{FileSystemId}, it returns descriptions of all access points for that file system. You can provide either an \code{AccessPointId} or a \code{FileSystemId} in the request, but not both.
 
-See \url{https://paws-r.github.io/docs/efs/describe_access_points.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_access_points/} for full documentation.
 }
 \keyword{internal}

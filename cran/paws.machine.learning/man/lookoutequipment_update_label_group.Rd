@@ -18,6 +18,6 @@ practices for the security of your data.}
 \description{
 Updates the label group.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/update_label_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_update_label_group/} for full documentation.
 }
 \keyword{internal}

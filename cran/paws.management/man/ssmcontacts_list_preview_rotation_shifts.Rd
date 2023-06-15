@@ -46,6 +46,6 @@ next set of results.}
 \description{
 Returns a list of shifts based on rotation configuration parameters.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_preview_rotation_shifts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_preview_rotation_shifts/} for full documentation.
 }
 \keyword{internal}

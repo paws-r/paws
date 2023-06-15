@@ -14,6 +14,6 @@ autoscaling_delete_notification_configuration(AutoScalingGroupName, TopicARN)
 \description{
 Deletes the specified notification.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_notification_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_notification_configuration/} for full documentation.
 }
 \keyword{internal}

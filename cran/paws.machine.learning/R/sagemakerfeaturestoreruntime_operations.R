@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Retrieves a batch of `Records` from a `FeatureGroup`.
 #'
-#' See [https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/batch_get_record.html](https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/batch_get_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_batch_get_record/](https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_batch_get_record/) for full documentation.
 #'
 #' @param Identifiers &#91;required&#93; A list of `FeatureGroup` names, with their corresponding
 #' `RecordIdentifier` value, and Feature name that have been requested to
@@ -39,7 +39,7 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 #' @description
 #' Deletes a `Record` from a `FeatureGroup` in the `OnlineStore`. Feature Store supports both `SOFT_DELETE` and `HARD_DELETE`. For `SOFT_DELETE` (default), feature columns are set to `null` and the record is no longer retrievable by [`get_record`][sagemakerfeaturestoreruntime_get_record] or [`batch_get_record`][sagemakerfeaturestoreruntime_batch_get_record]. For` HARD_DELETE`, the complete `Record` is removed from the `OnlineStore`. In both cases, Feature Store appends the deleted record marker to the `OfflineStore` with feature values set to `null`, `is_deleted` value set to `True`, and `EventTime` set to the delete input `EventTime`.
 #'
-#' See [https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/delete_record.html](https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/delete_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_delete_record/](https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_delete_record/) for full documentation.
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the feature group to delete the record from.
 #' @param RecordIdentifierValueAsString &#91;required&#93; The value for the `RecordIdentifier` that uniquely identifies the
@@ -77,7 +77,7 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #' @description
 #' Use for `OnlineStore` serving from a `FeatureStore`. Only the latest records stored in the `OnlineStore` can be retrieved. If no Record with `RecordIdentifierValue` is found, then an empty result is returned.
 #'
-#' See [https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/get_record.html](https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/get_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_get_record/](https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_get_record/) for full documentation.
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the feature group from which you want to retrieve a record.
 #' @param RecordIdentifierValueAsString &#91;required&#93; The value that corresponds to `RecordIdentifier` type and uniquely
@@ -110,7 +110,7 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' @description
 #' Used for data ingestion into the `FeatureStore`. The [`put_record`][sagemakerfeaturestoreruntime_put_record] API writes to both the `OnlineStore` and `OfflineStore`. If the record is the latest record for the `recordIdentifier`, the record is written to both the `OnlineStore` and `OfflineStore`. If the record is a historic record, it is written only to the `OfflineStore`.
 #'
-#' See [https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/put_record.html](https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/put_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_put_record/](https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_put_record/) for full documentation.
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the feature group that you want to insert the record into.
 #' @param Record &#91;required&#93; List of FeatureValues to be inserted. This will be a full over-write. If

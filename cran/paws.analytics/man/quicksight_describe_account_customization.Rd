@@ -29,6 +29,6 @@ at different levels.}
 \description{
 Describes the customizations associated with the provided Amazon Web Services account and Amazon Amazon QuickSight namespace in an Amazon Web Services Region. The Amazon QuickSight console evaluates which customizations to apply by running this API operation with the \code{Resolved} flag included.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_account_customization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_account_customization/} for full documentation.
 }
 \keyword{internal}

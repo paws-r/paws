@@ -25,6 +25,6 @@ Default value: \code{null}}
 \description{
 Lists geofences stored in a given geofence collection.
 
-See \url{https://paws-r.github.io/docs/locationservice/list_geofences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_list_geofences/} for full documentation.
 }
 \keyword{internal}

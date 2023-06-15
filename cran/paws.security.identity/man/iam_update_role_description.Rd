@@ -14,6 +14,6 @@ iam_update_role_description(RoleName, Description)
 \description{
 Use \code{\link[=iam_update_role]{update_role}} instead.
 
-See \url{https://paws-r.github.io/docs/iam/update_role_description.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_role_description/} for full documentation.
 }
 \keyword{internal}

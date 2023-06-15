@@ -52,6 +52,6 @@ results.}
 \description{
 Retrieve information about one or more parameters in a specific hierarchy.
 
-See \url{https://paws-r.github.io/docs/ssm/get_parameters_by_path.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_parameters_by_path/} for full documentation.
 }
 \keyword{internal}

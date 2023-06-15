@@ -16,6 +16,6 @@ results.}
 \description{
 Lists all projects in AWS CodeStar associated with your AWS account.
 
-See \url{https://paws-r.github.io/docs/codestar/list_projects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_list_projects/} for full documentation.
 }
 \keyword{internal}

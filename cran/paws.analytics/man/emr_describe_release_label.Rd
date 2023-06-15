@@ -22,6 +22,6 @@ emr_describe_release_label(
 \description{
 Provides Amazon EMR release label details, such as the releases available the Region where the API request is run, and the available applications for a specific Amazon EMR release label. Can also list Amazon EMR releases that support a specified version of Spark.
 
-See \url{https://paws-r.github.io/docs/emr/describe_release_label.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_describe_release_label/} for full documentation.
 }
 \keyword{internal}

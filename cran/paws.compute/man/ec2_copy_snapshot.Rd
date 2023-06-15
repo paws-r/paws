@@ -95,6 +95,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy a snapshot within the same Region, from one Region to another, or from a Region to an Outpost. You can't copy a snapshot from an Outpost to a Region, from one Outpost to another, or within the same Outpost.
 
-See \url{https://paws-r.github.io/docs/ec2/copy_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_copy_snapshot/} for full documentation.
 }
 \keyword{internal}

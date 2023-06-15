@@ -11,6 +11,6 @@ shield_describe_drt_access()
 \description{
 Returns the current role and list of Amazon S3 log buckets used by the Shield Response Team (SRT) to access your Amazon Web Services account while assisting with attack mitigation.
 
-See \url{https://paws-r.github.io/docs/shield/describe_drt_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_drt_access/} for full documentation.
 }
 \keyword{internal}

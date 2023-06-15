@@ -27,6 +27,6 @@ organizational unit (OU) ID with which the lens is shared.}
 \description{
 List the lens shares associated with the lens.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_lens_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_shares/} for full documentation.
 }
 \keyword{internal}

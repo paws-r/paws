@@ -28,6 +28,6 @@ options.}
 \description{
 Updates an existing state machine by modifying its \code{definition}, \code{roleArn}, or \code{loggingConfiguration}. Running executions will continue to use the previous \code{definition} and \code{roleArn}. You must include at least one of \code{definition} or \code{roleArn} or you will receive a \code{MissingRequiredParameter} error.
 
-See \url{https://paws-r.github.io/docs/sfn/update_state_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_update_state_machine/} for full documentation.
 }
 \keyword{internal}

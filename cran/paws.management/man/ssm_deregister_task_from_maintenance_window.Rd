@@ -14,6 +14,6 @@ ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 \description{
 Removes a task from a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/deregister_task_from_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_deregister_task_from_maintenance_window/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ deleting the application.}
 \description{
 Deletes the specified application along with all associated versions and configurations. The application versions will not be deleted from your Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_application/} for full documentation.
 }
 \keyword{internal}

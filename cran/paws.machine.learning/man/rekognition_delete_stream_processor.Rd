@@ -12,6 +12,6 @@ rekognition_delete_stream_processor(Name)
 \description{
 Deletes the stream processor identified by \code{Name}. You assign the value for \code{Name} when you create the stream processor with \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. You might not be able to use the same name for a stream processor for a few seconds after calling \code{\link[=rekognition_delete_stream_processor]{delete_stream_processor}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/delete_stream_processor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_stream_processor/} for full documentation.
 }
 \keyword{internal}

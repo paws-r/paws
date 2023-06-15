@@ -62,6 +62,6 @@ authenticating using either Secrets Manager or temporary credentials.}
 \description{
 Describes the detailed information about a table from metadata in the cluster. The information includes its columns. A token is returned to page through the column list. Depending on the authorization method, use one of the following combinations of request parameters:
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/describe_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_describe_table/} for full documentation.
 }
 \keyword{internal}

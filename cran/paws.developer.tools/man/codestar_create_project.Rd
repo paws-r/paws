@@ -38,6 +38,6 @@ the sourceCode parameter.}
 \description{
 Creates a project, including project resources. This action creates a project based on a submitted project request. A set of source code files and a toolchain template file can be included with the project request. If these are not provided, an empty project is created.
 
-See \url{https://paws-r.github.io/docs/codestar/create_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_create_project/} for full documentation.
 }
 \keyword{internal}

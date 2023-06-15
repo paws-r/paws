@@ -19,6 +19,6 @@ contact specified contacts.}
 \description{
 Updates the contact or escalation plan specified.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/update_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_update_contact/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ Web Services Region in the Amazon Web Services account.}
 \description{
 Returns a description of a processing job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_processing_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_processing_job/} for full documentation.
 }
 \keyword{internal}

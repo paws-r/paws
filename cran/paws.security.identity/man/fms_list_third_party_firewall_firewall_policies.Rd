@@ -33,6 +33,6 @@ that Firewall Manager will return if you submit another request.}
 \description{
 Retrieves a list of all of the third-party firewall policies that are associated with the third-party firewall administrator's account.
 
-See \url{https://paws-r.github.io/docs/fms/list_third_party_firewall_firewall_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_third_party_firewall_firewall_policies/} for full documentation.
 }
 \keyword{internal}

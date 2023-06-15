@@ -34,6 +34,6 @@ time in milliseconds. For example, the value for Monday, November 1,
 \description{
 Creates a Dataview for a Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/create_data_view.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_create_data_view/} for full documentation.
 }
 \keyword{internal}

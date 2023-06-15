@@ -28,6 +28,6 @@ To get the names of key policies, use
 \description{
 Gets a key policy attached to the specified KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/get_key_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_get_key_policy/} for full documentation.
 }
 \keyword{internal}

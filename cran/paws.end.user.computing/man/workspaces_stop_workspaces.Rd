@@ -12,6 +12,6 @@ workspaces_stop_workspaces(StopWorkspaceRequests)
 \description{
 Stops the specified WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/stop_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_stop_workspaces/} for full documentation.
 }
 \keyword{internal}

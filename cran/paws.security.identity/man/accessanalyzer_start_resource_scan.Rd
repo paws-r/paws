@@ -24,6 +24,6 @@ which the resource was created.}
 \description{
 Immediately starts a scan of the policies applied to the specified resource.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/start_resource_scan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_start_resource_scan/} for full documentation.
 }
 \keyword{internal}

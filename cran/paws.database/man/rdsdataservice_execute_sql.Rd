@@ -34,6 +34,6 @@ manipulation, and commit statements.}
 \description{
 Runs one or more SQL statements.
 
-See \url{https://paws-r.github.io/docs/rdsdataservice/execute_sql.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rdsdataservice_execute_sql/} for full documentation.
 }
 \keyword{internal}

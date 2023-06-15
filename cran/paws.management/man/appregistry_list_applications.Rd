@@ -16,6 +16,6 @@ If this parameter is omitted, it defaults to 25. This value is optional.}
 \description{
 Retrieves a list of all of your applications. Results are paginated.
 
-See \url{https://paws-r.github.io/docs/appregistry/list_applications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_list_applications/} for full documentation.
 }
 \keyword{internal}

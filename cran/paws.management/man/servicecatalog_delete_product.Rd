@@ -18,6 +18,6 @@ servicecatalog_delete_product(AcceptLanguage = NULL, Id)
 \description{
 Deletes the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/delete_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_delete_product/} for full documentation.
 }
 \keyword{internal}

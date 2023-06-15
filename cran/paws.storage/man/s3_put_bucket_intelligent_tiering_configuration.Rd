@@ -21,6 +21,6 @@ or retrieve.}
 \description{
 Puts a S3 Intelligent-Tiering configuration to the specified bucket. You can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_intelligent_tiering_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_intelligent_tiering_configuration/} for full documentation.
 }
 \keyword{internal}

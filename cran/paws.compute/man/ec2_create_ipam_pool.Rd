@@ -112,6 +112,6 @@ the \emph{Amazon VPC IPAM User Guide}.}
 \description{
 Create an IP address pool for Amazon VPC IP Address Manager (IPAM). In IPAM, a pool is a collection of contiguous IP addresses CIDRs. Pools enable you to organize your IP addresses according to your routing and security needs. For example, if you have separate routing and security needs for development and production applications, you can create a pool for each.
 
-See \url{https://paws-r.github.io/docs/ec2/create_ipam_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_ipam_pool/} for full documentation.
 }
 \keyword{internal}

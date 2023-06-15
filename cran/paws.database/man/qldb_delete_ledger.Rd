@@ -12,6 +12,6 @@ qldb_delete_ledger(Name)
 \description{
 Deletes a ledger and all of its contents. This action is irreversible.
 
-See \url{https://paws-r.github.io/docs/qldb/delete_ledger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_delete_ledger/} for full documentation.
 }
 \keyword{internal}

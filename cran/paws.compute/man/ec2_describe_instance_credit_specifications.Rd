@@ -44,6 +44,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the credit option for CPU usage of the specified burstable performance instances. The credit options are \code{standard} and \code{unlimited}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_credit_specifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_credit_specifications/} for full documentation.
 }
 \keyword{internal}

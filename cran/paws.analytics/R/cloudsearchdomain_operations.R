@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Retrieves a list of documents that match the specified search criteria. How you specify the search criteria depends on which query parser you use. Amazon CloudSearch supports four query parsers:
 #'
-#' See [https://paws-r.github.io/docs/cloudsearchdomain/search.html](https://paws-r.github.io/docs/cloudsearchdomain/search.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearchdomain_search/](https://www.paws-r-sdk.com/docs/cloudsearchdomain_search/) for full documentation.
 #'
 #' @param cursor Retrieves a cursor value you can use to page through large result sets.
 #' Use the `size` parameter to control the number of hits to include in
@@ -343,7 +343,7 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #' @description
 #' Retrieves autocomplete suggestions for a partial query string. You can use suggestions enable you to display likely matches before users finish typing. In Amazon CloudSearch, suggestions are based on the contents of a particular text field. When you request suggestions, Amazon CloudSearch finds all of the documents whose values in the suggester field start with the specified query string. The beginning of the field must match the query string to be considered a match.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearchdomain/suggest.html](https://paws-r.github.io/docs/cloudsearchdomain/suggest.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearchdomain_suggest/](https://www.paws-r-sdk.com/docs/cloudsearchdomain_suggest/) for full documentation.
 #'
 #' @param query &#91;required&#93; Specifies the string for which you want to get suggestions.
 #' @param suggester &#91;required&#93; Specifies the name of the suggester to use to find suggested matches.
@@ -374,7 +374,7 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' @description
 #' Posts a batch of documents to a search domain for indexing. A document batch is a collection of add and delete operations that represent the documents you want to add, update, or delete from your domain. Batches can be described in either JSON or XML. Each item that you want Amazon CloudSearch to return as a search result (such as a product) is represented as a document. Every document has a unique ID and one or more fields that contain the data that you want to search and return in results. Individual documents cannot contain more than 1 MB of data. The entire batch cannot exceed 5 MB. To get the best possible upload performance, group add and delete operations in batches that are close the 5 MB limit. Submitting a large volume of single-document batches can overload a domain's document service.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearchdomain/upload_documents.html](https://paws-r.github.io/docs/cloudsearchdomain/upload_documents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearchdomain_upload_documents/](https://www.paws-r-sdk.com/docs/cloudsearchdomain_upload_documents/) for full documentation.
 #'
 #' @param documents &#91;required&#93; A batch of documents formatted in JSON or HTML.
 #' @param contentType &#91;required&#93; The format of the batch you are uploading. Amazon CloudSearch supports

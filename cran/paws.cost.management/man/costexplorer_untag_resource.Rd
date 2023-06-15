@@ -19,6 +19,6 @@ Although the maximum number of array members is 200, user-tag maximum is
 \description{
 Removes one or more tags from a resource. Specify only tag keys in your request. Don't specify the value.
 
-See \url{https://paws-r.github.io/docs/costexplorer/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_untag_resource/} for full documentation.
 }
 \keyword{internal}

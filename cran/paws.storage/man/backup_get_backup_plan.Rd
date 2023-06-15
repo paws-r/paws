@@ -15,6 +15,6 @@ most 1,024 bytes long. Version IDs cannot be edited.}
 \description{
 Returns \code{BackupPlan} details for the specified \code{BackupPlanId}. The details are the body of a backup plan in JSON format, in addition to plan metadata.
 
-See \url{https://paws-r.github.io/docs/backup/get_backup_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_backup_plan/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ events that can be returned in a result.}
 \description{
 Returns information about one or more pull request events.
 
-See \url{https://paws-r.github.io/docs/codecommit/describe_pull_request_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_describe_pull_request_events/} for full documentation.
 }
 \keyword{internal}

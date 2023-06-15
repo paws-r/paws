@@ -72,6 +72,6 @@ specified git repository.}
 \description{
 Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_notebook_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instances/} for full documentation.
 }
 \keyword{internal}

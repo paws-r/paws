@@ -14,6 +14,6 @@ to retrieve (String).}
 \description{
 Returns the current \code{LifecycleConfiguration} object for the specified Amazon EFS file system. EFS lifecycle management uses the \code{LifecycleConfiguration} object to identify which files to move to the EFS Infrequent Access (IA) storage class. For a file system without a \code{LifecycleConfiguration} object, the call returns an empty array in the response.
 
-See \url{https://paws-r.github.io/docs/efs/describe_lifecycle_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_lifecycle_configuration/} for full documentation.
 }
 \keyword{internal}

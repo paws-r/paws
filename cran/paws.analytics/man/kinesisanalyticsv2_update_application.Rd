@@ -45,6 +45,6 @@ instead of \code{CurrentApplicationVersionId}.}
 \description{
 Updates an existing Kinesis Data Analytics application. Using this operation, you can update application code, input configuration, and output configuration.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application/} for full documentation.
 }
 \keyword{internal}

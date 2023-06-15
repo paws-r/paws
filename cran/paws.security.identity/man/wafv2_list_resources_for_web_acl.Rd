@@ -24,6 +24,6 @@ Default: \code{APPLICATION_LOAD_BALANCER}}
 \description{
 Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL. If you want the list of Amazon CloudFront resources, use the CloudFront call \code{ListDistributionsByWebACLId}.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_resources_for_web_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_resources_for_web_acl/} for full documentation.
 }
 \keyword{internal}

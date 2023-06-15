@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates an evidence folder to an assessment report in an Audit Manager assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/associate_assessment_report_evidence_folder.html](https://paws-r.github.io/docs/auditmanager/associate_assessment_report_evidence_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_associate_assessment_report_evidence_folder/](https://www.paws-r-sdk.com/docs/auditmanager_associate_assessment_report_evidence_folder/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder that the evidence is stored in.
@@ -40,7 +40,7 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
 #' @description
 #' Associates a list of evidence to an assessment report in an Audit Manager assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/batch_associate_assessment_report_evidence.html](https://paws-r.github.io/docs/auditmanager/batch_associate_assessment_report_evidence.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_batch_associate_assessment_report_evidence/](https://www.paws-r-sdk.com/docs/auditmanager_batch_associate_assessment_report_evidence/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder that the evidence is stored in.
@@ -71,7 +71,7 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
 #' @description
 #' Creates a batch of delegations for an assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/batch_create_delegation_by_assessment.html](https://paws-r.github.io/docs/auditmanager/batch_create_delegation_by_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_batch_create_delegation_by_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_batch_create_delegation_by_assessment/) for full documentation.
 #'
 #' @param createDelegationRequests &#91;required&#93; The API request to batch create delegations in Audit Manager.
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
@@ -101,7 +101,7 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
 #' @description
 #' Deletes a batch of delegations for an assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/batch_delete_delegation_by_assessment.html](https://paws-r.github.io/docs/auditmanager/batch_delete_delegation_by_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_batch_delete_delegation_by_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_batch_delete_delegation_by_assessment/) for full documentation.
 #'
 #' @param delegationIds &#91;required&#93; The identifiers for the delegations.
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
@@ -132,7 +132,7 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
 #' @description
 #' Disassociates a list of evidence from an assessment report in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/batch_disassociate_assessment_report_evidence.html](https://paws-r.github.io/docs/auditmanager/batch_disassociate_assessment_report_evidence.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_batch_disassociate_assessment_report_evidence/](https://www.paws-r-sdk.com/docs/auditmanager_batch_disassociate_assessment_report_evidence/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param evidenceFolderId &#91;required&#93; The identifier for the folder that the evidence is stored in.
@@ -164,7 +164,7 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #' @description
 #' Uploads one or more pieces of evidence to a control in an Audit Manager assessment. You can upload manual evidence from any Amazon Simple Storage Service (Amazon S3) bucket by specifying the S3 URI of the evidence.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/batch_import_evidence_to_assessment_control.html](https://paws-r.github.io/docs/auditmanager/batch_import_evidence_to_assessment_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_batch_import_evidence_to_assessment_control/](https://www.paws-r-sdk.com/docs/auditmanager_batch_import_evidence_to_assessment_control/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The identifier for the control set.
@@ -196,7 +196,7 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
 #' @description
 #' Creates an assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/create_assessment.html](https://paws-r.github.io/docs/auditmanager/create_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_create_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_create_assessment/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the assessment to be created.
 #' @param description The optional description of the assessment to be created.
@@ -233,7 +233,7 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' @description
 #' Creates a custom framework in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/create_assessment_framework.html](https://paws-r.github.io/docs/auditmanager/create_assessment_framework.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_create_assessment_framework/](https://www.paws-r-sdk.com/docs/auditmanager_create_assessment_framework/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the new custom framework.
 #' @param description An optional description for the new custom framework.
@@ -267,7 +267,7 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' @description
 #' Creates an assessment report for the specified assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/create_assessment_report.html](https://paws-r.github.io/docs/auditmanager/create_assessment_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_create_assessment_report/](https://www.paws-r-sdk.com/docs/auditmanager_create_assessment_report/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the new assessment report.
 #' @param description The description of the assessment report.
@@ -317,7 +317,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #' @description
 #' Creates a new custom control in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/create_control.html](https://paws-r.github.io/docs/auditmanager/create_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_create_control/](https://www.paws-r-sdk.com/docs/auditmanager_create_control/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the control.
 #' @param description The description of the control.
@@ -352,7 +352,7 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
 #' @description
 #' Deletes an assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/delete_assessment.html](https://paws-r.github.io/docs/auditmanager/delete_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #'
@@ -381,7 +381,7 @@ auditmanager_delete_assessment <- function(assessmentId) {
 #' @description
 #' Deletes a custom framework in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/delete_assessment_framework.html](https://paws-r.github.io/docs/auditmanager/delete_assessment_framework.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_framework/](https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_framework/) for full documentation.
 #'
 #' @param frameworkId &#91;required&#93; The identifier for the custom framework.
 #'
@@ -410,7 +410,7 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
 #' @description
 #' Deletes a share request for a custom framework in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/delete_assessment_framework_share.html](https://paws-r.github.io/docs/auditmanager/delete_assessment_framework_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_framework_share/](https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_framework_share/) for full documentation.
 #'
 #' @param requestId &#91;required&#93; The unique identifier for the share request to be deleted.
 #' @param requestType &#91;required&#93; Specifies whether the share request is a sent request or a received
@@ -441,7 +441,7 @@ auditmanager_delete_assessment_framework_share <- function(requestId, requestTyp
 #' @description
 #' Deletes an assessment report in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/delete_assessment_report.html](https://paws-r.github.io/docs/auditmanager/delete_assessment_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_report/](https://www.paws-r-sdk.com/docs/auditmanager_delete_assessment_report/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param assessmentReportId &#91;required&#93; The unique identifier for the assessment report.
@@ -471,7 +471,7 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
 #' @description
 #' Deletes a custom control in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/delete_control.html](https://paws-r.github.io/docs/auditmanager/delete_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_delete_control/](https://www.paws-r-sdk.com/docs/auditmanager_delete_control/) for full documentation.
 #'
 #' @param controlId &#91;required&#93; The unique identifier for the control.
 #'
@@ -500,7 +500,7 @@ auditmanager_delete_control <- function(controlId) {
 #' @description
 #' Deregisters an account in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/deregister_account.html](https://paws-r.github.io/docs/auditmanager/deregister_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_deregister_account/](https://www.paws-r-sdk.com/docs/auditmanager_deregister_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -528,7 +528,7 @@ auditmanager_deregister_account <- function() {
 #' @description
 #' Removes the specified Amazon Web Services account as a delegated administrator for Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/deregister_organization_admin_account.html](https://paws-r.github.io/docs/auditmanager/deregister_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_deregister_organization_admin_account/](https://www.paws-r-sdk.com/docs/auditmanager_deregister_organization_admin_account/) for full documentation.
 #'
 #' @param adminAccountId The identifier for the administrator account.
 #'
@@ -558,7 +558,7 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
 #' @description
 #' Disassociates an evidence folder from the specified assessment report in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/disassociate_assessment_report_evidence_folder.html](https://paws-r.github.io/docs/auditmanager/disassociate_assessment_report_evidence_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_disassociate_assessment_report_evidence_folder/](https://www.paws-r-sdk.com/docs/auditmanager_disassociate_assessment_report_evidence_folder/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param evidenceFolderId &#91;required&#93; The unique identifier for the folder that the evidence is stored in.
@@ -588,7 +588,7 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 #' @description
 #' Returns the registration status of an account in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_account_status.html](https://paws-r.github.io/docs/auditmanager/get_account_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_account_status/](https://www.paws-r-sdk.com/docs/auditmanager_get_account_status/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -615,7 +615,7 @@ auditmanager_get_account_status <- function() {
 #' @description
 #' Returns an assessment from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_assessment.html](https://paws-r.github.io/docs/auditmanager/get_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_get_assessment/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #'
@@ -644,7 +644,7 @@ auditmanager_get_assessment <- function(assessmentId) {
 #' @description
 #' Returns a framework from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_assessment_framework.html](https://paws-r.github.io/docs/auditmanager/get_assessment_framework.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_framework/](https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_framework/) for full documentation.
 #'
 #' @param frameworkId &#91;required&#93; The identifier for the framework.
 #'
@@ -673,7 +673,7 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
 #' @description
 #' Returns the URL of an assessment report in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_assessment_report_url.html](https://paws-r.github.io/docs/auditmanager/get_assessment_report_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_report_url/](https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_report_url/) for full documentation.
 #'
 #' @param assessmentReportId &#91;required&#93; The unique identifier for the assessment report.
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
@@ -703,7 +703,7 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
 #' @description
 #' Returns a list of changelogs from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_change_logs.html](https://paws-r.github.io/docs/auditmanager/get_change_logs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_change_logs/](https://www.paws-r-sdk.com/docs/auditmanager_get_change_logs/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param controlSetId The unique identifier for the control set.
@@ -737,7 +737,7 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #' @description
 #' Returns a control from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_control.html](https://paws-r.github.io/docs/auditmanager/get_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_control/](https://www.paws-r-sdk.com/docs/auditmanager_get_control/) for full documentation.
 #'
 #' @param controlId &#91;required&#93; The identifier for the control.
 #'
@@ -766,7 +766,7 @@ auditmanager_get_control <- function(controlId) {
 #' @description
 #' Returns a list of delegations from an audit owner to a delegate.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_delegations.html](https://paws-r.github.io/docs/auditmanager/get_delegations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_delegations/](https://www.paws-r-sdk.com/docs/auditmanager_get_delegations/) for full documentation.
 #'
 #' @param nextToken The pagination token that's used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results on a page or for an API request
@@ -797,7 +797,7 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Returns evidence from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_evidence.html](https://paws-r.github.io/docs/auditmanager/get_evidence.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_evidence/](https://www.paws-r-sdk.com/docs/auditmanager_get_evidence/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The unique identifier for the control set.
@@ -829,7 +829,7 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 #' @description
 #' Returns all evidence from a specified evidence folder in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_evidence_by_evidence_folder.html](https://paws-r.github.io/docs/auditmanager/get_evidence_by_evidence_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_by_evidence_folder/](https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_by_evidence_folder/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The identifier for the control set.
@@ -864,7 +864,7 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
 #' @description
 #' Returns an evidence folder from the specified assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_evidence_folder.html](https://paws-r.github.io/docs/auditmanager/get_evidence_folder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folder/](https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folder/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The unique identifier for the control set.
@@ -896,7 +896,7 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
 #' @description
 #' Returns the evidence folders from a specified assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment.html](https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
@@ -929,7 +929,7 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 #' @description
 #' Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment_control.html](https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment_control/](https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment_control/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The identifier for the control set.
@@ -963,7 +963,7 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 #' @description
 #' Gets the latest analytics data for all your current active assessments.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_insights.html](https://paws-r.github.io/docs/auditmanager/get_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_insights/](https://www.paws-r-sdk.com/docs/auditmanager_get_insights/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -990,7 +990,7 @@ auditmanager_get_insights <- function() {
 #' @description
 #' Gets the latest analytics data for a specific active assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_insights_by_assessment.html](https://paws-r.github.io/docs/auditmanager/get_insights_by_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_insights_by_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_get_insights_by_assessment/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #'
@@ -1020,7 +1020,7 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
 #' @description
 #' Returns the name of the delegated Amazon Web Services administrator account for the organization.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_organization_admin_account.html](https://paws-r.github.io/docs/auditmanager/get_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_organization_admin_account/](https://www.paws-r-sdk.com/docs/auditmanager_get_organization_admin_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1048,7 +1048,7 @@ auditmanager_get_organization_admin_account <- function() {
 #' @description
 #' Returns a list of all of the Amazon Web Services that you can choose to include in your assessment. When you [create an assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html), specify which of these services you want to include to narrow the assessment's [scope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html).
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_services_in_scope.html](https://paws-r.github.io/docs/auditmanager/get_services_in_scope.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/](https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1075,7 +1075,7 @@ auditmanager_get_services_in_scope <- function() {
 #' @description
 #' Returns the settings for the specified Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/get_settings.html](https://paws-r.github.io/docs/auditmanager/get_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_get_settings/](https://www.paws-r-sdk.com/docs/auditmanager_get_settings/) for full documentation.
 #'
 #' @param attribute &#91;required&#93; The list of setting attribute enum values.
 #'
@@ -1105,7 +1105,7 @@ auditmanager_get_settings <- function(attribute) {
 #' @description
 #' Lists the latest analytics data for controls within a specific control domain and a specific active assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_assessment_control_insights_by_control_domain.html](https://paws-r.github.io/docs/auditmanager/list_assessment_control_insights_by_control_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_control_insights_by_control_domain/](https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_control_insights_by_control_domain/) for full documentation.
 #'
 #' @param controlDomainId &#91;required&#93; The unique identifier for the control domain.
 #' @param assessmentId &#91;required&#93; The unique identifier for the active assessment.
@@ -1139,7 +1139,7 @@ auditmanager_list_assessment_control_insights_by_control_domain <- function(cont
 #' @description
 #' Returns a list of sent or received share requests for custom frameworks in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_assessment_framework_share_requests.html](https://paws-r.github.io/docs/auditmanager/list_assessment_framework_share_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_framework_share_requests/](https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_framework_share_requests/) for full documentation.
 #'
 #' @param requestType &#91;required&#93; Specifies whether the share request is a sent request or a received
 #' request.
@@ -1173,7 +1173,7 @@ auditmanager_list_assessment_framework_share_requests <- function(requestType, n
 #' @description
 #' Returns a list of the frameworks that are available in the Audit Manager framework library.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_assessment_frameworks.html](https://paws-r.github.io/docs/auditmanager/list_assessment_frameworks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_frameworks/](https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_frameworks/) for full documentation.
 #'
 #' @param frameworkType &#91;required&#93; The type of framework, such as a standard framework or a custom
 #' framework.
@@ -1206,7 +1206,7 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
 #' @description
 #' Returns a list of assessment reports created in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_assessment_reports.html](https://paws-r.github.io/docs/auditmanager/list_assessment_reports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_reports/](https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_reports/) for full documentation.
 #'
 #' @param nextToken The pagination token that's used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results on a page or for an API request
@@ -1237,7 +1237,7 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 #' @description
 #' Returns a list of current and past assessments from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_assessments.html](https://paws-r.github.io/docs/auditmanager/list_assessments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_assessments/](https://www.paws-r-sdk.com/docs/auditmanager_list_assessments/) for full documentation.
 #'
 #' @param status The current status of the assessment.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
@@ -1270,7 +1270,7 @@ auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxRe
 #' @description
 #' Lists the latest analytics data for control domains across all of your active assessments.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_control_domain_insights.html](https://paws-r.github.io/docs/auditmanager/list_control_domain_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_control_domain_insights/](https://www.paws-r-sdk.com/docs/auditmanager_list_control_domain_insights/) for full documentation.
 #'
 #' @param nextToken The pagination token that's used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results on a page or for an API request
@@ -1302,7 +1302,7 @@ auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResul
 #' @description
 #' Lists analytics data for control domains within a specified active assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_control_domain_insights_by_assessment.html](https://paws-r.github.io/docs/auditmanager/list_control_domain_insights_by_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_control_domain_insights_by_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_list_control_domain_insights_by_assessment/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the active assessment.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
@@ -1335,7 +1335,7 @@ auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId
 #' @description
 #' Lists the latest analytics data for controls within a specific control domain across all active assessments.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_control_insights_by_control_domain.html](https://paws-r.github.io/docs/auditmanager/list_control_insights_by_control_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_control_insights_by_control_domain/](https://www.paws-r-sdk.com/docs/auditmanager_list_control_insights_by_control_domain/) for full documentation.
 #'
 #' @param controlDomainId &#91;required&#93; The unique identifier for the control domain.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
@@ -1367,7 +1367,7 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
 #' @description
 #' Returns a list of controls from Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_controls.html](https://paws-r.github.io/docs/auditmanager/list_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_controls/](https://www.paws-r-sdk.com/docs/auditmanager_list_controls/) for full documentation.
 #'
 #' @param controlType &#91;required&#93; The type of control, such as a standard control or a custom control.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
@@ -1400,7 +1400,7 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
 #' @description
 #' Returns a list of keywords that are pre-mapped to the specified control data source.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_keywords_for_data_source.html](https://paws-r.github.io/docs/auditmanager/list_keywords_for_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_keywords_for_data_source/](https://www.paws-r-sdk.com/docs/auditmanager_list_keywords_for_data_source/) for full documentation.
 #'
 #' @param source &#91;required&#93; The control mapping data source that the keywords apply to.
 #' @param nextToken The pagination token that's used to fetch the next set of results.
@@ -1432,7 +1432,7 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
 #' @description
 #' Returns a list of all Audit Manager notifications.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_notifications.html](https://paws-r.github.io/docs/auditmanager/list_notifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_notifications/](https://www.paws-r-sdk.com/docs/auditmanager_list_notifications/) for full documentation.
 #'
 #' @param nextToken The pagination token that's used to fetch the next set of results.
 #' @param maxResults Represents the maximum number of results on a page or for an API request
@@ -1463,7 +1463,7 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
 #' @description
 #' Returns a list of tags for the specified resource in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/list_tags_for_resource.html](https://paws-r.github.io/docs/auditmanager/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/auditmanager_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -1492,7 +1492,7 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Enables Audit Manager for the specified Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/register_account.html](https://paws-r.github.io/docs/auditmanager/register_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_register_account/](https://www.paws-r-sdk.com/docs/auditmanager_register_account/) for full documentation.
 #'
 #' @param kmsKey The KMS key details.
 #' @param delegatedAdminAccount The delegated administrator account for Audit Manager.
@@ -1523,7 +1523,7 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
 #' @description
 #' Enables an Amazon Web Services account within the organization as the delegated administrator for Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/register_organization_admin_account.html](https://paws-r.github.io/docs/auditmanager/register_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_register_organization_admin_account/](https://www.paws-r-sdk.com/docs/auditmanager_register_organization_admin_account/) for full documentation.
 #'
 #' @param adminAccountId &#91;required&#93; The identifier for the delegated administrator account.
 #'
@@ -1552,7 +1552,7 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
 #' @description
 #' Creates a share request for a custom framework in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/start_assessment_framework_share.html](https://paws-r.github.io/docs/auditmanager/start_assessment_framework_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_start_assessment_framework_share/](https://www.paws-r-sdk.com/docs/auditmanager_start_assessment_framework_share/) for full documentation.
 #'
 #' @param frameworkId &#91;required&#93; The unique identifier for the custom framework to be shared.
 #' @param destinationAccount &#91;required&#93; The Amazon Web Services account of the recipient.
@@ -1584,7 +1584,7 @@ auditmanager_start_assessment_framework_share <- function(frameworkId, destinati
 #' @description
 #' Tags the specified resource in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/tag_resource.html](https://paws-r.github.io/docs/auditmanager/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_tag_resource/](https://www.paws-r-sdk.com/docs/auditmanager_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; The tags that are associated with the resource.
@@ -1614,7 +1614,7 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes a tag from a resource in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/untag_resource.html](https://paws-r.github.io/docs/auditmanager/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_untag_resource/](https://www.paws-r-sdk.com/docs/auditmanager_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified resource.
 #' @param tagKeys &#91;required&#93; The name or key of the tag.
@@ -1644,7 +1644,7 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Edits an Audit Manager assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_assessment.html](https://paws-r.github.io/docs/auditmanager/update_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_assessment/](https://www.paws-r-sdk.com/docs/auditmanager_update_assessment/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param assessmentName The name of the assessment to be updated.
@@ -1679,7 +1679,7 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
 #' @description
 #' Updates a control within an assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_assessment_control.html](https://paws-r.github.io/docs/auditmanager/update_assessment_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_control/](https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_control/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The unique identifier for the control set.
@@ -1712,7 +1712,7 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
 #' @description
 #' Updates the status of a control set in an Audit Manager assessment.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_assessment_control_set_status.html](https://paws-r.github.io/docs/auditmanager/update_assessment_control_set_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_control_set_status/](https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_control_set_status/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The unique identifier for the control set.
@@ -1744,7 +1744,7 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #' @description
 #' Updates a custom framework in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_assessment_framework.html](https://paws-r.github.io/docs/auditmanager/update_assessment_framework.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_framework/](https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_framework/) for full documentation.
 #'
 #' @param frameworkId &#91;required&#93; The unique identifier for the framework.
 #' @param name &#91;required&#93; The name of the framework to be updated.
@@ -1778,7 +1778,7 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
 #' @description
 #' Updates a share request for a custom framework in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_assessment_framework_share.html](https://paws-r.github.io/docs/auditmanager/update_assessment_framework_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_framework_share/](https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_framework_share/) for full documentation.
 #'
 #' @param requestId &#91;required&#93; The unique identifier for the share request.
 #' @param requestType &#91;required&#93; Specifies whether the share request is a sent request or a received
@@ -1810,7 +1810,7 @@ auditmanager_update_assessment_framework_share <- function(requestId, requestTyp
 #' @description
 #' Updates the status of an assessment in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_assessment_status.html](https://paws-r.github.io/docs/auditmanager/update_assessment_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_status/](https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_status/) for full documentation.
 #'
 #' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param status &#91;required&#93; The current status of the assessment.
@@ -1840,7 +1840,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #' @description
 #' Updates a custom control in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_control.html](https://paws-r.github.io/docs/auditmanager/update_control.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_control/](https://www.paws-r-sdk.com/docs/auditmanager_update_control/) for full documentation.
 #'
 #' @param controlId &#91;required&#93; The identifier for the control.
 #' @param name &#91;required&#93; The name of the updated control.
@@ -1875,7 +1875,7 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @description
 #' Updates Audit Manager settings for the current account.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/update_settings.html](https://paws-r.github.io/docs/auditmanager/update_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_update_settings/](https://www.paws-r-sdk.com/docs/auditmanager_update_settings/) for full documentation.
 #'
 #' @param snsTopic The Amazon Simple Notification Service (Amazon SNS) topic that Audit
 #' Manager sends notifications to.
@@ -1922,7 +1922,7 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
 #' @description
 #' Validates the integrity of an assessment report in Audit Manager.
 #'
-#' See [https://paws-r.github.io/docs/auditmanager/validate_assessment_report_integrity.html](https://paws-r.github.io/docs/auditmanager/validate_assessment_report_integrity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/auditmanager_validate_assessment_report_integrity/](https://www.paws-r-sdk.com/docs/auditmanager_validate_assessment_report_integrity/) for full documentation.
 #'
 #' @param s3RelativePath &#91;required&#93; The relative path of the Amazon S3 bucket that the assessment report is
 #' stored in.

@@ -30,6 +30,6 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/lat
 \description{
 Updates a gateway's metadata, which includes the gateway's name and time zone. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_gateway_information.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_gateway_information/} for full documentation.
 }
 \keyword{internal}

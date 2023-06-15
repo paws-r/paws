@@ -12,6 +12,6 @@ sesv2_delete_dedicated_ip_pool(PoolName)
 \description{
 Delete a dedicated IP pool.
 
-See \url{https://paws-r.github.io/docs/sesv2/delete_dedicated_ip_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_delete_dedicated_ip_pool/} for full documentation.
 }
 \keyword{internal}

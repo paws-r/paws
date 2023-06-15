@@ -130,6 +130,6 @@ cluster that is created.}}
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 
-See \url{https://paws-r.github.io/docs/neptune/restore_db_cluster_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_restore_db_cluster_from_snapshot/} for full documentation.
 }
 \keyword{internal}

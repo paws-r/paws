@@ -16,6 +16,6 @@ parameter, \code{SmartCard} is supported.}
 \description{
 Disables alternative client authentication methods for the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/disable_client_authentication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_disable_client_authentication/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ This setting is required for requests that do not include the
 \description{
 Returns the data objects for the specified rule group.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/describe_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group/} for full documentation.
 }
 \keyword{internal}

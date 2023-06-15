@@ -17,6 +17,6 @@ costandusagereportservice_modify_report_definition(
 \description{
 Allows you to programatically update your report preferences.
 
-See \url{https://paws-r.github.io/docs/costandusagereportservice/modify_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_modify_report_definition/} for full documentation.
 }
 \keyword{internal}

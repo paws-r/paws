@@ -23,6 +23,6 @@ sagemaker_update_context(
 \description{
 Updates a context.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_context.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_context/} for full documentation.
 }
 \keyword{internal}

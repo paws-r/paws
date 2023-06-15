@@ -34,6 +34,6 @@ retrieve additional items.}
 \description{
 List all permissions on a private CA, if any, granted to the Certificate Manager (ACM) service principal (acm.amazonaws.com).
 
-See \url{https://paws-r.github.io/docs/acmpca/list_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_list_permissions/} for full documentation.
 }
 \keyword{internal}

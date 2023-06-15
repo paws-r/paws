@@ -12,6 +12,6 @@ applicationinsights_describe_problem(ProblemId)
 \description{
 Describes an application problem.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_problem.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/} for full documentation.
 }
 \keyword{internal}

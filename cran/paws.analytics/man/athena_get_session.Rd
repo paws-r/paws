@@ -13,6 +13,6 @@ athena_get_session(SessionId)
 \description{
 Gets the full details of a previously created session, including the session status and configuration.
 
-See \url{https://paws-r.github.io/docs/athena/get_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_session/} for full documentation.
 }
 \keyword{internal}

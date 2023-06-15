@@ -25,6 +25,6 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 \description{
 Modifies the credit option for CPU usage on a running or stopped burstable performance instance. The credit options are \code{standard} and \code{unlimited}.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_credit_specification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_credit_specification/} for full documentation.
 }
 \keyword{internal}

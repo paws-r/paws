@@ -14,6 +14,6 @@ elbv2_register_targets(TargetGroupArn, Targets)
 \description{
 Registers the specified targets with the specified target group.
 
-See \url{https://paws-r.github.io/docs/elbv2/register_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_register_targets/} for full documentation.
 }
 \keyword{internal}

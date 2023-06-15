@@ -13,6 +13,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_app.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_app/} for full documentation.
 }
 \keyword{internal}

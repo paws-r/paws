@@ -15,6 +15,6 @@ simpledb_batch_put_attributes(DomainName, Items)
 \description{
 The \code{\link[=simpledb_batch_put_attributes]{batch_put_attributes}} operation creates or replaces attributes within one or more items. By using this operation, the client can perform multiple PutAttribute operation with a single call. This helps yield savings in round trips and latencies, enabling Amazon SimpleDB to optimize requests and generally produce better throughput.
 
-See \url{https://paws-r.github.io/docs/simpledb/batch_put_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_batch_put_attributes/} for full documentation.
 }
 \keyword{internal}

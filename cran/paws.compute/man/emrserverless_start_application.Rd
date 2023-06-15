@@ -13,6 +13,6 @@ emrserverless_start_application(applicationId)
 \description{
 Starts a specified application and initializes initial capacity if configured.
 
-See \url{https://paws-r.github.io/docs/emrserverless/start_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_start_application/} for full documentation.
 }
 \keyword{internal}

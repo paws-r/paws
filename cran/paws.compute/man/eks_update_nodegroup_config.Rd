@@ -37,6 +37,6 @@ idempotency of the request.}
 \description{
 Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update. The response output includes an update ID that you can use to track the status of your node group update with the \code{\link[=eks_describe_update]{describe_update}} API operation. Currently you can update the Kubernetes labels for a node group or the scaling configuration.
 
-See \url{https://paws-r.github.io/docs/eks/update_nodegroup_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/} for full documentation.
 }
 \keyword{internal}

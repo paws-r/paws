@@ -12,6 +12,6 @@ shield_describe_attack(AttackId)
 \description{
 Describes the details of a DDoS attack.
 
-See \url{https://paws-r.github.io/docs/shield/describe_attack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_attack/} for full documentation.
 }
 \keyword{internal}

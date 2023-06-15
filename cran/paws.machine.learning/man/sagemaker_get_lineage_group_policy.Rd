@@ -12,6 +12,6 @@ sagemaker_get_lineage_group_policy(LineageGroupName)
 \description{
 The resource policy for the lineage group.
 
-See \url{https://paws-r.github.io/docs/sagemaker/get_lineage_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_get_lineage_group_policy/} for full documentation.
 }
 \keyword{internal}

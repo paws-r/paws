@@ -13,6 +13,6 @@ are case sensitive.}
 \description{
 Deletes a custom language model. To use this operation, specify the name of the language model you want to delete using \code{ModelName}. custom language model names are case sensitive.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/delete_language_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_delete_language_model/} for full documentation.
 }
 \keyword{internal}

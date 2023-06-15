@@ -18,6 +18,6 @@ servicecatalog_delete_service_action(Id, AcceptLanguage = NULL)
 \description{
 Deletes a self-service action.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/delete_service_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_delete_service_action/} for full documentation.
 }
 \keyword{internal}

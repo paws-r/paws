@@ -2,7 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_delete_imported_key_material}
 \alias{kms_delete_imported_key_material}
-\title{Deletes key material that you previously imported}
+\title{Deletes key material that was previously imported}
 \usage{
 kms_delete_imported_key_material(KeyId)
 }
@@ -23,8 +23,8 @@ To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
 \description{
-Deletes key material that you previously imported. This operation makes the specified KMS key unusable. For more information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material} in the \emph{Key Management Service Developer Guide}.
+Deletes key material that was previously imported. This operation makes the specified KMS key temporarily unusable. To restore the usability of the KMS key, reimport the same key material. For more information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material} in the \emph{Key Management Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/kms/delete_imported_key_material.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_delete_imported_key_material/} for full documentation.
 }
 \keyword{internal}

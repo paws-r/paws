@@ -21,6 +21,6 @@ can use to obtain additional results.}
 \description{
 List all of the dedicated IP pools that exist in your Amazon Web Services account in the current Region.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_dedicated_ip_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_dedicated_ip_pools/} for full documentation.
 }
 \keyword{internal}

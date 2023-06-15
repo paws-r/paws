@@ -24,6 +24,6 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 \description{
 Delete an Amazon Web Services Verified Access trust provider.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_verified_access_trust_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_verified_access_trust_provider/} for full documentation.
 }
 \keyword{internal}

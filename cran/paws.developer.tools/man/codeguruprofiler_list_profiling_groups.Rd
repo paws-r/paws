@@ -40,6 +40,6 @@ purposes.}
 \description{
 Returns a list of profiling groups. The profiling groups are returned as \href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html}{\code{ProfilingGroupDescription}} objects.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/list_profiling_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_list_profiling_groups/} for full documentation.
 }
 \keyword{internal}

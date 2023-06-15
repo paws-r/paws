@@ -40,6 +40,6 @@ of the API definition file is 6MB.}
 \description{
 A feature of the API Gateway control service for creating a new API from an external API definition file.
 
-See \url{https://paws-r.github.io/docs/apigateway/import_rest_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_import_rest_api/} for full documentation.
 }
 \keyword{internal}

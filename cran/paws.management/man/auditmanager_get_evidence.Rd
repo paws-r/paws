@@ -23,6 +23,6 @@ auditmanager_get_evidence(
 \description{
 Returns evidence from Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence/} for full documentation.
 }
 \keyword{internal}

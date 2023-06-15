@@ -18,6 +18,6 @@ results.}
 \description{
 Lists data sources in current Amazon Web Services Region that belong to this Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_data_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_data_sources/} for full documentation.
 }
 \keyword{internal}

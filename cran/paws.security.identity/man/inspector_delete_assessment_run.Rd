@@ -13,6 +13,6 @@ inspector_delete_assessment_run(assessmentRunArn)
 \description{
 Deletes the assessment run that is specified by the ARN of the assessment run.
 
-See \url{https://paws-r.github.io/docs/inspector/delete_assessment_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_delete_assessment_run/} for full documentation.
 }
 \keyword{internal}

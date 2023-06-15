@@ -50,6 +50,6 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 \description{
 Describes the VPC endpoint service configurations in your account (your services).
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_service_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_service_configurations/} for full documentation.
 }
 \keyword{internal}

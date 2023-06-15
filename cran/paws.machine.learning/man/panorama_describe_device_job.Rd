@@ -12,6 +12,6 @@ panorama_describe_device_job(JobId)
 \description{
 Returns information about a device job.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_device_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_device_job/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ cloudwatchevidently_delete_project(project)
 \description{
 Deletes an Evidently project. Before you can delete a project, you must delete all the features that the project contains. To delete a feature, use \code{\link[=cloudwatchevidently_delete_feature]{delete_feature}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/delete_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_project/} for full documentation.
 }
 \keyword{internal}

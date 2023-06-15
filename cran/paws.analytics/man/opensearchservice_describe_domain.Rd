@@ -14,6 +14,6 @@ opensearchservice_describe_domain(DomainName)
 \description{
 Describes the domain configuration for the specified Amazon OpenSearch Service domain, including the domain ID, domain service endpoint, and domain ARN.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain/} for full documentation.
 }
 \keyword{internal}

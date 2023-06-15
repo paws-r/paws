@@ -10,6 +10,6 @@ fms_get_admin_account()
 \description{
 Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager default administrator.
 
-See \url{https://paws-r.github.io/docs/fms/get_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_admin_account/} for full documentation.
 }
 \keyword{internal}

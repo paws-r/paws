@@ -15,6 +15,6 @@ simpledb_batch_delete_attributes(DomainName, Items)
 \description{
 Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies. This enables Amazon SimpleDB to optimize requests, which generally yields better throughput.
 
-See \url{https://paws-r.github.io/docs/simpledb/batch_delete_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_batch_delete_attributes/} for full documentation.
 }
 \keyword{internal}

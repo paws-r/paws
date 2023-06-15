@@ -14,6 +14,6 @@ cognitoidentityprovider_delete_resource_server(UserPoolId, Identifier)
 \description{
 Deletes a resource server.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_resource_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_resource_server/} for full documentation.
 }
 \keyword{internal}

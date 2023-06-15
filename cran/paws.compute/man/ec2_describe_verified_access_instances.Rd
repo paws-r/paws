@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified Amazon Web Services Verified Access instances.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_verified_access_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_verified_access_instances/} for full documentation.
 }
 \keyword{internal}

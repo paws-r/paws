@@ -39,6 +39,6 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about DB proxy endpoints.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_proxy_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_proxy_endpoints/} for full documentation.
 }
 \keyword{internal}

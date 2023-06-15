@@ -80,9 +80,12 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocat
 \item{KMSKeyArn}{The ARN of the Key Management Service (KMS) customer managed key that's
 used to encrypt your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption}{environment variables}.
 When \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html}{Lambda SnapStart}
-is activated, this key is also used to encrypt your function's snapshot.
-If you don't provide a customer managed key, Lambda uses a default
-service key.}
+is activated, Lambda also uses this key is to encrypt your function's
+snapshot. If you deploy your function using a container image, Lambda
+also uses this key to encrypt your function when it's deployed. Note
+that this is not the same key that's used to protect your container
+image in the Amazon Elastic Container Registry (Amazon ECR). If you
+don't provide a customer managed key, Lambda uses a default service key.}
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests
 with
@@ -111,6 +114,6 @@ setting.}
 \description{
 Modify the version-specific settings of a Lambda function.
 
-See \url{https://paws-r.github.io/docs/lambda/update_function_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_function_configuration/} for full documentation.
 }
 \keyword{internal}

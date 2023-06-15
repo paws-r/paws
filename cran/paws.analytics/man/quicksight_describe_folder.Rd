@@ -14,6 +14,6 @@ quicksight_describe_folder(AwsAccountId, FolderId)
 \description{
 Describes a folder.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_folder/} for full documentation.
 }
 \keyword{internal}

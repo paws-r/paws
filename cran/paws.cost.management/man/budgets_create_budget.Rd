@@ -20,6 +20,6 @@ Amazon Web Services creates the notifications and subscribers for you.}
 \description{
 Creates a budget and, if included, notifications and subscribers.
 
-See \url{https://paws-r.github.io/docs/budgets/create_budget.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_create_budget/} for full documentation.
 }
 \keyword{internal}

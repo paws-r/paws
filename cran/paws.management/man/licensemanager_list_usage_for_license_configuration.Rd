@@ -34,6 +34,6 @@ Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 \description{
 Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time. Use this action to audit the current license consumption for any license inventory and configuration.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_usage_for_license_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_usage_for_license_configuration/} for full documentation.
 }
 \keyword{internal}

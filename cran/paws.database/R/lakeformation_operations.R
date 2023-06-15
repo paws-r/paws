@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Attaches one or more LF-tags to an existing resource.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/add_lf_tags_to_resource.html](https://paws-r.github.io/docs/lakeformation/add_lf_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_add_lf_tags_to_resource/](https://www.paws-r-sdk.com/docs/lakeformation_add_lf_tags_to_resource/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -43,7 +43,7 @@ lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LF
 #' @description
 #' Allows a caller to assume an IAM role decorated as the SAML user specified in the SAML assertion included in the request. This decoration allows Lake Formation to enforce access policies against the SAML users and groups. This API operation requires SAML federation setup in the caller’s account as it can only be called with valid SAML assertions. Lake Formation does not scope down the permission of the assumed role. All permissions attached to the role via the SAML federation setup will be included in the role session.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/assume_decorated_role_with_saml.html](https://paws-r.github.io/docs/lakeformation/assume_decorated_role_with_saml.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_assume_decorated_role_with_saml/](https://www.paws-r-sdk.com/docs/lakeformation_assume_decorated_role_with_saml/) for full documentation.
 #'
 #' @param SAMLAssertion &#91;required&#93; A SAML assertion consisting of an assertion statement for the user who
 #' needs temporary credentials. This must match the SAML assertion that was
@@ -82,7 +82,7 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #' @description
 #' Batch operation to grant permissions to the principal.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/batch_grant_permissions.html](https://paws-r.github.io/docs/lakeformation/batch_grant_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_batch_grant_permissions/](https://www.paws-r-sdk.com/docs/lakeformation_batch_grant_permissions/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -116,7 +116,7 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #' @description
 #' Batch operation to revoke permissions from the principal.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/batch_revoke_permissions.html](https://paws-r.github.io/docs/lakeformation/batch_revoke_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_batch_revoke_permissions/](https://www.paws-r-sdk.com/docs/lakeformation_batch_revoke_permissions/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -150,7 +150,7 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
 #' @description
 #' Attempts to cancel the specified transaction. Returns an exception if the transaction was previously committed.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/cancel_transaction.html](https://paws-r.github.io/docs/lakeformation/cancel_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_cancel_transaction/](https://www.paws-r-sdk.com/docs/lakeformation_cancel_transaction/) for full documentation.
 #'
 #' @param TransactionId &#91;required&#93; The transaction to cancel.
 #'
@@ -179,7 +179,7 @@ lakeformation_cancel_transaction <- function(TransactionId) {
 #' @description
 #' Attempts to commit the specified transaction. Returns an exception if the transaction was previously aborted. This API action is idempotent if called multiple times for the same transaction.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/commit_transaction.html](https://paws-r.github.io/docs/lakeformation/commit_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_commit_transaction/](https://www.paws-r-sdk.com/docs/lakeformation_commit_transaction/) for full documentation.
 #'
 #' @param TransactionId &#91;required&#93; The transaction to commit.
 #'
@@ -209,7 +209,7 @@ lakeformation_commit_transaction <- function(TransactionId) {
 #' @description
 #' Creates a data cell filter to allow one to grant access to certain columns on certain rows.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/create_data_cells_filter.html](https://paws-r.github.io/docs/lakeformation/create_data_cells_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_create_data_cells_filter/](https://www.paws-r-sdk.com/docs/lakeformation_create_data_cells_filter/) for full documentation.
 #'
 #' @param TableData &#91;required&#93; A `DataCellsFilter` structure containing information about the data
 #' cells filter.
@@ -239,7 +239,7 @@ lakeformation_create_data_cells_filter <- function(TableData) {
 #' @description
 #' Creates an LF-tag with the specified name and values.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/create_lf_tag.html](https://paws-r.github.io/docs/lakeformation/create_lf_tag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_create_lf_tag/](https://www.paws-r-sdk.com/docs/lakeformation_create_lf_tag/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -273,7 +273,7 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 #' @description
 #' Deletes a data cell filter.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/delete_data_cells_filter.html](https://paws-r.github.io/docs/lakeformation/delete_data_cells_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_delete_data_cells_filter/](https://www.paws-r-sdk.com/docs/lakeformation_delete_data_cells_filter/) for full documentation.
 #'
 #' @param TableCatalogId The ID of the catalog to which the table belongs.
 #' @param DatabaseName A database in the Glue Data Catalog.
@@ -305,7 +305,7 @@ lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, Databa
 #' @description
 #' Deletes the specified LF-tag given a key name. If the input parameter tag key was not found, then the operation will throw an exception. When you delete an LF-tag, the `LFTagPolicy` attached to the LF-tag becomes invalid. If the deleted LF-tag was still assigned to any resource, the tag policy attach to the deleted LF-tag will no longer be applied to the resource.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/delete_lf_tag.html](https://paws-r.github.io/docs/lakeformation/delete_lf_tag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_delete_lf_tag/](https://www.paws-r-sdk.com/docs/lakeformation_delete_lf_tag/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -340,7 +340,7 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
 #' @description
 #' For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled. Without this call, no Amazon S3 objects are automatically deleted when a transaction cancels.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/delete_objects_on_cancel.html](https://paws-r.github.io/docs/lakeformation/delete_objects_on_cancel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_delete_objects_on_cancel/](https://www.paws-r-sdk.com/docs/lakeformation_delete_objects_on_cancel/) for full documentation.
 #'
 #' @param CatalogId The Glue data catalog that contains the governed table. Defaults to the
 #' current account ID.
@@ -375,7 +375,7 @@ lakeformation_delete_objects_on_cancel <- function(CatalogId = NULL, DatabaseNam
 #' @description
 #' Deregisters the resource as managed by the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/deregister_resource.html](https://paws-r.github.io/docs/lakeformation/deregister_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_deregister_resource/](https://www.paws-r-sdk.com/docs/lakeformation_deregister_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' deregister.
@@ -406,7 +406,7 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #' @description
 #' Retrieves the current data access role for the given resource registered in Lake Formation.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/describe_resource.html](https://paws-r.github.io/docs/lakeformation/describe_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_describe_resource/](https://www.paws-r-sdk.com/docs/lakeformation_describe_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource ARN.
 #'
@@ -435,7 +435,7 @@ lakeformation_describe_resource <- function(ResourceArn) {
 #' @description
 #' Returns the details of a single transaction.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/describe_transaction.html](https://paws-r.github.io/docs/lakeformation/describe_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_describe_transaction/](https://www.paws-r-sdk.com/docs/lakeformation_describe_transaction/) for full documentation.
 #'
 #' @param TransactionId &#91;required&#93; The transaction for which to return status.
 #'
@@ -465,7 +465,7 @@ lakeformation_describe_transaction <- function(TransactionId) {
 #' @description
 #' Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/extend_transaction.html](https://paws-r.github.io/docs/lakeformation/extend_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_extend_transaction/](https://www.paws-r-sdk.com/docs/lakeformation_extend_transaction/) for full documentation.
 #'
 #' @param TransactionId The transaction to extend.
 #'
@@ -494,7 +494,7 @@ lakeformation_extend_transaction <- function(TransactionId = NULL) {
 #' @description
 #' Returns a data cells filter.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_data_cells_filter.html](https://paws-r.github.io/docs/lakeformation/get_data_cells_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_data_cells_filter/](https://www.paws-r-sdk.com/docs/lakeformation_get_data_cells_filter/) for full documentation.
 #'
 #' @param TableCatalogId &#91;required&#93; The ID of the catalog to which the table belongs.
 #' @param DatabaseName &#91;required&#93; A database in the Glue Data Catalog.
@@ -527,7 +527,7 @@ lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, Ta
 #' @description
 #' Retrieves the list of the data lake administrators of a Lake Formation-managed data lake.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_data_lake_settings.html](https://paws-r.github.io/docs/lakeformation/get_data_lake_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_data_lake_settings/](https://www.paws-r-sdk.com/docs/lakeformation_get_data_lake_settings/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -560,7 +560,7 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #' @description
 #' Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3. [`get_effective_permissions_for_path`][lakeformation_get_effective_permissions_for_path] will not return databases and tables if the catalog is encrypted.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_effective_permissions_for_path.html](https://paws-r.github.io/docs/lakeformation/get_effective_permissions_for_path.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_effective_permissions_for_path/](https://www.paws-r-sdk.com/docs/lakeformation_get_effective_permissions_for_path/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -597,7 +597,7 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #' @description
 #' Returns an LF-tag definition.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_lf_tag.html](https://paws-r.github.io/docs/lakeformation/get_lf_tag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_lf_tag/](https://www.paws-r-sdk.com/docs/lakeformation_get_lf_tag/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -630,7 +630,7 @@ lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
 #' @description
 #' Returns the state of a query previously submitted. Clients are expected to poll [`get_query_state`][lakeformation_get_query_state] to monitor the current state of the planning before retrieving the work units. A query state is only visible to the principal that made the initial call to [`start_query_planning`][lakeformation_start_query_planning].
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_query_state.html](https://paws-r.github.io/docs/lakeformation/get_query_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_query_state/](https://www.paws-r-sdk.com/docs/lakeformation_get_query_state/) for full documentation.
 #'
 #' @param QueryId &#91;required&#93; The ID of the plan query operation.
 #'
@@ -659,7 +659,7 @@ lakeformation_get_query_state <- function(QueryId) {
 #' @description
 #' Retrieves statistics on the planning and execution of a query.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_query_statistics.html](https://paws-r.github.io/docs/lakeformation/get_query_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_query_statistics/](https://www.paws-r-sdk.com/docs/lakeformation_get_query_statistics/) for full documentation.
 #'
 #' @param QueryId &#91;required&#93; The ID of the plan query operation.
 #'
@@ -688,7 +688,7 @@ lakeformation_get_query_statistics <- function(QueryId) {
 #' @description
 #' Returns the LF-tags applied to a resource.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_resource_lf_tags.html](https://paws-r.github.io/docs/lakeformation/get_resource_lf_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_resource_lf_tags/](https://www.paws-r-sdk.com/docs/lakeformation_get_resource_lf_tags/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -724,7 +724,7 @@ lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowA
 #' @description
 #' Returns the set of Amazon S3 objects that make up the specified governed table. A transaction ID or timestamp can be specified for time-travel queries.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_table_objects.html](https://paws-r.github.io/docs/lakeformation/get_table_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_table_objects/](https://www.paws-r-sdk.com/docs/lakeformation_get_table_objects/) for full documentation.
 #'
 #' @param CatalogId The catalog containing the governed table. Defaults to the caller’s
 #' account.
@@ -777,7 +777,7 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
 #' @description
 #' This API is identical to `GetTemporaryTableCredentials` except that this is used when the target Data Catalog resource is of type Partition. Lake Formation restricts the permission of the vended credentials with the same scope down policy which restricts access to a single Amazon S3 prefix.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_temporary_glue_partition_credentials.html](https://paws-r.github.io/docs/lakeformation/get_temporary_glue_partition_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_temporary_glue_partition_credentials/](https://www.paws-r-sdk.com/docs/lakeformation_get_temporary_glue_partition_credentials/) for full documentation.
 #'
 #' @param TableArn &#91;required&#93; The ARN of the partitions' table.
 #' @param Partition &#91;required&#93; A list of partition values identifying a single partition.
@@ -816,7 +816,7 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' @description
 #' Allows a caller in a secure environment to assume a role with permission to access Amazon S3. In order to vend such credentials, Lake Formation assumes the role associated with a registered location, for example an Amazon S3 bucket, with a scope down policy which restricts the access to a single prefix.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_temporary_glue_table_credentials.html](https://paws-r.github.io/docs/lakeformation/get_temporary_glue_table_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_temporary_glue_table_credentials/](https://www.paws-r-sdk.com/docs/lakeformation_get_temporary_glue_table_credentials/) for full documentation.
 #'
 #' @param TableArn &#91;required&#93; The ARN identifying a table in the Data Catalog for the temporary
 #' credentials request.
@@ -854,7 +854,7 @@ lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permiss
 #' @description
 #' Returns the work units resulting from the query. Work units can be executed in any order and in parallel.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_work_unit_results.html](https://paws-r.github.io/docs/lakeformation/get_work_unit_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_work_unit_results/](https://www.paws-r-sdk.com/docs/lakeformation_get_work_unit_results/) for full documentation.
 #'
 #' @param QueryId &#91;required&#93; The ID of the plan query operation for which to get results.
 #' @param WorkUnitId &#91;required&#93; The work unit ID for which to get results. Value generated by
@@ -889,7 +889,7 @@ lakeformation_get_work_unit_results <- function(QueryId, WorkUnitId, WorkUnitTok
 #' @description
 #' Retrieves the work units generated by the [`start_query_planning`][lakeformation_start_query_planning] operation.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/get_work_units.html](https://paws-r.github.io/docs/lakeformation/get_work_units.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_get_work_units/](https://www.paws-r-sdk.com/docs/lakeformation_get_work_units/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param PageSize The size of each page to get in the Amazon Web Services service call.
@@ -925,7 +925,7 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #' @description
 #' Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/grant_permissions.html](https://paws-r.github.io/docs/lakeformation/grant_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_grant_permissions/](https://www.paws-r-sdk.com/docs/lakeformation_grant_permissions/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -974,7 +974,7 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #' @description
 #' Lists all the data cell filters on a table.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/list_data_cells_filter.html](https://paws-r.github.io/docs/lakeformation/list_data_cells_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_list_data_cells_filter/](https://www.paws-r-sdk.com/docs/lakeformation_list_data_cells_filter/) for full documentation.
 #'
 #' @param Table A table in the Glue Data Catalog.
 #' @param NextToken A continuation token, if this is a continuation call.
@@ -1005,7 +1005,7 @@ lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL,
 #' @description
 #' Lists LF-tags that the requester has permission to view.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/list_lf_tags.html](https://paws-r.github.io/docs/lakeformation/list_lf_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_list_lf_tags/](https://www.paws-r-sdk.com/docs/lakeformation_list_lf_tags/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -1046,7 +1046,7 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #' @description
 #' Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/list_permissions.html](https://paws-r.github.io/docs/lakeformation/list_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_list_permissions/](https://www.paws-r-sdk.com/docs/lakeformation_list_permissions/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -1089,7 +1089,7 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #' @description
 #' Lists the resources registered to be managed by the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/list_resources.html](https://paws-r.github.io/docs/lakeformation/list_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_list_resources/](https://www.paws-r-sdk.com/docs/lakeformation_list_resources/) for full documentation.
 #'
 #' @param FilterConditionList Any applicable row-level and/or column-level filtering conditions for
 #' the resources.
@@ -1123,7 +1123,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #' @description
 #' Returns the configuration of all storage optimizers associated with a specified table.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/list_table_storage_optimizers.html](https://paws-r.github.io/docs/lakeformation/list_table_storage_optimizers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_list_table_storage_optimizers/](https://www.paws-r-sdk.com/docs/lakeformation_list_table_storage_optimizers/) for full documentation.
 #'
 #' @param CatalogId The Catalog ID of the table.
 #' @param DatabaseName &#91;required&#93; Name of the database where the table is present.
@@ -1158,7 +1158,7 @@ lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, Databa
 #' @description
 #' Returns metadata about transactions and their status. To prevent the response from growing indefinitely, only uncommitted transactions and those available for time-travel queries are returned.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/list_transactions.html](https://paws-r.github.io/docs/lakeformation/list_transactions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_list_transactions/](https://www.paws-r-sdk.com/docs/lakeformation_list_transactions/) for full documentation.
 #'
 #' @param CatalogId The catalog for which to list transactions. Defaults to the account ID
 #' of the caller.
@@ -1192,9 +1192,9 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #' all resources managed by Lake Formation
 #'
 #' @description
-#' Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see [Granting Lake Formation Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html).
+#' Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see [Granting Lake Formation Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/).
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/put_data_lake_settings.html](https://paws-r.github.io/docs/lakeformation/put_data_lake_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_put_data_lake_settings/](https://www.paws-r-sdk.com/docs/lakeformation_put_data_lake_settings/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -1228,7 +1228,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @description
 #' Registers the resource as managed by the Data Catalog.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/register_resource.html](https://paws-r.github.io/docs/lakeformation/register_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_register_resource/](https://www.paws-r-sdk.com/docs/lakeformation_register_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' register.
@@ -1266,7 +1266,7 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #' @description
 #' Removes an LF-tag from the resource. Only database, table, or tableWithColumns resource are allowed. To tag columns, use the column inclusion list in `tableWithColumns` to specify column input.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/remove_lf_tags_from_resource.html](https://paws-r.github.io/docs/lakeformation/remove_lf_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_remove_lf_tags_from_resource/](https://www.paws-r-sdk.com/docs/lakeformation_remove_lf_tags_from_resource/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -1302,7 +1302,7 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' @description
 #' Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/revoke_permissions.html](https://paws-r.github.io/docs/lakeformation/revoke_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_revoke_permissions/](https://www.paws-r-sdk.com/docs/lakeformation_revoke_permissions/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -1313,7 +1313,7 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' @param Permissions &#91;required&#93; The permissions revoked to the principal on the resource. For
 #' information about permissions, see [Security and Access Control to
 #' Metadata and
-#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
+#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/).
 #' @param PermissionsWithGrantOption Indicates a list of permissions for which to revoke the grant option
 #' allowing the principal to pass permissions to other principals.
 #'
@@ -1342,7 +1342,7 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
 #' @description
 #' This operation allows a search on `DATABASE` resources by `TagCondition`. This operation is used by admins who want to grant user permissions on certain `TagConditions`. Before making a grant, the admin can use `SearchDatabasesByTags` to find all resources where the given `TagConditions` are valid to verify whether the returned resources can be shared.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/search_databases_by_lf_tags.html](https://paws-r.github.io/docs/lakeformation/search_databases_by_lf_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_search_databases_by_lf_tags/](https://www.paws-r-sdk.com/docs/lakeformation_search_databases_by_lf_tags/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is not the first call to retrieve this
 #' list.
@@ -1379,7 +1379,7 @@ lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResul
 #' @description
 #' This operation allows a search on `TABLE` resources by `LFTag`s. This will be used by admins who want to grant user permissions on certain LF-tags. Before making a grant, the admin can use [`search_tables_by_lf_tags`][lakeformation_search_tables_by_lf_tags] to find all resources where the given `LFTag`s are valid to verify whether the returned resources can be shared.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/search_tables_by_lf_tags.html](https://paws-r.github.io/docs/lakeformation/search_tables_by_lf_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_search_tables_by_lf_tags/](https://www.paws-r-sdk.com/docs/lakeformation_search_tables_by_lf_tags/) for full documentation.
 #'
 #' @param NextToken A continuation token, if this is not the first call to retrieve this
 #' list.
@@ -1416,7 +1416,7 @@ lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults 
 #' @description
 #' Submits a request to process a query statement.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/start_query_planning.html](https://paws-r.github.io/docs/lakeformation/start_query_planning.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_start_query_planning/](https://www.paws-r-sdk.com/docs/lakeformation_start_query_planning/) for full documentation.
 #'
 #' @param QueryPlanningContext &#91;required&#93; A structure containing information about the query plan.
 #' @param QueryString &#91;required&#93; A PartiQL query statement used as an input to the planner service.
@@ -1446,7 +1446,7 @@ lakeformation_start_query_planning <- function(QueryPlanningContext, QueryString
 #' @description
 #' Starts a new transaction and returns its transaction ID. Transaction IDs are opaque objects that you can use to identify a transaction.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/start_transaction.html](https://paws-r.github.io/docs/lakeformation/start_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_start_transaction/](https://www.paws-r-sdk.com/docs/lakeformation_start_transaction/) for full documentation.
 #'
 #' @param TransactionType Indicates whether this transaction should be read only or read and
 #' write. Writes made using a read-only transaction ID will be rejected.
@@ -1477,7 +1477,7 @@ lakeformation_start_transaction <- function(TransactionType = NULL) {
 #' @description
 #' Updates a data cell filter.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/update_data_cells_filter.html](https://paws-r.github.io/docs/lakeformation/update_data_cells_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_update_data_cells_filter/](https://www.paws-r-sdk.com/docs/lakeformation_update_data_cells_filter/) for full documentation.
 #'
 #' @param TableData &#91;required&#93; A `DataCellsFilter` structure containing information about the data
 #' cells filter.
@@ -1507,7 +1507,7 @@ lakeformation_update_data_cells_filter <- function(TableData) {
 #' @description
 #' Updates the list of possible values for the specified LF-tag key. If the LF-tag does not exist, the operation throws an EntityNotFoundException. The values in the delete key values will be deleted from list of possible values. If any value in the delete key values is attached to a resource, then API errors out with a 400 Exception - "Update not allowed". Untag the attribute before deleting the LF-tag key's value.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/update_lf_tag.html](https://paws-r.github.io/docs/lakeformation/update_lf_tag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_update_lf_tag/](https://www.paws-r-sdk.com/docs/lakeformation_update_lf_tag/) for full documentation.
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -1543,7 +1543,7 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' @description
 #' Updates the data access role used for vending access to the given (registered) resource in Lake Formation.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/update_resource.html](https://paws-r.github.io/docs/lakeformation/update_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_update_resource/](https://www.paws-r-sdk.com/docs/lakeformation_update_resource/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The new role to use for the given resource registered in Lake Formation.
 #' @param ResourceArn &#91;required&#93; The resource ARN.
@@ -1575,7 +1575,7 @@ lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation =
 #' @description
 #' Updates the manifest of Amazon S3 objects that make up the specified governed table.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/update_table_objects.html](https://paws-r.github.io/docs/lakeformation/update_table_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_update_table_objects/](https://www.paws-r-sdk.com/docs/lakeformation_update_table_objects/) for full documentation.
 #'
 #' @param CatalogId The catalog containing the governed table to update. Defaults to the
 #' caller’s account ID.
@@ -1610,7 +1610,7 @@ lakeformation_update_table_objects <- function(CatalogId = NULL, DatabaseName, T
 #' @description
 #' Updates the configuration of the storage optimizers for a table.
 #'
-#' See [https://paws-r.github.io/docs/lakeformation/update_table_storage_optimizer.html](https://paws-r.github.io/docs/lakeformation/update_table_storage_optimizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lakeformation_update_table_storage_optimizer/](https://www.paws-r-sdk.com/docs/lakeformation_update_table_storage_optimizer/) for full documentation.
 #'
 #' @param CatalogId The Catalog ID of the table.
 #' @param DatabaseName &#91;required&#93; Name of the database where the table is present.

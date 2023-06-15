@@ -13,6 +13,6 @@ organizations_close_account(AccountId)
 \description{
 Closes an Amazon Web Services member account within an organization. You can close an account when \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features are enabled} . You can't close the management account with this API. This is an asynchronous request that Amazon Web Services performs in the background. Because \code{\link[=organizations_close_account]{close_account}} operates asynchronously, it can return a successful completion message even though account closure might still be in progress. You need to wait a few minutes before the account is fully closed. To check the status of the request, do one of the following:
 
-See \url{https://paws-r.github.io/docs/organizations/close_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_close_account/} for full documentation.
 }
 \keyword{internal}

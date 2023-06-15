@@ -15,6 +15,6 @@ hyphens, and underscores. Maximum length is 128 characters.}
 \description{
 Gets a Stage.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_stage/} for full documentation.
 }
 \keyword{internal}

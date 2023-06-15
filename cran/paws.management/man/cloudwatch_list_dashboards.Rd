@@ -17,6 +17,6 @@ data available.}
 \description{
 Returns a list of the dashboards for your account. If you include \code{DashboardNamePrefix}, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/list_dashboards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_list_dashboards/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ value between 1 and 604800 seconds. The default is 3600 seconds.}
 \description{
 Creates a URL to start an image builder streaming session.
 
-See \url{https://paws-r.github.io/docs/appstream/create_image_builder_streaming_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_image_builder_streaming_url/} for full documentation.
 }
 \keyword{internal}

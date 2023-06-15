@@ -39,6 +39,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists the recommendation templates for the Resilience Hub applications.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_recommendation_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_recommendation_templates/} for full documentation.
 }
 \keyword{internal}

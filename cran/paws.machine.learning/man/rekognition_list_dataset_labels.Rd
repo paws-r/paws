@@ -25,6 +25,6 @@ ValidationException error occurs. The default value is 100.}
 \description{
 Lists the labels in a dataset. Amazon Rekognition Custom Labels uses labels to describe images. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-labeling-images.html}{Labeling images}.
 
-See \url{https://paws-r.github.io/docs/rekognition/list_dataset_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_list_dataset_labels/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ default based on CREATED_TIME. Otherwise, SortOrder is ASCENDING.}
 \description{
 Returns a list of devices.
 
-See \url{https://paws-r.github.io/docs/panorama/list_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_list_devices/} for full documentation.
 }
 \keyword{internal}

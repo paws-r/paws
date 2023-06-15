@@ -14,6 +14,6 @@ fsx_delete_snapshot(ClientRequestToken = NULL, SnapshotId)
 \description{
 Deletes an Amazon FSx for OpenZFS snapshot. After deletion, the snapshot no longer exists, and its data is gone. Deleting a snapshot doesn't affect snapshots stored in a file system backup.
 
-See \url{https://paws-r.github.io/docs/fsx/delete_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_delete_snapshot/} for full documentation.
 }
 \keyword{internal}

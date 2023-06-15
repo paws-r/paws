@@ -32,6 +32,6 @@ and dash (-). Spaces are not allowed.}
 \description{
 Creates a filter resource using specified filter criteria.
 
-See \url{https://paws-r.github.io/docs/inspector2/create_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_create_filter/} for full documentation.
 }
 \keyword{internal}

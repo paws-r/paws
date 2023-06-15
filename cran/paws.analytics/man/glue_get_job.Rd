@@ -12,6 +12,6 @@ glue_get_job(JobName)
 \description{
 Retrieves an existing job definition.
 
-See \url{https://paws-r.github.io/docs/glue/get_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_job/} for full documentation.
 }
 \keyword{internal}

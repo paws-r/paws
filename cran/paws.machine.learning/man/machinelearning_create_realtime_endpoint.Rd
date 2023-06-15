@@ -12,6 +12,6 @@ machinelearning_create_realtime_endpoint(MLModelId)
 \description{
 Creates a real-time endpoint for the \code{MLModel}. The endpoint contains the URI of the \code{MLModel}; that is, the location to send real-time prediction requests for the specified \code{MLModel}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/create_realtime_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_create_realtime_endpoint/} for full documentation.
 }
 \keyword{internal}

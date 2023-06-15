@@ -21,6 +21,6 @@ dynamodb_list_contributor_insights(
 \description{
 Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
 
-See \url{https://paws-r.github.io/docs/dynamodb/list_contributor_insights.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_list_contributor_insights/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ continue listing from where the previous operation left off.}
 \description{
 Returns a list of all the connectors in this account and Region. The list is limited to connectors whose name starts with the specified prefix. The response also includes a description of each of the listed connectors.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/list_connectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_list_connectors/} for full documentation.
 }
 \keyword{internal}

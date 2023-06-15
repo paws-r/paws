@@ -13,6 +13,6 @@ xray_get_sampling_targets(SamplingStatisticsDocuments)
 \description{
 Requests a sampling quota for rules that the service is using to sample requests.
 
-See \url{https://paws-r.github.io/docs/xray/get_sampling_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_sampling_targets/} for full documentation.
 }
 \keyword{internal}

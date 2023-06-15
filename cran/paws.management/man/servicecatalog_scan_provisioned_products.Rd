@@ -28,6 +28,6 @@ results, use null.}
 \description{
 Lists the provisioned products that are available (not terminated).
 
-See \url{https://paws-r.github.io/docs/servicecatalog/scan_provisioned_products.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_scan_provisioned_products/} for full documentation.
 }
 \keyword{internal}

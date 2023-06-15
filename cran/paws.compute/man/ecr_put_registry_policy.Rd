@@ -14,6 +14,6 @@ in the \emph{Amazon Elastic Container Registry User Guide}.}
 \description{
 Creates or updates the permissions policy for your registry.
 
-See \url{https://paws-r.github.io/docs/ecr/put_registry_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_put_registry_policy/} for full documentation.
 }
 \keyword{internal}

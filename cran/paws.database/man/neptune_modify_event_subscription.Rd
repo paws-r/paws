@@ -36,6 +36,6 @@ the \strong{DescribeEventCategories} action.}
 \description{
 Modifies an existing event notification subscription. Note that you can't modify the source identifiers using this call; to change source identifiers for a subscription, use the \code{\link[=neptune_add_source_identifier_to_subscription]{add_source_identifier_to_subscription}} and \code{\link[=neptune_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription}} calls.
 
-See \url{https://paws-r.github.io/docs/neptune/modify_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_modify_event_subscription/} for full documentation.
 }
 \keyword{internal}

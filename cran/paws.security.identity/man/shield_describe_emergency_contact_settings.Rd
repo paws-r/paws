@@ -12,6 +12,6 @@ shield_describe_emergency_contact_settings()
 \description{
 A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.
 
-See \url{https://paws-r.github.io/docs/shield/describe_emergency_contact_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_emergency_contact_settings/} for full documentation.
 }
 \keyword{internal}

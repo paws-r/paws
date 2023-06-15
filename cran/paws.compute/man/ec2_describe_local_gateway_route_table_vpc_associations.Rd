@@ -45,6 +45,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified associations between VPCs and local gateway route tables.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_route_table_vpc_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_local_gateway_route_table_vpc_associations/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ default of 5 is used.}
 \description{
 Provides a list of transcription jobs that match the specified criteria. If no criteria are specified, all transcription jobs are returned.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/list_transcription_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_list_transcription_jobs/} for full documentation.
 }
 \keyword{internal}

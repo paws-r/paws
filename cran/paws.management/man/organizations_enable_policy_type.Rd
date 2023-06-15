@@ -27,6 +27,6 @@ following values:
 \description{
 Enables a policy type in a root. After you enable a policy type in a root, you can attach policies of that type to the root, any organizational unit (OU), or account in that root. You can undo this by using the \code{\link[=organizations_disable_policy_type]{disable_policy_type}} operation.
 
-See \url{https://paws-r.github.io/docs/organizations/enable_policy_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_enable_policy_type/} for full documentation.
 }
 \keyword{internal}

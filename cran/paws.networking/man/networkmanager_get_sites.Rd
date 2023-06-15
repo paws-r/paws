@@ -23,6 +23,6 @@ networkmanager_get_sites(
 \description{
 Gets information about one or more of your sites in a global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_sites.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_sites/} for full documentation.
 }
 \keyword{internal}

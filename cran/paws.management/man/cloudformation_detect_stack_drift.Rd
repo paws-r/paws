@@ -3,7 +3,7 @@
 \name{cloudformation_detect_stack_drift}
 \alias{cloudformation_detect_stack_drift}
 \title{Detects whether a stack's actual configuration differs, or has drifted,
-from it's expected configuration, as defined in the stack template and
+from its expected configuration, as defined in the stack template and
 any values specified as template parameters}
 \usage{
 cloudformation_detect_stack_drift(StackName, LogicalResourceIds = NULL)
@@ -14,8 +14,8 @@ cloudformation_detect_stack_drift(StackName, LogicalResourceIds = NULL)
 \item{LogicalResourceIds}{The logical names of any resources you want to use as filters.}
 }
 \description{
-Detects whether a stack's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
+Detects whether a stack's actual configuration differs, or has \emph{drifted}, from its expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/detect_stack_drift.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_drift/} for full documentation.
 }
 \keyword{internal}

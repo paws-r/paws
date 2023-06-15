@@ -39,6 +39,6 @@ entered for the \code{AcceptCode}.}
 \description{
 Used to acknowledge an engagement to a contact channel during an incident.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/accept_page.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_accept_page/} for full documentation.
 }
 \keyword{internal}

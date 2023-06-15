@@ -26,6 +26,6 @@ results.}
 \description{
 Lists the use cases for the integration association.
 
-See \url{https://paws-r.github.io/docs/connect/list_use_cases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_use_cases/} for full documentation.
 }
 \keyword{internal}

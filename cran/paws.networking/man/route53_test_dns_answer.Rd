@@ -50,6 +50,6 @@ IPv4 or an IPv6 address:
 \description{
 Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask.
 
-See \url{https://paws-r.github.io/docs/route53/test_dns_answer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_test_dns_answer/} for full documentation.
 }
 \keyword{internal}

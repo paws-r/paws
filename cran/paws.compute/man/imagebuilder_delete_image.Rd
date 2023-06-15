@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes an Image Builder image resource. This does not delete any EC2 AMIs or ECR container images that are created during the image build process. You must clean those up separately, using the appropriate Amazon EC2 or Amazon ECR console actions, or API or CLI commands.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_image/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ a list of distribution names that you can specify.}
 \description{
 Detaches an SSL/TLS certificate from your Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/detach_certificate_from_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_detach_certificate_from_distribution/} for full documentation.
 }
 \keyword{internal}

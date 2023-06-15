@@ -60,6 +60,6 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.}
 \description{
 Creates a NAT gateway in the specified subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. You can create either a public NAT gateway or a private NAT gateway.
 
-See \url{https://paws-r.github.io/docs/ec2/create_nat_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_nat_gateway/} for full documentation.
 }
 \keyword{internal}

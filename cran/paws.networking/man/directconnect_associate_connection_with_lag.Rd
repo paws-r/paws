@@ -14,6 +14,6 @@ directconnect_associate_connection_with_lag(connectionId, lagId)
 \description{
 Associates an existing connection with a link aggregation group (LAG). The connection is interrupted and re-established as a member of the LAG (connectivity to Amazon Web Services is interrupted). The connection must be hosted on the same Direct Connect endpoint as the LAG, and its bandwidth must match the bandwidth for the LAG. You can re-associate a connection that's currently associated with a different LAG; however, if removing the connection would cause the original LAG to fall below its setting for minimum number of operational connections, the request fails.
 
-See \url{https://paws-r.github.io/docs/directconnect/associate_connection_with_lag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_associate_connection_with_lag/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ ssmincidents_delete_replication_set(arn)
 \description{
 Deletes all Regions in your replication set. Deleting the replication set deletes all Incident Manager data.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/delete_replication_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_delete_replication_set/} for full documentation.
 }
 \keyword{internal}

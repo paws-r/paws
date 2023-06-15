@@ -37,6 +37,6 @@ created.}
 \description{
 Lists task templates for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_task_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_task_templates/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ object.}
 \description{
 Returns the metadata associated with the code review along with its status.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/describe_code_review.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_describe_code_review/} for full documentation.
 }
 \keyword{internal}

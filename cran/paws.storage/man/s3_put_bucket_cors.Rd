@@ -45,6 +45,6 @@ different account, the request fails with the HTTP status code
 \description{
 Sets the \code{cors} configuration for your bucket. If the configuration exists, Amazon S3 replaces it.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_cors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_cors/} for full documentation.
 }
 \keyword{internal}

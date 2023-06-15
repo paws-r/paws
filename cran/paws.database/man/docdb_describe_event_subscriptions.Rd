@@ -33,6 +33,6 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Lists all the subscription descriptions for a customer account. The description for a subscription includes \code{SubscriptionName}, \code{SNSTopicARN}, \code{CustomerID}, \code{SourceType}, \code{SourceID}, \code{CreationTime}, and \code{Status}.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_event_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_event_subscriptions/} for full documentation.
 }
 \keyword{internal}

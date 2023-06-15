@@ -23,6 +23,6 @@ request the next page of results in a paginated response.}
 \description{
 Accepts a structured query language (SQL) \code{SELECT} command, performs the corresponding search, and returns resource configurations matching the properties.
 
-See \url{https://paws-r.github.io/docs/configservice/select_resource_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_select_resource_config/} for full documentation.
 }
 \keyword{internal}

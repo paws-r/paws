@@ -32,6 +32,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the count of compliant and noncompliant conformance packs across all Amazon Web Services accounts and Amazon Web Services Regions in an aggregator. You can filter based on Amazon Web Services account ID or Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/configservice/get_aggregate_conformance_pack_compliance_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_aggregate_conformance_pack_compliance_summary/} for full documentation.
 }
 \keyword{internal}

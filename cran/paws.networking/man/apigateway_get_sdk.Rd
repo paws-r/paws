@@ -25,6 +25,6 @@ parameters named \code{groupId}, \code{artifactId}, \code{artifactVersion}, and
 \description{
 Generates a client SDK for a RestApi and Stage.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_sdk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_sdk/} for full documentation.
 }
 \keyword{internal}

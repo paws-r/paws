@@ -31,6 +31,6 @@ must be set to \code{Service}.}
 \description{
 Updates the default settings for new user profiles in the domain.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_domain/} for full documentation.
 }
 \keyword{internal}

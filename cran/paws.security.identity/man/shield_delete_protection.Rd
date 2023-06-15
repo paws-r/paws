@@ -12,6 +12,6 @@ shield_delete_protection(ProtectionId)
 \description{
 Deletes an Shield Advanced Protection.
 
-See \url{https://paws-r.github.io/docs/shield/delete_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_delete_protection/} for full documentation.
 }
 \keyword{internal}

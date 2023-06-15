@@ -18,6 +18,6 @@ see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Suppor
 \description{
 Removes a locale from a bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_bot_locale.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_locale/} for full documentation.
 }
 \keyword{internal}

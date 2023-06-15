@@ -23,6 +23,6 @@ serverlessapplicationrepository_list_application_dependencies(
 \description{
 Retrieves the list of applications nested in the containing application.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_dependencies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_application_dependencies/} for full documentation.
 }
 \keyword{internal}

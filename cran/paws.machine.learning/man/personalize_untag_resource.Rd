@@ -12,8 +12,8 @@ personalize_untag_resource(resourceArn, tagKeys)
 \item{tagKeys}{[required] Keys to remove from the resource's tags.}
 }
 \description{
-Remove tags that are attached to a resource.
+Remove \href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags} that are attached to a resource.
 
-See \url{https://paws-r.github.io/docs/personalize/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_untag_resource/} for full documentation.
 }
 \keyword{internal}

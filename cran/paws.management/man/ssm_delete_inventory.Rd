@@ -41,6 +41,6 @@ without specifying the \code{DryRun} option.}
 \description{
 Delete a custom inventory type or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_inventory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_inventory/} for full documentation.
 }
 \keyword{internal}

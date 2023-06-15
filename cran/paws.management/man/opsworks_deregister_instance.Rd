@@ -12,6 +12,6 @@ opsworks_deregister_instance(InstanceId)
 \description{
 Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.
 
-See \url{https://paws-r.github.io/docs/opsworks/deregister_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_deregister_instance/} for full documentation.
 }
 \keyword{internal}

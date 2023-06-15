@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Describes the specified vocabulary.
 
-See \url{https://paws-r.github.io/docs/connect/describe_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_vocabulary/} for full documentation.
 }
 \keyword{internal}

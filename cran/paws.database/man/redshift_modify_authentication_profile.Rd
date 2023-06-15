@@ -19,6 +19,6 @@ account.}
 \description{
 Modifies an authentication profile.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_authentication_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_authentication_profile/} for full documentation.
 }
 \keyword{internal}

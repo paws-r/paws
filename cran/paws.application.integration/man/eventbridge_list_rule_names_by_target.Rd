@@ -25,6 +25,6 @@ results.}
 \description{
 Lists the rules for the specified target. You can see which of the rules in Amazon EventBridge can invoke a specific target in your account.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_rule_names_by_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_rule_names_by_target/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ used.}
 \description{
 Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region.
 
-See \url{https://paws-r.github.io/docs/redshift/create_snapshot_copy_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_snapshot_copy_grant/} for full documentation.
 }
 \keyword{internal}

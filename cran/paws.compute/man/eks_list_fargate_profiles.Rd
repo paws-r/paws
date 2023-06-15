@@ -32,6 +32,6 @@ that returned the \code{nextToken} value.}
 \description{
 Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region.
 
-See \url{https://paws-r.github.io/docs/eks/list_fargate_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_list_fargate_profiles/} for full documentation.
 }
 \keyword{internal}

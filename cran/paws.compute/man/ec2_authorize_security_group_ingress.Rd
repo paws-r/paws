@@ -88,6 +88,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Adds the specified inbound (ingress) rules to a security group.
 
-See \url{https://paws-r.github.io/docs/ec2/authorize_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_authorize_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

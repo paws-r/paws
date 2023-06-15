@@ -24,6 +24,6 @@ and then provide it here.}
 \description{
 Initializes proactive engagement and sets the list of contacts for the Shield Response Team (SRT) to use. You must provide at least one phone number in the emergency contact list.
 
-See \url{https://paws-r.github.io/docs/shield/associate_proactive_engagement_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_associate_proactive_engagement_details/} for full documentation.
 }
 \keyword{internal}

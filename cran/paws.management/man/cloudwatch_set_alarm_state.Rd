@@ -29,6 +29,6 @@ policy uses the information in this field to take the correct action.}
 \description{
 Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to \code{ALARM} sends an SNS message.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/set_alarm_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_set_alarm_state/} for full documentation.
 }
 \keyword{internal}

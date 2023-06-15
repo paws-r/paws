@@ -18,6 +18,6 @@ pagination; see the \code{nextToken} response field.}
 \description{
 Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.
 
-See \url{https://paws-r.github.io/docs/ivs/list_recording_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_list_recording_configurations/} for full documentation.
 }
 \keyword{internal}

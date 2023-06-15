@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns the STS short-term credentials for a given role name that is assigned to the user.
 #'
-#' See [https://paws-r.github.io/docs/sso/get_role_credentials.html](https://paws-r.github.io/docs/sso/get_role_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sso_get_role_credentials/](https://www.paws-r-sdk.com/docs/sso_get_role_credentials/) for full documentation.
 #'
 #' @param roleName &#91;required&#93; The friendly name of the role that is assigned to the user.
 #' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
@@ -43,7 +43,7 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 #' @description
 #' Lists all roles that are assigned to the user for a given AWS account.
 #'
-#' See [https://paws-r.github.io/docs/sso/list_account_roles.html](https://paws-r.github.io/docs/sso/list_account_roles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sso_list_account_roles/](https://www.paws-r-sdk.com/docs/sso_list_account_roles/) for full documentation.
 #'
 #' @param nextToken The page token from the previous response output when you request
 #' subsequent pages.
@@ -79,7 +79,7 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 #' @description
 #' Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of the account. For more information, see [Assign User Access](https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers) in the *IAM Identity Center User Guide*. This operation returns a paginated response.
 #'
-#' See [https://paws-r.github.io/docs/sso/list_accounts.html](https://paws-r.github.io/docs/sso/list_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sso_list_accounts/](https://www.paws-r-sdk.com/docs/sso_list_accounts/) for full documentation.
 #'
 #' @param nextToken (Optional) When requesting subsequent pages, this is the page token from
 #' the previous response output.
@@ -116,7 +116,7 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 #' @description
 #' Removes the locally stored SSO tokens from the client-side cache and sends an API call to the IAM Identity Center service to invalidate the corresponding server-side IAM Identity Center sign in session.
 #'
-#' See [https://paws-r.github.io/docs/sso/logout.html](https://paws-r.github.io/docs/sso/logout.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sso_logout/](https://www.paws-r-sdk.com/docs/sso_logout/) for full documentation.
 #'
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see

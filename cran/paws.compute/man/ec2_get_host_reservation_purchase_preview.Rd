@@ -15,6 +15,6 @@ ec2_get_host_reservation_purchase_preview(HostIdSet, OfferingId)
 \description{
 Preview a reservation purchase with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation.
 
-See \url{https://paws-r.github.io/docs/ec2/get_host_reservation_purchase_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_host_reservation_purchase_preview/} for full documentation.
 }
 \keyword{internal}

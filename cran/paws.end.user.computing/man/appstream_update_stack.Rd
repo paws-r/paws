@@ -60,6 +60,6 @@ TCP. Currently, UDP is only supported in the Windows native client.}
 \description{
 Updates the specified fields for the specified stack.
 
-See \url{https://paws-r.github.io/docs/appstream/update_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_update_stack/} for full documentation.
 }
 \keyword{internal}

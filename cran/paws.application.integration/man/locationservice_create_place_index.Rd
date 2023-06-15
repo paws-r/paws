@@ -79,6 +79,6 @@ characters: + - = . _ : / @
 \description{
 Creates a place index resource in your Amazon Web Services account. Use a place index resource to geocode addresses and other text queries by using the \code{\link[=locationservice_search_place_index_for_text]{search_place_index_for_text}} operation, and reverse geocode coordinates by using the \code{\link[=locationservice_search_place_index_for_position]{search_place_index_for_position}} operation, and enable autosuggestions by using the \code{\link[=locationservice_search_place_index_for_suggestions]{search_place_index_for_suggestions}} operation.
 
-See \url{https://paws-r.github.io/docs/locationservice/create_place_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_create_place_index/} for full documentation.
 }
 \keyword{internal}

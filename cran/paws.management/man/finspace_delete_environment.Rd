@@ -12,6 +12,6 @@ finspace_delete_environment(environmentId)
 \description{
 Delete an FinSpace environment.
 
-See \url{https://paws-r.github.io/docs/finspace/delete_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspace_delete_environment/} for full documentation.
 }
 \keyword{internal}

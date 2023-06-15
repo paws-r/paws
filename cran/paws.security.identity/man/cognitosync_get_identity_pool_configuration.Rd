@@ -14,6 +14,6 @@ Cognito. This is the ID of the pool for which to return a configuration.}
 \description{
 Gets the configuration settings of an identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitosync/get_identity_pool_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_get_identity_pool_configuration/} for full documentation.
 }
 \keyword{internal}

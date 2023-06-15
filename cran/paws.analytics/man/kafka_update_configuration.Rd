@@ -19,6 +19,6 @@ server.properties can be in plaintext.}
 \description{
 Updates an MSK configuration.
 
-See \url{https://paws-r.github.io/docs/kafka/update_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_configuration/} for full documentation.
 }
 \keyword{internal}

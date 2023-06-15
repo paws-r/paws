@@ -15,6 +15,6 @@ itself can be empty.}
 \description{
 Returns information about one or more repositories.
 
-See \url{https://paws-r.github.io/docs/codecommit/batch_get_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_batch_get_repositories/} for full documentation.
 }
 \keyword{internal}

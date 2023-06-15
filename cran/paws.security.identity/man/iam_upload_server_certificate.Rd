@@ -93,6 +93,6 @@ created.}
 \description{
 Uploads a server certificate entity for the Amazon Web Services account. The server certificate entity includes a public key certificate, a private key, and an optional certificate chain, which should all be PEM-encoded.
 
-See \url{https://paws-r.github.io/docs/iam/upload_server_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_upload_server_certificate/} for full documentation.
 }
 \keyword{internal}

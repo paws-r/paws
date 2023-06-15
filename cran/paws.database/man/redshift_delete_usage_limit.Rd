@@ -12,6 +12,6 @@ redshift_delete_usage_limit(UsageLimitId)
 \description{
 Deletes a usage limit from a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_usage_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_usage_limit/} for full documentation.
 }
 \keyword{internal}

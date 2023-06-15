@@ -10,6 +10,6 @@ inspector2_get_ec_2_deep_inspection_configuration()
 \description{
 Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account.
 
-See \url{https://paws-r.github.io/docs/inspector2/get_ec_2_deep_inspection_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_get_ec_2_deep_inspection_configuration/} for full documentation.
 }
 \keyword{internal}

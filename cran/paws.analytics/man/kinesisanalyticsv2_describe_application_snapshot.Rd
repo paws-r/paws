@@ -15,6 +15,6 @@ using .}
 \description{
 Returns information about a snapshot of application state data.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_snapshot/} for full documentation.
 }
 \keyword{internal}

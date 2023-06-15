@@ -20,6 +20,6 @@ follow the procedure to \href{https://docs.aws.amazon.com/aws-backup/latest/devg
 \description{
 Updates the current service opt-in settings for the Region. If service-opt-in is enabled for a service, Backup tries to protect that service's resources in this Region, when the resource is included in an on-demand backup or scheduled backup plan. Otherwise, Backup does not try to protect that service's resources in this Region. Use the \code{\link[=backup_describe_region_settings]{describe_region_settings}} API to determine the resource types that are supported.
 
-See \url{https://paws-r.github.io/docs/backup/update_region_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_update_region_settings/} for full documentation.
 }
 \keyword{internal}

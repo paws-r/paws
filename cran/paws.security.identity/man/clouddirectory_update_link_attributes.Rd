@@ -22,6 +22,6 @@ where the updated typed link resides. For more information, see arns or
 \description{
 Updates a given typed link’s attributes. Attributes to be updated must not contribute to the typed link’s identity, as defined by its \code{IdentityAttributeOrder}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/update_link_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_update_link_attributes/} for full documentation.
 }
 \keyword{internal}

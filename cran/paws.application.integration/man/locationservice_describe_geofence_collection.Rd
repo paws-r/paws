@@ -12,6 +12,6 @@ locationservice_describe_geofence_collection(CollectionName)
 \description{
 Retrieves the geofence collection details.
 
-See \url{https://paws-r.github.io/docs/locationservice/describe_geofence_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_describe_geofence_collection/} for full documentation.
 }
 \keyword{internal}

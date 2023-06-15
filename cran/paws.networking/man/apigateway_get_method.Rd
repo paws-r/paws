@@ -16,6 +16,6 @@ apigateway_get_method(restApiId, resourceId, httpMethod)
 \description{
 Describe an existing Method resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_method.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_method/} for full documentation.
 }
 \keyword{internal}

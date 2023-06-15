@@ -14,6 +14,6 @@ servicequotas_get_service_quota(ServiceCode, QuotaCode)
 \description{
 Retrieves the applied quota value for the specified quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 
-See \url{https://paws-r.github.io/docs/servicequotas/get_service_quota.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/} for full documentation.
 }
 \keyword{internal}

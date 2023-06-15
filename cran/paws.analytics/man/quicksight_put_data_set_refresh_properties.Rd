@@ -20,6 +20,6 @@ quicksight_put_data_set_refresh_properties(
 \description{
 Creates or updates the dataset refresh properties for the dataset.
 
-See \url{https://paws-r.github.io/docs/quicksight/put_data_set_refresh_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_put_data_set_refresh_properties/} for full documentation.
 }
 \keyword{internal}

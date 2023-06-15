@@ -22,6 +22,6 @@ modification request. For more information, see \href{https://docs.aws.amazon.co
 \description{
 Modifies the configuration of your Reserved Instances, such as the Availability Zone, instance count, or instance type. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_reserved_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_reserved_instances/} for full documentation.
 }
 \keyword{internal}

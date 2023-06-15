@@ -12,6 +12,6 @@ schemas_delete_resource_policy(RegistryName = NULL)
 \description{
 Delete the resource-based policy attached to the specified registry.
 
-See \url{https://paws-r.github.io/docs/schemas/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

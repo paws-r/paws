@@ -27,6 +27,6 @@ FAILED_ACTIONS.}
 \description{
 Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working, and failed actions are triggered again.
 
-See \url{https://paws-r.github.io/docs/codepipeline/retry_stage_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_retry_stage_execution/} for full documentation.
 }
 \keyword{internal}

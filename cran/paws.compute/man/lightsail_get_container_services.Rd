@@ -16,6 +16,6 @@ the Amazon Web Services Region where the request is made.}
 \description{
 Returns information about one or more of your Amazon Lightsail container services.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_container_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_container_services/} for full documentation.
 }
 \keyword{internal}

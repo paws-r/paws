@@ -45,6 +45,6 @@ The default value is \code{NONE}.}
 \description{
 Update a listener.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/update_listener.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_update_listener/} for full documentation.
 }
 \keyword{internal}

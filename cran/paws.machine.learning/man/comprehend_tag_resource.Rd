@@ -17,6 +17,6 @@ a specific resource.}
 \description{
 Associates a specific tag with an Amazon Comprehend resource. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.
 
-See \url{https://paws-r.github.io/docs/comprehend/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_tag_resource/} for full documentation.
 }
 \keyword{internal}

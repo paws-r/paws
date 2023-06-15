@@ -61,6 +61,6 @@ recommendations for member accounts aren't included in the export.}
 \description{
 Exports optimization recommendations for Amazon ECS services on Fargate.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/export_ecs_service_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_export_ecs_service_recommendations/} for full documentation.
 }
 \keyword{internal}

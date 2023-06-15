@@ -14,6 +14,6 @@ workspaces_modify_workspace_state(WorkspaceId, WorkspaceState)
 \description{
 Sets the state of the specified WorkSpace.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_workspace_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_state/} for full documentation.
 }
 \keyword{internal}

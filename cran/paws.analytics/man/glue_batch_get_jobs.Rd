@@ -13,6 +13,6 @@ glue_batch_get_jobs(JobNames)
 \description{
 Returns a list of resource metadata for a given list of job names. After calling the \code{\link[=glue_list_jobs]{list_jobs}} operation, you can call this operation to access the data to which you have been granted permissions. This operation supports all IAM permissions, including permission conditions that uses tags.
 
-See \url{https://paws-r.github.io/docs/glue/batch_get_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_get_jobs/} for full documentation.
 }
 \keyword{internal}

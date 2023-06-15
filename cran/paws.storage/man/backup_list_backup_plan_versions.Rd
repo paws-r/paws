@@ -25,6 +25,6 @@ pointed to by the next token.}
 \description{
 Returns version metadata of your backup plans, including Amazon Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan names, and version IDs.
 
-See \url{https://paws-r.github.io/docs/backup/list_backup_plan_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_backup_plan_versions/} for full documentation.
 }
 \keyword{internal}

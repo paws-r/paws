@@ -23,6 +23,6 @@ of the managed permission that you want to add tags to. You must specify
 \description{
 Adds the specified tag keys and values to a resource share or managed permission. If you choose a resource share, the tags are attached to only the resource share, not to the resources that are in the resource share.
 
-See \url{https://paws-r.github.io/docs/ram/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_tag_resource/} for full documentation.
 }
 \keyword{internal}

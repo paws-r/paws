@@ -14,6 +14,6 @@ configuration for.}
 \description{
 Gets the capacity assignment configuration for a capacity reservation, if one exists.
 
-See \url{https://paws-r.github.io/docs/athena/get_capacity_assignment_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_capacity_assignment_configuration/} for full documentation.
 }
 \keyword{internal}

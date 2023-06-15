@@ -41,6 +41,6 @@ token creates only one Amazon Kendra experience.}
 \description{
 Creates an Amazon Kendra experience such as a search application. For more information on creating a search application experience, including using the Python and Java SDKs, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
 
-See \url{https://paws-r.github.io/docs/kendra/create_experience.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_create_experience/} for full documentation.
 }
 \keyword{internal}

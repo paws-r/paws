@@ -36,6 +36,6 @@ Services Region.}
 \description{
 Creates an \emph{action}. An action is a lineage tracking entity that represents an action or activity. For example, a model deployment or an HPO job. Generally, an action involves at least one input or output artifact. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_action/} for full documentation.
 }
 \keyword{internal}

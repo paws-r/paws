@@ -12,6 +12,6 @@ directoryservice_delete_log_subscription(DirectoryId)
 \description{
 Deletes the specified log subscription.
 
-See \url{https://paws-r.github.io/docs/directoryservice/delete_log_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_delete_log_subscription/} for full documentation.
 }
 \keyword{internal}

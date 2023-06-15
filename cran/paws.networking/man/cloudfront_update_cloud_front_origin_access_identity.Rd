@@ -21,6 +21,6 @@ identity's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Update an origin access identity.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_cloud_front_origin_access_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_cloud_front_origin_access_identity/} for full documentation.
 }
 \keyword{internal}

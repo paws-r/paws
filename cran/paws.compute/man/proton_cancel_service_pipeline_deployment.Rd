@@ -13,6 +13,6 @@ proton_cancel_service_pipeline_deployment(serviceName)
 \description{
 Attempts to cancel a service pipeline deployment on an \code{\link[=proton_update_service_pipeline]{update_service_pipeline}} action, if the deployment is \code{IN_PROGRESS}. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-pipeline-update.html}{Update a service pipeline} in the \emph{Proton User guide}.
 
-See \url{https://paws-r.github.io/docs/proton/cancel_service_pipeline_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_cancel_service_pipeline_deployment/} for full documentation.
 }
 \keyword{internal}

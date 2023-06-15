@@ -12,6 +12,6 @@ connectcampaignservice_get_connect_instance_config(connectInstanceId)
 \description{
 Get the specific Connect instance config.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/get_connect_instance_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_get_connect_instance_config/} for full documentation.
 }
 \keyword{internal}

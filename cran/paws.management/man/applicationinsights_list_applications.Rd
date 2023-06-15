@@ -16,6 +16,6 @@ value.}
 \description{
 Lists the IDs of the applications that you are monitoring.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/list_applications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_list_applications/} for full documentation.
 }
 \keyword{internal}

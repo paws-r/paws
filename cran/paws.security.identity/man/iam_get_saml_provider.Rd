@@ -17,6 +17,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Returns the SAML provider metadocument that was uploaded when the IAM SAML provider resource object was created or updated.
 
-See \url{https://paws-r.github.io/docs/iam/get_saml_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_saml_provider/} for full documentation.
 }
 \keyword{internal}

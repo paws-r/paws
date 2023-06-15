@@ -14,6 +14,6 @@ directory, or you will receive an OperationNotSupportedException error.}
 \description{
 Deregisters the specified directory. This operation is asynchronous and returns before the WorkSpace directory is deregistered. If any WorkSpaces are registered to this directory, you must remove them before you can deregister the directory.
 
-See \url{https://paws-r.github.io/docs/workspaces/deregister_workspace_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_deregister_workspace_directory/} for full documentation.
 }
 \keyword{internal}

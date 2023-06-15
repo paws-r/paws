@@ -55,6 +55,6 @@ example, \verb{--payload file://payload.json}.}
 \description{
 Configure your Lambda functions to stream response payloads back to clients. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-response-streaming.html}{Configuring a Lambda function to stream responses}.
 
-See \url{https://paws-r.github.io/docs/lambda/invoke_with_response_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_invoke_with_response_stream/} for full documentation.
 }
 \keyword{internal}

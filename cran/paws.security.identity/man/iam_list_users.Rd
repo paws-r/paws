@@ -38,6 +38,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the Amazon Web Services account. If there are none, the operation returns an empty list.
 
-See \url{https://paws-r.github.io/docs/iam/list_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_users/} for full documentation.
 }
 \keyword{internal}

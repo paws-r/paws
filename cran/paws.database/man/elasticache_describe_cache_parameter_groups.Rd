@@ -29,6 +29,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of cache parameter group descriptions. If a cache parameter group name is specified, the list contains only the descriptions for that group.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_cache_parameter_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_cache_parameter_groups/} for full documentation.
 }
 \keyword{internal}

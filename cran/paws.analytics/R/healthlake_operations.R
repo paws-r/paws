@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a Data Store that can ingest and export FHIR formatted data.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/create_fhir_datastore.html](https://paws-r.github.io/docs/healthlake/create_fhir_datastore.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_create_fhir_datastore/](https://www.paws-r-sdk.com/docs/healthlake_create_fhir_datastore/) for full documentation.
 #'
 #' @param DatastoreName The user generated name for the Data Store.
 #' @param DatastoreTypeVersion &#91;required&#93; The FHIR version of the Data Store. The only supported version is R4.
@@ -19,18 +19,20 @@ NULL
 #' from Synthea.
 #' @param ClientToken Optional user provided token used for ensuring idempotency.
 #' @param Tags Resource tags that are applied to a Data Store when it is created.
+#' @param IdentityProviderConfiguration The configuration of the identity provider that you want to use for your
+#' Data Store.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_create_fhir_datastore
-healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL) {
+healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL, IdentityProviderConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFHIRDatastore",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags)
+  input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration)
   output <- .healthlake$create_fhir_datastore_output()
   config <- get_config()
   svc <- .healthlake$service(config)
@@ -45,14 +47,14 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' @description
 #' Deletes a Data Store.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/delete_fhir_datastore.html](https://paws-r.github.io/docs/healthlake/delete_fhir_datastore.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_delete_fhir_datastore/](https://www.paws-r-sdk.com/docs/healthlake_delete_fhir_datastore/) for full documentation.
 #'
-#' @param DatastoreId The AWS-generated ID for the Data Store to be deleted.
+#' @param DatastoreId &#91;required&#93; The AWS-generated ID for the Data Store to be deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_delete_fhir_datastore
-healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
+healthlake_delete_fhir_datastore <- function(DatastoreId) {
   op <- new_operation(
     name = "DeleteFHIRDatastore",
     http_method = "POST",
@@ -76,15 +78,14 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #' @description
 #' Gets the properties associated with the FHIR Data Store, including the Data Store ID, Data Store ARN, Data Store name, Data Store status, created at, Data Store type version, and Data Store endpoint.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/describe_fhir_datastore.html](https://paws-r.github.io/docs/healthlake/describe_fhir_datastore.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_datastore/](https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_datastore/) for full documentation.
 #'
-#' @param DatastoreId The AWS-generated Data Store id. This is part of the
-#' ‘CreateFHIRDatastore’ output.
+#' @param DatastoreId &#91;required&#93; The AWS-generated Data Store ID.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_describe_fhir_datastore
-healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
+healthlake_describe_fhir_datastore <- function(DatastoreId) {
   op <- new_operation(
     name = "DescribeFHIRDatastore",
     http_method = "POST",
@@ -107,7 +108,7 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #' @description
 #' Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/describe_fhir_export_job.html](https://paws-r.github.io/docs/healthlake/describe_fhir_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_export_job/](https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_export_job/) for full documentation.
 #'
 #' @param DatastoreId &#91;required&#93; The AWS generated ID for the Data Store from which files are being
 #' exported from for an export job.
@@ -139,7 +140,7 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #' @description
 #' Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/describe_fhir_import_job.html](https://paws-r.github.io/docs/healthlake/describe_fhir_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_import_job/](https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_import_job/) for full documentation.
 #'
 #' @param DatastoreId &#91;required&#93; The AWS-generated ID of the Data Store.
 #' @param JobId &#91;required&#93; The AWS-generated job ID.
@@ -170,7 +171,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #' @description
 #' Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/list_fhir_datastores.html](https://paws-r.github.io/docs/healthlake/list_fhir_datastores.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_fhir_datastores/](https://www.paws-r-sdk.com/docs/healthlake_list_fhir_datastores/) for full documentation.
 #'
 #' @param Filter Lists all filters associated with a FHIR Data Store request.
 #' @param NextToken Fetches the next page of Data Stores when results are paginated.
@@ -202,7 +203,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #' @description
 #' Lists all FHIR export jobs associated with an account and their statuses.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/list_fhir_export_jobs.html](https://paws-r.github.io/docs/healthlake/list_fhir_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_fhir_export_jobs/](https://www.paws-r-sdk.com/docs/healthlake_list_fhir_export_jobs/) for full documentation.
 #'
 #' @param DatastoreId &#91;required&#93; This parameter limits the response to the export job with the specified
 #' Data Store ID.
@@ -244,7 +245,7 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #' @description
 #' Lists all FHIR import jobs associated with an account and their statuses.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/list_fhir_import_jobs.html](https://paws-r.github.io/docs/healthlake/list_fhir_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_fhir_import_jobs/](https://www.paws-r-sdk.com/docs/healthlake_list_fhir_import_jobs/) for full documentation.
 #'
 #' @param DatastoreId &#91;required&#93; This parameter limits the response to the import job with the specified
 #' Data Store ID.
@@ -286,7 +287,7 @@ healthlake_list_fhir_import_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #' @description
 #' Returns a list of all existing tags associated with a Data Store.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/list_tags_for_resource.html](https://paws-r.github.io/docs/healthlake/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/healthlake_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name(ARN) of the Data Store for which tags are being
 #' added.
@@ -316,7 +317,7 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Begins a FHIR export job.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/start_fhir_export_job.html](https://paws-r.github.io/docs/healthlake/start_fhir_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_start_fhir_export_job/](https://www.paws-r-sdk.com/docs/healthlake_start_fhir_export_job/) for full documentation.
 #'
 #' @param JobName The user generated name for an export job.
 #' @param OutputDataConfig &#91;required&#93; The output data configuration that was supplied when the export job was
@@ -351,7 +352,7 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @description
 #' Begins a FHIR Import job.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/start_fhir_import_job.html](https://paws-r.github.io/docs/healthlake/start_fhir_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_start_fhir_import_job/](https://www.paws-r-sdk.com/docs/healthlake_start_fhir_import_job/) for full documentation.
 #'
 #' @param JobName The name of the FHIR Import job in the StartFHIRImport job request.
 #' @param InputDataConfig &#91;required&#93; The input properties of the FHIR Import job in the StartFHIRImport job
@@ -382,12 +383,12 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
 }
 .healthlake$operations$start_fhir_import_job <- healthlake_start_fhir_import_job
 
-#' Adds a user specifed key and value tag to a Data Store
+#' Adds a user specified key and value tag to a Data Store
 #'
 #' @description
-#' Adds a user specifed key and value tag to a Data Store.
+#' Adds a user specified key and value tag to a Data Store.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/tag_resource.html](https://paws-r.github.io/docs/healthlake/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_tag_resource/](https://www.paws-r-sdk.com/docs/healthlake_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name(ARN)that gives Amazon HealthLake access to the
 #' Data Store which tags are being added to.
@@ -418,7 +419,7 @@ healthlake_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes tags from a Data Store.
 #'
-#' See [https://paws-r.github.io/docs/healthlake/untag_resource.html](https://paws-r.github.io/docs/healthlake/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/healthlake_untag_resource/](https://www.paws-r-sdk.com/docs/healthlake_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; "The Amazon Resource Name(ARN) of the Data Store for which tags are
 #' being removed

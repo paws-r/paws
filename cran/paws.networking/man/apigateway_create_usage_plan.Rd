@@ -32,6 +32,6 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 \description{
 Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_usage_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_usage_plan/} for full documentation.
 }
 \keyword{internal}

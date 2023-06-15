@@ -12,6 +12,6 @@ sagemaker_delete_monitoring_schedule(MonitoringScheduleName)
 \description{
 Deletes a monitoring schedule. Also stops the schedule had not already been stopped. This does not delete the job execution history of the monitoring schedule.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_monitoring_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_monitoring_schedule/} for full documentation.
 }
 \keyword{internal}

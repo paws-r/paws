@@ -16,6 +16,6 @@ URLs cannot contain the ARN.}
 \description{
 Retrieves content, including a pre-signed URL to download the content.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/get_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_get_content/} for full documentation.
 }
 \keyword{internal}

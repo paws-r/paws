@@ -43,6 +43,6 @@ required and not secret. For more information, see \href{https://docs.aws.amazon
 \description{
 Creates a new custom action that can be used in all pipelines associated with the Amazon Web Services account. Only used for custom actions.
 
-See \url{https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_create_custom_action_type/} for full documentation.
 }
 \keyword{internal}

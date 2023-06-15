@@ -12,6 +12,6 @@ glue_get_classifier(Name)
 \description{
 Retrieve a classifier by name.
 
-See \url{https://paws-r.github.io/docs/glue/get_classifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_classifier/} for full documentation.
 }
 \keyword{internal}

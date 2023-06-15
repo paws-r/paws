@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Allows or restricts mirroring network services.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_traffic_mirror_filter_network_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_traffic_mirror_filter_network_services/} for full documentation.
 }
 \keyword{internal}

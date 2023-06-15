@@ -13,6 +13,6 @@ servicediscovery_get_operation(OperationId)
 \description{
 Gets information about any operation that returns an operation ID in the response, such as a \code{\link[=servicediscovery_create_service]{create_service}} request.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/get_operation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/} for full documentation.
 }
 \keyword{internal}

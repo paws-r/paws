@@ -79,6 +79,6 @@ data available.}
 \description{
 Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/describe_alarms.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarms/} for full documentation.
 }
 \keyword{internal}

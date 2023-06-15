@@ -33,6 +33,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Download an Amazon Web Services-provided sample configuration file to be used with the customer gateway device specified for your Site-to-Site VPN connection.
 
-See \url{https://paws-r.github.io/docs/ec2/get_vpn_connection_device_sample_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_vpn_connection_device_sample_configuration/} for full documentation.
 }
 \keyword{internal}

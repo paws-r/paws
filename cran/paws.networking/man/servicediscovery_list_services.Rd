@@ -40,6 +40,6 @@ to be returned by \code{\link[=servicediscovery_list_services]{list_services}}.}
 \description{
 Lists summary information for all the services that are associated with one or more specified namespaces.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/list_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_list_services/} for full documentation.
 }
 \keyword{internal}

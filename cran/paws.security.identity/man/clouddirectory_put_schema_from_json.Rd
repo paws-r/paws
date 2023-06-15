@@ -14,6 +14,6 @@ clouddirectory_put_schema_from_json(SchemaArn, Document)
 \description{
 Allows a schema to be updated using JSON upload. Only available for development schemas. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json}{JSON Schema Format} for more information.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/put_schema_from_json.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_put_schema_from_json/} for full documentation.
 }
 \keyword{internal}

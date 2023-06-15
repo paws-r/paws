@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates the specified application with the specified fleet. This is only supported for Elastic fleets.
 #'
-#' See [https://paws-r.github.io/docs/appstream/associate_application_fleet.html](https://paws-r.github.io/docs/appstream/associate_application_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_associate_application_fleet/](https://www.paws-r-sdk.com/docs/appstream_associate_application_fleet/) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param ApplicationArn &#91;required&#93; The ARN of the application.
@@ -38,7 +38,7 @@ appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
 #' @description
 #' Associates an application to entitle.
 #'
-#' See [https://paws-r.github.io/docs/appstream/associate_application_to_entitlement.html](https://paws-r.github.io/docs/appstream/associate_application_to_entitlement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_associate_application_to_entitlement/](https://www.paws-r-sdk.com/docs/appstream_associate_application_to_entitlement/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack.
 #' @param EntitlementName &#91;required&#93; The name of the entitlement.
@@ -69,7 +69,7 @@ appstream_associate_application_to_entitlement <- function(StackName, Entitlemen
 #' @description
 #' Associates the specified fleet with the specified stack.
 #'
-#' See [https://paws-r.github.io/docs/appstream/associate_fleet.html](https://paws-r.github.io/docs/appstream/associate_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_associate_fleet/](https://www.paws-r-sdk.com/docs/appstream_associate_fleet/) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param StackName &#91;required&#93; The name of the stack.
@@ -99,7 +99,7 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #' @description
 #' Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.
 #'
-#' See [https://paws-r.github.io/docs/appstream/batch_associate_user_stack.html](https://paws-r.github.io/docs/appstream/batch_associate_user_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_batch_associate_user_stack/](https://www.paws-r-sdk.com/docs/appstream_batch_associate_user_stack/) for full documentation.
 #'
 #' @param UserStackAssociations &#91;required&#93; The list of UserStackAssociation objects.
 #'
@@ -128,7 +128,7 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #' @description
 #' Disassociates the specified users from the specified stacks.
 #'
-#' See [https://paws-r.github.io/docs/appstream/batch_disassociate_user_stack.html](https://paws-r.github.io/docs/appstream/batch_disassociate_user_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_batch_disassociate_user_stack/](https://www.paws-r-sdk.com/docs/appstream_batch_disassociate_user_stack/) for full documentation.
 #'
 #' @param UserStackAssociations &#91;required&#93; The list of UserStackAssociation objects.
 #'
@@ -158,7 +158,7 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #' @description
 #' Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
 #'
-#' See [https://paws-r.github.io/docs/appstream/copy_image.html](https://paws-r.github.io/docs/appstream/copy_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_copy_image/](https://www.paws-r-sdk.com/docs/appstream_copy_image/) for full documentation.
 #'
 #' @param SourceImageName &#91;required&#93; The name of the image to copy.
 #' @param DestinationImageName &#91;required&#93; The name that the image will have when it is copied to the destination.
@@ -192,7 +192,7 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' @description
 #' Creates an app block.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_app_block.html](https://paws-r.github.io/docs/appstream/create_app_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_app_block/](https://www.paws-r-sdk.com/docs/appstream_create_app_block/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the app block.
 #' @param Description The description of the app block.
@@ -226,7 +226,7 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
 #' @description
 #' Creates an application.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_application.html](https://paws-r.github.io/docs/appstream/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_application/](https://www.paws-r-sdk.com/docs/appstream_create_application/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the application. This name is visible to users when display
 #' name is not specified.
@@ -269,7 +269,7 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #' @description
 #' Creates a Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_directory_config.html](https://paws-r.github.io/docs/appstream/create_directory_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_directory_config/](https://www.paws-r-sdk.com/docs/appstream_create_directory_config/) for full documentation.
 #'
 #' @param DirectoryName &#91;required&#93; The fully qualified name of the directory (for example,
 #' corp.example.com).
@@ -313,7 +313,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @description
 #' Creates a new entitlement. Entitlements control access to specific applications within a stack, based on user attributes. Entitlements apply to SAML 2.0 federated user identities. Amazon AppStream 2.0 user pool and streaming URL users are entitled to all applications in a stack. Entitlements don't apply to the desktop stream view application, or to applications managed by a dynamic app provider using the Dynamic Application Framework.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_entitlement.html](https://paws-r.github.io/docs/appstream/create_entitlement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_entitlement/](https://www.paws-r-sdk.com/docs/appstream_create_entitlement/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the entitlement.
 #' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
@@ -346,7 +346,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @description
 #' Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_fleet.html](https://paws-r.github.io/docs/appstream/create_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_fleet/](https://www.paws-r-sdk.com/docs/appstream_create_fleet/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A unique name for the fleet.
 #' @param ImageName The name of the image used to create the fleet.
@@ -564,7 +564,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' @description
 #' Creates an image builder. An image builder is a virtual machine that is used to create an image.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_image_builder.html](https://paws-r.github.io/docs/appstream/create_image_builder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_image_builder/](https://www.paws-r-sdk.com/docs/appstream_create_image_builder/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A unique name for the image builder.
 #' @param ImageName The name of the image used to create the image builder.
@@ -701,7 +701,7 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
 #' @description
 #' Creates a URL to start an image builder streaming session.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_image_builder_streaming_url.html](https://paws-r.github.io/docs/appstream/create_image_builder_streaming_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_image_builder_streaming_url/](https://www.paws-r-sdk.com/docs/appstream_create_image_builder_streaming_url/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
 #' @param Validity The time that the streaming URL will be valid, in seconds. Specify a
@@ -732,7 +732,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @description
 #' Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_stack.html](https://paws-r.github.io/docs/appstream/create_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_stack/](https://www.paws-r-sdk.com/docs/appstream_create_stack/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the stack.
 #' @param Description The description to display.
@@ -795,7 +795,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' @description
 #' Creates a temporary URL to start an AppStream 2.0 streaming session for the specified user. A streaming URL enables application streaming to be tested without user setup.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_streaming_url.html](https://paws-r.github.io/docs/appstream/create_streaming_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_streaming_url/](https://www.paws-r-sdk.com/docs/appstream_create_streaming_url/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack.
 #' @param FleetName &#91;required&#93; The name of the fleet.
@@ -837,7 +837,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #' @description
 #' Creates a new image with the latest Windows operating system updates, driver updates, and AppStream 2.0 agent software.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_updated_image.html](https://paws-r.github.io/docs/appstream/create_updated_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_updated_image/](https://www.paws-r-sdk.com/docs/appstream_create_updated_image/) for full documentation.
 #'
 #' @param existingImageName &#91;required&#93; The name of the image to update.
 #' @param newImageName &#91;required&#93; The name of the new image. The name must be unique within the AWS
@@ -890,7 +890,7 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
 #' @description
 #' Creates a usage report subscription. Usage reports are generated daily.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_usage_report_subscription.html](https://paws-r.github.io/docs/appstream/create_usage_report_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_usage_report_subscription/](https://www.paws-r-sdk.com/docs/appstream_create_usage_report_subscription/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -917,7 +917,7 @@ appstream_create_usage_report_subscription <- function() {
 #' @description
 #' Creates a new user in the user pool.
 #'
-#' See [https://paws-r.github.io/docs/appstream/create_user.html](https://paws-r.github.io/docs/appstream/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_user/](https://www.paws-r-sdk.com/docs/appstream_create_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
@@ -962,7 +962,7 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
 #' @description
 #' Deletes an app block.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_app_block.html](https://paws-r.github.io/docs/appstream/delete_app_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_app_block/](https://www.paws-r-sdk.com/docs/appstream_delete_app_block/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the app block.
 #'
@@ -991,7 +991,7 @@ appstream_delete_app_block <- function(Name) {
 #' @description
 #' Deletes an application.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_application.html](https://paws-r.github.io/docs/appstream/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_application/](https://www.paws-r-sdk.com/docs/appstream_delete_application/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the application.
 #'
@@ -1020,7 +1020,7 @@ appstream_delete_application <- function(Name) {
 #' @description
 #' Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_directory_config.html](https://paws-r.github.io/docs/appstream/delete_directory_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_directory_config/](https://www.paws-r-sdk.com/docs/appstream_delete_directory_config/) for full documentation.
 #'
 #' @param DirectoryName &#91;required&#93; The name of the directory configuration.
 #'
@@ -1049,7 +1049,7 @@ appstream_delete_directory_config <- function(DirectoryName) {
 #' @description
 #' Deletes the specified entitlement.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_entitlement.html](https://paws-r.github.io/docs/appstream/delete_entitlement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_entitlement/](https://www.paws-r-sdk.com/docs/appstream_delete_entitlement/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the entitlement.
 #' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
@@ -1079,7 +1079,7 @@ appstream_delete_entitlement <- function(Name, StackName) {
 #' @description
 #' Deletes the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_fleet.html](https://paws-r.github.io/docs/appstream/delete_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_fleet/](https://www.paws-r-sdk.com/docs/appstream_delete_fleet/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
 #'
@@ -1108,7 +1108,7 @@ appstream_delete_fleet <- function(Name) {
 #' @description
 #' Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_image.html](https://paws-r.github.io/docs/appstream/delete_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_image/](https://www.paws-r-sdk.com/docs/appstream_delete_image/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image.
 #'
@@ -1137,7 +1137,7 @@ appstream_delete_image <- function(Name) {
 #' @description
 #' Deletes the specified image builder and releases the capacity.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_image_builder.html](https://paws-r.github.io/docs/appstream/delete_image_builder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_image_builder/](https://www.paws-r-sdk.com/docs/appstream_delete_image_builder/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
 #'
@@ -1166,7 +1166,7 @@ appstream_delete_image_builder <- function(Name) {
 #' @description
 #' Deletes permissions for the specified private image. After you delete permissions for an image, AWS accounts to which you previously granted these permissions can no longer use the image.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_image_permissions.html](https://paws-r.github.io/docs/appstream/delete_image_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_image_permissions/](https://www.paws-r-sdk.com/docs/appstream_delete_image_permissions/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the private image.
 #' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which to delete image
@@ -1197,7 +1197,7 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
 #' @description
 #' Deletes the specified stack. After the stack is deleted, the application streaming environment provided by the stack is no longer available to users. Also, any reservations made for application streaming sessions for the stack are released.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_stack.html](https://paws-r.github.io/docs/appstream/delete_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_stack/](https://www.paws-r-sdk.com/docs/appstream_delete_stack/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the stack.
 #'
@@ -1226,7 +1226,7 @@ appstream_delete_stack <- function(Name) {
 #' @description
 #' Disables usage report generation.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_usage_report_subscription.html](https://paws-r.github.io/docs/appstream/delete_usage_report_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_usage_report_subscription/](https://www.paws-r-sdk.com/docs/appstream_delete_usage_report_subscription/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1253,7 +1253,7 @@ appstream_delete_usage_report_subscription <- function() {
 #' @description
 #' Deletes a user from the user pool.
 #'
-#' See [https://paws-r.github.io/docs/appstream/delete_user.html](https://paws-r.github.io/docs/appstream/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_user/](https://www.paws-r-sdk.com/docs/appstream_delete_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
@@ -1285,7 +1285,7 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 #' @description
 #' Retrieves a list that describes one or more app blocks.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_app_blocks.html](https://paws-r.github.io/docs/appstream/describe_app_blocks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_app_blocks/](https://www.paws-r-sdk.com/docs/appstream_describe_app_blocks/) for full documentation.
 #'
 #' @param Arns The ARNs of the app blocks.
 #' @param NextToken The pagination token used to retrieve the next page of results for this
@@ -1318,7 +1318,7 @@ appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResu
 #' @description
 #' Retrieves a list that describes one or more application fleet associations. Either ApplicationArn or FleetName must be specified.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_application_fleet_associations.html](https://paws-r.github.io/docs/appstream/describe_application_fleet_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_application_fleet_associations/](https://www.paws-r-sdk.com/docs/appstream_describe_application_fleet_associations/) for full documentation.
 #'
 #' @param FleetName The name of the fleet.
 #' @param ApplicationArn The ARN of the application.
@@ -1351,7 +1351,7 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
 #' @description
 #' Retrieves a list that describes one or more applications.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_applications.html](https://paws-r.github.io/docs/appstream/describe_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_applications/](https://www.paws-r-sdk.com/docs/appstream_describe_applications/) for full documentation.
 #'
 #' @param Arns The ARNs for the applications.
 #' @param NextToken The pagination token used to retrieve the next page of results for this
@@ -1384,7 +1384,7 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
 #' @description
 #' Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_directory_configs.html](https://paws-r.github.io/docs/appstream/describe_directory_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_directory_configs/](https://www.paws-r-sdk.com/docs/appstream_describe_directory_configs/) for full documentation.
 #'
 #' @param DirectoryNames The directory names.
 #' @param MaxResults The maximum size of each page of results.
@@ -1416,7 +1416,7 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
 #' @description
 #' Retrieves a list that describes one of more entitlements.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_entitlements.html](https://paws-r.github.io/docs/appstream/describe_entitlements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_entitlements/](https://www.paws-r-sdk.com/docs/appstream_describe_entitlements/) for full documentation.
 #'
 #' @param Name The name of the entitlement.
 #' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
@@ -1450,7 +1450,7 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #' @description
 #' Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_fleets.html](https://paws-r.github.io/docs/appstream/describe_fleets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_fleets/](https://www.paws-r-sdk.com/docs/appstream_describe_fleets/) for full documentation.
 #'
 #' @param Names The names of the fleets to describe.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -1482,7 +1482,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves a list that describes one or more specified image builders, if the image builder names are provided. Otherwise, all image builders in the account are described.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_image_builders.html](https://paws-r.github.io/docs/appstream/describe_image_builders.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_image_builders/](https://www.paws-r-sdk.com/docs/appstream_describe_image_builders/) for full documentation.
 #'
 #' @param Names The names of the image builders to describe.
 #' @param MaxResults The maximum size of each page of results.
@@ -1515,7 +1515,7 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #' @description
 #' Retrieves a list that describes the permissions for shared AWS account IDs on a private image that you own.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_image_permissions.html](https://paws-r.github.io/docs/appstream/describe_image_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_image_permissions/](https://www.paws-r-sdk.com/docs/appstream_describe_image_permissions/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the private image for which to describe permissions. The
 #' image must be one that you own.
@@ -1551,7 +1551,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #' @description
 #' Retrieves a list that describes one or more specified images, if the image names or image ARNs are provided. Otherwise, all images in the account are described.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_images.html](https://paws-r.github.io/docs/appstream/describe_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_images/](https://www.paws-r-sdk.com/docs/appstream_describe_images/) for full documentation.
 #'
 #' @param Names The names of the public or private images to describe.
 #' @param Arns The ARNs of the public, private, and shared images to describe.
@@ -1586,7 +1586,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @description
 #' Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_sessions.html](https://paws-r.github.io/docs/appstream/describe_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_sessions/](https://www.paws-r-sdk.com/docs/appstream_describe_sessions/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack. This value is case-sensitive.
 #' @param FleetName &#91;required&#93; The name of the fleet. This value is case-sensitive.
@@ -1626,7 +1626,7 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #' @description
 #' Retrieves a list that describes one or more specified stacks, if the stack names are provided. Otherwise, all stacks in the account are described.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_stacks.html](https://paws-r.github.io/docs/appstream/describe_stacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_stacks/](https://www.paws-r-sdk.com/docs/appstream_describe_stacks/) for full documentation.
 #'
 #' @param Names The names of the stacks to describe.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -1657,7 +1657,7 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 #' @description
 #' Retrieves a list that describes one or more usage report subscriptions.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_usage_report_subscriptions.html](https://paws-r.github.io/docs/appstream/describe_usage_report_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_usage_report_subscriptions/](https://www.paws-r-sdk.com/docs/appstream_describe_usage_report_subscriptions/) for full documentation.
 #'
 #' @param MaxResults The maximum size of each page of results.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -1688,7 +1688,7 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' @description
 #' Retrieves a list that describes the UserStackAssociation objects. You must specify either or both of the following:
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_user_stack_associations.html](https://paws-r.github.io/docs/appstream/describe_user_stack_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_user_stack_associations/](https://www.paws-r-sdk.com/docs/appstream_describe_user_stack_associations/) for full documentation.
 #'
 #' @param StackName The name of the stack that is associated with the user.
 #' @param UserName The email address of the user who is associated with the stack.
@@ -1726,7 +1726,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #' @description
 #' Retrieves a list that describes one or more specified users in the user pool.
 #'
-#' See [https://paws-r.github.io/docs/appstream/describe_users.html](https://paws-r.github.io/docs/appstream/describe_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_users/](https://www.paws-r-sdk.com/docs/appstream_describe_users/) for full documentation.
 #'
 #' @param AuthenticationType &#91;required&#93; The authentication type for the users in the user pool to describe. You
 #' must specify USERPOOL.
@@ -1759,7 +1759,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' @description
 #' Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
 #'
-#' See [https://paws-r.github.io/docs/appstream/disable_user.html](https://paws-r.github.io/docs/appstream/disable_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_disable_user/](https://www.paws-r-sdk.com/docs/appstream_disable_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
@@ -1791,7 +1791,7 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
 #' @description
 #' Disassociates the specified application from the fleet.
 #'
-#' See [https://paws-r.github.io/docs/appstream/disassociate_application_fleet.html](https://paws-r.github.io/docs/appstream/disassociate_application_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_disassociate_application_fleet/](https://www.paws-r-sdk.com/docs/appstream_disassociate_application_fleet/) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param ApplicationArn &#91;required&#93; The ARN of the application.
@@ -1821,7 +1821,7 @@ appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) 
 #' @description
 #' Deletes the specified application from the specified entitlement.
 #'
-#' See [https://paws-r.github.io/docs/appstream/disassociate_application_from_entitlement.html](https://paws-r.github.io/docs/appstream/disassociate_application_from_entitlement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_disassociate_application_from_entitlement/](https://www.paws-r-sdk.com/docs/appstream_disassociate_application_from_entitlement/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
 #' @param EntitlementName &#91;required&#93; The name of the entitlement.
@@ -1852,7 +1852,7 @@ appstream_disassociate_application_from_entitlement <- function(StackName, Entit
 #' @description
 #' Disassociates the specified fleet from the specified stack.
 #'
-#' See [https://paws-r.github.io/docs/appstream/disassociate_fleet.html](https://paws-r.github.io/docs/appstream/disassociate_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_disassociate_fleet/](https://www.paws-r-sdk.com/docs/appstream_disassociate_fleet/) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param StackName &#91;required&#93; The name of the stack.
@@ -1882,7 +1882,7 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' @description
 #' Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open applications from the stacks to which they are assigned.
 #'
-#' See [https://paws-r.github.io/docs/appstream/enable_user.html](https://paws-r.github.io/docs/appstream/enable_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_enable_user/](https://www.paws-r-sdk.com/docs/appstream_enable_user/) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The email address of the user.
 #' 
@@ -1917,7 +1917,7 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
 #' @description
 #' Immediately stops the specified streaming session.
 #'
-#' See [https://paws-r.github.io/docs/appstream/expire_session.html](https://paws-r.github.io/docs/appstream/expire_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_expire_session/](https://www.paws-r-sdk.com/docs/appstream_expire_session/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The identifier of the streaming session.
 #'
@@ -1947,7 +1947,7 @@ appstream_expire_session <- function(SessionId) {
 #' @description
 #' Retrieves the name of the fleet that is associated with the specified stack.
 #'
-#' See [https://paws-r.github.io/docs/appstream/list_associated_fleets.html](https://paws-r.github.io/docs/appstream/list_associated_fleets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_list_associated_fleets/](https://www.paws-r-sdk.com/docs/appstream_list_associated_fleets/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -1979,7 +1979,7 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
 #' @description
 #' Retrieves the name of the stack with which the specified fleet is associated.
 #'
-#' See [https://paws-r.github.io/docs/appstream/list_associated_stacks.html](https://paws-r.github.io/docs/appstream/list_associated_stacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_list_associated_stacks/](https://www.paws-r-sdk.com/docs/appstream_list_associated_stacks/) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; The name of the fleet.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -2010,7 +2010,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 #' @description
 #' Retrieves a list of entitled applications.
 #'
-#' See [https://paws-r.github.io/docs/appstream/list_entitled_applications.html](https://paws-r.github.io/docs/appstream/list_entitled_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_list_entitled_applications/](https://www.paws-r-sdk.com/docs/appstream_list_entitled_applications/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
 #' @param EntitlementName &#91;required&#93; The name of the entitlement.
@@ -2043,7 +2043,7 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
 #' @description
 #' Retrieves a list of all tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 #'
-#' See [https://paws-r.github.io/docs/appstream/list_tags_for_resource.html](https://paws-r.github.io/docs/appstream/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/appstream_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -2072,7 +2072,7 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Starts the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/appstream/start_fleet.html](https://paws-r.github.io/docs/appstream/start_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_start_fleet/](https://www.paws-r-sdk.com/docs/appstream_start_fleet/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
 #'
@@ -2101,7 +2101,7 @@ appstream_start_fleet <- function(Name) {
 #' @description
 #' Starts the specified image builder.
 #'
-#' See [https://paws-r.github.io/docs/appstream/start_image_builder.html](https://paws-r.github.io/docs/appstream/start_image_builder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_start_image_builder/](https://www.paws-r-sdk.com/docs/appstream_start_image_builder/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
 #' @param AppstreamAgentVersion The version of the AppStream 2.0 agent to use for this image builder. To
@@ -2132,7 +2132,7 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
 #' @description
 #' Stops the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/appstream/stop_fleet.html](https://paws-r.github.io/docs/appstream/stop_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_stop_fleet/](https://www.paws-r-sdk.com/docs/appstream_stop_fleet/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the fleet.
 #'
@@ -2161,7 +2161,7 @@ appstream_stop_fleet <- function(Name) {
 #' @description
 #' Stops the specified image builder.
 #'
-#' See [https://paws-r.github.io/docs/appstream/stop_image_builder.html](https://paws-r.github.io/docs/appstream/stop_image_builder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_stop_image_builder/](https://www.paws-r-sdk.com/docs/appstream_stop_image_builder/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image builder.
 #'
@@ -2190,7 +2190,7 @@ appstream_stop_image_builder <- function(Name) {
 #' @description
 #' Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 #'
-#' See [https://paws-r.github.io/docs/appstream/tag_resource.html](https://paws-r.github.io/docs/appstream/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_tag_resource/](https://www.paws-r-sdk.com/docs/appstream_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags to associate. A tag is a key-value pair, and the value is
@@ -2229,7 +2229,7 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Disassociates one or more specified tags from the specified AppStream 2.0 resource.
 #'
-#' See [https://paws-r.github.io/docs/appstream/untag_resource.html](https://paws-r.github.io/docs/appstream/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_untag_resource/](https://www.paws-r-sdk.com/docs/appstream_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys for the tags to disassociate.
@@ -2259,7 +2259,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the specified application.
 #'
-#' See [https://paws-r.github.io/docs/appstream/update_application.html](https://paws-r.github.io/docs/appstream/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_application/](https://www.paws-r-sdk.com/docs/appstream_update_application/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the application. This name is visible to users when display
 #' name is not specified.
@@ -2298,7 +2298,7 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #' @description
 #' Updates the specified Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 #'
-#' See [https://paws-r.github.io/docs/appstream/update_directory_config.html](https://paws-r.github.io/docs/appstream/update_directory_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_directory_config/](https://www.paws-r-sdk.com/docs/appstream_update_directory_config/) for full documentation.
 #'
 #' @param DirectoryName &#91;required&#93; The name of the Directory Config object.
 #' @param OrganizationalUnitDistinguishedNames The distinguished names of the organizational units for computer
@@ -2341,7 +2341,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @description
 #' Updates the specified entitlement.
 #'
-#' See [https://paws-r.github.io/docs/appstream/update_entitlement.html](https://paws-r.github.io/docs/appstream/update_entitlement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_entitlement/](https://www.paws-r-sdk.com/docs/appstream_update_entitlement/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the entitlement.
 #' @param StackName &#91;required&#93; The name of the stack with which the entitlement is associated.
@@ -2374,7 +2374,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @description
 #' Updates the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/appstream/update_fleet.html](https://paws-r.github.io/docs/appstream/update_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_fleet/](https://www.paws-r-sdk.com/docs/appstream_update_fleet/) for full documentation.
 #'
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
@@ -2564,7 +2564,7 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
 #' @description
 #' Adds or updates permissions for the specified private image.
 #'
-#' See [https://paws-r.github.io/docs/appstream/update_image_permissions.html](https://paws-r.github.io/docs/appstream/update_image_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_image_permissions/](https://www.paws-r-sdk.com/docs/appstream_update_image_permissions/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the private image.
 #' @param SharedAccountId &#91;required&#93; The 12-digit identifier of the AWS account for which you want add or
@@ -2596,7 +2596,7 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @description
 #' Updates the specified fields for the specified stack.
 #'
-#' See [https://paws-r.github.io/docs/appstream/update_stack.html](https://paws-r.github.io/docs/appstream/update_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_stack/](https://www.paws-r-sdk.com/docs/appstream_update_stack/) for full documentation.
 #'
 #' @param DisplayName The stack name to display.
 #' @param Description The description to display.

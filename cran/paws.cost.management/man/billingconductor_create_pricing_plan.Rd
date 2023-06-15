@@ -31,6 +31,6 @@ pricing plan.}
 \description{
 Creates a pricing plan that is used for computing Amazon Web Services charges for billing groups.
 
-See \url{https://paws-r.github.io/docs/billingconductor/create_pricing_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_plan/} for full documentation.
 }
 \keyword{internal}

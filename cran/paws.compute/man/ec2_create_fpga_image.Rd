@@ -38,6 +38,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP).
 
-See \url{https://paws-r.github.io/docs/ec2/create_fpga_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_fpga_image/} for full documentation.
 }
 \keyword{internal}

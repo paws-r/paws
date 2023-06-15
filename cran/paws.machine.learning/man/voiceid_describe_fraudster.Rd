@@ -14,6 +14,6 @@ voiceid_describe_fraudster(DomainId, FraudsterId)
 \description{
 Describes the specified fraudster.
 
-See \url{https://paws-r.github.io/docs/voiceid/describe_fraudster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_describe_fraudster/} for full documentation.
 }
 \keyword{internal}

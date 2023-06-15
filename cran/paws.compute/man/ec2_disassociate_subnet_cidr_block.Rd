@@ -12,6 +12,6 @@ ec2_disassociate_subnet_cidr_block(AssociationId)
 \description{
 Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_subnet_cidr_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_subnet_cidr_block/} for full documentation.
 }
 \keyword{internal}

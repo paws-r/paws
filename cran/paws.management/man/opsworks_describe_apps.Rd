@@ -19,6 +19,6 @@ of every app.}
 \description{
 Requests a description of a specified set of apps.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_apps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_apps/} for full documentation.
 }
 \keyword{internal}

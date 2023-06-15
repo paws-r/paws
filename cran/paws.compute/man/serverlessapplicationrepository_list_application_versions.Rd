@@ -20,6 +20,6 @@ serverlessapplicationrepository_list_application_versions(
 \description{
 Lists versions for the specified application.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_application_versions/} for full documentation.
 }
 \keyword{internal}

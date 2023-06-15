@@ -14,6 +14,6 @@ finspacedata_get_data_view(dataViewId, datasetId)
 \description{
 Gets information about a Dataview.
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_data_view.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_data_view/} for full documentation.
 }
 \keyword{internal}

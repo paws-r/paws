@@ -14,6 +14,6 @@ delegated administrator.}
 \description{
 Disables the Amazon Inspector delegated administrator for your organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/disable_delegated_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_disable_delegated_admin_account/} for full documentation.
 }
 \keyword{internal}

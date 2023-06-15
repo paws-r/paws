@@ -15,6 +15,6 @@ is described.}
 \description{
 Returns the data available for the resource.
 
-See \url{https://paws-r.github.io/docs/workmail/describe_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_describe_resource/} for full documentation.
 }
 \keyword{internal}

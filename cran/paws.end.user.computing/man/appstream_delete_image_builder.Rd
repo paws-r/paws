@@ -12,6 +12,6 @@ appstream_delete_image_builder(Name)
 \description{
 Deletes the specified image builder and releases the capacity.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_image_builder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_image_builder/} for full documentation.
 }
 \keyword{internal}

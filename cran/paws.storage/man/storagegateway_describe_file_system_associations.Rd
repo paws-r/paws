@@ -13,6 +13,6 @@ association to be described.}
 \description{
 Gets the file system association information. This operation is only supported for FSx File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_file_system_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_file_system_associations/} for full documentation.
 }
 \keyword{internal}

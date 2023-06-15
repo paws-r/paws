@@ -21,6 +21,6 @@ you have the required permissions, the error response is
 \description{
 Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool.
 
-See \url{https://paws-r.github.io/docs/ec2/move_byoip_cidr_to_ipam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_move_byoip_cidr_to_ipam/} for full documentation.
 }
 \keyword{internal}

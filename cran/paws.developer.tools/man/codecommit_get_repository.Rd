@@ -12,6 +12,6 @@ codecommit_get_repository(repositoryName)
 \description{
 Returns information about a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_repository/} for full documentation.
 }
 \keyword{internal}

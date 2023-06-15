@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a carrier gateway.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_carrier_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_carrier_gateway/} for full documentation.
 }
 \keyword{internal}

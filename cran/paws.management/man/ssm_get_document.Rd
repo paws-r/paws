@@ -27,6 +27,6 @@ either JSON or YAML. JSON is the default format.}
 \description{
 Gets the contents of the specified Amazon Web Services Systems Manager document (SSM document).
 
-See \url{https://paws-r.github.io/docs/ssm/get_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_document/} for full documentation.
 }
 \keyword{internal}

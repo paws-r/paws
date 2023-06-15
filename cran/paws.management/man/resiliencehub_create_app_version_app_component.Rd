@@ -37,6 +37,6 @@ of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/l
 \description{
 Creates a new Application Component in the Resilience Hub application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/create_app_version_app_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_create_app_version_app_component/} for full documentation.
 }
 \keyword{internal}

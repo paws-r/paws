@@ -13,6 +13,6 @@ managedgrafana_describe_workspace_authentication(workspaceId)
 \description{
 Displays information about the authentication methods used in one Amazon Managed Grafana workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/describe_workspace_authentication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace_authentication/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ the comment for.}
 \description{
 Updates the comment for a specified traffic policy version.
 
-See \url{https://paws-r.github.io/docs/route53/update_traffic_policy_comment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_comment/} for full documentation.
 }
 \keyword{internal}

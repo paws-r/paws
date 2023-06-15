@@ -41,6 +41,6 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/rds/describe_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_certificates/} for full documentation.
 }
 \keyword{internal}

@@ -63,6 +63,6 @@ extracting text from PDF documents and image files.}
 \description{
 Detects named entities in input text when you use the pre-trained model. Detects custom entities if you have a custom entity recognition model.
 
-See \url{https://paws-r.github.io/docs/comprehend/detect_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_detect_entities/} for full documentation.
 }
 \keyword{internal}

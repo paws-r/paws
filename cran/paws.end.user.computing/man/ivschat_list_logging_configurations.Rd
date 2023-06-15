@@ -16,6 +16,6 @@ pagination; see the \code{nextToken} response field.}
 \description{
 Gets summary information about all your logging configurations in the AWS region where the API request is processed.
 
-See \url{https://paws-r.github.io/docs/ivschat/list_logging_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_list_logging_configurations/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ lowercase letters or digits.}
 \description{
 Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts and child OUs from the OU that you want to delete.
 
-See \url{https://paws-r.github.io/docs/organizations/delete_organizational_unit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_delete_organizational_unit/} for full documentation.
 }
 \keyword{internal}

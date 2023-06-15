@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more transit gateway route policy tables.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_policy_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_transit_gateway_policy_tables/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ athena_batch_get_query_execution(QueryExecutionIds)
 \description{
 Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.
 
-See \url{https://paws-r.github.io/docs/athena/batch_get_query_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_batch_get_query_execution/} for full documentation.
 }
 \keyword{internal}

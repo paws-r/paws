@@ -82,6 +82,6 @@ This parameter is used only if the AutoGranted parameter is true.}
 \description{
 The \code{\link[=mturk_create_qualification_type]{create_qualification_type}} operation creates a new Qualification type, which is represented by a \code{QualificationType} data structure.
 
-See \url{https://paws-r.github.io/docs/mturk/create_qualification_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_create_qualification_type/} for full documentation.
 }
 \keyword{internal}

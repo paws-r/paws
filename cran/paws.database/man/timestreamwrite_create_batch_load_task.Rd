@@ -31,8 +31,8 @@ task.}
 \item{RecordVersion}{}
 }
 \description{
-Creates a new Timestream batch load task. A batch load task processes data from a CSV source in an S3 location and writes to a Timestream table. A mapping from source to target is defined in a batch load task. Errors and events are written to a report at an S3 location. For the report, if the KMS key is not specified, the batch load task will be encrypted with a Timestream managed KMS key located in your account. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. For details, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html}{code sample}.
+Creates a new Timestream batch load task. A batch load task processes data from a CSV source in an S3 location and writes to a Timestream table. A mapping from source to target is defined in a batch load task. Errors and events are written to a report at an S3 location. For the report, if the KMS key is not specified, the report will be encrypted with an S3 managed key when \code{SSE_S3} is the option. Otherwise an error is thrown. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. For details, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html}{code sample}.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/create_batch_load_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_create_batch_load_task/} for full documentation.
 }
 \keyword{internal}

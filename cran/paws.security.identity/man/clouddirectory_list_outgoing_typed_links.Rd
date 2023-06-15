@@ -38,6 +38,6 @@ typed link facet, not the order they are supplied to any API calls.}
 \description{
 Returns a paginated list of all the outgoing TypedLinkSpecifier information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_outgoing_typed_links.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_outgoing_typed_links/} for full documentation.
 }
 \keyword{internal}

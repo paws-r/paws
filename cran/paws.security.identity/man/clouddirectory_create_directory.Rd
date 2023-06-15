@@ -15,6 +15,6 @@ copied into the data Directory. For more information, see arns.}
 \description{
 Creates a Directory by copying the published schema into the directory. A directory cannot be created without a schema.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/create_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_create_directory/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ support CodeBuild report group tags.}
 \description{
 Updates a report group.
 
-See \url{https://paws-r.github.io/docs/codebuild/update_report_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_update_report_group/} for full documentation.
 }
 \keyword{internal}

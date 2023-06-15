@@ -12,6 +12,6 @@ locationservice_delete_map(MapName)
 \description{
 Deletes a map resource from your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/delete_map.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_map/} for full documentation.
 }
 \keyword{internal}

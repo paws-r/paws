@@ -26,12 +26,11 @@ customerprofiles_list_profile_objects(
 \item{ProfileId}{[required] The unique identifier of a customer profile.}
 
 \item{ObjectFilter}{Applies a filter to the response to include profile objects with the
-specified index values. This filter is only supported for ObjectTypeName
-_asset, _case and _order.}
+specified index values.}
 }
 \description{
 Returns a list of objects associated with a profile of a given ProfileObjectType.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/list_profile_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_objects/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ of the web site.}
 \description{
 The \code{\link[=mturk_reject_assignment]{reject_assignment}} operation rejects the results of a completed assignment.
 
-See \url{https://paws-r.github.io/docs/mturk/reject_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_reject_assignment/} for full documentation.
 }
 \keyword{internal}

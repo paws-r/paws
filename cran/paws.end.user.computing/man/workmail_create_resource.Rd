@@ -18,6 +18,6 @@ is created.}
 \description{
 Creates a new WorkMail resource.
 
-See \url{https://paws-r.github.io/docs/workmail/create_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_create_resource/} for full documentation.
 }
 \keyword{internal}

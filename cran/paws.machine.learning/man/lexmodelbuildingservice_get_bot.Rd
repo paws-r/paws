@@ -14,6 +14,6 @@ lexmodelbuildingservice_get_bot(name, versionOrAlias)
 \description{
 Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot/} for full documentation.
 }
 \keyword{internal}

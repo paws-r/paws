@@ -21,6 +21,6 @@ report. For more information, see \href{https://docs.aws.amazon.com/inspector/v1
 \description{
 Produces an assessment report that includes detailed and comprehensive results of a specified assessment run.
 
-See \url{https://paws-r.github.io/docs/inspector/get_assessment_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_get_assessment_report/} for full documentation.
 }
 \keyword{internal}

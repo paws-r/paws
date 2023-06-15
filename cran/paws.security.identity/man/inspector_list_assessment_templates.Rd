@@ -35,6 +35,6 @@ want in the response. The default value is 10. The maximum value is 500.}
 \description{
 Lists the assessment templates that correspond to the assessment targets that are specified by the ARNs of the assessment targets.
 
-See \url{https://paws-r.github.io/docs/inspector/list_assessment_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_list_assessment_templates/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ Currently \code{application/json} and \code{application/yaml} are supported for
 \description{
 Exports a deployed version of a RestApi in a specified format.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_export/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ lexmodelbuildingservice_get_import(importId)
 \description{
 Gets information about an import job started with the \code{\link[=lexmodelbuildingservice_start_import]{start_import}} operation.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_import/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ label groups.}
 \description{
 Provides a list of labels.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/list_labels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_list_labels/} for full documentation.
 }
 \keyword{internal}

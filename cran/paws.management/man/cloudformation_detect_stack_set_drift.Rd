@@ -15,7 +15,11 @@ cloudformation_detect_stack_set_drift(
 \item{StackSetName}{[required] The name of the stack set on which to perform the drift detection
 operation.}
 
-\item{OperationPreferences}{}
+\item{OperationPreferences}{The user-specified preferences for how CloudFormation performs a stack
+set operation.
+
+For more information about maximum concurrent accounts and failure
+tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
 
 \item{OperationId}{\emph{The ID of the stack set operation.}}
 
@@ -39,6 +43,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift detection on the stack associated with each stack instance in the stack set. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html}{How CloudFormation performs drift detection on a stack set}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/detect_stack_set_drift.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_set_drift/} for full documentation.
 }
 \keyword{internal}

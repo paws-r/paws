@@ -16,6 +16,6 @@ not both.}
 \description{
 Deletes a sampling rule.
 
-See \url{https://paws-r.github.io/docs/xray/delete_sampling_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_delete_sampling_rule/} for full documentation.
 }
 \keyword{internal}

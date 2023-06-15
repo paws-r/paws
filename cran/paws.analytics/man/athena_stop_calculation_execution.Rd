@@ -12,6 +12,6 @@ athena_stop_calculation_execution(CalculationExecutionId)
 \description{
 Requests the cancellation of a calculation. A \code{\link[=athena_stop_calculation_execution]{stop_calculation_execution}} call on a calculation that is already in a terminal state (for example, \code{STOPPED}, \code{FAILED}, or \code{COMPLETED}) succeeds but has no effect.
 
-See \url{https://paws-r.github.io/docs/athena/stop_calculation_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_stop_calculation_execution/} for full documentation.
 }
 \keyword{internal}

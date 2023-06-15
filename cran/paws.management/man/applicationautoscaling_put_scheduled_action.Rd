@@ -176,6 +176,6 @@ Scaling scales in to the maximum capacity.}
 \description{
 Creates or updates a scheduled action for an Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/put_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_put_scheduled_action/} for full documentation.
 }
 \keyword{internal}

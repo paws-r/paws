@@ -17,6 +17,6 @@ values can have a maximum length of 256 characters.}
 \description{
 Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
 
-See \url{https://paws-r.github.io/docs/ecr/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_tag_resource/} for full documentation.
 }
 \keyword{internal}

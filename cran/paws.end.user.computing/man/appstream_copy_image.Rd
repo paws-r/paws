@@ -26,6 +26,6 @@ destination.}
 \description{
 Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.
 
-See \url{https://paws-r.github.io/docs/appstream/copy_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_copy_image/} for full documentation.
 }
 \keyword{internal}

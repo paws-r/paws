@@ -16,6 +16,6 @@ configservice_delete_organization_conformance_pack(
 \description{
 Deletes the specified organization conformance pack and all of the Config rules and remediation actions from all member accounts in that organization.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_organization_conformance_pack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_organization_conformance_pack/} for full documentation.
 }
 \keyword{internal}

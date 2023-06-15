@@ -19,6 +19,6 @@ you have the required permissions, the error response is
 \description{
 Deprovision a CIDR provisioned from an IPAM pool. If you deprovision a CIDR from a pool that has a source pool, the CIDR is recycled back into the source pool. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/depro-pool-cidr-ipam.html}{Deprovision pool CIDRs} in the \emph{Amazon VPC IPAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/deprovision_ipam_pool_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_deprovision_ipam_pool_cidr/} for full documentation.
 }
 \keyword{internal}

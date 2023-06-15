@@ -63,16 +63,22 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 
 \tabular{ll}{
 \link[=wellarchitected_associate_lenses]{associate_lenses} \tab Associate a lens to a workload\cr
+\link[=wellarchitected_associate_profiles]{associate_profiles} \tab Associate a profile with a workload\cr
 \link[=wellarchitected_create_lens_share]{create_lens_share} \tab Create a lens share\cr
 \link[=wellarchitected_create_lens_version]{create_lens_version} \tab Create a new lens version\cr
 \link[=wellarchitected_create_milestone]{create_milestone} \tab Create a milestone for an existing workload\cr
+\link[=wellarchitected_create_profile]{create_profile} \tab Create a profile\cr
+\link[=wellarchitected_create_profile_share]{create_profile_share} \tab Create a profile share\cr
 \link[=wellarchitected_create_workload]{create_workload} \tab Create a new workload\cr
 \link[=wellarchitected_create_workload_share]{create_workload_share} \tab Create a workload share\cr
 \link[=wellarchitected_delete_lens]{delete_lens} \tab Delete an existing lens\cr
 \link[=wellarchitected_delete_lens_share]{delete_lens_share} \tab Delete a lens share\cr
+\link[=wellarchitected_delete_profile]{delete_profile} \tab Delete a profile\cr
+\link[=wellarchitected_delete_profile_share]{delete_profile_share} \tab Delete a profile share\cr
 \link[=wellarchitected_delete_workload]{delete_workload} \tab Delete an existing workload\cr
 \link[=wellarchitected_delete_workload_share]{delete_workload_share} \tab Delete a workload share\cr
 \link[=wellarchitected_disassociate_lenses]{disassociate_lenses} \tab Disassociate a lens from a workload\cr
+\link[=wellarchitected_disassociate_profiles]{disassociate_profiles} \tab Disassociate a profile from a workload\cr
 \link[=wellarchitected_export_lens]{export_lens} \tab Export an existing lens\cr
 \link[=wellarchitected_get_answer]{get_answer} \tab Get the answer to a specific question in a workload review\cr
 \link[=wellarchitected_get_consolidated_report]{get_consolidated_report} \tab Get a consolidated report of your workloads\cr
@@ -81,6 +87,8 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[=wellarchitected_get_lens_review_report]{get_lens_review_report} \tab Get lens review report\cr
 \link[=wellarchitected_get_lens_version_difference]{get_lens_version_difference} \tab Get lens version differences\cr
 \link[=wellarchitected_get_milestone]{get_milestone} \tab Get a milestone for an existing workload\cr
+\link[=wellarchitected_get_profile]{get_profile} \tab Get profile information\cr
+\link[=wellarchitected_get_profile_template]{get_profile_template} \tab Get profile template\cr
 \link[=wellarchitected_get_workload]{get_workload} \tab Get an existing workload\cr
 \link[=wellarchitected_import_lens]{import_lens} \tab Import a new custom lens or update an existing custom lens\cr
 \link[=wellarchitected_list_answers]{list_answers} \tab List of answers for a particular workload and lens\cr
@@ -92,6 +100,9 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[=wellarchitected_list_lens_shares]{list_lens_shares} \tab List the lens shares associated with the lens\cr
 \link[=wellarchitected_list_milestones]{list_milestones} \tab List all milestones for an existing workload\cr
 \link[=wellarchitected_list_notifications]{list_notifications} \tab List lens notifications\cr
+\link[=wellarchitected_list_profile_notifications]{list_profile_notifications} \tab List profile notifications\cr
+\link[=wellarchitected_list_profiles]{list_profiles} \tab List profiles\cr
+\link[=wellarchitected_list_profile_shares]{list_profile_shares} \tab List profile shares\cr
 \link[=wellarchitected_list_share_invitations]{list_share_invitations} \tab List the workload invitations\cr
 \link[=wellarchitected_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for a resource\cr
 \link[=wellarchitected_list_workloads]{list_workloads} \tab Paginated list of workloads\cr
@@ -101,10 +112,12 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[=wellarchitected_update_answer]{update_answer} \tab Update the answer to a specific question in a workload review\cr
 \link[=wellarchitected_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features\cr
 \link[=wellarchitected_update_lens_review]{update_lens_review} \tab Update lens review for a particular workload\cr
+\link[=wellarchitected_update_profile]{update_profile} \tab Update a profile\cr
 \link[=wellarchitected_update_share_invitation]{update_share_invitation} \tab Update a workload or custom lens share invitation\cr
 \link[=wellarchitected_update_workload]{update_workload} \tab Update an existing workload\cr
 \link[=wellarchitected_update_workload_share]{update_workload_share} \tab Update a workload share\cr
-\link[=wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload
+\link[=wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload\cr
+\link[=wellarchitected_upgrade_profile_version]{upgrade_profile_version} \tab Upgrade a profile
 }
 }
 

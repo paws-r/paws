@@ -41,6 +41,6 @@ in the \emph{Amazon RDS User Guide}.}
 \description{
 Modifies the parameters of a DB parameter group. To modify more than one parameter, submit a list of the following: \code{ParameterName}, \code{ParameterValue}, and \code{ApplyMethod}. A maximum of 20 parameters can be modified in a single request.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_parameter_group/} for full documentation.
 }
 \keyword{internal}

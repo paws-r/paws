@@ -23,6 +23,6 @@ xray_put_telemetry_records(
 \description{
 Used by the Amazon Web Services X-Ray daemon to upload telemetry.
 
-See \url{https://paws-r.github.io/docs/xray/put_telemetry_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_put_telemetry_records/} for full documentation.
 }
 \keyword{internal}

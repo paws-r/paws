@@ -19,6 +19,6 @@ To successfully call this API, you must own the identity.}
 \description{
 Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This API returns only a list. If you want the actual policy content, you can use \code{\link[=ses_get_identity_policies]{get_identity_policies}}.
 
-See \url{https://paws-r.github.io/docs/ses/list_identity_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_identity_policies/} for full documentation.
 }
 \keyword{internal}

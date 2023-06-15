@@ -16,6 +16,6 @@ specific contact method protocol.}
 \description{
 Returns information about the configured contact methods. Specify a protocol in your request to return information about a specific contact method.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_contact_methods.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_contact_methods/} for full documentation.
 }
 \keyword{internal}

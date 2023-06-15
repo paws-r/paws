@@ -38,6 +38,6 @@ To learn more about using tags with Amazon Transcribe, refer to \href{https://do
 \description{
 Creates a new custom medical vocabulary.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/create_medical_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_create_medical_vocabulary/} for full documentation.
 }
 \keyword{internal}

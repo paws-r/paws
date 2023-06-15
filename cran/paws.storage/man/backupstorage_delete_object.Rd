@@ -14,6 +14,6 @@ backupstorage_delete_object(BackupJobId, ObjectName)
 \description{
 Delete Object from the incremental base Backup.
 
-See \url{https://paws-r.github.io/docs/backupstorage/delete_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_delete_object/} for full documentation.
 }
 \keyword{internal}

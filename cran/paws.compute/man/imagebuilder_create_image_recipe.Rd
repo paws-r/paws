@@ -63,6 +63,6 @@ the same Region in which you are using Image Builder.}
 \description{
 Creates a new image recipe. Image recipes define how images are configured, tested, and assessed.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/create_image_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_image_recipe/} for full documentation.
 }
 \keyword{internal}

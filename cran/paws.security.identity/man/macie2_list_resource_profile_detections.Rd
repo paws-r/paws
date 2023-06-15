@@ -24,6 +24,6 @@ to.}
 \description{
 Retrieves information about the types and amount of sensitive data that Amazon Macie found in an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/macie2/list_resource_profile_detections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_detections/} for full documentation.
 }
 \keyword{internal}

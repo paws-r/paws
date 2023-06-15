@@ -15,6 +15,6 @@ s3control_get_bucket_versioning(AccountId, Bucket)
 \description{
 This operation returns the versioning state for S3 on Outposts buckets only. To return the versioning state for an S3 bucket, see \code{\link[=s3control_get_bucket_versioning]{get_bucket_versioning}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/get_bucket_versioning.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_bucket_versioning/} for full documentation.
 }
 \keyword{internal}

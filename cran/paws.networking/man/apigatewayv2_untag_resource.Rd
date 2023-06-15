@@ -14,6 +14,6 @@ apigatewayv2_untag_resource(ResourceArn, TagKeys)
 \description{
 Deletes a Tag.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ results, use null.}
 \description{
 Lists the specified TagOptions or all TagOptions.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_tag_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_tag_options/} for full documentation.
 }
 \keyword{internal}

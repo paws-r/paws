@@ -130,6 +130,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Returns all the tagged or previously tagged resources that are located in the specified Amazon Web Services Region for the account.
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/get_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_get_resources/} for full documentation.
 }
 \keyword{internal}

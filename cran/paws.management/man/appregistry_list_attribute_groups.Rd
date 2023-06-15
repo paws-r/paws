@@ -16,6 +16,6 @@ If this parameter is omitted, it defaults to 25. This value is optional.}
 \description{
 Lists all attribute groups which you have access to. Results are paginated.
 
-See \url{https://paws-r.github.io/docs/appregistry/list_attribute_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups/} for full documentation.
 }
 \keyword{internal}

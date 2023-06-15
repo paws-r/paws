@@ -15,6 +15,6 @@ request.}
 \description{
 Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
 
-See \url{https://paws-r.github.io/docs/codepipeline/start_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_start_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ valid language.}
 \description{
 Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them.
 
-See \url{https://paws-r.github.io/docs/comprehend/detect_pii_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_detect_pii_entities/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ maximum is 10.}
 \description{
 Gets information about the transit gateway registrations in a specified global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_transit_gateway_registrations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_registrations/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Services administrator credentials to access the API.}
 \description{
 Creates a folder with the specified name and parent folder.
 
-See \url{https://paws-r.github.io/docs/workdocs/create_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_create_folder/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ want to update.}
 \description{
 Updates a subscriber.
 
-See \url{https://paws-r.github.io/docs/budgets/update_subscriber.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_update_subscriber/} for full documentation.
 }
 \keyword{internal}

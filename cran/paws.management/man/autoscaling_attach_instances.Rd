@@ -14,6 +14,6 @@ autoscaling_attach_instances(InstanceIds = NULL, AutoScalingGroupName)
 \description{
 Attaches one or more EC2 instances to the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/attach_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_attach_instances/} for full documentation.
 }
 \keyword{internal}

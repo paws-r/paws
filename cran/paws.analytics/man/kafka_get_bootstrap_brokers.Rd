@@ -12,6 +12,6 @@ kafka_get_bootstrap_brokers(ClusterArn)
 \description{
 A list of brokers that a client application can use to bootstrap.
 
-See \url{https://paws-r.github.io/docs/kafka/get_bootstrap_brokers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_get_bootstrap_brokers/} for full documentation.
 }
 \keyword{internal}

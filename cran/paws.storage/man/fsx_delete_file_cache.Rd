@@ -14,6 +14,6 @@ fsx_delete_file_cache(FileCacheId, ClientRequestToken = NULL)
 \description{
 Deletes an Amazon File Cache resource. After deletion, the cache no longer exists, and its data is gone.
 
-See \url{https://paws-r.github.io/docs/fsx/delete_file_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_delete_file_cache/} for full documentation.
 }
 \keyword{internal}

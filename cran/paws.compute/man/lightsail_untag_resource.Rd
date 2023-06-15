@@ -18,6 +18,6 @@ remove a tag.}
 \description{
 Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource.
 
-See \url{https://paws-r.github.io/docs/lightsail/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_untag_resource/} for full documentation.
 }
 \keyword{internal}

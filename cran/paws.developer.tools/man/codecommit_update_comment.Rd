@@ -18,6 +18,6 @@ or
 \description{
 Replaces the contents of a comment.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_comment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_comment/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ instead of \verb{pb-0e392de35e7c563b7}.}
 \description{
 Retrieves information about a patch baseline.
 
-See \url{https://paws-r.github.io/docs/ssm/get_patch_baseline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline/} for full documentation.
 }
 \keyword{internal}

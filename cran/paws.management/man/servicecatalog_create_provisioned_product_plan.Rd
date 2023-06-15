@@ -61,6 +61,6 @@ have a \code{RESOURCE_UPDATE} constraint with
 \description{
 Creates a plan.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioned_product_plan/} for full documentation.
 }
 \keyword{internal}

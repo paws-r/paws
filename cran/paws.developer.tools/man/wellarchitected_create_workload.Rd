@@ -21,7 +21,8 @@ wellarchitected_create_workload(
   ClientRequestToken,
   Tags = NULL,
   DiscoveryConfig = NULL,
-  Applications = NULL
+  Applications = NULL,
+  ProfileArns = NULL
 )
 }
 \arguments{
@@ -59,10 +60,12 @@ wellarchitected_create_workload(
 workload.}
 
 \item{Applications}{List of AppRegistry application ARNs associated to the workload.}
+
+\item{ProfileArns}{The list of profile ARNs associated with the workload.}
 }
 \description{
 Create a new workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/create_workload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_create_workload/} for full documentation.
 }
 \keyword{internal}

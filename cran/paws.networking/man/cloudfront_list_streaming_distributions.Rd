@@ -14,6 +14,6 @@ cloudfront_list_streaming_distributions(Marker = NULL, MaxItems = NULL)
 \description{
 List streaming distributions.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_streaming_distributions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_streaming_distributions/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ value is an Amazon Resource Name (ARN).}
 \description{
 Removes metadata tags from an Amazon DocumentDB resource.
 
-See \url{https://paws-r.github.io/docs/docdb/remove_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_remove_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an instance to target a specific Capacity Reservation, run in any \code{open} Capacity Reservation with matching attributes, or run On-Demand Instance capacity.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_capacity_reservation_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_capacity_reservation_attributes/} for full documentation.
 }
 \keyword{internal}

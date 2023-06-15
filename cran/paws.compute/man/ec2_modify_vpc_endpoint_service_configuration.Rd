@@ -54,6 +54,6 @@ from your service configuration.}
 \description{
 Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers or Gateway Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_service_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_service_configuration/} for full documentation.
 }
 \keyword{internal}

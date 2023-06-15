@@ -12,6 +12,6 @@ redshiftserverless_get_recovery_point(recoveryPointId)
 \description{
 Returns information about a recovery point.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_recovery_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_recovery_point/} for full documentation.
 }
 \keyword{internal}

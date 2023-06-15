@@ -49,6 +49,6 @@ text in the response.
 \description{
 Creates a new session or modifies an existing session with an Amazon Lex V2 bot. Use this operation to enable your application to set the state of the bot.
 
-See \url{https://paws-r.github.io/docs/lexruntimev2/put_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexruntimev2_put_session/} for full documentation.
 }
 \keyword{internal}

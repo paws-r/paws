@@ -38,6 +38,6 @@ the nextToken value.}
 \description{
 Describes the authorization rules for a specified Client VPN endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_client_vpn_authorization_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_client_vpn_authorization_rules/} for full documentation.
 }
 \keyword{internal}

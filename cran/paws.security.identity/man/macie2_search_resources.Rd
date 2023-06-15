@@ -27,6 +27,6 @@ paginated response.}
 \description{
 Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes.
 
-See \url{https://paws-r.github.io/docs/macie2/search_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_search_resources/} for full documentation.
 }
 \keyword{internal}

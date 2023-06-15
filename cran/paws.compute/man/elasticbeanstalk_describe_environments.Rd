@@ -53,6 +53,6 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Returns descriptions for existing environments.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environments/} for full documentation.
 }
 \keyword{internal}

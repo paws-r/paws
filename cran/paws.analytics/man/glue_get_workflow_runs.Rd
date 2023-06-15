@@ -23,6 +23,6 @@ glue_get_workflow_runs(
 \description{
 Retrieves metadata for all runs of a given workflow.
 
-See \url{https://paws-r.github.io/docs/glue/get_workflow_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_workflow_runs/} for full documentation.
 }
 \keyword{internal}

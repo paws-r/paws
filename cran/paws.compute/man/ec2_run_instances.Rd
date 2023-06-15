@@ -307,6 +307,6 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_
 \description{
 Launches the specified number of instances using an AMI for which you have permissions.
 
-See \url{https://paws-r.github.io/docs/ec2/run_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_run_instances/} for full documentation.
 }
 \keyword{internal}

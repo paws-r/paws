@@ -24,6 +24,6 @@ retrieve.}
 \description{
 Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html}{Stacks} in the CloudFormation User Guide.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_events/} for full documentation.
 }
 \keyword{internal}

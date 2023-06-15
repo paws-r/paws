@@ -15,6 +15,6 @@ inspector2_disable(accountIds = NULL, resourceTypes = NULL)
 \description{
 Disables Amazon Inspector scans for one or more Amazon Web Services accounts. Disabling all scan types in an account disables the Amazon Inspector service.
 
-See \url{https://paws-r.github.io/docs/inspector2/disable.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_disable/} for full documentation.
 }
 \keyword{internal}

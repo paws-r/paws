@@ -34,6 +34,6 @@ default value is \code{true}.}
 \description{
 Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
 
-See \url{https://paws-r.github.io/docs/codebuild/import_source_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_import_source_credentials/} for full documentation.
 }
 \keyword{internal}

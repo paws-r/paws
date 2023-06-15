@@ -26,6 +26,6 @@ from a previous call.)}
 \description{
 Get information about a parameter.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_parameters/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ quicksight_describe_folder_resolved_permissions(AwsAccountId, FolderId)
 \description{
 Describes the folder resolved permissions. Permissions consists of both folder direct permissions and the inherited permissions from the ancestor folders.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_folder_resolved_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_folder_resolved_permissions/} for full documentation.
 }
 \keyword{internal}

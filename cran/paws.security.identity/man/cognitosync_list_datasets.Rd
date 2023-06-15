@@ -27,6 +27,6 @@ Cognito. GUID generation is unique within a region.}
 \description{
 Lists datasets for an identity. With Amazon Cognito Sync, each identity has access only to its own data. Thus, the credentials used to make this API call need to have access to the identity data.
 
-See \url{https://paws-r.github.io/docs/cognitosync/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_list_datasets/} for full documentation.
 }
 \keyword{internal}

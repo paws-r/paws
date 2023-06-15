@@ -16,6 +16,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_event_notification_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_event_notification_attributes/} for full documentation.
 }
 \keyword{internal}

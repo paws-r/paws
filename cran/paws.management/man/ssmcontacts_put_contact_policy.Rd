@@ -14,6 +14,6 @@ ssmcontacts_put_contact_policy(ContactArn, Policy)
 \description{
 Adds a resource policy to the specified contact or escalation plan. The resource policy is used to share the contact or escalation plan using Resource Access Manager (RAM). For more information about cross-account sharing, see \href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Setting up cross-account functionality}.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/put_contact_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_put_contact_policy/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ key-value pairs.}
 \description{
 Creates a customization of a GatewayResponse of a specified response type and status code on the given RestApi.
 
-See \url{https://paws-r.github.io/docs/apigateway/put_gateway_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_put_gateway_response/} for full documentation.
 }
 \keyword{internal}

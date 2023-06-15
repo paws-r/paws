@@ -27,6 +27,6 @@ organizational unit (OU) ID with which the workload is shared.}
 \description{
 List the workload shares associated with the workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_workload_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_workload_shares/} for full documentation.
 }
 \keyword{internal}

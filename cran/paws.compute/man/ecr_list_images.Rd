@@ -45,6 +45,6 @@ returns up to 100 results and a \code{nextToken} value, if applicable.}
 \description{
 Lists all the image IDs for the specified repository.
 
-See \url{https://paws-r.github.io/docs/ecr/list_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_list_images/} for full documentation.
 }
 \keyword{internal}

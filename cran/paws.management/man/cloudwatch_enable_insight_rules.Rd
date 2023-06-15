@@ -14,6 +14,6 @@ of your rules, use
 \description{
 Enables the specified Contributor Insights rules. When rules are enabled, they immediately begin analyzing log data.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/enable_insight_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_enable_insight_rules/} for full documentation.
 }
 \keyword{internal}

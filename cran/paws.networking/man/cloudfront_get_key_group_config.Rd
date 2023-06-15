@@ -13,6 +13,6 @@ get the identifier, use \code{\link[=cloudfront_list_key_groups]{list_key_groups
 \description{
 Gets a key group configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_key_group_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_key_group_config/} for full documentation.
 }
 \keyword{internal}

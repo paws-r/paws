@@ -21,6 +21,6 @@ action.}
 \description{
 Deletes an existing event destination.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_event_destination/} for full documentation.
 }
 \keyword{internal}

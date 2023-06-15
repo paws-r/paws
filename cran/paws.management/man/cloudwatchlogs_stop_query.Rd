@@ -13,6 +13,6 @@ cloudwatchlogs_stop_query(queryId)
 \description{
 Stops a CloudWatch Logs Insights query that is in progress. If the query has already ended, the operation returns an error indicating that the specified query is not running.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/stop_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_stop_query/} for full documentation.
 }
 \keyword{internal}

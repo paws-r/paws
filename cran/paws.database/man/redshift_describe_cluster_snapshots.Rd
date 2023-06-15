@@ -106,6 +106,6 @@ specified for an existing cluster, no snapshots are returned.
 \description{
 Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by your Amazon Web Services account. No information is returned for snapshots owned by inactive Amazon Web Services accounts.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_snapshots/} for full documentation.
 }
 \keyword{internal}

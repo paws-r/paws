@@ -38,6 +38,6 @@ results.}
 \description{
 Lists the Amazon Web Services accounts that are designated as delegated administrators in this organization.
 
-See \url{https://paws-r.github.io/docs/organizations/list_delegated_administrators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_delegated_administrators/} for full documentation.
 }
 \keyword{internal}

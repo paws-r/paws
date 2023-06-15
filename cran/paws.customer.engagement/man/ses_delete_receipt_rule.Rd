@@ -15,6 +15,6 @@ delete.}
 \description{
 Deletes the specified receipt rule.
 
-See \url{https://paws-r.github.io/docs/ses/delete_receipt_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_receipt_rule/} for full documentation.
 }
 \keyword{internal}

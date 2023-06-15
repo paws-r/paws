@@ -34,6 +34,6 @@ requests.
 \description{
 Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance).
 
-See \url{https://paws-r.github.io/docs/docdb/apply_pending_maintenance_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_apply_pending_maintenance_action/} for full documentation.
 }
 \keyword{internal}

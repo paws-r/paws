@@ -31,6 +31,6 @@ attribute of the \code{CommandPlugin} object in the \code{CommandPlugins} list.}
 \description{
 Returns detailed information about command execution for an invocation or plugin.
 
-See \url{https://paws-r.github.io/docs/ssm/get_command_invocation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_command_invocation/} for full documentation.
 }
 \keyword{internal}

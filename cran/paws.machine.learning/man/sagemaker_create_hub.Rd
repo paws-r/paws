@@ -29,6 +29,6 @@ sagemaker_create_hub(
 \description{
 Create a hub.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_hub.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_hub/} for full documentation.
 }
 \keyword{internal}

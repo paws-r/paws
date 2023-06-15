@@ -27,6 +27,6 @@ of model metadata, use the token in the next request.}
 \description{
 Lists the domain, framework, task, and model name of standard machine learning models found in common model zoos.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_metadata/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ idempotency of the request.}
 \description{
 Updates a report generator.
 
-See \url{https://paws-r.github.io/docs/licensemanager/update_license_manager_report_generator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_update_license_manager_report_generator/} for full documentation.
 }
 \keyword{internal}

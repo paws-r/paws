@@ -34,6 +34,6 @@ If you provide an individual checksum, Amazon S3 ignores any provided
 \description{
 Sets the accelerate configuration of an existing bucket. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to Amazon S3.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_accelerate_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_accelerate_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ objects.}
 \description{
 Returns an array of \code{ProtocolsListDataSummary} objects.
 
-See \url{https://paws-r.github.io/docs/fms/list_protocols_lists.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_protocols_lists/} for full documentation.
 }
 \keyword{internal}

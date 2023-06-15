@@ -41,6 +41,6 @@ list text file in S3.}
 \description{
 Updates a block list used for query suggestions for an index.
 
-See \url{https://paws-r.github.io/docs/kendra/update_query_suggestions_block_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_update_query_suggestions_block_list/} for full documentation.
 }
 \keyword{internal}

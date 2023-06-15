@@ -14,6 +14,6 @@ mturk_list_hi_ts(NextToken = NULL, MaxResults = NULL)
 \description{
 The \code{\link[=mturk_list_hi_ts]{list_hi_ts}} operation returns all of a Requester's HITs. The operation returns HITs of any status, except for HITs that have been deleted of with the DeleteHIT operation or that have been auto-deleted.
 
-See \url{https://paws-r.github.io/docs/mturk/list_hi_ts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_hi_ts/} for full documentation.
 }
 \keyword{internal}

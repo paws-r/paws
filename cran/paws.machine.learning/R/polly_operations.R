@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Deletes the specified pronunciation lexicon stored in an Amazon Web Services Region. A lexicon which has been deleted is not available for speech synthesis, nor is it possible to retrieve it using either the [`get_lexicon`][polly_get_lexicon] or `ListLexicon` APIs.
 #'
-#' See [https://paws-r.github.io/docs/polly/delete_lexicon.html](https://paws-r.github.io/docs/polly/delete_lexicon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_delete_lexicon/](https://www.paws-r-sdk.com/docs/polly_delete_lexicon/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the lexicon to delete. Must be an existing lexicon in the
 #' region.
@@ -40,7 +40,7 @@ polly_delete_lexicon <- function(Name) {
 #' @description
 #' Returns the list of voices that are available for use when requesting speech synthesis. Each voice speaks a specified language, is either male or female, and is identified by an ID, which is the ASCII version of the voice name.
 #'
-#' See [https://paws-r.github.io/docs/polly/describe_voices.html](https://paws-r.github.io/docs/polly/describe_voices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_describe_voices/](https://www.paws-r-sdk.com/docs/polly_describe_voices/) for full documentation.
 #'
 #' @param Engine Specifies the engine (`standard` or `neural`) used by Amazon Polly when
 #' processing input text for speech synthesis.
@@ -83,7 +83,7 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 #' @description
 #' Returns the content of the specified pronunciation lexicon stored in an Amazon Web Services Region. For more information, see [Managing Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 #'
-#' See [https://paws-r.github.io/docs/polly/get_lexicon.html](https://paws-r.github.io/docs/polly/get_lexicon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_get_lexicon/](https://www.paws-r-sdk.com/docs/polly_get_lexicon/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the lexicon.
 #'
@@ -112,7 +112,7 @@ polly_get_lexicon <- function(Name) {
 #' @description
 #' Retrieves a specific SpeechSynthesisTask object based on its TaskID. This object contains information about the given speech synthesis task, including the status of the task, and a link to the S3 bucket containing the output of the task.
 #'
-#' See [https://paws-r.github.io/docs/polly/get_speech_synthesis_task.html](https://paws-r.github.io/docs/polly/get_speech_synthesis_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_get_speech_synthesis_task/](https://www.paws-r-sdk.com/docs/polly_get_speech_synthesis_task/) for full documentation.
 #'
 #' @param TaskId &#91;required&#93; The Amazon Polly generated identifier for a speech synthesis task.
 #'
@@ -142,7 +142,7 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #' @description
 #' Returns a list of pronunciation lexicons stored in an Amazon Web Services Region. For more information, see [Managing Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 #'
-#' See [https://paws-r.github.io/docs/polly/list_lexicons.html](https://paws-r.github.io/docs/polly/list_lexicons.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_list_lexicons/](https://www.paws-r-sdk.com/docs/polly_list_lexicons/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token returned from previous
 #' [`list_lexicons`][polly_list_lexicons] operation. If present, indicates
@@ -174,7 +174,7 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #' @description
 #' Returns a list of SpeechSynthesisTask objects ordered by their creation date. This operation can filter the tasks by their status, for example, allowing users to list only tasks that are completed.
 #'
-#' See [https://paws-r.github.io/docs/polly/list_speech_synthesis_tasks.html](https://paws-r.github.io/docs/polly/list_speech_synthesis_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_list_speech_synthesis_tasks/](https://www.paws-r-sdk.com/docs/polly_list_speech_synthesis_tasks/) for full documentation.
 #'
 #' @param MaxResults Maximum number of speech synthesis tasks returned in a List operation.
 #' @param NextToken The pagination token to use in the next request to continue the listing
@@ -206,7 +206,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #' @description
 #' Stores a pronunciation lexicon in an Amazon Web Services Region. If a lexicon with the same name already exists in the region, it is overwritten by the new lexicon. Lexicon operations have eventual consistency, therefore, it might take some time before the lexicon is available to the SynthesizeSpeech operation.
 #'
-#' See [https://paws-r.github.io/docs/polly/put_lexicon.html](https://paws-r.github.io/docs/polly/put_lexicon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_put_lexicon/](https://www.paws-r-sdk.com/docs/polly_put_lexicon/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the lexicon. The name must follow the regular express format
 #' \[0-9A-Za-z\]\{1,20\}. That is, the name is a case-sensitive
@@ -239,7 +239,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' @description
 #' Allows the creation of an asynchronous synthesis task, by starting a new `SpeechSynthesisTask`. This operation requires all the standard information needed for speech synthesis, plus the name of an Amazon S3 bucket for the service to store the output of the synthesis task and two optional parameters (`OutputS3KeyPrefix` and `SnsTopicArn`). Once the synthesis task is created, this operation will return a `SpeechSynthesisTask` object, which will include an identifier of this task as well as the current status. The `SpeechSynthesisTask` object is available for 72 hours after starting the asynchronous synthesis task.
 #'
-#' See [https://paws-r.github.io/docs/polly/start_speech_synthesis_task.html](https://paws-r.github.io/docs/polly/start_speech_synthesis_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_start_speech_synthesis_task/](https://www.paws-r-sdk.com/docs/polly_start_speech_synthesis_task/) for full documentation.
 #'
 #' @param Engine Specifies the engine (`standard` or `neural`) for Amazon Polly to use
 #' when processing input text for speech synthesis. Using a voice that is
@@ -304,7 +304,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' @description
 #' Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see [How it Works](https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html).
 #'
-#' See [https://paws-r.github.io/docs/polly/synthesize_speech.html](https://paws-r.github.io/docs/polly/synthesize_speech.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/polly_synthesize_speech/](https://www.paws-r-sdk.com/docs/polly_synthesize_speech/) for full documentation.
 #'
 #' @param Engine Specifies the engine (`standard` or `neural`) for Amazon Polly to use
 #' when processing input text for speech synthesis. For information on

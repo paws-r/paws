@@ -74,6 +74,6 @@ must be set to \code{Service}.}
 \description{
 Creates a \code{Domain} used by Amazon SageMaker Studio. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_domain/} for full documentation.
 }
 \keyword{internal}

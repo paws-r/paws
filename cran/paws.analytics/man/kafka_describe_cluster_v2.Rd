@@ -13,6 +13,6 @@ kafka_describe_cluster_v2(ClusterArn)
 \description{
 Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.
 
-See \url{https://paws-r.github.io/docs/kafka/describe_cluster_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_describe_cluster_v2/} for full documentation.
 }
 \keyword{internal}

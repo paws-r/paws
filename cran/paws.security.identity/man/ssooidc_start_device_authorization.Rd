@@ -22,6 +22,6 @@ in the \emph{IAM Identity Center User Guide}.}
 \description{
 Initiates device authorization by requesting a pair of verification codes from the authorization service.
 
-See \url{https://paws-r.github.io/docs/ssooidc/start_device_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssooidc_start_device_authorization/} for full documentation.
 }
 \keyword{internal}

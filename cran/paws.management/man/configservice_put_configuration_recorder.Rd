@@ -2,18 +2,18 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_configuration_recorder}
 \alias{configservice_put_configuration_recorder}
-\title{Creates a new configuration recorder to record the selected resource
-configurations}
+\title{Creates a new configuration recorder to record configuration changes for
+specified resource types}
 \usage{
 configservice_put_configuration_recorder(ConfigurationRecorder)
 }
 \arguments{
-\item{ConfigurationRecorder}{[required] The configuration recorder object that records each configuration change
-made to the resources.}
+\item{ConfigurationRecorder}{[required] An object for the configuration recorder to record configuration changes
+for specified resource types.}
 }
 \description{
-Creates a new configuration recorder to record the selected resource configurations.
+Creates a new configuration recorder to record configuration changes for specified resource types.
 
-See \url{https://paws-r.github.io/docs/configservice/put_configuration_recorder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/} for full documentation.
 }
 \keyword{internal}

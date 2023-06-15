@@ -15,6 +15,6 @@ returned in the \code{Id} element when you submitted the request.}
 \description{
 Returns the current status of a change batch request. The status is one of the following values:
 
-See \url{https://paws-r.github.io/docs/route53/get_change.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_change/} for full documentation.
 }
 \keyword{internal}

@@ -111,6 +111,6 @@ output. For more information, see
 \description{
 Describes the specified Spot Instance requests.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_spot_instance_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_spot_instance_requests/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ cloudsearch_delete_analysis_scheme(DomainName, AnalysisSchemeName)
 \description{
 Deletes an analysis scheme. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">}}Configuring Analysis Schemes\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/delete_analysis_scheme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_delete_analysis_scheme/} for full documentation.
 }
 \keyword{internal}

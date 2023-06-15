@@ -15,6 +15,6 @@ tags.}
 \description{
 Removes one or more tags from a Kinesis Analytics application. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html}{Using Tagging}.
 
-See \url{https://paws-r.github.io/docs/kinesisanalytics/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalytics_untag_resource/} for full documentation.
 }
 \keyword{internal}

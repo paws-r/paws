@@ -15,6 +15,6 @@ and the maximum value is 500.}
 \description{
 Lists the RestApis resources for your collection.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_rest_apis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_rest_apis/} for full documentation.
 }
 \keyword{internal}

@@ -55,6 +55,6 @@ artifact key.}
 \description{
 Updates one or more properties of a trial component.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_trial_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_trial_component/} for full documentation.
 }
 \keyword{internal}

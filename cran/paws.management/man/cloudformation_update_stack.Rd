@@ -231,6 +231,6 @@ following format:
 \description{
 Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action.
 
-See \url{https://paws-r.github.io/docs/cloudformation/update_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_update_stack/} for full documentation.
 }
 \keyword{internal}

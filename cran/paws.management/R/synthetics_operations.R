@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates a canary with a group. Using groups can help you with managing and automating your canaries, and you can also view aggregated run results and statistics for all canaries in a group.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/associate_resource.html](https://paws-r.github.io/docs/synthetics/associate_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_associate_resource/](https://www.paws-r-sdk.com/docs/synthetics_associate_resource/) for full documentation.
 #'
 #' @param GroupIdentifier &#91;required&#93; Specifies the group. You can specify the group name, the ARN, or the
 #' group ID as the `GroupIdentifier`.
@@ -40,7 +40,7 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @description
 #' Creates a canary. Canaries are scripts that monitor your endpoints and APIs from the outside-in. Canaries help you check the availability and latency of your web services and troubleshoot anomalies by investigating load time data, screenshots of the UI, logs, and metrics. You can set up a canary to run continuously or just once.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/create_canary.html](https://paws-r.github.io/docs/synthetics/create_canary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_create_canary/](https://www.paws-r-sdk.com/docs/synthetics_create_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for this canary. Be sure to give it a descriptive name that
 #' distinguishes it from other canaries in your account.
@@ -130,7 +130,7 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' @description
 #' Creates a group which you can use to associate canaries with each other, including cross-Region canaries. Using groups can help you with managing and automating your canaries, and you can also view aggregated run results and statistics for all canaries in a group.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/create_group.html](https://paws-r.github.io/docs/synthetics/create_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_create_group/](https://www.paws-r-sdk.com/docs/synthetics_create_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the group. It can include any Unicode characters.
 #' 
@@ -168,7 +168,7 @@ synthetics_create_group <- function(Name, Tags = NULL) {
 #' @description
 #' Permanently deletes the specified canary.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/delete_canary.html](https://paws-r.github.io/docs/synthetics/delete_canary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_delete_canary/](https://www.paws-r-sdk.com/docs/synthetics_delete_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to delete. To find the names of
 #' your canaries, use [`describe_canaries`][synthetics_describe_canaries].
@@ -202,7 +202,7 @@ synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
 #' @description
 #' Deletes a group. The group doesn't need to be empty to be deleted. If there are canaries in the group, they are not deleted when you delete the group.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/delete_group.html](https://paws-r.github.io/docs/synthetics/delete_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_delete_group/](https://www.paws-r-sdk.com/docs/synthetics_delete_group/) for full documentation.
 #'
 #' @param GroupIdentifier &#91;required&#93; Specifies which group to delete. You can specify the group name, the
 #' ARN, or the group ID as the `GroupIdentifier`.
@@ -233,7 +233,7 @@ synthetics_delete_group <- function(GroupIdentifier) {
 #' @description
 #' This operation returns a list of the canaries in your account, along with full details about each canary.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/describe_canaries.html](https://paws-r.github.io/docs/synthetics/describe_canaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_describe_canaries/](https://www.paws-r-sdk.com/docs/synthetics_describe_canaries/) for full documentation.
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent operation to retrieve the next set of
@@ -281,7 +281,7 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #' @description
 #' Use this operation to see information from the most recent run of each canary that you have created.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/describe_canaries_last_run.html](https://paws-r.github.io/docs/synthetics/describe_canaries_last_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_describe_canaries_last_run/](https://www.paws-r-sdk.com/docs/synthetics_describe_canaries_last_run/) for full documentation.
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent
@@ -329,7 +329,7 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
 #' @description
 #' Returns a list of Synthetics canary runtime versions. For more information, see [Canary Runtime Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
 #'
-#' See [https://paws-r.github.io/docs/synthetics/describe_runtime_versions.html](https://paws-r.github.io/docs/synthetics/describe_runtime_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_describe_runtime_versions/](https://www.paws-r-sdk.com/docs/synthetics_describe_runtime_versions/) for full documentation.
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent
@@ -365,7 +365,7 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 #' @description
 #' Removes a canary from a group. You must run this operation in the Region where the canary exists.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/disassociate_resource.html](https://paws-r.github.io/docs/synthetics/disassociate_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_disassociate_resource/](https://www.paws-r-sdk.com/docs/synthetics_disassociate_resource/) for full documentation.
 #'
 #' @param GroupIdentifier &#91;required&#93; Specifies the group. You can specify the group name, the ARN, or the
 #' group ID as the `GroupIdentifier`.
@@ -396,7 +396,7 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @description
 #' Retrieves complete information about one canary. You must specify the name of the canary that you want. To get a list of canaries and their names, use [`describe_canaries`][synthetics_describe_canaries].
 #'
-#' See [https://paws-r.github.io/docs/synthetics/get_canary.html](https://paws-r.github.io/docs/synthetics/get_canary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_get_canary/](https://www.paws-r-sdk.com/docs/synthetics_get_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want details for.
 #'
@@ -425,7 +425,7 @@ synthetics_get_canary <- function(Name) {
 #' @description
 #' Retrieves a list of runs for a specified canary.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/get_canary_runs.html](https://paws-r.github.io/docs/synthetics/get_canary_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_get_canary_runs/](https://www.paws-r-sdk.com/docs/synthetics_get_canary_runs/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to see runs for.
 #' @param NextToken A token that indicates that there is more data available. You can use
@@ -461,7 +461,7 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
 #' @description
 #' Returns information about one group. Groups are a global resource, so you can use this operation from any Region.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/get_group.html](https://paws-r.github.io/docs/synthetics/get_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_get_group/](https://www.paws-r-sdk.com/docs/synthetics_get_group/) for full documentation.
 #'
 #' @param GroupIdentifier &#91;required&#93; Specifies the group to return information for. You can specify the group
 #' name, the ARN, or the group ID as the `GroupIdentifier`.
@@ -492,7 +492,7 @@ synthetics_get_group <- function(GroupIdentifier) {
 #' @description
 #' Returns a list of the groups that the specified canary is associated with. The canary that you specify must be in the current Region.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/list_associated_groups.html](https://paws-r.github.io/docs/synthetics/list_associated_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_list_associated_groups/](https://www.paws-r-sdk.com/docs/synthetics_list_associated_groups/) for full documentation.
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent operation to retrieve the next set of
@@ -529,7 +529,7 @@ synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NUL
 #' @description
 #' This operation returns a list of the ARNs of the canaries that are associated with the specified group.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/list_group_resources.html](https://paws-r.github.io/docs/synthetics/list_group_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_list_group_resources/](https://www.paws-r-sdk.com/docs/synthetics_list_group_resources/) for full documentation.
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent operation to retrieve the next set of
@@ -567,7 +567,7 @@ synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL,
 #' @description
 #' Returns a list of all groups in the account, displaying their names, unique IDs, and ARNs. The groups from all Regions are returned.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/list_groups.html](https://paws-r.github.io/docs/synthetics/list_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_list_groups/](https://www.paws-r-sdk.com/docs/synthetics_list_groups/) for full documentation.
 #'
 #' @param NextToken A token that indicates that there is more data available. You can use
 #' this token in a subsequent operation to retrieve the next set of
@@ -601,7 +601,7 @@ synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Displays the tags associated with a canary or group.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/list_tags_for_resource.html](https://paws-r.github.io/docs/synthetics/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/synthetics_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the canary or group that you want to view tags for.
 #' 
@@ -636,7 +636,7 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Use this operation to run a canary that has already been created. The frequency of the canary runs is determined by the value of the canary's `Schedule`. To see a canary's schedule, use [`get_canary`][synthetics_get_canary].
 #'
-#' See [https://paws-r.github.io/docs/synthetics/start_canary.html](https://paws-r.github.io/docs/synthetics/start_canary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_start_canary/](https://www.paws-r-sdk.com/docs/synthetics_start_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to run. To find canary names, use
 #' [`describe_canaries`][synthetics_describe_canaries].
@@ -666,7 +666,7 @@ synthetics_start_canary <- function(Name) {
 #' @description
 #' Stops the canary to prevent all future runs. If the canary is currently running,the run that is in progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in Synthetics as a completed run.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/stop_canary.html](https://paws-r.github.io/docs/synthetics/stop_canary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_stop_canary/](https://www.paws-r-sdk.com/docs/synthetics_stop_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to stop. To find the names of your
 #' canaries, use
@@ -698,7 +698,7 @@ synthetics_stop_canary <- function(Name) {
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified canary or group.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/tag_resource.html](https://paws-r.github.io/docs/synthetics/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_tag_resource/](https://www.paws-r-sdk.com/docs/synthetics_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the canary or group that you're adding tags to.
 #' 
@@ -734,7 +734,7 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/untag_resource.html](https://paws-r.github.io/docs/synthetics/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_untag_resource/](https://www.paws-r-sdk.com/docs/synthetics_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the canary or group that you're removing tags from.
 #' 
@@ -770,7 +770,7 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the configuration of a canary that has already been created.
 #'
-#' See [https://paws-r.github.io/docs/synthetics/update_canary.html](https://paws-r.github.io/docs/synthetics/update_canary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/synthetics_update_canary/](https://www.paws-r-sdk.com/docs/synthetics_update_canary/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the canary that you want to update. To find the names of
 #' your canaries, use [`describe_canaries`][synthetics_describe_canaries].

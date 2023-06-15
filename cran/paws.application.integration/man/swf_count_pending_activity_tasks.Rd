@@ -15,6 +15,6 @@ swf_count_pending_activity_tasks(domain, taskList)
 \description{
 Returns the estimated number of activity tasks in the specified task list. The count returned is an approximation and isn't guaranteed to be exact. If you specify a task list that no activity task was ever scheduled in then \code{0} is returned.
 
-See \url{https://paws-r.github.io/docs/swf/count_pending_activity_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_count_pending_activity_tasks/} for full documentation.
 }
 \keyword{internal}

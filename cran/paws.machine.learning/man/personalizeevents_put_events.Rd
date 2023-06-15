@@ -24,6 +24,6 @@ events with the user before they log in. For more information, see
 \description{
 Records user interaction event data. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html}{Recording Events}.
 
-See \url{https://paws-r.github.io/docs/personalizeevents/put_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalizeevents_put_events/} for full documentation.
 }
 \keyword{internal}

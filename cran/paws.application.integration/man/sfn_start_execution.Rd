@@ -50,6 +50,6 @@ the request payload.}
 \description{
 Starts a state machine execution. If the given state machine Amazon Resource Name (ARN) is a qualified state machine ARN, it will fail with ValidationException.
 
-See \url{https://paws-r.github.io/docs/sfn/start_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_start_execution/} for full documentation.
 }
 \keyword{internal}

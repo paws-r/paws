@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC. This association causes traffic from the subnet or gateway to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table later. A route table can be associated with multiple subnets.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_route_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_route_table/} for full documentation.
 }
 \keyword{internal}

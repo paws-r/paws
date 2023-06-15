@@ -13,6 +13,6 @@ This parameter is stored as a lowercase string.}
 \description{
 Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora retains the DB cluster's metadata, including its endpoints and DB parameter groups. Aurora also retains the transaction logs so you can do a point-in-time restore if necessary.
 
-See \url{https://paws-r.github.io/docs/rds/stop_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_stop_db_cluster/} for full documentation.
 }
 \keyword{internal}

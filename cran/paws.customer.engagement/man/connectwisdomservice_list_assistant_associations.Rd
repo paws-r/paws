@@ -23,6 +23,6 @@ results.}
 \description{
 Lists information about assistant associations.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/list_assistant_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_list_assistant_associations/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list of domains associated to a specified fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/list_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_list_domains/} for full documentation.
 }
 \keyword{internal}

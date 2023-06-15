@@ -43,6 +43,6 @@ TRANSIT_GATEWAY_ATTACHMENT_ID, RESOURCE_ID, or RESOURCE_TYPE.}
 \description{
 Gets the network routes of the specified global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_network_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_network_routes/} for full documentation.
 }
 \keyword{internal}

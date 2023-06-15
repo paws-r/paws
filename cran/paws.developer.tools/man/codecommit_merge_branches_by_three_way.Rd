@@ -58,6 +58,6 @@ use when resolving conflicts during a merge.}
 \description{
 Merges two specified branches using the three-way merge strategy.
 
-See \url{https://paws-r.github.io/docs/codecommit/merge_branches_by_three_way.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_three_way/} for full documentation.
 }
 \keyword{internal}

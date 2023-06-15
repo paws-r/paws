@@ -13,6 +13,6 @@ workdocs_get_current_user(AuthenticationToken)
 \description{
 Retrieves details of the current user for whom the authentication token was generated. This is not a valid action for SigV4 (administrative API) clients.
 
-See \url{https://paws-r.github.io/docs/workdocs/get_current_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_get_current_user/} for full documentation.
 }
 \keyword{internal}

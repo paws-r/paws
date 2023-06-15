@@ -27,6 +27,6 @@ retrieve the next page of results.}
 \description{
 Gets a list of anomalous metrics for a measure in an anomaly group.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/list_anomaly_group_time_series.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_list_anomaly_group_time_series/} for full documentation.
 }
 \keyword{internal}

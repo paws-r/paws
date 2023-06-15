@@ -37,6 +37,6 @@ results.}
 \description{
 Views information about a specific execution of a specific association.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_association_execution_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_association_execution_targets/} for full documentation.
 }
 \keyword{internal}

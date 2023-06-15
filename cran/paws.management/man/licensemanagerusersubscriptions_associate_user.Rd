@@ -24,6 +24,6 @@ licensemanagerusersubscriptions_associate_user(
 \description{
 Associates the user to an EC2 instance to utilize user-based subscriptions.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/associate_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_associate_user/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ exists.}
 \description{
 Mark a user, group, or resource as no longer used in WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is \emph{Disable}.
 
-See \url{https://paws-r.github.io/docs/workmail/deregister_from_work_mail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_deregister_from_work_mail/} for full documentation.
 }
 \keyword{internal}

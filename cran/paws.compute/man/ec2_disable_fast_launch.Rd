@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Discontinue faster launching for a Windows AMI, and clean up existing pre-provisioned snapshots. When you disable faster launching, the AMI uses the standard launch process for each instance. All pre-provisioned snapshots must be removed before you can enable faster launching again.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_fast_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_fast_launch/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ contains the key value.}
 \description{
 Gets information about the current ApiKey resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_api_key/} for full documentation.
 }
 \keyword{internal}

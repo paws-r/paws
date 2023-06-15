@@ -23,6 +23,6 @@ elasticbeanstalk_describe_environment_managed_action_history(
 \description{
 Lists an environment's completed and failed managed actions.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_managed_action_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_environment_managed_action_history/} for full documentation.
 }
 \keyword{internal}

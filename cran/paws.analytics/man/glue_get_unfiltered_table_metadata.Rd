@@ -28,6 +28,6 @@ metadata.}
 \description{
 Retrieves table metadata from the Data Catalog that contains unfiltered metadata.
 
-See \url{https://paws-r.github.io/docs/glue/get_unfiltered_table_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_unfiltered_table_metadata/} for full documentation.
 }
 \keyword{internal}

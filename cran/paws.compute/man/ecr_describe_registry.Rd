@@ -9,6 +9,6 @@ ecr_describe_registry()
 \description{
 Describes the settings for a registry. The replication configuration for a repository can be created or updated with the \code{\link[=ecr_put_replication_configuration]{put_replication_configuration}} API action.
 
-See \url{https://paws-r.github.io/docs/ecr/describe_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_describe_registry/} for full documentation.
 }
 \keyword{internal}

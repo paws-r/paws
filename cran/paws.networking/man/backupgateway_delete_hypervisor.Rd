@@ -12,6 +12,6 @@ backupgateway_delete_hypervisor(HypervisorArn)
 \description{
 Deletes a hypervisor.
 
-See \url{https://paws-r.github.io/docs/backupgateway/delete_hypervisor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_delete_hypervisor/} for full documentation.
 }
 \keyword{internal}

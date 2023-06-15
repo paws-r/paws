@@ -138,6 +138,8 @@ NULL
 #'  \link[=wafv2_delete_regex_pattern_set]{delete_regex_pattern_set} \tab Deletes the specified RegexPatternSet\cr
 #'  \link[=wafv2_delete_rule_group]{delete_rule_group} \tab Deletes the specified RuleGroup\cr
 #'  \link[=wafv2_delete_web_acl]{delete_web_acl} \tab Deletes the specified WebACL\cr
+#'  \link[=wafv2_describe_all_managed_products]{describe_all_managed_products} \tab Provides high-level information for the Amazon Web Services Managed Rules rule groups and Amazon Web Services Marketplace managed rule groups\cr
+#'  \link[=wafv2_describe_managed_products_by_vendor]{describe_managed_products_by_vendor} \tab Provides high-level information for the managed rule groups owned by a specific vendor\cr
 #'  \link[=wafv2_describe_managed_rule_group]{describe_managed_rule_group} \tab Provides high-level information for a managed rule group, including descriptions of the rules\cr
 #'  \link[=wafv2_disassociate_web_acl]{disassociate_web_acl} \tab Disassociates the specified regional application resource from any existing web ACL association\cr
 #'  \link[=wafv2_generate_mobile_sdk_release_url]{generate_mobile_sdk_release_url} \tab Generates a presigned download URL for the specified release of the mobile SDK\cr

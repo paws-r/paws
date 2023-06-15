@@ -13,6 +13,6 @@ devopsguru_delete_insight(Id)
 \description{
 Deletes the insight along with the associated anomalies, events and recommendations.
 
-See \url{https://paws-r.github.io/docs/devopsguru/delete_insight.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_delete_insight/} for full documentation.
 }
 \keyword{internal}

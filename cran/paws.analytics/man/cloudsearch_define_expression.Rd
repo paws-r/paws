@@ -14,6 +14,6 @@ cloudsearch_define_expression(DomainName, Expression)
 \description{
 Configures an \code{Expression} for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">}}Configuring Expressions\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/define_expression.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_define_expression/} for full documentation.
 }
 \keyword{internal}

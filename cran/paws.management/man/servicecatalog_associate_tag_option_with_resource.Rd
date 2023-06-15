@@ -15,6 +15,6 @@ servicecatalog_associate_tag_option_with_resource(ResourceId, TagOptionId)
 \description{
 Associate the specified TagOption with the specified portfolio or product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/associate_tag_option_with_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_associate_tag_option_with_resource/} for full documentation.
 }
 \keyword{internal}

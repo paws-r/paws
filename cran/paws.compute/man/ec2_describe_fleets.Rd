@@ -49,6 +49,6 @@ replace unhealthy instances (\code{true} | \code{false}).
 \description{
 Describes the specified EC2 Fleets or all of your EC2 Fleets.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_fleets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fleets/} for full documentation.
 }
 \keyword{internal}

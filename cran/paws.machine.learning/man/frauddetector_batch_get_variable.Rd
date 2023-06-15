@@ -12,6 +12,6 @@ frauddetector_batch_get_variable(names)
 \description{
 Gets a batch of variables.
 
-See \url{https://paws-r.github.io/docs/frauddetector/batch_get_variable.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_batch_get_variable/} for full documentation.
 }
 \keyword{internal}

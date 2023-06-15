@@ -48,6 +48,6 @@ credentials.
 \description{
 Modifies the details of a permission group. You cannot modify a \code{permissionGroupID}.
 
-See \url{https://paws-r.github.io/docs/finspacedata/update_permission_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_update_permission_group/} for full documentation.
 }
 \keyword{internal}

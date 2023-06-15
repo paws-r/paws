@@ -57,6 +57,6 @@ of model packages, use the token in the next request.}
 \description{
 Lists the model packages that have been created.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_packages/} for full documentation.
 }
 \keyword{internal}

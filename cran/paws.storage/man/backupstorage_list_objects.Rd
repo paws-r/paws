@@ -34,6 +34,6 @@ NextToken is not NULL}
 \description{
 List all Objects in a given Backup.
 
-See \url{https://paws-r.github.io/docs/backupstorage/list_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_list_objects/} for full documentation.
 }
 \keyword{internal}

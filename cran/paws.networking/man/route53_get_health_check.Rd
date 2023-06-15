@@ -15,6 +15,6 @@ this value to specify which health check to use. The value can be up to
 \description{
 Gets information about a specified health check.
 
-See \url{https://paws-r.github.io/docs/route53/get_health_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_health_check/} for full documentation.
 }
 \keyword{internal}

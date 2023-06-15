@@ -12,6 +12,6 @@ cloudwatchevidently_delete_segment(segment)
 \description{
 Deletes a segment. You can't delete a segment that is being used in a launch or experiment, even if that launch or experiment is not currently running.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/delete_segment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_segment/} for full documentation.
 }
 \keyword{internal}

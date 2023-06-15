@@ -15,6 +15,6 @@ eventbridge_tag_resource(ResourceARN, Tags)
 \description{
 Assigns one or more tags (key-value pairs) to the specified EventBridge resource. Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values. In EventBridge, rules and event buses can be tagged.
 
-See \url{https://paws-r.github.io/docs/eventbridge/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_tag_resource/} for full documentation.
 }
 \keyword{internal}

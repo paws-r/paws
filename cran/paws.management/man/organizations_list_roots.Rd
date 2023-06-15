@@ -27,6 +27,6 @@ results.}
 \description{
 Lists the roots that are defined in the current organization.
 
-See \url{https://paws-r.github.io/docs/organizations/list_roots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_roots/} for full documentation.
 }
 \keyword{internal}

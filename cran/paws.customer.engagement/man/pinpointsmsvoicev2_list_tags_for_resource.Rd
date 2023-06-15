@@ -12,6 +12,6 @@ pinpointsmsvoicev2_list_tags_for_resource(ResourceArn)
 \description{
 List all tags associated with a resource.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

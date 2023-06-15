@@ -20,6 +20,6 @@ in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 \description{
 Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of the account. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers}{Assign User Access} in the \emph{IAM Identity Center User Guide}. This operation returns a paginated response.
 
-See \url{https://paws-r.github.io/docs/sso/list_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sso_list_accounts/} for full documentation.
 }
 \keyword{internal}

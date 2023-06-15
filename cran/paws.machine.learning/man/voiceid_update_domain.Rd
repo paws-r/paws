@@ -29,6 +29,6 @@ process.}
 \description{
 Updates the specified domain. This API has clobber behavior, and clears and replaces all attributes. If an optional field, such as 'Description' is not provided, it is removed from the domain.
 
-See \url{https://paws-r.github.io/docs/voiceid/update_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_update_domain/} for full documentation.
 }
 \keyword{internal}

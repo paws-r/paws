@@ -15,6 +15,6 @@ provide that value here to retrieve the next page of results.}
 \description{
 Lists endpoints associated with the specified Outpost.
 
-See \url{https://paws-r.github.io/docs/s3outposts/list_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3outposts_list_endpoints/} for full documentation.
 }
 \keyword{internal}

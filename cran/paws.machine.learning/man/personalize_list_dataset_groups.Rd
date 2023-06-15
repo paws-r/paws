@@ -16,6 +16,6 @@ next set of dataset groups (if they exist).}
 \description{
 Returns a list of dataset groups. The response provides the properties for each dataset group, including the Amazon Resource Name (ARN). For more information on dataset groups, see \code{\link[=personalize_create_dataset_group]{create_dataset_group}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_dataset_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_dataset_groups/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ through the channel.}
 \description{
 Updates a channel specified by a required channel ARN or UUID.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/update_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_update_channel/} for full documentation.
 }
 \keyword{internal}

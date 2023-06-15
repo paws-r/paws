@@ -58,6 +58,6 @@ exposed publicly.}
 \description{
 If the DNS server for your self-managed domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services. \emph{AddIpRoutes} adds this address block. You can also use \emph{AddIpRoutes} to facilitate routing traffic that uses public IP ranges from your Microsoft AD on Amazon Web Services to a peer VPC.
 
-See \url{https://paws-r.github.io/docs/directoryservice/add_ip_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_add_ip_routes/} for full documentation.
 }
 \keyword{internal}

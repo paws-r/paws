@@ -50,6 +50,6 @@ want to retrieve.}
 \description{
 Gets recommendations for reservation purchases. These recommendations might help you to reduce your costs. Reservations provide a discounted hourly rate (up to 75\%) compared to On-Demand pricing.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_reservation_purchase_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_purchase_recommendation/} for full documentation.
 }
 \keyword{internal}

@@ -179,6 +179,6 @@ instance, which overrides the stack's default setting.}
 \description{
 Updates a specified stack.
 
-See \url{https://paws-r.github.io/docs/opsworks/update_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_update_stack/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ paginated response.}
 \description{
 Retrieves a subset of information about one or more findings.
 
-See \url{https://paws-r.github.io/docs/macie2/list_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_findings/} for full documentation.
 }
 \keyword{internal}

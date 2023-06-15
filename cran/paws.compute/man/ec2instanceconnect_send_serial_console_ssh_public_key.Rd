@@ -25,6 +25,6 @@ in the \emph{Amazon EC2 User Guide}.}
 \description{
 Pushes an SSH public key to the specified EC2 instance. The key remains for 60 seconds, which gives you 60 seconds to establish a serial console connection to the instance using SSH. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-serial-console.html}{EC2 Serial Console} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2instanceconnect/send_serial_console_ssh_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2instanceconnect_send_serial_console_ssh_public_key/} for full documentation.
 }
 \keyword{internal}

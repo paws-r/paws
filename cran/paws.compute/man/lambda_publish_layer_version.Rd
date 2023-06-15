@@ -22,7 +22,10 @@ lambda_publish_layer_version(
 
 \item{CompatibleRuntimes}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{function runtimes}.
 Used for filtering with \code{\link[=lambda_list_layers]{list_layers}} and
-\code{\link[=lambda_list_layer_versions]{list_layer_versions}}.}
+\code{\link[=lambda_list_layer_versions]{list_layer_versions}}.
+
+The following list includes deprecated runtimes. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}
 
 \item{LicenseInfo}{The layer's software license. It can be any of the following:
 \itemize{
@@ -38,6 +41,6 @@ example, \code{MIT}.
 \description{
 Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer} from a ZIP archive. Each time you call \code{\link[=lambda_publish_layer_version]{publish_layer_version}} with the same layer name, a new version is created.
 
-See \url{https://paws-r.github.io/docs/lambda/publish_layer_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_publish_layer_version/} for full documentation.
 }
 \keyword{internal}

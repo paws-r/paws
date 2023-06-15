@@ -42,6 +42,6 @@ associated, they're all returned.}
 \description{
 Lists the anomaly detection models that you have created in your account. For single metric anomaly detectors, you can list all of the models in your account or filter the results to only the models that are related to a certain namespace, metric name, or metric dimension. For metric math anomaly detectors, you can list them by adding \code{METRIC_MATH} to the \code{AnomalyDetectorTypes} array. This will return all metric math anomaly detectors in your account.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/describe_anomaly_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_describe_anomaly_detectors/} for full documentation.
 }
 \keyword{internal}

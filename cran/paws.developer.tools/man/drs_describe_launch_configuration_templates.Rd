@@ -22,6 +22,6 @@ Configuration Template ID.}
 \description{
 Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
 
-See \url{https://paws-r.github.io/docs/drs/describe_launch_configuration_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_launch_configuration_templates/} for full documentation.
 }
 \keyword{internal}

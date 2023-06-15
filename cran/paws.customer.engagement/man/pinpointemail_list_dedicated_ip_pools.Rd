@@ -21,6 +21,6 @@ can use to obtain additional results.}
 \description{
 List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/list_dedicated_ip_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_list_dedicated_ip_pools/} for full documentation.
 }
 \keyword{internal}

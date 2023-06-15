@@ -22,6 +22,6 @@ you can provide that value here to retrieve the next page of results.}
 \description{
 Lists all endpoints associated with an Outpost that has been shared by Amazon Web Services Resource Access Manager (RAM).
 
-See \url{https://paws-r.github.io/docs/s3outposts/list_shared_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3outposts_list_shared_endpoints/} for full documentation.
 }
 \keyword{internal}

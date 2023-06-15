@@ -54,6 +54,6 @@ the prior request in your next request.}
 \description{
 Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_firewall_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rules/} for full documentation.
 }
 \keyword{internal}

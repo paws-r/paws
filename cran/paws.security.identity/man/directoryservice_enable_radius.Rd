@@ -17,6 +17,6 @@ server.}
 \description{
 Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/enable_radius.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_enable_radius/} for full documentation.
 }
 \keyword{internal}

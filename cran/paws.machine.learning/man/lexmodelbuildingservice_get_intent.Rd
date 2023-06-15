@@ -14,6 +14,6 @@ lexmodelbuildingservice_get_intent(name, version)
 \description{
 Returns information about an intent. In addition to the intent name, you must specify the intent version.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_intent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_intent/} for full documentation.
 }
 \keyword{internal}

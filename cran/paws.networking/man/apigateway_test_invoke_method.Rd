@@ -45,6 +45,6 @@ deployed Stage.}
 \description{
 Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming request body.
 
-See \url{https://paws-r.github.io/docs/apigateway/test_invoke_method.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_test_invoke_method/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ attributes to be deleted.}
 \description{
 Deletes one or more attributes associated with an item. If all attributes of the item are deleted, the item is deleted.
 
-See \url{https://paws-r.github.io/docs/simpledb/delete_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_delete_attributes/} for full documentation.
 }
 \keyword{internal}

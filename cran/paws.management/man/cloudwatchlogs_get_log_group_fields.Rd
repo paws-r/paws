@@ -34,6 +34,6 @@ both.}
 \description{
 Returns a list of the fields that are included in log events in the specified log group. Includes the percentage of log events that contain each field. The search is limited to a time period that you specify.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_log_group_fields.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_group_fields/} for full documentation.
 }
 \keyword{internal}

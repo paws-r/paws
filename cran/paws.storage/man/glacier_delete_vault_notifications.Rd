@@ -18,6 +18,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon S3 Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.
 
-See \url{https://paws-r.github.io/docs/glacier/delete_vault_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_delete_vault_notifications/} for full documentation.
 }
 \keyword{internal}

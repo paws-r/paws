@@ -18,6 +18,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
-See \url{https://paws-r.github.io/docs/iam/get_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_role/} for full documentation.
 }
 \keyword{internal}

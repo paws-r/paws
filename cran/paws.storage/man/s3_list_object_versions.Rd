@@ -52,6 +52,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns metadata about all versions of the objects in a bucket. You can also use request parameters as selection criteria to return metadata about a subset of all the object versions.
 
-See \url{https://paws-r.github.io/docs/s3/list_object_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_object_versions/} for full documentation.
 }
 \keyword{internal}

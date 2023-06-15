@@ -70,6 +70,6 @@ instance.}
 \description{
 Creates a pricing rule can be associated to a pricing plan, or a set of pricing plans.
 
-See \url{https://paws-r.github.io/docs/billingconductor/create_pricing_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_create_pricing_rule/} for full documentation.
 }
 \keyword{internal}

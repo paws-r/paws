@@ -16,6 +16,6 @@ value.}
 \description{
 Associates a package with an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/associate_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_associate_package/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_stop_notebook_instance(NotebookInstanceName)
 \description{
 Terminates the ML compute instance. Before terminating the instance, SageMaker disconnects the ML storage volume from it. SageMaker preserves the ML storage volume. SageMaker stops charging you for the ML compute instance when you call \code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_notebook_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_notebook_instance/} for full documentation.
 }
 \keyword{internal}

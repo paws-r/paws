@@ -12,6 +12,6 @@ schemas_list_tags_for_resource(ResourceArn)
 \description{
 Get tags for resource.
 
-See \url{https://paws-r.github.io/docs/schemas/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

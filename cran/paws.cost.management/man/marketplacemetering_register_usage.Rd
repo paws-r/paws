@@ -21,6 +21,6 @@ instance and guard against replay attacks.}
 \description{
 Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the \code{\link[=marketplacemetering_register_usage]{register_usage}} operation for software entitlement and metering. Free and BYOL products for Amazon ECS or Amazon EKS aren't required to call \code{\link[=marketplacemetering_register_usage]{register_usage}}, but you may choose to do so if you would like to receive usage data in your seller reports. The sections below explain the behavior of \code{\link[=marketplacemetering_register_usage]{register_usage}}. \code{\link[=marketplacemetering_register_usage]{register_usage}} performs two primary functions: metering and entitlement.
 
-See \url{https://paws-r.github.io/docs/marketplacemetering/register_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_register_usage/} for full documentation.
 }
 \keyword{internal}

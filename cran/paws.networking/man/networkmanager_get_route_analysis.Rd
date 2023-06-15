@@ -14,6 +14,6 @@ networkmanager_get_route_analysis(GlobalNetworkId, RouteAnalysisId)
 \description{
 Gets information about the specified route analysis.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_route_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_route_analysis/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ adds the incident to.}
 \description{
 Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/create_timeline_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_create_timeline_event/} for full documentation.
 }
 \keyword{internal}

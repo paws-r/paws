@@ -94,6 +94,6 @@ value for \code{SortOrder}, if any, as in the previous request.}
 \description{
 Lists information about associations between Amazon VPCs and query logging configurations.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_config_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_resolver_query_log_config_associations/} for full documentation.
 }
 \keyword{internal}

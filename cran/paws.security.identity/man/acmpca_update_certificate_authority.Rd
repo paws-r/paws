@@ -46,6 +46,6 @@ not include a protocol prefix such as "http://" or "https://".
 \description{
 Updates the status or configuration of a private certificate authority (CA). Your private CA must be in the \code{ACTIVE} or \code{DISABLED} state before you can update it. You can disable a private CA that is in the \code{ACTIVE} state or make a CA that is in the \code{DISABLED} state active again.
 
-See \url{https://paws-r.github.io/docs/acmpca/update_certificate_authority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_update_certificate_authority/} for full documentation.
 }
 \keyword{internal}

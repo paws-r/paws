@@ -33,6 +33,6 @@ you specified in \code{Arn}.}
 \description{
 Specifies an Amazon Web Services rule that you want to share with another account, the account that you want to share the rule with, and the operations that you want the account to be able to perform on the rule.
 
-See \url{https://paws-r.github.io/docs/route53resolver/put_resolver_rule_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_put_resolver_rule_policy/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ starting at the location pointed to by the next token.}
 \description{
 Lists your hypervisors.
 
-See \url{https://paws-r.github.io/docs/backupgateway/list_hypervisors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_list_hypervisors/} for full documentation.
 }
 \keyword{internal}

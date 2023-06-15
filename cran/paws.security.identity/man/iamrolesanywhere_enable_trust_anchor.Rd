@@ -12,6 +12,6 @@ iamrolesanywhere_enable_trust_anchor(trustAnchorId)
 \description{
 Enables a trust anchor. When enabled, certificates in the trust anchor chain are authorized for trust validation.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/enable_trust_anchor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_enable_trust_anchor/} for full documentation.
 }
 \keyword{internal}

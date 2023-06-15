@@ -16,6 +16,6 @@ characters are a-z, A-Z, 0-9, and - (hyphen).}
 \description{
 Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_model_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package/} for full documentation.
 }
 \keyword{internal}

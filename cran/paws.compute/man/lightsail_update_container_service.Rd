@@ -70,6 +70,6 @@ Lightsail Developer Guide}.}
 \description{
 Updates the configuration of your Amazon Lightsail container service, such as its power, scale, and public domain names.
 
-See \url{https://paws-r.github.io/docs/lightsail/update_container_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_update_container_service/} for full documentation.
 }
 \keyword{internal}

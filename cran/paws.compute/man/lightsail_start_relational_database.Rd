@@ -12,6 +12,6 @@ lightsail_start_relational_database(relationalDatabaseName)
 \description{
 Starts a specific database from a stopped state in Amazon Lightsail. To restart a database, use the \verb{reboot relational database} operation.
 
-See \url{https://paws-r.github.io/docs/lightsail/start_relational_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_start_relational_database/} for full documentation.
 }
 \keyword{internal}

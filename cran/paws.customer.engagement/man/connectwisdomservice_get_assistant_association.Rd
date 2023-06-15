@@ -19,6 +19,6 @@ URLs cannot contain the ARN.}
 \description{
 Retrieves information about an assistant association.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/get_assistant_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_get_assistant_association/} for full documentation.
 }
 \keyword{internal}

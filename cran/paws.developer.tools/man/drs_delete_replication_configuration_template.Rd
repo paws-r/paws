@@ -14,6 +14,6 @@ drs_delete_replication_configuration_template(
 \description{
 Deletes a single Replication Configuration Template by ID
 
-See \url{https://paws-r.github.io/docs/drs/delete_replication_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_delete_replication_configuration_template/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Creates a new Amazon Web Services secret access key and corresponding Amazon Web Services access key ID for the specified user. The default status for new keys is \code{Active}.
 
-See \url{https://paws-r.github.io/docs/iam/create_access_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_access_key/} for full documentation.
 }
 \keyword{internal}

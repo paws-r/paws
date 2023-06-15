@@ -14,6 +14,6 @@ elbv2_add_tags(ResourceArns, Tags)
 \description{
 Adds the specified tags to the specified Elastic Load Balancing resource. You can tag your Application Load Balancers, Network Load Balancers, Gateway Load Balancers, target groups, listeners, and rules.
 
-See \url{https://paws-r.github.io/docs/elbv2/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_add_tags/} for full documentation.
 }
 \keyword{internal}

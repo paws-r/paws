@@ -41,6 +41,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as firewall rules that grant access to networks. You must configure ingress authorization rules to enable clients to access resources in Amazon Web Services or on-premises networks.
 
-See \url{https://paws-r.github.io/docs/ec2/authorize_client_vpn_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_authorize_client_vpn_ingress/} for full documentation.
 }
 \keyword{internal}

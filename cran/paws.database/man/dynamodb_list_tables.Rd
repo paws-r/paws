@@ -18,6 +18,6 @@ specified, the limit is 100.}
 \description{
 Returns an array of table names associated with the current account and endpoint. The output from \code{\link[=dynamodb_list_tables]{list_tables}} is paginated, with each page returning a maximum of 100 table names.
 
-See \url{https://paws-r.github.io/docs/dynamodb/list_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_list_tables/} for full documentation.
 }
 \keyword{internal}

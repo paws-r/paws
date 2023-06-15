@@ -15,6 +15,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Creates and sends a direct message.
 
-See \url{https://paws-r.github.io/docs/pinpoint/send_messages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_send_messages/} for full documentation.
 }
 \keyword{internal}

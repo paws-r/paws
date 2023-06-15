@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_stack_instance}
 \alias{cloudformation_describe_stack_instance}
-\title{Returns the stack instance that's associated with the specified stack
-set, Amazon Web Services account, and Region}
+\title{Returns the stack instance that's associated with the specified
+StackSet, Amazon Web Services account, and Amazon Web Services Region}
 \usage{
 cloudformation_describe_stack_instance(
   StackSetName,
@@ -39,8 +39,8 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Returns the stack instance that's associated with the specified stack set, Amazon Web Services account, and Region.
+Returns the stack instance that's associated with the specified StackSet, Amazon Web Services account, and Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_instance/} for full documentation.
 }
 \keyword{internal}

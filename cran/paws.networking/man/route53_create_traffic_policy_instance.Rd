@@ -34,6 +34,6 @@ resource record sets in the specified hosted zone.}
 \description{
 Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version. In addition, \code{\link[=route53_create_traffic_policy_instance]{create_traffic_policy_instance}} associates the resource record sets with a specified domain name (such as example.com) or subdomain name (such as www.example.com). Amazon Route 53 responds to DNS queries for the domain or subdomain name by using the resource record sets that \code{\link[=route53_create_traffic_policy_instance]{create_traffic_policy_instance}} created.
 
-See \url{https://paws-r.github.io/docs/route53/create_traffic_policy_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_traffic_policy_instance/} for full documentation.
 }
 \keyword{internal}

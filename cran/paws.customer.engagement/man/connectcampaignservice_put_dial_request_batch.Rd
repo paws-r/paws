@@ -14,6 +14,6 @@ connectcampaignservice_put_dial_request_batch(dialRequests, id)
 \description{
 Creates dials requests for the specified campaign Amazon Connect account. This API is idempotent.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/put_dial_request_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_put_dial_request_batch/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ iam_generate_credential_report()
 \description{
 Generates a credential report for the Amazon Web Services account. For more information about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting credential reports} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/generate_credential_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_generate_credential_report/} for full documentation.
 }
 \keyword{internal}

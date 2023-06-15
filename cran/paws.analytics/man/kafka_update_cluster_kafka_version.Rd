@@ -24,6 +24,6 @@ cluster.}
 \description{
 Updates the Apache Kafka version for the cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/update_cluster_kafka_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_cluster_kafka_version/} for full documentation.
 }
 \keyword{internal}

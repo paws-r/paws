@@ -13,6 +13,6 @@ the resource set.}
 \description{
 Gets information about a specific resource set.
 
-See \url{https://paws-r.github.io/docs/fms/get_resource_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_resource_set/} for full documentation.
 }
 \keyword{internal}

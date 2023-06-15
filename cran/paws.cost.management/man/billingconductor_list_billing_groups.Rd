@@ -26,6 +26,6 @@ plan to retrieve billing group information.}
 \description{
 A paginated call to retrieve a list of billing groups for the given billing period. If you don't provide a billing group, the current billing period is used.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_billing_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_billing_groups/} for full documentation.
 }
 \keyword{internal}

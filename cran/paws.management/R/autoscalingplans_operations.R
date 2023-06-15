@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a scaling plan.
 #'
-#' See [https://paws-r.github.io/docs/autoscalingplans/create_scaling_plan.html](https://paws-r.github.io/docs/autoscalingplans/create_scaling_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscalingplans_create_scaling_plan/](https://www.paws-r-sdk.com/docs/autoscalingplans_create_scaling_plan/) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan. Names cannot contain vertical bars,
 #' colons, or forward slashes.
@@ -49,7 +49,7 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
 #' @description
 #' Deletes the specified scaling plan.
 #'
-#' See [https://paws-r.github.io/docs/autoscalingplans/delete_scaling_plan.html](https://paws-r.github.io/docs/autoscalingplans/delete_scaling_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscalingplans_delete_scaling_plan/](https://www.paws-r-sdk.com/docs/autoscalingplans_delete_scaling_plan/) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
@@ -80,7 +80,7 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 #' @description
 #' Describes the scalable resources in the specified scaling plan.
 #'
-#' See [https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plan_resources.html](https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plan_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscalingplans_describe_scaling_plan_resources/](https://www.paws-r-sdk.com/docs/autoscalingplans_describe_scaling_plan_resources/) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
@@ -114,7 +114,7 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 #' @description
 #' Describes one or more of your scaling plans.
 #'
-#' See [https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plans.html](https://paws-r.github.io/docs/autoscalingplans/describe_scaling_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscalingplans_describe_scaling_plans/](https://www.paws-r-sdk.com/docs/autoscalingplans_describe_scaling_plans/) for full documentation.
 #'
 #' @param ScalingPlanNames The names of the scaling plans (up to 10). If you specify application
 #' sources, you cannot specify scaling plan names.
@@ -154,7 +154,7 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #' @description
 #' Retrieves the forecast data for a scalable resource.
 #'
-#' See [https://paws-r.github.io/docs/autoscalingplans/get_scaling_plan_resource_forecast_data.html](https://paws-r.github.io/docs/autoscalingplans/get_scaling_plan_resource_forecast_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscalingplans_get_scaling_plan_resource_forecast_data/](https://www.paws-r-sdk.com/docs/autoscalingplans_get_scaling_plan_resource_forecast_data/) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. Currently, the only valid value
@@ -215,7 +215,7 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 #' @description
 #' Updates the specified scaling plan.
 #'
-#' See [https://paws-r.github.io/docs/autoscalingplans/update_scaling_plan.html](https://paws-r.github.io/docs/autoscalingplans/update_scaling_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscalingplans_update_scaling_plan/](https://www.paws-r-sdk.com/docs/autoscalingplans_update_scaling_plan/) for full documentation.
 #'
 #' @param ScalingPlanName &#91;required&#93; The name of the scaling plan.
 #' @param ScalingPlanVersion &#91;required&#93; The version number of the scaling plan. The only valid value is `1`.

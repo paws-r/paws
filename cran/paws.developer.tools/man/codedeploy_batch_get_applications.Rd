@@ -13,6 +13,6 @@ application names you can specify is 100.}
 \description{
 Gets information about one or more applications. The maximum number of applications that can be returned is 100.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_applications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_applications/} for full documentation.
 }
 \keyword{internal}

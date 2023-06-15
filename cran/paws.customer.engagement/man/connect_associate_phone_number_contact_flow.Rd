@@ -22,6 +22,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Associates a flow with a phone number claimed to your Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/associate_phone_number_contact_flow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_associate_phone_number_contact_flow/} for full documentation.
 }
 \keyword{internal}

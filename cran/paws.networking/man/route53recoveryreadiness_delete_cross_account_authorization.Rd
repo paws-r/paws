@@ -14,6 +14,6 @@ route53recoveryreadiness_delete_cross_account_authorization(
 \description{
 Deletes cross account readiness authorization.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/delete_cross_account_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_cross_account_authorization/} for full documentation.
 }
 \keyword{internal}

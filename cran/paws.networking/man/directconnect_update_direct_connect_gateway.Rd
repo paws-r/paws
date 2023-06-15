@@ -17,6 +17,6 @@ directconnect_update_direct_connect_gateway(
 \description{
 Updates the name of a current Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/update_direct_connect_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_update_direct_connect_gateway/} for full documentation.
 }
 \keyword{internal}

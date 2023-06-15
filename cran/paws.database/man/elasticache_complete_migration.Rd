@@ -16,6 +16,6 @@ recommended when application wants to continue migration to ElastiCache.}
 \description{
 Complete the migration of data.
 
-See \url{https://paws-r.github.io/docs/elasticache/complete_migration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_complete_migration/} for full documentation.
 }
 \keyword{internal}

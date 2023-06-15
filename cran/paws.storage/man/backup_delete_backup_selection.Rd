@@ -16,6 +16,6 @@ to a backup plan.}
 \description{
 Deletes the resource selection associated with a backup plan that is specified by the \code{SelectionId}.
 
-See \url{https://paws-r.github.io/docs/backup/delete_backup_selection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_backup_selection/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ the output should continue from.}
 \description{
 Lists information about the current application snapshots.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_snapshots/} for full documentation.
 }
 \keyword{internal}

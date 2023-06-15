@@ -303,7 +303,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumCRC32C = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
 #'   SSEKMSKeyId = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
@@ -796,7 +796,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   Expiration = "string",
 #'   CopySourceVersionId = "string",
 #'   VersionId = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -839,7 +839,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   ),
 #'   MetadataDirective = "COPY"|"REPLACE",
 #'   TaggingDirective = "COPY"|"REPLACE",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
@@ -1079,11 +1079,6 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'
 #' @examples
 #' \dontrun{
-#' # The following example creates a bucket.
-#' svc$create_bucket(
-#'   Bucket = "examplebucket"
-#' )
-#' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
 #' svc$create_bucket(
@@ -1091,6 +1086,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "eu-west-1"
 #'   )
+#' )
+#' 
+#' # The following example creates a bucket.
+#' svc$create_bucket(
+#'   Bucket = "examplebucket"
 #' )
 #' }
 #'
@@ -1492,7 +1492,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'   Bucket = "string",
 #'   Key = "string",
 #'   UploadId = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -1524,7 +1524,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'   Metadata = list(
 #'     "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
@@ -2729,20 +2729,20 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' @examples
 #' \dontrun{
 #' # The following example removes tag set associated with the specified
+#' # object. If the bucket is versioning enabled, the operation removes tag
+#' # set from the latest object version.
+#' svc$delete_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
+#' # The following example removes tag set associated with the specified
 #' # object version. The request specifies both the object key and object
 #' # version.
 #' svc$delete_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-#' )
-#' 
-#' # The following example removes tag set associated with the specified
-#' # object. If the bucket is versioning enabled, the operation removes tag
-#' # set from the latest object version.
-#' svc$delete_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -2918,6 +2918,25 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'
 #' @examples
 #' \dontrun{
+#' # The following example deletes objects from a bucket. The bucket is
+#' # versioned, and the request does not specify the object version to
+#' # delete. In this case, all versions remain in the bucket and S3 adds a
+#' # delete marker.
+#' svc$delete_objects(
+#'   Bucket = "examplebucket",
+#'   Delete = list(
+#'     Objects = list(
+#'       list(
+#'         Key = "objectkey1"
+#'       ),
+#'       list(
+#'         Key = "objectkey2"
+#'       )
+#'     ),
+#'     Quiet = FALSE
+#'   )
+#' )
+#' 
 #' # The following example deletes objects from a bucket. The request
 #' # specifies object versions. S3 deletes specific object versions and
 #' # returns the key and versions of deleted objects in the response.
@@ -2932,25 +2951,6 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'       list(
 #'         Key = "HappyFace.jpg",
 #'         VersionId = "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"
-#'       )
-#'     ),
-#'     Quiet = FALSE
-#'   )
-#' )
-#' 
-#' # The following example deletes objects from a bucket. The bucket is
-#' # versioned, and the request does not specify the object version to
-#' # delete. In this case, all versions remain in the bucket and S3 adds a
-#' # delete marker.
-#' svc$delete_objects(
-#'   Bucket = "examplebucket",
-#'   Delete = list(
-#'     Objects = list(
-#'       list(
-#'         Key = "objectkey1"
-#'       ),
-#'       list(
-#'         Key = "objectkey2"
 #'       )
 #'     ),
 #'     Quiet = FALSE
@@ -3503,7 +3503,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     Rules = list(
 #'       list(
 #'         ApplyServerSideEncryptionByDefault = list(
-#'           SSEAlgorithm = "AES256"|"aws:kms",
+#'           SSEAlgorithm = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'           KMSMasterKeyID = "string"
 #'         ),
 #'         BucketKeyEnabled = TRUE|FALSE
@@ -5543,7 +5543,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     "2015-01-01"
 #'   ),
 #'   WebsiteRedirectLocation = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -5599,18 +5599,18 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example retrieves an object for an S3 bucket.
-#' svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
+#' )
+#' 
+#' # The following example retrieves an object for an S3 bucket.
+#' svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -6816,7 +6816,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     "2015-01-01"
 #'   ),
 #'   WebsiteRedirectLocation = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -9099,7 +9099,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #'     Rules = list(
 #'       list(
 #'         ApplyServerSideEncryptionByDefault = list(
-#'           SSEAlgorithm = "AES256"|"aws:kms",
+#'           SSEAlgorithm = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'           KMSMasterKeyID = "string"
 #'         ),
 #'         BucketKeyEnabled = TRUE|FALSE
@@ -11652,7 +11652,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   ChecksumCRC32C = "string",
 #'   ChecksumSHA1 = "string",
 #'   ChecksumSHA256 = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   VersionId = "string",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
@@ -11692,7 +11692,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Metadata = list(
 #'     "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
@@ -11714,6 +11714,59 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'
 #' @examples
 #' \dontrun{
+#' # The following example uploads an object to a versioning-enabled bucket.
+#' # The source file is specified using Windows file syntax. S3 returns
+#' # VersionId of the newly created object.
+#' svc$put_object(
+#'   Body = "HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
+#' # The following example creates an object. The request also specifies
+#' # optional metadata. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   Metadata = list(
+#'     metadata1 = "value1",
+#'     metadata2 = "value2"
+#'   )
+#' )
+#' 
+#' # The following example uploads an object. The request specifies optional
+#' # request headers to directs S3 to use specific storage class and use
+#' # server-side encryption.
+#' svc$put_object(
+#'   Body = "HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg",
+#'   ServerSideEncryption = "AES256",
+#'   StorageClass = "STANDARD_IA"
+#' )
+#' 
+#' # The following example creates an object. If the bucket is versioning
+#' # enabled, S3 returns version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey"
+#' )
+#' 
+#' # The following example uploads an object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
+#'   Tagging = "key1=value1&key2=value2"
+#' )
+#' 
 #' # The following example uploads an object. The request specifies optional
 #' # object tags. The bucket is versioned, therefore S3 returns version ID of
 #' # the newly created object.
@@ -11733,59 +11786,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject"
-#' )
-#' 
-#' # The following example uploads an object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   ServerSideEncryption = "AES256",
-#'   Tagging = "key1=value1&key2=value2"
-#' )
-#' 
-#' # The following example creates an object. If the bucket is versioning
-#' # enabled, S3 returns version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey"
-#' )
-#' 
-#' # The following example uploads an object to a versioning-enabled bucket.
-#' # The source file is specified using Windows file syntax. S3 returns
-#' # VersionId of the newly created object.
-#' svc$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
-#' # The following example uploads an object. The request specifies optional
-#' # request headers to directs S3 to use specific storage class and use
-#' # server-side encryption.
-#' svc$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   ServerSideEncryption = "AES256",
-#'   StorageClass = "STANDARD_IA"
-#' )
-#' 
-#' # The following example creates an object. The request also specifies
-#' # optional metadata. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   Metadata = list(
-#'     metadata1 = "value1",
-#'     metadata2 = "value2"
-#'   )
 #' )
 #' }
 #'
@@ -13045,7 +13045,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #'         BucketName = "string",
 #'         Prefix = "string",
 #'         Encryption = list(
-#'           EncryptionType = "AES256"|"aws:kms",
+#'           EncryptionType = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'           KMSKeyId = "string",
 #'           KMSContext = "string"
 #'         ),
@@ -13593,7 +13593,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   ETag = "string",
 #'   ChecksumCRC32 = "string",
 #'   ChecksumCRC32C = "string",
@@ -13915,7 +13915,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'     ChecksumSHA1 = "string",
 #'     ChecksumSHA256 = "string"
 #'   ),
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
@@ -13955,16 +13955,6 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'
 #' @examples
 #' \dontrun{
-#' # The following example uploads a part of a multipart upload by copying
-#' # data from an existing object as data source.
-#' svc$upload_part_copy(
-#'   Bucket = "examplebucket",
-#'   CopySource = "/bucketname/sourceobjectkey",
-#'   Key = "examplelargeobject",
-#'   PartNumber = "1",
-#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
-#' )
-#' 
 #' # The following example uploads a part of a multipart upload by copying a
 #' # specified byte range from an existing object as data source.
 #' svc$upload_part_copy(
@@ -13973,6 +13963,16 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'   CopySourceRange = "bytes=1-100000",
 #'   Key = "examplelargeobject",
 #'   PartNumber = "2",
+#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
+#' )
+#' 
+#' # The following example uploads a part of a multipart upload by copying
+#' # data from an existing object as data source.
+#' svc$upload_part_copy(
+#'   Bucket = "examplebucket",
+#'   CopySource = "/bucketname/sourceobjectkey",
+#'   Key = "examplelargeobject",
+#'   PartNumber = "1",
 #'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
 #' )
 #' }
@@ -14276,7 +14276,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA",
 #'   RequestCharged = "requester",
 #'   Restore = "string",
-#'   ServerSideEncryption = "AES256"|"aws:kms",
+#'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   SSECustomerAlgorithm = "string",
 #'   SSEKMSKeyId = "string",
 #'   SSECustomerKeyMD5 = "string",

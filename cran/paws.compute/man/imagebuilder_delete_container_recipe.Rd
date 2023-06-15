@@ -12,6 +12,6 @@ imagebuilder_delete_container_recipe(containerRecipeArn)
 \description{
 Deletes a container recipe.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_container_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_container_recipe/} for full documentation.
 }
 \keyword{internal}

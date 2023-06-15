@@ -18,6 +18,6 @@ value.}
 \description{
 Lists the IP address ranges that were specified in calls to \code{\link[=globalaccelerator_provision_byoip_cidr]{provision_byoip_cidr}}, including the current state and a history of state changes.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/list_byoip_cidrs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_byoip_cidrs/} for full documentation.
 }
 \keyword{internal}

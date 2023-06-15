@@ -14,6 +14,6 @@ Amazon Inspector status for.}
 \description{
 Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment.
 
-See \url{https://paws-r.github.io/docs/inspector2/batch_get_account_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_batch_get_account_status/} for full documentation.
 }
 \keyword{internal}

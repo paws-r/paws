@@ -23,6 +23,6 @@ want to store evaluation events.}
 \description{
 Updates the data storage options for this project. If you store evaluation events, you an keep them and analyze them on your own. If you choose not to store evaluation events, Evidently deletes them after using them to produce metrics and other experiment results that you can view.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/update_project_data_delivery.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project_data_delivery/} for full documentation.
 }
 \keyword{internal}

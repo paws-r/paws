@@ -14,6 +14,6 @@ quicksight_list_refresh_schedules(AwsAccountId, DataSetId)
 \description{
 Lists the refresh schedules of a dataset. Each dataset can have up to 5 schedules.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_refresh_schedules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_refresh_schedules/} for full documentation.
 }
 \keyword{internal}

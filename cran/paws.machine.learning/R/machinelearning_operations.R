@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, [`add_tags`][machinelearning_add_tags] updates the tag's value.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/add_tags.html](https://paws-r.github.io/docs/machinelearning/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_add_tags/](https://www.paws-r-sdk.com/docs/machinelearning_add_tags/) for full documentation.
 #'
 #' @param Tags &#91;required&#93; The key-value pairs to use to create tags. If you specify a key without
 #' specifying a value, Amazon ML creates a tag with the specified key and a
@@ -41,7 +41,7 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' @description
 #' Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a `DataSource`. This operation creates a new `BatchPrediction`, and uses an `MLModel` and the data files referenced by the `DataSource` as information sources.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/create_batch_prediction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_batch_prediction/](https://www.paws-r-sdk.com/docs/machinelearning_create_batch_prediction/) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; A user-supplied ID that uniquely identifies the `BatchPrediction`.
 #' @param BatchPredictionName A user-supplied name or description of the `BatchPrediction`.
@@ -86,7 +86,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @description
 #' Creates a `DataSource` object from an [Amazon Relational Database Service](https://aws.amazon.com/rds/) (Amazon RDS). A `DataSource` references data that can be used to perform [`create_ml_model`][machinelearning_create_ml_model], [`create_evaluation`][machinelearning_create_evaluation], or [`create_batch_prediction`][machinelearning_create_batch_prediction] operations.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_data_source_from_rds.html](https://paws-r.github.io/docs/machinelearning/create_data_source_from_rds.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_rds/](https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_rds/) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`. Typically,
 #' an Amazon Resource Number (ARN) becomes the ID for a `DataSource`.
@@ -173,7 +173,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' @description
 #' Creates a `DataSource` from a database hosted on an Amazon Redshift cluster. A `DataSource` references data that can be used to perform either [`create_ml_model`][machinelearning_create_ml_model], [`create_evaluation`][machinelearning_create_evaluation], or [`create_batch_prediction`][machinelearning_create_batch_prediction] operations.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_data_source_from_redshift.html](https://paws-r.github.io/docs/machinelearning/create_data_source_from_redshift.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_redshift/](https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_redshift/) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`.
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
@@ -247,7 +247,7 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #' @description
 #' Creates a `DataSource` object. A `DataSource` references data that can be used to perform [`create_ml_model`][machinelearning_create_ml_model], [`create_evaluation`][machinelearning_create_evaluation], or [`create_batch_prediction`][machinelearning_create_batch_prediction] operations.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_data_source_from_s3.html](https://paws-r.github.io/docs/machinelearning/create_data_source_from_s3.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_s3/](https://www.paws-r-sdk.com/docs/machinelearning_create_data_source_from_s3/) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied identifier that uniquely identifies the `DataSource`.
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
@@ -296,7 +296,7 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #' @description
 #' Creates a new `Evaluation` of an `MLModel`. An `MLModel` is evaluated on a set of observations associated to a `DataSource`. Like a `DataSource` for an `MLModel`, the `DataSource` for an `Evaluation` contains values for the `Target Variable`. The `Evaluation` compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the `MLModel` functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding `MLModelType`: `BINARY`, `REGRESSION` or `MULTICLASS`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_evaluation.html](https://paws-r.github.io/docs/machinelearning/create_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_evaluation/](https://www.paws-r-sdk.com/docs/machinelearning_create_evaluation/) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; A user-supplied ID that uniquely identifies the `Evaluation`.
 #' @param EvaluationName A user-supplied name or description of the `Evaluation`.
@@ -333,7 +333,7 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' @description
 #' Creates a new `MLModel` using the `DataSource` and the recipe as information sources.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_ml_model.html](https://paws-r.github.io/docs/machinelearning/create_ml_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_ml_model/](https://www.paws-r-sdk.com/docs/machinelearning_create_ml_model/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; A user-supplied ID that uniquely identifies the `MLModel`.
 #' @param MLModelName A user-supplied name or description of the `MLModel`.
@@ -425,7 +425,7 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
 #' @description
 #' Creates a real-time endpoint for the `MLModel`. The endpoint contains the URI of the `MLModel`; that is, the location to send real-time prediction requests for the specified `MLModel`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/create_realtime_endpoint.html](https://paws-r.github.io/docs/machinelearning/create_realtime_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_create_realtime_endpoint/](https://www.paws-r-sdk.com/docs/machinelearning_create_realtime_endpoint/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
 #'
@@ -454,7 +454,7 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 #' @description
 #' Assigns the DELETED status to a `BatchPrediction`, rendering it unusable.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/delete_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/delete_batch_prediction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_delete_batch_prediction/](https://www.paws-r-sdk.com/docs/machinelearning_delete_batch_prediction/) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; A user-supplied ID that uniquely identifies the `BatchPrediction`.
 #'
@@ -483,7 +483,7 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 #' @description
 #' Assigns the DELETED status to a `DataSource`, rendering it unusable.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/delete_data_source.html](https://paws-r.github.io/docs/machinelearning/delete_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_delete_data_source/](https://www.paws-r-sdk.com/docs/machinelearning_delete_data_source/) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; A user-supplied ID that uniquely identifies the `DataSource`.
 #'
@@ -512,7 +512,7 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #' @description
 #' Assigns the `DELETED` status to an `Evaluation`, rendering it unusable.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/delete_evaluation.html](https://paws-r.github.io/docs/machinelearning/delete_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_delete_evaluation/](https://www.paws-r-sdk.com/docs/machinelearning_delete_evaluation/) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; A user-supplied ID that uniquely identifies the `Evaluation` to delete.
 #'
@@ -541,7 +541,7 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 #' @description
 #' Assigns the `DELETED` status to an `MLModel`, rendering it unusable.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/delete_ml_model.html](https://paws-r.github.io/docs/machinelearning/delete_ml_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_delete_ml_model/](https://www.paws-r-sdk.com/docs/machinelearning_delete_ml_model/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; A user-supplied ID that uniquely identifies the `MLModel`.
 #'
@@ -570,7 +570,7 @@ machinelearning_delete_ml_model <- function(MLModelId) {
 #' @description
 #' Deletes a real time endpoint of an `MLModel`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/delete_realtime_endpoint.html](https://paws-r.github.io/docs/machinelearning/delete_realtime_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_delete_realtime_endpoint/](https://www.paws-r-sdk.com/docs/machinelearning_delete_realtime_endpoint/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
 #'
@@ -599,7 +599,7 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
 #' @description
 #' Deletes the specified tags associated with an ML object. After this operation is complete, you can't recover deleted tags.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/delete_tags.html](https://paws-r.github.io/docs/machinelearning/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_delete_tags/](https://www.paws-r-sdk.com/docs/machinelearning_delete_tags/) for full documentation.
 #'
 #' @param TagKeys &#91;required&#93; One or more tags to delete.
 #' @param ResourceId &#91;required&#93; The ID of the tagged ML object. For example, `exampleModelId`.
@@ -631,7 +631,7 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' @description
 #' Returns a list of `BatchPrediction` operations that match the search criteria in the request.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/describe_batch_predictions.html](https://paws-r.github.io/docs/machinelearning/describe_batch_predictions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_describe_batch_predictions/](https://www.paws-r-sdk.com/docs/machinelearning_describe_batch_predictions/) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of
 #' `BatchPrediction`:
@@ -724,7 +724,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' @description
 #' Returns a list of `DataSource` that match the search criteria in the request.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/describe_data_sources.html](https://paws-r.github.io/docs/machinelearning/describe_data_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_describe_data_sources/](https://www.paws-r-sdk.com/docs/machinelearning_describe_data_sources/) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of `DataSource`:
 #' 
@@ -809,7 +809,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' @description
 #' Returns a list of [`describe_evaluations`][machinelearning_describe_evaluations] that match the search criteria in the request.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/describe_evaluations.html](https://paws-r.github.io/docs/machinelearning/describe_evaluations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_describe_evaluations/](https://www.paws-r-sdk.com/docs/machinelearning_describe_evaluations/) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variable to filter a list of `Evaluation`
 #' objects:
@@ -900,7 +900,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' @description
 #' Returns a list of `MLModel` that match the search criteria in the request.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/describe_ml_models.html](https://paws-r.github.io/docs/machinelearning/describe_ml_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_describe_ml_models/](https://www.paws-r-sdk.com/docs/machinelearning_describe_ml_models/) for full documentation.
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of `MLModel`:
 #' 
@@ -994,7 +994,7 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
 #' @description
 #' Describes one or more of the tags for your Amazon ML object.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/describe_tags.html](https://paws-r.github.io/docs/machinelearning/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_describe_tags/](https://www.paws-r-sdk.com/docs/machinelearning_describe_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID of the ML object. For example, `exampleModelId`.
 #' @param ResourceType &#91;required&#93; The type of the ML object.
@@ -1025,7 +1025,7 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
 #' @description
 #' Returns a `BatchPrediction` that includes detailed metadata, status, and data file information for a `Batch Prediction` request.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/get_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/get_batch_prediction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_get_batch_prediction/](https://www.paws-r-sdk.com/docs/machinelearning_get_batch_prediction/) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; An ID assigned to the `BatchPrediction` at creation.
 #'
@@ -1055,7 +1055,7 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' @description
 #' Returns a `DataSource` that includes metadata and data file information, as well as the current status of the `DataSource`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/get_data_source.html](https://paws-r.github.io/docs/machinelearning/get_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_get_data_source/](https://www.paws-r-sdk.com/docs/machinelearning_get_data_source/) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; The ID assigned to the `DataSource` at creation.
 #' @param Verbose Specifies whether the
@@ -1092,7 +1092,7 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
 #' @description
 #' Returns an `Evaluation` that includes metadata as well as the current status of the `Evaluation`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/get_evaluation.html](https://paws-r.github.io/docs/machinelearning/get_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_get_evaluation/](https://www.paws-r-sdk.com/docs/machinelearning_get_evaluation/) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; The ID of the `Evaluation` to retrieve. The evaluation of each `MLModel`
 #' is recorded and cataloged. The ID provides the means to access the
@@ -1124,7 +1124,7 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' @description
 #' Returns an `MLModel` that includes detailed metadata, data source information, and the current status of the `MLModel`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/get_ml_model.html](https://paws-r.github.io/docs/machinelearning/get_ml_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_get_ml_model/](https://www.paws-r-sdk.com/docs/machinelearning_get_ml_model/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` at creation.
 #' @param Verbose Specifies whether the [`get_ml_model`][machinelearning_get_ml_model]
@@ -1159,7 +1159,7 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 #' @description
 #' Generates a prediction for the observation using the specified `ML Model`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/predict.html](https://paws-r.github.io/docs/machinelearning/predict.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_predict/](https://www.paws-r-sdk.com/docs/machinelearning_predict/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; A unique identifier of the `MLModel`.
 #' @param Record &#91;required&#93; 
@@ -1190,7 +1190,7 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 #' @description
 #' Updates the `BatchPredictionName` of a `BatchPrediction`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/update_batch_prediction.html](https://paws-r.github.io/docs/machinelearning/update_batch_prediction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_update_batch_prediction/](https://www.paws-r-sdk.com/docs/machinelearning_update_batch_prediction/) for full documentation.
 #'
 #' @param BatchPredictionId &#91;required&#93; The ID assigned to the `BatchPrediction` during creation.
 #' @param BatchPredictionName &#91;required&#93; A new user-supplied name or description of the `BatchPrediction`.
@@ -1220,7 +1220,7 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @description
 #' Updates the `DataSourceName` of a `DataSource`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/update_data_source.html](https://paws-r.github.io/docs/machinelearning/update_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_update_data_source/](https://www.paws-r-sdk.com/docs/machinelearning_update_data_source/) for full documentation.
 #'
 #' @param DataSourceId &#91;required&#93; The ID assigned to the `DataSource` during creation.
 #' @param DataSourceName &#91;required&#93; A new user-supplied name or description of the `DataSource` that will
@@ -1251,7 +1251,7 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 #' @description
 #' Updates the `EvaluationName` of an `Evaluation`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/update_evaluation.html](https://paws-r.github.io/docs/machinelearning/update_evaluation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_update_evaluation/](https://www.paws-r-sdk.com/docs/machinelearning_update_evaluation/) for full documentation.
 #'
 #' @param EvaluationId &#91;required&#93; The ID assigned to the `Evaluation` during creation.
 #' @param EvaluationName &#91;required&#93; A new user-supplied name or description of the `Evaluation` that will
@@ -1282,7 +1282,7 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #' @description
 #' Updates the `MLModelName` and the `ScoreThreshold` of an `MLModel`.
 #'
-#' See [https://paws-r.github.io/docs/machinelearning/update_ml_model.html](https://paws-r.github.io/docs/machinelearning/update_ml_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/machinelearning_update_ml_model/](https://www.paws-r-sdk.com/docs/machinelearning_update_ml_model/) for full documentation.
 #'
 #' @param MLModelId &#91;required&#93; The ID assigned to the `MLModel` during creation.
 #' @param MLModelName A user-supplied name or description of the `MLModel`.

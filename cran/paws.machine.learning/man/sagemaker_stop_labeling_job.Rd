@@ -12,6 +12,6 @@ sagemaker_stop_labeling_job(LabelingJobName)
 \description{
 Stops a running labeling job. A job that is stopped cannot be restarted. Any results obtained before the job is stopped are placed in the Amazon S3 output bucket.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_labeling_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_labeling_job/} for full documentation.
 }
 \keyword{internal}

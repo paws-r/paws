@@ -20,6 +20,6 @@ connectors.}
 \description{
 Lists the data source connectors that you have created.
 
-See \url{https://paws-r.github.io/docs/kendra/list_data_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_data_sources/} for full documentation.
 }
 \keyword{internal}

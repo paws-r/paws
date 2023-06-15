@@ -12,6 +12,6 @@ glue_get_dataflow_graph(PythonScript = NULL)
 \description{
 Transforms a Python script into a directed acyclic graph (DAG).
 
-See \url{https://paws-r.github.io/docs/glue/get_dataflow_graph.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_dataflow_graph/} for full documentation.
 }
 \keyword{internal}

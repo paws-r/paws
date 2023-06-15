@@ -22,6 +22,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Adds the specified user to the specified group.
 
-See \url{https://paws-r.github.io/docs/iam/add_user_to_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_add_user_to_group/} for full documentation.
 }
 \keyword{internal}

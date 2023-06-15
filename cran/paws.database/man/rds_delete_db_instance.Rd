@@ -62,6 +62,6 @@ instance is deleted.}
 \description{
 The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by \code{\link[=rds_delete_db_instance]{delete_db_instance}} are not deleted.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_instance/} for full documentation.
 }
 \keyword{internal}

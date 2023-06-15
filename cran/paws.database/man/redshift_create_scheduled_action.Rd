@@ -46,6 +46,6 @@ see ScheduledAction.}
 \description{
 Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For example, you can create a schedule of when to run the \code{\link[=redshift_resize_cluster]{resize_cluster}} API operation.
 
-See \url{https://paws-r.github.io/docs/redshift/create_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_scheduled_action/} for full documentation.
 }
 \keyword{internal}

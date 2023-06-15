@@ -114,6 +114,6 @@ different account, the request fails with the HTTP status code
 \description{
 Retrieves objects from Amazon S3. To use \code{GET}, you must have \code{READ} access to the object. If you grant \code{READ} access to the anonymous user, you can return the object without using an authorization header.
 
-See \url{https://paws-r.github.io/docs/s3/get_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object/} for full documentation.
 }
 \keyword{internal}

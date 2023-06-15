@@ -23,6 +23,6 @@ comprehend_list_datasets(
 \description{
 List the datasets that you have configured in this Region. For more information about datasets, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_datasets/} for full documentation.
 }
 \keyword{internal}

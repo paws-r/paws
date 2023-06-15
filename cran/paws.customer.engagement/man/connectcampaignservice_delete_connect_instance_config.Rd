@@ -12,6 +12,6 @@ connectcampaignservice_delete_connect_instance_config(connectInstanceId)
 \description{
 Deletes a connect instance config from the specified AWS account.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/delete_connect_instance_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_connect_instance_config/} for full documentation.
 }
 \keyword{internal}

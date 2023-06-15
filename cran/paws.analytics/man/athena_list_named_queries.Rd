@@ -26,6 +26,6 @@ primary workgroup are returned.}
 \description{
 Provides a list of available query IDs only for queries saved in the specified workgroup. Requires that you have access to the specified workgroup. If a workgroup is not specified, lists the saved queries for the primary workgroup.
 
-See \url{https://paws-r.github.io/docs/athena/list_named_queries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_named_queries/} for full documentation.
 }
 \keyword{internal}

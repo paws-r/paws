@@ -15,6 +15,6 @@ up to 10 traffic sources.}
 \description{
 Attaches one or more traffic sources to the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/attach_traffic_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_attach_traffic_sources/} for full documentation.
 }
 \keyword{internal}

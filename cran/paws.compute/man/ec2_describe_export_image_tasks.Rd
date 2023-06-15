@@ -31,6 +31,6 @@ values: \code{active}, \code{completed}, \code{deleting}, or \code{deleted}.}
 \description{
 Describes the specified export image tasks or all of your export image tasks.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_export_image_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_export_image_tasks/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ contains.}
 \description{
 Lists the budget names and notifications that are associated with an account.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budget_notifications_for_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budget_notifications_for_account/} for full documentation.
 }
 \keyword{internal}

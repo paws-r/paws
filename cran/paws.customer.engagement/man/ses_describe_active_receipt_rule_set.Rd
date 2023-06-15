@@ -10,6 +10,6 @@ ses_describe_active_receipt_rule_set()
 \description{
 Returns the metadata and receipt rules for the receipt rule set that is currently active.
 
-See \url{https://paws-r.github.io/docs/ses/describe_active_receipt_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_describe_active_receipt_rule_set/} for full documentation.
 }
 \keyword{internal}

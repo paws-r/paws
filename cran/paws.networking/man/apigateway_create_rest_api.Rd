@@ -61,6 +61,6 @@ disable the default endpoint}
 \description{
 Creates a new RestApi resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_rest_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_rest_api/} for full documentation.
 }
 \keyword{internal}

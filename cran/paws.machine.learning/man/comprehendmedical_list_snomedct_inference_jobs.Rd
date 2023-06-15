@@ -21,6 +21,6 @@ comprehendmedical_list_snomedct_inference_jobs(
 \description{
 Gets a list of InferSNOMEDCT jobs a user has submitted.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/list_snomedct_inference_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_list_snomedct_inference_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ drs_list_staging_accounts(maxResults = NULL, nextToken = NULL)
 \description{
 Returns an array of staging accounts for existing extended source servers.
 
-See \url{https://paws-r.github.io/docs/drs/list_staging_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_list_staging_accounts/} for full documentation.
 }
 \keyword{internal}

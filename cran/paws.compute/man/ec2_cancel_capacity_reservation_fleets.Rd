@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels one or more Capacity Reservation Fleets. When you cancel a Capacity Reservation Fleet, the following happens:
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_capacity_reservation_fleets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_capacity_reservation_fleets/} for full documentation.
 }
 \keyword{internal}

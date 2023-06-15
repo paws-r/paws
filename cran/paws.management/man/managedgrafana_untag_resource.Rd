@@ -15,6 +15,6 @@ managedgrafana_untag_resource(resourceArn, tagKeys)
 \description{
 The \code{\link[=managedgrafana_untag_resource]{untag_resource}} operation removes the association of the tag with the Amazon Managed Grafana resource.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_untag_resource/} for full documentation.
 }
 \keyword{internal}

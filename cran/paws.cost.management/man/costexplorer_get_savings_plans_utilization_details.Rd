@@ -63,6 +63,6 @@ The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCEND
 \description{
 Retrieves attribute data along with aggregate utilization and savings data for a given time period. This doesn't support granular or grouped data (daily/monthly) in response. You can't retrieve data by dates in a single response similar to \code{GetSavingsPlanUtilization}, but you have the option to make multiple calls to \code{GetSavingsPlanUtilizationDetails} by providing individual dates. You can use \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} in \code{SAVINGS_PLANS} to determine the possible dimension values.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_utilization_details/} for full documentation.
 }
 \keyword{internal}

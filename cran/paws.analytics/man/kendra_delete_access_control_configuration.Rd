@@ -15,6 +15,6 @@ kendra_delete_access_control_configuration(IndexId, Id)
 \description{
 Deletes an access control configuration that you created for your documents in an index. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 
-See \url{https://paws-r.github.io/docs/kendra/delete_access_control_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_delete_access_control_configuration/} for full documentation.
 }
 \keyword{internal}

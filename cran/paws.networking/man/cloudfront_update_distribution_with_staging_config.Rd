@@ -26,6 +26,6 @@ distributions. Provide these in the following format:
 \description{
 Copies the staging distribution's configuration to its corresponding primary distribution. The primary distribution retains its \code{Aliases} (also known as alternate domain names or CNAMEs) and \code{ContinuousDeploymentPolicyId} value, but otherwise its configuration is overwritten to match the staging distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_distribution_with_staging_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_distribution_with_staging_config/} for full documentation.
 }
 \keyword{internal}

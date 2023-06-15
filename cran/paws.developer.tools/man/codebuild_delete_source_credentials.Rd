@@ -13,6 +13,6 @@ codebuild_delete_source_credentials(arn)
 \description{
 Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
 
-See \url{https://paws-r.github.io/docs/codebuild/delete_source_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_delete_source_credentials/} for full documentation.
 }
 \keyword{internal}

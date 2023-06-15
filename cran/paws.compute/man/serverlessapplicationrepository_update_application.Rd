@@ -49,6 +49,6 @@ Maximum size 5 MB}
 \description{
 Updates the specified application.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_update_application/} for full documentation.
 }
 \keyword{internal}

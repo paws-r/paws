@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Accept EULAs.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/accept_eulas.html](https://paws-r.github.io/docs/nimblestudio/accept_eulas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_accept_eulas/](https://www.paws-r-sdk.com/docs/nimblestudio_accept_eulas/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -42,7 +42,7 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #' @description
 #' Create a launch profile.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/create_launch_profile.html](https://paws-r.github.io/docs/nimblestudio/create_launch_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_create_launch_profile/](https://www.paws-r-sdk.com/docs/nimblestudio_create_launch_profile/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -87,7 +87,7 @@ nimblestudio_create_launch_profile <- function(clientToken = NULL, description =
 #' @description
 #' Creates a streaming image resource in a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/create_streaming_image.html](https://paws-r.github.io/docs/nimblestudio/create_streaming_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_image/](https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_image/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -126,7 +126,7 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #' @description
 #' Creates a streaming session in a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/create_streaming_session.html](https://paws-r.github.io/docs/nimblestudio/create_streaming_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_session/](https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_session/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -168,7 +168,7 @@ nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2Instanc
 #' @description
 #' Creates a streaming session stream for a streaming session.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/create_streaming_session_stream.html](https://paws-r.github.io/docs/nimblestudio/create_streaming_session_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_session_stream/](https://www.paws-r-sdk.com/docs/nimblestudio_create_streaming_session_stream/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -203,7 +203,7 @@ nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, exp
 #' @description
 #' Create a new studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/create_studio.html](https://paws-r.github.io/docs/nimblestudio/create_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_create_studio/](https://www.paws-r-sdk.com/docs/nimblestudio_create_studio/) for full documentation.
 #'
 #' @param adminRoleArn &#91;required&#93; The IAM role that studio admins will assume when logging in to the
 #' Nimble Studio portal.
@@ -245,7 +245,7 @@ nimblestudio_create_studio <- function(adminRoleArn, clientToken = NULL, display
 #' @description
 #' Creates a studio component resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/create_studio_component.html](https://paws-r.github.io/docs/nimblestudio/create_studio_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_create_studio_component/](https://www.paws-r-sdk.com/docs/nimblestudio_create_studio_component/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -294,7 +294,7 @@ nimblestudio_create_studio_component <- function(clientToken = NULL, configurati
 #' @description
 #' Permanently delete a launch profile.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_launch_profile.html](https://paws-r.github.io/docs/nimblestudio/delete_launch_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_launch_profile/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_launch_profile/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -329,7 +329,7 @@ nimblestudio_delete_launch_profile <- function(clientToken = NULL, launchProfile
 #' @description
 #' Delete a user from launch profile membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_launch_profile_member.html](https://paws-r.github.io/docs/nimblestudio/delete_launch_profile_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_launch_profile_member/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_launch_profile_member/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -365,7 +365,7 @@ nimblestudio_delete_launch_profile_member <- function(clientToken = NULL, launch
 #' @description
 #' Delete streaming image.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_streaming_image.html](https://paws-r.github.io/docs/nimblestudio/delete_streaming_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_streaming_image/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_streaming_image/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -399,7 +399,7 @@ nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingIma
 #' @description
 #' Deletes streaming session resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_streaming_session.html](https://paws-r.github.io/docs/nimblestudio/delete_streaming_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_streaming_session/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_streaming_session/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -433,7 +433,7 @@ nimblestudio_delete_streaming_session <- function(clientToken = NULL, sessionId,
 #' @description
 #' Delete a studio resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_studio.html](https://paws-r.github.io/docs/nimblestudio/delete_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -466,7 +466,7 @@ nimblestudio_delete_studio <- function(clientToken = NULL, studioId) {
 #' @description
 #' Deletes a studio component resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_studio_component.html](https://paws-r.github.io/docs/nimblestudio/delete_studio_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio_component/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio_component/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -500,7 +500,7 @@ nimblestudio_delete_studio_component <- function(clientToken = NULL, studioCompo
 #' @description
 #' Delete a user from studio membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/delete_studio_member.html](https://paws-r.github.io/docs/nimblestudio/delete_studio_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio_member/](https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio_member/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -534,7 +534,7 @@ nimblestudio_delete_studio_member <- function(clientToken = NULL, principalId, s
 #' @description
 #' Get EULA.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_eula.html](https://paws-r.github.io/docs/nimblestudio/get_eula.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_eula/](https://www.paws-r-sdk.com/docs/nimblestudio_get_eula/) for full documentation.
 #'
 #' @param eulaId &#91;required&#93; The EULA ID.
 #'
@@ -563,7 +563,7 @@ nimblestudio_get_eula <- function(eulaId) {
 #' @description
 #' Get a launch profile.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_launch_profile.html](https://paws-r.github.io/docs/nimblestudio/get_launch_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile/](https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile/) for full documentation.
 #'
 #' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
 #' session.
@@ -596,7 +596,7 @@ nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
 #' @description
 #' Launch profile details include the launch profile resource and summary information of resources that are used by, or available to, the launch profile. This includes the name and description of all studio components used by the launch profiles, and the name and description of streaming images that can be used with this launch profile.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_launch_profile_details.html](https://paws-r.github.io/docs/nimblestudio/get_launch_profile_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_details/](https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_details/) for full documentation.
 #'
 #' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
 #' session.
@@ -627,7 +627,7 @@ nimblestudio_get_launch_profile_details <- function(launchProfileId, studioId) {
 #' @description
 #' Get a launch profile initialization.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_launch_profile_initialization.html](https://paws-r.github.io/docs/nimblestudio/get_launch_profile_initialization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_initialization/](https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_initialization/) for full documentation.
 #'
 #' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
 #' session.
@@ -662,7 +662,7 @@ nimblestudio_get_launch_profile_initialization <- function(launchProfileId, laun
 #' @description
 #' Get a user persona in launch profile membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_launch_profile_member.html](https://paws-r.github.io/docs/nimblestudio/get_launch_profile_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_member/](https://www.paws-r-sdk.com/docs/nimblestudio_get_launch_profile_member/) for full documentation.
 #'
 #' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
 #' session.
@@ -694,7 +694,7 @@ nimblestudio_get_launch_profile_member <- function(launchProfileId, principalId,
 #' @description
 #' Get streaming image.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_streaming_image.html](https://paws-r.github.io/docs/nimblestudio/get_streaming_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_image/](https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_image/) for full documentation.
 #'
 #' @param streamingImageId &#91;required&#93; The streaming image ID.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -724,7 +724,7 @@ nimblestudio_get_streaming_image <- function(streamingImageId, studioId) {
 #' @description
 #' Gets StreamingSession resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_streaming_session.html](https://paws-r.github.io/docs/nimblestudio/get_streaming_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session/](https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session/) for full documentation.
 #'
 #' @param sessionId &#91;required&#93; The streaming session ID.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -754,7 +754,7 @@ nimblestudio_get_streaming_session <- function(sessionId, studioId) {
 #' @description
 #' Gets `StreamingSessionBackup` resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_streaming_session_backup.html](https://paws-r.github.io/docs/nimblestudio/get_streaming_session_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session_backup/](https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session_backup/) for full documentation.
 #'
 #' @param backupId &#91;required&#93; The ID of the backup.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -784,7 +784,7 @@ nimblestudio_get_streaming_session_backup <- function(backupId, studioId) {
 #' @description
 #' Gets a StreamingSessionStream for a streaming session.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_streaming_session_stream.html](https://paws-r.github.io/docs/nimblestudio/get_streaming_session_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session_stream/](https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_session_stream/) for full documentation.
 #'
 #' @param sessionId &#91;required&#93; The streaming session ID.
 #' @param streamId &#91;required&#93; The streaming session stream ID.
@@ -815,7 +815,7 @@ nimblestudio_get_streaming_session_stream <- function(sessionId, streamId, studi
 #' @description
 #' Get a studio resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_studio.html](https://paws-r.github.io/docs/nimblestudio/get_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_studio/](https://www.paws-r-sdk.com/docs/nimblestudio_get_studio/) for full documentation.
 #'
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -844,7 +844,7 @@ nimblestudio_get_studio <- function(studioId) {
 #' @description
 #' Gets a studio component resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_studio_component.html](https://paws-r.github.io/docs/nimblestudio/get_studio_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_studio_component/](https://www.paws-r-sdk.com/docs/nimblestudio_get_studio_component/) for full documentation.
 #'
 #' @param studioComponentId &#91;required&#93; The studio component ID.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -874,7 +874,7 @@ nimblestudio_get_studio_component <- function(studioComponentId, studioId) {
 #' @description
 #' Get a user's membership in a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/get_studio_member.html](https://paws-r.github.io/docs/nimblestudio/get_studio_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_get_studio_member/](https://www.paws-r-sdk.com/docs/nimblestudio_get_studio_member/) for full documentation.
 #'
 #' @param principalId &#91;required&#93; The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -904,7 +904,7 @@ nimblestudio_get_studio_member <- function(principalId, studioId) {
 #' @description
 #' List EULA acceptances.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_eula_acceptances.html](https://paws-r.github.io/docs/nimblestudio/list_eula_acceptances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_eula_acceptances/](https://www.paws-r-sdk.com/docs/nimblestudio_list_eula_acceptances/) for full documentation.
 #'
 #' @param eulaIds The list of EULA IDs that have been previously accepted.
 #' @param nextToken The token for the next set of results, or null if there are no more
@@ -936,7 +936,7 @@ nimblestudio_list_eula_acceptances <- function(eulaIds = NULL, nextToken = NULL,
 #' @description
 #' List EULAs.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_eulas.html](https://paws-r.github.io/docs/nimblestudio/list_eulas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_eulas/](https://www.paws-r-sdk.com/docs/nimblestudio_list_eulas/) for full documentation.
 #'
 #' @param eulaIds The list of EULA IDs that should be returned
 #' @param nextToken The token for the next set of results, or null if there are no more
@@ -967,7 +967,7 @@ nimblestudio_list_eulas <- function(eulaIds = NULL, nextToken = NULL) {
 #' @description
 #' Get all users in a given launch profile membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_launch_profile_members.html](https://paws-r.github.io/docs/nimblestudio/list_launch_profile_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_launch_profile_members/](https://www.paws-r-sdk.com/docs/nimblestudio_list_launch_profile_members/) for full documentation.
 #'
 #' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
 #' session.
@@ -1001,7 +1001,7 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
 #' @description
 #' List all the launch profiles a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_launch_profiles.html](https://paws-r.github.io/docs/nimblestudio/list_launch_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_launch_profiles/](https://www.paws-r-sdk.com/docs/nimblestudio_list_launch_profiles/) for full documentation.
 #'
 #' @param maxResults The max number of results to return in the response.
 #' @param nextToken The token for the next set of results, or null if there are no more
@@ -1035,7 +1035,7 @@ nimblestudio_list_launch_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' List the streaming image resources available to this studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_streaming_images.html](https://paws-r.github.io/docs/nimblestudio/list_streaming_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_images/](https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_images/) for full documentation.
 #'
 #' @param nextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -1067,7 +1067,7 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
 #' @description
 #' Lists the backups of a streaming session in a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_streaming_session_backups.html](https://paws-r.github.io/docs/nimblestudio/list_streaming_session_backups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_session_backups/](https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_session_backups/) for full documentation.
 #'
 #' @param nextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -1099,7 +1099,7 @@ nimblestudio_list_streaming_session_backups <- function(nextToken = NULL, ownedB
 #' @description
 #' Lists the streaming sessions in a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_streaming_sessions.html](https://paws-r.github.io/docs/nimblestudio/list_streaming_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_sessions/](https://www.paws-r-sdk.com/docs/nimblestudio_list_streaming_sessions/) for full documentation.
 #'
 #' @param createdBy Filters the request to streaming sessions created by the given user.
 #' @param nextToken The token for the next set of results, or null if there are no more
@@ -1133,7 +1133,7 @@ nimblestudio_list_streaming_sessions <- function(createdBy = NULL, nextToken = N
 #' @description
 #' Lists the `StudioComponents` in a studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_studio_components.html](https://paws-r.github.io/docs/nimblestudio/list_studio_components.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_studio_components/](https://www.paws-r-sdk.com/docs/nimblestudio_list_studio_components/) for full documentation.
 #'
 #' @param maxResults The max number of results to return in the response.
 #' @param nextToken The token for the next set of results, or null if there are no more
@@ -1169,7 +1169,7 @@ nimblestudio_list_studio_components <- function(maxResults = NULL, nextToken = N
 #' @description
 #' Get all users in a given studio membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_studio_members.html](https://paws-r.github.io/docs/nimblestudio/list_studio_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_studio_members/](https://www.paws-r-sdk.com/docs/nimblestudio_list_studio_members/) for full documentation.
 #'
 #' @param maxResults The max number of results to return in the response.
 #' @param nextToken The token for the next set of results, or null if there are no more
@@ -1202,7 +1202,7 @@ nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL
 #' @description
 #' List studios in your Amazon Web Services accounts in the requested Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_studios.html](https://paws-r.github.io/docs/nimblestudio/list_studios.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_studios/](https://www.paws-r-sdk.com/docs/nimblestudio_list_studios/) for full documentation.
 #'
 #' @param nextToken The token for the next set of results, or null if there are no more
 #' results.
@@ -1232,7 +1232,7 @@ nimblestudio_list_studios <- function(nextToken = NULL) {
 #' @description
 #' Gets the tags for a resource, given its Amazon Resource Names (ARN).
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/list_tags_for_resource.html](https://paws-r.github.io/docs/nimblestudio/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/nimblestudio_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to
 #' list tags.
@@ -1262,7 +1262,7 @@ nimblestudio_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Add/update users with given persona to launch profile membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/put_launch_profile_members.html](https://paws-r.github.io/docs/nimblestudio/put_launch_profile_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_put_launch_profile_members/](https://www.paws-r-sdk.com/docs/nimblestudio_put_launch_profile_members/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1299,7 +1299,7 @@ nimblestudio_put_launch_profile_members <- function(clientToken = NULL, identity
 #' @description
 #' Add/update users with given persona to studio membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/put_studio_members.html](https://paws-r.github.io/docs/nimblestudio/put_studio_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_put_studio_members/](https://www.paws-r-sdk.com/docs/nimblestudio_put_studio_members/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1334,7 +1334,7 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #' @description
 #' Transitions sessions from the `STOPPED` state into the `READY` state. The `START_IN_PROGRESS` state is the intermediate state between the `STOPPED` and `READY` states.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/start_streaming_session.html](https://paws-r.github.io/docs/nimblestudio/start_streaming_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_start_streaming_session/](https://www.paws-r-sdk.com/docs/nimblestudio_start_streaming_session/) for full documentation.
 #'
 #' @param backupId The ID of the backup.
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -1369,7 +1369,7 @@ nimblestudio_start_streaming_session <- function(backupId = NULL, clientToken = 
 #' @description
 #' Repairs the IAM Identity Center configuration for a given studio.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/start_studio_sso_configuration_repair.html](https://paws-r.github.io/docs/nimblestudio/start_studio_sso_configuration_repair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_start_studio_sso_configuration_repair/](https://www.paws-r-sdk.com/docs/nimblestudio_start_studio_sso_configuration_repair/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1402,7 +1402,7 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #' @description
 #' Transitions sessions from the `READY` state into the `STOPPED` state. The `STOP_IN_PROGRESS` state is the intermediate state between the `READY` and `STOPPED` states.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/stop_streaming_session.html](https://paws-r.github.io/docs/nimblestudio/stop_streaming_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_stop_streaming_session/](https://www.paws-r-sdk.com/docs/nimblestudio_stop_streaming_session/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1438,7 +1438,7 @@ nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, s
 #' @description
 #' Creates tags for a resource, given its ARN.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/tag_resource.html](https://paws-r.github.io/docs/nimblestudio/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_tag_resource/](https://www.paws-r-sdk.com/docs/nimblestudio_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
 #' @param tags A collection of labels, in the form of key-value pairs, that apply to
@@ -1469,7 +1469,7 @@ nimblestudio_tag_resource <- function(resourceArn, tags = NULL) {
 #' @description
 #' Deletes the tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/untag_resource.html](https://paws-r.github.io/docs/nimblestudio/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_untag_resource/](https://www.paws-r-sdk.com/docs/nimblestudio_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; Identifies the Amazon Resource Name(ARN) key from which you are removing
 #' tags.
@@ -1500,7 +1500,7 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Update a launch profile.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/update_launch_profile.html](https://paws-r.github.io/docs/nimblestudio/update_launch_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_update_launch_profile/](https://www.paws-r-sdk.com/docs/nimblestudio_update_launch_profile/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1542,7 +1542,7 @@ nimblestudio_update_launch_profile <- function(clientToken = NULL, description =
 #' @description
 #' Update a user persona in launch profile membership.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/update_launch_profile_member.html](https://paws-r.github.io/docs/nimblestudio/update_launch_profile_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_update_launch_profile_member/](https://www.paws-r-sdk.com/docs/nimblestudio_update_launch_profile_member/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1579,7 +1579,7 @@ nimblestudio_update_launch_profile_member <- function(clientToken = NULL, launch
 #' @description
 #' Update streaming image.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/update_streaming_image.html](https://paws-r.github.io/docs/nimblestudio/update_streaming_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_update_streaming_image/](https://www.paws-r-sdk.com/docs/nimblestudio_update_streaming_image/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the
@@ -1615,7 +1615,7 @@ nimblestudio_update_streaming_image <- function(clientToken = NULL, description 
 #' @description
 #' Update a Studio resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/update_studio.html](https://paws-r.github.io/docs/nimblestudio/update_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_update_studio/](https://www.paws-r-sdk.com/docs/nimblestudio_update_studio/) for full documentation.
 #'
 #' @param adminRoleArn The IAM role that Studio Admins will assume when logging in to the
 #' Nimble Studio portal.
@@ -1653,7 +1653,7 @@ nimblestudio_update_studio <- function(adminRoleArn = NULL, clientToken = NULL, 
 #' @description
 #' Updates a studio component resource.
 #'
-#' See [https://paws-r.github.io/docs/nimblestudio/update_studio_component.html](https://paws-r.github.io/docs/nimblestudio/update_studio_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/nimblestudio_update_studio_component/](https://www.paws-r-sdk.com/docs/nimblestudio_update_studio_component/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you don’t specify a client token, the

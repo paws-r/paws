@@ -33,6 +33,6 @@ from a previous call.)}
 \description{
 Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches. You can use the reported properties in the filters you specify in requests for operations such as \code{\link[=ssm_create_patch_baseline]{create_patch_baseline}}, \code{\link[=ssm_update_patch_baseline]{update_patch_baseline}}, \code{\link[=ssm_describe_available_patches]{describe_available_patches}}, and \code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}}.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_patch_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_patch_properties/} for full documentation.
 }
 \keyword{internal}

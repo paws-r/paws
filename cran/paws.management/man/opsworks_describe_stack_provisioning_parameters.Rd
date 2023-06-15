@@ -12,6 +12,6 @@ opsworks_describe_stack_provisioning_parameters(StackId)
 \description{
 Requests a description of a stack's provisioning parameters.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_stack_provisioning_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_stack_provisioning_parameters/} for full documentation.
 }
 \keyword{internal}

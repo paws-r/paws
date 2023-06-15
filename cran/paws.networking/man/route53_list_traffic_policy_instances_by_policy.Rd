@@ -75,6 +75,6 @@ return if you submit another request.}
 \description{
 Gets information about the traffic policy instances that you created by using a specify traffic policy version.
 
-See \url{https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances_by_policy/} for full documentation.
 }
 \keyword{internal}

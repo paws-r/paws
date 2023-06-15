@@ -17,6 +17,6 @@ specify as the page token in a subsequent request.}
 \description{
 Returns a list of all domains in the user's account.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_domains/} for full documentation.
 }
 \keyword{internal}

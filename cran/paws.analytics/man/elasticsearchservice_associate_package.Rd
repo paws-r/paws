@@ -16,6 +16,6 @@ this value.}
 \description{
 Associates a package with an Amazon ES domain.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/associate_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_associate_package/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ opsworkscm_describe_servers(
 \description{
 Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks CM does not query other services.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/describe_servers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_describe_servers/} for full documentation.
 }
 \keyword{internal}

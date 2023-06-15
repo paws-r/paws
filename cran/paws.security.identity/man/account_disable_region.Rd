@@ -38,6 +38,6 @@ until the disabling process is fully completed.}
 \description{
 Disables (opts-out) a particular Region for an account.
 
-See \url{https://paws-r.github.io/docs/account/disable_region.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/account_disable_region/} for full documentation.
 }
 \keyword{internal}

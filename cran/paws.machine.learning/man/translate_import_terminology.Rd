@@ -35,6 +35,6 @@ unique. For more information, see \href{https://docs.aws.amazon.com/translate/la
 \description{
 Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name.
 
-See \url{https://paws-r.github.io/docs/translate/import_terminology.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_import_terminology/} for full documentation.
 }
 \keyword{internal}

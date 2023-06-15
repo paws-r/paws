@@ -20,6 +20,6 @@ bucket policy, see the example S3 bucket policy on this page.}
 \description{
 Generates a report that lists all tagged resources in the accounts across your organization and tells whether each resource is compliant with the effective tag policy. Compliance data is refreshed daily. The report is generated asynchronously.
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/start_report_creation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_start_report_creation/} for full documentation.
 }
 \keyword{internal}

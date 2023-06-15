@@ -23,6 +23,6 @@ text.}
 \description{
 Gets the text detection results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_text_detection]{start_text_detection}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_text_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_text_detection/} for full documentation.
 }
 \keyword{internal}

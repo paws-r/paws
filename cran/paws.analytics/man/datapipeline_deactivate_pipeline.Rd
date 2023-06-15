@@ -16,6 +16,6 @@ is false, the pipeline is deactivated after all running objects finish.}
 \description{
 Deactivates the specified running pipeline. The pipeline is set to the \code{DEACTIVATING} state until the deactivation process completes.
 
-See \url{https://paws-r.github.io/docs/datapipeline/deactivate_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_deactivate_pipeline/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ pairs can be exported and, hence, published.}
 \description{
 Creates a documentation part.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_documentation_part.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_documentation_part/} for full documentation.
 }
 \keyword{internal}

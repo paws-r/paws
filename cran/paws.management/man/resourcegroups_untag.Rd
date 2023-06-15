@@ -16,6 +16,6 @@ keys.}
 \description{
 Deletes tags from a specified resource group.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/untag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_untag/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ personalize_start_recommender(recommenderArn)
 \description{
 Starts a recommender that is INACTIVE. Starting a recommender does not create any new models, but resumes billing and automatic retraining for the recommender.
 
-See \url{https://paws-r.github.io/docs/personalize/start_recommender.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_start_recommender/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ simpledb_domain_metadata(DomainName)
 \description{
 Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values.
 
-See \url{https://paws-r.github.io/docs/simpledb/domain_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_domain_metadata/} for full documentation.
 }
 \keyword{internal}

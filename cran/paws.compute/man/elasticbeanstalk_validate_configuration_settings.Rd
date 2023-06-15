@@ -30,6 +30,6 @@ name.}
 \description{
 Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/validate_configuration_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_validate_configuration_settings/} for full documentation.
 }
 \keyword{internal}

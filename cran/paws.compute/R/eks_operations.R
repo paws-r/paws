@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associate encryption configuration to an existing cluster.
 #'
-#' See [https://paws-r.github.io/docs/eks/associate_encryption_config.html](https://paws-r.github.io/docs/eks/associate_encryption_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_associate_encryption_config/](https://www.paws-r-sdk.com/docs/eks_associate_encryption_config/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster that you are associating with encryption
 #' configuration.
@@ -41,7 +41,7 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #' @description
 #' Associate an identity provider configuration to a cluster.
 #'
-#' See [https://paws-r.github.io/docs/eks/associate_identity_provider_config.html](https://paws-r.github.io/docs/eks/associate_identity_provider_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_associate_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_associate_identity_provider_config/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to associate the configuration to.
 #' @param oidc &#91;required&#93; An object representing an OpenID Connect (OIDC) identity provider
@@ -77,7 +77,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' @description
 #' Creates an Amazon EKS add-on.
 #'
-#' See [https://paws-r.github.io/docs/eks/create_addon.html](https://paws-r.github.io/docs/eks/create_addon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_create_addon/](https://www.paws-r-sdk.com/docs/eks_create_addon/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the add-on for.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names that
@@ -155,7 +155,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @description
 #' Creates an Amazon EKS control plane.
 #'
-#' See [https://paws-r.github.io/docs/eks/create_cluster.html](https://paws-r.github.io/docs/eks/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_create_cluster/](https://www.paws-r-sdk.com/docs/eks_create_cluster/) for full documentation.
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
@@ -227,7 +227,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' @description
 #' Creates an Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a cluster to be able to run pods on Fargate.
 #'
-#' See [https://paws-r.github.io/docs/eks/create_fargate_profile.html](https://paws-r.github.io/docs/eks/create_fargate_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_create_fargate_profile/](https://www.paws-r-sdk.com/docs/eks_create_fargate_profile/) for full documentation.
 #'
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile.
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster to apply the Fargate profile to.
@@ -279,7 +279,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @description
 #' Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI release version for the respective minor Kubernetes version of the cluster, unless you deploy a custom AMI using a launch template. For more information about using launch templates, see [Launch template support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
 #'
-#' See [https://paws-r.github.io/docs/eks/create_nodegroup.html](https://paws-r.github.io/docs/eks/create_nodegroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_create_nodegroup/](https://www.paws-r-sdk.com/docs/eks_create_nodegroup/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the node group in.
 #' @param nodegroupName &#91;required&#93; The unique name to give your node group.
@@ -417,7 +417,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @description
 #' Delete an Amazon EKS add-on.
 #'
-#' See [https://paws-r.github.io/docs/eks/delete_addon.html](https://paws-r.github.io/docs/eks/delete_addon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_addon/](https://www.paws-r-sdk.com/docs/eks_delete_addon/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to delete the add-on from.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
@@ -452,7 +452,7 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
 #' @description
 #' Deletes the Amazon EKS cluster control plane.
 #'
-#' See [https://paws-r.github.io/docs/eks/delete_cluster.html](https://paws-r.github.io/docs/eks/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_cluster/](https://www.paws-r-sdk.com/docs/eks_delete_cluster/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the cluster to delete.
 #'
@@ -481,7 +481,7 @@ eks_delete_cluster <- function(name) {
 #' @description
 #' Deletes an Fargate profile.
 #'
-#' See [https://paws-r.github.io/docs/eks/delete_fargate_profile.html](https://paws-r.github.io/docs/eks/delete_fargate_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_fargate_profile/](https://www.paws-r-sdk.com/docs/eks_delete_fargate_profile/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile
 #' to delete.
@@ -512,7 +512,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #' @description
 #' Deletes an Amazon EKS node group for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/eks/delete_nodegroup.html](https://paws-r.github.io/docs/eks/delete_nodegroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_nodegroup/](https://www.paws-r-sdk.com/docs/eks_delete_nodegroup/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with your node
 #' group.
@@ -544,7 +544,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #' @description
 #' Deregisters a connected cluster to remove it from the Amazon EKS control plane.
 #'
-#' See [https://paws-r.github.io/docs/eks/deregister_cluster.html](https://paws-r.github.io/docs/eks/deregister_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_deregister_cluster/](https://www.paws-r-sdk.com/docs/eks_deregister_cluster/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the connected cluster to deregister.
 #'
@@ -573,7 +573,7 @@ eks_deregister_cluster <- function(name) {
 #' @description
 #' Describes an Amazon EKS add-on.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_addon.html](https://paws-r.github.io/docs/eks/describe_addon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_addon/](https://www.paws-r-sdk.com/docs/eks_describe_addon/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
@@ -605,7 +605,7 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' @description
 #' Returns configuration options.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_addon_configuration.html](https://paws-r.github.io/docs/eks/describe_addon_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_addon_configuration/](https://www.paws-r-sdk.com/docs/eks_describe_addon_configuration/) for full documentation.
 #'
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names that
 #' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
@@ -640,7 +640,7 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
 #' @description
 #' Describes the versions for an add-on. Information such as the Kubernetes versions that you can use the add-on with, the `owner`, `publisher`, and the `type` of the add-on are returned.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_addon_versions.html](https://paws-r.github.io/docs/eks/describe_addon_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_addon_versions/](https://www.paws-r-sdk.com/docs/eks_describe_addon_versions/) for full documentation.
 #'
 #' @param kubernetesVersion The Kubernetes versions that you can use the add-on with.
 #' @param maxResults The maximum number of results to return.
@@ -687,7 +687,7 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 #' @description
 #' Returns descriptive information about an Amazon EKS cluster.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_cluster.html](https://paws-r.github.io/docs/eks/describe_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_cluster/](https://www.paws-r-sdk.com/docs/eks_describe_cluster/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the cluster to describe.
 #'
@@ -716,7 +716,7 @@ eks_describe_cluster <- function(name) {
 #' @description
 #' Returns descriptive information about an Fargate profile.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_fargate_profile.html](https://paws-r.github.io/docs/eks/describe_fargate_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_fargate_profile/](https://www.paws-r-sdk.com/docs/eks_describe_fargate_profile/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to describe.
@@ -746,7 +746,7 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 #' @description
 #' Returns descriptive information about an identity provider configuration.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_identity_provider_config.html](https://paws-r.github.io/docs/eks/describe_identity_provider_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_describe_identity_provider_config/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The cluster name that the identity provider configuration is associated
 #' to.
@@ -777,7 +777,7 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
 #' @description
 #' Returns descriptive information about an Amazon EKS node group.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_nodegroup.html](https://paws-r.github.io/docs/eks/describe_nodegroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_nodegroup/](https://www.paws-r-sdk.com/docs/eks_describe_nodegroup/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the node group.
 #' @param nodegroupName &#91;required&#93; The name of the node group to describe.
@@ -808,7 +808,7 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #' @description
 #' Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on.
 #'
-#' See [https://paws-r.github.io/docs/eks/describe_update.html](https://paws-r.github.io/docs/eks/describe_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_update/](https://www.paws-r-sdk.com/docs/eks_describe_update/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster associated with the update.
 #' @param updateId &#91;required&#93; The ID of the update to describe.
@@ -843,7 +843,7 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 #' @description
 #' Disassociates an identity provider configuration from a cluster. If you disassociate an identity provider from your cluster, users included in the provider can no longer access the cluster. However, you can still access the cluster with Amazon Web Services IAM users.
 #'
-#' See [https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html](https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to disassociate an identity provider from.
 #' @param identityProviderConfig &#91;required&#93; An object representing an identity provider configuration.
@@ -875,7 +875,7 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 #' @description
 #' Lists the available add-ons.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_addons.html](https://paws-r.github.io/docs/eks/list_addons.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_addons/](https://www.paws-r-sdk.com/docs/eks_list_addons/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param maxResults The maximum number of add-on results returned by `ListAddonsRequest` in
@@ -921,7 +921,7 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_clusters.html](https://paws-r.github.io/docs/eks/list_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_clusters/](https://www.paws-r-sdk.com/docs/eks_list_clusters/) for full documentation.
 #'
 #' @param maxResults The maximum number of cluster results returned by
 #' [`list_clusters`][eks_list_clusters] in paginated output. When you use
@@ -971,7 +971,7 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
 #' @description
 #' Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_fargate_profiles.html](https://paws-r.github.io/docs/eks/list_fargate_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_fargate_profiles/](https://www.paws-r-sdk.com/docs/eks_list_fargate_profiles/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list Fargate
 #' profiles in.
@@ -1017,7 +1017,7 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' @description
 #' A list of identity provider configurations.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_identity_provider_configs.html](https://paws-r.github.io/docs/eks/list_identity_provider_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_identity_provider_configs/](https://www.paws-r-sdk.com/docs/eks_list_identity_provider_configs/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The cluster name that you want to list identity provider configurations
 #' for.
@@ -1064,7 +1064,7 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
 #' @description
 #' Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region. Self-managed node groups are not listed.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_nodegroups.html](https://paws-r.github.io/docs/eks/list_nodegroups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_nodegroups/](https://www.paws-r-sdk.com/docs/eks_list_nodegroups/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list node
 #' groups in.
@@ -1109,7 +1109,7 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #' @description
 #' List the tags for an Amazon EKS resource.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_tags_for_resource.html](https://paws-r.github.io/docs/eks/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/eks_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are Amazon EKS
@@ -1141,7 +1141,7 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region.
 #'
-#' See [https://paws-r.github.io/docs/eks/list_updates.html](https://paws-r.github.io/docs/eks/list_updates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_list_updates/](https://www.paws-r-sdk.com/docs/eks_list_updates/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
 #' @param nodegroupName The name of the Amazon EKS managed node group to list updates for.
@@ -1186,7 +1186,7 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #' @description
 #' Connects a Kubernetes cluster to the Amazon EKS control plane.
 #'
-#' See [https://paws-r.github.io/docs/eks/register_cluster.html](https://paws-r.github.io/docs/eks/register_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_register_cluster/](https://www.paws-r-sdk.com/docs/eks_register_cluster/) for full documentation.
 #'
 #' @param name &#91;required&#93; Define a unique name for this cluster for your Region.
 #' @param connectorConfig &#91;required&#93; The configuration settings required to connect the Kubernetes cluster to
@@ -1224,7 +1224,7 @@ eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NUL
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag does not automatically propagate to the subnets and nodes associated with the cluster.
 #'
-#' See [https://paws-r.github.io/docs/eks/tag_resource.html](https://paws-r.github.io/docs/eks/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_tag_resource/](https://www.paws-r-sdk.com/docs/eks_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
 #' Currently, the supported resources are Amazon EKS clusters and managed
@@ -1256,7 +1256,7 @@ eks_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/eks/untag_resource.html](https://paws-r.github.io/docs/eks/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_untag_resource/](https://www.paws-r-sdk.com/docs/eks_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
 #' tags. Currently, the supported resources are Amazon EKS clusters and
@@ -1288,7 +1288,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an Amazon EKS add-on.
 #'
-#' See [https://paws-r.github.io/docs/eks/update_addon.html](https://paws-r.github.io/docs/eks/update_addon.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_update_addon/](https://www.paws-r-sdk.com/docs/eks_update_addon/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
@@ -1356,7 +1356,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @description
 #' Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`][eks_describe_update] API operation.
 #'
-#' See [https://paws-r.github.io/docs/eks/update_cluster_config.html](https://paws-r.github.io/docs/eks/update_cluster_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_config/](https://www.paws-r-sdk.com/docs/eks_update_cluster_config/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param resourcesVpcConfig 
@@ -1398,7 +1398,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @description
 #' Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`][eks_describe_update] API operation.
 #'
-#' See [https://paws-r.github.io/docs/eks/update_cluster_version.html](https://paws-r.github.io/docs/eks/update_cluster_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_version/](https://www.paws-r-sdk.com/docs/eks_update_cluster_version/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
@@ -1430,7 +1430,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' @description
 #' Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update. The response output includes an update ID that you can use to track the status of your node group update with the [`describe_update`][eks_describe_update] API operation. Currently you can update the Kubernetes labels for a node group or the scaling configuration.
 #'
-#' See [https://paws-r.github.io/docs/eks/update_nodegroup_config.html](https://paws-r.github.io/docs/eks/update_nodegroup_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/](https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that the managed node group resides
 #' in.
@@ -1472,7 +1472,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' @description
 #' Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
 #'
-#' See [https://paws-r.github.io/docs/eks/update_nodegroup_version.html](https://paws-r.github.io/docs/eks/update_nodegroup_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/eks_update_nodegroup_version/](https://www.paws-r-sdk.com/docs/eks_update_nodegroup_version/) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with the managed
 #' node group to update.

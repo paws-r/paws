@@ -21,6 +21,6 @@ route53recoveryreadiness_list_rules(
 \description{
 Lists all readiness rules, or lists the readiness rules for a specific resource type.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/list_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_rules/} for full documentation.
 }
 \keyword{internal}

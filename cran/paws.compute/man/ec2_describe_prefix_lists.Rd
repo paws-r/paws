@@ -37,6 +37,6 @@ value.}
 \description{
 Describes available Amazon Web Services services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_prefix_lists.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_prefix_lists/} for full documentation.
 }
 \keyword{internal}

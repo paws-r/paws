@@ -59,6 +59,6 @@ use when resolving conflicts during a merge.}
 \description{
 Merges two branches using the squash merge strategy.
 
-See \url{https://paws-r.github.io/docs/codecommit/merge_branches_by_squash.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_merge_branches_by_squash/} for full documentation.
 }
 \keyword{internal}

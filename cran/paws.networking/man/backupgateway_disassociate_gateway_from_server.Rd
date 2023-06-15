@@ -12,6 +12,6 @@ backupgateway_disassociate_gateway_from_server(GatewayArn)
 \description{
 Disassociates a backup gateway from the specified server. After the disassociation process finishes, the gateway can no longer access the virtual machines on the server.
 
-See \url{https://paws-r.github.io/docs/backupgateway/disassociate_gateway_from_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_disassociate_gateway_from_server/} for full documentation.
 }
 \keyword{internal}

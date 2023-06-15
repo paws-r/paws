@@ -13,6 +13,6 @@ cloudwatchlogs_delete_log_group(logGroupName)
 \description{
 Deletes the specified log group and permanently deletes all the archived log events associated with the log group.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_log_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_log_group/} for full documentation.
 }
 \keyword{internal}

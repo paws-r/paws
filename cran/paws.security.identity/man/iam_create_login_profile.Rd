@@ -32,6 +32,6 @@ sign-in.}
 \description{
 Creates a password for the specified IAM user. A password allows an IAM user to access Amazon Web Services services through the Amazon Web Services Management Console.
 
-See \url{https://paws-r.github.io/docs/iam/create_login_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_login_profile/} for full documentation.
 }
 \keyword{internal}

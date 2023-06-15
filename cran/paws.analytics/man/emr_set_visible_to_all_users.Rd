@@ -19,6 +19,6 @@ cluster.}
 \description{
 The SetVisibleToAllUsers parameter is no longer supported. Your cluster may be visible to all users in your account. To restrict cluster access using an IAM policy, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Identity and Access Management for Amazon EMR}.
 
-See \url{https://paws-r.github.io/docs/emr/set_visible_to_all_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_set_visible_to_all_users/} for full documentation.
 }
 \keyword{internal}

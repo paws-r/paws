@@ -20,6 +20,6 @@ it for the request to ensure idempotency.}
 \description{
 Repairs the IAM Identity Center configuration for a given studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/start_studio_sso_configuration_repair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_start_studio_sso_configuration_repair/} for full documentation.
 }
 \keyword{internal}

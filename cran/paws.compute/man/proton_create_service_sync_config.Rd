@@ -26,6 +26,6 @@ proton_create_service_sync_config(
 \description{
 Create the Proton Ops configuration file.
 
-See \url{https://paws-r.github.io/docs/proton/create_service_sync_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_service_sync_config/} for full documentation.
 }
 \keyword{internal}

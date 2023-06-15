@@ -27,6 +27,6 @@ specified time period.}
 \description{
 Describes the history for \code{DAILY}, \code{MONTHLY}, and \code{QUARTERLY} budgets. Budget history isn't available for \code{ANNUAL} budgets.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budget_performance_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budget_performance_history/} for full documentation.
 }
 \keyword{internal}

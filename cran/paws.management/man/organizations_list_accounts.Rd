@@ -27,6 +27,6 @@ results.}
 \description{
 Lists all the accounts in the organization. To request only the accounts in a specified root or organizational unit (OU), use the \code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}} operation instead.
 
-See \url{https://paws-r.github.io/docs/organizations/list_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_accounts/} for full documentation.
 }
 \keyword{internal}

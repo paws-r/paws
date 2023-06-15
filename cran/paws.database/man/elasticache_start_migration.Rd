@@ -15,6 +15,6 @@ mode disabled), list should have only one element.}
 \description{
 Start the migration of data.
 
-See \url{https://paws-r.github.io/docs/elasticache/start_migration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_start_migration/} for full documentation.
 }
 \keyword{internal}

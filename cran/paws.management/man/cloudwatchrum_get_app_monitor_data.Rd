@@ -32,6 +32,6 @@ results from.}
 \description{
 Retrieves the raw performance events that RUM has collected from your web application, so that you can do your own processing or analysis of this data.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/get_app_monitor_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor_data/} for full documentation.
 }
 \keyword{internal}

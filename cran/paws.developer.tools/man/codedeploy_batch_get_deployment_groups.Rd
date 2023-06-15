@@ -15,6 +15,6 @@ or Amazon Web Services account.}
 \description{
 Gets information about one or more deployment groups.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_deployment_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_groups/} for full documentation.
 }
 \keyword{internal}

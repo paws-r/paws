@@ -24,6 +24,6 @@ next set of results.}
 \description{
 Returns a resource-level summary count. The summary includes information about compliant and non-compliant statuses and detailed compliance-item severity counts, according to the filter criteria you specify.
 
-See \url{https://paws-r.github.io/docs/ssm/list_resource_compliance_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_resource_compliance_summaries/} for full documentation.
 }
 \keyword{internal}

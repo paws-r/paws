@@ -97,6 +97,6 @@ representation of the number of milliseconds since 00:00:00 UTC
 \description{
 Returns a list of Batch jobs.
 
-See \url{https://paws-r.github.io/docs/batch/list_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_list_jobs/} for full documentation.
 }
 \keyword{internal}

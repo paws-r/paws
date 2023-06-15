@@ -20,6 +20,6 @@ Pattern:
 \description{
 Gets the specified AWS CloudFormation template.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/get_cloud_formation_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_cloud_formation_template/} for full documentation.
 }
 \keyword{internal}

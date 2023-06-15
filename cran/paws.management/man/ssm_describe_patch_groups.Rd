@@ -28,6 +28,6 @@ from a previous call.)}
 \description{
 Lists all patch groups that have been registered with patch baselines.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_patch_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_patch_groups/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ instanceId in the ARN of the instance.}
 \description{
 Dismisses contacts from an agent’s CCP and returns the agent to an available state, which allows the agent to receive a new routed contact. Contacts can only be dismissed if they are in a \code{MISSED}, \code{ERROR}, \code{ENDED}, or \code{REJECTED} state in the \href{https://docs.aws.amazon.com/connect/latest/adminguide/about-contact-states.html}{Agent Event Stream}.
 
-See \url{https://paws-r.github.io/docs/connect/dismiss_user_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_dismiss_user_contact/} for full documentation.
 }
 \keyword{internal}

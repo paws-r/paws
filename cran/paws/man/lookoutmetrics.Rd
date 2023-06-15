@@ -30,7 +30,7 @@ Operations section.
 \description{
 This is the \emph{Amazon Lookout for Metrics API Reference}. For an
 introduction to the service with tutorials for getting started, visit
-\href{https://docs.aws.amazon.com/lookoutmetrics/latest/dev/}{Amazon Lookout for Metrics Developer Guide}.
+Amazon Lookout for Metrics Developer Guide.
 }
 \section{Service syntax}{
 

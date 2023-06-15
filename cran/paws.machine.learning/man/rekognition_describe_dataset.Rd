@@ -12,6 +12,6 @@ rekognition_describe_dataset(DatasetArn)
 \description{
 Describes an Amazon Rekognition Custom Labels dataset. You can get information such as the current status of a dataset and statistics about the images and labels in a dataset.
 
-See \url{https://paws-r.github.io/docs/rekognition/describe_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_describe_dataset/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ licensemanagerusersubscriptions_list_identity_providers(
 \description{
 Lists the identity providers for user-based subscriptions.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_identity_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_identity_providers/} for full documentation.
 }
 \keyword{internal}

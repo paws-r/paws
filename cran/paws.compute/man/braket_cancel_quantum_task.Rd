@@ -14,6 +14,6 @@ braket_cancel_quantum_task(clientToken, quantumTaskArn)
 \description{
 Cancels the specified task.
 
-See \url{https://paws-r.github.io/docs/braket/cancel_quantum_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_cancel_quantum_task/} for full documentation.
 }
 \keyword{internal}

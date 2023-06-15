@@ -15,6 +15,6 @@ resources associated with the event, and so on.}
 \description{
 Sends custom events to Amazon EventBridge so that they can be matched to rules.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/put_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_put_events/} for full documentation.
 }
 \keyword{internal}

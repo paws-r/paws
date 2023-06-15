@@ -25,6 +25,6 @@ value to an empty string.}
 \description{
 Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique per resource.
 
-See \url{https://paws-r.github.io/docs/ec2/create_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_tags/} for full documentation.
 }
 \keyword{internal}

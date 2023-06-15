@@ -14,6 +14,6 @@ fsx_release_file_system_nfs_v3_locks(FileSystemId, ClientRequestToken = NULL)
 \description{
 Releases the file system lock from an Amazon FSx for OpenZFS file system.
 
-See \url{https://paws-r.github.io/docs/fsx/release_file_system_nfs_v3_locks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_release_file_system_nfs_v3_locks/} for full documentation.
 }
 \keyword{internal}

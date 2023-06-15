@@ -12,6 +12,6 @@ braket_get_quantum_task(quantumTaskArn)
 \description{
 Retrieves the specified quantum task.
 
-See \url{https://paws-r.github.io/docs/braket/get_quantum_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/braket_get_quantum_task/} for full documentation.
 }
 \keyword{internal}

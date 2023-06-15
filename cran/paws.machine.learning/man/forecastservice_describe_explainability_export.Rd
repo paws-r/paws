@@ -13,6 +13,6 @@ forecastservice_describe_explainability_export(ExplainabilityExportArn)
 \description{
 Describes an Explainability export created using the \code{\link[=forecastservice_create_explainability_export]{create_explainability_export}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_explainability_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_explainability_export/} for full documentation.
 }
 \keyword{internal}

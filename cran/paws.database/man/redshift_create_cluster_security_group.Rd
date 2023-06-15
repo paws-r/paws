@@ -31,6 +31,6 @@ Example: \code{examplesecuritygroup}}
 \description{
 Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters.
 
-See \url{https://paws-r.github.io/docs/redshift/create_cluster_security_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_cluster_security_group/} for full documentation.
 }
 \keyword{internal}

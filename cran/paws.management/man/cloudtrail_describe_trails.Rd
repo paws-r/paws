@@ -3,7 +3,7 @@
 \name{cloudtrail_describe_trails}
 \alias{cloudtrail_describe_trails}
 \title{Retrieves settings for one or more trails associated with the current
-region for your account}
+Region for your account}
 \usage{
 cloudtrail_describe_trails(trailNameList = NULL, includeShadowTrails = NULL)
 }
@@ -14,30 +14,30 @@ describe. The format of a trail ARN is:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
 
 If an empty list is specified, information for the trail in the current
-region is returned.
+Region is returned.
 \itemize{
 \item If an empty list is specified and \code{IncludeShadowTrails} is false,
-then information for all trails in the current region is returned.
+then information for all trails in the current Region is returned.
 \item If an empty list is specified and IncludeShadowTrails is null or
-true, then information for all trails in the current region and any
-associated shadow trails in other regions is returned.
+true, then information for all trails in the current Region and any
+associated shadow trails in other Regions is returned.
 }
 
 If one or more trail names are specified, information is returned only
 if the names match the names of trails belonging only to the current
-region and current account. To return information about a trail in
-another region, you must specify its trail ARN.}
+Region and current account. To return information about a trail in
+another Region, you must specify its trail ARN.}
 
 \item{includeShadowTrails}{Specifies whether to include shadow trails in the response. A shadow
-trail is the replication in a region of a trail that was created in a
-different region, or in the case of an organization trail, the
+trail is the replication in a Region of a trail that was created in a
+different Region, or in the case of an organization trail, the
 replication of an organization trail in member accounts. If you do not
 include shadow trails, organization trails in a member account and
-region replication trails will not be returned. The default is true.}
+Region replication trails will not be returned. The default is true.}
 }
 \description{
-Retrieves settings for one or more trails associated with the current region for your account.
+Retrieves settings for one or more trails associated with the current Region for your account.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/describe_trails.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_describe_trails/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ results.}
 \description{
 Before calling this API, use \code{\link[=customerprofiles_create_domain]{create_domain}} or \code{\link[=customerprofiles_update_domain]{update_domain}} to enable identity resolution: set \code{Matching} to true.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/get_matches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_get_matches/} for full documentation.
 }
 \keyword{internal}

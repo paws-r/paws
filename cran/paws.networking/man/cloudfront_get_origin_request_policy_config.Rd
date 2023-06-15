@@ -19,6 +19,6 @@ using
 \description{
 Gets an origin request policy configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_origin_request_policy_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_origin_request_policy_config/} for full documentation.
 }
 \keyword{internal}

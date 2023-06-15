@@ -12,6 +12,6 @@ globalaccelerator_delete_endpoint_group(EndpointGroupArn)
 \description{
 Delete an endpoint group from a listener.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/delete_endpoint_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_delete_endpoint_group/} for full documentation.
 }
 \keyword{internal}

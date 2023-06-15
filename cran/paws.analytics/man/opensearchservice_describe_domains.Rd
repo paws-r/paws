@@ -15,6 +15,6 @@ information about all domains owned by the account.}
 \description{
 Returns domain configuration information about the specified Amazon OpenSearch Service domains.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_domains/} for full documentation.
 }
 \keyword{internal}

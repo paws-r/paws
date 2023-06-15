@@ -134,6 +134,6 @@ statistical calculation.
 \description{
 Returns the data points of a specific metric for an Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_distribution_metric_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_distribution_metric_data/} for full documentation.
 }
 \keyword{internal}

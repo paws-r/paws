@@ -32,6 +32,6 @@ projected metrics to return in the response.}
 \description{
 Returns the projected utilization metrics of Amazon EC2 instance recommendations.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_ec2_recommendation_projected_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_ec2_recommendation_projected_metrics/} for full documentation.
 }
 \keyword{internal}

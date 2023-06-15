@@ -15,6 +15,6 @@ to be canceled.}
 \description{
 Ends a given Amazon QLDB journal stream. Before a stream can be canceled, its current status must be \code{ACTIVE}.
 
-See \url{https://paws-r.github.io/docs/qldb/cancel_journal_kinesis_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_cancel_journal_kinesis_stream/} for full documentation.
 }
 \keyword{internal}

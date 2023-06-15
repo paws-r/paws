@@ -37,6 +37,6 @@ request to search for the next page.}
 \description{
 For the specified member in the specified identity store, returns the list of all \code{GroupMembership} objects and returns results in paginated form.
 
-See \url{https://paws-r.github.io/docs/identitystore/list_group_memberships_for_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_list_group_memberships_for_member/} for full documentation.
 }
 \keyword{internal}

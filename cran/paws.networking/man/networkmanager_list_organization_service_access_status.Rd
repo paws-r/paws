@@ -18,6 +18,6 @@ networkmanager_list_organization_service_access_status(
 \description{
 Gets the status of the Service Linked Role (SLR) deployment for the accounts in a given Amazon Web Services Organization.
 
-See \url{https://paws-r.github.io/docs/networkmanager/list_organization_service_access_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_list_organization_service_access_status/} for full documentation.
 }
 \keyword{internal}

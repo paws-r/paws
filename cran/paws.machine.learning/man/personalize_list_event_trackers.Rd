@@ -22,6 +22,6 @@ next set of event trackers (if they exist).}
 \description{
 Returns the list of event trackers associated with the account. The response provides the properties for each event tracker, including the Amazon Resource Name (ARN) and tracking ID. For more information on event trackers, see \code{\link[=personalize_create_event_tracker]{create_event_tracker}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_event_trackers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_event_trackers/} for full documentation.
 }
 \keyword{internal}

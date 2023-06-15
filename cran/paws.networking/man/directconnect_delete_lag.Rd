@@ -12,6 +12,6 @@ directconnect_delete_lag(lagId)
 \description{
 Deletes the specified link aggregation group (LAG). You cannot delete a LAG if it has active virtual interfaces or hosted connections.
 
-See \url{https://paws-r.github.io/docs/directconnect/delete_lag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_delete_lag/} for full documentation.
 }
 \keyword{internal}

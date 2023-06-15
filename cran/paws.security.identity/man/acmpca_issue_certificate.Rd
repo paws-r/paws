@@ -55,7 +55,7 @@ parameter used to sign a CSR in the
 \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}}
 action.
 
-The specified signing algorithm family (RSA or ECDSA) much match the
+The specified signing algorithm family (RSA or ECDSA) must match the
 algorithm family of the CA's secret key.}
 
 \item{TemplateArn}{Specifies a custom configuration template to use when issuing a
@@ -105,7 +105,8 @@ optional.
 
 The \code{ValidityNotBefore} value is expressed as an explicit date and time,
 using the \code{Validity} type value \code{ABSOLUTE}. For more information, see
-Validity in this API reference and
+\href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_Validity.html}{Validity}
+in this API reference and
 \href{https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5}{Validity}
 in RFC 5280.}
 
@@ -121,6 +122,6 @@ requesting multiple certificates.}
 \description{
 Uses your private certificate authority (CA), or one that has been shared with you, to issue a client certificate. This action returns the Amazon Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the \code{\link[=acmpca_get_certificate]{get_certificate}} action and specifying the ARN.
 
-See \url{https://paws-r.github.io/docs/acmpca/issue_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_issue_certificate/} for full documentation.
 }
 \keyword{internal}

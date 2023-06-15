@@ -26,6 +26,6 @@ update.}
 \description{
 Sends a signal to the specified resource with a success or failure status. You can use the \code{\link[=cloudformation_signal_resource]{signal_resource}} operation in conjunction with a creation policy or update policy. CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The \code{\link[=cloudformation_signal_resource]{signal_resource}} operation is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.
 
-See \url{https://paws-r.github.io/docs/cloudformation/signal_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_signal_resource/} for full documentation.
 }
 \keyword{internal}

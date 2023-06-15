@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a gateway route.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_gateway_route.html](https://paws-r.github.io/docs/appmesh/create_gateway_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_gateway_route/](https://www.paws-r-sdk.com/docs/appmesh_create_gateway_route/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -56,7 +56,7 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #' @description
 #' Creates a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_mesh.html](https://paws-r.github.io/docs/appmesh/create_mesh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_mesh/](https://www.paws-r-sdk.com/docs/appmesh_create_mesh/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -94,7 +94,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #' @description
 #' Creates a route that is associated with a virtual router.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_route.html](https://paws-r.github.io/docs/appmesh/create_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_route/](https://www.paws-r-sdk.com/docs/appmesh_create_route/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -142,7 +142,7 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' @description
 #' Creates a virtual gateway.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/create_virtual_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_virtual_gateway/](https://www.paws-r-sdk.com/docs/appmesh_create_virtual_gateway/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -187,7 +187,7 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' @description
 #' Creates a virtual node within a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_virtual_node.html](https://paws-r.github.io/docs/appmesh/create_virtual_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_virtual_node/](https://www.paws-r-sdk.com/docs/appmesh_create_virtual_node/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -232,7 +232,7 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' @description
 #' Creates a virtual router within a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_virtual_router.html](https://paws-r.github.io/docs/appmesh/create_virtual_router.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_virtual_router/](https://www.paws-r-sdk.com/docs/appmesh_create_virtual_router/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -277,7 +277,7 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' @description
 #' Creates a virtual service within a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/create_virtual_service.html](https://paws-r.github.io/docs/appmesh/create_virtual_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_create_virtual_service/](https://www.paws-r-sdk.com/docs/appmesh_create_virtual_service/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -322,7 +322,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #' @description
 #' Deletes an existing gateway route.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_gateway_route.html](https://paws-r.github.io/docs/appmesh/delete_gateway_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_gateway_route/](https://www.paws-r-sdk.com/docs/appmesh_delete_gateway_route/) for full documentation.
 #'
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to delete.
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the gateway route from.
@@ -358,7 +358,7 @@ appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner =
 #' @description
 #' Deletes an existing service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_mesh.html](https://paws-r.github.io/docs/appmesh/delete_mesh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_mesh/](https://www.paws-r-sdk.com/docs/appmesh_delete_mesh/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete.
 #'
@@ -387,7 +387,7 @@ appmesh_delete_mesh <- function(meshName) {
 #' @description
 #' Deletes an existing route.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_route.html](https://paws-r.github.io/docs/appmesh/delete_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_route/](https://www.paws-r-sdk.com/docs/appmesh_delete_route/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the route in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -423,7 +423,7 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #' @description
 #' Deletes an existing virtual gateway. You cannot delete a virtual gateway if any gateway routes are associated to it.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/delete_virtual_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_gateway/](https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_gateway/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual gateway from.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -458,7 +458,7 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #' @description
 #' Deletes an existing virtual node.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_node.html](https://paws-r.github.io/docs/appmesh/delete_virtual_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_node/](https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_node/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual node in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -493,7 +493,7 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
 #' @description
 #' Deletes an existing virtual router.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_router.html](https://paws-r.github.io/docs/appmesh/delete_virtual_router.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_router/](https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_router/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual router in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -528,7 +528,7 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
 #' @description
 #' Deletes an existing virtual service.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/delete_virtual_service.html](https://paws-r.github.io/docs/appmesh/delete_virtual_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_service/](https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_service/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to delete the virtual service in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -563,7 +563,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #' @description
 #' Describes an existing gateway route.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_gateway_route.html](https://paws-r.github.io/docs/appmesh/describe_gateway_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_gateway_route/](https://www.paws-r-sdk.com/docs/appmesh_describe_gateway_route/) for full documentation.
 #'
 #' @param gatewayRouteName &#91;required&#93; The name of the gateway route to describe.
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
@@ -600,7 +600,7 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 #' @description
 #' Describes an existing service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_mesh.html](https://paws-r.github.io/docs/appmesh/describe_mesh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_mesh/](https://www.paws-r-sdk.com/docs/appmesh_describe_mesh/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh to describe.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -634,7 +634,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #' @description
 #' Describes an existing route.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_route.html](https://paws-r.github.io/docs/appmesh/describe_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_route/](https://www.paws-r-sdk.com/docs/appmesh_describe_route/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the route resides in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -670,7 +670,7 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #' @description
 #' Describes an existing virtual gateway.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/describe_virtual_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_gateway/](https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_gateway/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the gateway route resides in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -705,7 +705,7 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #' @description
 #' Describes an existing virtual node.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_node.html](https://paws-r.github.io/docs/appmesh/describe_virtual_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_node/](https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_node/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual node resides in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -740,7 +740,7 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
 #' @description
 #' Describes an existing virtual router.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_router.html](https://paws-r.github.io/docs/appmesh/describe_virtual_router.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_router/](https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_router/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual router resides in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -775,7 +775,7 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
 #' @description
 #' Describes an existing virtual service.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/describe_virtual_service.html](https://paws-r.github.io/docs/appmesh/describe_virtual_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_service/](https://www.paws-r-sdk.com/docs/appmesh_describe_virtual_service/) for full documentation.
 #'
 #' @param meshName &#91;required&#93; The name of the service mesh that the virtual service resides in.
 #' @param meshOwner The Amazon Web Services IAM account ID of the service mesh owner. If the
@@ -811,7 +811,7 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' @description
 #' Returns a list of existing gateway routes that are associated to a virtual gateway.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_gateway_routes.html](https://paws-r.github.io/docs/appmesh/list_gateway_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_gateway_routes/](https://www.paws-r-sdk.com/docs/appmesh_list_gateway_routes/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_gateway_routes`][appmesh_list_gateway_routes] in paginated
@@ -862,7 +862,7 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
 #' @description
 #' Returns a list of existing service meshes.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_meshes.html](https://paws-r.github.io/docs/appmesh/list_meshes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_meshes/](https://www.paws-r-sdk.com/docs/appmesh_list_meshes/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_meshes`][appmesh_list_meshes] in paginated output. When you use
@@ -908,7 +908,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' @description
 #' Returns a list of existing routes in a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_routes.html](https://paws-r.github.io/docs/appmesh/list_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_routes/](https://www.paws-r-sdk.com/docs/appmesh_list_routes/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_routes`][appmesh_list_routes] in paginated output. When you use
@@ -957,7 +957,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
 #' @description
 #' List the tags for an App Mesh resource.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_tags_for_resource.html](https://paws-r.github.io/docs/appmesh/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/appmesh_list_tags_for_resource/) for full documentation.
 #'
 #' @param limit The maximum number of tag results returned by
 #' [`list_tags_for_resource`][appmesh_list_tags_for_resource] in paginated
@@ -1004,7 +1004,7 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' @description
 #' Returns a list of existing virtual gateways in a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_virtual_gateways.html](https://paws-r.github.io/docs/appmesh/list_virtual_gateways.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_virtual_gateways/](https://www.paws-r-sdk.com/docs/appmesh_list_virtual_gateways/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_gateways`][appmesh_list_virtual_gateways] in paginated
@@ -1054,7 +1054,7 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 #' @description
 #' Returns a list of existing virtual nodes.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_virtual_nodes.html](https://paws-r.github.io/docs/appmesh/list_virtual_nodes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_virtual_nodes/](https://www.paws-r-sdk.com/docs/appmesh_list_virtual_nodes/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_nodes`][appmesh_list_virtual_nodes] in paginated output.
@@ -1104,7 +1104,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 #' @description
 #' Returns a list of existing virtual routers in a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_virtual_routers.html](https://paws-r.github.io/docs/appmesh/list_virtual_routers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_virtual_routers/](https://www.paws-r-sdk.com/docs/appmesh_list_virtual_routers/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_routers`][appmesh_list_virtual_routers] in paginated
@@ -1154,7 +1154,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 #' @description
 #' Returns a list of existing virtual services in a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/list_virtual_services.html](https://paws-r.github.io/docs/appmesh/list_virtual_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_list_virtual_services/](https://www.paws-r-sdk.com/docs/appmesh_list_virtual_services/) for full documentation.
 #'
 #' @param limit The maximum number of results returned by
 #' [`list_virtual_services`][appmesh_list_virtual_services] in paginated
@@ -1205,7 +1205,7 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/tag_resource.html](https://paws-r.github.io/docs/appmesh/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_tag_resource/](https://www.paws-r-sdk.com/docs/appmesh_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
 #' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
@@ -1237,7 +1237,7 @@ appmesh_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/untag_resource.html](https://paws-r.github.io/docs/appmesh/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_untag_resource/](https://www.paws-r-sdk.com/docs/appmesh_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
@@ -1268,7 +1268,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an existing gateway route that is associated to a specified virtual gateway in a service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_gateway_route.html](https://paws-r.github.io/docs/appmesh/update_gateway_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_gateway_route/](https://www.paws-r-sdk.com/docs/appmesh_update_gateway_route/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -1310,7 +1310,7 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #' @description
 #' Updates an existing service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_mesh.html](https://paws-r.github.io/docs/appmesh/update_mesh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_mesh/](https://www.paws-r-sdk.com/docs/appmesh_update_mesh/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -1344,7 +1344,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' @description
 #' Updates an existing route for a specified service mesh and virtual router.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_route.html](https://paws-r.github.io/docs/appmesh/update_route.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_route/](https://www.paws-r-sdk.com/docs/appmesh_update_route/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -1384,7 +1384,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' @description
 #' Updates an existing virtual gateway in a specified service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_virtual_gateway.html](https://paws-r.github.io/docs/appmesh/update_virtual_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_virtual_gateway/](https://www.paws-r-sdk.com/docs/appmesh_update_virtual_gateway/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -1424,7 +1424,7 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' @description
 #' Updates an existing virtual node in a specified service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_virtual_node.html](https://paws-r.github.io/docs/appmesh/update_virtual_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_virtual_node/](https://www.paws-r-sdk.com/docs/appmesh_update_virtual_node/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -1464,7 +1464,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' @description
 #' Updates an existing virtual router in a specified service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_virtual_router.html](https://paws-r.github.io/docs/appmesh/update_virtual_router.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_virtual_router/](https://www.paws-r-sdk.com/docs/appmesh_update_virtual_router/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and
@@ -1504,7 +1504,7 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' @description
 #' Updates an existing virtual service in a specified service mesh.
 #'
-#' See [https://paws-r.github.io/docs/appmesh/update_virtual_service.html](https://paws-r.github.io/docs/appmesh/update_virtual_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/appmesh_update_virtual_service/](https://www.paws-r-sdk.com/docs/appmesh_update_virtual_service/) for full documentation.
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Up to 36 letters, numbers, hyphens, and

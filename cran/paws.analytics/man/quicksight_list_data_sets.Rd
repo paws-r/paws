@@ -18,6 +18,6 @@ results.}
 \description{
 Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_data_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_data_sets/} for full documentation.
 }
 \keyword{internal}

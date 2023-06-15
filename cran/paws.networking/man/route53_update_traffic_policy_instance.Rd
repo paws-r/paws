@@ -28,6 +28,6 @@ instance.}
 \description{
 Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
 
-See \url{https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/} for full documentation.
 }
 \keyword{internal}

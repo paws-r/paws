@@ -2108,6 +2108,9 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'   coveredResources = list(
 #'     list(
 #'       accountId = "string",
+#'       lastScannedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       resourceId = "string",
 #'       resourceMetadata = list(
 #'         ec2 = list(
@@ -2195,6 +2198,16 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'         comparison = "EQUALS",
 #'         key = "string",
 #'         value = "string"
+#'       )
+#'     ),
+#'     lastScannedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     ),
 #'     resourceId = list(
@@ -2332,6 +2345,16 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #'         comparison = "EQUALS",
 #'         key = "string",
 #'         value = "string"
+#'       )
+#'     ),
+#'     lastScannedAt = list(
+#'       list(
+#'         endInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         startInclusive = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     ),
 #'     resourceId = list(

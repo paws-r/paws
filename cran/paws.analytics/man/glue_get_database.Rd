@@ -16,6 +16,6 @@ should be all lowercase.}
 \description{
 Retrieves the definition of a specified database.
 
-See \url{https://paws-r.github.io/docs/glue/get_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_database/} for full documentation.
 }
 \keyword{internal}

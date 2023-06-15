@@ -12,6 +12,6 @@ worklink_describe_identity_provider_configuration(FleetArn)
 \description{
 Describes the identity provider configuration of the specified fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/describe_identity_provider_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_describe_identity_provider_configuration/} for full documentation.
 }
 \keyword{internal}

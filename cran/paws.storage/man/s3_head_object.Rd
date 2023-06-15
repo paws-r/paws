@@ -98,6 +98,6 @@ request to succeed.}
 \description{
 The HEAD action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
 
-See \url{https://paws-r.github.io/docs/s3/head_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_head_object/} for full documentation.
 }
 \keyword{internal}

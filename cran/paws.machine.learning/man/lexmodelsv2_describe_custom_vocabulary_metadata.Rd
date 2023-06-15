@@ -17,6 +17,6 @@ must be \code{en_GB}.}
 \description{
 Provides metadata information about a custom vocabulary.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_custom_vocabulary_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_custom_vocabulary_metadata/} for full documentation.
 }
 \keyword{internal}

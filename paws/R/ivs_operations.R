@@ -27,11 +27,12 @@ NULL
 #'       latencyMode = "NORMAL"|"LOW",
 #'       name = "string",
 #'       playbackUrl = "string",
+#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'       recordingConfigurationArn = "string",
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       type = "BASIC"|"STANDARD"
+#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #'     )
 #'   ),
 #'   errors = list(
@@ -148,7 +149,7 @@ ivs_batch_get_stream_key <- function(arns) {
 #'
 #' @usage
 #' ivs_create_channel(authorized, insecureIngest, latencyMode, name,
-#'   recordingConfigurationArn, tags, type)
+#'   preset, recordingConfigurationArn, tags, type)
 #'
 #' @param authorized Whether the channel is private (enabled for playback authorization).
 #' Default: `false`.
@@ -158,6 +159,10 @@ ivs_batch_get_stream_key <- function(arns) {
 #' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
 #' Ultra-low and Standard, respectively.) Default: `LOW`.
 #' @param name Channel name.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
 #' @param recordingConfigurationArn Recording-configuration ARN. Default: "" (empty string, recording is
 #' disabled).
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
@@ -167,8 +172,19 @@ ivs_batch_get_stream_key <- function(arns) {
 #' naming limits and requirements"; Amazon IVS has no service-specific
 #' constraints beyond what is documented there.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable resolution or bitrate, the stream probably will
-#' disconnect immediately.* Default: `STANDARD`. Valid values:
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Some types generate multiple
+#' qualities (renditions) from the original input; this automatically gives
+#' viewers the best experience for their devices and network conditions.
+#' Some types provide transcoded video; transcoding allows higher playback
+#' quality across a range of download speeds. Default: `STANDARD`. Valid
+#' values:
+#' 
+#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
+#'     quality to viewers. The viewer’s video-quality choice is limited to
+#'     the original input. Input resolution can be up to 1080p and bitrate
+#'     can be up to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions
+#'     between 480p and 1080p. Original audio is passed through.
 #' 
 #' -   `STANDARD`: Video is transcoded: multiple qualities are generated
 #'     from the original input, to automatically give viewers the best
@@ -176,13 +192,36 @@ ivs_batch_get_stream_key <- function(arns) {
 #'     allows higher playback quality across a range of download speeds.
 #'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
 #'     Audio is transcoded only for renditions 360p and below; above that,
-#'     audio is passed through. This is the default.
+#'     audio is passed through. This is the default when you create a
+#'     channel.
 #' 
-#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
-#'     to viewers. The viewer’s video-quality choice is limited to the
-#'     original input. Resolution can be up to 1080p and bitrate can be up
-#'     to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
-#'     and 1080p.
+#' -   `ADVANCED_SD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at SD quality (480p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' -   `ADVANCED_HD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at HD quality (720p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' Optional *transcode presets* (available for the `ADVANCED` types) allow
+#' you to trade off available download bandwidth and video quality, to
+#' optimize the viewing experience. There are two presets:
+#' 
+#' -   *Constrained bandwidth delivery* uses a lower bitrate for each
+#'     quality level. Use it if you have low download bandwidth and/or
+#'     simple video content (e.g., talking heads)
+#' 
+#' -   *Higher bandwidth delivery* uses a higher bitrate for each quality
+#'     level. Use it if you have high download bandwidth and/or complex
+#'     video content (e.g., flashes and quick scene changes).
 #'
 #' @return
 #' A list with the following syntax:
@@ -196,11 +235,12 @@ ivs_batch_get_stream_key <- function(arns) {
 #'     latencyMode = "NORMAL"|"LOW",
 #'     name = "string",
 #'     playbackUrl = "string",
+#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'     recordingConfigurationArn = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     type = "BASIC"|"STANDARD"
+#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #'   ),
 #'   streamKey = list(
 #'     arn = "string",
@@ -220,11 +260,12 @@ ivs_batch_get_stream_key <- function(arns) {
 #'   insecureIngest = TRUE|FALSE,
 #'   latencyMode = "NORMAL"|"LOW",
 #'   name = "string",
+#'   preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'   recordingConfigurationArn = "string",
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   type = "BASIC"|"STANDARD"
+#'   type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #' )
 #' ```
 #'
@@ -233,14 +274,14 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @rdname ivs_create_channel
 #'
 #' @aliases ivs_create_channel
-ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
+ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, preset = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
+  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, preset = preset, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -638,11 +679,12 @@ ivs_delete_stream_key <- function(arn) {
 #'     latencyMode = "NORMAL"|"LOW",
 #'     name = "string",
 #'     playbackUrl = "string",
+#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'     recordingConfigurationArn = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     type = "BASIC"|"STANDARD"
+#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #'   )
 #' )
 #' ```
@@ -937,11 +979,12 @@ ivs_get_stream_key <- function(arn) {
 #'       latencyMode = "NORMAL"|"LOW",
 #'       name = "string",
 #'       playbackUrl = "string",
+#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'       recordingConfigurationArn = "string",
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       type = "BASIC"|"STANDARD"
+#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #'     ),
 #'     endTime = as.POSIXct(
 #'       "2015-01-01"
@@ -1132,10 +1175,12 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #'       insecureIngest = TRUE|FALSE,
 #'       latencyMode = "NORMAL"|"LOW",
 #'       name = "string",
+#'       preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'       recordingConfigurationArn = "string",
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1760,13 +1805,13 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates a channel's configuration
 #'
 #' @description
-#' Updates a channel's configuration. This does not affect an ongoing
-#' stream of this channel. You must stop and restart the stream for the
-#' changes to take effect.
+#' Updates a channel's configuration. Live channels cannot be updated. You
+#' must stop the ongoing stream, update the channel, and restart the stream
+#' for the changes to take effect.
 #'
 #' @usage
 #' ivs_update_channel(arn, authorized, insecureIngest, latencyMode, name,
-#'   recordingConfigurationArn, type)
+#'   preset, recordingConfigurationArn, type)
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
 #' @param authorized Whether the channel is private (enabled for playback authorization).
@@ -1776,12 +1821,27 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
 #' Ultra-low and Standard, respectively.)
 #' @param name Channel name.
+#' @param preset Optional transcode preset for the channel. This is selectable only for
+#' `ADVANCED_HD` and `ADVANCED_SD` channel types. For those channel types,
+#' the default `preset` is `HIGHER_BANDWIDTH_DELIVERY`. For other channel
+#' types (`BASIC` and `STANDARD`), `preset` is the empty string (`""`).
 #' @param recordingConfigurationArn Recording-configuration ARN. If this is set to an empty string,
 #' recording is disabled. A value other than an empty string indicates that
 #' recording is enabled
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
-#' you exceed the allowable resolution or bitrate, the stream probably will
-#' disconnect immediately*. Valid values:
+#' you exceed the allowable input resolution or bitrate, the stream
+#' probably will disconnect immediately.* Some types generate multiple
+#' qualities (renditions) from the original input; this automatically gives
+#' viewers the best experience for their devices and network conditions.
+#' Some types provide transcoded video; transcoding allows higher playback
+#' quality across a range of download speeds. Default: `STANDARD`. Valid
+#' values:
+#' 
+#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
+#'     quality to viewers. The viewer’s video-quality choice is limited to
+#'     the original input. Input resolution can be up to 1080p and bitrate
+#'     can be up to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions
+#'     between 480p and 1080p. Original audio is passed through.
 #' 
 #' -   `STANDARD`: Video is transcoded: multiple qualities are generated
 #'     from the original input, to automatically give viewers the best
@@ -1789,13 +1849,36 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'     allows higher playback quality across a range of download speeds.
 #'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
 #'     Audio is transcoded only for renditions 360p and below; above that,
-#'     audio is passed through. This is the default.
+#'     audio is passed through. This is the default when you create a
+#'     channel.
 #' 
-#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
-#'     to viewers. The viewer’s video-quality choice is limited to the
-#'     original input. Resolution can be up to 1080p and bitrate can be up
-#'     to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
-#'     and 1080p.
+#' -   `ADVANCED_SD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at SD quality (480p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' -   `ADVANCED_HD`: Video is transcoded; multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Input
+#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
+#'     output is capped at HD quality (720p). You can select an optional
+#'     transcode preset (see below). Audio for all renditions is
+#'     transcoded, and an audio-only rendition is available.
+#' 
+#' Optional *transcode presets* (available for the `ADVANCED` types) allow
+#' you to trade off available download bandwidth and video quality, to
+#' optimize the viewing experience. There are two presets:
+#' 
+#' -   *Constrained bandwidth delivery* uses a lower bitrate for each
+#'     quality level. Use it if you have low download bandwidth and/or
+#'     simple video content (e.g., talking heads)
+#' 
+#' -   *Higher bandwidth delivery* uses a higher bitrate for each quality
+#'     level. Use it if you have high download bandwidth and/or complex
+#'     video content (e.g., flashes and quick scene changes).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1809,11 +1892,12 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'     latencyMode = "NORMAL"|"LOW",
 #'     name = "string",
 #'     playbackUrl = "string",
+#'     preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'     recordingConfigurationArn = "string",
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     type = "BASIC"|"STANDARD"
+#'     type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #'   )
 #' )
 #' ```
@@ -1826,8 +1910,9 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'   insecureIngest = TRUE|FALSE,
 #'   latencyMode = "NORMAL"|"LOW",
 #'   name = "string",
+#'   preset = "HIGHER_BANDWIDTH_DELIVERY"|"CONSTRAINED_BANDWIDTH_DELIVERY",
 #'   recordingConfigurationArn = "string",
-#'   type = "BASIC"|"STANDARD"
+#'   type = "BASIC"|"STANDARD"|"ADVANCED_SD"|"ADVANCED_HD"
 #' )
 #' ```
 #'
@@ -1836,14 +1921,14 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname ivs_update_channel
 #'
 #' @aliases ivs_update_channel
-ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, type = NULL) {
+ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, preset = NULL, recordingConfigurationArn = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, type = type)
+  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, preset = preset, recordingConfigurationArn = recordingConfigurationArn, type = type)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)

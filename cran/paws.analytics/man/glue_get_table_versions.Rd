@@ -30,6 +30,6 @@ lowercase.}
 \description{
 Retrieves a list of strings that identify available versions of a specified table.
 
-See \url{https://paws-r.github.io/docs/glue/get_table_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_table_versions/} for full documentation.
 }
 \keyword{internal}

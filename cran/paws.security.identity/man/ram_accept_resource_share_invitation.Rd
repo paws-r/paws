@@ -31,6 +31,6 @@ different parameters, the retry fails with an
 \description{
 Accepts an invitation to a resource share from another Amazon Web Services account. After you accept the invitation, the resources included in the resource share are available to interact with in the relevant Amazon Web Services Management Consoles and tools.
 
-See \url{https://paws-r.github.io/docs/ram/accept_resource_share_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_accept_resource_share_invitation/} for full documentation.
 }
 \keyword{internal}

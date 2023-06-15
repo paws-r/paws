@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a container for a collection of data being ingested for analysis. The dataset contains the metadata describing where the data is and what the data actually looks like. In other words, it contains the location of the data source, the data schema, and other information. A dataset also contains any tags associated with the ingested data.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/create_dataset.html](https://paws-r.github.io/docs/lookoutequipment/create_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_create_dataset/](https://www.paws-r-sdk.com/docs/lookoutequipment_create_dataset/) for full documentation.
 #'
 #' @param DatasetName &#91;required&#93; The name of the dataset being created.
 #' @param DatasetSchema A JSON description of the data that is in each time series dataset,
@@ -44,7 +44,7 @@ lookoutequipment_create_dataset <- function(DatasetName, DatasetSchema = NULL, S
 #' @description
 #' Creates a scheduled inference. Scheduling an inference is setting up a continuous real-time inference plan to analyze new measurement data. When setting up the schedule, you provide an S3 bucket location for the input data, assign it a delimiter between separate entries in the data, set an offset delay if desired, and set the frequency of inferencing. You must also provide an S3 bucket location for the output data.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/create_inference_scheduler.html](https://paws-r.github.io/docs/lookoutequipment/create_inference_scheduler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_create_inference_scheduler/](https://www.paws-r-sdk.com/docs/lookoutequipment_create_inference_scheduler/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the previously trained ML model being used to create the
 #' inference scheduler.
@@ -107,7 +107,7 @@ lookoutequipment_create_inference_scheduler <- function(ModelName, InferenceSche
 #' @description
 #' Creates a label for an event.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/create_label.html](https://paws-r.github.io/docs/lookoutequipment/create_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_create_label/](https://www.paws-r-sdk.com/docs/lookoutequipment_create_label/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; The name of a group of labels.
 #' 
@@ -157,7 +157,7 @@ lookoutequipment_create_label <- function(LabelGroupName, StartTime, EndTime, Ra
 #' @description
 #' Creates a group of labels.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/create_label_group.html](https://paws-r.github.io/docs/lookoutequipment/create_label_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_create_label_group/](https://www.paws-r-sdk.com/docs/lookoutequipment_create_label_group/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; Names a group of labels.
 #' 
@@ -200,7 +200,7 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' @description
 #' Creates an ML model for data inference.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/create_model.html](https://paws-r.github.io/docs/lookoutequipment/create_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_create_model/](https://www.paws-r-sdk.com/docs/lookoutequipment_create_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name for the ML model to be created.
 #' @param DatasetName &#91;required&#93; The name of the dataset for the ML model being created.
@@ -261,7 +261,7 @@ lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema 
 #' @description
 #' Deletes a dataset and associated artifacts. The operation will check to see if any inference scheduler or data ingestion job is currently using the dataset, and if there isn't, the dataset, its metadata, and any associated data stored in S3 will be deleted. This does not affect any models that used this dataset for training and evaluation, but does prevent it from being used in the future.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/delete_dataset.html](https://paws-r.github.io/docs/lookoutequipment/delete_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_delete_dataset/](https://www.paws-r-sdk.com/docs/lookoutequipment_delete_dataset/) for full documentation.
 #'
 #' @param DatasetName &#91;required&#93; The name of the dataset to be deleted.
 #'
@@ -290,7 +290,7 @@ lookoutequipment_delete_dataset <- function(DatasetName) {
 #' @description
 #' Deletes an inference scheduler that has been set up. Already processed output results are not affected.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/delete_inference_scheduler.html](https://paws-r.github.io/docs/lookoutequipment/delete_inference_scheduler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_delete_inference_scheduler/](https://www.paws-r-sdk.com/docs/lookoutequipment_delete_inference_scheduler/) for full documentation.
 #'
 #' @param InferenceSchedulerName &#91;required&#93; The name of the inference scheduler to be deleted.
 #'
@@ -319,7 +319,7 @@ lookoutequipment_delete_inference_scheduler <- function(InferenceSchedulerName) 
 #' @description
 #' Deletes a label.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/delete_label.html](https://paws-r.github.io/docs/lookoutequipment/delete_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_delete_label/](https://www.paws-r-sdk.com/docs/lookoutequipment_delete_label/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; The name of the label group that contains the label that you want to
 #' delete. Data in this field will be retained for service usage. Follow
@@ -351,7 +351,7 @@ lookoutequipment_delete_label <- function(LabelGroupName, LabelId) {
 #' @description
 #' Deletes a group of labels.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/delete_label_group.html](https://paws-r.github.io/docs/lookoutequipment/delete_label_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_delete_label_group/](https://www.paws-r-sdk.com/docs/lookoutequipment_delete_label_group/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; The name of the label group that you want to delete. Data in this field
 #' will be retained for service usage. Follow best practices for the
@@ -382,7 +382,7 @@ lookoutequipment_delete_label_group <- function(LabelGroupName) {
 #' @description
 #' Deletes an ML model currently available for Amazon Lookout for Equipment. This will prevent it from being used with an inference scheduler, even one that is already set up.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/delete_model.html](https://paws-r.github.io/docs/lookoutequipment/delete_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_delete_model/](https://www.paws-r-sdk.com/docs/lookoutequipment_delete_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the ML model to be deleted.
 #'
@@ -412,7 +412,7 @@ lookoutequipment_delete_model <- function(ModelName) {
 #' @description
 #' Provides information on a specific data ingestion job such as creation time, dataset ARN, and status.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/describe_data_ingestion_job.html](https://paws-r.github.io/docs/lookoutequipment/describe_data_ingestion_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_describe_data_ingestion_job/](https://www.paws-r-sdk.com/docs/lookoutequipment_describe_data_ingestion_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job ID of the data ingestion job.
 #'
@@ -442,7 +442,7 @@ lookoutequipment_describe_data_ingestion_job <- function(JobId) {
 #' @description
 #' Provides a JSON description of the data in each time series dataset, including names, column names, and data types.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/describe_dataset.html](https://paws-r.github.io/docs/lookoutequipment/describe_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_describe_dataset/](https://www.paws-r-sdk.com/docs/lookoutequipment_describe_dataset/) for full documentation.
 #'
 #' @param DatasetName &#91;required&#93; The name of the dataset to be described.
 #'
@@ -472,7 +472,7 @@ lookoutequipment_describe_dataset <- function(DatasetName) {
 #' @description
 #' Specifies information about the inference scheduler being used, including name, model, status, and associated metadata
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/describe_inference_scheduler.html](https://paws-r.github.io/docs/lookoutequipment/describe_inference_scheduler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_describe_inference_scheduler/](https://www.paws-r-sdk.com/docs/lookoutequipment_describe_inference_scheduler/) for full documentation.
 #'
 #' @param InferenceSchedulerName &#91;required&#93; The name of the inference scheduler being described.
 #'
@@ -501,7 +501,7 @@ lookoutequipment_describe_inference_scheduler <- function(InferenceSchedulerName
 #' @description
 #' Returns the name of the label.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/describe_label.html](https://paws-r.github.io/docs/lookoutequipment/describe_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_describe_label/](https://www.paws-r-sdk.com/docs/lookoutequipment_describe_label/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; Returns the name of the group containing the label.
 #' @param LabelId &#91;required&#93; Returns the ID of the label.
@@ -531,7 +531,7 @@ lookoutequipment_describe_label <- function(LabelGroupName, LabelId) {
 #' @description
 #' Returns information about the label group.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/describe_label_group.html](https://paws-r.github.io/docs/lookoutequipment/describe_label_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_describe_label_group/](https://www.paws-r-sdk.com/docs/lookoutequipment_describe_label_group/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; Returns the name of the label group.
 #'
@@ -562,7 +562,7 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
 #' @description
 #' Provides a JSON containing the overall information about a specific ML model, including model name and ARN, dataset, training and evaluation information, status, and so on.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/describe_model.html](https://paws-r.github.io/docs/lookoutequipment/describe_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_describe_model/](https://www.paws-r-sdk.com/docs/lookoutequipment_describe_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the ML model to be described.
 #'
@@ -592,7 +592,7 @@ lookoutequipment_describe_model <- function(ModelName) {
 #' @description
 #' Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_data_ingestion_jobs.html](https://paws-r.github.io/docs/lookoutequipment/list_data_ingestion_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_data_ingestion_jobs/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_data_ingestion_jobs/) for full documentation.
 #'
 #' @param DatasetName The name of the dataset being used for the data ingestion job.
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
@@ -626,7 +626,7 @@ lookoutequipment_list_data_ingestion_jobs <- function(DatasetName = NULL, NextTo
 #' @description
 #' Lists all datasets currently available in your account, filtering on the dataset name.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_datasets.html](https://paws-r.github.io/docs/lookoutequipment/list_datasets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_datasets/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_datasets/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
 #' datasets.
@@ -659,7 +659,7 @@ lookoutequipment_list_datasets <- function(NextToken = NULL, MaxResults = NULL, 
 #' @description
 #' Lists all inference events that have been found for the specified inference scheduler.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_inference_events.html](https://paws-r.github.io/docs/lookoutequipment/list_inference_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_events/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_events/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
 #' inference events.
@@ -696,7 +696,7 @@ lookoutequipment_list_inference_events <- function(NextToken = NULL, MaxResults 
 #' @description
 #' Lists all inference executions that have been performed by the specified inference scheduler.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_inference_executions.html](https://paws-r.github.io/docs/lookoutequipment/list_inference_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_executions/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_executions/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
 #' inference executions.
@@ -734,7 +734,7 @@ lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResu
 #' @description
 #' Retrieves a list of all inference schedulers currently available for your account.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_inference_schedulers.html](https://paws-r.github.io/docs/lookoutequipment/list_inference_schedulers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_schedulers/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_schedulers/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
 #' inference schedulers.
@@ -768,7 +768,7 @@ lookoutequipment_list_inference_schedulers <- function(NextToken = NULL, MaxResu
 #' @description
 #' Returns a list of the label groups.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_label_groups.html](https://paws-r.github.io/docs/lookoutequipment/list_label_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_label_groups/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_label_groups/) for full documentation.
 #'
 #' @param LabelGroupNameBeginsWith The beginning of the name of the label groups to be listed.
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
@@ -800,7 +800,7 @@ lookoutequipment_list_label_groups <- function(LabelGroupNameBeginsWith = NULL, 
 #' @description
 #' Provides a list of labels.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_labels.html](https://paws-r.github.io/docs/lookoutequipment/list_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_labels/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_labels/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; Retruns the name of the label group.
 #' @param IntervalStartTime Returns all the labels with a end time equal to or later than the start
@@ -838,7 +838,7 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
 #' @description
 #' Generates a list of all models in the account, including model name and ARN, dataset, and status.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_models.html](https://paws-r.github.io/docs/lookoutequipment/list_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_models/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_models/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
 #' ML models.
@@ -873,7 +873,7 @@ lookoutequipment_list_models <- function(NextToken = NULL, MaxResults = NULL, St
 #' @description
 #' Lists statistics about the data collected for each of the sensors that have been successfully ingested in the particular dataset. Can also be used to retreive Sensor Statistics for a previous ingestion job.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_sensor_statistics.html](https://paws-r.github.io/docs/lookoutequipment/list_sensor_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_sensor_statistics/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_sensor_statistics/) for full documentation.
 #'
 #' @param DatasetName &#91;required&#93; The name of the dataset associated with the list of Sensor Statistics.
 #' @param IngestionJobId The ingestion job id associated with the list of Sensor Statistics. To
@@ -909,7 +909,7 @@ lookoutequipment_list_sensor_statistics <- function(DatasetName, IngestionJobId 
 #' @description
 #' Lists all the tags for a specified resource, including key and value.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/list_tags_for_resource.html](https://paws-r.github.io/docs/lookoutequipment/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/lookoutequipment_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource (such as the dataset or
 #' model) that is the focus of the
@@ -941,7 +941,7 @@ lookoutequipment_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Starts a data ingestion job. Amazon Lookout for Equipment returns the job status.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/start_data_ingestion_job.html](https://paws-r.github.io/docs/lookoutequipment/start_data_ingestion_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_start_data_ingestion_job/](https://www.paws-r-sdk.com/docs/lookoutequipment_start_data_ingestion_job/) for full documentation.
 #'
 #' @param DatasetName &#91;required&#93; The name of the dataset being used by the data ingestion job.
 #' @param IngestionInputConfiguration &#91;required&#93; Specifies information for the input data for the data ingestion job,
@@ -976,7 +976,7 @@ lookoutequipment_start_data_ingestion_job <- function(DatasetName, IngestionInpu
 #' @description
 #' Starts an inference scheduler.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/start_inference_scheduler.html](https://paws-r.github.io/docs/lookoutequipment/start_inference_scheduler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_start_inference_scheduler/](https://www.paws-r-sdk.com/docs/lookoutequipment_start_inference_scheduler/) for full documentation.
 #'
 #' @param InferenceSchedulerName &#91;required&#93; The name of the inference scheduler to be started.
 #'
@@ -1005,7 +1005,7 @@ lookoutequipment_start_inference_scheduler <- function(InferenceSchedulerName) {
 #' @description
 #' Stops an inference scheduler.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/stop_inference_scheduler.html](https://paws-r.github.io/docs/lookoutequipment/stop_inference_scheduler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_stop_inference_scheduler/](https://www.paws-r-sdk.com/docs/lookoutequipment_stop_inference_scheduler/) for full documentation.
 #'
 #' @param InferenceSchedulerName &#91;required&#93; The name of the inference scheduler to be stopped.
 #'
@@ -1034,7 +1034,7 @@ lookoutequipment_stop_inference_scheduler <- function(InferenceSchedulerName) {
 #' @description
 #' Associates a given tag to a resource in your account. A tag is a key-value pair which can be added to an Amazon Lookout for Equipment resource as metadata. Tags can be used for organizing your resources as well as helping you to search and filter by tag. Multiple tags can be added to a resource, either when you create it, or later. Up to 50 tags can be associated with each resource.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/tag_resource.html](https://paws-r.github.io/docs/lookoutequipment/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_tag_resource/](https://www.paws-r-sdk.com/docs/lookoutequipment_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specific resource to which the tag
 #' should be associated.
@@ -1066,7 +1066,7 @@ lookoutequipment_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a specific tag from a given resource. The tag is specified by its key.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/untag_resource.html](https://paws-r.github.io/docs/lookoutequipment/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_untag_resource/](https://www.paws-r-sdk.com/docs/lookoutequipment_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which the tag is
 #' currently associated.
@@ -1097,7 +1097,7 @@ lookoutequipment_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates an inference scheduler.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/update_inference_scheduler.html](https://paws-r.github.io/docs/lookoutequipment/update_inference_scheduler.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_update_inference_scheduler/](https://www.paws-r-sdk.com/docs/lookoutequipment_update_inference_scheduler/) for full documentation.
 #'
 #' @param InferenceSchedulerName &#91;required&#93; The name of the inference scheduler to be updated.
 #' @param DataDelayOffsetInMinutes A period of time (in minutes) by which inference on the data is delayed
@@ -1148,7 +1148,7 @@ lookoutequipment_update_inference_scheduler <- function(InferenceSchedulerName, 
 #' @description
 #' Updates the label group.
 #'
-#' See [https://paws-r.github.io/docs/lookoutequipment/update_label_group.html](https://paws-r.github.io/docs/lookoutequipment/update_label_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lookoutequipment_update_label_group/](https://www.paws-r-sdk.com/docs/lookoutequipment_update_label_group/) for full documentation.
 #'
 #' @param LabelGroupName &#91;required&#93; The name of the label group to be updated.
 #' @param FaultCodes Updates the code indicating the type of anomaly associated with the

@@ -14,6 +14,6 @@ batch_update_scheduling_policy(arn, fairsharePolicy = NULL)
 \description{
 Updates a scheduling policy.
 
-See \url{https://paws-r.github.io/docs/batch/update_scheduling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_update_scheduling_policy/} for full documentation.
 }
 \keyword{internal}

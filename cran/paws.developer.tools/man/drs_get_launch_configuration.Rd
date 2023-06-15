@@ -13,6 +13,6 @@ Configuration for.}
 \description{
 Gets a LaunchConfiguration, filtered by Source Server IDs.
 
-See \url{https://paws-r.github.io/docs/drs/get_launch_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_get_launch_configuration/} for full documentation.
 }
 \keyword{internal}

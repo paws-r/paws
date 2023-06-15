@@ -42,6 +42,6 @@ FLEET_PERCENT and a value of 95.}
 \description{
 Creates a deployment configuration.
 
-See \url{https://paws-r.github.io/docs/codedeploy/create_deployment_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_create_deployment_config/} for full documentation.
 }
 \keyword{internal}

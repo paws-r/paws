@@ -15,6 +15,6 @@ start with "\code{aws}".}
 \description{
 Associates a set of provided tags with a notification rule.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_tag_resource/} for full documentation.
 }
 \keyword{internal}

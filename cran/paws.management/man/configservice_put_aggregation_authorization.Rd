@@ -21,6 +21,6 @@ configservice_put_aggregation_authorization(
 \description{
 Authorizes the aggregator account and region to collect data from the source account and region.
 
-See \url{https://paws-r.github.io/docs/configservice/put_aggregation_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_aggregation_authorization/} for full documentation.
 }
 \keyword{internal}

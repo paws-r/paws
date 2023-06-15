@@ -12,6 +12,6 @@ auditmanager_list_tags_for_resource(resourceArn)
 \description{
 Returns a list of tags for the specified resource in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

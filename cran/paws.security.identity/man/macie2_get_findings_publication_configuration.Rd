@@ -10,6 +10,6 @@ macie2_get_findings_publication_configuration()
 \description{
 Retrieves the configuration settings for publishing findings to Security Hub.
 
-See \url{https://paws-r.github.io/docs/macie2/get_findings_publication_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_findings_publication_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Displays the tags associated with a CloudWatch resource. Currently, alarms and Contributor Insights rules support tagging.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

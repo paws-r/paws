@@ -23,6 +23,6 @@ specify either \code{resourceArn}, or \code{resourceShareArn}, but not both.}
 \description{
 Removes the specified tag key and value pairs from the specified resource share or managed permission.
 
-See \url{https://paws-r.github.io/docs/ram/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_untag_resource/} for full documentation.
 }
 \keyword{internal}

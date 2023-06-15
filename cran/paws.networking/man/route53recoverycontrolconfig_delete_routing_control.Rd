@@ -13,6 +13,6 @@ deleting.}
 \description{
 Deletes a routing control.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_routing_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_routing_control/} for full documentation.
 }
 \keyword{internal}

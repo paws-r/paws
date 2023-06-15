@@ -12,6 +12,6 @@ managedgrafana_delete_workspace(workspaceId)
 \description{
 Deletes an Amazon Managed Grafana workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/delete_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_delete_workspace/} for full documentation.
 }
 \keyword{internal}

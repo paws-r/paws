@@ -2,8 +2,8 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_import_key_material}
 \alias{kms_import_key_material}
-\title{Imports key material into an existing symmetric encryption KMS key that
-was created without key material}
+\title{Imports or reimports key material into an existing KMS key that was
+created without key material}
 \usage{
 kms_import_key_material(
   KeyId,
@@ -14,14 +14,19 @@ kms_import_key_material(
 )
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the symmetric encryption KMS key that receives the
-imported key material. This must be the same KMS key specified in the
-\code{KeyID} parameter of the corresponding
+\item{KeyId}{[required] The identifier of the KMS key that will be associated with the imported
+key material. This must be the same KMS key specified in the \code{KeyID}
+parameter of the corresponding
 \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.
-The \code{Origin} of the KMS key must be \code{EXTERNAL}. You cannot perform this
-operation on an asymmetric KMS key, an HMAC KMS key, a KMS key in a
-custom key store, or on a KMS key in a different Amazon Web Services
-account
+The \code{Origin} of the KMS key must be \code{EXTERNAL} and its \code{KeyState} must
+be \code{PendingImport}.
+
+The KMS key can be a symmetric encryption KMS key, HMAC KMS key,
+asymmetric encryption KMS key, or asymmetric signing KMS key, including
+a \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html}{multi-Region key}
+of any supported type. You cannot perform this operation on a KMS key in
+a custom key store, or on a KMS key in a different Amazon Web Services
+account.
 
 Specify the key ID or key ARN of the KMS key.
 
@@ -41,7 +46,7 @@ must be from the same response that contained the public key that you
 used to encrypt the key material.}
 
 \item{EncryptedKeyMaterial}{[required] The encrypted key material to import. The key material must be encrypted
-with the public wrapping key that
+under the public wrapping key that
 \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} returned,
 using the wrapping algorithm that you specified in the same
 \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.}
@@ -65,7 +70,8 @@ must delete
 reimport the key material.}
 
 \item{ExpirationModel}{Specifies whether the key material expires. The default is
-\code{KEY_MATERIAL_EXPIRES}.
+\code{KEY_MATERIAL_EXPIRES}. For help with this choice, see \href{https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration}{Setting an expiration time}
+in the \emph{Key Management Service Developer Guide}.
 
 When the value of \code{ExpirationModel} is \code{KEY_MATERIAL_EXPIRES}, you must
 specify a value for the \code{ValidTo} parameter. When value is
@@ -73,13 +79,11 @@ specify a value for the \code{ValidTo} parameter. When value is
 
 You cannot change the \code{ExpirationModel} or \code{ValidTo} values for the
 current import after the request completes. To change either value, you
-must delete
-(\code{\link[=kms_delete_imported_key_material]{delete_imported_key_material}}) and
-reimport the key material.}
+must reimport the key material.}
 }
 \description{
-Imports key material into an existing symmetric encryption KMS key that was created without key material. After you successfully import key material into a KMS key, you can \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material}{reimport the same key material} into that KMS key, but you cannot import different key material.
+Imports or reimports key material into an existing KMS key that was created without key material. \code{\link[=kms_import_key_material]{import_key_material}} also sets the expiration model and expiration date of the imported key material.
 
-See \url{https://paws-r.github.io/docs/kms/import_key_material.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_import_key_material/} for full documentation.
 }
 \keyword{internal}

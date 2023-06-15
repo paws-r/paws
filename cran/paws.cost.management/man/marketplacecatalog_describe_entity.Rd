@@ -15,6 +15,6 @@ marketplacecatalog_describe_entity(Catalog, EntityId)
 \description{
 Returns the metadata and content of the entity.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/describe_entity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_describe_entity/} for full documentation.
 }
 \keyword{internal}

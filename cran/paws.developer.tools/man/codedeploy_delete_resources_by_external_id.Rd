@@ -13,6 +13,6 @@ stack ID) that is linked to one or more CodeDeploy resources.}
 \description{
 Deletes resources linked to an external ID.
 
-See \url{https://paws-r.github.io/docs/codedeploy/delete_resources_by_external_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_delete_resources_by_external_id/} for full documentation.
 }
 \keyword{internal}

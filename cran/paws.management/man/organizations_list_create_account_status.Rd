@@ -35,6 +35,6 @@ results.}
 \description{
 Lists the account creation requests that match the specified status that is currently being tracked for the organization.
 
-See \url{https://paws-r.github.io/docs/organizations/list_create_account_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_create_account_status/} for full documentation.
 }
 \keyword{internal}

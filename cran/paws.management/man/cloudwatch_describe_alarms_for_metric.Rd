@@ -36,6 +36,6 @@ succeed.}
 \description{
 Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/describe_alarms_for_metric.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarms_for_metric/} for full documentation.
 }
 \keyword{internal}

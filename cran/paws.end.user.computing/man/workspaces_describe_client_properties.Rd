@@ -13,6 +13,6 @@ workspaces_describe_client_properties(ResourceIds)
 \description{
 Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_client_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_client_properties/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ mturk_update_hit_type_of_hit(HITId, HITTypeId)
 \description{
 The \code{\link[=mturk_update_hit_type_of_hit]{update_hit_type_of_hit}} operation allows you to change the HITType properties of a HIT. This operation disassociates the HIT from its old HITType properties and associates it with the new HITType properties. The HIT takes on the properties of the new HITType in place of the old ones.
 
-See \url{https://paws-r.github.io/docs/mturk/update_hit_type_of_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_update_hit_type_of_hit/} for full documentation.
 }
 \keyword{internal}

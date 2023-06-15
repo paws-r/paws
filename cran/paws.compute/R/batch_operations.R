@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels a job in an Batch job queue. Jobs that are in the `SUBMITTED` or `PENDING` are canceled. A job in`RUNNABLE` remains in `RUNNABLE` until it reaches the head of the job queue. Then the job status is updated to `FAILED`.
 #'
-#' See [https://paws-r.github.io/docs/batch/cancel_job.html](https://paws-r.github.io/docs/batch/cancel_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_cancel_job/](https://www.paws-r-sdk.com/docs/batch_cancel_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The Batch job ID of the job to cancel.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
@@ -41,7 +41,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' @description
 #' Creates an Batch compute environment. You can create `MANAGED` or `UNMANAGED` compute environments. `MANAGED` compute environments can use Amazon EC2 or Fargate resources. `UNMANAGED` compute environments can only use EC2 resources.
 #'
-#' See [https://paws-r.github.io/docs/batch/create_compute_environment.html](https://paws-r.github.io/docs/batch/create_compute_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_create_compute_environment/](https://www.paws-r-sdk.com/docs/batch_create_compute_environment/) for full documentation.
 #'
 #' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. It can be up to 128 characters
 #' long. It can contain uppercase and lowercase letters, numbers, hyphens
@@ -152,7 +152,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @description
 #' Creates an Batch job queue. When you create a job queue, you associate one or more compute environments to the queue and assign an order of preference for the compute environments.
 #'
-#' See [https://paws-r.github.io/docs/batch/create_job_queue.html](https://paws-r.github.io/docs/batch/create_job_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_create_job_queue/](https://www.paws-r-sdk.com/docs/batch_create_job_queue/) for full documentation.
 #'
 #' @param jobQueueName &#91;required&#93; The name of the job queue. It can be up to 128 letters long. It can
 #' contain uppercase and lowercase letters, numbers, hyphens (-), and
@@ -219,7 +219,7 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 #' @description
 #' Creates an Batch scheduling policy.
 #'
-#' See [https://paws-r.github.io/docs/batch/create_scheduling_policy.html](https://paws-r.github.io/docs/batch/create_scheduling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_create_scheduling_policy/](https://www.paws-r-sdk.com/docs/batch_create_scheduling_policy/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the scheduling policy. It can be up to 128 letters long. It
 #' can contain uppercase and lowercase letters, numbers, hyphens (-), and
@@ -260,7 +260,7 @@ batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = 
 #' @description
 #' Deletes an Batch compute environment.
 #'
-#' See [https://paws-r.github.io/docs/batch/delete_compute_environment.html](https://paws-r.github.io/docs/batch/delete_compute_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_delete_compute_environment/](https://www.paws-r-sdk.com/docs/batch_delete_compute_environment/) for full documentation.
 #'
 #' @param computeEnvironment &#91;required&#93; The name or Amazon Resource Name (ARN) of the compute environment to
 #' delete.
@@ -290,7 +290,7 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 #' @description
 #' Deletes the specified job queue. You must first disable submissions for a queue with the [`update_job_queue`][batch_update_job_queue] operation. All jobs in the queue are eventually terminated when you delete a job queue. The jobs are terminated at a rate of about 16 jobs each second.
 #'
-#' See [https://paws-r.github.io/docs/batch/delete_job_queue.html](https://paws-r.github.io/docs/batch/delete_job_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_delete_job_queue/](https://www.paws-r-sdk.com/docs/batch_delete_job_queue/) for full documentation.
 #'
 #' @param jobQueue &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the queue to
 #' delete.
@@ -320,7 +320,7 @@ batch_delete_job_queue <- function(jobQueue) {
 #' @description
 #' Deletes the specified scheduling policy.
 #'
-#' See [https://paws-r.github.io/docs/batch/delete_scheduling_policy.html](https://paws-r.github.io/docs/batch/delete_scheduling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_delete_scheduling_policy/](https://www.paws-r-sdk.com/docs/batch_delete_scheduling_policy/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the scheduling policy to delete.
 #'
@@ -349,7 +349,7 @@ batch_delete_scheduling_policy <- function(arn) {
 #' @description
 #' Deregisters an Batch job definition. Job definitions are permanently deleted after 180 days.
 #'
-#' See [https://paws-r.github.io/docs/batch/deregister_job_definition.html](https://paws-r.github.io/docs/batch/deregister_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_deregister_job_definition/](https://www.paws-r-sdk.com/docs/batch_deregister_job_definition/) for full documentation.
 #'
 #' @param jobDefinition &#91;required&#93; The name and revision (`name:revision`) or full Amazon Resource Name
 #' (ARN) of the job definition to deregister.
@@ -379,7 +379,7 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' @description
 #' Describes one or more of your compute environments.
 #'
-#' See [https://paws-r.github.io/docs/batch/describe_compute_environments.html](https://paws-r.github.io/docs/batch/describe_compute_environments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_compute_environments/](https://www.paws-r-sdk.com/docs/batch_describe_compute_environments/) for full documentation.
 #'
 #' @param computeEnvironments A list of up to 100 compute environment names or full Amazon Resource
 #' Name (ARN) entries.
@@ -430,7 +430,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' @description
 #' Describes a list of job definitions. You can specify a `status` (such as `ACTIVE`) to only return job definitions that match that status.
 #'
-#' See [https://paws-r.github.io/docs/batch/describe_job_definitions.html](https://paws-r.github.io/docs/batch/describe_job_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_job_definitions/](https://www.paws-r-sdk.com/docs/batch_describe_job_definitions/) for full documentation.
 #'
 #' @param jobDefinitions A list of up to 100 job definitions. Each entry in the list can either
 #' be an ARN in the format
@@ -485,7 +485,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' @description
 #' Describes one or more of your job queues.
 #'
-#' See [https://paws-r.github.io/docs/batch/describe_job_queues.html](https://paws-r.github.io/docs/batch/describe_job_queues.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_job_queues/](https://www.paws-r-sdk.com/docs/batch_describe_job_queues/) for full documentation.
 #'
 #' @param jobQueues A list of up to 100 queue names or full queue Amazon Resource Name (ARN)
 #' entries.
@@ -535,7 +535,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #' @description
 #' Describes a list of Batch jobs.
 #'
-#' See [https://paws-r.github.io/docs/batch/describe_jobs.html](https://paws-r.github.io/docs/batch/describe_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_jobs/](https://www.paws-r-sdk.com/docs/batch_describe_jobs/) for full documentation.
 #'
 #' @param jobs &#91;required&#93; A list of up to 100 job IDs.
 #'
@@ -564,7 +564,7 @@ batch_describe_jobs <- function(jobs) {
 #' @description
 #' Describes one or more of your scheduling policies.
 #'
-#' See [https://paws-r.github.io/docs/batch/describe_scheduling_policies.html](https://paws-r.github.io/docs/batch/describe_scheduling_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_scheduling_policies/](https://www.paws-r-sdk.com/docs/batch_describe_scheduling_policies/) for full documentation.
 #'
 #' @param arns &#91;required&#93; A list of up to 100 scheduling policy Amazon Resource Name (ARN)
 #' entries.
@@ -594,7 +594,7 @@ batch_describe_scheduling_policies <- function(arns) {
 #' @description
 #' Returns a list of Batch jobs.
 #'
-#' See [https://paws-r.github.io/docs/batch/list_jobs.html](https://paws-r.github.io/docs/batch/list_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_list_jobs/](https://www.paws-r-sdk.com/docs/batch_list_jobs/) for full documentation.
 #'
 #' @param jobQueue The name or full Amazon Resource Name (ARN) of the job queue used to
 #' list jobs.
@@ -694,7 +694,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' @description
 #' Returns a list of Batch scheduling policies.
 #'
-#' See [https://paws-r.github.io/docs/batch/list_scheduling_policies.html](https://paws-r.github.io/docs/batch/list_scheduling_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_list_scheduling_policies/](https://www.paws-r-sdk.com/docs/batch_list_scheduling_policies/) for full documentation.
 #'
 #' @param maxResults The maximum number of results that's returned by
 #' [`list_scheduling_policies`][batch_list_scheduling_policies] in
@@ -743,7 +743,7 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 #' @description
 #' Lists the tags for an Batch resource. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
 #'
-#' See [https://paws-r.github.io/docs/batch/list_tags_for_resource.html](https://paws-r.github.io/docs/batch/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/batch_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource that tags
 #' are listed for. Batch resources that support tags are compute
@@ -776,7 +776,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Registers an Batch job definition.
 #'
-#' See [https://paws-r.github.io/docs/batch/register_job_definition.html](https://paws-r.github.io/docs/batch/register_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_register_job_definition/](https://www.paws-r-sdk.com/docs/batch_register_job_definition/) for full documentation.
 #'
 #' @param jobDefinitionName &#91;required&#93; The name of the job definition to register. It can be up to 128 letters
 #' long. It can contain uppercase and lowercase letters, numbers, hyphens
@@ -881,7 +881,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @description
 #' Submits an Batch job from a job definition. Parameters that are specified during [`submit_job`][batch_submit_job] override parameters defined in the job definition. vCPU and memory requirements that are specified in the `resourceRequirements` objects in the job definition are the exception. They can't be overridden this way using the `memory` and `vcpus` parameters. Rather, you must specify updates to job definition parameters in a `resourceRequirements` object that's included in the `containerOverrides` parameter.
 #'
-#' See [https://paws-r.github.io/docs/batch/submit_job.html](https://paws-r.github.io/docs/batch/submit_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_submit_job/](https://www.paws-r-sdk.com/docs/batch_submit_job/) for full documentation.
 #'
 #' @param jobName &#91;required&#93; The name of the job. It can be up to 128 letters long. The first
 #' character must be alphanumeric, can contain uppercase and lowercase
@@ -993,7 +993,7 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
 #'
-#' See [https://paws-r.github.io/docs/batch/tag_resource.html](https://paws-r.github.io/docs/batch/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_tag_resource/](https://www.paws-r-sdk.com/docs/batch_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that tags are added to.
 #' Batch resources that support tags are compute environments, jobs, job
@@ -1030,7 +1030,7 @@ batch_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Terminates a job in a job queue. Jobs that are in the `STARTING` or `RUNNING` state are terminated, which causes them to transition to `FAILED`. Jobs that have not progressed to the `STARTING` state are cancelled.
 #'
-#' See [https://paws-r.github.io/docs/batch/terminate_job.html](https://paws-r.github.io/docs/batch/terminate_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_terminate_job/](https://www.paws-r-sdk.com/docs/batch_terminate_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The Batch job ID of the job to terminate.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
@@ -1063,7 +1063,7 @@ batch_terminate_job <- function(jobId, reason) {
 #' @description
 #' Deletes specified tags from an Batch resource.
 #'
-#' See [https://paws-r.github.io/docs/batch/untag_resource.html](https://paws-r.github.io/docs/batch/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_untag_resource/](https://www.paws-r-sdk.com/docs/batch_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
 #' tags. Batch resources that support tags are compute environments, jobs,
@@ -1096,7 +1096,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an Batch compute environment.
 #'
-#' See [https://paws-r.github.io/docs/batch/update_compute_environment.html](https://paws-r.github.io/docs/batch/update_compute_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_update_compute_environment/](https://www.paws-r-sdk.com/docs/batch_update_compute_environment/) for full documentation.
 #'
 #' @param computeEnvironment &#91;required&#93; The name or full Amazon Resource Name (ARN) of the compute environment
 #' to update.
@@ -1192,7 +1192,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' @description
 #' Updates a job queue.
 #'
-#' See [https://paws-r.github.io/docs/batch/update_job_queue.html](https://paws-r.github.io/docs/batch/update_job_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_update_job_queue/](https://www.paws-r-sdk.com/docs/batch_update_job_queue/) for full documentation.
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
 #' @param state Describes the queue's ability to accept new jobs. If the job queue state
@@ -1250,7 +1250,7 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
 #' @description
 #' Updates a scheduling policy.
 #'
-#' See [https://paws-r.github.io/docs/batch/update_scheduling_policy.html](https://paws-r.github.io/docs/batch/update_scheduling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/batch_update_scheduling_policy/](https://www.paws-r-sdk.com/docs/batch_update_scheduling_policy/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the scheduling policy to update.
 #' @param fairsharePolicy The fair share policy.

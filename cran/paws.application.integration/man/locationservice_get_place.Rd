@@ -33,6 +33,6 @@ in a language that the provider does support.}
 \description{
 Finds a place by its unique ID. A \code{PlaceId} is returned by other search operations.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_place.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_place/} for full documentation.
 }
 \keyword{internal}

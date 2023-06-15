@@ -43,6 +43,6 @@ output should continue from.}
 \description{
 Returns a list of existing Resource Groups in your account.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_list_groups/} for full documentation.
 }
 \keyword{internal}

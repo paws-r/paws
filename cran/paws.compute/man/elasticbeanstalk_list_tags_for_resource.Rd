@@ -15,6 +15,6 @@ Must be the ARN of an Elastic Beanstalk resource.}
 \description{
 Return the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

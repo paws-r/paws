@@ -376,6 +376,6 @@ for future growth.}
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.
 
-See \url{https://paws-r.github.io/docs/rds/restore_db_instance_from_db_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_instance_from_db_snapshot/} for full documentation.
 }
 \keyword{internal}

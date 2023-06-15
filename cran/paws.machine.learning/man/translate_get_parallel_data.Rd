@@ -12,6 +12,6 @@ translate_get_parallel_data(Name)
 \description{
 Provides information about a parallel data resource.
 
-See \url{https://paws-r.github.io/docs/translate/get_parallel_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_get_parallel_data/} for full documentation.
 }
 \keyword{internal}

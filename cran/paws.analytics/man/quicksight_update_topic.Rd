@@ -18,6 +18,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Updates a topic.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_topic/} for full documentation.
 }
 \keyword{internal}

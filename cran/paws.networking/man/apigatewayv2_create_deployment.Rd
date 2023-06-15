@@ -16,6 +16,6 @@ apigatewayv2_create_deployment(ApiId, Description = NULL, StageName = NULL)
 \description{
 Creates a Deployment for an API.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/create_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_create_deployment/} for full documentation.
 }
 \keyword{internal}

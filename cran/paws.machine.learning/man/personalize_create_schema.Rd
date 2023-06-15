@@ -18,6 +18,6 @@ the Domain dataset group.}
 \description{
 Creates an Amazon Personalize schema from the specified schema string. The schema you create must be in Avro JSON format.
 
-See \url{https://paws-r.github.io/docs/personalize/create_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_schema/} for full documentation.
 }
 \keyword{internal}

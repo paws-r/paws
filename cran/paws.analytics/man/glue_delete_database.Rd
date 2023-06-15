@@ -16,6 +16,6 @@ all lowercase.}
 \description{
 Removes a specified database from a Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/delete_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_database/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ You must provide a value for either the \code{CacheClusterId} or the
 \description{
 Lists all available node types that you can scale your Redis cluster's or replication group's current node type.
 
-See \url{https://paws-r.github.io/docs/elasticache/list_allowed_node_type_modifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_list_allowed_node_type_modifications/} for full documentation.
 }
 \keyword{internal}

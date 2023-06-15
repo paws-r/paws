@@ -15,6 +15,6 @@ addresses.}
 \description{
 Removes IP address blocks from a directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/remove_ip_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_remove_ip_routes/} for full documentation.
 }
 \keyword{internal}

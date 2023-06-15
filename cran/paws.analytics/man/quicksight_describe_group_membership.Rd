@@ -26,6 +26,6 @@ contains your Amazon QuickSight account.}
 \description{
 Use the \code{\link[=quicksight_describe_group_membership]{describe_group_membership}} operation to determine if a user is a member of the specified group. If the user exists and is a member of the specified group, an associated \code{GroupMember} object is returned.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_group_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_group_membership/} for full documentation.
 }
 \keyword{internal}

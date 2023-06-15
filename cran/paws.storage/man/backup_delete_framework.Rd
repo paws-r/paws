@@ -12,6 +12,6 @@ backup_delete_framework(FrameworkName)
 \description{
 Deletes the framework specified by a framework name.
 
-See \url{https://paws-r.github.io/docs/backup/delete_framework.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_framework/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ Region for each Amazon Web Services account.}
 \description{
 Describes the resource permissions for a data source.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_data_source_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_data_source_permissions/} for full documentation.
 }
 \keyword{internal}

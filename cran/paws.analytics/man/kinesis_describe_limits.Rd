@@ -9,6 +9,6 @@ kinesis_describe_limits()
 \description{
 Describes the shard limits and usage for the account.
 
-See \url{https://paws-r.github.io/docs/kinesis/describe_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_describe_limits/} for full documentation.
 }
 \keyword{internal}

@@ -50,6 +50,6 @@ or Analysis.}
 \description{
 Updates a template from an existing Amazon QuickSight analysis or another template.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_template/} for full documentation.
 }
 \keyword{internal}

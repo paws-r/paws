@@ -8,7 +8,7 @@ NULL
 #' @description
 #' CancelImageCreation cancels the creation of Image. This operation can only be used on images in a non-terminal state.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/cancel_image_creation.html](https://paws-r.github.io/docs/imagebuilder/cancel_image_creation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_cancel_image_creation/](https://www.paws-r-sdk.com/docs/imagebuilder_cancel_image_creation/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to cancel
 #' creation for.
@@ -43,7 +43,7 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' @description
 #' Creates a new component that can be used to build, validate, test, and assess your image. The component is based on a YAML document that you specify using exactly one of the following methods:
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_component.html](https://paws-r.github.io/docs/imagebuilder/create_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_component/](https://www.paws-r-sdk.com/docs/imagebuilder_create_component/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the component.
 #' @param semanticVersion &#91;required&#93; The semantic version of the component. This version follows the semantic
@@ -109,7 +109,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @description
 #' Creates a new container recipe. Container recipes define how images are configured, tested, and assessed.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_container_recipe.html](https://paws-r.github.io/docs/imagebuilder/create_container_recipe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_container_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_create_container_recipe/) for full documentation.
 #'
 #' @param containerType &#91;required&#93; The type of container to create.
 #' @param name &#91;required&#93; The name of the container recipe.
@@ -173,7 +173,7 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' @description
 #' Creates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_distribution_configuration.html](https://paws-r.github.io/docs/imagebuilder/create_distribution_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_distribution_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_create_distribution_configuration/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the distribution configuration.
 #' @param description The description of the distribution configuration.
@@ -206,7 +206,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @description
 #' Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_image.html](https://paws-r.github.io/docs/imagebuilder/create_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_image/](https://www.paws-r-sdk.com/docs/imagebuilder_create_image/) for full documentation.
 #'
 #' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that defines how
 #' images are configured, tested, and assessed.
@@ -250,7 +250,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @description
 #' Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_image_pipeline.html](https://paws-r.github.io/docs/imagebuilder/create_image_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_create_image_pipeline/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the image pipeline.
 #' @param description The description of the image pipeline.
@@ -299,7 +299,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @description
 #' Creates a new image recipe. Image recipes define how images are configured, tested, and assessed.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_image_recipe.html](https://paws-r.github.io/docs/imagebuilder/create_image_recipe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_image_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_create_image_recipe/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the image recipe.
 #' @param description The description of the image recipe.
@@ -359,7 +359,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @description
 #' Creates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/create_infrastructure_configuration.html](https://paws-r.github.io/docs/imagebuilder/create_infrastructure_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_create_infrastructure_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_create_infrastructure_configuration/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the infrastructure configuration.
 #' @param description The description of the infrastructure configuration.
@@ -417,7 +417,7 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #' @description
 #' Deletes a component build version.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_component.html](https://paws-r.github.io/docs/imagebuilder/delete_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_component/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_component/) for full documentation.
 #'
 #' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component build version to delete.
 #'
@@ -446,7 +446,7 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
 #' @description
 #' Deletes a container recipe.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_container_recipe.html](https://paws-r.github.io/docs/imagebuilder/delete_container_recipe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_container_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_container_recipe/) for full documentation.
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe to delete.
 #'
@@ -475,7 +475,7 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
 #' @description
 #' Deletes a distribution configuration.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_distribution_configuration.html](https://paws-r.github.io/docs/imagebuilder/delete_distribution_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_distribution_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_distribution_configuration/) for full documentation.
 #'
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration to
 #' delete.
@@ -505,7 +505,7 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 #' @description
 #' Deletes an Image Builder image resource. This does not delete any EC2 AMIs or ECR container images that are created during the image build process. You must clean those up separately, using the appropriate Amazon EC2 or Amazon ECR console actions, or API or CLI commands.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_image.html](https://paws-r.github.io/docs/imagebuilder/delete_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_image/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_image/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the Image Builder image resource to
 #' delete.
@@ -535,7 +535,7 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
 #' @description
 #' Deletes an image pipeline.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_image_pipeline.html](https://paws-r.github.io/docs/imagebuilder/delete_image_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_pipeline/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline to delete.
 #'
@@ -564,7 +564,7 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
 #' @description
 #' Deletes an image recipe.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_image_recipe.html](https://paws-r.github.io/docs/imagebuilder/delete_image_recipe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_recipe/) for full documentation.
 #'
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe to delete.
 #'
@@ -593,7 +593,7 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
 #' @description
 #' Deletes an infrastructure configuration.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/delete_infrastructure_configuration.html](https://paws-r.github.io/docs/imagebuilder/delete_infrastructure_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_delete_infrastructure_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_delete_infrastructure_configuration/) for full documentation.
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration to
 #' delete.
@@ -623,7 +623,7 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' @description
 #' Gets a component object.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_component.html](https://paws-r.github.io/docs/imagebuilder/get_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_component/](https://www.paws-r-sdk.com/docs/imagebuilder_get_component/) for full documentation.
 #'
 #' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to get.
 #' Regex requires the suffix `/\\d+$`.
@@ -653,7 +653,7 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
 #' @description
 #' Gets a component policy.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_component_policy.html](https://paws-r.github.io/docs/imagebuilder/get_component_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_component_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_component_policy/) for full documentation.
 #'
 #' @param componentArn &#91;required&#93; The Amazon Resource Name (ARN) of the component whose policy you want to
 #' retrieve.
@@ -683,7 +683,7 @@ imagebuilder_get_component_policy <- function(componentArn) {
 #' @description
 #' Retrieves a container recipe.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_container_recipe.html](https://paws-r.github.io/docs/imagebuilder/get_container_recipe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_container_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_get_container_recipe/) for full documentation.
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe to retrieve.
 #'
@@ -712,7 +712,7 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
 #' @description
 #' Retrieves the policy for a container recipe.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_container_recipe_policy.html](https://paws-r.github.io/docs/imagebuilder/get_container_recipe_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_container_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_container_recipe_policy/) for full documentation.
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe for the policy
 #' being requested.
@@ -742,7 +742,7 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #' @description
 #' Gets a distribution configuration.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_distribution_configuration.html](https://paws-r.github.io/docs/imagebuilder/get_distribution_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_distribution_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_get_distribution_configuration/) for full documentation.
 #'
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration that
 #' you want to retrieve.
@@ -772,7 +772,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #' @description
 #' Gets an image.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_image.html](https://paws-r.github.io/docs/imagebuilder/get_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to get.
 #'
@@ -801,7 +801,7 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #' @description
 #' Gets an image pipeline.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_image_pipeline.html](https://paws-r.github.io/docs/imagebuilder/get_image_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_pipeline/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to
 #' retrieve.
@@ -831,7 +831,7 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
 #' @description
 #' Gets an image policy.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_image_policy.html](https://paws-r.github.io/docs/imagebuilder/get_image_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_policy/) for full documentation.
 #'
 #' @param imageArn &#91;required&#93; The Amazon Resource Name (ARN) of the image whose policy you want to
 #' retrieve.
@@ -861,7 +861,7 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #' @description
 #' Gets an image recipe.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_image_recipe.html](https://paws-r.github.io/docs/imagebuilder/get_image_recipe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe/) for full documentation.
 #'
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that you want to
 #' retrieve.
@@ -891,7 +891,7 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
 #' @description
 #' Gets an image recipe policy.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_image_recipe_policy.html](https://paws-r.github.io/docs/imagebuilder/get_image_recipe_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_get_image_recipe_policy/) for full documentation.
 #'
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe whose policy you want
 #' to retrieve.
@@ -921,7 +921,7 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 #' @description
 #' Gets an infrastructure configuration.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_infrastructure_configuration.html](https://paws-r.github.io/docs/imagebuilder/get_infrastructure_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_infrastructure_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_get_infrastructure_configuration/) for full documentation.
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' you want to retrieve.
@@ -952,7 +952,7 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 #' @description
 #' Get the runtime information that was logged for a specific runtime instance of the workflow.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_workflow_execution.html](https://paws-r.github.io/docs/imagebuilder/get_workflow_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_execution/) for full documentation.
 #'
 #' @param workflowExecutionId &#91;required&#93; Use the unique identifier for a runtime instance of the workflow to get
 #' runtime details.
@@ -983,7 +983,7 @@ imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
 #' @description
 #' Get the runtime information that was logged for a specific runtime instance of the workflow step.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/get_workflow_step_execution.html](https://paws-r.github.io/docs/imagebuilder/get_workflow_step_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_step_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_step_execution/) for full documentation.
 #'
 #' @param stepExecutionId &#91;required&#93; Use the unique identifier for a specific runtime instance of the
 #' workflow step to get runtime details for that step.
@@ -1013,7 +1013,7 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
 #' @description
 #' Imports a component and transforms its data into a component document.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/import_component.html](https://paws-r.github.io/docs/imagebuilder/import_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_import_component/](https://www.paws-r-sdk.com/docs/imagebuilder_import_component/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the component.
 #' @param semanticVersion &#91;required&#93; The semantic version of the component. This version follows the semantic
@@ -1074,7 +1074,7 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @description
 #' When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data. The Amazon EC2 API [ImportImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html) action uses those files to import your VM and create an AMI. To import using the CLI command, see [import-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html)
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/import_vm_image.html](https://paws-r.github.io/docs/imagebuilder/import_vm_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_import_vm_image/](https://www.paws-r-sdk.com/docs/imagebuilder_import_vm_image/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the base image that is created by the import process.
 #' @param semanticVersion &#91;required&#93; The semantic version to attach to the base image that was created during
@@ -1133,7 +1133,7 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 #' @description
 #' Returns the list of component build versions for the specified semantic version.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_component_build_versions.html](https://paws-r.github.io/docs/imagebuilder/list_component_build_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_component_build_versions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_component_build_versions/) for full documentation.
 #'
 #' @param componentVersionArn &#91;required&#93; The component version Amazon Resource Name (ARN) whose versions you want
 #' to list.
@@ -1167,7 +1167,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @description
 #' Returns the list of components that can be filtered by name, or by using the listed `filters` to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_components.html](https://paws-r.github.io/docs/imagebuilder/list_components.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_components/](https://www.paws-r-sdk.com/docs/imagebuilder_list_components/) for full documentation.
 #'
 #' @param owner Filters results based on the type of owner for the component. By
 #' default, this request returns a list of components that your account
@@ -1217,7 +1217,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' @description
 #' Returns a list of container recipes.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_container_recipes.html](https://paws-r.github.io/docs/imagebuilder/list_container_recipes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_container_recipes/](https://www.paws-r-sdk.com/docs/imagebuilder_list_container_recipes/) for full documentation.
 #'
 #' @param owner Returns container recipes belonging to the specified owner, that have
 #' been shared with you. You can omit this field to return container
@@ -1260,7 +1260,7 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
 #' @description
 #' Returns a list of distribution configurations.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_distribution_configurations.html](https://paws-r.github.io/docs/imagebuilder/list_distribution_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_distribution_configurations/](https://www.paws-r-sdk.com/docs/imagebuilder_list_distribution_configurations/) for full documentation.
 #'
 #' @param filters You can filter on `name` to streamline results.
 #' @param maxResults The maximum items to return in a request.
@@ -1292,7 +1292,7 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #' @description
 #' Returns a list of image build versions.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_build_versions.html](https://paws-r.github.io/docs/imagebuilder/list_image_build_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_build_versions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_build_versions/) for full documentation.
 #'
 #' @param imageVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image whose build versions you
 #' want to retrieve.
@@ -1338,7 +1338,7 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 #' @description
 #' List the Packages that are associated with an Image Build Version, as determined by Amazon Web Services Systems Manager Inventory at build time.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_packages.html](https://paws-r.github.io/docs/imagebuilder/list_image_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_packages/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_packages/) for full documentation.
 #'
 #' @param imageBuildVersionArn &#91;required&#93; Filter results for the ListImagePackages request by the Image Build
 #' Version ARN
@@ -1371,7 +1371,7 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
 #' @description
 #' Returns a list of images created by the specified pipeline.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_pipeline_images.html](https://paws-r.github.io/docs/imagebuilder/list_image_pipeline_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_pipeline_images/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_pipeline_images/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline whose images you
 #' want to view.
@@ -1409,7 +1409,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #' @description
 #' Returns a list of image pipelines.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_pipelines.html](https://paws-r.github.io/docs/imagebuilder/list_image_pipelines.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_pipelines/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_pipelines/) for full documentation.
 #'
 #' @param filters Use the following filters to streamline results:
 #' 
@@ -1453,7 +1453,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' @description
 #' Returns a list of image recipes.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_recipes.html](https://paws-r.github.io/docs/imagebuilder/list_image_recipes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_recipes/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_recipes/) for full documentation.
 #'
 #' @param owner The owner defines which image recipes you want to list. By default, this
 #' request will only show image recipes owned by your account. You can use
@@ -1496,7 +1496,7 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' @description
 #' Returns a list of image scan aggregations for your account. You can filter by the type of key that Image Builder uses to group results. For example, if you want to get a list of findings by severity level for one of your pipelines, you might specify your pipeline with the `imagePipelineArn` filter. If you don't specify a filter, Image Builder returns an aggregation for your account.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_scan_finding_aggregations.html](https://paws-r.github.io/docs/imagebuilder/list_image_scan_finding_aggregations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_finding_aggregations/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_finding_aggregations/) for full documentation.
 #'
 #' @param filter 
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
@@ -1527,7 +1527,7 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
 #' @description
 #' Returns a list of image scan findings for your account.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_image_scan_findings.html](https://paws-r.github.io/docs/imagebuilder/list_image_scan_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_findings/](https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_findings/) for full documentation.
 #'
 #' @param filters An array of name value pairs that you can use to filter your results.
 #' You can use the following filters to streamline results:
@@ -1571,7 +1571,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #' @description
 #' Returns the list of images that you have access to. Newly created images can take up to two minutes to appear in the ListImages API Results.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_images.html](https://paws-r.github.io/docs/imagebuilder/list_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_images/](https://www.paws-r-sdk.com/docs/imagebuilder_list_images/) for full documentation.
 #'
 #' @param owner The owner defines which images you want to list. By default, this
 #' request will only show images owned by your account. You can use this
@@ -1620,7 +1620,7 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #' @description
 #' Returns a list of infrastructure configurations.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_infrastructure_configurations.html](https://paws-r.github.io/docs/imagebuilder/list_infrastructure_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_infrastructure_configurations/](https://www.paws-r-sdk.com/docs/imagebuilder_list_infrastructure_configurations/) for full documentation.
 #'
 #' @param filters You can filter on `name` to streamline results.
 #' @param maxResults The maximum items to return in a request.
@@ -1652,7 +1652,7 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
 #' @description
 #' Returns the list of tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_tags_for_resource.html](https://paws-r.github.io/docs/imagebuilder/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/imagebuilder_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
 #' retrieve.
@@ -1683,7 +1683,7 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Returns a list of workflow runtime instance metadata objects for a specific image build version.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_workflow_executions.html](https://paws-r.github.io/docs/imagebuilder/list_workflow_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_executions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_executions/) for full documentation.
 #'
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
@@ -1717,7 +1717,7 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
 #' @description
 #' Shows runtime data for each step in a runtime instance of the workflow that you specify in the request.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/list_workflow_step_executions.html](https://paws-r.github.io/docs/imagebuilder/list_workflow_step_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_step_executions/](https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_step_executions/) for full documentation.
 #'
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
@@ -1750,7 +1750,7 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
 #' @description
 #' Applies a policy to a component. We recommend that you call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API [`put_component_policy`][imagebuilder_put_component_policy], you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/put_component_policy.html](https://paws-r.github.io/docs/imagebuilder/put_component_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_component_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_component_policy/) for full documentation.
 #'
 #' @param componentArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that this policy should
 #' be applied to.
@@ -1781,7 +1781,7 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 #' @description
 #' Applies a policy to a container image. We recommend that you call the RAM API CreateResourceShare (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API `PutContainerImagePolicy`, you must also call the RAM API PromoteResourceShareCreatedFromPolicy (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/put_container_recipe_policy.html](https://paws-r.github.io/docs/imagebuilder/put_container_recipe_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/) for full documentation.
 #'
 #' @param containerRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the container recipe that this policy
 #' should be applied to.
@@ -1812,7 +1812,7 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 #' @description
 #' Applies a policy to an image. We recommend that you call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API [`put_image_policy`][imagebuilder_put_image_policy], you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/put_image_policy.html](https://paws-r.github.io/docs/imagebuilder/put_image_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_image_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_image_policy/) for full documentation.
 #'
 #' @param imageArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that this policy should be
 #' applied to.
@@ -1843,7 +1843,7 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 #' @description
 #' Applies a policy to an image recipe. We recommend that you call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html) to share resources. If you call the Image Builder API [`put_image_recipe_policy`][imagebuilder_put_image_recipe_policy], you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) in order for the resource to be visible to all principals with whom the resource is shared.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/put_image_recipe_policy.html](https://paws-r.github.io/docs/imagebuilder/put_image_recipe_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_put_image_recipe_policy/](https://www.paws-r-sdk.com/docs/imagebuilder_put_image_recipe_policy/) for full documentation.
 #'
 #' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that this policy
 #' should be applied to.
@@ -1874,7 +1874,7 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 #' @description
 #' Manually triggers a pipeline to create an image.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/start_image_pipeline_execution.html](https://paws-r.github.io/docs/imagebuilder/start_image_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_start_image_pipeline_execution/](https://www.paws-r-sdk.com/docs/imagebuilder_start_image_pipeline_execution/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to
 #' manually invoke.
@@ -1905,7 +1905,7 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #' @description
 #' Adds a tag to a resource.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/tag_resource.html](https://paws-r.github.io/docs/imagebuilder/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_tag_resource/](https://www.paws-r-sdk.com/docs/imagebuilder_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
 #' @param tags &#91;required&#93; The tags to apply to the resource.
@@ -1935,7 +1935,7 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes a tag from a resource.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/untag_resource.html](https://paws-r.github.io/docs/imagebuilder/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_untag_resource/](https://www.paws-r-sdk.com/docs/imagebuilder_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to untag.
 #' @param tagKeys &#91;required&#93; The tag keys to remove from the resource.
@@ -1965,7 +1965,7 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/update_distribution_configuration.html](https://paws-r.github.io/docs/imagebuilder/update_distribution_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_distribution_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_update_distribution_configuration/) for full documentation.
 #'
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration that
 #' you want to update.
@@ -1998,7 +1998,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @description
 #' Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/update_image_pipeline.html](https://paws-r.github.io/docs/imagebuilder/update_image_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/](https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/) for full documentation.
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to
 #' update.
@@ -2046,7 +2046,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' @description
 #' Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
 #'
-#' See [https://paws-r.github.io/docs/imagebuilder/update_infrastructure_configuration.html](https://paws-r.github.io/docs/imagebuilder/update_infrastructure_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_update_infrastructure_configuration/](https://www.paws-r-sdk.com/docs/imagebuilder_update_infrastructure_configuration/) for full documentation.
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' you want to update.

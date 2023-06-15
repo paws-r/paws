@@ -19,15 +19,21 @@ your account.}
 \item{solutionVersionArn}{[required] The Amazon Resource Name (ARN) of the solution version to deploy.}
 
 \item{minProvisionedTPS}{Specifies the requested minimum provisioned transactions
-(recommendations) per second that Amazon Personalize will support.}
+(recommendations) per second that Amazon Personalize will support. A
+high \code{minProvisionedTPS} will increase your bill. We recommend starting
+with 1 for \code{minProvisionedTPS} (the default). Track your usage using
+Amazon CloudWatch metrics, and increase the \code{minProvisionedTPS} as
+necessary.}
 
 \item{campaignConfig}{The configuration details of a campaign.}
 
-\item{tags}{A list of tags to apply to the campaign.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the campaign.}
 }
 \description{
 Creates a campaign that deploys a solution version. When a client calls the \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations} and \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html}{GetPersonalizedRanking} APIs, a campaign is specified in the request.
 
-See \url{https://paws-r.github.io/docs/personalize/create_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_campaign/} for full documentation.
 }
 \keyword{internal}

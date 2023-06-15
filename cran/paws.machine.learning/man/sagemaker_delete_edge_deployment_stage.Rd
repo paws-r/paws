@@ -16,6 +16,6 @@ deleted.}
 \description{
 Delete a stage in an edge deployment plan if (and only if) the stage is inactive.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_edge_deployment_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_edge_deployment_stage/} for full documentation.
 }
 \keyword{internal}

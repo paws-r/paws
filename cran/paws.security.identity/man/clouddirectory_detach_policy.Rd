@@ -18,6 +18,6 @@ detached.}
 \description{
 Detaches a policy from an object.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/detach_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_detach_policy/} for full documentation.
 }
 \keyword{internal}

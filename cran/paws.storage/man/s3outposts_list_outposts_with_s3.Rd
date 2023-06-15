@@ -19,6 +19,6 @@ additional Outposts.}
 \description{
 Lists the Outposts with S3 on Outposts capacity for your Amazon Web Services account. Includes S3 on Outposts that you have access to as the Outposts owner, or as a shared user from Resource Access Manager (RAM).
 
-See \url{https://paws-r.github.io/docs/s3outposts/list_outposts_with_s3.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3outposts_list_outposts_with_s3/} for full documentation.
 }
 \keyword{internal}

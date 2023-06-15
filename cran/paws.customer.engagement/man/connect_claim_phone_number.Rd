@@ -36,6 +36,6 @@ Pattern:
 \description{
 Claims an available phone number to your Amazon Connect instance or traffic distribution group. You can call this API only in the same Amazon Web Services Region where the Amazon Connect instance or traffic distribution group was created.
 
-See \url{https://paws-r.github.io/docs/connect/claim_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_claim_phone_number/} for full documentation.
 }
 \keyword{internal}

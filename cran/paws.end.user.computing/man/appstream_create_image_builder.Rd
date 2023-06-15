@@ -112,6 +112,6 @@ specified endpoints.}
 \description{
 Creates an image builder. An image builder is a virtual machine that is used to create an image.
 
-See \url{https://paws-r.github.io/docs/appstream/create_image_builder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_image_builder/} for full documentation.
 }
 \keyword{internal}

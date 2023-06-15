@@ -14,6 +14,6 @@ into.}
 \description{
 Gets the header information for the comma-separated value (CSV) file to be used as input for the user import job.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_csv_header.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_csv_header/} for full documentation.
 }
 \keyword{internal}

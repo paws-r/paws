@@ -20,6 +20,6 @@ period.}
 \description{
 Represents the input of a \code{\link[=elasticache_test_failover]{test_failover}} operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).
 
-See \url{https://paws-r.github.io/docs/elasticache/test_failover.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_test_failover/} for full documentation.
 }
 \keyword{internal}

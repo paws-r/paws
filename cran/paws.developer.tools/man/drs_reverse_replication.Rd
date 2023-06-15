@@ -14,6 +14,6 @@ for.}
 \description{
 Start replication to origin / target region - applies only to protected instances that originated in EC2. For recovery instances on target region - starts replication back to origin region. For failback instances on origin region - starts replication to target region to re-protect them.
 
-See \url{https://paws-r.github.io/docs/drs/reverse_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_reverse_replication/} for full documentation.
 }
 \keyword{internal}

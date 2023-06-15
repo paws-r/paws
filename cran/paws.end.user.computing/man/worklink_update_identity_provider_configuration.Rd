@@ -21,6 +21,6 @@ The existing IdentityProviderSamlMetadata is unset if null is passed.}
 \description{
 Updates the identity provider configuration for the fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/update_identity_provider_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_update_identity_provider_configuration/} for full documentation.
 }
 \keyword{internal}

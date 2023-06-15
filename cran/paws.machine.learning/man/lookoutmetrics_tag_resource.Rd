@@ -15,6 +15,6 @@ numbers, spaces, and the following symbols: \verb{_.:/=+@-}}
 \description{
 Adds \href{https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html}{tags} to a detector, dataset, or alert.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_tag_resource/} for full documentation.
 }
 \keyword{internal}

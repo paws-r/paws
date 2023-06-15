@@ -20,6 +20,6 @@ then deletes the cluster immediately afterward.}
 \description{
 Deletes a previously provisioned cluster. \code{\link[=elasticache_delete_cache_cluster]{delete_cache_cluster}} deletes all associated cache nodes, node endpoints and the cluster itself. When you receive a successful response from this operation, Amazon ElastiCache immediately begins deleting the cluster; you cannot cancel or revert this operation.
 
-See \url{https://paws-r.github.io/docs/elasticache/delete_cache_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_cache_cluster/} for full documentation.
 }
 \keyword{internal}

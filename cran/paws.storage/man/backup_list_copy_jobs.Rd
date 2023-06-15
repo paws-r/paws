@@ -70,6 +70,6 @@ and Coordinated Universal Time (UTC).}
 \description{
 Returns metadata about your copy jobs.
 
-See \url{https://paws-r.github.io/docs/backup/list_copy_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_copy_jobs/} for full documentation.
 }
 \keyword{internal}

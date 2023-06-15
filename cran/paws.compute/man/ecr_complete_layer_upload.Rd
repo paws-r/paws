@@ -28,6 +28,6 @@ associate with the image layer.}
 \description{
 Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID. You can optionally provide a \code{sha256} digest of the image layer for data validation purposes.
 
-See \url{https://paws-r.github.io/docs/ecr/complete_layer_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_complete_layer_upload/} for full documentation.
 }
 \keyword{internal}

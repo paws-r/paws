@@ -16,6 +16,6 @@ cannot be returned in one response.}
 \description{
 Lists all the user profiles configured for your AWS account in AWS CodeStar.
 
-See \url{https://paws-r.github.io/docs/codestar/list_user_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_list_user_profiles/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ describe.}
 \description{
 Returns the configuration of an Amazon OpenSearch Service domain.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_config/} for full documentation.
 }
 \keyword{internal}

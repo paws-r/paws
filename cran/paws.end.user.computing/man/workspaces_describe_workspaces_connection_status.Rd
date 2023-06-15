@@ -18,6 +18,6 @@ provide this token to receive the next set of results.}
 \description{
 Describes the connection status of the specified WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspaces_connection_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_connection_status/} for full documentation.
 }
 \keyword{internal}

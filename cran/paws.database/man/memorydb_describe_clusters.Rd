@@ -32,6 +32,6 @@ information about the individual shard(s).}
 \description{
 Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cluster if a cluster name is supplied.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_clusters/} for full documentation.
 }
 \keyword{internal}

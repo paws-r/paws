@@ -17,6 +17,6 @@ valid language.}
 \description{
 Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number.
 
-See \url{https://paws-r.github.io/docs/comprehend/contains_pii_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_contains_pii_entities/} for full documentation.
 }
 \keyword{internal}

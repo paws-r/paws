@@ -12,6 +12,6 @@ imagebuilder_delete_component(componentBuildVersionArn)
 \description{
 Deletes a component build version.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_component/} for full documentation.
 }
 \keyword{internal}

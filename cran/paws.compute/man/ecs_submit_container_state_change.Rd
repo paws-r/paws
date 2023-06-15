@@ -37,6 +37,6 @@ the container.}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-See \url{https://paws-r.github.io/docs/ecs/submit_container_state_change.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_submit_container_state_change/} for full documentation.
 }
 \keyword{internal}

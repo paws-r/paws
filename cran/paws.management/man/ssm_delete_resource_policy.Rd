@@ -18,6 +18,6 @@ calls from attempting to overwrite a policy.}
 \description{
 Deletes a Systems Manager resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your Systems Manager resources. Currently, \code{OpsItemGroup} is the only resource that supports Systems Manager resource policies. The resource policy for \code{OpsItemGroup} enables Amazon Web Services accounts to view and interact with OpsCenter operational work items (OpsItems).
 
-See \url{https://paws-r.github.io/docs/ssm/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ names are case sensitive.}
 \description{
 Deletes a custom vocabulary. To use this operation, specify the name of the custom vocabulary you want to delete using \code{VocabularyName}. Custom vocabulary names are case sensitive.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/delete_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_delete_vocabulary/} for full documentation.
 }
 \keyword{internal}

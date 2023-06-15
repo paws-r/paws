@@ -18,6 +18,6 @@ Constraints:
 \description{
 Deletes a previously provisioned instance.
 
-See \url{https://paws-r.github.io/docs/docdb/delete_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_delete_db_instance/} for full documentation.
 }
 \keyword{internal}

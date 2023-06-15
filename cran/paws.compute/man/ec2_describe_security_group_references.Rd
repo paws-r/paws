@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 [VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_security_group_references.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_security_group_references/} for full documentation.
 }
 \keyword{internal}

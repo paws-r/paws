@@ -14,6 +14,6 @@ prometheusservice_describe_rule_groups_namespace(name, workspaceId)
 \description{
 Describe a rule groups namespace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/describe_rule_groups_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_rule_groups_namespace/} for full documentation.
 }
 \keyword{internal}

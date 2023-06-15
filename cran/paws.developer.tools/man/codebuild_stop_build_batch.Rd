@@ -12,6 +12,6 @@ codebuild_stop_build_batch(id)
 \description{
 Stops a running batch build.
 
-See \url{https://paws-r.github.io/docs/codebuild/stop_build_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_stop_build_batch/} for full documentation.
 }
 \keyword{internal}

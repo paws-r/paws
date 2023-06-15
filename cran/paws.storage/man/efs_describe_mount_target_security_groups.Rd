@@ -12,6 +12,6 @@ efs_describe_mount_target_security_groups(MountTargetId)
 \description{
 Returns the security groups currently in effect for a mount target. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not \code{deleted}.
 
-See \url{https://paws-r.github.io/docs/efs/describe_mount_target_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_mount_target_security_groups/} for full documentation.
 }
 \keyword{internal}

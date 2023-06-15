@@ -76,6 +76,6 @@ The following are the supported resource types for Amazon VPC:
 \description{
 Describes the network resources for the specified global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_network_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_network_resources/} for full documentation.
 }
 \keyword{internal}

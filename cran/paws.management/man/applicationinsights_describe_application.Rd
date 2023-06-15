@@ -12,6 +12,6 @@ applicationinsights_describe_application(ResourceGroupName)
 \description{
 Describes the application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_application/} for full documentation.
 }
 \keyword{internal}

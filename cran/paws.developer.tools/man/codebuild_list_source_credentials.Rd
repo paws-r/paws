@@ -9,6 +9,6 @@ codebuild_list_source_credentials()
 \description{
 Returns a list of \code{SourceCredentialsInfo} objects.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_source_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_source_credentials/} for full documentation.
 }
 \keyword{internal}

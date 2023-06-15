@@ -20,6 +20,6 @@ value of NextToken from the previous response to continue listing data.}
 \description{
 Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_ip_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_ip_sets/} for full documentation.
 }
 \keyword{internal}

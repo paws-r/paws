@@ -10,6 +10,6 @@ macie2_disassociate_from_administrator_account()
 \description{
 Disassociates a member account from its Amazon Macie administrator account.
 
-See \url{https://paws-r.github.io/docs/macie2/disassociate_from_administrator_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_disassociate_from_administrator_account/} for full documentation.
 }
 \keyword{internal}

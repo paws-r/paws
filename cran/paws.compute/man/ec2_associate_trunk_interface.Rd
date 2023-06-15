@@ -33,6 +33,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 This API action is currently in \strong{limited preview only}. If you are interested in using this feature, contact your account manager.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_trunk_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_trunk_interface/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ Availability Zone.}
 \description{
 Adds one or more subnets to the set of configured subnets for the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/attach_load_balancer_to_subnets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_attach_load_balancer_to_subnets/} for full documentation.
 }
 \keyword{internal}

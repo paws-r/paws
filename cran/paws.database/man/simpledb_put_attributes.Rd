@@ -21,6 +21,6 @@ attributes to be updated.}
 \description{
 The PutAttributes operation creates or replaces attributes in an item. The client may specify new attributes using a combination of the \code{Attribute.X.Name} and \code{Attribute.X.Value} parameters. The client specifies the first attribute by the parameters \code{Attribute.0.Name} and \code{Attribute.0.Value}, the second attribute by the parameters \code{Attribute.1.Name} and \code{Attribute.1.Value}, and so on.
 
-See \url{https://paws-r.github.io/docs/simpledb/put_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_put_attributes/} for full documentation.
 }
 \keyword{internal}

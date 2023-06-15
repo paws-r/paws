@@ -9,7 +9,7 @@ NULL
 #' @description
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers.
 #'
-#' See [https://paws-r.github.io/docs/marketplacemetering/batch_meter_usage.html](https://paws-r.github.io/docs/marketplacemetering/batch_meter_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/) for full documentation.
 #'
 #' @param UsageRecords &#91;required&#93; The set of `UsageRecords` to submit.
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] accepts up
@@ -43,7 +43,7 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' @description
 #' API to emit metering records. For identical requests, the API is idempotent. It simply returns the metering record ID.
 #'
-#' See [https://paws-r.github.io/docs/marketplacemetering/meter_usage.html](https://paws-r.github.io/docs/marketplacemetering/meter_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/) for full documentation.
 #'
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
 #' The product code should be the same as the one used during the
@@ -92,7 +92,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #' @description
 #' Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the [`register_usage`][marketplacemetering_register_usage] operation for software entitlement and metering. Free and BYOL products for Amazon ECS or Amazon EKS aren't required to call [`register_usage`][marketplacemetering_register_usage], but you may choose to do so if you would like to receive usage data in your seller reports. The sections below explain the behavior of [`register_usage`][marketplacemetering_register_usage]. [`register_usage`][marketplacemetering_register_usage] performs two primary functions: metering and entitlement.
 #'
-#' See [https://paws-r.github.io/docs/marketplacemetering/register_usage.html](https://paws-r.github.io/docs/marketplacemetering/register_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacemetering_register_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_register_usage/) for full documentation.
 #'
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
 #' The product code should be the same as the one used during the
@@ -127,7 +127,7 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' @description
 #' [`resolve_customer`][marketplacemetering_resolve_customer] is called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a registration token through their browser. The registration token is resolved through this API to obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId` and `ProductCode`.
 #'
-#' See [https://paws-r.github.io/docs/marketplacemetering/resolve_customer.html](https://paws-r.github.io/docs/marketplacemetering/resolve_customer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/](https://www.paws-r-sdk.com/docs/marketplacemetering_resolve_customer/) for full documentation.
 #'
 #' @param RegistrationToken &#91;required&#93; When a buyer visits your website during the registration process, the
 #' buyer submits a registration token through the browser. The registration

@@ -13,6 +13,6 @@ cloudfront_get_streaming_distribution(Id)
 \description{
 Gets information about a specified RTMP distribution, including the distribution configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_streaming_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_streaming_distribution/} for full documentation.
 }
 \keyword{internal}

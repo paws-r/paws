@@ -62,6 +62,6 @@ the operation.}
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory} in the \emph{Directory Service Admin Guide}.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_directory/} for full documentation.
 }
 \keyword{internal}

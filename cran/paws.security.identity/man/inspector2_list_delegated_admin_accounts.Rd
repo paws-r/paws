@@ -18,6 +18,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists information about the Amazon Inspector delegated administrator of your organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_delegated_admin_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_delegated_admin_accounts/} for full documentation.
 }
 \keyword{internal}

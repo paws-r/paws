@@ -33,6 +33,6 @@ accidentally resubmit an identical request.}
 \description{
 Creates a staging distribution using the configuration of the provided primary distribution. A staging distribution is a copy of an existing distribution (called the primary distribution) that you can use in a continuous deployment workflow.
 
-See \url{https://paws-r.github.io/docs/cloudfront/copy_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_copy_distribution/} for full documentation.
 }
 \keyword{internal}

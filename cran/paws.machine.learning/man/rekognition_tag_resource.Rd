@@ -16,6 +16,6 @@ that you want to assign the tags to.}
 \description{
 Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}.
 
-See \url{https://paws-r.github.io/docs/rekognition/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_tag_resource/} for full documentation.
 }
 \keyword{internal}

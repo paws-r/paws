@@ -14,6 +14,6 @@ directconnect_disassociate_connection_from_lag(connectionId, lagId)
 \description{
 Disassociates a connection from a link aggregation group (LAG). The connection is interrupted and re-established as a standalone connection (the connection is not deleted; to delete the connection, use the \code{\link[=directconnect_delete_connection]{delete_connection}} request). If the LAG has associated virtual interfaces or hosted connections, they remain associated with the LAG. A disassociated connection owned by an Direct Connect Partner is automatically converted to an interconnect.
 
-See \url{https://paws-r.github.io/docs/directconnect/disassociate_connection_from_lag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_disassociate_connection_from_lag/} for full documentation.
 }
 \keyword{internal}

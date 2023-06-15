@@ -34,6 +34,6 @@ parameter, a token is returned in the response. Use that token in the
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_built_in_slot_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_built_in_slot_types/} for full documentation.
 }
 \keyword{internal}

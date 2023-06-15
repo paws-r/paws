@@ -35,6 +35,6 @@ the list. The match statement consists of a key and a value.
 \description{
 Returns a list of Explainability exports created using the \code{\link[=forecastservice_create_explainability_export]{create_explainability_export}} operation. This operation returns a summary for each Explainability export. You can filter the list using an array of Filter objects.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_explainability_exports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_explainability_exports/} for full documentation.
 }
 \keyword{internal}

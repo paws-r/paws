@@ -28,6 +28,6 @@ different account, the request fails with the HTTP status code
 \description{
 Sets a metrics configuration (specified by the metrics configuration ID) for the bucket. You can have up to 1,000 metrics configurations per bucket. If you're updating an existing metrics configuration, note that this is a full replacement of the existing metrics configuration. If you don't include the elements you want to keep, they are erased.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_metrics_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_metrics_configuration/} for full documentation.
 }
 \keyword{internal}

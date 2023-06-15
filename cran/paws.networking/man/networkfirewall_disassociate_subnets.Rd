@@ -44,6 +44,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Removes the specified subnet associations from the firewall. This removes the firewall endpoints from the subnets and removes any network filtering protections that the endpoints were providing.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/disassociate_subnets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_disassociate_subnets/} for full documentation.
 }
 \keyword{internal}

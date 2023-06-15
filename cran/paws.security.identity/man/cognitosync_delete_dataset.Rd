@@ -21,6 +21,6 @@ Cognito. GUID generation is unique within a region.}
 \description{
 Deletes the specific dataset. The dataset will be deleted permanently, and the action can't be undone. Datasets that this dataset was merged with will no longer report the merge. Any subsequent operation on this dataset will result in a ResourceNotFoundException.
 
-See \url{https://paws-r.github.io/docs/cognitosync/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_delete_dataset/} for full documentation.
 }
 \keyword{internal}

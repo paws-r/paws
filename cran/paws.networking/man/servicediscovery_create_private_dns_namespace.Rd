@@ -38,6 +38,6 @@ length, and tag values can be up to 256 characters in length.}
 \description{
 Creates a private namespace based on DNS, which is visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace \code{example.com} and name your service \code{backend}, the resulting DNS name for the service is \code{backend.example.com}. Service instances that are registered using a private DNS namespace can be discovered using either a \code{\link[=servicediscovery_discover_instances]{discover_instances}} request or using DNS. For the current quota on the number of namespaces that you can create using the same Amazon Web Services account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{Cloud Map quotas} in the \emph{Cloud Map Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/create_private_dns_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_create_private_dns_namespace/} for full documentation.
 }
 \keyword{internal}

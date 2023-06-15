@@ -35,6 +35,6 @@ layer.}
 \description{
 Uploads an image layer part to Amazon ECR.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/upload_layer_part.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_upload_layer_part/} for full documentation.
 }
 \keyword{internal}

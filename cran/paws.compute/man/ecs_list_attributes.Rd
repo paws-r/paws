@@ -50,6 +50,6 @@ returns up to 100 results and a \code{nextToken} value if applicable.}
 \description{
 Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, \code{\link[=ecs_list_attributes]{list_attributes}} returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value. You can do this, for example, to see which container instances in a cluster are running a Linux AMI (\code{ecs.os-type=linux}).
 
-See \url{https://paws-r.github.io/docs/ecs/list_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ pinpointsmsvoice_delete_configuration_set(ConfigurationSetName)
 \description{
 Deletes an existing configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoice_delete_configuration_set/} for full documentation.
 }
 \keyword{internal}

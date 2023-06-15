@@ -18,6 +18,6 @@ controller logs are forwarded.}
 \description{
 Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_log_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_log_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ networkmanager_delete_core_network(CoreNetworkId)
 \description{
 Deletes a core network along with all core network policies. This can only be done if there are no attachments on a core network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/delete_core_network.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_delete_core_network/} for full documentation.
 }
 \keyword{internal}

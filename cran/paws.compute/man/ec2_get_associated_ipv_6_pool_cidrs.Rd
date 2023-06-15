@@ -29,6 +29,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
 
-See \url{https://paws-r.github.io/docs/ec2/get_associated_ipv_6_pool_cidrs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_associated_ipv_6_pool_cidrs/} for full documentation.
 }
 \keyword{internal}

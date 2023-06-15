@@ -12,6 +12,6 @@ storagegateway_describe_upload_buffer(GatewayARN)
 \description{
 Returns information about the upload buffer of a gateway. This operation is supported for the stored volume, cached volume, and tape gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_upload_buffer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_upload_buffer/} for full documentation.
 }
 \keyword{internal}

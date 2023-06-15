@@ -18,6 +18,6 @@ source. For example, user IDs could be user emails.}
 \description{
 Removes the specific permissions of users or groups in your IAM Identity Center identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
 
-See \url{https://paws-r.github.io/docs/kendra/disassociate_personas_from_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_disassociate_personas_from_entities/} for full documentation.
 }
 \keyword{internal}

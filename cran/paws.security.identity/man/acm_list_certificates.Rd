@@ -38,6 +38,6 @@ must also specify \code{SortBy}.}
 \description{
 Retrieves a list of certificate ARNs and domain names. You can request that only certificates that match a specific status be listed. You can also filter by specific attributes of the certificate. Default filtering returns only \code{RSA_2048} certificates. For more information, see Filters.
 
-See \url{https://paws-r.github.io/docs/acm/list_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_list_certificates/} for full documentation.
 }
 \keyword{internal}

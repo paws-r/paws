@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Pushes an SSH public key to the specified EC2 instance for use by the specified user. The key remains for 60 seconds. For more information, see [Connect to your Linux instance using EC2 Instance Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html) in the *Amazon EC2 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ec2instanceconnect/send_ssh_public_key.html](https://paws-r.github.io/docs/ec2instanceconnect/send_ssh_public_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ec2instanceconnect_send_ssh_public_key/](https://www.paws-r-sdk.com/docs/ec2instanceconnect_send_ssh_public_key/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the EC2 instance.
 #' @param InstanceOSUser &#91;required&#93; The OS user on the EC2 instance for whom the key can be used to
@@ -43,7 +43,7 @@ ec2instanceconnect_send_ssh_public_key <- function(InstanceId, InstanceOSUser, S
 #' @description
 #' Pushes an SSH public key to the specified EC2 instance. The key remains for 60 seconds, which gives you 60 seconds to establish a serial console connection to the instance using SSH. For more information, see [EC2 Serial Console](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-serial-console.html) in the *Amazon EC2 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ec2instanceconnect/send_serial_console_ssh_public_key.html](https://paws-r.github.io/docs/ec2instanceconnect/send_serial_console_ssh_public_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ec2instanceconnect_send_serial_console_ssh_public_key/](https://www.paws-r-sdk.com/docs/ec2instanceconnect_send_serial_console_ssh_public_key/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the EC2 instance.
 #' @param SerialPort The serial port of the EC2 instance. Currently only port 0 is supported.

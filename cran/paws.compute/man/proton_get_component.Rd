@@ -12,6 +12,6 @@ proton_get_component(name)
 \description{
 Get detailed data for a component.
 
-See \url{https://paws-r.github.io/docs/proton/get_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_component/} for full documentation.
 }
 \keyword{internal}

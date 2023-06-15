@@ -27,6 +27,6 @@ different parameters, the retry fails with an
 \description{
 Deletes the specified resource share.
 
-See \url{https://paws-r.github.io/docs/ram/delete_resource_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_delete_resource_share/} for full documentation.
 }
 \keyword{internal}

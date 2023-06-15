@@ -12,6 +12,6 @@ lakeformation_describe_transaction(TransactionId)
 \description{
 Returns the details of a single transaction.
 
-See \url{https://paws-r.github.io/docs/lakeformation/describe_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_describe_transaction/} for full documentation.
 }
 \keyword{internal}

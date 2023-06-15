@@ -28,6 +28,6 @@ the first 100 health checks.}
 \description{
 Retrieve a list of the health checks that are associated with the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/list_health_checks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_health_checks/} for full documentation.
 }
 \keyword{internal}

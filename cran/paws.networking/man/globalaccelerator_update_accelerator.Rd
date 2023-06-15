@@ -30,6 +30,6 @@ to false, the accelerator can be deleted.}
 \description{
 Update an accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/update_accelerator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ emr_list_security_configurations(Marker = NULL)
 \description{
 Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
 
-See \url{https://paws-r.github.io/docs/emr/list_security_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_security_configurations/} for full documentation.
 }
 \keyword{internal}

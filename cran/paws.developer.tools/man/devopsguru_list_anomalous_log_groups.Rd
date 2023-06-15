@@ -23,6 +23,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns the list of log groups that contain log anomalies.
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_anomalous_log_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_anomalous_log_groups/} for full documentation.
 }
 \keyword{internal}

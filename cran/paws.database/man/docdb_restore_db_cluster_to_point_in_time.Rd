@@ -130,6 +130,6 @@ from being accidentally deleted.}
 \description{
 Restores a cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target cluster is created from the source cluster with the same configuration as the original cluster, except that the new cluster is created with the default security group.
 
-See \url{https://paws-r.github.io/docs/docdb/restore_db_cluster_to_point_in_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_restore_db_cluster_to_point_in_time/} for full documentation.
 }
 \keyword{internal}

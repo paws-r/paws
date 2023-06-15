@@ -35,6 +35,6 @@ returned for each repeated request.}
 \description{
 Creates a portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/create_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio/} for full documentation.
 }
 \keyword{internal}

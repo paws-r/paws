@@ -84,6 +84,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \description{
 The \code{\link[=dynamodb_batch_get_item]{batch_get_item}} operation returns the attributes of one or more items from one or more tables. You identify requested items by primary key.
 
-See \url{https://paws-r.github.io/docs/dynamodb/batch_get_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_batch_get_item/} for full documentation.
 }
 \keyword{internal}

@@ -18,13 +18,17 @@ personalize_update_campaign(
 \item{solutionVersionArn}{The ARN of a new solution version to deploy.}
 
 \item{minProvisionedTPS}{Specifies the requested minimum provisioned transactions
-(recommendations) per second that Amazon Personalize will support.}
+(recommendations) per second that Amazon Personalize will support. A
+high \code{minProvisionedTPS} will increase your bill. We recommend starting
+with 1 for \code{minProvisionedTPS} (the default). Track your usage using
+Amazon CloudWatch metrics, and increase the \code{minProvisionedTPS} as
+necessary.}
 
 \item{campaignConfig}{The configuration details of a campaign.}
 }
 \description{
 Updates a campaign by either deploying a new solution or changing the value of the campaign's \code{minProvisionedTPS} parameter.
 
-See \url{https://paws-r.github.io/docs/personalize/update_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_update_campaign/} for full documentation.
 }
 \keyword{internal}

@@ -51,6 +51,6 @@ schedule is 100 hours.}
 \description{
 Finds available schedules that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_scheduled_instance_availability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_scheduled_instance_availability/} for full documentation.
 }
 \keyword{internal}

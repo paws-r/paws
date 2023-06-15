@@ -22,6 +22,6 @@ single request.}
 \description{
 Modifies a cluster subnet group to include the specified list of VPC subnets. The operation replaces the existing list of subnets with the new list of subnets.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster_subnet_group/} for full documentation.
 }
 \keyword{internal}

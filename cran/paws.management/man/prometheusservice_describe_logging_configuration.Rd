@@ -12,6 +12,6 @@ prometheusservice_describe_logging_configuration(workspaceId)
 \description{
 Describes logging configuration.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/describe_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_logging_configuration/} for full documentation.
 }
 \keyword{internal}

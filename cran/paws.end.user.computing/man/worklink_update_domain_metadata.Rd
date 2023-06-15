@@ -16,6 +16,6 @@ worklink_update_domain_metadata(FleetArn, DomainName, DisplayName = NULL)
 \description{
 Updates domain metadata, such as DisplayName.
 
-See \url{https://paws-r.github.io/docs/worklink/update_domain_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_update_domain_metadata/} for full documentation.
 }
 \keyword{internal}

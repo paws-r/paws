@@ -24,6 +24,6 @@ parameter is optional.}
 \description{
 Upgrades a single directory in-place using the \code{PublishedSchemaArn} with schema updates found in \code{MinorVersion}. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/upgrade_applied_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_upgrade_applied_schema/} for full documentation.
 }
 \keyword{internal}

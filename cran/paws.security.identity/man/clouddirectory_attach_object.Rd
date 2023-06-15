@@ -24,6 +24,6 @@ both objects reside. For more information, see arns.}
 \description{
 Attaches an existing object to another object. An object can be accessed in two ways:
 
-See \url{https://paws-r.github.io/docs/clouddirectory/attach_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_attach_object/} for full documentation.
 }
 \keyword{internal}

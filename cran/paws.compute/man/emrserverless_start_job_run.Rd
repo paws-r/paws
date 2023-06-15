@@ -37,6 +37,6 @@ this duration, it will be automatically cancelled.}
 \description{
 Starts a job run.
 
-See \url{https://paws-r.github.io/docs/emrserverless/start_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_start_job_run/} for full documentation.
 }
 \keyword{internal}

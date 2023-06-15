@@ -73,6 +73,6 @@ value is plain text.}
 \description{
 Allows the creation of an asynchronous synthesis task, by starting a new \code{SpeechSynthesisTask}. This operation requires all the standard information needed for speech synthesis, plus the name of an Amazon S3 bucket for the service to store the output of the synthesis task and two optional parameters (\code{OutputS3KeyPrefix} and \code{SnsTopicArn}). Once the synthesis task is created, this operation will return a \code{SpeechSynthesisTask} object, which will include an identifier of this task as well as the current status. The \code{SpeechSynthesisTask} object is available for 72 hours after starting the asynchronous synthesis task.
 
-See \url{https://paws-r.github.io/docs/polly/start_speech_synthesis_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_start_speech_synthesis_task/} for full documentation.
 }
 \keyword{internal}

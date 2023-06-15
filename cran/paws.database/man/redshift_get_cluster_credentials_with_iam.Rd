@@ -27,6 +27,6 @@ Range: 900-3600. Default: 900.}
 \description{
 Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database. The database user is mapped 1:1 to the source Identity and Access Management (IAM) identity. For more information about IAM identities, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{IAM Identities (users, user groups, and roles)} in the Amazon Web Services Identity and Access Management User Guide.
 
-See \url{https://paws-r.github.io/docs/redshift/get_cluster_credentials_with_iam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials_with_iam/} for full documentation.
 }
 \keyword{internal}

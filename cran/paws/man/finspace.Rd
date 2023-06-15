@@ -59,13 +59,39 @@ environments.
 
 \tabular{ll}{
 \link[paws.management:finspace_create_environment]{create_environment} \tab Create a new FinSpace environment\cr
+\link[paws.management:finspace_create_kx_changeset]{create_kx_changeset} \tab Creates a changeset for a kdb database\cr
+\link[paws.management:finspace_create_kx_cluster]{create_kx_cluster} \tab Creates a new kdb cluster\cr
+\link[paws.management:finspace_create_kx_database]{create_kx_database} \tab Creates a new kdb database in the environment\cr
+\link[paws.management:finspace_create_kx_environment]{create_kx_environment} \tab Creates a managed kdb environment for the account\cr
+\link[paws.management:finspace_create_kx_user]{create_kx_user} \tab Creates a user in FinSpace kdb environment with an associated IAM role\cr
 \link[paws.management:finspace_delete_environment]{delete_environment} \tab Delete an FinSpace environment\cr
+\link[paws.management:finspace_delete_kx_cluster]{delete_kx_cluster} \tab Deletes a kdb cluster\cr
+\link[paws.management:finspace_delete_kx_database]{delete_kx_database} \tab Deletes the specified database and all of its associated data\cr
+\link[paws.management:finspace_delete_kx_environment]{delete_kx_environment} \tab Deletes the kdb environment\cr
+\link[paws.management:finspace_delete_kx_user]{delete_kx_user} \tab Deletes a user in the specified kdb environment\cr
 \link[paws.management:finspace_get_environment]{get_environment} \tab Returns the FinSpace environment object\cr
+\link[paws.management:finspace_get_kx_changeset]{get_kx_changeset} \tab Returns information about a kdb changeset\cr
+\link[paws.management:finspace_get_kx_cluster]{get_kx_cluster} \tab Retrieves information about a kdb cluster\cr
+\link[paws.management:finspace_get_kx_connection_string]{get_kx_connection_string} \tab Retrieves a connection string for a user to connect to a kdb cluster\cr
+\link[paws.management:finspace_get_kx_database]{get_kx_database} \tab Returns database information for the specified environment ID\cr
+\link[paws.management:finspace_get_kx_environment]{get_kx_environment} \tab Retrieves all the information for the specified kdb environment\cr
+\link[paws.management:finspace_get_kx_user]{get_kx_user} \tab Retrieves information about the specified kdb user\cr
 \link[paws.management:finspace_list_environments]{list_environments} \tab A list of all of your FinSpace environments\cr
+\link[paws.management:finspace_list_kx_changesets]{list_kx_changesets} \tab Returns a list of all the changesets for a database\cr
+\link[paws.management:finspace_list_kx_cluster_nodes]{list_kx_cluster_nodes} \tab Lists all the nodes in a kdb cluster\cr
+\link[paws.management:finspace_list_kx_clusters]{list_kx_clusters} \tab Returns a list of clusters\cr
+\link[paws.management:finspace_list_kx_databases]{list_kx_databases} \tab Returns a list of all the databases in the kdb environment\cr
+\link[paws.management:finspace_list_kx_environments]{list_kx_environments} \tab Returns a list of kdb environments created in an account\cr
+\link[paws.management:finspace_list_kx_users]{list_kx_users} \tab Lists all the users in a kdb environment\cr
 \link[paws.management:finspace_list_tags_for_resource]{list_tags_for_resource} \tab A list of all tags for a resource\cr
 \link[paws.management:finspace_tag_resource]{tag_resource} \tab Adds metadata tags to a FinSpace resource\cr
 \link[paws.management:finspace_untag_resource]{untag_resource} \tab Removes metadata tags from a FinSpace resource\cr
-\link[paws.management:finspace_update_environment]{update_environment} \tab Update your FinSpace environment
+\link[paws.management:finspace_update_environment]{update_environment} \tab Update your FinSpace environment\cr
+\link[paws.management:finspace_update_kx_cluster_databases]{update_kx_cluster_databases} \tab Updates the databases mounted on a kdb cluster, which includes the changesetId and all the dbPaths to be cached\cr
+\link[paws.management:finspace_update_kx_database]{update_kx_database} \tab Updates information for the given kdb database\cr
+\link[paws.management:finspace_update_kx_environment]{update_kx_environment} \tab Updates information for the given kdb environment\cr
+\link[paws.management:finspace_update_kx_environment_network]{update_kx_environment_network} \tab Updates environment network to connect to your internal network by using a transit gateway\cr
+\link[paws.management:finspace_update_kx_user]{update_kx_user} \tab Updates the user details
 }
 }
 

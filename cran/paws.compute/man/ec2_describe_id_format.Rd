@@ -23,6 +23,6 @@ ec2_describe_id_format(Resource = NULL)
 \description{
 Describes the ID format settings for your resources on a per-Region basis, for example, to view which resource types are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_id_format.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_id_format/} for full documentation.
 }
 \keyword{internal}

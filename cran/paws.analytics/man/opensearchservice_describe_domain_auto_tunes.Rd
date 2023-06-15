@@ -27,6 +27,6 @@ operations, which returns results in the next page.}
 \description{
 Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html}{Auto-Tune for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_auto_tunes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_auto_tunes/} for full documentation.
 }
 \keyword{internal}

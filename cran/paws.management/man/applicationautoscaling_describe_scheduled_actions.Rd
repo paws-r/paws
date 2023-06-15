@@ -142,6 +142,6 @@ parameter is not used, the operation returns up to 50 results and a
 \description{
 Describes the Application Auto Scaling scheduled actions for the specified service namespace.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/describe_scheduled_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scheduled_actions/} for full documentation.
 }
 \keyword{internal}

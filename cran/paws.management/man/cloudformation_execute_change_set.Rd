@@ -36,6 +36,6 @@ Default: \code{True}}
 \description{
 Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, CloudFormation starts updating the stack. Use the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action to view the status of the update.
 
-See \url{https://paws-r.github.io/docs/cloudformation/execute_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_execute_change_set/} for full documentation.
 }
 \keyword{internal}

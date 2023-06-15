@@ -6,15 +6,14 @@
 Data Store ID, Data Store ARN, Data Store name, Data Store status,
 created at, Data Store type version, and Data Store endpoint}
 \usage{
-healthlake_describe_fhir_datastore(DatastoreId = NULL)
+healthlake_describe_fhir_datastore(DatastoreId)
 }
 \arguments{
-\item{DatastoreId}{The AWS-generated Data Store id. This is part of the
-‘CreateFHIRDatastore’ output.}
+\item{DatastoreId}{[required] The AWS-generated Data Store ID.}
 }
 \description{
 Gets the properties associated with the FHIR Data Store, including the Data Store ID, Data Store ARN, Data Store name, Data Store status, created at, Data Store type version, and Data Store endpoint.
 
-See \url{https://paws-r.github.io/docs/healthlake/describe_fhir_datastore.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_datastore/} for full documentation.
 }
 \keyword{internal}

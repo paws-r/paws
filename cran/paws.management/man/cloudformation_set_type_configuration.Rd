@@ -3,7 +3,7 @@
 \name{cloudformation_set_type_configuration}
 \alias{cloudformation_set_type_configuration}
 \title{Specifies the configuration data for a registered CloudFormation
-extension, in the given account and region}
+extension, in the given account and Region}
 \usage{
 cloudformation_set_type_configuration(
   TypeArn = NULL,
@@ -15,23 +15,23 @@ cloudformation_set_type_configuration(
 }
 \arguments{
 \item{TypeArn}{The Amazon Resource Name (ARN) for the extension, in this account and
-region.
+Region.
 
 For public extensions, this will be the ARN assigned when you \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html}{activate the type}
-in this account and region. For private extensions, this will be the ARN
+in this account and Region. For private extensions, this will be the ARN
 assigned when you \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html}{register the type}
-in this account and region.
+in this account and Region.
 
 Do not include the extension versions suffix at the end of the ARN. You
 can set the configuration for an extension, but not for a specific
 extension version.}
 
-\item{Configuration}{[required] The configuration data for the extension, in this account and region.
+\item{Configuration}{[required] The configuration data for the extension, in this account and Region.
 
 The configuration data must be formatted as JSON, and validate against
 the schema returned in the \code{ConfigurationSchema} response element of
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html}{API_DescribeType}.
-For more information, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration}{Defining account-level configuration data for an extension}
+\code{\link[=cloudformation_describe_type]{describe_type}}. For more information,
+see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration}{Defining account-level configuration data for an extension}
 in the \emph{CloudFormation CLI User Guide}.}
 
 \item{ConfigurationAlias}{An alias by which to refer to this extension configuration data.
@@ -50,8 +50,8 @@ Conditional: You must specify \code{ConfigurationArn}, or \code{Type} and
 \code{TypeName}.}
 }
 \description{
-Specifies the configuration data for a registered CloudFormation extension, in the given account and region.
+Specifies the configuration data for a registered CloudFormation extension, in the given account and Region.
 
-See \url{https://paws-r.github.io/docs/cloudformation/set_type_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_set_type_configuration/} for full documentation.
 }
 \keyword{internal}

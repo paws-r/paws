@@ -13,6 +13,6 @@ proton_reject_environment_account_connection(id)
 \description{
 In a management account, reject an environment account connection from another environment account.
 
-See \url{https://paws-r.github.io/docs/proton/reject_environment_account_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_reject_environment_account_connection/} for full documentation.
 }
 \keyword{internal}

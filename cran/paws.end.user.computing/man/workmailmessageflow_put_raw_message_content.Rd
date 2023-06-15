@@ -14,6 +14,6 @@ workmailmessageflow_put_raw_message_content(messageId, content)
 \description{
 Updates the raw content of an in-transit email message, in MIME format.
 
-See \url{https://paws-r.github.io/docs/workmailmessageflow/put_raw_message_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmailmessageflow_put_raw_message_content/} for full documentation.
 }
 \keyword{internal}

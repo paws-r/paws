@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a local gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_local_gateway_route_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_local_gateway_route_table/} for full documentation.
 }
 \keyword{internal}

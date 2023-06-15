@@ -47,6 +47,6 @@ used when you specify repositories with \code{repositoryNames}.}
 \description{
 Describes image repositories in a registry.
 
-See \url{https://paws-r.github.io/docs/ecr/describe_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_describe_repositories/} for full documentation.
 }
 \keyword{internal}

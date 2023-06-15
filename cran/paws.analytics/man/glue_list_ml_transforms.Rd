@@ -29,6 +29,6 @@ transforms.}
 \description{
 Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag. This operation takes the optional \code{Tags} field, which you can use as a filter of the responses so that tagged resources can be retrieved as a group. If you choose to use tag filtering, only resources with the tags are retrieved.
 
-See \url{https://paws-r.github.io/docs/glue/list_ml_transforms.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_ml_transforms/} for full documentation.
 }
 \keyword{internal}

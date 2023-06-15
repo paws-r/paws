@@ -29,6 +29,6 @@ Amazon CloudWatch for this cluster.}
 \description{
 Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.
 
-See \url{https://paws-r.github.io/docs/kafka/update_monitoring.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_monitoring/} for full documentation.
 }
 \keyword{internal}

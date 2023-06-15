@@ -13,6 +13,6 @@ URLs cannot contain the ARN.}
 \description{
 Removes a URI template from a knowledge base.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/remove_knowledge_base_template_uri.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_remove_knowledge_base_template_uri/} for full documentation.
 }
 \keyword{internal}

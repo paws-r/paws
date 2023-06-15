@@ -58,6 +58,6 @@ to be used.}
 \description{
 Modifies the available capacity providers and the default capacity provider strategy for a cluster.
 
-See \url{https://paws-r.github.io/docs/ecs/put_cluster_capacity_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_put_cluster_capacity_providers/} for full documentation.
 }
 \keyword{internal}

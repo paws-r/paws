@@ -17,6 +17,6 @@ paginated response.}
 \description{
 Retrieves information about the delegated Amazon Macie administrator account for an organization in Organizations.
 
-See \url{https://paws-r.github.io/docs/macie2/list_organization_admin_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_organization_admin_accounts/} for full documentation.
 }
 \keyword{internal}

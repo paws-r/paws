@@ -28,6 +28,6 @@ parameter to get the next set of results.}
 \description{
 Describes events for a specified server. Results are ordered by time, with newest events first.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_describe_events/} for full documentation.
 }
 \keyword{internal}

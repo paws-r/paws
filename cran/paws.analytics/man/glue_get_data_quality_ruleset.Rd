@@ -12,6 +12,6 @@ glue_get_data_quality_ruleset(Name)
 \description{
 Returns an existing ruleset by identifier or name.
 
-See \url{https://paws-r.github.io/docs/glue/get_data_quality_ruleset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_data_quality_ruleset/} for full documentation.
 }
 \keyword{internal}

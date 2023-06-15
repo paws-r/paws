@@ -17,6 +17,6 @@ into which the schema is copied. For more information, see arns.}
 \description{
 Copies the input published schema, at the specified version, into the Directory with the same name and version as that of the published schema.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/apply_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_apply_schema/} for full documentation.
 }
 \keyword{internal}

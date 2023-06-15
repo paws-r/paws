@@ -22,6 +22,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Removes the specified user from the specified group.
 
-See \url{https://paws-r.github.io/docs/iam/remove_user_from_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_remove_user_from_group/} for full documentation.
 }
 \keyword{internal}

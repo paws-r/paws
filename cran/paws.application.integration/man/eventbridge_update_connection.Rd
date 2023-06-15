@@ -23,6 +23,6 @@ eventbridge_update_connection(
 \description{
 Updates settings for a connection.
 
-See \url{https://paws-r.github.io/docs/eventbridge/update_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_update_connection/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ The ARN format of a group is
 \description{
 Assigns one or more tags (key-value pairs) to the specified canary or group.
 
-See \url{https://paws-r.github.io/docs/synthetics/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ deployments. Otherwise, it returns a description of every deployment.}
 \description{
 Requests a description of a specified set of deployments.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_deployments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_deployments/} for full documentation.
 }
 \keyword{internal}

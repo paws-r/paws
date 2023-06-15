@@ -16,6 +16,6 @@ single type of event and has a maximum size of 10 events.}
 \description{
 Get the discovered schema that was generated based on sampled events.
 
-See \url{https://paws-r.github.io/docs/schemas/get_discovered_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_get_discovered_schema/} for full documentation.
 }
 \keyword{internal}

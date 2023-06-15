@@ -13,6 +13,6 @@ opensearchservice_list_domain_names(EngineType = NULL)
 \description{
 Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_domain_names.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_domain_names/} for full documentation.
 }
 \keyword{internal}

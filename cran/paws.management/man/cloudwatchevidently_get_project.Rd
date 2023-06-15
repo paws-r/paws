@@ -12,6 +12,6 @@ cloudwatchevidently_get_project(project)
 \description{
 Returns the details about one launch. You must already know the project name. To retrieve a list of projects in your account, use \code{\link[=cloudwatchevidently_list_projects]{list_projects}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/get_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_project/} for full documentation.
 }
 \keyword{internal}

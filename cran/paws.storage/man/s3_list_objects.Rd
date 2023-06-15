@@ -60,6 +60,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain valid or invalid XML. Be sure to design your application to parse the contents of the response and handle it appropriately.
 
-See \url{https://paws-r.github.io/docs/s3/list_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_objects/} for full documentation.
 }
 \keyword{internal}

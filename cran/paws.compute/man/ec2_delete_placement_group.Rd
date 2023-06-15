@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified placement group. You must terminate all instances in the placement group before you can delete the placement group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_placement_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_placement_group/} for full documentation.
 }
 \keyword{internal}

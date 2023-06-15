@@ -39,6 +39,6 @@ to 100 results and a \code{nextToken} value if applicable.}
 \description{
 Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region.
 
-See \url{https://paws-r.github.io/docs/eks/list_updates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_list_updates/} for full documentation.
 }
 \keyword{internal}

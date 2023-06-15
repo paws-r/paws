@@ -221,6 +221,6 @@ Value:
 \description{
 Adds or updates the app template for an Resilience Hub application draft version.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/put_draft_app_version_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_put_draft_app_version_template/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ clouddirectory_list_development_schema_arns(
 \description{
 Retrieves each Amazon Resource Name (ARN) of schemas in the development state.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_development_schema_arns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_development_schema_arns/} for full documentation.
 }
 \keyword{internal}

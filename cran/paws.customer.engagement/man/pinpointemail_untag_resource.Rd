@@ -22,6 +22,6 @@ an ampersand. For example:
 \description{
 Remove one or more tags (keys and values) from a specified resource.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_untag_resource/} for full documentation.
 }
 \keyword{internal}

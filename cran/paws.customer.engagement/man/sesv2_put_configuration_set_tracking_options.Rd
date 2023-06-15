@@ -18,6 +18,6 @@ sesv2_put_configuration_set_tracking_options(
 \description{
 Specify a custom domain to use for open and click tracking elements in email that you send.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_configuration_set_tracking_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_tracking_options/} for full documentation.
 }
 \keyword{internal}

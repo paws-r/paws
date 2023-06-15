@@ -16,6 +16,6 @@ quicksight_update_refresh_schedule(DataSetId, AwsAccountId, Schedule)
 \description{
 Updates a refresh schedule for a dataset.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_refresh_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_refresh_schedule/} for full documentation.
 }
 \keyword{internal}

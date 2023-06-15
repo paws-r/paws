@@ -32,6 +32,6 @@ example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 \description{
 Purchases a Reserved Instance for use with your account. With Reserved Instances, you pay a lower hourly rate compared to On-Demand instance pricing.
 
-See \url{https://paws-r.github.io/docs/ec2/purchase_reserved_instances_offering.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_purchase_reserved_instances_offering/} for full documentation.
 }
 \keyword{internal}

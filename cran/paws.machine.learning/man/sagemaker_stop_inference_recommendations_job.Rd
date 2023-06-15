@@ -12,6 +12,6 @@ sagemaker_stop_inference_recommendations_job(JobName)
 \description{
 Stops an Inference Recommender job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_inference_recommendations_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_inference_recommendations_job/} for full documentation.
 }
 \keyword{internal}

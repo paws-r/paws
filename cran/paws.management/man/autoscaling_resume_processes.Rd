@@ -28,6 +28,6 @@ If you omit this property, all processes are specified.}
 \description{
 Resumes the specified suspended auto scaling processes, or all suspended process, for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/resume_processes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_resume_processes/} for full documentation.
 }
 \keyword{internal}

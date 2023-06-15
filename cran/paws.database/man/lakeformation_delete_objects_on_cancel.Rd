@@ -30,6 +30,6 @@ objects to be deleted if the transaction cancels.}
 \description{
 For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled. Without this call, no Amazon S3 objects are automatically deleted when a transaction cancels.
 
-See \url{https://paws-r.github.io/docs/lakeformation/delete_objects_on_cancel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_delete_objects_on_cancel/} for full documentation.
 }
 \keyword{internal}

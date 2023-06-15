@@ -291,6 +291,6 @@ enabled. By default, deletion protection is disabled. See \href{https://docs.aws
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=neptune_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=neptune_modify_db_instance]{modify_db_instance}}.
 
-See \url{https://paws-r.github.io/docs/neptune/modify_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_modify_db_instance/} for full documentation.
 }
 \keyword{internal}

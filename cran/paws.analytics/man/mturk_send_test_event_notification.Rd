@@ -21,6 +21,6 @@ filter out the test event.}
 \description{
 The \code{\link[=mturk_send_test_event_notification]{send_test_event_notification}} operation causes Amazon Mechanical Turk to send a notification message as if a HIT event occurred, according to the provided notification specification. This allows you to test notifications without setting up notifications for a real HIT type and trying to trigger them using the website. When you call this operation, the service attempts to send the test notification immediately.
 
-See \url{https://paws-r.github.io/docs/mturk/send_test_event_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_send_test_event_notification/} for full documentation.
 }
 \keyword{internal}

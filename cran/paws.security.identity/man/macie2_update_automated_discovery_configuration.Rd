@@ -23,6 +23,6 @@ Macie retains your changes.}
 \description{
 Enables or disables automated sensitive data discovery for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/update_automated_discovery_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_automated_discovery_configuration/} for full documentation.
 }
 \keyword{internal}

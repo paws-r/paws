@@ -14,6 +14,6 @@ appstream_delete_entitlement(Name, StackName)
 \description{
 Deletes the specified entitlement.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_entitlement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_entitlement/} for full documentation.
 }
 \keyword{internal}

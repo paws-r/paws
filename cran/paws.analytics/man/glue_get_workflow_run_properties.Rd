@@ -14,6 +14,6 @@ glue_get_workflow_run_properties(Name, RunId)
 \description{
 Retrieves the workflow run properties which were set during the run.
 
-See \url{https://paws-r.github.io/docs/glue/get_workflow_run_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_workflow_run_properties/} for full documentation.
 }
 \keyword{internal}

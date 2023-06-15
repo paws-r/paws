@@ -12,6 +12,6 @@ drs_retry_data_replication(sourceServerID)
 \description{
 WARNING: RetryDataReplication is deprecated. Causes the data replication initiation sequence to begin immediately upon next Handshake for the specified Source Server ID, regardless of when the previous initiation started. This command will work only if the Source Server is stalled or is in a DISCONNECTED or STOPPED state.
 
-See \url{https://paws-r.github.io/docs/drs/retry_data_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_retry_data_replication/} for full documentation.
 }
 \keyword{internal}

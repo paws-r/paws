@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates a policy to manage the lifecycle of the specified Amazon Web Services resources. You can create up to 100 lifecycle policies.
 #'
-#' See [https://paws-r.github.io/docs/dlm/create_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/create_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_create_lifecycle_policy/](https://www.paws-r-sdk.com/docs/dlm_create_lifecycle_policy/) for full documentation.
 #'
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role used to run the
 #' operations specified by the lifecycle policy.
@@ -45,7 +45,7 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' @description
 #' Deletes the specified lifecycle policy and halts the automated operations that the policy specified.
 #'
-#' See [https://paws-r.github.io/docs/dlm/delete_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/delete_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_delete_lifecycle_policy/](https://www.paws-r-sdk.com/docs/dlm_delete_lifecycle_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The identifier of the lifecycle policy.
 #'
@@ -75,7 +75,7 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' @description
 #' Gets summary information about all or the specified data lifecycle policies.
 #'
-#' See [https://paws-r.github.io/docs/dlm/get_lifecycle_policies.html](https://paws-r.github.io/docs/dlm/get_lifecycle_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_get_lifecycle_policies/](https://www.paws-r-sdk.com/docs/dlm_get_lifecycle_policies/) for full documentation.
 #'
 #' @param PolicyIds The identifiers of the data lifecycle policies.
 #' @param State The activation state.
@@ -115,7 +115,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #' @description
 #' Gets detailed information about the specified lifecycle policy.
 #'
-#' See [https://paws-r.github.io/docs/dlm/get_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/get_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_get_lifecycle_policy/](https://www.paws-r-sdk.com/docs/dlm_get_lifecycle_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The identifier of the lifecycle policy.
 #'
@@ -144,7 +144,7 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #' @description
 #' Lists the tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/dlm/list_tags_for_resource.html](https://paws-r.github.io/docs/dlm/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/dlm_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -173,7 +173,7 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Adds the specified tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/dlm/tag_resource.html](https://paws-r.github.io/docs/dlm/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_tag_resource/](https://www.paws-r-sdk.com/docs/dlm_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; One or more tags.
@@ -203,7 +203,7 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the specified tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/dlm/untag_resource.html](https://paws-r.github.io/docs/dlm/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_untag_resource/](https://www.paws-r-sdk.com/docs/dlm_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys.
@@ -233,7 +233,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the specified lifecycle policy.
 #'
-#' See [https://paws-r.github.io/docs/dlm/update_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/update_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/dlm_update_lifecycle_policy/](https://www.paws-r-sdk.com/docs/dlm_update_lifecycle_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The identifier of the lifecycle policy.
 #' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM role used to run the

@@ -14,6 +14,6 @@ auditmanager_get_assessment_report_url(assessmentReportId, assessmentId)
 \description{
 Returns the URL of an assessment report in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_assessment_report_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_report_url/} for full documentation.
 }
 \keyword{internal}

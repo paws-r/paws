@@ -23,6 +23,6 @@ domain.}
 \description{
 Describes the progress of a pre-update dry run analysis on an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#dryrun}{Determining whether a change will cause a blue/green deployment}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_dry_run_progress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_dry_run_progress/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ configuration of the parent pipeline.}
 \description{
 Retry the execution of the pipeline.
 
-See \url{https://paws-r.github.io/docs/sagemaker/retry_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_retry_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

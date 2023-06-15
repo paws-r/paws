@@ -17,6 +17,6 @@ you can specify as the page token in a subsequent request.}
 \description{
 Returns the names of all active (not deleted) resources.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_active_names.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_active_names/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ has to be unshared.}
 \description{
 Stops the directory sharing between the directory owner and consumer accounts.
 
-See \url{https://paws-r.github.io/docs/directoryservice/unshare_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_unshare_directory/} for full documentation.
 }
 \keyword{internal}

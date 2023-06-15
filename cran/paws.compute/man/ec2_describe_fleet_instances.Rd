@@ -36,6 +36,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the running instances for the specified EC2 Fleet.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_fleet_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fleet_instances/} for full documentation.
 }
 \keyword{internal}

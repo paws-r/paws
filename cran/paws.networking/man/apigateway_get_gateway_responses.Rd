@@ -20,6 +20,6 @@ support pagination and the limit does not apply here.}
 \description{
 Gets the GatewayResponses collection on the given RestApi. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default GatewayResponses collection for the supported response types.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_gateway_responses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_gateway_responses/} for full documentation.
 }
 \keyword{internal}

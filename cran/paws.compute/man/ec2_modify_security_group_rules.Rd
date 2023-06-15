@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the rules of a security group.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_security_group_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_security_group_rules/} for full documentation.
 }
 \keyword{internal}

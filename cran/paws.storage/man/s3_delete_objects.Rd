@@ -70,6 +70,6 @@ checksum value supplied in the
 \description{
 This action enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this action provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
 
-See \url{https://paws-r.github.io/docs/s3/delete_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_objects/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ runtime details.}
 \description{
 Get the runtime information that was logged for a specific runtime instance of the workflow.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/get_workflow_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_workflow_execution/} for full documentation.
 }
 \keyword{internal}

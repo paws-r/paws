@@ -15,6 +15,6 @@ resource ARN:
 \description{
 Deletes the resource-based policy attached to the CloudTrail channel.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

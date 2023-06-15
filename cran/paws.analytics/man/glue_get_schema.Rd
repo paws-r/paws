@@ -20,6 +20,6 @@ provided.
 \description{
 Describes the specified schema in detail.
 
-See \url{https://paws-r.github.io/docs/glue/get_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_schema/} for full documentation.
 }
 \keyword{internal}

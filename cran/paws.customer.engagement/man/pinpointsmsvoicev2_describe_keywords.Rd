@@ -33,6 +33,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes the specified keywords or all keywords on your origination phone number or pool.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_keywords.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_keywords/} for full documentation.
 }
 \keyword{internal}

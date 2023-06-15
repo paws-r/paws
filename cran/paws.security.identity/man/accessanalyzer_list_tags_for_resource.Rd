@@ -12,6 +12,6 @@ accessanalyzer_list_tags_for_resource(resourceArn)
 \description{
 Retrieves a list of tags applied to the specified resource.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

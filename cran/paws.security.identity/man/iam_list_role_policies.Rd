@@ -32,6 +32,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the names of the inline policies that are embedded in the specified IAM role.
 
-See \url{https://paws-r.github.io/docs/iam/list_role_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_role_policies/} for full documentation.
 }
 \keyword{internal}

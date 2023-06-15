@@ -14,6 +14,6 @@ emr_add_instance_groups(InstanceGroups, JobFlowId)
 \description{
 Adds one or more instance groups to a running cluster.
 
-See \url{https://paws-r.github.io/docs/emr/add_instance_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_add_instance_groups/} for full documentation.
 }
 \keyword{internal}

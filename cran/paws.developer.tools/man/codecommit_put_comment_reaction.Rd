@@ -18,6 +18,6 @@ CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguid
 \description{
 Adds or updates a reaction to a specified comment for the user whose identity is used to make the request. You can only add or update a reaction for yourself. You cannot add, modify, or delete a reaction for another user.
 
-See \url{https://paws-r.github.io/docs/codecommit/put_comment_reaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_put_comment_reaction/} for full documentation.
 }
 \keyword{internal}

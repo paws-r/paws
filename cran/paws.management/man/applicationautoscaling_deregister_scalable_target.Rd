@@ -125,6 +125,6 @@ concurrency for a SageMaker Serverless endpoint.
 \description{
 Deregisters an Application Auto Scaling scalable target when you have finished using it. To see which resources have been registered, use \code{\link[=applicationautoscaling_describe_scalable_targets]{describe_scalable_targets}}.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/deregister_scalable_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_deregister_scalable_target/} for full documentation.
 }
 \keyword{internal}

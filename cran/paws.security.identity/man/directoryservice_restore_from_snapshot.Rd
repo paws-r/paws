@@ -12,6 +12,6 @@ directoryservice_restore_from_snapshot(SnapshotId)
 \description{
 Restores a directory using an existing directory snapshot.
 
-See \url{https://paws-r.github.io/docs/directoryservice/restore_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_restore_from_snapshot/} for full documentation.
 }
 \keyword{internal}

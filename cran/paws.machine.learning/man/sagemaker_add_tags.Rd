@@ -16,6 +16,6 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 \description{
 Adds or overwrites one or more tags for the specified SageMaker resource. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints.
 
-See \url{https://paws-r.github.io/docs/sagemaker/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_add_tags/} for full documentation.
 }
 \keyword{internal}

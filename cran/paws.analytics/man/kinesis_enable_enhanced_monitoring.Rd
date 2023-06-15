@@ -36,6 +36,6 @@ in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 \description{
 Enables enhanced Kinesis data stream monitoring for shard-level metrics.
 
-See \url{https://paws-r.github.io/docs/kinesis/enable_enhanced_monitoring.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_enable_enhanced_monitoring/} for full documentation.
 }
 \keyword{internal}

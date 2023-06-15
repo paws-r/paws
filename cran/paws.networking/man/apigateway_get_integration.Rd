@@ -16,6 +16,6 @@ apigateway_get_integration(restApiId, resourceId, httpMethod)
 \description{
 Get the integration settings.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_integration/} for full documentation.
 }
 \keyword{internal}

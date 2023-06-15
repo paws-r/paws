@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Deletes one or more builds.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/batch_delete_builds.html](https://paws-r.github.io/docs/codebuild/batch_delete_builds.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_delete_builds/](https://www.paws-r-sdk.com/docs/codebuild_batch_delete_builds/) for full documentation.
 #'
 #' @param ids &#91;required&#93; The IDs of the builds to delete.
 #'
@@ -37,7 +37,7 @@ codebuild_batch_delete_builds <- function(ids) {
 #' @description
 #' Retrieves information about one or more batch builds.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/batch_get_build_batches.html](https://paws-r.github.io/docs/codebuild/batch_get_build_batches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_build_batches/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_build_batches/) for full documentation.
 #'
 #' @param ids &#91;required&#93; An array that contains the batch build identifiers to retrieve.
 #'
@@ -66,7 +66,7 @@ codebuild_batch_get_build_batches <- function(ids) {
 #' @description
 #' Gets information about one or more builds.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/batch_get_builds.html](https://paws-r.github.io/docs/codebuild/batch_get_builds.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_builds/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_builds/) for full documentation.
 #'
 #' @param ids &#91;required&#93; The IDs of the builds.
 #'
@@ -95,7 +95,7 @@ codebuild_batch_get_builds <- function(ids) {
 #' @description
 #' Gets information about one or more build projects.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/batch_get_projects.html](https://paws-r.github.io/docs/codebuild/batch_get_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_projects/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_projects/) for full documentation.
 #'
 #' @param names &#91;required&#93; The names or ARNs of the build projects. To get information about a
 #' project shared with your Amazon Web Services account, its ARN must be
@@ -126,7 +126,7 @@ codebuild_batch_get_projects <- function(names) {
 #' @description
 #' Returns an array of report groups.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/batch_get_report_groups.html](https://paws-r.github.io/docs/codebuild/batch_get_report_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_report_groups/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_report_groups/) for full documentation.
 #'
 #' @param reportGroupArns &#91;required&#93; An array of report group ARNs that identify the report groups to return.
 #'
@@ -155,7 +155,7 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 #' @description
 #' Returns an array of reports.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/batch_get_reports.html](https://paws-r.github.io/docs/codebuild/batch_get_reports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_batch_get_reports/](https://www.paws-r-sdk.com/docs/codebuild_batch_get_reports/) for full documentation.
 #'
 #' @param reportArns &#91;required&#93; An array of ARNs that identify the `Report` objects to return.
 #'
@@ -184,7 +184,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @description
 #' Creates a build project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/create_project.html](https://paws-r.github.io/docs/codebuild/create_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_create_project/](https://www.paws-r-sdk.com/docs/codebuild_create_project/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
@@ -287,7 +287,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' @description
 #' Creates a report group. A report group contains a collection of reports.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/create_report_group.html](https://paws-r.github.io/docs/codebuild/create_report_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_create_report_group/](https://www.paws-r-sdk.com/docs/codebuild_create_report_group/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the report group.
 #' @param type &#91;required&#93; The type of report group.
@@ -326,7 +326,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' @description
 #' For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/create_webhook.html](https://paws-r.github.io/docs/codebuild/create_webhook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_create_webhook/](https://www.paws-r-sdk.com/docs/codebuild_create_webhook/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are
@@ -369,7 +369,7 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
 #' @description
 #' Deletes a batch build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_build_batch.html](https://paws-r.github.io/docs/codebuild/delete_build_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_build_batch/](https://www.paws-r-sdk.com/docs/codebuild_delete_build_batch/) for full documentation.
 #'
 #' @param id &#91;required&#93; The identifier of the batch build to delete.
 #'
@@ -398,7 +398,7 @@ codebuild_delete_build_batch <- function(id) {
 #' @description
 #' Deletes a build project. When you delete a project, its builds are not deleted.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_project.html](https://paws-r.github.io/docs/codebuild/delete_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_project/](https://www.paws-r-sdk.com/docs/codebuild_delete_project/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #'
@@ -427,7 +427,7 @@ codebuild_delete_project <- function(name) {
 #' @description
 #' Deletes a report.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_report.html](https://paws-r.github.io/docs/codebuild/delete_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_report/](https://www.paws-r-sdk.com/docs/codebuild_delete_report/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The ARN of the report to delete.
 #'
@@ -456,7 +456,7 @@ codebuild_delete_report <- function(arn) {
 #' @description
 #' Deletes a report group. Before you delete a report group, you must delete its reports.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_report_group.html](https://paws-r.github.io/docs/codebuild/delete_report_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_report_group/](https://www.paws-r-sdk.com/docs/codebuild_delete_report_group/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The ARN of the report group to delete.
 #' @param deleteReports If `true`, deletes any reports that belong to a report group before
@@ -494,7 +494,7 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
 #' @description
 #' Deletes a resource policy that is identified by its resource ARN.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_resource_policy.html](https://paws-r.github.io/docs/codebuild/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_resource_policy/](https://www.paws-r-sdk.com/docs/codebuild_delete_resource_policy/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that is associated with the resource policy.
 #'
@@ -524,7 +524,7 @@ codebuild_delete_resource_policy <- function(resourceArn) {
 #' @description
 #' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_source_credentials.html](https://paws-r.github.io/docs/codebuild/delete_source_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_source_credentials/](https://www.paws-r-sdk.com/docs/codebuild_delete_source_credentials/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the token.
 #'
@@ -555,7 +555,7 @@ codebuild_delete_source_credentials <- function(arn) {
 #' @description
 #' For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/delete_webhook.html](https://paws-r.github.io/docs/codebuild/delete_webhook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_delete_webhook/](https://www.paws-r-sdk.com/docs/codebuild_delete_webhook/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #'
@@ -584,7 +584,7 @@ codebuild_delete_webhook <- function(projectName) {
 #' @description
 #' Retrieves one or more code coverage reports.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/describe_code_coverages.html](https://paws-r.github.io/docs/codebuild/describe_code_coverages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_describe_code_coverages/](https://www.paws-r-sdk.com/docs/codebuild_describe_code_coverages/) for full documentation.
 #'
 #' @param reportArn &#91;required&#93; The ARN of the report for which test cases are returned.
 #' @param nextToken The `nextToken` value returned from a previous call to
@@ -630,7 +630,7 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 #' @description
 #' Returns a list of details about test cases for a report.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/describe_test_cases.html](https://paws-r.github.io/docs/codebuild/describe_test_cases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_describe_test_cases/](https://www.paws-r-sdk.com/docs/codebuild_describe_test_cases/) for full documentation.
 #'
 #' @param reportArn &#91;required&#93; The ARN of the report for which test cases are returned.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
@@ -671,7 +671,7 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 #' @description
 #' Analyzes and accumulates test report values for the specified test reports.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/get_report_group_trend.html](https://paws-r.github.io/docs/codebuild/get_report_group_trend.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_get_report_group_trend/](https://www.paws-r-sdk.com/docs/codebuild_get_report_group_trend/) for full documentation.
 #'
 #' @param reportGroupArn &#91;required&#93; The ARN of the report group that contains the reports to analyze.
 #' @param numOfReports The number of reports to analyze. This operation always retrieves the
@@ -748,7 +748,7 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
 #' @description
 #' Gets a resource policy that is identified by its resource ARN.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/get_resource_policy.html](https://paws-r.github.io/docs/codebuild/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_get_resource_policy/](https://www.paws-r-sdk.com/docs/codebuild_get_resource_policy/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that is associated with the resource policy.
 #'
@@ -779,7 +779,7 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' @description
 #' Imports the source repository credentials for an CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/import_source_credentials.html](https://paws-r.github.io/docs/codebuild/import_source_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_import_source_credentials/](https://www.paws-r-sdk.com/docs/codebuild_import_source_credentials/) for full documentation.
 #'
 #' @param username The Bitbucket username when the `authType` is BASIC_AUTH. This parameter
 #' is not valid for other types of source providers or connections.
@@ -818,7 +818,7 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 #' @description
 #' Resets the cache for a project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/invalidate_project_cache.html](https://paws-r.github.io/docs/codebuild/invalidate_project_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_invalidate_project_cache/](https://www.paws-r-sdk.com/docs/codebuild_invalidate_project_cache/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild build project that the cache is reset for.
 #'
@@ -847,7 +847,7 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' @description
 #' Retrieves the identifiers of your build batches in the current region.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_build_batches.html](https://paws-r.github.io/docs/codebuild/list_build_batches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_build_batches/](https://www.paws-r-sdk.com/docs/codebuild_list_build_batches/) for full documentation.
 #'
 #' @param filter A `BuildBatchFilter` object that specifies the filters for the search.
 #' @param maxResults The maximum number of results to return.
@@ -888,7 +888,7 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' @description
 #' Retrieves the identifiers of the build batches for a specific project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_build_batches_for_project.html](https://paws-r.github.io/docs/codebuild/list_build_batches_for_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_build_batches_for_project/](https://www.paws-r-sdk.com/docs/codebuild_list_build_batches_for_project/) for full documentation.
 #'
 #' @param projectName The name of the project.
 #' @param filter A `BuildBatchFilter` object that specifies the filters for the search.
@@ -930,7 +930,7 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 #' @description
 #' Gets a list of build IDs, with each build ID representing a single build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_builds.html](https://paws-r.github.io/docs/codebuild/list_builds.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_builds/](https://www.paws-r-sdk.com/docs/codebuild_list_builds/) for full documentation.
 #'
 #' @param sortOrder The order to list build IDs. Valid values include:
 #' 
@@ -970,7 +970,7 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 #' @description
 #' Gets a list of build identifiers for the specified build project, with each build identifier representing a single build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_builds_for_project.html](https://paws-r.github.io/docs/codebuild/list_builds_for_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_builds_for_project/](https://www.paws-r-sdk.com/docs/codebuild_list_builds_for_project/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param sortOrder The order to sort the results in. The results are sorted by build
@@ -1019,7 +1019,7 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 #' @description
 #' Gets information about Docker images that are managed by CodeBuild.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_curated_environment_images.html](https://paws-r.github.io/docs/codebuild/list_curated_environment_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_curated_environment_images/](https://www.paws-r-sdk.com/docs/codebuild_list_curated_environment_images/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1047,7 +1047,7 @@ codebuild_list_curated_environment_images <- function() {
 #' @description
 #' Gets a list of build project names, with each build project name representing a single build project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_projects.html](https://paws-r.github.io/docs/codebuild/list_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_projects/](https://www.paws-r-sdk.com/docs/codebuild_list_projects/) for full documentation.
 #'
 #' @param sortBy The criterion to be used to list build project names. Valid values
 #' include:
@@ -1102,7 +1102,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #' @description
 #' Gets a list ARNs for the report groups in the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_report_groups.html](https://paws-r.github.io/docs/codebuild/list_report_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_report_groups/](https://www.paws-r-sdk.com/docs/codebuild_list_report_groups/) for full documentation.
 #'
 #' @param sortOrder Used to specify the order to sort the list of returned report groups.
 #' Valid values are `ASCENDING` and `DESCENDING`.
@@ -1152,7 +1152,7 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 #' @description
 #' Returns a list of ARNs for the reports in the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_reports.html](https://paws-r.github.io/docs/codebuild/list_reports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_reports/](https://www.paws-r-sdk.com/docs/codebuild_list_reports/) for full documentation.
 #'
 #' @param sortOrder Specifies the sort order for the list of returned reports. Valid values
 #' are:
@@ -1199,7 +1199,7 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
 #' @description
 #' Returns a list of ARNs for the reports that belong to a `ReportGroup`.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_reports_for_report_group.html](https://paws-r.github.io/docs/codebuild/list_reports_for_report_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_reports_for_report_group/](https://www.paws-r-sdk.com/docs/codebuild_list_reports_for_report_group/) for full documentation.
 #'
 #' @param reportGroupArn &#91;required&#93; The ARN of the report group for which you want to return report ARNs.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
@@ -1242,7 +1242,7 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 #' @description
 #' Gets a list of projects that are shared with other Amazon Web Services accounts or users.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_shared_projects.html](https://paws-r.github.io/docs/codebuild/list_shared_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_shared_projects/](https://www.paws-r-sdk.com/docs/codebuild_list_shared_projects/) for full documentation.
 #'
 #' @param sortBy The criterion to be used to list build projects shared with the current
 #' Amazon Web Services account or user. Valid values include:
@@ -1293,7 +1293,7 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' @description
 #' Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_shared_report_groups.html](https://paws-r.github.io/docs/codebuild/list_shared_report_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_shared_report_groups/](https://www.paws-r-sdk.com/docs/codebuild_list_shared_report_groups/) for full documentation.
 #'
 #' @param sortOrder The order in which to list shared report groups. Valid values include:
 #' 
@@ -1343,7 +1343,7 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 #' @description
 #' Returns a list of `SourceCredentialsInfo` objects.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/list_source_credentials.html](https://paws-r.github.io/docs/codebuild/list_source_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_list_source_credentials/](https://www.paws-r-sdk.com/docs/codebuild_list_source_credentials/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1370,7 +1370,7 @@ codebuild_list_source_credentials <- function() {
 #' @description
 #' Stores a resource policy for the ARN of a `Project` or `ReportGroup` object.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/put_resource_policy.html](https://paws-r.github.io/docs/codebuild/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_put_resource_policy/](https://www.paws-r-sdk.com/docs/codebuild_put_resource_policy/) for full documentation.
 #'
 #' @param policy &#91;required&#93; A JSON-formatted resource policy. For more information, see [Sharing a
 #' Project](https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share)
@@ -1405,7 +1405,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @description
 #' Restarts a build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/retry_build.html](https://paws-r.github.io/docs/codebuild/retry_build.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_retry_build/](https://www.paws-r-sdk.com/docs/codebuild_retry_build/) for full documentation.
 #'
 #' @param id Specifies the identifier of the build to restart.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
@@ -1440,7 +1440,7 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #' @description
 #' Restarts a failed batch build. Only batch builds that have failed can be retried.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/retry_build_batch.html](https://paws-r.github.io/docs/codebuild/retry_build_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_retry_build_batch/](https://www.paws-r-sdk.com/docs/codebuild_retry_build_batch/) for full documentation.
 #'
 #' @param id Specifies the identifier of the batch build to restart.
 #' @param idempotencyToken A unique, case sensitive identifier you provide to ensure the
@@ -1478,7 +1478,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @description
 #' Starts running a build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/start_build.html](https://paws-r.github.io/docs/codebuild/start_build.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_start_build/](https://www.paws-r-sdk.com/docs/codebuild_start_build/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
@@ -1651,7 +1651,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' @description
 #' Starts a batch build for a project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/start_build_batch.html](https://paws-r.github.io/docs/codebuild/start_build_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_start_build_batch/](https://www.paws-r-sdk.com/docs/codebuild_start_build_batch/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the project.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects that override the secondary sources
@@ -1819,7 +1819,7 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #' @description
 #' Attempts to stop running a build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/stop_build.html](https://paws-r.github.io/docs/codebuild/stop_build.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_stop_build/](https://www.paws-r-sdk.com/docs/codebuild_stop_build/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the build.
 #'
@@ -1848,7 +1848,7 @@ codebuild_stop_build <- function(id) {
 #' @description
 #' Stops a running batch build.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/stop_build_batch.html](https://paws-r.github.io/docs/codebuild/stop_build_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_stop_build_batch/](https://www.paws-r-sdk.com/docs/codebuild_stop_build_batch/) for full documentation.
 #'
 #' @param id &#91;required&#93; The identifier of the batch build to stop.
 #'
@@ -1877,7 +1877,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @description
 #' Changes the settings of a build project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/update_project.html](https://paws-r.github.io/docs/codebuild/update_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_update_project/](https://www.paws-r-sdk.com/docs/codebuild_update_project/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -1987,7 +1987,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' @description
 #' Changes the public visibility for a project. The project's build results, logs, and artifacts are available to the general public. For more information, see [Public build projects](https://docs.aws.amazon.com/codebuild/latest/userguide/public-builds.html) in the *CodeBuild User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/update_project_visibility.html](https://paws-r.github.io/docs/codebuild/update_project_visibility.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_update_project_visibility/](https://www.paws-r-sdk.com/docs/codebuild_update_project_visibility/) for full documentation.
 #'
 #' @param projectArn &#91;required&#93; The Amazon Resource Name (ARN) of the build project.
 #' @param projectVisibility &#91;required&#93; 
@@ -2019,7 +2019,7 @@ codebuild_update_project_visibility <- function(projectArn, projectVisibility, r
 #' @description
 #' Updates a report group.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/update_report_group.html](https://paws-r.github.io/docs/codebuild/update_report_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_update_report_group/](https://www.paws-r-sdk.com/docs/codebuild_update_report_group/) for full documentation.
 #'
 #' @param arn &#91;required&#93; The ARN of the report group to update.
 #' @param exportConfig Used to specify an updated export type. Valid values are:
@@ -2058,7 +2058,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' @description
 #' Updates the webhook associated with an CodeBuild build project.
 #'
-#' See [https://paws-r.github.io/docs/codebuild/update_webhook.html](https://paws-r.github.io/docs/codebuild/update_webhook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codebuild_update_webhook/](https://www.paws-r-sdk.com/docs/codebuild_update_webhook/) for full documentation.
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild project.
 #' @param branchFilter A regular expression used to determine which repository branches are

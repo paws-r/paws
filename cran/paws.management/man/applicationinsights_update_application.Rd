@@ -35,6 +35,6 @@ problems.}
 \description{
 Updates the application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_update_application/} for full documentation.
 }
 \keyword{internal}

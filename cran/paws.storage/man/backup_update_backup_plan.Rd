@@ -16,6 +16,6 @@ or more sets of \code{Rules}.}
 \description{
 Updates an existing backup plan identified by its \code{backupPlanId} with the input document in JSON format. The new version is uniquely identified by a \code{VersionId}.
 
-See \url{https://paws-r.github.io/docs/backup/update_backup_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_update_backup_plan/} for full documentation.
 }
 \keyword{internal}

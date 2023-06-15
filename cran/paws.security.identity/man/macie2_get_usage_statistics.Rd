@@ -33,6 +33,6 @@ Amazon Macie provides usage data for the preceding 30 days.}
 \description{
 Retrieves (queries) quotas and aggregated usage data for one or more accounts.
 
-See \url{https://paws-r.github.io/docs/macie2/get_usage_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_usage_statistics/} for full documentation.
 }
 \keyword{internal}

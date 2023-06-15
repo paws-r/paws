@@ -31,6 +31,6 @@ amazon-redshift-support.}
 \description{
 Authorizes the specified Amazon Web Services account to restore the specified snapshot.
 
-See \url{https://paws-r.github.io/docs/redshift/authorize_snapshot_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_authorize_snapshot_access/} for full documentation.
 }
 \keyword{internal}

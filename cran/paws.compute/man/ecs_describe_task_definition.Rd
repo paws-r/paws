@@ -18,6 +18,6 @@ field is omitted, tags aren't included in the response.}
 \description{
 Describes a task definition. You can specify a \code{family} and \code{revision} to find information about a specific task definition, or you can simply specify the family to find the latest \code{ACTIVE} revision in that family.
 
-See \url{https://paws-r.github.io/docs/ecs/describe_task_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_describe_task_definition/} for full documentation.
 }
 \keyword{internal}

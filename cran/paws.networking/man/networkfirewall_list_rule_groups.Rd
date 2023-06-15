@@ -38,6 +38,6 @@ contains stateful rules.}
 \description{
 Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/list_rule_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_list_rule_groups/} for full documentation.
 }
 \keyword{internal}

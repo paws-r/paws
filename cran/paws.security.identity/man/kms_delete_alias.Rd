@@ -13,6 +13,6 @@ followed by the alias name, such as \code{alias/ExampleAlias}.}
 \description{
 Deletes the specified alias.
 
-See \url{https://paws-r.github.io/docs/kms/delete_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_delete_alias/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_describe_studio_lifecycle_config(StudioLifecycleConfigName)
 \description{
 Describes the Studio Lifecycle Configuration.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_studio_lifecycle_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_studio_lifecycle_config/} for full documentation.
 }
 \keyword{internal}

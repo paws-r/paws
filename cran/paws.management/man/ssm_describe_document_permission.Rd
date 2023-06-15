@@ -28,6 +28,6 @@ from a previous call.)}
 \description{
 Describes the permissions for a Amazon Web Services Systems Manager document (SSM document). If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's Amazon Web Services account ID) or publicly (\emph{All}).
 
-See \url{https://paws-r.github.io/docs/ssm/describe_document_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_document_permission/} for full documentation.
 }
 \keyword{internal}

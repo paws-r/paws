@@ -41,6 +41,6 @@ the activity types.}
 \description{
 Returns information about all activities registered in the specified domain that match the specified name and registration status. The result includes information like creation date, current status of the activity, etc. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the \code{nextPageToken} returned by the initial call.
 
-See \url{https://paws-r.github.io/docs/swf/list_activity_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_list_activity_types/} for full documentation.
 }
 \keyword{internal}

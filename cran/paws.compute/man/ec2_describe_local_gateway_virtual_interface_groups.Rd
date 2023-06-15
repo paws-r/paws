@@ -40,6 +40,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified local gateway virtual interface groups.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_virtual_interface_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_local_gateway_virtual_interface_groups/} for full documentation.
 }
 \keyword{internal}

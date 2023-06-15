@@ -12,6 +12,6 @@ sagemaker_describe_training_job(TrainingJobName)
 \description{
 Returns information about a training job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_training_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_training_job/} for full documentation.
 }
 \keyword{internal}

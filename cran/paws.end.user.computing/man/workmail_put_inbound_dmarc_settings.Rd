@@ -14,6 +14,6 @@ workmail_put_inbound_dmarc_settings(OrganizationId, Enforced)
 \description{
 Enables or disables a DMARC policy for a given organization.
 
-See \url{https://paws-r.github.io/docs/workmail/put_inbound_dmarc_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_put_inbound_dmarc_settings/} for full documentation.
 }
 \keyword{internal}

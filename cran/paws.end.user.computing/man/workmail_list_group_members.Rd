@@ -25,6 +25,6 @@ does not contain any tokens.}
 \description{
 Returns an overview of the members of a group. Users and groups can be members of a group.
 
-See \url{https://paws-r.github.io/docs/workmail/list_group_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_group_members/} for full documentation.
 }
 \keyword{internal}

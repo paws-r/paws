@@ -28,6 +28,6 @@ supported.}
 \description{
 Updates the specified attributes of a document. The user must have access to both the document and its parent folder, if applicable.
 
-See \url{https://paws-r.github.io/docs/workdocs/update_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_update_document/} for full documentation.
 }
 \keyword{internal}

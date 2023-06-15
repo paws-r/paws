@@ -9,7 +9,8 @@ timestreamwrite_create_table(
   TableName,
   RetentionProperties = NULL,
   Tags = NULL,
-  MagneticStoreWriteProperties = NULL
+  MagneticStoreWriteProperties = NULL,
+  Schema = NULL
 )
 }
 \arguments{
@@ -24,10 +25,12 @@ memory store and the magnetic store.}
 
 \item{MagneticStoreWriteProperties}{Contains properties to set on the table when enabling magnetic store
 writes.}
+
+\item{Schema}{The schema of the table.}
 }
 \description{
 Adds a new table to an existing database in your account. In an Amazon Web Services account, table names must be at least unique within each Region if they are in the same database. You might have identical table names in the same Region if the tables are in separate databases. While creating the table, you must specify the table name, database name, and the retention properties. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/create_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_create_table/} for full documentation.
 }
 \keyword{internal}

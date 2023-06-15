@@ -25,6 +25,6 @@ is 100.}
 \description{
 Returns all the crawls of a specified crawler. Returns only the crawls that have occurred since the launch date of the crawler history feature, and only retains up to 12 months of crawls. Older crawls will not be returned.
 
-See \url{https://paws-r.github.io/docs/glue/list_crawls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_crawls/} for full documentation.
 }
 \keyword{internal}

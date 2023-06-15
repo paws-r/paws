@@ -13,6 +13,6 @@ to sign out.}
 \description{
 Signs out users from all devices. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the 1-hour cookie validity period.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/global_sign_out.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_global_sign_out/} for full documentation.
 }
 \keyword{internal}

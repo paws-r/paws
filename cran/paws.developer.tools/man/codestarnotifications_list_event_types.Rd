@@ -24,6 +24,6 @@ is 100.}
 \description{
 Returns information about the event types available for configuring notifications.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/list_event_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_list_event_types/} for full documentation.
 }
 \keyword{internal}

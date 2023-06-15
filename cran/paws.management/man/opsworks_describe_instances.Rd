@@ -23,6 +23,6 @@ description of every instance.}
 \description{
 Requests a description of a set of instances.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_instances/} for full documentation.
 }
 \keyword{internal}

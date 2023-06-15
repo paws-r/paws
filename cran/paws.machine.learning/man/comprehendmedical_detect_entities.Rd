@@ -14,6 +14,6 @@ characters.}
 \description{
 The \code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation is deprecated. You should use the \code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}} operation instead.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/detect_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_detect_entities/} for full documentation.
 }
 \keyword{internal}

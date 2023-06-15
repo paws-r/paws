@@ -138,6 +138,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually}{manually rotate} a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context} of a ciphertext.
 
-See \url{https://paws-r.github.io/docs/kms/re_encrypt.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_re_encrypt/} for full documentation.
 }
 \keyword{internal}

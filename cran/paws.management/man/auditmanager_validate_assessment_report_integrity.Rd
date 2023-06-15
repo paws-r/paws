@@ -13,6 +13,6 @@ stored in.}
 \description{
 Validates the integrity of an assessment report in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/validate_assessment_report_integrity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_validate_assessment_report_integrity/} for full documentation.
 }
 \keyword{internal}

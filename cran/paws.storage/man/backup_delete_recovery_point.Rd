@@ -19,6 +19,6 @@ for example,
 \description{
 Deletes the recovery point specified by a recovery point ID.
 
-See \url{https://paws-r.github.io/docs/backup/delete_recovery_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_delete_recovery_point/} for full documentation.
 }
 \keyword{internal}

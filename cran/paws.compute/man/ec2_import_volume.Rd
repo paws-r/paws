@@ -30,6 +30,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates an import volume task using metadata from the specified disk image.
 
-See \url{https://paws-r.github.io/docs/ec2/import_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_import_volume/} for full documentation.
 }
 \keyword{internal}

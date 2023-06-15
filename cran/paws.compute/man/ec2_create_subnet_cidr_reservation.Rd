@@ -42,6 +42,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a subnet CIDR reservation. For information about subnet CIDR reservations, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html}{Subnet CIDR reservations} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_subnet_cidr_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_subnet_cidr_reservation/} for full documentation.
 }
 \keyword{internal}

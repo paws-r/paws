@@ -33,6 +33,6 @@ QuickSight.
 \description{
 Lists all the themes in the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_themes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_themes/} for full documentation.
 }
 \keyword{internal}

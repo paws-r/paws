@@ -14,6 +14,6 @@ with a specific legal hold.}
 \description{
 This action returns details for a specified legal hold. The details are the body of a legal hold in JSON format, in addition to metadata.
 
-See \url{https://paws-r.github.io/docs/backup/get_legal_hold.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_legal_hold/} for full documentation.
 }
 \keyword{internal}

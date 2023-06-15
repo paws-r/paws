@@ -57,6 +57,6 @@ Cloud Control API currently supports JSON as a structured data format.
 \description{
 Creates the specified resource. For more information, see \href{https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html}{Creating a resource} in the \emph{Amazon Web Services Cloud Control API User Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/create_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_create_resource/} for full documentation.
 }
 \keyword{internal}

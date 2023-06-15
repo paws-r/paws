@@ -23,6 +23,6 @@ kafkaconnect_create_custom_plugin(
 \description{
 Creates a custom plugin using the specified properties.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/create_custom_plugin.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_create_custom_plugin/} for full documentation.
 }
 \keyword{internal}

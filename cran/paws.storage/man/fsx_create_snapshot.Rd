@@ -18,6 +18,6 @@ fsx_create_snapshot(ClientRequestToken = NULL, Name, VolumeId, Tags = NULL)
 \description{
 Creates a snapshot of an existing Amazon FSx for OpenZFS volume. With snapshots, you can easily undo file changes and compare file versions by restoring the volume to a previous version.
 
-See \url{https://paws-r.github.io/docs/fsx/create_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_create_snapshot/} for full documentation.
 }
 \keyword{internal}

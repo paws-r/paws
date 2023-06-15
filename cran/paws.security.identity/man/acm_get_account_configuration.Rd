@@ -10,6 +10,6 @@ acm_get_account_configuration()
 \description{
 Returns the account configuration options associated with an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/acm/get_account_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_get_account_configuration/} for full documentation.
 }
 \keyword{internal}

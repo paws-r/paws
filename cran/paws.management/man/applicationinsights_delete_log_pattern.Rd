@@ -20,6 +20,6 @@ applicationinsights_delete_log_pattern(
 \description{
 Removes the specified log pattern from a \code{LogPatternSet}.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/delete_log_pattern.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_delete_log_pattern/} for full documentation.
 }
 \keyword{internal}

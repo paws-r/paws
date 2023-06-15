@@ -20,6 +20,6 @@ appstream_associate_application_to_entitlement(
 \description{
 Associates an application to entitle.
 
-See \url{https://paws-r.github.io/docs/appstream/associate_application_to_entitlement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_associate_application_to_entitlement/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ opensearchservice_describe_vpc_endpoints(VpcEndpointIds)
 \description{
 Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_vpc_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_vpc_endpoints/} for full documentation.
 }
 \keyword{internal}

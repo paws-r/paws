@@ -58,6 +58,6 @@ model to use.}
 \description{
 Starts an asynchronous document classification job. Use the \code{\link[=comprehend_describe_document_classification_job]{describe_document_classification_job}} operation to track the progress of the job.
 
-See \url{https://paws-r.github.io/docs/comprehend/start_document_classification_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_start_document_classification_job/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_vpc_classic_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_vpc_classic_link/} for full documentation.
 }
 \keyword{internal}

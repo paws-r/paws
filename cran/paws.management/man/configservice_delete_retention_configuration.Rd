@@ -12,6 +12,6 @@ configservice_delete_retention_configuration(RetentionConfigurationName)
 \description{
 Deletes the retention configuration.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_retention_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_retention_configuration/} for full documentation.
 }
 \keyword{internal}

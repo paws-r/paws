@@ -17,6 +17,6 @@ operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list of devices registered with the specified fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/list_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_list_devices/} for full documentation.
 }
 \keyword{internal}

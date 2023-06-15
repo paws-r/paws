@@ -17,6 +17,6 @@ key-signing key in the same hosted zone.}
 \description{
 Activates a key-signing key (KSK) so that it can be used for signing by DNSSEC. This operation changes the KSK status to \code{ACTIVE}.
 
-See \url{https://paws-r.github.io/docs/route53/activate_key_signing_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_activate_key_signing_key/} for full documentation.
 }
 \keyword{internal}

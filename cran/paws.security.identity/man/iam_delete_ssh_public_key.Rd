@@ -21,6 +21,6 @@ that can consist of any upper or lowercased letter or digit.}
 \description{
 Deletes the specified SSH public key.
 
-See \url{https://paws-r.github.io/docs/iam/delete_ssh_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_ssh_public_key/} for full documentation.
 }
 \keyword{internal}

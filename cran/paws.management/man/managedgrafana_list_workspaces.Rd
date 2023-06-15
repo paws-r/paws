@@ -17,6 +17,6 @@ token from a previous
 \description{
 Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace. For more complete information about one workspace, use \code{\link[=managedgrafana_describe_workspace]{describe_workspace}}.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/list_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_list_workspaces/} for full documentation.
 }
 \keyword{internal}

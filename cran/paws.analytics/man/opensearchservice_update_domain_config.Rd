@@ -101,6 +101,6 @@ making. For more information, see \href{https://docs.aws.amazon.com/opensearch-s
 \description{
 Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.sl
 
-See \url{https://paws-r.github.io/docs/opensearchservice/update_domain_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_update_domain_config/} for full documentation.
 }
 \keyword{internal}

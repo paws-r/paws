@@ -10,6 +10,6 @@ auditmanager_get_organization_admin_account()
 \description{
 Returns the name of the delegated Amazon Web Services administrator account for the organization.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

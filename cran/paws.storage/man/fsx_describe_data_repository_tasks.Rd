@@ -29,6 +29,6 @@ specific lifecycle state.}
 \description{
 Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository tasks, if one or more \code{TaskIds} values are provided in the request, or if filters are used in the request. You can use filters to narrow the response to include just tasks for specific file systems or caches, or tasks in a specific lifecycle state. Otherwise, it returns all data repository tasks owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_data_repository_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_data_repository_tasks/} for full documentation.
 }
 \keyword{internal}

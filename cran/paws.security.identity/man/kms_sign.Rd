@@ -95,6 +95,6 @@ algorithms for compatibility with existing applications.}
 \description{
 Creates a \href{https://en.wikipedia.org/wiki/Digital_signature}{digital signature} for a message or message digest by using the private key in an asymmetric signing KMS key. To verify the signature, use the \code{\link[=kms_verify]{verify}} operation, or use the public key in the same asymmetric KMS key outside of KMS. For information about asymmetric KMS keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Asymmetric KMS keys} in the \emph{Key Management Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/kms/sign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_sign/} for full documentation.
 }
 \keyword{internal}

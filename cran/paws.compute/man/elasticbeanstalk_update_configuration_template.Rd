@@ -39,6 +39,6 @@ Constraint: You can remove only \code{UserDefined} configuration options.}
 \description{
 Updates the specified configuration template to have the specified properties or configuration option values.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_configuration_template/} for full documentation.
 }
 \keyword{internal}

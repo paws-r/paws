@@ -21,6 +21,6 @@ for the blueprint in the response.}
 \description{
 Retrieves information about a list of blueprints.
 
-See \url{https://paws-r.github.io/docs/glue/batch_get_blueprints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_get_blueprints/} for full documentation.
 }
 \keyword{internal}

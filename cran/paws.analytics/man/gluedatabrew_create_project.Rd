@@ -31,6 +31,6 @@ gluedatabrew_create_project(
 \description{
 Creates a new DataBrew project.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/create_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_create_project/} for full documentation.
 }
 \keyword{internal}

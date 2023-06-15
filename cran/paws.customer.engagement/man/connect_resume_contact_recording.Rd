@@ -19,6 +19,6 @@ associated with the first interaction with the contact center.}
 \description{
 When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call.
 
-See \url{https://paws-r.github.io/docs/connect/resume_contact_recording.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_resume_contact_recording/} for full documentation.
 }
 \keyword{internal}

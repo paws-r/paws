@@ -89,6 +89,6 @@ value of NextToken from the previous response to continue listing data.}
 \description{
 Lists Amazon GuardDuty findings for the specified detector ID.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_findings/} for full documentation.
 }
 \keyword{internal}

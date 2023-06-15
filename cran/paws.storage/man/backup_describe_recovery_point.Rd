@@ -20,6 +20,6 @@ for example,
 \description{
 Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle.
 
-See \url{https://paws-r.github.io/docs/backup/describe_recovery_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_recovery_point/} for full documentation.
 }
 \keyword{internal}

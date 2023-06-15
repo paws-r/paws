@@ -25,6 +25,6 @@ subsequent call to get the next batch of objects.}
 \description{
 Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/list_tls_inspection_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_list_tls_inspection_configurations/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ response (which is also the ID of the last distribution on that page).}
 \description{
 List CloudFront distributions.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_distributions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_distributions/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ quicksight_create_ingestion(
 \description{
 Creates and starts a new SPICE ingestion for a dataset. You can manually refresh datasets in an Enterprise edition account 32 times in a 24-hour period. You can manually refresh datasets in a Standard edition account 8 times in a 24-hour period. Each 24-hour period is measured starting 24 hours before the current date and time.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_ingestion.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_ingestion/} for full documentation.
 }
 \keyword{internal}

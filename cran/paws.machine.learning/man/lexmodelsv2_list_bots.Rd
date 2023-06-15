@@ -36,6 +36,6 @@ returned in the response is null.}
 \description{
 Gets a list of available bots.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_bots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bots/} for full documentation.
 }
 \keyword{internal}

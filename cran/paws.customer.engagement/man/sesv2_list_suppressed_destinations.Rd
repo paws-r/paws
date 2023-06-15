@@ -35,6 +35,6 @@ can use to obtain additional results.}
 \description{
 Retrieves a list of email addresses that are on the suppression list for your account.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_suppressed_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_suppressed_destinations/} for full documentation.
 }
 \keyword{internal}

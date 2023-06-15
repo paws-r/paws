@@ -15,6 +15,6 @@ recipe.}
 \description{
 Publishes a new version of a DataBrew recipe.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/publish_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_publish_recipe/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ copied from the source version to the new version.}
 \description{
 Creates a new version of the bot based on the \code{DRAFT} version. If the \code{DRAFT} version of this resource hasn't changed since you created the last version, Amazon Lex doesn't create a new version, it returns the last created version.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_bot_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_bot_version/} for full documentation.
 }
 \keyword{internal}

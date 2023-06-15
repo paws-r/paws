@@ -13,6 +13,6 @@ forecastservice_delete_dataset(DatasetArn)
 \description{
 Deletes an Amazon Forecast dataset that was created using the \code{\link[=forecastservice_create_dataset]{create_dataset}} operation. You can only delete datasets that have a status of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status use the \code{\link[=forecastservice_describe_dataset]{describe_dataset}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_dataset/} for full documentation.
 }
 \keyword{internal}

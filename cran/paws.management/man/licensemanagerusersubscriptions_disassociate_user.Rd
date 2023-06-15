@@ -24,6 +24,6 @@ licensemanagerusersubscriptions_disassociate_user(
 \description{
 Disassociates the user from an EC2 instance providing user-based subscriptions.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/disassociate_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_disassociate_user/} for full documentation.
 }
 \keyword{internal}

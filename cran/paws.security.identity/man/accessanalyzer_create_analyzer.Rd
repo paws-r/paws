@@ -30,6 +30,6 @@ rule.}
 \description{
 Creates an analyzer for your account.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/create_analyzer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_create_analyzer/} for full documentation.
 }
 \keyword{internal}

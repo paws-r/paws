@@ -12,6 +12,6 @@ networkmanager_get_vpc_attachment(AttachmentId)
 \description{
 Returns information about a VPC attachment.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_vpc_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_vpc_attachment/} for full documentation.
 }
 \keyword{internal}

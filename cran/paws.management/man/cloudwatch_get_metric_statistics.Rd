@@ -108,6 +108,6 @@ perform unit conversions.}
 \description{
 Gets statistics for the specified metric.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/get_metric_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_statistics/} for full documentation.
 }
 \keyword{internal}

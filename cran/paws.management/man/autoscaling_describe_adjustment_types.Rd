@@ -10,6 +10,6 @@ autoscaling_describe_adjustment_types()
 \description{
 Describes the available adjustment types for step scaling and simple scaling policies.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_adjustment_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_adjustment_types/} for full documentation.
 }
 \keyword{internal}

@@ -46,6 +46,6 @@ Lambda function.
 \description{
 Updates the data catalog that has the specified name.
 
-See \url{https://paws-r.github.io/docs/athena/update_data_catalog.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_update_data_catalog/} for full documentation.
 }
 \keyword{internal}

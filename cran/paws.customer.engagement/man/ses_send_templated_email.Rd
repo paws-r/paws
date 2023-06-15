@@ -104,6 +104,6 @@ correspond to replacement tags in the email template.}
 \description{
 Composes an email message using an email template and immediately queues it for sending.
 
-See \url{https://paws-r.github.io/docs/ses/send_templated_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_send_templated_email/} for full documentation.
 }
 \keyword{internal}

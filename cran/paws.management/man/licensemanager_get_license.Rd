@@ -14,6 +14,6 @@ licensemanager_get_license(LicenseArn, Version = NULL)
 \description{
 Gets detailed information about the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/get_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_get_license/} for full documentation.
 }
 \keyword{internal}

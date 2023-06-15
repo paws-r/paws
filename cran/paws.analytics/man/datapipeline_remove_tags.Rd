@@ -14,6 +14,6 @@ datapipeline_remove_tags(pipelineId, tagKeys)
 \description{
 Removes existing tags from the specified pipeline.
 
-See \url{https://paws-r.github.io/docs/datapipeline/remove_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_remove_tags/} for full documentation.
 }
 \keyword{internal}

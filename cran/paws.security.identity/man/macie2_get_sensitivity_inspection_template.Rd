@@ -14,6 +14,6 @@ applies to.}
 \description{
 Retrieves the settings for the sensitivity inspection template for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/get_sensitivity_inspection_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_sensitivity_inspection_template/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ format of the \code{imageIds} reference is \code{imageTag=tag} or
 \description{
 Deletes a list of specified images that are within a repository in a public registry. Images are specified with either an \code{imageTag} or \code{imageDigest}.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/batch_delete_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_batch_delete_image/} for full documentation.
 }
 \keyword{internal}

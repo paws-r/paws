@@ -86,6 +86,6 @@ The configuration is added to the settings for the parent slot type.}
 \description{
 Creates a custom slot type or replaces an existing custom slot type.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_slot_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_slot_type/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ elasticache_batch_apply_update_action(
 \description{
 Apply the service update. For more information on service updates and applying them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Applying Service Updates}.
 
-See \url{https://paws-r.github.io/docs/elasticache/batch_apply_update_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_batch_apply_update_action/} for full documentation.
 }
 \keyword{internal}

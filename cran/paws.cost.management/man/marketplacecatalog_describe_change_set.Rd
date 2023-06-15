@@ -17,6 +17,6 @@ you want to describe the details for.}
 \description{
 Provides information about a given change set.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/describe_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_describe_change_set/} for full documentation.
 }
 \keyword{internal}

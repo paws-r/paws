@@ -18,6 +18,6 @@ default registry is assumed.}
 \description{
 Deletes a repository. If the repository contains images, you must either delete all images in the repository or use the \code{force} option to delete the repository.
 
-See \url{https://paws-r.github.io/docs/ecr/delete_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_delete_repository/} for full documentation.
 }
 \keyword{internal}

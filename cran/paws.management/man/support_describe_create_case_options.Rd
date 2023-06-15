@@ -34,6 +34,6 @@ its own set of category codes.}
 \description{
 Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability. You can specify the \code{language} \code{categoryCode}, \code{issueType} and \code{serviceCode} used to retrieve the CreateCaseOptions.
 
-See \url{https://paws-r.github.io/docs/support/describe_create_case_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_create_case_options/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ glue_get_unfiltered_partition_metadata(
 \description{
 Retrieves partition metadata from the Data Catalog that contains unfiltered metadata.
 
-See \url{https://paws-r.github.io/docs/glue/get_unfiltered_partition_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_unfiltered_partition_metadata/} for full documentation.
 }
 \keyword{internal}

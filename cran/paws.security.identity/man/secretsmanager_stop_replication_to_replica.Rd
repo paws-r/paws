@@ -13,6 +13,6 @@ secretsmanager_stop_replication_to_replica(SecretId)
 \description{
 Removes the link between the replica secret and the primary secret and promotes the replica to a primary secret in the replica Region.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/stop_replication_to_replica.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_stop_replication_to_replica/} for full documentation.
 }
 \keyword{internal}

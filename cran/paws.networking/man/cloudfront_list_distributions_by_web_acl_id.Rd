@@ -28,6 +28,6 @@ list of the distributions that aren't associated with a web ACL.}
 \description{
 List the distributions that are associated with a specified WAF web ACL.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_web_acl_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_web_acl_id/} for full documentation.
 }
 \keyword{internal}

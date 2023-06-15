@@ -18,6 +18,6 @@ Specify only the tag keys, not the tag values.}
 \description{
 Removes the specified tag or tags from the specified AWS CloudHSM cluster.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/} for full documentation.
 }
 \keyword{internal}

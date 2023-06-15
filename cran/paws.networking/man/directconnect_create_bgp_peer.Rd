@@ -14,6 +14,6 @@ directconnect_create_bgp_peer(virtualInterfaceId = NULL, newBGPPeer = NULL)
 \description{
 Creates a BGP peer on the specified virtual interface.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_bgp_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_bgp_peer/} for full documentation.
 }
 \keyword{internal}

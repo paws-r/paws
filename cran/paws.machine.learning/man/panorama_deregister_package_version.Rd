@@ -26,6 +26,6 @@ panorama_deregister_package_version(
 \description{
 Deregisters a package version.
 
-See \url{https://paws-r.github.io/docs/panorama/deregister_package_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_deregister_package_version/} for full documentation.
 }
 \keyword{internal}

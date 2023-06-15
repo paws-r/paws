@@ -55,6 +55,6 @@ set to \code{NONE} (the default), no statistics are returned.}
 \description{
 The \code{\link[=dynamodb_batch_write_item]{batch_write_item}} operation puts or deletes multiple items in one or more tables. A single call to \code{\link[=dynamodb_batch_write_item]{batch_write_item}} can transmit up to 16MB of data over the network, consisting of up to 25 item put or delete operations. While individual items can be up to 400 KB once stored, it's important to note that an item's representation might be greater than 400KB while being sent in DynamoDB's JSON format for the API call. For more details on this distinction, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html}{Naming Rules and Data Types}.
 
-See \url{https://paws-r.github.io/docs/dynamodb/batch_write_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_batch_write_item/} for full documentation.
 }
 \keyword{internal}

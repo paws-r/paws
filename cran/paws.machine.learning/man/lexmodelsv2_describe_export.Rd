@@ -12,6 +12,6 @@ lexmodelsv2_describe_export(exportId)
 \description{
 Gets information about a specific export.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_export/} for full documentation.
 }
 \keyword{internal}

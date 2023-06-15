@@ -38,6 +38,6 @@ Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 \description{
 Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream.
 
-See \url{https://paws-r.github.io/docs/kinesis/start_stream_encryption.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_start_stream_encryption/} for full documentation.
 }
 \keyword{internal}

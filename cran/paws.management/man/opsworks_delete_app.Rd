@@ -12,6 +12,6 @@ opsworks_delete_app(AppId)
 \description{
 Deletes a specified app.
 
-See \url{https://paws-r.github.io/docs/opsworks/delete_app.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_delete_app/} for full documentation.
 }
 \keyword{internal}

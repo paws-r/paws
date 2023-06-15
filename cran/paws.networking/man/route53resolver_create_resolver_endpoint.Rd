@@ -52,6 +52,6 @@ This endpoint type is applied to all IP addresses.}
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
 
-See \url{https://paws-r.github.io/docs/route53resolver/create_resolver_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_endpoint/} for full documentation.
 }
 \keyword{internal}

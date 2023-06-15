@@ -288,6 +288,6 @@ or \code{VocabularyFilterName} (or both) sub-parameter.}
 \description{
 Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/start_transcription_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_start_transcription_job/} for full documentation.
 }
 \keyword{internal}

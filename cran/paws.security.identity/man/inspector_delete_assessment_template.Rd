@@ -13,6 +13,6 @@ inspector_delete_assessment_template(assessmentTemplateArn)
 \description{
 Deletes the assessment template that is specified by the ARN of the assessment template.
 
-See \url{https://paws-r.github.io/docs/inspector/delete_assessment_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_delete_assessment_template/} for full documentation.
 }
 \keyword{internal}

@@ -69,6 +69,6 @@ only.}
 \description{
 Replaces an existing route within a route table in a VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/replace_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_replace_route/} for full documentation.
 }
 \keyword{internal}

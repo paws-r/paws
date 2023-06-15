@@ -10,7 +10,7 @@ NULL
 #' @description
 #' Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs.
 #'
-#' See [https://paws-r.github.io/docs/redshift/accept_reserved_node_exchange.html](https://paws-r.github.io/docs/redshift/accept_reserved_node_exchange.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_accept_reserved_node_exchange/](https://www.paws-r-sdk.com/docs/redshift_accept_reserved_node_exchange/) for full documentation.
 #'
 #' @param ReservedNodeId &#91;required&#93; A string representing the node identifier of the DC1 Reserved Node to be
 #' exchanged.
@@ -43,7 +43,7 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 #' @description
 #' Adds a partner integration to a cluster. This operation authorizes a partner to push status updates for the specified database. To complete the integration, you also set up the integration on the partner website.
 #'
-#' See [https://paws-r.github.io/docs/redshift/add_partner.html](https://paws-r.github.io/docs/redshift/add_partner.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_add_partner/](https://www.paws-r-sdk.com/docs/redshift_add_partner/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster that receives data from the
@@ -78,7 +78,7 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #' @description
 #' From a datashare consumer account, associates a datashare with the account (AssociateEntireAccount) or the specified namespace (ConsumerArn). If you make this association, the consumer can consume the datashare.
 #'
-#' See [https://paws-r.github.io/docs/redshift/associate_data_share_consumer.html](https://paws-r.github.io/docs/redshift/associate_data_share_consumer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_associate_data_share_consumer/](https://www.paws-r-sdk.com/docs/redshift_associate_data_share_consumer/) for full documentation.
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that the consumer is to
 #' use with the account or the namespace.
@@ -115,7 +115,7 @@ redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntire
 #' @description
 #' Adds an inbound (ingress) rule to an Amazon Redshift security group. Depending on whether the application accessing your cluster is running on the Internet or an Amazon EC2 instance, you can authorize inbound access to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP) range or to an Amazon EC2 security group. You can add as many as 20 ingress rules to an Amazon Redshift security group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/authorize_cluster_security_group_ingress.html](https://paws-r.github.io/docs/redshift/authorize_cluster_security_group_ingress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_authorize_cluster_security_group_ingress/](https://www.paws-r-sdk.com/docs/redshift_authorize_cluster_security_group_ingress/) for full documentation.
 #'
 #' @param ClusterSecurityGroupName &#91;required&#93; The name of the security group to which the ingress rule is added.
 #' @param CIDRIP The IP range to be added the Amazon Redshift security group.
@@ -152,7 +152,7 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' @description
 #' From a data producer account, authorizes the sharing of a datashare with one or more consumer accounts or managing entities. To authorize a datashare for a data consumer, the producer account must have the correct access permissions.
 #'
-#' See [https://paws-r.github.io/docs/redshift/authorize_data_share.html](https://paws-r.github.io/docs/redshift/authorize_data_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_authorize_data_share/](https://www.paws-r-sdk.com/docs/redshift_authorize_data_share/) for full documentation.
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that producers are to
 #' authorize sharing for.
@@ -185,7 +185,7 @@ redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
 #' @description
 #' Grants access to a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/authorize_endpoint_access.html](https://paws-r.github.io/docs/redshift/authorize_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_authorize_endpoint_access/](https://www.paws-r-sdk.com/docs/redshift_authorize_endpoint_access/) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster identifier of the cluster to grant access to.
 #' @param Account &#91;required&#93; The Amazon Web Services account ID to grant access to.
@@ -217,7 +217,7 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
 #' @description
 #' Authorizes the specified Amazon Web Services account to restore the specified snapshot.
 #'
-#' See [https://paws-r.github.io/docs/redshift/authorize_snapshot_access.html](https://paws-r.github.io/docs/redshift/authorize_snapshot_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_authorize_snapshot_access/](https://www.paws-r-sdk.com/docs/redshift_authorize_snapshot_access/) for full documentation.
 #'
 #' @param SnapshotIdentifier The identifier of the snapshot the account is authorized to restore.
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot to authorize access to.
@@ -256,7 +256,7 @@ redshift_authorize_snapshot_access <- function(SnapshotIdentifier = NULL, Snapsh
 #' @description
 #' Deletes a set of cluster snapshots.
 #'
-#' See [https://paws-r.github.io/docs/redshift/batch_delete_cluster_snapshots.html](https://paws-r.github.io/docs/redshift/batch_delete_cluster_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_batch_delete_cluster_snapshots/](https://www.paws-r-sdk.com/docs/redshift_batch_delete_cluster_snapshots/) for full documentation.
 #'
 #' @param Identifiers &#91;required&#93; A list of identifiers for the snapshots that you want to delete.
 #'
@@ -285,7 +285,7 @@ redshift_batch_delete_cluster_snapshots <- function(Identifiers) {
 #' @description
 #' Modifies the settings for a set of cluster snapshots.
 #'
-#' See [https://paws-r.github.io/docs/redshift/batch_modify_cluster_snapshots.html](https://paws-r.github.io/docs/redshift/batch_modify_cluster_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_batch_modify_cluster_snapshots/](https://www.paws-r-sdk.com/docs/redshift_batch_modify_cluster_snapshots/) for full documentation.
 #'
 #' @param SnapshotIdentifierList &#91;required&#93; A list of snapshot identifiers you want to modify.
 #' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If you specify
@@ -325,7 +325,7 @@ redshift_batch_modify_cluster_snapshots <- function(SnapshotIdentifierList, Manu
 #' @description
 #' Cancels a resize operation for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/cancel_resize.html](https://paws-r.github.io/docs/redshift/cancel_resize.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_cancel_resize/](https://www.paws-r-sdk.com/docs/redshift_cancel_resize/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier for the cluster that you want to cancel a resize
 #' operation for.
@@ -356,7 +356,7 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #' @description
 #' Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.
 #'
-#' See [https://paws-r.github.io/docs/redshift/copy_cluster_snapshot.html](https://paws-r.github.io/docs/redshift/copy_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_copy_cluster_snapshot/](https://www.paws-r-sdk.com/docs/redshift_copy_cluster_snapshot/) for full documentation.
 #'
 #' @param SourceSnapshotIdentifier &#91;required&#93; The identifier for the source snapshot.
 #' 
@@ -418,7 +418,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' @description
 #' Creates an authentication profile with the specified parameters.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_authentication_profile.html](https://paws-r.github.io/docs/redshift/create_authentication_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_authentication_profile/](https://www.paws-r-sdk.com/docs/redshift_create_authentication_profile/) for full documentation.
 #'
 #' @param AuthenticationProfileName &#91;required&#93; The name of the authentication profile to be created.
 #' @param AuthenticationProfileContent &#91;required&#93; The content of the authentication profile in JSON format. The maximum
@@ -449,7 +449,7 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' @description
 #' Creates a new cluster with the specified parameters.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_cluster.html](https://paws-r.github.io/docs/redshift/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_cluster/](https://www.paws-r-sdk.com/docs/redshift_create_cluster/) for full documentation.
 #'
 #' @param DBName The name of the first database to be created when the cluster is
 #' created.
@@ -727,7 +727,7 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' @description
 #' Creates an Amazon Redshift parameter group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_cluster_parameter_group.html](https://paws-r.github.io/docs/redshift/create_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/redshift_create_cluster_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
@@ -781,7 +781,7 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' @description
 #' Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_cluster_security_group.html](https://paws-r.github.io/docs/redshift/create_cluster_security_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_cluster_security_group/](https://www.paws-r-sdk.com/docs/redshift_create_cluster_security_group/) for full documentation.
 #'
 #' @param ClusterSecurityGroupName &#91;required&#93; The name for the security group. Amazon Redshift stores the value as a
 #' lowercase string.
@@ -824,7 +824,7 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
 #' @description
 #' Creates a manual snapshot of the specified cluster. The cluster must be in the `available` state.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_cluster_snapshot.html](https://paws-r.github.io/docs/redshift/create_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_cluster_snapshot/](https://www.paws-r-sdk.com/docs/redshift_create_cluster_snapshot/) for full documentation.
 #'
 #' @param SnapshotIdentifier &#91;required&#93; A unique identifier for the snapshot that you are requesting. This
 #' identifier must be unique for all snapshots within the Amazon Web
@@ -875,7 +875,7 @@ redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifi
 #' @description
 #' Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_cluster_subnet_group.html](https://paws-r.github.io/docs/redshift/create_cluster_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_cluster_subnet_group/](https://www.paws-r-sdk.com/docs/redshift_create_cluster_subnet_group/) for full documentation.
 #'
 #' @param ClusterSubnetGroupName &#91;required&#93; The name for the subnet group. Amazon Redshift stores the value as a
 #' lowercase string.
@@ -920,7 +920,7 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @description
 #' Creates a Redshift-managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_endpoint_access.html](https://paws-r.github.io/docs/redshift/create_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_endpoint_access/](https://www.paws-r-sdk.com/docs/redshift_create_endpoint_access/) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster identifier of the cluster to access.
 #' @param ResourceOwner The Amazon Web Services account ID of the owner of the cluster. This is
@@ -960,7 +960,7 @@ redshift_create_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOw
 #' @description
 #' Creates an Amazon Redshift event notification subscription. This action requires an ARN (Amazon Resource Name) of an Amazon SNS topic created by either the Amazon Redshift console, the Amazon SNS console, or the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_event_subscription.html](https://paws-r.github.io/docs/redshift/create_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_event_subscription/](https://www.paws-r-sdk.com/docs/redshift_create_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the event subscription to be created.
 #' 
@@ -1032,7 +1032,7 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
 #' @description
 #' Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_hsm_client_certificate.html](https://paws-r.github.io/docs/redshift/create_hsm_client_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_hsm_client_certificate/](https://www.paws-r-sdk.com/docs/redshift_create_hsm_client_certificate/) for full documentation.
 #'
 #' @param HsmClientCertificateIdentifier &#91;required&#93; The identifier to be assigned to the new HSM client certificate that the
 #' cluster will use to connect to the HSM to use the database encryption
@@ -1066,7 +1066,7 @@ redshift_create_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #' @description
 #' Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM). After creating the HSM configuration, you can specify it as a parameter when creating a cluster. The cluster will then store its encryption keys in the HSM.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_hsm_configuration.html](https://paws-r.github.io/docs/redshift/create_hsm_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_hsm_configuration/](https://www.paws-r-sdk.com/docs/redshift_create_hsm_configuration/) for full documentation.
 #'
 #' @param HsmConfigurationIdentifier &#91;required&#93; The identifier to be assigned to the new Amazon Redshift HSM
 #' configuration.
@@ -1105,7 +1105,7 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #' @description
 #' Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For example, you can create a schedule of when to run the [`resize_cluster`][redshift_resize_cluster] API operation.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_scheduled_action.html](https://paws-r.github.io/docs/redshift/create_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_scheduled_action/](https://www.paws-r-sdk.com/docs/redshift_create_scheduled_action/) for full documentation.
 #'
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action. The name must be unique within an
 #' account. For more information about this parameter, see ScheduledAction.
@@ -1154,7 +1154,7 @@ redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, 
 #' @description
 #' Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_snapshot_copy_grant.html](https://paws-r.github.io/docs/redshift/create_snapshot_copy_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_snapshot_copy_grant/](https://www.paws-r-sdk.com/docs/redshift_create_snapshot_copy_grant/) for full documentation.
 #'
 #' @param SnapshotCopyGrantName &#91;required&#93; The name of the snapshot copy grant. This name must be unique in the
 #' region for the Amazon Web Services account.
@@ -1202,7 +1202,7 @@ redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId 
 #' @description
 #' Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_snapshot_schedule.html](https://paws-r.github.io/docs/redshift/create_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_snapshot_schedule/](https://www.paws-r-sdk.com/docs/redshift_create_snapshot_schedule/) for full documentation.
 #'
 #' @param ScheduleDefinitions The definition of the snapshot schedule. The definition is made up of
 #' schedule expressions, for example "cron(30 12 *)" or "rate(12 hours)".
@@ -1238,7 +1238,7 @@ redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, Schedu
 #' @description
 #' Adds tags to a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_tags.html](https://paws-r.github.io/docs/redshift/create_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_tags/](https://www.paws-r-sdk.com/docs/redshift_create_tags/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) to which you want to add the tag or tags.
 #' For example, `arn:aws:redshift:us-east-2:123456789:cluster:t1`.
@@ -1275,7 +1275,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' @description
 #' Creates a usage limit for a specified Amazon Redshift feature on a cluster. The usage limit is identified by the returned usage limit identifier.
 #'
-#' See [https://paws-r.github.io/docs/redshift/create_usage_limit.html](https://paws-r.github.io/docs/redshift/create_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_usage_limit/](https://www.paws-r-sdk.com/docs/redshift_create_usage_limit/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster that you want to limit usage.
 #' @param FeatureType &#91;required&#93; The Amazon Redshift feature that you want to limit.
@@ -1320,7 +1320,7 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #' @description
 #' From a datashare producer account, removes authorization from the specified datashare.
 #'
-#' See [https://paws-r.github.io/docs/redshift/deauthorize_data_share.html](https://paws-r.github.io/docs/redshift/deauthorize_data_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_deauthorize_data_share/](https://www.paws-r-sdk.com/docs/redshift_deauthorize_data_share/) for full documentation.
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to remove authorization
 #' from.
@@ -1353,7 +1353,7 @@ redshift_deauthorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
 #' @description
 #' Deletes an authentication profile.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_authentication_profile.html](https://paws-r.github.io/docs/redshift/delete_authentication_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_authentication_profile/](https://www.paws-r-sdk.com/docs/redshift_delete_authentication_profile/) for full documentation.
 #'
 #' @param AuthenticationProfileName &#91;required&#93; The name of the authentication profile to delete.
 #'
@@ -1383,7 +1383,7 @@ redshift_delete_authentication_profile <- function(AuthenticationProfileName) {
 #' @description
 #' Deletes a previously provisioned cluster without its final snapshot being created. A successful response from the web service indicates that the request was received correctly. Use [`describe_clusters`][redshift_describe_clusters] to monitor the status of the deletion. The delete operation cannot be canceled or reverted once submitted. For more information about managing clusters, go to [Amazon Redshift Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_cluster.html](https://paws-r.github.io/docs/redshift/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_cluster/](https://www.paws-r-sdk.com/docs/redshift_delete_cluster/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be deleted.
 #' 
@@ -1448,7 +1448,7 @@ redshift_delete_cluster <- function(ClusterIdentifier, SkipFinalClusterSnapshot 
 #' @description
 #' Deletes a specified Amazon Redshift parameter group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_cluster_parameter_group.html](https://paws-r.github.io/docs/redshift/delete_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/redshift_delete_cluster_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to be deleted.
 #' 
@@ -1483,7 +1483,7 @@ redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
 #' @description
 #' Deletes an Amazon Redshift security group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_cluster_security_group.html](https://paws-r.github.io/docs/redshift/delete_cluster_security_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_cluster_security_group/](https://www.paws-r-sdk.com/docs/redshift_delete_cluster_security_group/) for full documentation.
 #'
 #' @param ClusterSecurityGroupName &#91;required&#93; The name of the cluster security group to be deleted.
 #'
@@ -1512,7 +1512,7 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
 #' @description
 #' Deletes the specified manual snapshot. The snapshot must be in the `available` state, with no other users authorized to access the snapshot.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_cluster_snapshot.html](https://paws-r.github.io/docs/redshift/delete_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_cluster_snapshot/](https://www.paws-r-sdk.com/docs/redshift_delete_cluster_snapshot/) for full documentation.
 #'
 #' @param SnapshotIdentifier &#91;required&#93; The unique identifier of the manual snapshot to be deleted.
 #' 
@@ -1550,7 +1550,7 @@ redshift_delete_cluster_snapshot <- function(SnapshotIdentifier, SnapshotCluster
 #' @description
 #' Deletes the specified cluster subnet group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_cluster_subnet_group.html](https://paws-r.github.io/docs/redshift/delete_cluster_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_cluster_subnet_group/](https://www.paws-r-sdk.com/docs/redshift_delete_cluster_subnet_group/) for full documentation.
 #'
 #' @param ClusterSubnetGroupName &#91;required&#93; The name of the cluster subnet group name to be deleted.
 #'
@@ -1579,7 +1579,7 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 #' @description
 #' Deletes a Redshift-managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_endpoint_access.html](https://paws-r.github.io/docs/redshift/delete_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_endpoint_access/](https://www.paws-r-sdk.com/docs/redshift_delete_endpoint_access/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The Redshift-managed VPC endpoint to delete.
 #'
@@ -1608,7 +1608,7 @@ redshift_delete_endpoint_access <- function(EndpointName) {
 #' @description
 #' Deletes an Amazon Redshift event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_event_subscription.html](https://paws-r.github.io/docs/redshift/delete_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_event_subscription/](https://www.paws-r-sdk.com/docs/redshift_delete_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the Amazon Redshift event notification subscription to be
 #' deleted.
@@ -1638,7 +1638,7 @@ redshift_delete_event_subscription <- function(SubscriptionName) {
 #' @description
 #' Deletes the specified HSM client certificate.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_hsm_client_certificate.html](https://paws-r.github.io/docs/redshift/delete_hsm_client_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_hsm_client_certificate/](https://www.paws-r-sdk.com/docs/redshift_delete_hsm_client_certificate/) for full documentation.
 #'
 #' @param HsmClientCertificateIdentifier &#91;required&#93; The identifier of the HSM client certificate to be deleted.
 #'
@@ -1667,7 +1667,7 @@ redshift_delete_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #' @description
 #' Deletes the specified Amazon Redshift HSM configuration.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_hsm_configuration.html](https://paws-r.github.io/docs/redshift/delete_hsm_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_hsm_configuration/](https://www.paws-r-sdk.com/docs/redshift_delete_hsm_configuration/) for full documentation.
 #'
 #' @param HsmConfigurationIdentifier &#91;required&#93; The identifier of the Amazon Redshift HSM configuration to be deleted.
 #'
@@ -1696,7 +1696,7 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
 #' @description
 #' Deletes a partner integration from a cluster. Data can still flow to the cluster until the integration is deleted at the partner's website.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_partner.html](https://paws-r.github.io/docs/redshift/delete_partner.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_partner/](https://www.paws-r-sdk.com/docs/redshift_delete_partner/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster that receives data from the
@@ -1729,7 +1729,7 @@ redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, 
 #' @description
 #' Deletes a scheduled action.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_scheduled_action.html](https://paws-r.github.io/docs/redshift/delete_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_scheduled_action/](https://www.paws-r-sdk.com/docs/redshift_delete_scheduled_action/) for full documentation.
 #'
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action to delete.
 #'
@@ -1758,7 +1758,7 @@ redshift_delete_scheduled_action <- function(ScheduledActionName) {
 #' @description
 #' Deletes the specified snapshot copy grant.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_snapshot_copy_grant.html](https://paws-r.github.io/docs/redshift/delete_snapshot_copy_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_snapshot_copy_grant/](https://www.paws-r-sdk.com/docs/redshift_delete_snapshot_copy_grant/) for full documentation.
 #'
 #' @param SnapshotCopyGrantName &#91;required&#93; The name of the snapshot copy grant to delete.
 #'
@@ -1787,7 +1787,7 @@ redshift_delete_snapshot_copy_grant <- function(SnapshotCopyGrantName) {
 #' @description
 #' Deletes a snapshot schedule.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_snapshot_schedule.html](https://paws-r.github.io/docs/redshift/delete_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_snapshot_schedule/](https://www.paws-r-sdk.com/docs/redshift_delete_snapshot_schedule/) for full documentation.
 #'
 #' @param ScheduleIdentifier &#91;required&#93; A unique identifier of the snapshot schedule to delete.
 #'
@@ -1816,7 +1816,7 @@ redshift_delete_snapshot_schedule <- function(ScheduleIdentifier) {
 #' @description
 #' Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_tags.html](https://paws-r.github.io/docs/redshift/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_tags/](https://www.paws-r-sdk.com/docs/redshift_delete_tags/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) from which you want to remove the tag or
 #' tags. For example, `arn:aws:redshift:us-east-2:123456789:cluster:t1`.
@@ -1847,7 +1847,7 @@ redshift_delete_tags <- function(ResourceName, TagKeys) {
 #' @description
 #' Deletes a usage limit from a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/delete_usage_limit.html](https://paws-r.github.io/docs/redshift/delete_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_usage_limit/](https://www.paws-r-sdk.com/docs/redshift_delete_usage_limit/) for full documentation.
 #'
 #' @param UsageLimitId &#91;required&#93; The identifier of the usage limit to delete.
 #'
@@ -1876,7 +1876,7 @@ redshift_delete_usage_limit <- function(UsageLimitId) {
 #' @description
 #' Returns a list of attributes attached to an account
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_account_attributes.html](https://paws-r.github.io/docs/redshift/describe_account_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_account_attributes/](https://www.paws-r-sdk.com/docs/redshift_describe_account_attributes/) for full documentation.
 #'
 #' @param AttributeNames A list of attribute names.
 #'
@@ -1905,7 +1905,7 @@ redshift_describe_account_attributes <- function(AttributeNames = NULL) {
 #' @description
 #' Describes an authentication profile.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_authentication_profiles.html](https://paws-r.github.io/docs/redshift/describe_authentication_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_authentication_profiles/](https://www.paws-r-sdk.com/docs/redshift_describe_authentication_profiles/) for full documentation.
 #'
 #' @param AuthenticationProfileName The name of the authentication profile to describe. If not specified
 #' then all authentication profiles owned by the account are listed.
@@ -1935,7 +1935,7 @@ redshift_describe_authentication_profiles <- function(AuthenticationProfileName 
 #' @description
 #' Returns an array of `ClusterDbRevision` objects.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_db_revisions.html](https://paws-r.github.io/docs/redshift/describe_cluster_db_revisions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_db_revisions/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_db_revisions/) for full documentation.
 #'
 #' @param ClusterIdentifier A unique identifier for a cluster whose `ClusterDbRevisions` you are
 #' requesting. This parameter is case sensitive. All clusters defined for
@@ -1986,7 +1986,7 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
 #' @description
 #' Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group. For each parameter group, the response includes the parameter group name, description, and parameter group family name. You can optionally specify a name to retrieve the description of a specific parameter group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_parameter_groups.html](https://paws-r.github.io/docs/redshift/describe_cluster_parameter_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_parameter_groups/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_parameter_groups/) for full documentation.
 #'
 #' @param ParameterGroupName The name of a specific parameter group for which to return details. By
 #' default, details about all parameter groups and the default parameter
@@ -2048,7 +2048,7 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #' @description
 #' Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group. For each parameter the response includes information such as parameter name, description, data type, value, whether the parameter value is modifiable, and so on.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_parameters.html](https://paws-r.github.io/docs/redshift/describe_cluster_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_parameters/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_parameters/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of a cluster parameter group for which to return details.
 #' @param Source The parameter types to return. Specify `user` to show parameters that
@@ -2100,7 +2100,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' @description
 #' Returns information about Amazon Redshift security groups. If the name of a security group is specified, the response will contain only information about only that security group.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_security_groups.html](https://paws-r.github.io/docs/redshift/describe_cluster_security_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_security_groups/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_security_groups/) for full documentation.
 #'
 #' @param ClusterSecurityGroupName The name of a cluster security group for which you are requesting
 #' details. You must specify either the **Marker** parameter or a
@@ -2166,7 +2166,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' @description
 #' Returns one or more snapshot objects, which contain metadata about your cluster snapshots. By default, this operation returns information about all snapshots of all clusters that are owned by your Amazon Web Services account. No information is returned for snapshots owned by inactive Amazon Web Services accounts.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_snapshots.html](https://paws-r.github.io/docs/redshift/describe_cluster_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_snapshots/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_snapshots/) for full documentation.
 #'
 #' @param ClusterIdentifier The identifier of the cluster which generated the requested snapshots.
 #' @param SnapshotIdentifier The snapshot identifier of the snapshot about which to return
@@ -2267,7 +2267,7 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
 #' @description
 #' Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups. By default, this operation returns information about all cluster subnet groups that are defined in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_subnet_groups.html](https://paws-r.github.io/docs/redshift/describe_cluster_subnet_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_subnet_groups/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_subnet_groups/) for full documentation.
 #'
 #' @param ClusterSubnetGroupName The name of the cluster subnet group for which information is requested.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -2325,7 +2325,7 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
 #' @description
 #' Returns a list of all the available maintenance tracks.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_tracks.html](https://paws-r.github.io/docs/redshift/describe_cluster_tracks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_tracks/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_tracks/) for full documentation.
 #'
 #' @param MaintenanceTrackName The name of the maintenance track.
 #' @param MaxRecords An integer value for the maximum number of maintenance tracks to return.
@@ -2362,7 +2362,7 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
 #' @description
 #' Returns descriptions of the available Amazon Redshift cluster versions. You can call this operation even before creating any clusters to learn more about the Amazon Redshift versions. For more information about managing clusters, go to [Amazon Redshift Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_cluster_versions.html](https://paws-r.github.io/docs/redshift/describe_cluster_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_cluster_versions/](https://www.paws-r-sdk.com/docs/redshift_describe_cluster_versions/) for full documentation.
 #'
 #' @param ClusterVersion The specific cluster version to return.
 #' 
@@ -2421,7 +2421,7 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #' @description
 #' Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties. This operation supports pagination. For more information about managing clusters, go to [Amazon Redshift Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_clusters.html](https://paws-r.github.io/docs/redshift/describe_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_clusters/](https://www.paws-r-sdk.com/docs/redshift_describe_clusters/) for full documentation.
 #'
 #' @param ClusterIdentifier The unique identifier of a cluster whose properties you are requesting.
 #' This parameter is case sensitive.
@@ -2485,7 +2485,7 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 #' @description
 #' Shows the status of any inbound or outbound datashares available in the specified account.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_data_shares.html](https://paws-r.github.io/docs/redshift/describe_data_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_data_shares/](https://www.paws-r-sdk.com/docs/redshift_describe_data_shares/) for full documentation.
 #'
 #' @param DataShareArn The identifier of the datashare to describe details of.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -2527,7 +2527,7 @@ redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL
 #' @description
 #' Returns a list of datashares where the account identifier being called is a consumer account identifier.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_data_shares_for_consumer.html](https://paws-r.github.io/docs/redshift/describe_data_shares_for_consumer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_data_shares_for_consumer/](https://www.paws-r-sdk.com/docs/redshift_describe_data_shares_for_consumer/) for full documentation.
 #'
 #' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that returns in the list
 #' of datashares.
@@ -2573,7 +2573,7 @@ redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Statu
 #' @description
 #' Returns a list of datashares when the account identifier being called is a producer account identifier.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_data_shares_for_producer.html](https://paws-r.github.io/docs/redshift/describe_data_shares_for_producer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_data_shares_for_producer/](https://www.paws-r-sdk.com/docs/redshift_describe_data_shares_for_producer/) for full documentation.
 #'
 #' @param ProducerArn The Amazon Resource Name (ARN) of the producer that returns in the list
 #' of datashares.
@@ -2619,7 +2619,7 @@ redshift_describe_data_shares_for_producer <- function(ProducerArn = NULL, Statu
 #' @description
 #' Returns a list of parameter settings for the specified parameter group family.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_default_cluster_parameters.html](https://paws-r.github.io/docs/redshift/describe_default_cluster_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_default_cluster_parameters/](https://www.paws-r-sdk.com/docs/redshift_describe_default_cluster_parameters/) for full documentation.
 #'
 #' @param ParameterGroupFamily &#91;required&#93; The name of the cluster parameter group family.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -2664,7 +2664,7 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
 #' @description
 #' Describes a Redshift-managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_endpoint_access.html](https://paws-r.github.io/docs/redshift/describe_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_endpoint_access/](https://www.paws-r-sdk.com/docs/redshift_describe_endpoint_access/) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster identifier associated with the described endpoint.
 #' @param ResourceOwner The Amazon Web Services account ID of the owner of the cluster.
@@ -2705,7 +2705,7 @@ redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, Resource
 #' @description
 #' Describes an endpoint authorization.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_endpoint_authorization.html](https://paws-r.github.io/docs/redshift/describe_endpoint_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_endpoint_authorization/](https://www.paws-r-sdk.com/docs/redshift_describe_endpoint_authorization/) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster identifier of the cluster to access.
 #' @param Account The Amazon Web Services account ID of either the cluster owner (grantor)
@@ -2751,7 +2751,7 @@ redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, A
 #' @description
 #' Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to [Amazon Redshift Event Notifications](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html).
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_event_categories.html](https://paws-r.github.io/docs/redshift/describe_event_categories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_event_categories/](https://www.paws-r-sdk.com/docs/redshift_describe_event_categories/) for full documentation.
 #'
 #' @param SourceType The source type, such as cluster or parameter group, to which the
 #' described event categories apply.
@@ -2785,7 +2785,7 @@ redshift_describe_event_categories <- function(SourceType = NULL) {
 #' @description
 #' Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account. If you specify a subscription name, lists the description for that subscription.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_event_subscriptions.html](https://paws-r.github.io/docs/redshift/describe_event_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_event_subscriptions/](https://www.paws-r-sdk.com/docs/redshift_describe_event_subscriptions/) for full documentation.
 #'
 #' @param SubscriptionName The name of the Amazon Redshift event notification subscription to be
 #' described.
@@ -2845,7 +2845,7 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
 #' @description
 #' Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days. Events specific to a particular cluster, security group, snapshot or parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_events.html](https://paws-r.github.io/docs/redshift/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_events/](https://www.paws-r-sdk.com/docs/redshift_describe_events/) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events will be returned. If
 #' this parameter is not specified, then all sources are included in the
@@ -2940,7 +2940,7 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #' @description
 #' Returns information about the specified HSM client certificate. If no certificate ID is specified, returns information about all the HSM certificates owned by your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_hsm_client_certificates.html](https://paws-r.github.io/docs/redshift/describe_hsm_client_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_hsm_client_certificates/](https://www.paws-r-sdk.com/docs/redshift_describe_hsm_client_certificates/) for full documentation.
 #'
 #' @param HsmClientCertificateIdentifier The identifier of a specific HSM client certificate for which you want
 #' information. If no identifier is specified, information is returned for
@@ -3002,7 +3002,7 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #' @description
 #' Returns information about the specified Amazon Redshift HSM configuration. If no configuration ID is specified, returns information about all the HSM configurations owned by your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_hsm_configurations.html](https://paws-r.github.io/docs/redshift/describe_hsm_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_hsm_configurations/](https://www.paws-r-sdk.com/docs/redshift_describe_hsm_configurations/) for full documentation.
 #'
 #' @param HsmConfigurationIdentifier The identifier of a specific Amazon Redshift HSM configuration to be
 #' described. If no identifier is specified, information is returned for
@@ -3064,7 +3064,7 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
 #' @description
 #' Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_logging_status.html](https://paws-r.github.io/docs/redshift/describe_logging_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_logging_status/](https://www.paws-r-sdk.com/docs/redshift_describe_logging_status/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster from which to get the logging status.
 #' 
@@ -3096,7 +3096,7 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' @description
 #' Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_node_configuration_options.html](https://paws-r.github.io/docs/redshift/describe_node_configuration_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_node_configuration_options/](https://www.paws-r-sdk.com/docs/redshift_describe_node_configuration_options/) for full documentation.
 #'
 #' @param ActionType &#91;required&#93; The action type to evaluate for possible node configurations. Specify
 #' "restore-cluster" to get configuration combinations based on an existing
@@ -3156,7 +3156,7 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
 #' @description
 #' Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find what options are available, such as the EC2 Availability Zones (AZ) in the specific Amazon Web Services Region that you can specify, and the node types you can request. The node types differ by available storage, memory, CPU and price. With the cost involved you might want to obtain a list of cluster options in the specific region and specify values when creating a cluster. For more information about managing clusters, go to [Amazon Redshift Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_orderable_cluster_options.html](https://paws-r.github.io/docs/redshift/describe_orderable_cluster_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_orderable_cluster_options/](https://www.paws-r-sdk.com/docs/redshift_describe_orderable_cluster_options/) for full documentation.
 #'
 #' @param ClusterVersion The version filter value. Specify this parameter to show only the
 #' available offerings matching the specified version.
@@ -3209,7 +3209,7 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #' @description
 #' Returns information about the partner integrations defined for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_partners.html](https://paws-r.github.io/docs/redshift/describe_partners.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_partners/](https://www.paws-r-sdk.com/docs/redshift_describe_partners/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster whose partner integration is being
@@ -3246,7 +3246,7 @@ redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseNam
 #' @description
 #' Returns exchange status details and associated metadata for a reserved-node exchange. Statuses include such values as in progress and requested.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_reserved_node_exchange_status.html](https://paws-r.github.io/docs/redshift/describe_reserved_node_exchange_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_reserved_node_exchange_status/](https://www.paws-r-sdk.com/docs/redshift_describe_reserved_node_exchange_status/) for full documentation.
 #'
 #' @param ReservedNodeId The identifier of the source reserved node in a reserved-node exchange
 #' request.
@@ -3292,7 +3292,7 @@ redshift_describe_reserved_node_exchange_status <- function(ReservedNodeId = NUL
 #' @description
 #' Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you. These descriptions help you determine which reserve node offering you want to purchase. You then use the unique offering ID in you call to [`purchase_reserved_node_offering`][redshift_purchase_reserved_node_offering] to reserve one or more nodes for your Amazon Redshift cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_reserved_node_offerings.html](https://paws-r.github.io/docs/redshift/describe_reserved_node_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_reserved_node_offerings/](https://www.paws-r-sdk.com/docs/redshift_describe_reserved_node_offerings/) for full documentation.
 #'
 #' @param ReservedNodeOfferingId The unique identifier for the offering.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -3337,7 +3337,7 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
 #' @description
 #' Returns the descriptions of the reserved nodes.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_reserved_nodes.html](https://paws-r.github.io/docs/redshift/describe_reserved_nodes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_reserved_nodes/](https://www.paws-r-sdk.com/docs/redshift_describe_reserved_nodes/) for full documentation.
 #'
 #' @param ReservedNodeId Identifier for the node reservation.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -3383,7 +3383,7 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
 #' @description
 #' Returns information about the last resize operation for the specified cluster. If no resize operation has ever been initiated for the specified cluster, a `HTTP 404` error is returned. If a resize operation was initiated and completed, the status of the resize remains as `SUCCEEDED` until the next resize.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_resize.html](https://paws-r.github.io/docs/redshift/describe_resize.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_resize/](https://www.paws-r-sdk.com/docs/redshift_describe_resize/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of a cluster whose resize progress you are
 #' requesting. This parameter is case-sensitive.
@@ -3416,7 +3416,7 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #' @description
 #' Describes properties of scheduled actions.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_scheduled_actions.html](https://paws-r.github.io/docs/redshift/describe_scheduled_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_scheduled_actions/](https://www.paws-r-sdk.com/docs/redshift_describe_scheduled_actions/) for full documentation.
 #'
 #' @param ScheduledActionName The name of the scheduled action to retrieve.
 #' @param TargetActionType The type of the scheduled actions to retrieve.
@@ -3470,7 +3470,7 @@ redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, Targ
 #' @description
 #' Returns a list of snapshot copy grants owned by the Amazon Web Services account in the destination region.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_snapshot_copy_grants.html](https://paws-r.github.io/docs/redshift/describe_snapshot_copy_grants.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_snapshot_copy_grants/](https://www.paws-r-sdk.com/docs/redshift_describe_snapshot_copy_grants/) for full documentation.
 #'
 #' @param SnapshotCopyGrantName The name of the snapshot copy grant.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
@@ -3529,7 +3529,7 @@ redshift_describe_snapshot_copy_grants <- function(SnapshotCopyGrantName = NULL,
 #' @description
 #' Returns a list of snapshot schedules.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_snapshot_schedules.html](https://paws-r.github.io/docs/redshift/describe_snapshot_schedules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_snapshot_schedules/](https://www.paws-r-sdk.com/docs/redshift_describe_snapshot_schedules/) for full documentation.
 #'
 #' @param ClusterIdentifier The unique identifier for the cluster whose snapshot schedules you want
 #' to view.
@@ -3573,7 +3573,7 @@ redshift_describe_snapshot_schedules <- function(ClusterIdentifier = NULL, Sched
 #' @description
 #' Returns account level backups storage size and provisional storage.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_storage.html](https://paws-r.github.io/docs/redshift/describe_storage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_storage/](https://www.paws-r-sdk.com/docs/redshift_describe_storage/) for full documentation.
 #'
 
 #'
@@ -3603,7 +3603,7 @@ redshift_describe_storage <- function() {
 #' @description
 #' Lists the status of one or more table restore requests made using the [`restore_table_from_cluster_snapshot`][redshift_restore_table_from_cluster_snapshot] API action. If you don't specify a value for the `TableRestoreRequestId` parameter, then [`describe_table_restore_status`][redshift_describe_table_restore_status] returns the status of all table restore requests ordered by the date and time of the request in ascending order. Otherwise [`describe_table_restore_status`][redshift_describe_table_restore_status] returns the status of the table specified by `TableRestoreRequestId`.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_table_restore_status.html](https://paws-r.github.io/docs/redshift/describe_table_restore_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_table_restore_status/](https://www.paws-r-sdk.com/docs/redshift_describe_table_restore_status/) for full documentation.
 #'
 #' @param ClusterIdentifier The Amazon Redshift cluster that the table is being restored to.
 #' @param TableRestoreRequestId The identifier of the table restore request to return status for. If you
@@ -3645,7 +3645,7 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #' @description
 #' Returns a list of tags. You can return tags from a specific resource by specifying an ARN, or you can return all tags for a given type of resource, such as clusters, snapshots, and so on.
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_tags.html](https://paws-r.github.io/docs/redshift/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_tags/](https://www.paws-r-sdk.com/docs/redshift_describe_tags/) for full documentation.
 #'
 #' @param ResourceName The Amazon Resource Name (ARN) for which you want to describe the tag or
 #' tags. For example, `arn:aws:redshift:us-east-2:123456789:cluster:t1`.
@@ -3726,7 +3726,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #' @description
 #' Shows usage limits on a cluster. Results are filtered based on the combination of input usage limit identifier, cluster identifier, and feature type parameters:
 #'
-#' See [https://paws-r.github.io/docs/redshift/describe_usage_limits.html](https://paws-r.github.io/docs/redshift/describe_usage_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_usage_limits/](https://www.paws-r-sdk.com/docs/redshift_describe_usage_limits/) for full documentation.
 #'
 #' @param UsageLimitId The identifier of the usage limit to describe.
 #' @param ClusterIdentifier The identifier of the cluster for which you want to describe usage
@@ -3788,7 +3788,7 @@ redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifie
 #' @description
 #' Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/disable_logging.html](https://paws-r.github.io/docs/redshift/disable_logging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_disable_logging/](https://www.paws-r-sdk.com/docs/redshift_disable_logging/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster on which logging is to be stopped.
 #' 
@@ -3820,7 +3820,7 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #' @description
 #' Disables the automatic copying of snapshots from one region to another region for a specified cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/disable_snapshot_copy.html](https://paws-r.github.io/docs/redshift/disable_snapshot_copy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_disable_snapshot_copy/](https://www.paws-r-sdk.com/docs/redshift_disable_snapshot_copy/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the source cluster that you want to disable
 #' copying of snapshots to a destination region.
@@ -3854,7 +3854,7 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #' @description
 #' From a datashare consumer account, remove association for the specified datashare.
 #'
-#' See [https://paws-r.github.io/docs/redshift/disassociate_data_share_consumer.html](https://paws-r.github.io/docs/redshift/disassociate_data_share_consumer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_disassociate_data_share_consumer/](https://www.paws-r-sdk.com/docs/redshift_disassociate_data_share_consumer/) for full documentation.
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to remove association
 #' for.
@@ -3892,7 +3892,7 @@ redshift_disassociate_data_share_consumer <- function(DataShareArn, Disassociate
 #' @description
 #' Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/enable_logging.html](https://paws-r.github.io/docs/redshift/enable_logging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_enable_logging/](https://www.paws-r-sdk.com/docs/redshift_enable_logging/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster on which logging is to be started.
 #' 
@@ -3954,7 +3954,7 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyP
 #' @description
 #' Enables the automatic copy of snapshots from one region to another region for a specified cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/enable_snapshot_copy.html](https://paws-r.github.io/docs/redshift/enable_snapshot_copy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_enable_snapshot_copy/](https://www.paws-r-sdk.com/docs/redshift_enable_snapshot_copy/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the source cluster to copy snapshots from.
 #' 
@@ -4008,7 +4008,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' @description
 #' Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database. The action returns the database user name prefixed with `IAM:` if `AutoCreate` is `False` or `IAMA:` if `AutoCreate` is `True`. You can optionally specify one or more database user groups that the user will join at log on. By default, the temporary credentials expire in 900 seconds. You can optionally specify a duration between 900 seconds (15 minutes) and 3600 seconds (60 minutes). For more information, see [Using IAM Authentication to Generate Database User Credentials](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html) in the Amazon Redshift Cluster Management Guide.
 #'
-#' See [https://paws-r.github.io/docs/redshift/get_cluster_credentials.html](https://paws-r.github.io/docs/redshift/get_cluster_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials/](https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials/) for full documentation.
 #'
 #' @param DbUser &#91;required&#93; The name of a database user. If a user name matching `DbUser` exists in
 #' the database, the temporary user credentials have the same permissions
@@ -4113,7 +4113,7 @@ redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdent
 #' @description
 #' Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database. The database user is mapped 1:1 to the source Identity and Access Management (IAM) identity. For more information about IAM identities, see [IAM Identities (users, user groups, and roles)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the Amazon Web Services Identity and Access Management User Guide.
 #'
-#' See [https://paws-r.github.io/docs/redshift/get_cluster_credentials_with_iam.html](https://paws-r.github.io/docs/redshift/get_cluster_credentials_with_iam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials_with_iam/](https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials_with_iam/) for full documentation.
 #'
 #' @param DbName The name of the database for which you are requesting credentials. If
 #' the database name is specified, the IAM policy must allow access to the
@@ -4150,7 +4150,7 @@ redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIden
 #' @description
 #' Gets the configuration options for the reserved-node exchange. These options include information about the source reserved node and target reserved node offering. Details include the node type, the price, the node count, and the offering type.
 #'
-#' See [https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_configuration_options.html](https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_configuration_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_get_reserved_node_exchange_configuration_options/](https://www.paws-r-sdk.com/docs/redshift_get_reserved_node_exchange_configuration_options/) for full documentation.
 #'
 #' @param ActionType &#91;required&#93; The action type of the reserved-node configuration. The action type can
 #' be an exchange initiated from either a snapshot or a resize.
@@ -4197,7 +4197,7 @@ redshift_get_reserved_node_exchange_configuration_options <- function(ActionType
 #' @description
 #' Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node.
 #'
-#' See [https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_offerings.html](https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_get_reserved_node_exchange_offerings/](https://www.paws-r-sdk.com/docs/redshift_get_reserved_node_exchange_offerings/) for full documentation.
 #'
 #' @param ReservedNodeId &#91;required&#93; A string representing the node identifier for the DC1 Reserved Node to
 #' be exchanged.
@@ -4231,7 +4231,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' @description
 #' This operation is retired. Calling this operation does not change AQUA configuration. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_aqua_configuration.html](https://paws-r.github.io/docs/redshift/modify_aqua_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_aqua_configuration/](https://www.paws-r-sdk.com/docs/redshift_modify_aqua_configuration/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be modified.
 #' @param AquaConfigurationStatus This parameter is retired. Amazon Redshift automatically determines
@@ -4262,7 +4262,7 @@ redshift_modify_aqua_configuration <- function(ClusterIdentifier, AquaConfigurat
 #' @description
 #' Modifies an authentication profile.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_authentication_profile.html](https://paws-r.github.io/docs/redshift/modify_authentication_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_authentication_profile/](https://www.paws-r-sdk.com/docs/redshift_modify_authentication_profile/) for full documentation.
 #'
 #' @param AuthenticationProfileName &#91;required&#93; The name of the authentication profile to replace.
 #' @param AuthenticationProfileContent &#91;required&#93; The new content of the authentication profile in JSON format. The
@@ -4294,7 +4294,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' @description
 #' Modifies the settings for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster.html](https://paws-r.github.io/docs/redshift/modify_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster to be modified.
 #' 
@@ -4517,7 +4517,7 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @description
 #' Modifies the database revision of a cluster. The database revision is a unique revision of the database running in a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_db_revision.html](https://paws-r.github.io/docs/redshift/modify_cluster_db_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_db_revision/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_db_revision/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of a cluster whose database revision you want to
 #' modify.
@@ -4554,7 +4554,7 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #' @description
 #' Modifies the list of Identity and Access Management (IAM) roles that can be used by the cluster to access other Amazon Web Services services.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_iam_roles.html](https://paws-r.github.io/docs/redshift/modify_cluster_iam_roles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_iam_roles/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_iam_roles/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which you want to associate or
 #' disassociate IAM roles.
@@ -4589,7 +4589,7 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #' @description
 #' Modifies the maintenance settings of a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_maintenance.html](https://paws-r.github.io/docs/redshift/modify_cluster_maintenance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_maintenance/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_maintenance/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; A unique identifier for the cluster.
 #' @param DeferMaintenance A boolean indicating whether to enable the deferred maintenance window.
@@ -4627,7 +4627,7 @@ redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintena
 #' @description
 #' Modifies the parameters of a parameter group. For the parameters parameter, it can't contain ASCII characters.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_parameter_group.html](https://paws-r.github.io/docs/redshift/modify_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to be modified.
 #' @param Parameters &#91;required&#93; An array of parameters to be modified. A maximum of 20 parameters can be
@@ -4665,7 +4665,7 @@ redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' @description
 #' Modifies the settings for a snapshot.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_snapshot.html](https://paws-r.github.io/docs/redshift/modify_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_snapshot/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_snapshot/) for full documentation.
 #'
 #' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot whose setting you want to modify.
 #' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If the value is
@@ -4703,7 +4703,7 @@ redshift_modify_cluster_snapshot <- function(SnapshotIdentifier, ManualSnapshotR
 #' @description
 #' Modifies a snapshot schedule for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_snapshot_schedule.html](https://paws-r.github.io/docs/redshift/modify_cluster_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_snapshot_schedule/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_snapshot_schedule/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; A unique identifier for the cluster whose snapshot schedule you want to
 #' modify.
@@ -4738,7 +4738,7 @@ redshift_modify_cluster_snapshot_schedule <- function(ClusterIdentifier, Schedul
 #' @description
 #' Modifies a cluster subnet group to include the specified list of VPC subnets. The operation replaces the existing list of subnets with the new list of subnets.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_cluster_subnet_group.html](https://paws-r.github.io/docs/redshift/modify_cluster_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_cluster_subnet_group/](https://www.paws-r-sdk.com/docs/redshift_modify_cluster_subnet_group/) for full documentation.
 #'
 #' @param ClusterSubnetGroupName &#91;required&#93; The name of the subnet group to be modified.
 #' @param Description A text description of the subnet group to be modified.
@@ -4770,7 +4770,7 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @description
 #' Modifies a Redshift-managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_endpoint_access.html](https://paws-r.github.io/docs/redshift/modify_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_endpoint_access/](https://www.paws-r-sdk.com/docs/redshift_modify_endpoint_access/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The endpoint to be modified.
 #' @param VpcSecurityGroupIds The complete list of VPC security groups associated with the endpoint
@@ -4801,7 +4801,7 @@ redshift_modify_endpoint_access <- function(EndpointName, VpcSecurityGroupIds = 
 #' @description
 #' Modifies an existing Amazon Redshift event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_event_subscription.html](https://paws-r.github.io/docs/redshift/modify_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_event_subscription/](https://www.paws-r-sdk.com/docs/redshift_modify_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the modified Amazon Redshift event notification
 #' subscription.
@@ -4860,7 +4860,7 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 #' @description
 #' Modifies a scheduled action.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_scheduled_action.html](https://paws-r.github.io/docs/redshift/modify_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_scheduled_action/](https://www.paws-r-sdk.com/docs/redshift_modify_scheduled_action/) for full documentation.
 #'
 #' @param ScheduledActionName &#91;required&#93; The name of the scheduled action to modify.
 #' @param TargetAction A modified JSON format of the scheduled action. For more information
@@ -4904,7 +4904,7 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #' @description
 #' Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region. By default, this operation only changes the retention period of copied automated snapshots. The retention periods for both new and existing copied automated snapshots are updated with the new retention period. You can set the manual option to change only the retention periods of copied manual snapshots. If you set this option, only newly copied manual snapshots have the new retention period.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_snapshot_copy_retention_period.html](https://paws-r.github.io/docs/redshift/modify_snapshot_copy_retention_period.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_snapshot_copy_retention_period/](https://www.paws-r-sdk.com/docs/redshift_modify_snapshot_copy_retention_period/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which you want to change the
 #' retention period for either automated or manual snapshots that are
@@ -4964,7 +4964,7 @@ redshift_modify_snapshot_copy_retention_period <- function(ClusterIdentifier, Re
 #' @description
 #' Modifies a snapshot schedule. Any schedule associated with a cluster is modified asynchronously.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_snapshot_schedule.html](https://paws-r.github.io/docs/redshift/modify_snapshot_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_snapshot_schedule/](https://www.paws-r-sdk.com/docs/redshift_modify_snapshot_schedule/) for full documentation.
 #'
 #' @param ScheduleIdentifier &#91;required&#93; A unique alphanumeric identifier of the schedule to modify.
 #' @param ScheduleDefinitions &#91;required&#93; An updated list of schedule definitions. A schedule definition is made
@@ -4996,7 +4996,7 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
 #' @description
 #' Modifies a usage limit in a cluster. You can't modify the feature type or period of a usage limit.
 #'
-#' See [https://paws-r.github.io/docs/redshift/modify_usage_limit.html](https://paws-r.github.io/docs/redshift/modify_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_usage_limit/](https://www.paws-r-sdk.com/docs/redshift_modify_usage_limit/) for full documentation.
 #'
 #' @param UsageLimitId &#91;required&#93; The identifier of the usage limit to modify.
 #' @param Amount The new limit amount. For more information about this parameter, see
@@ -5029,7 +5029,7 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #' @description
 #' Pauses a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/pause_cluster.html](https://paws-r.github.io/docs/redshift/pause_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_pause_cluster/](https://www.paws-r-sdk.com/docs/redshift_pause_cluster/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be paused.
 #'
@@ -5058,7 +5058,7 @@ redshift_pause_cluster <- function(ClusterIdentifier) {
 #' @description
 #' Allows you to purchase reserved nodes. Amazon Redshift offers a predefined set of reserved node offerings. You can purchase one or more of the offerings. You can call the [`describe_reserved_node_offerings`][redshift_describe_reserved_node_offerings] API to obtain the available reserved node offerings. You can call this API by providing a specific reserved node offering and the number of nodes you want to reserve.
 #'
-#' See [https://paws-r.github.io/docs/redshift/purchase_reserved_node_offering.html](https://paws-r.github.io/docs/redshift/purchase_reserved_node_offering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_purchase_reserved_node_offering/](https://www.paws-r-sdk.com/docs/redshift_purchase_reserved_node_offering/) for full documentation.
 #'
 #' @param ReservedNodeOfferingId &#91;required&#93; The unique identifier of the reserved node offering you want to
 #' purchase.
@@ -5091,7 +5091,7 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #' @description
 #' Reboots a cluster. This action is taken as soon as possible. It results in a momentary outage to the cluster, during which the cluster status is set to `rebooting`. A cluster event is created when the reboot is completed. Any pending cluster modifications (see [`modify_cluster`][redshift_modify_cluster]) are applied at this reboot. For more information about managing clusters, go to [Amazon Redshift Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/redshift/reboot_cluster.html](https://paws-r.github.io/docs/redshift/reboot_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_reboot_cluster/](https://www.paws-r-sdk.com/docs/redshift_reboot_cluster/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier.
 #'
@@ -5120,7 +5120,7 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
 #' @description
 #' From a datashare consumer account, rejects the specified datashare.
 #'
-#' See [https://paws-r.github.io/docs/redshift/reject_data_share.html](https://paws-r.github.io/docs/redshift/reject_data_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_reject_data_share/](https://www.paws-r-sdk.com/docs/redshift_reject_data_share/) for full documentation.
 #'
 #' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to reject.
 #'
@@ -5151,7 +5151,7 @@ redshift_reject_data_share <- function(DataShareArn) {
 #' @description
 #' Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default". To reset the entire parameter group specify the *ResetAllParameters* parameter. For parameter changes to take effect you must reboot any associated clusters.
 #'
-#' See [https://paws-r.github.io/docs/redshift/reset_cluster_parameter_group.html](https://paws-r.github.io/docs/redshift/reset_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_reset_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/redshift_reset_cluster_parameter_group/) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the cluster parameter group to be reset.
 #' @param ResetAllParameters If `true`, all parameters in the specified parameter group will be reset
@@ -5189,7 +5189,7 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' @description
 #' Changes the size of the cluster. You can change the cluster's type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method.
 #'
-#' See [https://paws-r.github.io/docs/redshift/resize_cluster.html](https://paws-r.github.io/docs/redshift/resize_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_resize_cluster/](https://www.paws-r-sdk.com/docs/redshift_resize_cluster/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier for the cluster to resize.
 #' @param ClusterType The new cluster type for the specified cluster.
@@ -5228,7 +5228,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @description
 #' Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the [`modify_cluster`][redshift_modify_cluster] API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore.
 #'
-#' See [https://paws-r.github.io/docs/redshift/restore_from_cluster_snapshot.html](https://paws-r.github.io/docs/redshift/restore_from_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_restore_from_cluster_snapshot/](https://www.paws-r-sdk.com/docs/redshift_restore_from_cluster_snapshot/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster that will be created from restoring the
 #' snapshot.
@@ -5429,7 +5429,7 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' @description
 #' Creates a new table from a table in an Amazon Redshift cluster snapshot. You must create the new table within the Amazon Redshift cluster that the snapshot was taken from.
 #'
-#' See [https://paws-r.github.io/docs/redshift/restore_table_from_cluster_snapshot.html](https://paws-r.github.io/docs/redshift/restore_table_from_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_restore_table_from_cluster_snapshot/](https://www.paws-r-sdk.com/docs/redshift_restore_table_from_cluster_snapshot/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the Amazon Redshift cluster to restore the table to.
 #' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot to restore the table from. This snapshot
@@ -5472,7 +5472,7 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #' @description
 #' Resumes a paused cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/resume_cluster.html](https://paws-r.github.io/docs/redshift/resume_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_resume_cluster/](https://www.paws-r-sdk.com/docs/redshift_resume_cluster/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be resumed.
 #'
@@ -5502,7 +5502,7 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
 #' @description
 #' Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group. To add an ingress rule, see [`authorize_cluster_security_group_ingress`][redshift_authorize_cluster_security_group_ingress]. For information about managing security groups, go to [Amazon Redshift Cluster Security Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html) in the *Amazon Redshift Cluster Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/redshift/revoke_cluster_security_group_ingress.html](https://paws-r.github.io/docs/redshift/revoke_cluster_security_group_ingress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_revoke_cluster_security_group_ingress/](https://www.paws-r-sdk.com/docs/redshift_revoke_cluster_security_group_ingress/) for full documentation.
 #'
 #' @param ClusterSecurityGroupName &#91;required&#93; The name of the security Group from which to revoke the ingress rule.
 #' @param CIDRIP The IP range for which to revoke access. This range must be a valid
@@ -5545,7 +5545,7 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #' @description
 #' Revokes access to a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/revoke_endpoint_access.html](https://paws-r.github.io/docs/redshift/revoke_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_revoke_endpoint_access/](https://www.paws-r-sdk.com/docs/redshift_revoke_endpoint_access/) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster to revoke access from.
 #' @param Account The Amazon Web Services account ID whose access is to be revoked.
@@ -5581,7 +5581,7 @@ redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = 
 #' @description
 #' Removes the ability of the specified Amazon Web Services account to restore the specified snapshot. If the account is currently restoring the snapshot, the restore will run to completion.
 #'
-#' See [https://paws-r.github.io/docs/redshift/revoke_snapshot_access.html](https://paws-r.github.io/docs/redshift/revoke_snapshot_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_revoke_snapshot_access/](https://www.paws-r-sdk.com/docs/redshift_revoke_snapshot_access/) for full documentation.
 #'
 #' @param SnapshotIdentifier The identifier of the snapshot that the account can no longer access.
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
@@ -5618,7 +5618,7 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotA
 #' @description
 #' Rotates the encryption keys for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/redshift/rotate_encryption_key.html](https://paws-r.github.io/docs/redshift/rotate_encryption_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_rotate_encryption_key/](https://www.paws-r-sdk.com/docs/redshift_rotate_encryption_key/) for full documentation.
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster that you want to rotate the
 #' encryption keys for.
@@ -5651,7 +5651,7 @@ redshift_rotate_encryption_key <- function(ClusterIdentifier) {
 #' @description
 #' Updates the status of a partner integration.
 #'
-#' See [https://paws-r.github.io/docs/redshift/update_partner_status.html](https://paws-r.github.io/docs/redshift/update_partner_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshift_update_partner_status/](https://www.paws-r-sdk.com/docs/redshift_update_partner_status/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
 #' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster whose partner integration status

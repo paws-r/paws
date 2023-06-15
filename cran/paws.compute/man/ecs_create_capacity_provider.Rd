@@ -41,6 +41,6 @@ your tags per resource limit.
 \description{
 Creates a new capacity provider. Capacity providers are associated with an Amazon ECS cluster and are used in capacity provider strategies to facilitate cluster auto scaling.
 
-See \url{https://paws-r.github.io/docs/ecs/create_capacity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_create_capacity_provider/} for full documentation.
 }
 \keyword{internal}

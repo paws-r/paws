@@ -21,6 +21,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Associates a set of queues with a routing profile.
 
-See \url{https://paws-r.github.io/docs/connect/associate_routing_profile_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_associate_routing_profile_queues/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ all your distributions.}
 \description{
 Returns the timestamp and status of the last cache reset of a specific Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_distribution_latest_cache_reset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_distribution_latest_cache_reset/} for full documentation.
 }
 \keyword{internal}

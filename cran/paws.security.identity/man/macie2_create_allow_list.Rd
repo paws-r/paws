@@ -37,6 +37,6 @@ characters. The maximum length of a tag value is 256 characters.}
 \description{
 Creates and defines the settings for an allow list.
 
-See \url{https://paws-r.github.io/docs/macie2/create_allow_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_allow_list/} for full documentation.
 }
 \keyword{internal}

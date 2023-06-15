@@ -25,6 +25,6 @@ Default value: \code{null}}
 \description{
 A batch request to retrieve all device positions.
 
-See \url{https://paws-r.github.io/docs/locationservice/list_device_positions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_list_device_positions/} for full documentation.
 }
 \keyword{internal}

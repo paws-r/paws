@@ -17,6 +17,6 @@ applicationinsights_describe_component_configuration(
 \description{
 Describes the monitoring configuration of the component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration/} for full documentation.
 }
 \keyword{internal}

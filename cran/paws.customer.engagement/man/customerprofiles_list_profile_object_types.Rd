@@ -20,6 +20,6 @@ customerprofiles_list_profile_object_types(
 \description{
 Lists all of the templates available within the service.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/list_profile_object_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_object_types/} for full documentation.
 }
 \keyword{internal}

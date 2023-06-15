@@ -26,6 +26,6 @@ it for the request to ensure idempotency.}
 \description{
 Add/update users with given persona to studio membership.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/put_studio_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_put_studio_members/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ fraudster.}
 \description{
 Disassociates the fraudsters from the watchlist specified. Voice ID always expects a fraudster to be a part of at least one watchlist. If you try to disassociate a fraudster from its only watchlist, a \code{ValidationException} is thrown.
 
-See \url{https://paws-r.github.io/docs/voiceid/disassociate_fraudster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_disassociate_fraudster/} for full documentation.
 }
 \keyword{internal}

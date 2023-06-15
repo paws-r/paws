@@ -12,6 +12,6 @@ ssm_resume_session(SessionId)
 \description{
 Reconnects a session to a managed node after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions.
 
-See \url{https://paws-r.github.io/docs/ssm/resume_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_resume_session/} for full documentation.
 }
 \keyword{internal}

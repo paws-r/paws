@@ -18,6 +18,6 @@ temporary extension is granted to the remaining quota.}
 \description{
 Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_usage/} for full documentation.
 }
 \keyword{internal}

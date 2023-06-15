@@ -27,6 +27,6 @@ the list.}
 \description{
 Gets a summary of the most recent executions for a pipeline.
 
-See \url{https://paws-r.github.io/docs/codepipeline/list_pipeline_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_list_pipeline_executions/} for full documentation.
 }
 \keyword{internal}

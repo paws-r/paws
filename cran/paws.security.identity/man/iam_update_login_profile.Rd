@@ -42,6 +42,6 @@ IAM user to set a new password on next sign-in.}
 \description{
 Changes the password for the specified IAM user. You can use the CLI, the Amazon Web Services API, or the \strong{Users} page in the IAM console to change the password for any IAM user. Use \code{\link[=iam_change_password]{change_password}} to change your own password in the \strong{My Security Credentials} page in the Amazon Web Services Management Console.
 
-See \url{https://paws-r.github.io/docs/iam/update_login_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_login_profile/} for full documentation.
 }
 \keyword{internal}

@@ -67,11 +67,12 @@ fulfilled.}
 string must match one of the supported locales. For more information,
 see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html}{Supported languages}.}
 
-\item{initialResponseSetting}{}
+\item{initialResponseSetting}{Configuration settings for a response sent to the user before Amazon Lex
+starts eliciting slots.}
 }
 \description{
 Updates the settings for an intent.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_intent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_intent/} for full documentation.
 }
 \keyword{internal}

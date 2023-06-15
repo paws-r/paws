@@ -22,6 +22,6 @@ MFA setup process.}
 \description{
 Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response. You can authorize an \code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}} request with either the user's access token, or a session string from a challenge response that you received from Amazon Cognito.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/associate_software_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_associate_software_token/} for full documentation.
 }
 \keyword{internal}

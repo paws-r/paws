@@ -54,6 +54,6 @@ can be used to filter results.
 \description{
 List of SQL statements. By default, only finished statements are shown. A token is returned to page through the statement list.
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/list_statements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_statements/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ ssmcontacts_tag_resource(ResourceARN, Tags)
 \description{
 Tags a contact or escalation plan. You can tag only contacts and escalation plans in the first region of your replication set.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_tag_resource/} for full documentation.
 }
 \keyword{internal}

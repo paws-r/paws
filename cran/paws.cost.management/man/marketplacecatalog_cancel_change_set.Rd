@@ -17,6 +17,6 @@ you want to cancel.}
 \description{
 Used to cancel an open change request. Must be sent before the status of the request changes to \code{APPLYING}, the final stage of completing your change request. You can describe a change during the 60-day request history retention period for API calls.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/cancel_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_cancel_change_set/} for full documentation.
 }
 \keyword{internal}

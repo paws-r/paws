@@ -235,6 +235,6 @@ authentication challenge before the session expires.}
 \description{
 Updates the specified user pool app client with the specified attributes. You can get a list of the current user pool app client settings using \code{\link[=cognitoidentityprovider_describe_user_pool_client]{describe_user_pool_client}}.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool_client.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool_client/} for full documentation.
 }
 \keyword{internal}

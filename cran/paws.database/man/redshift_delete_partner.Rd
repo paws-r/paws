@@ -24,6 +24,6 @@ partner.}
 \description{
 Deletes a partner integration from a cluster. Data can still flow to the cluster until the integration is deleted at the partner's website.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_partner.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_partner/} for full documentation.
 }
 \keyword{internal}

@@ -44,6 +44,6 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns a list of resources (for example, instances) that have at least one pending maintenance action.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_pending_maintenance_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_pending_maintenance_actions/} for full documentation.
 }
 \keyword{internal}

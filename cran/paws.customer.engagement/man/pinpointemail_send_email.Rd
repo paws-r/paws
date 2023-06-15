@@ -40,6 +40,6 @@ email.}
 \description{
 Sends an email message. You can use the Amazon Pinpoint Email API to send two types of messages:
 
-See \url{https://paws-r.github.io/docs/pinpointemail/send_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_send_email/} for full documentation.
 }
 \keyword{internal}

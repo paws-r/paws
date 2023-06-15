@@ -12,6 +12,6 @@ sagemaker_describe_device_fleet(DeviceFleetName)
 \description{
 A description of the fleet the device belongs to.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_device_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_device_fleet/} for full documentation.
 }
 \keyword{internal}

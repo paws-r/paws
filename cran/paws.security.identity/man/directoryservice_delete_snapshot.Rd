@@ -12,6 +12,6 @@ directoryservice_delete_snapshot(SnapshotId)
 \description{
 Deletes a directory snapshot.
 
-See \url{https://paws-r.github.io/docs/directoryservice/delete_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_delete_snapshot/} for full documentation.
 }
 \keyword{internal}

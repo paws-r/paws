@@ -31,6 +31,6 @@ page.}
 \description{
 Returns a list of App Runner connections that are associated with your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/apprunner/list_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_list_connections/} for full documentation.
 }
 \keyword{internal}

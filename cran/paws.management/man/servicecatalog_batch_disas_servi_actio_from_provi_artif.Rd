@@ -23,6 +23,6 @@ ID, and the Provisioning Artifact ID.}
 \description{
 Disassociates a batch of self-service actions from the specified provisioning artifact.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/batch_disassociate_service_action_from_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_batch_disassociate_service_action_from_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

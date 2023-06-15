@@ -102,6 +102,6 @@ environment. For more information, see \href{https://docs.aws.amazon.com/tag-edi
 \description{
 Creates an inference experiment using the configurations specified in the request.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_inference_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_inference_experiment/} for full documentation.
 }
 \keyword{internal}

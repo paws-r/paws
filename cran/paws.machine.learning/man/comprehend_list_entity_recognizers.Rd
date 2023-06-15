@@ -24,6 +24,6 @@ a time.}
 \description{
 Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training. Allows you to filter the list of recognizers based on criteria such as status and submission time. This call returns up to 500 entity recognizers in the list, with a default number of 100 recognizers in the list.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_entity_recognizers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_entity_recognizers/} for full documentation.
 }
 \keyword{internal}

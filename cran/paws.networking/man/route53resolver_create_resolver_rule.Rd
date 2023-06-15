@@ -62,6 +62,6 @@ endpoint.}
 \description{
 For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network.
 
-See \url{https://paws-r.github.io/docs/route53resolver/create_resolver_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_rule/} for full documentation.
 }
 \keyword{internal}

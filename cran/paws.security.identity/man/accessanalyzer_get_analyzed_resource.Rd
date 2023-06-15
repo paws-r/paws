@@ -15,6 +15,6 @@ to retrieve information from.}
 \description{
 Retrieves information about a resource that was analyzed.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/get_analyzed_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzed_resource/} for full documentation.
 }
 \keyword{internal}

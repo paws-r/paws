@@ -15,6 +15,6 @@ applications lists, and protocols lists.}
 \description{
 Retrieves the list of tags for the specified Amazon Web Services resource.
 
-See \url{https://paws-r.github.io/docs/fms/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

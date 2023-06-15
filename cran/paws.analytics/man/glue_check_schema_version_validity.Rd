@@ -15,6 +15,6 @@ glue_check_schema_version_validity(DataFormat, SchemaDefinition)
 \description{
 Validates the supplied schema. This call has no side effects, it simply validates using the supplied schema using \code{DataFormat} as the format. Since it does not take a schema set name, no compatibility checks are performed.
 
-See \url{https://paws-r.github.io/docs/glue/check_schema_version_validity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_check_schema_version_validity/} for full documentation.
 }
 \keyword{internal}

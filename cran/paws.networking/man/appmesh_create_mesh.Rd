@@ -24,6 +24,6 @@ length of 256 characters.}
 \description{
 Creates a service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/create_mesh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_create_mesh/} for full documentation.
 }
 \keyword{internal}

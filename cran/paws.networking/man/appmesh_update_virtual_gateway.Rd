@@ -32,6 +32,6 @@ existing data.}
 \description{
 Updates an existing virtual gateway in a specified service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/update_virtual_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_update_virtual_gateway/} for full documentation.
 }
 \keyword{internal}

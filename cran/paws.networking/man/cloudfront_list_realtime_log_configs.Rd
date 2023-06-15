@@ -19,6 +19,6 @@ get the next page of the list, set this field's value to the value of
 \description{
 Gets a list of real-time log configurations.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_realtime_log_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_realtime_log_configs/} for full documentation.
 }
 \keyword{internal}

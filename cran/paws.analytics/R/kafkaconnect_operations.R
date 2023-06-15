@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a connector using the specified properties.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/create_connector.html](https://paws-r.github.io/docs/kafkaconnect/create_connector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_create_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_create_connector/) for full documentation.
 #'
 #' @param capacity &#91;required&#93; Information about the capacity allocated to the connector. Exactly one
 #' of the two properties must be specified.
@@ -55,7 +55,7 @@ kafkaconnect_create_connector <- function(capacity, connectorConfiguration, conn
 #' @description
 #' Creates a custom plugin using the specified properties.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/create_custom_plugin.html](https://paws-r.github.io/docs/kafkaconnect/create_custom_plugin.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_create_custom_plugin/](https://www.paws-r-sdk.com/docs/kafkaconnect_create_custom_plugin/) for full documentation.
 #'
 #' @param contentType &#91;required&#93; The type of the plugin file.
 #' @param description A summary description of the custom plugin.
@@ -87,7 +87,7 @@ kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, l
 #' @description
 #' Creates a worker configuration using the specified properties.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/create_worker_configuration.html](https://paws-r.github.io/docs/kafkaconnect/create_worker_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_create_worker_configuration/](https://www.paws-r-sdk.com/docs/kafkaconnect_create_worker_configuration/) for full documentation.
 #'
 #' @param description A summary description of the worker configuration.
 #' @param name &#91;required&#93; The name of the worker configuration.
@@ -118,7 +118,7 @@ kafkaconnect_create_worker_configuration <- function(description = NULL, name, p
 #' @description
 #' Deletes the specified connector.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/delete_connector.html](https://paws-r.github.io/docs/kafkaconnect/delete_connector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_delete_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_delete_connector/) for full documentation.
 #'
 #' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to delete.
 #' @param currentVersion The current version of the connector that you want to delete.
@@ -148,7 +148,7 @@ kafkaconnect_delete_connector <- function(connectorArn, currentVersion = NULL) {
 #' @description
 #' Deletes a custom plugin.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/delete_custom_plugin.html](https://paws-r.github.io/docs/kafkaconnect/delete_custom_plugin.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_delete_custom_plugin/](https://www.paws-r-sdk.com/docs/kafkaconnect_delete_custom_plugin/) for full documentation.
 #'
 #' @param customPluginArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom plugin that you want to
 #' delete.
@@ -178,7 +178,7 @@ kafkaconnect_delete_custom_plugin <- function(customPluginArn) {
 #' @description
 #' Returns summary information about the connector.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/describe_connector.html](https://paws-r.github.io/docs/kafkaconnect/describe_connector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_describe_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_describe_connector/) for full documentation.
 #'
 #' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to
 #' describe.
@@ -208,7 +208,7 @@ kafkaconnect_describe_connector <- function(connectorArn) {
 #' @description
 #' A summary description of the custom plugin.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/describe_custom_plugin.html](https://paws-r.github.io/docs/kafkaconnect/describe_custom_plugin.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_describe_custom_plugin/](https://www.paws-r-sdk.com/docs/kafkaconnect_describe_custom_plugin/) for full documentation.
 #'
 #' @param customPluginArn &#91;required&#93; Returns information about a custom plugin.
 #'
@@ -237,7 +237,7 @@ kafkaconnect_describe_custom_plugin <- function(customPluginArn) {
 #' @description
 #' Returns information about a worker configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/describe_worker_configuration.html](https://paws-r.github.io/docs/kafkaconnect/describe_worker_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_describe_worker_configuration/](https://www.paws-r-sdk.com/docs/kafkaconnect_describe_worker_configuration/) for full documentation.
 #'
 #' @param workerConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the worker configuration that you want
 #' to get information about.
@@ -267,7 +267,7 @@ kafkaconnect_describe_worker_configuration <- function(workerConfigurationArn) {
 #' @description
 #' Returns a list of all the connectors in this account and Region. The list is limited to connectors whose name starts with the specified prefix. The response also includes a description of each of the listed connectors.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/list_connectors.html](https://paws-r.github.io/docs/kafkaconnect/list_connectors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_connectors/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_connectors/) for full documentation.
 #'
 #' @param connectorNamePrefix The name prefix that you want to use to search for and list connectors.
 #' @param maxResults The maximum number of connectors to list in one response.
@@ -300,7 +300,7 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
 #' @description
 #' Returns a list of all of the custom plugins in this account and Region.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/list_custom_plugins.html](https://paws-r.github.io/docs/kafkaconnect/list_custom_plugins.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/) for full documentation.
 #'
 #' @param maxResults The maximum number of custom plugins to list in one response.
 #' @param nextToken If the response of a ListCustomPlugins operation is truncated, it will
@@ -333,7 +333,7 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL
 #' @description
 #' Returns a list of all of the worker configurations in this account and Region.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/list_worker_configurations.html](https://paws-r.github.io/docs/kafkaconnect/list_worker_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/) for full documentation.
 #'
 #' @param maxResults The maximum number of worker configurations to list in one response.
 #' @param nextToken If the response of a ListWorkerConfigurations operation is truncated, it
@@ -365,7 +365,7 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken
 #' @description
 #' Updates the specified connector.
 #'
-#' See [https://paws-r.github.io/docs/kafkaconnect/update_connector.html](https://paws-r.github.io/docs/kafkaconnect/update_connector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/) for full documentation.
 #'
 #' @param capacity &#91;required&#93; The target capacity.
 #' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to update.

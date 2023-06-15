@@ -66,6 +66,6 @@ NextPageToken from the previous call in your next request.}
 \description{
 Retrieves an array of Cost Category names and values incurred cost.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_cost_categories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_cost_categories/} for full documentation.
 }
 \keyword{internal}

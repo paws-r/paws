@@ -12,6 +12,6 @@ ses_delete_verified_email_address(EmailAddress)
 \description{
 Deprecated. Use the \code{\link[=ses_delete_identity]{delete_identity}} operation to delete email addresses and domains.
 
-See \url{https://paws-r.github.io/docs/ses/delete_verified_email_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_verified_email_address/} for full documentation.
 }
 \keyword{internal}

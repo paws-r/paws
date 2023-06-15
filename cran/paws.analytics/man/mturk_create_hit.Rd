@@ -121,6 +121,6 @@ information, see HITLayout.}
 \description{
 The \code{\link[=mturk_create_hit]{create_hit}} operation creates a new Human Intelligence Task (HIT). The new HIT is made available for Workers to find and accept on the Amazon Mechanical Turk website.
 
-See \url{https://paws-r.github.io/docs/mturk/create_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_create_hit/} for full documentation.
 }
 \keyword{internal}

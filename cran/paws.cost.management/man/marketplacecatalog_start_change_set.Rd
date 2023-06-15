@@ -28,6 +28,6 @@ set name can be used to filter the list of change sets.}
 \description{
 Allows you to request changes for your entities. Within a single \code{ChangeSet}, you can't start the same change type against the same entity multiple times. Additionally, when a \code{ChangeSet} is running, all the entities targeted by the different changes are locked until the change set has completed (either succeeded, cancelled, or failed). If you try to start a change set containing a change against an entity that is already locked, you will receive a \code{ResourceInUseException} error.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/start_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_start_change_set/} for full documentation.
 }
 \keyword{internal}

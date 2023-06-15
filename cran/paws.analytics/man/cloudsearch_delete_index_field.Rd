@@ -15,6 +15,6 @@ indexing options.}
 \description{
 Removes an \code{IndexField} from the search domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">}}Configuring Index Fields\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/delete_index_field.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_delete_index_field/} for full documentation.
 }
 \keyword{internal}

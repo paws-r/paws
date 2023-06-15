@@ -12,6 +12,6 @@ glue_stop_trigger(Name)
 \description{
 Stops a specified trigger.
 
-See \url{https://paws-r.github.io/docs/glue/stop_trigger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_stop_trigger/} for full documentation.
 }
 \keyword{internal}

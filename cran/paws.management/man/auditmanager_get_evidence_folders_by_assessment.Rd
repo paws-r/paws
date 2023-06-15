@@ -22,6 +22,6 @@ call.}
 \description{
 Returns the evidence folders from a specified assessment in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence_folders_by_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment/} for full documentation.
 }
 \keyword{internal}

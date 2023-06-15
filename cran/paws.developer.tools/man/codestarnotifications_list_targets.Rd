@@ -28,6 +28,6 @@ maximum number of results that can be returned is 100.}
 \description{
 Returns a list of the notification rule targets for an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/list_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_list_targets/} for full documentation.
 }
 \keyword{internal}

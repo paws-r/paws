@@ -12,6 +12,6 @@ route53recoverycontrolconfig_delete_control_panel(ControlPanelArn)
 \description{
 Deletes a control panel.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_control_panel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_control_panel/} for full documentation.
 }
 \keyword{internal}

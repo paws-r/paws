@@ -17,6 +17,6 @@ publisher.}
 \description{
 Removes the specified directory as a publisher to the specified Amazon SNS topic.
 
-See \url{https://paws-r.github.io/docs/directoryservice/deregister_event_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_deregister_event_topic/} for full documentation.
 }
 \keyword{internal}

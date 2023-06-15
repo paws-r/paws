@@ -57,6 +57,6 @@ a resource to indicate its use by the sales department.}
 \description{
 Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehend/start_key_phrases_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_start_key_phrases_detection_job/} for full documentation.
 }
 \keyword{internal}

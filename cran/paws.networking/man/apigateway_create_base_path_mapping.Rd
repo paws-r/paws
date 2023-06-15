@@ -28,6 +28,6 @@ name after any base path name.}
 \description{
 Creates a new BasePathMapping resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_base_path_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_base_path_mapping/} for full documentation.
 }
 \keyword{internal}

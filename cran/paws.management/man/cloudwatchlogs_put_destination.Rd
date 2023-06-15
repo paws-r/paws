@@ -27,6 +27,6 @@ For more information about tagging, see \href{https://docs.aws.amazon.com/tag-ed
 \description{
 Creates or updates a destination. This operation is used only to create destinations for cross-account subscriptions.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_destination/} for full documentation.
 }
 \keyword{internal}

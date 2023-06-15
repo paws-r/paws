@@ -17,6 +17,6 @@ transfer the domain to, for example, \code{111122223333}.}
 \description{
 Transfers a domain from the current Amazon Web Services account to another Amazon Web Services account. Note the following:
 
-See \url{https://paws-r.github.io/docs/route53domains/transfer_domain_to_another_aws_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_transfer_domain_to_another_aws_account/} for full documentation.
 }
 \keyword{internal}

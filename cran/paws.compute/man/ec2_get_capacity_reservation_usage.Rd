@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Gets usage information about a Capacity Reservation. If the Capacity Reservation is shared, it shows usage information for the Capacity Reservation owner and each Amazon Web Services account that is currently using the shared capacity. If the Capacity Reservation is not shared, it shows only the Capacity Reservation owner's usage.
 
-See \url{https://paws-r.github.io/docs/ec2/get_capacity_reservation_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_capacity_reservation_usage/} for full documentation.
 }
 \keyword{internal}

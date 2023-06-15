@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes an Amazon Rekognition Custom Labels model.
 
-See \url{https://paws-r.github.io/docs/rekognition/delete_project_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_project_version/} for full documentation.
 }
 \keyword{internal}

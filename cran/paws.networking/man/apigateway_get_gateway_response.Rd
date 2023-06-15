@@ -14,6 +14,6 @@ apigateway_get_gateway_response(restApiId, responseType)
 \description{
 Gets a GatewayResponse of a specified response type on the given RestApi.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_gateway_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_gateway_response/} for full documentation.
 }
 \keyword{internal}

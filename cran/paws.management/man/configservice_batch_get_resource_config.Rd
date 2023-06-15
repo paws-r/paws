@@ -13,6 +13,6 @@ element in the list consists of the resource type and resource ID.}
 \description{
 Returns the \code{BaseConfigurationItem} for one or more requested resources. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceKeys list.
 
-See \url{https://paws-r.github.io/docs/configservice/batch_get_resource_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_batch_get_resource_config/} for full documentation.
 }
 \keyword{internal}

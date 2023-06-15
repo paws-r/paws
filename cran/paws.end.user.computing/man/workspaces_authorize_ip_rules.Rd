@@ -14,6 +14,6 @@ workspaces_authorize_ip_rules(GroupId, UserRules)
 \description{
 Adds one or more rules to the specified IP access control group.
 
-See \url{https://paws-r.github.io/docs/workspaces/authorize_ip_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_authorize_ip_rules/} for full documentation.
 }
 \keyword{internal}

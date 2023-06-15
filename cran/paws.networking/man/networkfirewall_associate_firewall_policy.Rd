@@ -44,6 +44,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Associates a FirewallPolicy to a Firewall.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/associate_firewall_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_associate_firewall_policy/} for full documentation.
 }
 \keyword{internal}

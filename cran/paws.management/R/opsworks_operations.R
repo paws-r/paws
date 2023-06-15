@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Assign a registered instance to a layer.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/assign_instance.html](https://paws-r.github.io/docs/opsworks/assign_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_assign_instance/](https://www.paws-r-sdk.com/docs/opsworks_assign_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param LayerIds &#91;required&#93; The layer ID, which must correspond to a custom layer. You cannot assign
@@ -40,7 +40,7 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' @description
 #' Assigns one of the stack's registered Amazon EBS volumes to a specified instance. The volume must first be registered with the stack by calling [`register_volume`][opsworks_register_volume]. After you register the volume, you must call [`update_volume`][opsworks_update_volume] to specify a mount point before calling [`assign_volume`][opsworks_assign_volume]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/assign_volume.html](https://paws-r.github.io/docs/opsworks/assign_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_assign_volume/](https://www.paws-r-sdk.com/docs/opsworks_assign_volume/) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
 #' @param InstanceId The instance ID.
@@ -71,7 +71,7 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' @description
 #' Associates one of the stack's registered Elastic IP addresses with a specified instance. The address must first be registered with the stack by calling [`register_elastic_ip`][opsworks_register_elastic_ip]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/associate_elastic_ip.html](https://paws-r.github.io/docs/opsworks/associate_elastic_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_associate_elastic_ip/](https://www.paws-r-sdk.com/docs/opsworks_associate_elastic_ip/) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #' @param InstanceId The instance ID.
@@ -101,7 +101,7 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' @description
 #' Attaches an Elastic Load Balancing load balancer to a specified layer. AWS OpsWorks Stacks does not support Application Load Balancer. You can only use Classic Load Balancer with AWS OpsWorks Stacks. For more information, see [Elastic Load Balancing](https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/attach_elastic_load_balancer.html](https://paws-r.github.io/docs/opsworks/attach_elastic_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_attach_elastic_load_balancer/](https://www.paws-r-sdk.com/docs/opsworks_attach_elastic_load_balancer/) for full documentation.
 #'
 #' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer to which the Elastic Load Balancing instance is to
@@ -132,7 +132,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @description
 #' Creates a clone of a specified stack. For more information, see [Clone a Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html). By default, all parameters are set to the values used by the parent stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/clone_stack.html](https://paws-r.github.io/docs/opsworks/clone_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_clone_stack/](https://www.paws-r-sdk.com/docs/opsworks_clone_stack/) for full documentation.
 #'
 #' @param SourceStackId &#91;required&#93; The source stack ID.
 #' @param Name The cloned stack name.
@@ -369,7 +369,7 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' @description
 #' Creates an app for a specified stack. For more information, see [Creating Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/create_app.html](https://paws-r.github.io/docs/opsworks/create_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_create_app/](https://www.paws-r-sdk.com/docs/opsworks_create_app/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param Shortname The app's short name.
@@ -430,7 +430,7 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' @description
 #' Runs deployment or stack commands. For more information, see [Deploying Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html) and [Run Stack Commands](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/create_deployment.html](https://paws-r.github.io/docs/opsworks/create_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_create_deployment/](https://www.paws-r-sdk.com/docs/opsworks_create_deployment/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param AppId The app ID. This parameter is required for app deployments, but not for
@@ -477,7 +477,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @description
 #' Creates an instance in a specified stack. For more information, see [Adding an Instance to a Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/create_instance.html](https://paws-r.github.io/docs/opsworks/create_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_create_instance/](https://www.paws-r-sdk.com/docs/opsworks_create_instance/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param LayerIds &#91;required&#93; An array that contains the instance's layer IDs.
@@ -621,7 +621,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' @description
 #' Creates a layer. For more information, see [How to Create a Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/create_layer.html](https://paws-r.github.io/docs/opsworks/create_layer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_create_layer/](https://www.paws-r-sdk.com/docs/opsworks_create_layer/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The layer stack ID.
 #' @param Type &#91;required&#93; The layer type. A stack cannot have more than one built-in layer of the
@@ -706,7 +706,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' @description
 #' Creates a new stack. For more information, see [Create a New Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/create_stack.html](https://paws-r.github.io/docs/opsworks/create_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_create_stack/](https://www.paws-r-sdk.com/docs/opsworks_create_stack/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The stack name.
 #' @param Region &#91;required&#93; The stack's AWS region, such as `ap-south-1`. For more information about
@@ -950,7 +950,7 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' @description
 #' Creates a new user profile.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/create_user_profile.html](https://paws-r.github.io/docs/opsworks/create_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_create_user_profile/](https://www.paws-r-sdk.com/docs/opsworks_create_user_profile/) for full documentation.
 #'
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN; this can also be a federated user's ARN.
 #' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
@@ -989,7 +989,7 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' @description
 #' Deletes a specified app.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/delete_app.html](https://paws-r.github.io/docs/opsworks/delete_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_delete_app/](https://www.paws-r-sdk.com/docs/opsworks_delete_app/) for full documentation.
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #'
@@ -1019,7 +1019,7 @@ opsworks_delete_app <- function(AppId) {
 #' @description
 #' Deletes a specified instance, which terminates the associated Amazon EC2 instance. You must stop an instance before you can delete it.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/delete_instance.html](https://paws-r.github.io/docs/opsworks/delete_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_delete_instance/](https://www.paws-r-sdk.com/docs/opsworks_delete_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param DeleteElasticIp Whether to delete the instance Elastic IP address.
@@ -1050,7 +1050,7 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 #' @description
 #' Deletes a specified layer. You must first stop and then delete all associated instances or unassign registered instances. For more information, see [How to Delete a Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/delete_layer.html](https://paws-r.github.io/docs/opsworks/delete_layer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_delete_layer/](https://www.paws-r-sdk.com/docs/opsworks_delete_layer/) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #'
@@ -1079,7 +1079,7 @@ opsworks_delete_layer <- function(LayerId) {
 #' @description
 #' Deletes a specified stack. You must first delete all instances, layers, and apps or deregister registered instances. For more information, see [Shut Down a Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/delete_stack.html](https://paws-r.github.io/docs/opsworks/delete_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_delete_stack/](https://www.paws-r-sdk.com/docs/opsworks_delete_stack/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
@@ -1108,7 +1108,7 @@ opsworks_delete_stack <- function(StackId) {
 #' @description
 #' Deletes a user profile.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/delete_user_profile.html](https://paws-r.github.io/docs/opsworks/delete_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_delete_user_profile/](https://www.paws-r-sdk.com/docs/opsworks_delete_user_profile/) for full documentation.
 #'
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
 #'
@@ -1137,7 +1137,7 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #' @description
 #' Deregisters a specified Amazon ECS cluster from a stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/deregister_ecs_cluster.html](https://paws-r.github.io/docs/opsworks/deregister_ecs_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_deregister_ecs_cluster/](https://www.paws-r-sdk.com/docs/opsworks_deregister_ecs_cluster/) for full documentation.
 #'
 #' @param EcsClusterArn &#91;required&#93; The cluster's Amazon Resource Number (ARN).
 #'
@@ -1166,7 +1166,7 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 #' @description
 #' Deregisters a specified Elastic IP address. The address can then be registered by another stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/deregister_elastic_ip.html](https://paws-r.github.io/docs/opsworks/deregister_elastic_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_deregister_elastic_ip/](https://www.paws-r-sdk.com/docs/opsworks_deregister_elastic_ip/) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #'
@@ -1195,7 +1195,7 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 #' @description
 #' Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/deregister_instance.html](https://paws-r.github.io/docs/opsworks/deregister_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_deregister_instance/](https://www.paws-r-sdk.com/docs/opsworks_deregister_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
@@ -1224,7 +1224,7 @@ opsworks_deregister_instance <- function(InstanceId) {
 #' @description
 #' Deregisters an Amazon RDS instance.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/deregister_rds_db_instance.html](https://paws-r.github.io/docs/opsworks/deregister_rds_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_deregister_rds_db_instance/](https://www.paws-r-sdk.com/docs/opsworks_deregister_rds_db_instance/) for full documentation.
 #'
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #'
@@ -1253,7 +1253,7 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 #' @description
 #' Deregisters an Amazon EBS volume. The volume can then be registered by another stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/deregister_volume.html](https://paws-r.github.io/docs/opsworks/deregister_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_deregister_volume/](https://www.paws-r-sdk.com/docs/opsworks_deregister_volume/) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks
 #' Stacks assigned to the instance when you registered the volume with the
@@ -1284,7 +1284,7 @@ opsworks_deregister_volume <- function(VolumeId) {
 #' @description
 #' Describes the available AWS OpsWorks Stacks agent versions. You must specify a stack ID or a configuration manager. [`describe_agent_versions`][opsworks_describe_agent_versions] returns a list of available agent versions for the specified stack or configuration manager.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_agent_versions.html](https://paws-r.github.io/docs/opsworks/describe_agent_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_agent_versions/](https://www.paws-r-sdk.com/docs/opsworks_describe_agent_versions/) for full documentation.
 #'
 #' @param StackId The stack ID.
 #' @param ConfigurationManager The configuration manager.
@@ -1314,7 +1314,7 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #' @description
 #' Requests a description of a specified set of apps.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_apps.html](https://paws-r.github.io/docs/opsworks/describe_apps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_apps/](https://www.paws-r-sdk.com/docs/opsworks_describe_apps/) for full documentation.
 #'
 #' @param StackId The app stack ID. If you use this parameter,
 #' [`describe_apps`][opsworks_describe_apps] returns a description of the
@@ -1349,7 +1349,7 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #' @description
 #' Describes the results of specified commands.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_commands.html](https://paws-r.github.io/docs/opsworks/describe_commands.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_commands/](https://www.paws-r-sdk.com/docs/opsworks_describe_commands/) for full documentation.
 #'
 #' @param DeploymentId The deployment ID. If you include this parameter,
 #' [`describe_commands`][opsworks_describe_commands] returns a description
@@ -1387,7 +1387,7 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #' @description
 #' Requests a description of a specified set of deployments.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_deployments.html](https://paws-r.github.io/docs/opsworks/describe_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_deployments/](https://www.paws-r-sdk.com/docs/opsworks_describe_deployments/) for full documentation.
 #'
 #' @param StackId The stack ID. If you include this parameter, the command returns a
 #' description of the commands associated with the specified stack.
@@ -1422,7 +1422,7 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' @description
 #' Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the `MaxResults` and `NextToken` parameters to paginate the response. However, AWS OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_ecs_clusters.html](https://paws-r.github.io/docs/opsworks/describe_ecs_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_ecs_clusters/](https://www.paws-r-sdk.com/docs/opsworks_describe_ecs_clusters/) for full documentation.
 #'
 #' @param EcsClusterArns A list of ARNs, one for each cluster to be described.
 #' @param StackId A stack ID. [`describe_ecs_clusters`][opsworks_describe_ecs_clusters]
@@ -1465,7 +1465,7 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' @description
 #' Describes [Elastic IP addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_elastic_ips.html](https://paws-r.github.io/docs/opsworks/describe_elastic_ips.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_elastic_ips/](https://www.paws-r-sdk.com/docs/opsworks_describe_elastic_ips/) for full documentation.
 #'
 #' @param InstanceId The instance ID. If you include this parameter,
 #' [`describe_elastic_ips`][opsworks_describe_elastic_ips] returns a
@@ -1505,7 +1505,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #' @description
 #' Describes a stack's Elastic Load Balancing instances.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_elastic_load_balancers.html](https://paws-r.github.io/docs/opsworks/describe_elastic_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_elastic_load_balancers/](https://www.paws-r-sdk.com/docs/opsworks_describe_elastic_load_balancers/) for full documentation.
 #'
 #' @param StackId A stack ID. The action describes the stack's Elastic Load Balancing
 #' instances.
@@ -1537,7 +1537,7 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #' @description
 #' Requests a description of a set of instances.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_instances.html](https://paws-r.github.io/docs/opsworks/describe_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_instances/](https://www.paws-r-sdk.com/docs/opsworks_describe_instances/) for full documentation.
 #'
 #' @param StackId A stack ID. If you use this parameter,
 #' [`describe_instances`][opsworks_describe_instances] returns descriptions
@@ -1575,7 +1575,7 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #' @description
 #' Requests a description of one or more layers in a specified stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_layers.html](https://paws-r.github.io/docs/opsworks/describe_layers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_layers/](https://www.paws-r-sdk.com/docs/opsworks_describe_layers/) for full documentation.
 #'
 #' @param StackId The stack ID.
 #' @param LayerIds An array of layer IDs that specify the layers to be described. If you
@@ -1607,7 +1607,7 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 #' @description
 #' Describes load-based auto scaling configurations for specified layers.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_load_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/describe_load_based_auto_scaling.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_load_based_auto_scaling/](https://www.paws-r-sdk.com/docs/opsworks_describe_load_based_auto_scaling/) for full documentation.
 #'
 #' @param LayerIds &#91;required&#93; An array of layer IDs.
 #'
@@ -1636,7 +1636,7 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 #' @description
 #' Describes a user's SSH information.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_my_user_profile.html](https://paws-r.github.io/docs/opsworks/describe_my_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_my_user_profile/](https://www.paws-r-sdk.com/docs/opsworks_describe_my_user_profile/) for full documentation.
 #'
 
 #'
@@ -1666,7 +1666,7 @@ opsworks_describe_my_user_profile <- function() {
 #' @description
 #' Describes the operating systems that are supported by AWS OpsWorks Stacks.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_operating_systems.html](https://paws-r.github.io/docs/opsworks/describe_operating_systems.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_operating_systems/](https://www.paws-r-sdk.com/docs/opsworks_describe_operating_systems/) for full documentation.
 #'
 
 #'
@@ -1695,7 +1695,7 @@ opsworks_describe_operating_systems <- function() {
 #' @description
 #' Describes the permissions for a specified stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_permissions.html](https://paws-r.github.io/docs/opsworks/describe_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_permissions/](https://www.paws-r-sdk.com/docs/opsworks_describe_permissions/) for full documentation.
 #'
 #' @param IamUserArn The user's IAM ARN. This can also be a federated user's ARN. For more
 #' information about IAM ARNs, see [Using
@@ -1727,7 +1727,7 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #' @description
 #' Describe an instance's RAID arrays.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_raid_arrays.html](https://paws-r.github.io/docs/opsworks/describe_raid_arrays.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_raid_arrays/](https://www.paws-r-sdk.com/docs/opsworks_describe_raid_arrays/) for full documentation.
 #'
 #' @param InstanceId The instance ID. If you use this parameter,
 #' [`describe_raid_arrays`][opsworks_describe_raid_arrays] returns
@@ -1763,7 +1763,7 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 #' @description
 #' Describes Amazon RDS instances.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_rds_db_instances.html](https://paws-r.github.io/docs/opsworks/describe_rds_db_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_rds_db_instances/](https://www.paws-r-sdk.com/docs/opsworks_describe_rds_db_instances/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The ID of the stack with which the instances are registered. The
 #' operation returns descriptions of all registered Amazon RDS instances.
@@ -1794,7 +1794,7 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #' @description
 #' Describes AWS OpsWorks Stacks service errors.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_service_errors.html](https://paws-r.github.io/docs/opsworks/describe_service_errors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_service_errors/](https://www.paws-r-sdk.com/docs/opsworks_describe_service_errors/) for full documentation.
 #'
 #' @param StackId The stack ID. If you use this parameter,
 #' [`describe_service_errors`][opsworks_describe_service_errors] returns
@@ -1832,7 +1832,7 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 #' @description
 #' Requests a description of a stack's provisioning parameters.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_stack_provisioning_parameters.html](https://paws-r.github.io/docs/opsworks/describe_stack_provisioning_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_stack_provisioning_parameters/](https://www.paws-r-sdk.com/docs/opsworks_describe_stack_provisioning_parameters/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
@@ -1862,7 +1862,7 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #' @description
 #' Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as `running_setup` or `online`.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_stack_summary.html](https://paws-r.github.io/docs/opsworks/describe_stack_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_stack_summary/](https://www.paws-r-sdk.com/docs/opsworks_describe_stack_summary/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
@@ -1891,7 +1891,7 @@ opsworks_describe_stack_summary <- function(StackId) {
 #' @description
 #' Requests a description of one or more stacks.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_stacks.html](https://paws-r.github.io/docs/opsworks/describe_stacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_stacks/](https://www.paws-r-sdk.com/docs/opsworks_describe_stacks/) for full documentation.
 #'
 #' @param StackIds An array of stack IDs that specify the stacks to be described. If you
 #' omit this parameter, [`describe_stacks`][opsworks_describe_stacks]
@@ -1922,7 +1922,7 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 #' @description
 #' Describes time-based auto scaling configurations for specified instances.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_time_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/describe_time_based_auto_scaling.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_time_based_auto_scaling/](https://www.paws-r-sdk.com/docs/opsworks_describe_time_based_auto_scaling/) for full documentation.
 #'
 #' @param InstanceIds &#91;required&#93; An array of instance IDs.
 #'
@@ -1951,7 +1951,7 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 #' @description
 #' Describe specified users.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_user_profiles.html](https://paws-r.github.io/docs/opsworks/describe_user_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_user_profiles/](https://www.paws-r-sdk.com/docs/opsworks_describe_user_profiles/) for full documentation.
 #'
 #' @param IamUserArns An array of IAM or federated user ARNs that identify the users to be
 #' described.
@@ -1981,7 +1981,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #' @description
 #' Describes an instance's Amazon EBS volumes.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/describe_volumes.html](https://paws-r.github.io/docs/opsworks/describe_volumes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_describe_volumes/](https://www.paws-r-sdk.com/docs/opsworks_describe_volumes/) for full documentation.
 #'
 #' @param InstanceId The instance ID. If you use this parameter,
 #' [`describe_volumes`][opsworks_describe_volumes] returns descriptions of
@@ -2021,7 +2021,7 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #' @description
 #' Detaches a specified Elastic Load Balancing instance from its layer.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/detach_elastic_load_balancer.html](https://paws-r.github.io/docs/opsworks/detach_elastic_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_detach_elastic_load_balancer/](https://www.paws-r-sdk.com/docs/opsworks_detach_elastic_load_balancer/) for full documentation.
 #'
 #' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer that the Elastic Load Balancing instance is attached
@@ -2052,7 +2052,7 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @description
 #' Disassociates an Elastic IP address from its instance. The address remains registered with the stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/disassociate_elastic_ip.html](https://paws-r.github.io/docs/opsworks/disassociate_elastic_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_disassociate_elastic_ip/](https://www.paws-r-sdk.com/docs/opsworks_disassociate_elastic_ip/) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #'
@@ -2082,7 +2082,7 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #' @description
 #' Gets a generated host name for the specified layer, based on the current host name theme.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/get_hostname_suggestion.html](https://paws-r.github.io/docs/opsworks/get_hostname_suggestion.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_get_hostname_suggestion/](https://www.paws-r-sdk.com/docs/opsworks_get_hostname_suggestion/) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #'
@@ -2111,7 +2111,7 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 #' @description
 #' This action can be used only with Windows stacks.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/grant_access.html](https://paws-r.github.io/docs/opsworks/grant_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_grant_access/](https://www.paws-r-sdk.com/docs/opsworks_grant_access/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance's AWS OpsWorks Stacks ID.
 #' @param ValidForInMinutes The length of time (in minutes) that the grant is valid. When the grant
@@ -2144,7 +2144,7 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 #' @description
 #' Returns a list of tags that are applied to the specified stack or layer.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/list_tags.html](https://paws-r.github.io/docs/opsworks/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_list_tags/](https://www.paws-r-sdk.com/docs/opsworks_list_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param MaxResults Do not use. A validation exception occurs if you add a `MaxResults`
@@ -2177,7 +2177,7 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 #' @description
 #' Reboots a specified instance. For more information, see [Starting, Stopping, and Rebooting Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/reboot_instance.html](https://paws-r.github.io/docs/opsworks/reboot_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_reboot_instance/](https://www.paws-r-sdk.com/docs/opsworks_reboot_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
@@ -2206,7 +2206,7 @@ opsworks_reboot_instance <- function(InstanceId) {
 #' @description
 #' Registers a specified Amazon ECS cluster with a stack. You can register only one cluster with a stack. A cluster can be registered with only one stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/register_ecs_cluster.html](https://paws-r.github.io/docs/opsworks/register_ecs_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_register_ecs_cluster/](https://www.paws-r-sdk.com/docs/opsworks_register_ecs_cluster/) for full documentation.
 #'
 #' @param EcsClusterArn &#91;required&#93; The cluster's ARN.
 #' @param StackId &#91;required&#93; The stack ID.
@@ -2236,7 +2236,7 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #' @description
 #' Registers an Elastic IP address with a specified stack. An address can be registered with only one stack at a time. If the address is already registered, you must first deregister it by calling [`deregister_elastic_ip`][opsworks_deregister_elastic_ip]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/register_elastic_ip.html](https://paws-r.github.io/docs/opsworks/register_elastic_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_register_elastic_ip/](https://www.paws-r-sdk.com/docs/opsworks_register_elastic_ip/) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #' @param StackId &#91;required&#93; The stack ID.
@@ -2267,7 +2267,7 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' @description
 #' Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/register_instance.html](https://paws-r.github.io/docs/opsworks/register_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_register_instance/](https://www.paws-r-sdk.com/docs/opsworks_register_instance/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The ID of the stack that the instance is to be registered with.
 #' @param Hostname The instance's hostname.
@@ -2303,7 +2303,7 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #' @description
 #' Registers an Amazon RDS instance with a stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/register_rds_db_instance.html](https://paws-r.github.io/docs/opsworks/register_rds_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_register_rds_db_instance/](https://www.paws-r-sdk.com/docs/opsworks_register_rds_db_instance/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
@@ -2335,7 +2335,7 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #' @description
 #' Registers an Amazon EBS volume with a specified stack. A volume can be registered with only one stack at a time. If the volume is already registered, you must first deregister it by calling [`deregister_volume`][opsworks_deregister_volume]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/register_volume.html](https://paws-r.github.io/docs/opsworks/register_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_register_volume/](https://www.paws-r-sdk.com/docs/opsworks_register_volume/) for full documentation.
 #'
 #' @param Ec2VolumeId The Amazon EBS volume ID.
 #' @param StackId &#91;required&#93; The stack ID.
@@ -2365,7 +2365,7 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #' @description
 #' Specify the load-based auto scaling configuration for a specified layer. For more information, see [Managing Load with Time-based and Load-based Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/set_load_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/set_load_based_auto_scaling.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_set_load_based_auto_scaling/](https://www.paws-r-sdk.com/docs/opsworks_set_load_based_auto_scaling/) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #' @param Enable Enables load-based auto scaling for the layer.
@@ -2403,7 +2403,7 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' @description
 #' Specifies a user's permissions. For more information, see [Security and Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/set_permission.html](https://paws-r.github.io/docs/opsworks/set_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_set_permission/](https://www.paws-r-sdk.com/docs/opsworks_set_permission/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
@@ -2452,7 +2452,7 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #' @description
 #' Specify the time-based auto scaling configuration for a specified instance. For more information, see [Managing Load with Time-based and Load-based Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/set_time_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/set_time_based_auto_scaling.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_set_time_based_auto_scaling/](https://www.paws-r-sdk.com/docs/opsworks_set_time_based_auto_scaling/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param AutoScalingSchedule An `AutoScalingSchedule` with the instance schedule.
@@ -2482,7 +2482,7 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 #' @description
 #' Starts a specified instance. For more information, see [Starting, Stopping, and Rebooting Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/start_instance.html](https://paws-r.github.io/docs/opsworks/start_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_start_instance/](https://www.paws-r-sdk.com/docs/opsworks_start_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
@@ -2511,7 +2511,7 @@ opsworks_start_instance <- function(InstanceId) {
 #' @description
 #' Starts a stack's instances.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/start_stack.html](https://paws-r.github.io/docs/opsworks/start_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_start_stack/](https://www.paws-r-sdk.com/docs/opsworks_start_stack/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
@@ -2540,7 +2540,7 @@ opsworks_start_stack <- function(StackId) {
 #' @description
 #' Stops a specified instance. When you stop a standard instance, the data disappears and must be reinstalled when you restart the instance. You can stop an Amazon EBS-backed instance without losing data. For more information, see [Starting, Stopping, and Rebooting Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/stop_instance.html](https://paws-r.github.io/docs/opsworks/stop_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_stop_instance/](https://www.paws-r-sdk.com/docs/opsworks_stop_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param Force Specifies whether to force an instance to stop. If the instance's root
@@ -2576,7 +2576,7 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 #' @description
 #' Stops a specified stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/stop_stack.html](https://paws-r.github.io/docs/opsworks/stop_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_stop_stack/](https://www.paws-r-sdk.com/docs/opsworks_stop_stack/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #'
@@ -2606,7 +2606,7 @@ opsworks_stop_stack <- function(StackId) {
 #' @description
 #' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see [Tags](https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html) in the AWS OpsWorks User Guide.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/tag_resource.html](https://paws-r.github.io/docs/opsworks/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_tag_resource/](https://www.paws-r-sdk.com/docs/opsworks_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param Tags &#91;required&#93; A map that contains tag keys and tag values that are attached to a stack
@@ -2653,7 +2653,7 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/unassign_instance.html](https://paws-r.github.io/docs/opsworks/unassign_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_unassign_instance/](https://www.paws-r-sdk.com/docs/opsworks_unassign_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #'
@@ -2682,7 +2682,7 @@ opsworks_unassign_instance <- function(InstanceId) {
 #' @description
 #' Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/unassign_volume.html](https://paws-r.github.io/docs/opsworks/unassign_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_unassign_volume/](https://www.paws-r-sdk.com/docs/opsworks_unassign_volume/) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
 #'
@@ -2711,7 +2711,7 @@ opsworks_unassign_volume <- function(VolumeId) {
 #' @description
 #' Removes tags from a specified stack or layer.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/untag_resource.html](https://paws-r.github.io/docs/opsworks/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_untag_resource/](https://www.paws-r-sdk.com/docs/opsworks_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param TagKeys &#91;required&#93; A list of the keys of tags to be removed from a stack or layer.
@@ -2741,7 +2741,7 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates a specified app.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_app.html](https://paws-r.github.io/docs/opsworks/update_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_app/](https://www.paws-r-sdk.com/docs/opsworks_update_app/) for full documentation.
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #' @param Name The app name.
@@ -2796,7 +2796,7 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 #' @description
 #' Updates a registered Elastic IP address's name. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_elastic_ip.html](https://paws-r.github.io/docs/opsworks/update_elastic_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_elastic_ip/](https://www.paws-r-sdk.com/docs/opsworks_update_elastic_ip/) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The IP address for which you want to update the name.
 #' @param Name The new name.
@@ -2826,7 +2826,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @description
 #' Updates a specified instance.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_instance.html](https://paws-r.github.io/docs/opsworks/update_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_instance/](https://www.paws-r-sdk.com/docs/opsworks_update_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param LayerIds The instance's layer IDs.
@@ -2941,7 +2941,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' @description
 #' Updates a specified layer.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_layer.html](https://paws-r.github.io/docs/opsworks/update_layer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_layer/](https://www.paws-r-sdk.com/docs/opsworks_update_layer/) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #' @param Name The layer name, which is used by the console.
@@ -3017,7 +3017,7 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #' @description
 #' Updates a user's SSH public key.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_my_user_profile.html](https://paws-r.github.io/docs/opsworks/update_my_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_my_user_profile/](https://www.paws-r-sdk.com/docs/opsworks_update_my_user_profile/) for full documentation.
 #'
 #' @param SshPublicKey The user's SSH public key.
 #'
@@ -3046,7 +3046,7 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #' @description
 #' Updates an Amazon RDS instance.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_rds_db_instance.html](https://paws-r.github.io/docs/opsworks/update_rds_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_rds_db_instance/](https://www.paws-r-sdk.com/docs/opsworks_update_rds_db_instance/) for full documentation.
 #'
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #' @param DbUser The master user name.
@@ -3077,7 +3077,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' @description
 #' Updates a specified stack.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_stack.html](https://paws-r.github.io/docs/opsworks/update_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_stack/](https://www.paws-r-sdk.com/docs/opsworks_update_stack/) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param Name The stack's new name.
@@ -3266,7 +3266,7 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' @description
 #' Updates a specified user profile.
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_user_profile.html](https://paws-r.github.io/docs/opsworks/update_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_user_profile/](https://www.paws-r-sdk.com/docs/opsworks_update_user_profile/) for full documentation.
 #'
 #' @param IamUserArn &#91;required&#93; The user IAM ARN. This can also be a federated user's ARN.
 #' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
@@ -3304,7 +3304,7 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' @description
 #' Updates an Amazon EBS volume's name or mount point. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' See [https://paws-r.github.io/docs/opsworks/update_volume.html](https://paws-r.github.io/docs/opsworks/update_volume.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworks_update_volume/](https://www.paws-r-sdk.com/docs/opsworks_update_volume/) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
 #' @param Name The new name.

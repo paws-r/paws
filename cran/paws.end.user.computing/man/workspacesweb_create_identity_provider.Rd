@@ -79,6 +79,6 @@ oidc_issuer key}
 \description{
 Creates an identity provider resource that is then associated with a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/create_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_create_identity_provider/} for full documentation.
 }
 \keyword{internal}

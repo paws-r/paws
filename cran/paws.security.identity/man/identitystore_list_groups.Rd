@@ -38,6 +38,6 @@ the next page.}
 \description{
 Lists all groups in the identity store. Returns a paginated list of complete \code{Group} objects. Filtering for a \code{Group} by the \code{DisplayName} attribute is deprecated. Instead, use the \code{\link[=identitystore_get_group_id]{get_group_id}} API action.
 
-See \url{https://paws-r.github.io/docs/identitystore/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_list_groups/} for full documentation.
 }
 \keyword{internal}

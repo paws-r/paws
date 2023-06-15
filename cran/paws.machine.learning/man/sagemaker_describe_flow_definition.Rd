@@ -12,6 +12,6 @@ sagemaker_describe_flow_definition(FlowDefinitionName)
 \description{
 Returns information about the specified flow definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_flow_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_flow_definition/} for full documentation.
 }
 \keyword{internal}

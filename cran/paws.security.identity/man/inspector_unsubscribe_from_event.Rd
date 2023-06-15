@@ -18,6 +18,6 @@ which you want to stop receiving SNS notifications.}
 \description{
 Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.
 
-See \url{https://paws-r.github.io/docs/inspector/unsubscribe_from_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_unsubscribe_from_event/} for full documentation.
 }
 \keyword{internal}

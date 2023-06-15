@@ -44,6 +44,6 @@ names are not case sensitive. The default is false.}
 \description{
 Restores a table from a snapshot to your Amazon Redshift Serverless instance. You can't use this operation to restore tables with \href{https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved}{interleaved sort keys}.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/restore_table_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_restore_table_from_snapshot/} for full documentation.
 }
 \keyword{internal}

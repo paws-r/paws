@@ -67,6 +67,6 @@ modify the stack's Chef version.}
 \description{
 Creates an app for a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html}{Creating Apps}.
 
-See \url{https://paws-r.github.io/docs/opsworks/create_app.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_create_app/} for full documentation.
 }
 \keyword{internal}

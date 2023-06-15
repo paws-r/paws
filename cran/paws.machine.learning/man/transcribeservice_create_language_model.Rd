@@ -64,6 +64,6 @@ To learn more about using tags with Amazon Transcribe, refer to \href{https://do
 \description{
 Creates a new custom language model.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/create_language_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_create_language_model/} for full documentation.
 }
 \keyword{internal}

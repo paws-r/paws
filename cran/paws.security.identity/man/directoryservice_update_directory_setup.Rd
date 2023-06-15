@@ -26,6 +26,6 @@ taken before updating the directory.}
 \description{
 Updates the directory for a particular update type.
 
-See \url{https://paws-r.github.io/docs/directoryservice/update_directory_setup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_directory_setup/} for full documentation.
 }
 \keyword{internal}

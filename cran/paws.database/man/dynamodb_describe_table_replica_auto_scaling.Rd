@@ -13,6 +13,6 @@ dynamodb_describe_table_replica_auto_scaling(TableName)
 \description{
 Describes auto scaling settings across replicas of the global table at once.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_table_replica_auto_scaling.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_table_replica_auto_scaling/} for full documentation.
 }
 \keyword{internal}

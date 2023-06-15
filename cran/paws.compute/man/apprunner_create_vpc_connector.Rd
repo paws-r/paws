@@ -32,6 +32,6 @@ resource. A tag is a key-value pair.}
 \description{
 Create an App Runner VPC connector resource. App Runner requires this resource when you want to associate your App Runner service to a custom Amazon Virtual Private Cloud (Amazon VPC).
 
-See \url{https://paws-r.github.io/docs/apprunner/create_vpc_connector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_create_vpc_connector/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ lightsail_create_gui_session_access_details(resourceName)
 \description{
 Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session. The primary URL initiates a web-based NICE DCV session to the virtual computer's application. The secondary URL initiates a web-based NICE DCV session to the virtual computer's operating session.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_gui_session_access_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_gui_session_access_details/} for full documentation.
 }
 \keyword{internal}

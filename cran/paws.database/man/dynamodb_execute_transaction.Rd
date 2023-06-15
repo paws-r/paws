@@ -25,6 +25,6 @@ information, see \code{\link[=dynamodb_transact_get_items]{transact_get_items}} 
 \description{
 This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL.
 
-See \url{https://paws-r.github.io/docs/dynamodb/execute_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_execute_transaction/} for full documentation.
 }
 \keyword{internal}

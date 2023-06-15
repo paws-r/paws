@@ -36,6 +36,6 @@ secret, then you must also specify the \code{RemoveFromVersionId} parameter.}
 \description{
 Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Concepts: Version}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/update_secret_version_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/} for full documentation.
 }
 \keyword{internal}

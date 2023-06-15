@@ -33,6 +33,6 @@ the policy with the new values.}
 \description{
 Replaces the existing resource policy for a bot or bot alias with a new one. If the policy doesn't exist, Amazon Lex returns an exception.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_resource_policy/} for full documentation.
 }
 \keyword{internal}

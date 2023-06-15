@@ -29,6 +29,9 @@ case-sensitive substring search. For example, if you specify \code{Foo}, log
 groups named \code{FooBar}, \code{aws/Foo}, and \code{GroupFoo} would match, but \code{foo},
 \code{F/o/o} and \code{Froo} would not match.
 
+If you specify \code{logGroupNamePattern} in your request, then only \code{arn},
+\code{creationTime}, and \code{logGroupName} are included in the response.
+
 \code{logGroupNamePattern} and \code{logGroupNamePrefix} are mutually exclusive.
 Only one of these parameters can be passed.}
 
@@ -45,15 +48,11 @@ operation return log groups in the accounts listed in
 If this parameter is set to \code{true} and \code{accountIdentifiers} contains a
 null value, the operation returns all log groups in the monitoring
 account and all log groups in all source accounts that are linked to the
-monitoring account.
-
-If you specify \code{includeLinkedAccounts} in your request, then
-\code{metricFilterCount}, \code{retentionInDays}, and \code{storedBytes} are not
-included in the response.}
+monitoring account.}
 }
 \description{
 Lists the specified log groups. You can list all your log groups or filter the results by prefix. The results are ASCII-sorted by log group name.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_log_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_log_groups/} for full documentation.
 }
 \keyword{internal}

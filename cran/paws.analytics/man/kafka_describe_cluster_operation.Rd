@@ -13,6 +13,6 @@ operation.}
 \description{
 Returns a description of the cluster operation specified by the ARN.
 
-See \url{https://paws-r.github.io/docs/kafka/describe_cluster_operation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_describe_cluster_operation/} for full documentation.
 }
 \keyword{internal}

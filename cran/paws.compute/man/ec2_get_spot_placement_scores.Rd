@@ -66,6 +66,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Calculates the Spot placement score for a Region or Availability Zone based on the specified target capacity and compute requirements.
 
-See \url{https://paws-r.github.io/docs/ec2/get_spot_placement_scores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_spot_placement_scores/} for full documentation.
 }
 \keyword{internal}

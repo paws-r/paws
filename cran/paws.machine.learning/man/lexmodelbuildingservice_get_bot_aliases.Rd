@@ -29,6 +29,6 @@ part of its name matches the substring. For example, "xyz" matches both
 \description{
 Returns a list of aliases for a specified Amazon Lex bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_aliases/} for full documentation.
 }
 \keyword{internal}

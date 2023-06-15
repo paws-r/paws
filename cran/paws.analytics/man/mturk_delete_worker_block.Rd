@@ -16,6 +16,6 @@ does not see this message.}
 \description{
 The \code{\link[=mturk_delete_worker_block]{delete_worker_block}} operation allows you to reinstate a blocked Worker to work on your HITs. This operation reverses the effects of the CreateWorkerBlock operation. You need the Worker ID to use this operation. If the Worker ID is missing or invalid, this operation fails and returns the message “WorkerId is invalid.” If the specified Worker is not blocked, this operation returns successfully.
 
-See \url{https://paws-r.github.io/docs/mturk/delete_worker_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_delete_worker_block/} for full documentation.
 }
 \keyword{internal}

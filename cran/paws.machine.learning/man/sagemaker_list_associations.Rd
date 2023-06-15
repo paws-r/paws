@@ -52,6 +52,6 @@ default value is 10.}
 \description{
 Lists the associations in your account and their properties.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_associations/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ licensemanager_check_in_license(LicenseConsumptionToken, Beneficiary = NULL)
 \description{
 Checks in the specified license. Check in a license when it is no longer in use.
 
-See \url{https://paws-r.github.io/docs/licensemanager/check_in_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_check_in_license/} for full documentation.
 }
 \keyword{internal}

@@ -179,7 +179,7 @@ specify \code{IMPORT}.
 If you create a change set for a new stack, CloudFormation creates a
 stack with a unique stack ID, but no template or resources. The stack
 will be in the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995}{\code{REVIEW_IN_PROGRESS}}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995}{REVIEW_IN_PROGRESS}
 state until you execute the change set.
 
 By default, CloudFormation specifies \code{UPDATE}. You can't use the
@@ -195,6 +195,6 @@ include nested sets in a change set, specify \code{True}.}
 \description{
 Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that CloudFormation will create. If you create a change set for an existing stack, CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack.
 
-See \url{https://paws-r.github.io/docs/cloudformation/create_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_create_change_set/} for full documentation.
 }
 \keyword{internal}

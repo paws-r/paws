@@ -12,6 +12,6 @@ machinelearning_delete_ml_model(MLModelId)
 \description{
 Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable.
 
-See \url{https://paws-r.github.io/docs/machinelearning/delete_ml_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_delete_ml_model/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ number of items is specified by the limitations of the operation.}
 \description{
 Lists the address blocks that you have added to a directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/list_ip_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_list_ip_routes/} for full documentation.
 }
 \keyword{internal}

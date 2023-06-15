@@ -31,6 +31,6 @@ unique.}
 \description{
 Replicates an Amazon Connect instance in the specified Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/connect/replicate_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_replicate_instance/} for full documentation.
 }
 \keyword{internal}

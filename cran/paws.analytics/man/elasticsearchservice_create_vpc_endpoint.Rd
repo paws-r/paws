@@ -20,6 +20,6 @@ elasticsearchservice_create_vpc_endpoint(
 \description{
 Creates an Amazon OpenSearch Service-managed VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/create_vpc_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_create_vpc_endpoint/} for full documentation.
 }
 \keyword{internal}

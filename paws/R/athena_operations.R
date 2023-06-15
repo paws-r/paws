@@ -284,7 +284,11 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' Cancels the capacity reservation with the specified name
 #'
 #' @description
-#' Cancels the capacity reservation with the specified name.
+#' Cancels the capacity reservation with the specified name. Cancelled
+#' reservations remain in your account and will be deleted 45 days after
+#' cancellation. During the 45 days, you cannot re-purpose or reuse a
+#' reservation that has been cancelled, but you can refer to its tags and
+#' view it for historical reference.
 #'
 #' @usage
 #' athena_cancel_capacity_reservation(Name)
@@ -812,6 +816,54 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
   return(response)
 }
 .athena$operations$create_work_group <- athena_create_work_group
+
+#' Deletes a cancelled capacity reservation
+#'
+#' @description
+#' Deletes a cancelled capacity reservation. A reservation must be
+#' cancelled before it can be deleted. A deleted reservation is immediately
+#' removed from your account and can no longer be referenced, including by
+#' its ARN. A deleted reservation cannot be called by
+#' [`get_capacity_reservation`][athena_get_capacity_reservation], and
+#' deleted reservations do not appear in the output of
+#' [`list_capacity_reservations`][athena_list_capacity_reservations].
+#'
+#' @usage
+#' athena_delete_capacity_reservation(Name)
+#'
+#' @param Name &#91;required&#93; The name of the capacity reservation to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_capacity_reservation(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_capacity_reservation
+#'
+#' @aliases athena_delete_capacity_reservation
+athena_delete_capacity_reservation <- function(Name) {
+  op <- new_operation(
+    name = "DeleteCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_capacity_reservation_input(Name = Name)
+  output <- .athena$delete_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_capacity_reservation <- athena_delete_capacity_reservation
 
 #' Deletes a data catalog
 #'
@@ -2014,6 +2066,9 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
 #'     MaxConcurrentDpus = 123,
 #'     DefaultExecutorDpuSize = 123,
 #'     AdditionalConfigs = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
 #'       "string"
 #'     )
 #'   ),
@@ -3808,6 +3863,9 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #'     MaxConcurrentDpus = 123,
 #'     DefaultExecutorDpuSize = 123,
 #'     AdditionalConfigs = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
 #'       "string"
 #'     )
 #'   ),

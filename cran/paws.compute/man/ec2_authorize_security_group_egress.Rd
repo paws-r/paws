@@ -49,6 +49,6 @@ security group.}
 \description{
 [VPC only] Adds the specified outbound (egress) rules to a security group for use with a VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/authorize_security_group_egress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_authorize_security_group_egress/} for full documentation.
 }
 \keyword{internal}

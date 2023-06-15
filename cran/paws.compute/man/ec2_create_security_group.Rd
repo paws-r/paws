@@ -43,6 +43,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a security group.
 
-See \url{https://paws-r.github.io/docs/ec2/create_security_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_security_group/} for full documentation.
 }
 \keyword{internal}

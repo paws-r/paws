@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates a web ACL with a regional application resource, to protect the resource. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web Services Verified Access instance.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/associate_web_acl.html](https://paws-r.github.io/docs/wafv2/associate_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_associate_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_associate_web_acl/) for full documentation.
 #'
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL that you want to associate
 #' with the resource.
@@ -62,7 +62,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' @description
 #' Returns the web ACL capacity unit (WCU) requirements for a specified scope and set of rules. You can use this to check the capacity requirements for the rules you want to use in a RuleGroup or WebACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/check_capacity.html](https://paws-r.github.io/docs/wafv2/check_capacity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_check_capacity/](https://www.paws-r-sdk.com/docs/wafv2_check_capacity/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -105,7 +105,7 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' @description
 #' Creates an API key that contains a set of token domains.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/create_api_key.html](https://paws-r.github.io/docs/wafv2/create_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_create_api_key/](https://www.paws-r-sdk.com/docs/wafv2_create_api_key/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -153,7 +153,7 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' @description
 #' Creates an IPSet, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses. For example, if you're receiving a lot of requests from a ranges of IP addresses, you can configure WAF to block them using an IPSet that lists those IP addresses.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/create_ip_set.html](https://paws-r.github.io/docs/wafv2/create_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_create_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_create_ip_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
@@ -238,7 +238,7 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' @description
 #' Creates a RegexPatternSet, which you reference in a RegexPatternSetReferenceStatement, to have WAF inspect a web request component for the specified patterns.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/create_regex_pattern_set.html](https://paws-r.github.io/docs/wafv2/create_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_create_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_create_regex_pattern_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
@@ -284,7 +284,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @description
 #' Creates a RuleGroup per the specifications provided.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/create_rule_group.html](https://paws-r.github.io/docs/wafv2/create_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_create_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_create_rule_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
@@ -366,7 +366,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @description
 #' Creates a WebACL per the specifications provided.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/create_web_acl.html](https://paws-r.github.io/docs/wafv2/create_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_create_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_create_web_acl/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
@@ -464,7 +464,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' @description
 #' Deletes all rule groups that are managed by Firewall Manager for the specified web ACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_firewall_manager_rule_groups.html](https://paws-r.github.io/docs/wafv2/delete_firewall_manager_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/) for full documentation.
 #'
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
 #' @param WebACLLockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
@@ -501,7 +501,7 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' @description
 #' Deletes the specified IPSet.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_ip_set.html](https://paws-r.github.io/docs/wafv2/delete_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_delete_ip_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
@@ -555,7 +555,7 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' @description
 #' Deletes the LoggingConfiguration from the specified web ACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_logging_configuration.html](https://paws-r.github.io/docs/wafv2/delete_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/wafv2_delete_logging_configuration/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
 #' delete the LoggingConfiguration.
@@ -585,7 +585,7 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 #' @description
 #' Permanently deletes an IAM policy from the specified rule group.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_permission_policy.html](https://paws-r.github.io/docs/wafv2/delete_permission_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_delete_permission_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group from which you want to
 #' delete the policy.
@@ -617,7 +617,7 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' @description
 #' Deletes the specified RegexPatternSet.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_regex_pattern_set.html](https://paws-r.github.io/docs/wafv2/delete_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_delete_regex_pattern_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
@@ -671,7 +671,7 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' @description
 #' Deletes the specified RuleGroup.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_rule_group.html](https://paws-r.github.io/docs/wafv2/delete_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_delete_rule_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
@@ -725,7 +725,7 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' @description
 #' Deletes the specified WebACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/delete_web_acl.html](https://paws-r.github.io/docs/wafv2/delete_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_delete_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_delete_web_acl/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
@@ -774,16 +774,103 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_web_acl <- wafv2_delete_web_acl
 
+#' Provides high-level information for the Amazon Web Services Managed
+#' Rules rule groups and Amazon Web Services Marketplace managed rule
+#' groups
+#'
+#' @description
+#' Provides high-level information for the Amazon Web Services Managed Rules rule groups and Amazon Web Services Marketplace managed rule groups.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_describe_all_managed_products/](https://www.paws-r-sdk.com/docs/wafv2_describe_all_managed_products/) for full documentation.
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_describe_all_managed_products
+wafv2_describe_all_managed_products <- function(Scope) {
+  op <- new_operation(
+    name = "DescribeAllManagedProducts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$describe_all_managed_products_input(Scope = Scope)
+  output <- .wafv2$describe_all_managed_products_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$describe_all_managed_products <- wafv2_describe_all_managed_products
+
+#' Provides high-level information for the managed rule groups owned by a
+#' specific vendor
+#'
+#' @description
+#' Provides high-level information for the managed rule groups owned by a specific vendor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wafv2_describe_managed_products_by_vendor/](https://www.paws-r-sdk.com/docs/wafv2_describe_managed_products_by_vendor/) for full documentation.
+#'
+#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
+#' rule group name, to identify a rule group.
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_describe_managed_products_by_vendor
+wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
+  op <- new_operation(
+    name = "DescribeManagedProductsByVendor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$describe_managed_products_by_vendor_input(VendorName = VendorName, Scope = Scope)
+  output <- .wafv2$describe_managed_products_by_vendor_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$describe_managed_products_by_vendor <- wafv2_describe_managed_products_by_vendor
+
 #' Provides high-level information for a managed rule group, including
 #' descriptions of the rules
 #'
 #' @description
 #' Provides high-level information for a managed rule group, including descriptions of the rules.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/describe_managed_rule_group.html](https://paws-r.github.io/docs/wafv2/describe_managed_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_describe_managed_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_describe_managed_rule_group/) for full documentation.
 #'
 #' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
-#' rule group name, to identify the rule group.
+#' rule group name, to identify a rule group.
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
@@ -829,7 +916,7 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' @description
 #' Disassociates the specified regional application resource from any existing web ACL association. A resource can have at most one web ACL association. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web Services Verified Access instance.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/disassociate_web_acl.html](https://paws-r.github.io/docs/wafv2/disassociate_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_disassociate_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_disassociate_web_acl/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to disassociate from the
 #' web ACL.
@@ -880,7 +967,7 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' @description
 #' Generates a presigned download URL for the specified release of the mobile SDK.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/generate_mobile_sdk_release_url.html](https://paws-r.github.io/docs/wafv2/generate_mobile_sdk_release_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_generate_mobile_sdk_release_url/](https://www.paws-r-sdk.com/docs/wafv2_generate_mobile_sdk_release_url/) for full documentation.
 #'
 #' @param Platform &#91;required&#93; The device platform.
 #' @param ReleaseVersion &#91;required&#93; The release version. For the latest available version, specify `LATEST`.
@@ -910,7 +997,7 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #' @description
 #' Returns your API key in decrypted form. Use this to check the token domains that you have defined for the key.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_decrypted_api_key.html](https://paws-r.github.io/docs/wafv2/get_decrypted_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_decrypted_api_key/](https://www.paws-r-sdk.com/docs/wafv2_get_decrypted_api_key/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -952,7 +1039,7 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
 #' @description
 #' Retrieves the specified IPSet.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_ip_set.html](https://paws-r.github.io/docs/wafv2/get_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_get_ip_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
@@ -998,7 +1085,7 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' @description
 #' Returns the LoggingConfiguration for the specified web ACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_logging_configuration.html](https://paws-r.github.io/docs/wafv2/get_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_logging_configuration/](https://www.paws-r-sdk.com/docs/wafv2_get_logging_configuration/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
 #' the LoggingConfiguration.
@@ -1028,7 +1115,7 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 #' @description
 #' Retrieves the specified managed rule set.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_managed_rule_set.html](https://paws-r.github.io/docs/wafv2/get_managed_rule_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_managed_rule_set/](https://www.paws-r-sdk.com/docs/wafv2_get_managed_rule_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
 #' ID, to identify the rule set.
@@ -1078,7 +1165,7 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
 #' @description
 #' Retrieves information for the specified mobile SDK release, including release notes and tags.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_mobile_sdk_release.html](https://paws-r.github.io/docs/wafv2/get_mobile_sdk_release.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_mobile_sdk_release/](https://www.paws-r-sdk.com/docs/wafv2_get_mobile_sdk_release/) for full documentation.
 #'
 #' @param Platform &#91;required&#93; The device platform.
 #' @param ReleaseVersion &#91;required&#93; The release version. For the latest available version, specify `LATEST`.
@@ -1108,7 +1195,7 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
 #' @description
 #' Returns the IAM policy that is attached to the specified rule group.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_permission_policy.html](https://paws-r.github.io/docs/wafv2/get_permission_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_get_permission_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group for which you want to
 #' get the policy.
@@ -1139,7 +1226,7 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' @description
 #' Retrieves the IP addresses that are currently blocked by a rate-based rule instance. This is only available for rate-based rules that aggregate solely on the IP address or on the forwarded IP address.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_rate_based_statement_managed_keys.html](https://paws-r.github.io/docs/wafv2/get_rate_based_statement_managed_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_rate_based_statement_managed_keys/](https://www.paws-r-sdk.com/docs/wafv2_get_rate_based_statement_managed_keys/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1192,7 +1279,7 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' @description
 #' Retrieves the specified RegexPatternSet.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_regex_pattern_set.html](https://paws-r.github.io/docs/wafv2/get_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_get_regex_pattern_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
@@ -1238,7 +1325,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' @description
 #' Retrieves the specified RuleGroup.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_rule_group.html](https://paws-r.github.io/docs/wafv2/get_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_get_rule_group/) for full documentation.
 #'
 #' @param Name The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
@@ -1288,7 +1375,7 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #' @description
 #' Gets detailed information about a specified number of requests--a sample--that WAF randomly selects from among the first 5,000 requests that your Amazon Web Services resource received during a time range that you choose. You can specify a sample size of up to 500 requests, and you can specify any time range in the previous three hours.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_sampled_requests.html](https://paws-r.github.io/docs/wafv2/get_sampled_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_sampled_requests/](https://www.paws-r-sdk.com/docs/wafv2_get_sampled_requests/) for full documentation.
 #'
 #' @param WebAclArn &#91;required&#93; The Amazon resource name (ARN) of the `WebACL` for which you want a
 #' sample of requests.
@@ -1345,7 +1432,7 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' @description
 #' Retrieves the specified WebACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_web_acl.html](https://paws-r.github.io/docs/wafv2/get_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_get_web_acl/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
@@ -1391,7 +1478,7 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' @description
 #' Retrieves the WebACL for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/get_web_acl_for_resource.html](https://paws-r.github.io/docs/wafv2/get_web_acl_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_get_web_acl_for_resource/](https://www.paws-r-sdk.com/docs/wafv2_get_web_acl_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose web ACL you want to
 #' retrieve.
@@ -1442,7 +1529,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' @description
 #' Retrieves a list of the API keys that you've defined for the specified scope.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_api_keys.html](https://paws-r.github.io/docs/wafv2/list_api_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_api_keys/](https://www.paws-r-sdk.com/docs/wafv2_list_api_keys/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1492,10 +1579,10 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @description
 #' Returns a list of the available versions for the specified managed rule group.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_available_managed_rule_group_versions.html](https://paws-r.github.io/docs/wafv2/list_available_managed_rule_group_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_group_versions/](https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_group_versions/) for full documentation.
 #'
 #' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
-#' rule group name, to identify the rule group.
+#' rule group name, to identify a rule group.
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
@@ -1546,7 +1633,7 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #' @description
 #' Retrieves an array of managed rule groups that are available for you to use. This list includes all Amazon Web Services Managed Rules rule groups and all of the Amazon Web Services Marketplace managed rule groups that you're subscribed to.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_available_managed_rule_groups.html](https://paws-r.github.io/docs/wafv2/list_available_managed_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_list_available_managed_rule_groups/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1596,7 +1683,7 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' @description
 #' Retrieves an array of IPSetSummary objects for the IP sets that you manage.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_ip_sets.html](https://paws-r.github.io/docs/wafv2/list_ip_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_ip_sets/](https://www.paws-r-sdk.com/docs/wafv2_list_ip_sets/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1645,7 +1732,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @description
 #' Retrieves an array of your LoggingConfiguration objects.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_logging_configurations.html](https://paws-r.github.io/docs/wafv2/list_logging_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_logging_configurations/](https://www.paws-r-sdk.com/docs/wafv2_list_logging_configurations/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1694,7 +1781,7 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #' @description
 #' Retrieves the managed rule sets that you own.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_managed_rule_sets.html](https://paws-r.github.io/docs/wafv2/list_managed_rule_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_managed_rule_sets/](https://www.paws-r-sdk.com/docs/wafv2_list_managed_rule_sets/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1744,7 +1831,7 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
 #' @description
 #' Retrieves a list of the available releases for the mobile SDK and the specified device platform.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_mobile_sdk_releases.html](https://paws-r.github.io/docs/wafv2/list_mobile_sdk_releases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_mobile_sdk_releases/](https://www.paws-r-sdk.com/docs/wafv2_list_mobile_sdk_releases/) for full documentation.
 #'
 #' @param Platform &#91;required&#93; The device platform to retrieve the list for.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
@@ -1782,7 +1869,7 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #' @description
 #' Retrieves an array of RegexPatternSetSummary objects for the regex pattern sets that you manage.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_regex_pattern_sets.html](https://paws-r.github.io/docs/wafv2/list_regex_pattern_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_regex_pattern_sets/](https://www.paws-r-sdk.com/docs/wafv2_list_regex_pattern_sets/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1832,7 +1919,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' @description
 #' Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL. If you want the list of Amazon CloudFront resources, use the CloudFront call `ListDistributionsByWebACLId`.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_resources_for_web_acl.html](https://paws-r.github.io/docs/wafv2/list_resources_for_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_resources_for_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_list_resources_for_web_acl/) for full documentation.
 #'
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
 #' @param ResourceType Used for web ACLs that are scoped for regional applications. A regional
@@ -1872,7 +1959,7 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' @description
 #' Retrieves an array of RuleGroupSummary objects for the rule groups that you manage.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_rule_groups.html](https://paws-r.github.io/docs/wafv2/list_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_list_rule_groups/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -1921,7 +2008,7 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @description
 #' Retrieves the TagInfoForResource for the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_tags_for_resource.html](https://paws-r.github.io/docs/wafv2/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/wafv2_list_tags_for_resource/) for full documentation.
 #'
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
@@ -1959,7 +2046,7 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' @description
 #' Retrieves an array of WebACLSummary objects for the web ACLs that you manage.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/list_web_ac_ls.html](https://paws-r.github.io/docs/wafv2/list_web_ac_ls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_list_web_ac_ls/](https://www.paws-r-sdk.com/docs/wafv2_list_web_ac_ls/) for full documentation.
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
@@ -2009,7 +2096,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @description
 #' Enables the specified LoggingConfiguration, to start logging from a web ACL, according to the configuration provided.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/put_logging_configuration.html](https://paws-r.github.io/docs/wafv2/put_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_put_logging_configuration/](https://www.paws-r-sdk.com/docs/wafv2_put_logging_configuration/) for full documentation.
 #'
 #' @param LoggingConfiguration &#91;required&#93; 
 #'
@@ -2039,7 +2126,7 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' @description
 #' Defines the versions of your managed rule set that you are offering to the customers. Customers see your offerings as managed rule groups with versioning.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/put_managed_rule_set_versions.html](https://paws-r.github.io/docs/wafv2/put_managed_rule_set_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_put_managed_rule_set_versions/](https://www.paws-r-sdk.com/docs/wafv2_put_managed_rule_set_versions/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
 #' ID, to identify the rule set.
@@ -2100,7 +2187,7 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 #' @description
 #' Attaches an IAM policy to the specified resource. Use this to share a rule group across accounts.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/put_permission_policy.html](https://paws-r.github.io/docs/wafv2/put_permission_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/](https://www.paws-r-sdk.com/docs/wafv2_put_permission_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to
 #' attach the policy.
@@ -2150,7 +2237,7 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 #' @description
 #' Associates tags with the specified Amazon Web Services resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/tag_resource.html](https://paws-r.github.io/docs/wafv2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_tag_resource/](https://www.paws-r-sdk.com/docs/wafv2_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; An array of key:value pairs to associate with the resource.
@@ -2180,7 +2267,7 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Disassociates tags from an Amazon Web Services resource. Tags are key:value pairs that you can associate with Amazon Web Services resources. For example, the tag key might be "customer" and the tag value might be "companyA." You can specify one or more tags to add to each container. You can add up to 50 tags to each Amazon Web Services resource.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/untag_resource.html](https://paws-r.github.io/docs/wafv2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_untag_resource/](https://www.paws-r-sdk.com/docs/wafv2_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; An array of keys identifying the tags to disassociate from the resource.
@@ -2210,7 +2297,7 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the specified IPSet.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/update_ip_set.html](https://paws-r.github.io/docs/wafv2/update_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_update_ip_set/](https://www.paws-r-sdk.com/docs/wafv2_update_ip_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
@@ -2302,7 +2389,7 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' @description
 #' Updates the expiration information for your managed rule set. Use this to initiate the expiration of a managed rule group version. After you initiate expiration for a version, WAF excludes it from the response to [`list_available_managed_rule_group_versions`][wafv2_list_available_managed_rule_group_versions] for the managed rule group.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/update_managed_rule_set_version_expiry_date.html](https://paws-r.github.io/docs/wafv2/update_managed_rule_set_version_expiry_date.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_update_managed_rule_set_version_expiry_date/](https://www.paws-r-sdk.com/docs/wafv2_update_managed_rule_set_version_expiry_date/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
 #' ID, to identify the rule set.
@@ -2365,7 +2452,7 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' @description
 #' Updates the specified RegexPatternSet.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/update_regex_pattern_set.html](https://paws-r.github.io/docs/wafv2/update_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_update_regex_pattern_set/](https://www.paws-r-sdk.com/docs/wafv2_update_regex_pattern_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
@@ -2421,7 +2508,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @description
 #' Updates the specified RuleGroup.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/update_rule_group.html](https://paws-r.github.io/docs/wafv2/update_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_update_rule_group/](https://www.paws-r-sdk.com/docs/wafv2_update_rule_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
@@ -2496,7 +2583,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @description
 #' Updates the specified WebACL. While updating a web ACL, WAF provides continuous coverage to the resources that you have associated with the web ACL.
 #'
-#' See [https://paws-r.github.io/docs/wafv2/update_web_acl.html](https://paws-r.github.io/docs/wafv2/update_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/wafv2_update_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_update_web_acl/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.

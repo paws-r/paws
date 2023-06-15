@@ -52,6 +52,6 @@ invalid characters are:
 \description{
 Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/enable_logging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_enable_logging/} for full documentation.
 }
 \keyword{internal}

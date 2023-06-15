@@ -15,6 +15,6 @@ The member account's member status in the behavior graph must be
 \description{
 Removes the member account from the specified behavior graph. This operation can only be called by an invited member account that has the \code{ENABLED} status.
 
-See \url{https://paws-r.github.io/docs/detective/disassociate_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_disassociate_membership/} for full documentation.
 }
 \keyword{internal}

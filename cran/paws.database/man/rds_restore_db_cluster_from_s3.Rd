@@ -322,6 +322,6 @@ Valid for: Aurora DB clusters only}
 \description{
 Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket} in the \emph{Amazon Aurora User Guide}.
 
-See \url{https://paws-r.github.io/docs/rds/restore_db_cluster_from_s3.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_cluster_from_s3/} for full documentation.
 }
 \keyword{internal}

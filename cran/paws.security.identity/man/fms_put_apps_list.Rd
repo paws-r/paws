@@ -14,6 +14,6 @@ fms_put_apps_list(AppsList, TagList = NULL)
 \description{
 Creates an Firewall Manager applications list.
 
-See \url{https://paws-r.github.io/docs/fms/put_apps_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_put_apps_list/} for full documentation.
 }
 \keyword{internal}

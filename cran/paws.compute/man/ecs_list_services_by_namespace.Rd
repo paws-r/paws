@@ -41,6 +41,6 @@ up to 10 results and a \code{nextToken} value if applicable.}
 \description{
 This operation lists all of the services that are associated with a Cloud Map namespace. This list might include services in different clusters. In contrast, \code{\link[=ecs_list_services]{list_services}} can only list services in one cluster at a time. If you need to filter the list of services in a single cluster by various parameters, use \code{\link[=ecs_list_services]{list_services}}. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/list_services_by_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_services_by_namespace/} for full documentation.
 }
 \keyword{internal}

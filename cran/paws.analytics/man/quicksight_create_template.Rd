@@ -65,6 +65,6 @@ the request to be valid.}
 \description{
 Creates a template either from a \code{TemplateDefinition} or from an existing Amazon QuickSight analysis or template. You can use the resulting template to create additional dashboards, templates, or analyses.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_template/} for full documentation.
 }
 \keyword{internal}

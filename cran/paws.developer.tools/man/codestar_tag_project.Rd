@@ -14,6 +14,6 @@ codestar_tag_project(id, tags)
 \description{
 Adds tags to a project.
 
-See \url{https://paws-r.github.io/docs/codestar/tag_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_tag_project/} for full documentation.
 }
 \keyword{internal}

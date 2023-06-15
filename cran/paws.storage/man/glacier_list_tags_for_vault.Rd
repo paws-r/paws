@@ -18,6 +18,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation lists all the tags attached to a vault. The operation returns an empty map if there are no tags. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
 
-See \url{https://paws-r.github.io/docs/glacier/list_tags_for_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_list_tags_for_vault/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ month remaining in the Reserved Instance term.}
 \description{
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances, you can use the \code{\link[=ec2_describe_reserved_instances]{describe_reserved_instances}} operation.
 
-See \url{https://paws-r.github.io/docs/ec2/create_reserved_instances_listing.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_reserved_instances_listing/} for full documentation.
 }
 \keyword{internal}

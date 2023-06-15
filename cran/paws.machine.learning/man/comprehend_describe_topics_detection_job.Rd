@@ -12,6 +12,6 @@ comprehend_describe_topics_detection_job(JobId)
 \description{
 Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_topics_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_topics_detection_job/} for full documentation.
 }
 \keyword{internal}

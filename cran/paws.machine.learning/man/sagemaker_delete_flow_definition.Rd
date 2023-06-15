@@ -12,6 +12,6 @@ sagemaker_delete_flow_definition(FlowDefinitionName)
 \description{
 Deletes the specified flow definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_flow_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_flow_definition/} for full documentation.
 }
 \keyword{internal}

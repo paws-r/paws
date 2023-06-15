@@ -107,6 +107,6 @@ specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 \description{
 Composes an email message to multiple destinations. The message body is created using an email template.
 
-See \url{https://paws-r.github.io/docs/ses/send_bulk_templated_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_send_bulk_templated_email/} for full documentation.
 }
 \keyword{internal}

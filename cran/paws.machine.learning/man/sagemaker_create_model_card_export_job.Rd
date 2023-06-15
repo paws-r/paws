@@ -25,6 +25,6 @@ for exporting.}
 \description{
 Creates an Amazon SageMaker Model Card export job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_model_card_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_model_card_export_job/} for full documentation.
 }
 \keyword{internal}

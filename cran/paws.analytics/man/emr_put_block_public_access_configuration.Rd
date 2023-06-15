@@ -29,6 +29,6 @@ public access is enabled by default in that Region.}
 \description{
 Creates or updates an Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the \emph{Amazon EMR Management Guide}.
 
-See \url{https://paws-r.github.io/docs/emr/put_block_public_access_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_put_block_public_access_configuration/} for full documentation.
 }
 \keyword{internal}

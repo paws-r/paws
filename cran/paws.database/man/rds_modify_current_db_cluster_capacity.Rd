@@ -52,6 +52,6 @@ isn't found in the timeout period.}
 \description{
 Set the capacity of an Aurora Serverless v1 DB cluster to a specific value.
 
-See \url{https://paws-r.github.io/docs/rds/modify_current_db_cluster_capacity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_current_db_cluster_capacity/} for full documentation.
 }
 \keyword{internal}

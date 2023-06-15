@@ -15,6 +15,6 @@ token, Amazon Comprehend generates one.}
 \description{
 Start the flywheel iteration.This operation uses any new datasets to train a new model version. For more information about flywheels, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/start_flywheel_iteration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_start_flywheel_iteration/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ transactions.}
 \description{
 Returns metadata about transactions and their status. To prevent the response from growing indefinitely, only uncommitted transactions and those available for time-travel queries are returned.
 
-See \url{https://paws-r.github.io/docs/lakeformation/list_transactions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_list_transactions/} for full documentation.
 }
 \keyword{internal}

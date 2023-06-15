@@ -29,6 +29,6 @@ option. You can't restore an analysis after it's deleted.}
 \description{
 Deletes an analysis from Amazon QuickSight. You can optionally include a recovery window during which you can restore the analysis. If you don't specify a recovery window value, the operation defaults to 30 days. Amazon QuickSight attaches a \code{DeletionTime} stamp to the response that specifies the end of the recovery window. At the end of the recovery window, Amazon QuickSight deletes the analysis permanently.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_analysis/} for full documentation.
 }
 \keyword{internal}

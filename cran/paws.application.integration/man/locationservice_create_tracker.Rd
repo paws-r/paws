@@ -85,6 +85,6 @@ periods (.), and underscores (_).
 \description{
 Creates a tracker resource in your Amazon Web Services account, which lets you retrieve current and historical location of devices.
 
-See \url{https://paws-r.github.io/docs/locationservice/create_tracker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_create_tracker/} for full documentation.
 }
 \keyword{internal}

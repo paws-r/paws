@@ -15,6 +15,6 @@ of instance IDs you can specify is 25.}
 \description{
 This method works, but is deprecated. Use \code{\link[=codedeploy_batch_get_deployment_targets]{batch_get_deployment_targets}} instead.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_deployment_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_instances/} for full documentation.
 }
 \keyword{internal}

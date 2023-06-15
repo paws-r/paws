@@ -24,6 +24,6 @@ cognitoidentityprovider_admin_set_user_mfa_preference(
 \description{
 The user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_mfa_preference.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_mfa_preference/} for full documentation.
 }
 \keyword{internal}

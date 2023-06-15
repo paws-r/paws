@@ -17,6 +17,6 @@ hyphens, and underscores. Maximum length is 128 characters.}
 \description{
 Deletes the RouteSettings for a stage.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/delete_route_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_settings/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ cannot contain the ARN.}
 \description{
 Removes the specified recommendations from the specified assistant's queue of newly available recommendations. You can use this API in conjunction with \code{\link[=connectwisdomservice_get_recommendations]{get_recommendations}} and a \code{waitTimeSeconds} input for long-polling behavior and avoiding duplicate recommendations.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/notify_recommendations_received.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_notify_recommendations_received/} for full documentation.
 }
 \keyword{internal}

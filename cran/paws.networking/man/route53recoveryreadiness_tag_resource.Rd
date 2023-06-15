@@ -14,6 +14,6 @@ route53recoveryreadiness_tag_resource(ResourceArn, Tags)
 \description{
 Adds a tag to a resource.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_tag_resource/} for full documentation.
 }
 \keyword{internal}

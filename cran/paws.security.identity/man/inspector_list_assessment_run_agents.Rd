@@ -35,6 +35,6 @@ you want in the response. The default value is 10. The maximum value is
 \description{
 Lists the agents of the assessment runs that are specified by the ARNs of the assessment runs.
 
-See \url{https://paws-r.github.io/docs/inspector/list_assessment_run_agents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_list_assessment_run_agents/} for full documentation.
 }
 \keyword{internal}

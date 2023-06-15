@@ -12,6 +12,6 @@ personalize_delete_schema(schemaArn)
 \description{
 Deletes a schema. Before deleting a schema, you must delete all datasets referencing the schema. For more information on schemas, see \code{\link[=personalize_create_schema]{create_schema}}.
 
-See \url{https://paws-r.github.io/docs/personalize/delete_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_delete_schema/} for full documentation.
 }
 \keyword{internal}

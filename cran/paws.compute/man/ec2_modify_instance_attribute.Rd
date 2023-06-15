@@ -118,6 +118,6 @@ information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_
 \description{
 Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_attribute/} for full documentation.
 }
 \keyword{internal}

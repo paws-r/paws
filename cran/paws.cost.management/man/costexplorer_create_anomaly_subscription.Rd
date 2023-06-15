@@ -36,6 +36,6 @@ for Amazon Web Services use
 \description{
 Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set an absolute or percentage threshold and a time frequency for receiving notifications.
 
-See \url{https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_create_anomaly_subscription/} for full documentation.
 }
 \keyword{internal}

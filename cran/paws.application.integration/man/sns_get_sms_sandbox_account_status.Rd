@@ -10,6 +10,6 @@ sns_get_sms_sandbox_account_status()
 \description{
 Retrieves the SMS sandbox status for the calling Amazon Web Services account in the target Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/sns/get_sms_sandbox_account_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_get_sms_sandbox_account_status/} for full documentation.
 }
 \keyword{internal}

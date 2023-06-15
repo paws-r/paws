@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Add up to 2 anomaly notifications channels for a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/add_notification_channels.html](https://paws-r.github.io/docs/codeguruprofiler/add_notification_channels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_add_notification_channels/](https://www.paws-r-sdk.com/docs/codeguruprofiler_add_notification_channels/) for full documentation.
 #'
 #' @param channels &#91;required&#93; One or 2 channels to report to when anomalies are detected.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group that we are setting up notifications
@@ -40,7 +40,7 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #' @description
 #' Returns the time series of values for a requested list of frame metrics from a time period.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/batch_get_frame_metric_data.html](https://paws-r.github.io/docs/codeguruprofiler/batch_get_frame_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_batch_get_frame_metric_data/](https://www.paws-r-sdk.com/docs/codeguruprofiler_batch_get_frame_metric_data/) for full documentation.
 #'
 #' @param endTime The end time of the time period for the returned time series values.
 #' This is specified using the ISO 8601 format. For example,
@@ -97,7 +97,7 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #' @description
 #' Used by profiler agents to report their current state and to receive remote configuration updates. For example, [`configure_agent`][codeguruprofiler_configure_agent] can be used to tell an agent whether to profile or not and for how long to return profiling data.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/configure_agent.html](https://paws-r.github.io/docs/codeguruprofiler/configure_agent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_configure_agent/](https://www.paws-r-sdk.com/docs/codeguruprofiler_configure_agent/) for full documentation.
 #'
 #' @param fleetInstanceId A universally unique identifier (UUID) for a profiling instance. For
 #' example, if the profiling instance is an Amazon EC2 instance, it is the
@@ -158,7 +158,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #' @description
 #' Creates a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/create_profiling_group.html](https://paws-r.github.io/docs/codeguruprofiler/create_profiling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_create_profiling_group/](https://www.paws-r-sdk.com/docs/codeguruprofiler_create_profiling_group/) for full documentation.
 #'
 #' @param agentOrchestrationConfig Specifies whether profiling is enabled or disabled for the created
 #' profiling group.
@@ -198,7 +198,7 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
 #' @description
 #' Deletes a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/delete_profiling_group.html](https://paws-r.github.io/docs/codeguruprofiler/delete_profiling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_delete_profiling_group/](https://www.paws-r-sdk.com/docs/codeguruprofiler_delete_profiling_group/) for full documentation.
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to delete.
 #'
@@ -228,7 +228,7 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 #' @description
 #' Returns a [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html) object that contains information about the requested profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/describe_profiling_group.html](https://paws-r.github.io/docs/codeguruprofiler/describe_profiling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_describe_profiling_group/](https://www.paws-r-sdk.com/docs/codeguruprofiler_describe_profiling_group/) for full documentation.
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group to get information about.
 #'
@@ -258,7 +258,7 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
 #' @description
 #' Returns a list of [`FindingsReportSummary`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html) objects that contain analysis results for all profiling groups in your AWS account.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/get_findings_report_account_summary.html](https://paws-r.github.io/docs/codeguruprofiler/get_findings_report_account_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_get_findings_report_account_summary/](https://www.paws-r-sdk.com/docs/codeguruprofiler_get_findings_report_account_summary/) for full documentation.
 #'
 #' @param dailyReportsOnly A `Boolean` value indicating whether to only return reports from daily
 #' profiles. If set to `True`, only analysis data from daily profiles is
@@ -309,7 +309,7 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
 #' @description
 #' Get the current configuration for anomaly notifications for a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/get_notification_configuration.html](https://paws-r.github.io/docs/codeguruprofiler/get_notification_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_get_notification_configuration/](https://www.paws-r-sdk.com/docs/codeguruprofiler_get_notification_configuration/) for full documentation.
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group we want to get the notification
 #' configuration for.
@@ -339,7 +339,7 @@ codeguruprofiler_get_notification_configuration <- function(profilingGroupName) 
 #' @description
 #' Returns the JSON-formatted resource-based policy on a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/get_policy.html](https://paws-r.github.io/docs/codeguruprofiler/get_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_get_policy/](https://www.paws-r-sdk.com/docs/codeguruprofiler_get_policy/) for full documentation.
 #'
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group.
 #'
@@ -369,7 +369,7 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' @description
 #' Gets the aggregated profile of a profiling group for a specified time range. Amazon CodeGuru Profiler collects posted agent profiles for a profiling group into aggregated profiles.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/get_profile.html](https://paws-r.github.io/docs/codeguruprofiler/get_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_get_profile/](https://www.paws-r-sdk.com/docs/codeguruprofiler_get_profile/) for full documentation.
 #'
 #' @param accept The format of the returned profiling data. The format maps to the
 #' `Accept` and `Content-Type` headers of the HTTP request. You can specify
@@ -425,7 +425,7 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
 #' @description
 #' Returns a list of [`Recommendation`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html) objects that contain recommendations for a profiling group for a given time period. A list of [`Anomaly`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Anomaly.html) objects that contains details about anomalies detected in the profiling group for the same time period is also returned.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/get_recommendations.html](https://paws-r.github.io/docs/codeguruprofiler/get_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_get_recommendations/](https://www.paws-r-sdk.com/docs/codeguruprofiler_get_recommendations/) for full documentation.
 #'
 #' @param endTime &#91;required&#93; The start time of the profile to get analysis data about. You must
 #' specify `startTime` and `endTime`. This is specified using the ISO 8601
@@ -486,7 +486,7 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
 #' @description
 #' List the available reports for a given profiling group and time range.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/list_findings_reports.html](https://paws-r.github.io/docs/codeguruprofiler/list_findings_reports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_list_findings_reports/](https://www.paws-r-sdk.com/docs/codeguruprofiler_list_findings_reports/) for full documentation.
 #'
 #' @param dailyReportsOnly A `Boolean` value indicating whether to only return reports from daily
 #' profiles. If set to `True`, only analysis data from daily profiles is
@@ -546,7 +546,7 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #' @description
 #' Lists the start times of the available aggregated profiles of a profiling group for an aggregation period within the specified time range.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/list_profile_times.html](https://paws-r.github.io/docs/codeguruprofiler/list_profile_times.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_list_profile_times/](https://www.paws-r-sdk.com/docs/codeguruprofiler_list_profile_times/) for full documentation.
 #'
 #' @param endTime &#91;required&#93; The end time of the time range from which to list the profiles.
 #' @param maxResults The maximum number of profile time results returned by
@@ -606,7 +606,7 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 #' @description
 #' Returns a list of profiling groups. The profiling groups are returned as [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html) objects.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/list_profiling_groups.html](https://paws-r.github.io/docs/codeguruprofiler/list_profiling_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_list_profiling_groups/](https://www.paws-r-sdk.com/docs/codeguruprofiler_list_profiling_groups/) for full documentation.
 #'
 #' @param includeDescription A `Boolean` value indicating whether to include a description. If
 #' `true`, then a list of
@@ -657,7 +657,7 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 #' @description
 #' Returns a list of the tags that are assigned to a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/list_tags_for_resource.html](https://paws-r.github.io/docs/codeguruprofiler/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codeguruprofiler_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that contains the tags to
 #' return.
@@ -687,7 +687,7 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Submits profiling data to an aggregated profile of a profiling group. To get an aggregated profile that is created with this profiling data, use [`get_profile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html) .
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/post_agent_profile.html](https://paws-r.github.io/docs/codeguruprofiler/post_agent_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_post_agent_profile/](https://www.paws-r-sdk.com/docs/codeguruprofiler_post_agent_profile/) for full documentation.
 #'
 #' @param agentProfile &#91;required&#93; The submitted profiling data.
 #' @param contentType &#91;required&#93; The format of the submitted profiling data. The format maps to the
@@ -727,7 +727,7 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' @description
 #' Adds permissions to a profiling group's resource-based policy that are provided using an action group. If a profiling group doesn't have a resource-based policy, one is created for it using the permissions in the action group and the roles and users in the `principals` parameter.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/put_permission.html](https://paws-r.github.io/docs/codeguruprofiler/put_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_put_permission/](https://www.paws-r-sdk.com/docs/codeguruprofiler_put_permission/) for full documentation.
 #'
 #' @param actionGroup &#91;required&#93; Specifies an action group that contains permissions to add to a
 #' profiling group resource. One action group is supported,
@@ -768,7 +768,7 @@ codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGr
 #' @description
 #' Remove one anomaly notifications channel for a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/remove_notification_channel.html](https://paws-r.github.io/docs/codeguruprofiler/remove_notification_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_remove_notification_channel/](https://www.paws-r-sdk.com/docs/codeguruprofiler_remove_notification_channel/) for full documentation.
 #'
 #' @param channelId &#91;required&#93; The id of the channel that we want to stop receiving notifications.
 #' @param profilingGroupName &#91;required&#93; The name of the profiling group we want to change notification
@@ -800,7 +800,7 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #' @description
 #' Removes permissions from a profiling group's resource-based policy that are provided using an action group. The one supported action group that can be removed is `agentPermission` which grants [`configure_agent`][codeguruprofiler_configure_agent] and `PostAgent` permissions. For more information, see [Resource-based policies in CodeGuru Profiler](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/resource-based-policies.html) in the *Amazon CodeGuru Profiler User Guide*, [`configure_agent`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html) , and [`post_agent_profile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html) .
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/remove_permission.html](https://paws-r.github.io/docs/codeguruprofiler/remove_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_remove_permission/](https://www.paws-r-sdk.com/docs/codeguruprofiler_remove_permission/) for full documentation.
 #'
 #' @param actionGroup &#91;required&#93; Specifies an action group that contains the permissions to remove from a
 #' profiling group's resource-based policy. One action group is supported,
@@ -837,7 +837,7 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
 #' @description
 #' Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/submit_feedback.html](https://paws-r.github.io/docs/codeguruprofiler/submit_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_submit_feedback/](https://www.paws-r-sdk.com/docs/codeguruprofiler_submit_feedback/) for full documentation.
 #'
 #' @param anomalyInstanceId &#91;required&#93; The universally unique identifier (UUID) of the
 #' [`AnomalyInstance`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_AnomalyInstance.html)
@@ -872,7 +872,7 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
 #' @description
 #' Use to assign one or more tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/tag_resource.html](https://paws-r.github.io/docs/codeguruprofiler/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_tag_resource/](https://www.paws-r-sdk.com/docs/codeguruprofiler_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the tags are added
 #' to.
@@ -903,7 +903,7 @@ codeguruprofiler_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Use to remove one or more tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/untag_resource.html](https://paws-r.github.io/docs/codeguruprofiler/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_untag_resource/](https://www.paws-r-sdk.com/docs/codeguruprofiler_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that contains the tags to
 #' remove.
@@ -935,7 +935,7 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates a profiling group.
 #'
-#' See [https://paws-r.github.io/docs/codeguruprofiler/update_profiling_group.html](https://paws-r.github.io/docs/codeguruprofiler/update_profiling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeguruprofiler_update_profiling_group/](https://www.paws-r-sdk.com/docs/codeguruprofiler_update_profiling_group/) for full documentation.
 #'
 #' @param agentOrchestrationConfig &#91;required&#93; Specifies whether profiling is enabled or disabled for a profiling
 #' group.

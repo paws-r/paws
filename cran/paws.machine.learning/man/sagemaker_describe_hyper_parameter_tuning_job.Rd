@@ -13,6 +13,6 @@ sagemaker_describe_hyper_parameter_tuning_job(HyperParameterTuningJobName)
 \description{
 Returns a description of a hyperparameter tuning job, depending on the fields selected. These fields can include the name, Amazon Resource Name (ARN), job status of your tuning job and more.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_hyper_parameter_tuning_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_hyper_parameter_tuning_job/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ opensearchservice_describe_domain_health(DomainName)
 \description{
 Returns information about domain and node health, the standby Availability Zone, number of nodes per Availability Zone, and shard count per node.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_health/} for full documentation.
 }
 \keyword{internal}

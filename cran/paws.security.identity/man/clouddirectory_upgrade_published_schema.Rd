@@ -29,6 +29,6 @@ false.}
 \description{
 Upgrades a published schema under a new minor version revision using the current contents of \code{DevelopmentSchemaArn}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/upgrade_published_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_upgrade_published_schema/} for full documentation.
 }
 \keyword{internal}

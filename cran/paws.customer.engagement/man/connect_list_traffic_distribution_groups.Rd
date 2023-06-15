@@ -23,6 +23,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Lists traffic distribution groups.
 
-See \url{https://paws-r.github.io/docs/connect/list_traffic_distribution_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_traffic_distribution_groups/} for full documentation.
 }
 \keyword{internal}

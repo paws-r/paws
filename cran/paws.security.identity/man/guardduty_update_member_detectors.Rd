@@ -24,6 +24,6 @@ accounts.}
 \description{
 Contains information on member accounts to be updated.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_member_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_member_detectors/} for full documentation.
 }
 \keyword{internal}

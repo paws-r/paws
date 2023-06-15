@@ -12,6 +12,6 @@ apigatewayv2_delete_cors_configuration(ApiId)
 \description{
 Deletes a CORS configuration.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/delete_cors_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_delete_cors_configuration/} for full documentation.
 }
 \keyword{internal}

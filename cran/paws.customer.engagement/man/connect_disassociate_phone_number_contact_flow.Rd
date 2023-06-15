@@ -16,6 +16,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Removes the flow association from a phone number claimed to your Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/disassociate_phone_number_contact_flow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_disassociate_phone_number_contact_flow/} for full documentation.
 }
 \keyword{internal}

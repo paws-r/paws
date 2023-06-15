@@ -18,6 +18,6 @@ populates this field. For more information about idempotency, see
 \description{
 Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group. You can call this API only in the Amazon Web Services Region where the number was claimed.
 
-See \url{https://paws-r.github.io/docs/connect/release_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_release_phone_number/} for full documentation.
 }
 \keyword{internal}

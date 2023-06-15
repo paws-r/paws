@@ -27,6 +27,6 @@ Application Cost Profiler uploads the report.}
 \description{
 Updates existing report in AWS Application Cost Profiler.
 
-See \url{https://paws-r.github.io/docs/applicationcostprofiler/update_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationcostprofiler_update_report_definition/} for full documentation.
 }
 \keyword{internal}

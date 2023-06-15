@@ -17,6 +17,6 @@ different account, the request fails with the HTTP status code
 \description{
 Retrieves \code{OwnershipControls} for an Amazon S3 bucket. To use this operation, you must have the \code{s3:GetBucketOwnershipControls} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying permissions in a policy}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_ownership_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_ownership_controls/} for full documentation.
 }
 \keyword{internal}

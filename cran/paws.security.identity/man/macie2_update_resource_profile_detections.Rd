@@ -21,6 +21,6 @@ data types in the score, don't specify any values for this array.}
 \description{
 Updates the sensitivity scoring settings for an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/macie2/update_resource_profile_detections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_update_resource_profile_detections/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ service.}
 \description{
 Disassociate a custom domain name from an App Runner service.
 
-See \url{https://paws-r.github.io/docs/apprunner/disassociate_custom_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_disassociate_custom_domain/} for full documentation.
 }
 \keyword{internal}

@@ -76,6 +76,6 @@ plan.}
 \description{
 Updates the specified response plan.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/update_response_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_update_response_plan/} for full documentation.
 }
 \keyword{internal}

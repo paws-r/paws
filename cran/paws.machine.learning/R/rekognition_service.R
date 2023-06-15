@@ -18,13 +18,19 @@ NULL
 #' 
 #' **Amazon Rekognition Image**
 #' 
+#' -   [`associate_faces`][rekognition_associate_faces]
+#' 
 #' -   [`compare_faces`][rekognition_compare_faces]
 #' 
 #' -   [`create_collection`][rekognition_create_collection]
 #' 
+#' -   [`create_user`][rekognition_create_user]
+#' 
 #' -   [`delete_collection`][rekognition_delete_collection]
 #' 
 #' -   [`delete_faces`][rekognition_delete_faces]
+#' 
+#' -   [`delete_user`][rekognition_delete_user]
 #' 
 #' -   [`describe_collection`][rekognition_describe_collection]
 #' 
@@ -38,6 +44,8 @@ NULL
 #' 
 #' -   [`detect_text`][rekognition_detect_text]
 #' 
+#' -   [`disassociate_faces`][rekognition_disassociate_faces]
+#' 
 #' -   [`get_celebrity_info`][rekognition_get_celebrity_info]
 #' 
 #' -   [`index_faces`][rekognition_index_faces]
@@ -46,11 +54,17 @@ NULL
 #' 
 #' -   [`list_faces`][rekognition_list_faces]
 #' 
+#' -   [`list_users`][rekognition_list_users]
+#' 
 #' -   [`recognize_celebrities`][rekognition_recognize_celebrities]
 #' 
 #' -   [`search_faces`][rekognition_search_faces]
 #' 
 #' -   [`search_faces_by_image`][rekognition_search_faces_by_image]
+#' 
+#' -   [`search_users`][rekognition_search_users]
+#' 
+#' -   [`search_users_by_image`][rekognition_search_users_by_image]
 #' 
 #' **Amazon Rekognition Custom Labels**
 #' 
@@ -185,27 +199,23 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- rekognition()
-#' # This operation compares the largest face detected in the source image
-#' # with each face detected in the target image.
-#' svc$compare_faces(
-#'   SimilarityThreshold = 90L,
-#'   SourceImage = list(
-#'     S3Object = list(
-#'       Bucket = "mybucket",
-#'       Name = "mysourceimage"
-#'     )
+#' # This operation associates one or more faces with an existing UserID.
+#' svc$associate_faces(
+#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440002",
+#'   CollectionId = "MyCollection",
+#'   FaceIds = list(
+#'     "f5817d37-94f6-4335-bfee-6cf79a3d806e",
+#'     "851cb847-dccc-4fea-9309-9f4805967855",
+#'     "35ebbb41-7f67-4263-908d-dd0ecba05ab9"
 #'   ),
-#'   TargetImage = list(
-#'     S3Object = list(
-#'       Bucket = "mybucket",
-#'       Name = "mytargetimage"
-#'     )
-#'   )
+#'   UserId = "DemoUser",
+#'   UserMatchThreshold = 70L
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=rekognition_associate_faces]{associate_faces} \tab Associates one or more faces with an existing UserID\cr
 #'  \link[=rekognition_compare_faces]{compare_faces} \tab Compares a face in the source input image with each of the 100 largest faces detected in the target input image\cr
 #'  \link[=rekognition_copy_project_version]{copy_project_version} \tab Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project\cr
 #'  \link[=rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region\cr
@@ -214,6 +224,7 @@ NULL
 #'  \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project\cr
 #'  \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training\cr
 #'  \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video\cr
+#'  \link[=rekognition_create_user]{create_user} \tab Creates a new User within a collection specified by CollectionId\cr
 #'  \link[=rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection\cr
 #'  \link[=rekognition_delete_dataset]{delete_dataset} \tab Deletes an existing Amazon Rekognition Custom Labels dataset\cr
 #'  \link[=rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection\cr
@@ -221,6 +232,7 @@ NULL
 #'  \link[=rekognition_delete_project_policy]{delete_project_policy} \tab Deletes an existing project policy\cr
 #'  \link[=rekognition_delete_project_version]{delete_project_version} \tab Deletes an Amazon Rekognition Custom Labels model\cr
 #'  \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name\cr
+#'  \link[=rekognition_delete_user]{delete_user} \tab Deletes the specified UserID within the collection\cr
 #'  \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection\cr
 #'  \link[=rekognition_describe_dataset]{describe_dataset} \tab Describes an Amazon Rekognition Custom Labels dataset\cr
 #'  \link[=rekognition_describe_projects]{describe_projects} \tab Gets information about your Amazon Rekognition Custom Labels projects\cr
@@ -232,6 +244,7 @@ NULL
 #'  \link[=rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects unsafe content in a specified JPEG or PNG format image\cr
 #'  \link[=rekognition_detect_protective_equipment]{detect_protective_equipment} \tab Detects Personal Protective Equipment (PPE) worn by people detected in an image\cr
 #'  \link[=rekognition_detect_text]{detect_text} \tab Detects text in the input image and converts it into machine-readable text\cr
+#'  \link[=rekognition_disassociate_faces]{disassociate_faces} \tab Removes the association between a Face supplied in an array of FaceIds and the User\cr
 #'  \link[=rekognition_distribute_dataset_entries]{distribute_dataset_entries} \tab Distributes the entries (images) in a training dataset across the training dataset and the test dataset for a project\cr
 #'  \link[=rekognition_get_celebrity_info]{get_celebrity_info} \tab Gets the name and additional information about a celebrity based on their Amazon Rekognition ID\cr
 #'  \link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition\cr
@@ -251,10 +264,13 @@ NULL
 #'  \link[=rekognition_list_project_policies]{list_project_policies} \tab Gets a list of the project policies attached to a project\cr
 #'  \link[=rekognition_list_stream_processors]{list_stream_processors} \tab Gets a list of stream processors that you have created with CreateStreamProcessor\cr
 #'  \link[=rekognition_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
+#'  \link[=rekognition_list_users]{list_users} \tab Returns metadata of the User such as UserID in the specified collection\cr
 #'  \link[=rekognition_put_project_policy]{put_project_policy} \tab Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account\cr
 #'  \link[=rekognition_recognize_celebrities]{recognize_celebrities} \tab Returns an array of celebrities recognized in the input image\cr
 #'  \link[=rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to\cr
 #'  \link[=rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr
+#'  \link[=rekognition_search_users]{search_users} \tab Searches for UserIDs within a collection based on a FaceId or UserId\cr
+#'  \link[=rekognition_search_users_by_image]{search_users_by_image} \tab Searches for UserIDs using a supplied image\cr
 #'  \link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition} \tab Starts asynchronous recognition of celebrities in a stored video\cr
 #'  \link[=rekognition_start_content_moderation]{start_content_moderation} \tab Starts asynchronous detection of inappropriate, unwanted, or offensive content in a stored video\cr
 #'  \link[=rekognition_start_face_detection]{start_face_detection} \tab Starts asynchronous detection of faces in a stored video\cr

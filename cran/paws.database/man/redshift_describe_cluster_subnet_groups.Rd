@@ -52,6 +52,6 @@ with them.}
 \description{
 Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups. By default, this operation returns information about all cluster subnet groups that are defined in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_subnet_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_subnet_groups/} for full documentation.
 }
 \keyword{internal}

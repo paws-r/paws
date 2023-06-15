@@ -16,6 +16,6 @@ special permissions for SMB file shares on the gateway.}
 \description{
 Updates the list of Active Directory users and groups that have special permissions for SMB file shares on the gateway.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_smb_local_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_smb_local_groups/} for full documentation.
 }
 \keyword{internal}

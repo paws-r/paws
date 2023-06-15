@@ -16,6 +16,6 @@ appregistry_get_associated_resource(application, resourceType, resource)
 \description{
 Gets the resource associated with the application.
 
-See \url{https://paws-r.github.io/docs/appregistry/get_associated_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_get_associated_resource/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ glue_start_blueprint_run(BlueprintName, Parameters = NULL, RoleArn)
 \description{
 Starts a new run of the specified blueprint.
 
-See \url{https://paws-r.github.io/docs/glue/start_blueprint_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_blueprint_run/} for full documentation.
 }
 \keyword{internal}

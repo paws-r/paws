@@ -58,6 +58,6 @@ The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCEND
 \description{
 Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity. Management account in an organization have access to member accounts. You can use \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} in \code{SAVINGS_PLANS} to determine the possible dimension values.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_utilization/} for full documentation.
 }
 \keyword{internal}

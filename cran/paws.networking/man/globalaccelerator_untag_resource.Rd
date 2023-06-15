@@ -15,6 +15,6 @@ remove tags from. An ARN uniquely identifies a resource.}
 \description{
 Remove tags from a Global Accelerator resource. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from an accelerator that was already removed.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_untag_resource/} for full documentation.
 }
 \keyword{internal}

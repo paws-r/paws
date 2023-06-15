@@ -44,6 +44,6 @@ A resource group can contain either a \code{Configuration} or a
 \description{
 Creates a resource group with the specified name and description. You can optionally include either a resource query or a service configuration. For more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/}{Build queries and groups in Resource Groups} in the \emph{Resource Groups User Guide}. For more information about service-linked groups and service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for Resource Groups}.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_create_group/} for full documentation.
 }
 \keyword{internal}

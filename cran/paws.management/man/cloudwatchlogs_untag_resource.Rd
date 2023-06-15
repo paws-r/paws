@@ -22,6 +22,6 @@ For more information about ARN format, see \href{https://docs.aws.amazon.com/Ama
 \description{
 Removes one or more tags from the specified resource.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_untag_resource/} for full documentation.
 }
 \keyword{internal}

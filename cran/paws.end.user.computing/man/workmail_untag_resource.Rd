@@ -15,6 +15,6 @@ workmail_untag_resource(ResourceARN, TagKeys)
 \description{
 Untags the specified tags from the specified WorkMail organization resource.
 
-See \url{https://paws-r.github.io/docs/workmail/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_untag_resource/} for full documentation.
 }
 \keyword{internal}

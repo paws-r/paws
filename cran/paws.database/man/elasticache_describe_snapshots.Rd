@@ -49,6 +49,6 @@ included in the snapshot description.}
 \description{
 Returns information about cluster or replication group snapshots. By default, \code{\link[=elasticache_describe_snapshots]{describe_snapshots}} lists all of your snapshots; it can optionally describe a single snapshot, or just the snapshots associated with a particular cache cluster.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_snapshots/} for full documentation.
 }
 \keyword{internal}

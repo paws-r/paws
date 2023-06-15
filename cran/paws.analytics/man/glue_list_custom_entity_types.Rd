@@ -16,6 +16,6 @@ glue_list_custom_entity_types(NextToken = NULL, MaxResults = NULL, Tags = NULL)
 \description{
 Lists all the custom patterns that have been created.
 
-See \url{https://paws-r.github.io/docs/glue/list_custom_entity_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_custom_entity_types/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Access Point.}
 \description{
 Creates or replaces resource policy for an Object Lambda Access Point. For an example policy, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-create.html#olap-create-cli}{Creating Object Lambda Access Points} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_access_point_policy_for_object_lambda.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy_for_object_lambda/} for full documentation.
 }
 \keyword{internal}

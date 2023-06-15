@@ -15,6 +15,6 @@ Queue URLs and names are case-sensitive.}
 \description{
 Deletes the messages in a queue specified by the \code{QueueURL} parameter.
 
-See \url{https://paws-r.github.io/docs/sqs/purge_queue.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_purge_queue/} for full documentation.
 }
 \keyword{internal}

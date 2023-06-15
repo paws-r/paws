@@ -12,6 +12,6 @@ connectcampaignservice_get_instance_onboarding_job_status(connectInstanceId)
 \description{
 Get the specific instance onboarding job status.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/get_instance_onboarding_job_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_get_instance_onboarding_job_status/} for full documentation.
 }
 \keyword{internal}

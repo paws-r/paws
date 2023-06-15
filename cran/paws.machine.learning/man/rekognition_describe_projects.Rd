@@ -27,6 +27,6 @@ descriptions for all the projects in your AWS account.}
 \description{
 Gets information about your Amazon Rekognition Custom Labels projects.
 
-See \url{https://paws-r.github.io/docs/rekognition/describe_projects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_describe_projects/} for full documentation.
 }
 \keyword{internal}

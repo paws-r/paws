@@ -14,6 +14,6 @@ workmail_delete_user(OrganizationId, UserId)
 \description{
 Deletes a user from WorkMail and all subsequent systems. Before you can delete a user, the user state must be \code{DISABLED}. Use the \code{\link[=workmail_describe_user]{describe_user}} action to confirm the user state.
 
-See \url{https://paws-r.github.io/docs/workmail/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_user/} for full documentation.
 }
 \keyword{internal}

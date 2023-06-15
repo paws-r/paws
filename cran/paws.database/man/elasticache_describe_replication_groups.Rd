@@ -33,6 +33,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns information about a particular replication group. If no identifier is specified, \code{\link[=elasticache_describe_replication_groups]{describe_replication_groups}} returns information about all replication groups.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_replication_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_replication_groups/} for full documentation.
 }
 \keyword{internal}

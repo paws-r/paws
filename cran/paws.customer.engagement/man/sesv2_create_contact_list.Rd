@@ -24,6 +24,6 @@ have multiple topics.}
 \description{
 Creates a contact list.
 
-See \url{https://paws-r.github.io/docs/sesv2/create_contact_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_contact_list/} for full documentation.
 }
 \keyword{internal}

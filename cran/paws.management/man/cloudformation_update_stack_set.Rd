@@ -277,6 +277,6 @@ concurrently and queues conflicting operations.}
 \description{
 Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions.
 
-See \url{https://paws-r.github.io/docs/cloudformation/update_stack_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_update_stack_set/} for full documentation.
 }
 \keyword{internal}

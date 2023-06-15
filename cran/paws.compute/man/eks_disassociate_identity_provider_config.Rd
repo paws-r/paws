@@ -21,6 +21,6 @@ idempotency of the request.}
 \description{
 Disassociates an identity provider configuration from a cluster. If you disassociate an identity provider from your cluster, users included in the provider can no longer access the cluster. However, you can still access the cluster with Amazon Web Services IAM users.
 
-See \url{https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/} for full documentation.
 }
 \keyword{internal}

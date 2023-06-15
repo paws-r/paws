@@ -39,6 +39,6 @@ the VPC connection.}
 \description{
 Creates a new VPC connection.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_vpc_connection/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ This ID is required by Amazon S3 on Outposts buckets.}
 \description{
 Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/list_regional_buckets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_list_regional_buckets/} for full documentation.
 }
 \keyword{internal}

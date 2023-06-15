@@ -14,6 +14,6 @@ detailed data for.}
 \description{
 In an environment account, get the detailed data for an environment account connection.
 
-See \url{https://paws-r.github.io/docs/proton/get_environment_account_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_environment_account_connection/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ This setting is required for requests that do not include the
 \description{
 High-level information about a rule group, returned by operations like create and describe. You can use the information provided in the metadata to retrieve and manage a rule group. You can retrieve all objects for a rule group by calling \code{\link[=networkfirewall_describe_rule_group]{describe_rule_group}}.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/describe_rule_group_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group_metadata/} for full documentation.
 }
 \keyword{internal}

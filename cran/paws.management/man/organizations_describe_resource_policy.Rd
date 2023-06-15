@@ -9,6 +9,6 @@ organizations_describe_resource_policy()
 \description{
 Retrieves information about a resource policy.
 
-See \url{https://paws-r.github.io/docs/organizations/describe_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_describe_resource_policy/} for full documentation.
 }
 \keyword{internal}

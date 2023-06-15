@@ -16,11 +16,13 @@ recommendations. Filter expression must follow specific format rules.
 For information about filter expression structure and syntax, see
 \href{https://docs.aws.amazon.com/personalize/latest/dg/filter-expressions.html}{Filter expressions}.}
 
-\item{tags}{A list of tags to apply to the filter.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the filter.}
 }
 \description{
 Creates a recommendation filter. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering recommendations and user segments}.
 
-See \url{https://paws-r.github.io/docs/personalize/create_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_filter/} for full documentation.
 }
 \keyword{internal}

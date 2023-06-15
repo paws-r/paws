@@ -14,6 +14,6 @@ elasticinference_untag_resource(resourceArn, tagKeys)
 \description{
 Removes the specified tags from an Elastic Inference Accelerator.
 
-See \url{https://paws-r.github.io/docs/elasticinference/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticinference_untag_resource/} for full documentation.
 }
 \keyword{internal}

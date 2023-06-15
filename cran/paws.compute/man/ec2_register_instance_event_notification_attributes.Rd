@@ -7,7 +7,7 @@ for your resources}
 \usage{
 ec2_register_instance_event_notification_attributes(
   DryRun = NULL,
-  InstanceTagAttribute = NULL
+  InstanceTagAttribute
 )
 }
 \arguments{
@@ -16,11 +16,11 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InstanceTagAttribute}{Information about the tag keys to register.}
+\item{InstanceTagAttribute}{[required] Information about the tag keys to register.}
 }
 \description{
 Registers a set of tag keys to include in scheduled event notifications for your resources.
 
-See \url{https://paws-r.github.io/docs/ec2/register_instance_event_notification_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_register_instance_event_notification_attributes/} for full documentation.
 }
 \keyword{internal}

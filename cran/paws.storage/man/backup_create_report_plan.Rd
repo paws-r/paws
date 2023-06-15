@@ -45,6 +45,6 @@ message with no action taken.}
 \description{
 Creates a report plan. A report plan is a document that contains information about the contents of the report and where Backup will deliver it.
 
-See \url{https://paws-r.github.io/docs/backup/create_report_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_create_report_plan/} for full documentation.
 }
 \keyword{internal}

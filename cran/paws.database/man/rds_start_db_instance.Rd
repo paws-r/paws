@@ -14,6 +14,6 @@ rds_start_db_instance(DBInstanceIdentifier)
 \description{
 Starts an Amazon RDS DB instance that was stopped using the Amazon Web Services console, the stop-db-instance CLI command, or the StopDBInstance action.
 
-See \url{https://paws-r.github.io/docs/rds/start_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_start_db_instance/} for full documentation.
 }
 \keyword{internal}

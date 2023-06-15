@@ -12,6 +12,6 @@ backupgateway_get_hypervisor_property_mappings(HypervisorArn)
 \description{
 This action retrieves the property mappings for the specified hypervisor. A hypervisor property mapping displays the relationship of entity properties available from the on-premises hypervisor to the properties available in Amazon Web Services.
 
-See \url{https://paws-r.github.io/docs/backupgateway/get_hypervisor_property_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_get_hypervisor_property_mappings/} for full documentation.
 }
 \keyword{internal}

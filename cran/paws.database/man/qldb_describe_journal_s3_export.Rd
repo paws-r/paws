@@ -17,6 +17,6 @@ to describe.}
 \description{
 Returns information about a journal export job, including the ledger name, export ID, creation time, current status, and the parameters of the original export creation request.
 
-See \url{https://paws-r.github.io/docs/qldb/describe_journal_s3_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_describe_journal_s3_export/} for full documentation.
 }
 \keyword{internal}

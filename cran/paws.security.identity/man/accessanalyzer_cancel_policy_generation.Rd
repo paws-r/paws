@@ -18,6 +18,6 @@ cancel the policy generation request.}
 \description{
 Cancels the requested policy generation.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/cancel_policy_generation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_cancel_policy_generation/} for full documentation.
 }
 \keyword{internal}

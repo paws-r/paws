@@ -72,6 +72,6 @@ component \code{data} property. You cannot specify both properties.}
 \description{
 Creates a new component that can be used to build, validate, test, and assess your image. The component is based on a YAML document that you specify using exactly one of the following methods:
 
-See \url{https://paws-r.github.io/docs/imagebuilder/create_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_component/} for full documentation.
 }
 \keyword{internal}

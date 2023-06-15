@@ -18,6 +18,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes attributes of your Amazon Web Services account. The supported account attributes include account tier, which indicates whether your account is in the sandbox or production environment. When you're ready to move your account out of the sandbox, create an Amazon Web Services Support case for a service limit increase request.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_account_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_attributes/} for full documentation.
 }
 \keyword{internal}

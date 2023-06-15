@@ -28,6 +28,6 @@ If you omit this property, all processes are specified.}
 \description{
 Suspends the specified auto scaling processes, or all processes, for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/suspend_processes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_suspend_processes/} for full documentation.
 }
 \keyword{internal}

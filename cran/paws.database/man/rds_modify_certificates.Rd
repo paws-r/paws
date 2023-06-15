@@ -25,6 +25,6 @@ system default.}
 \description{
 Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override.
 
-See \url{https://paws-r.github.io/docs/rds/modify_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_certificates/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ request.}
 \description{
 This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished. The List Job operation returns a list of these jobs sorted by job initiation time.
 
-See \url{https://paws-r.github.io/docs/glacier/list_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_list_jobs/} for full documentation.
 }
 \keyword{internal}

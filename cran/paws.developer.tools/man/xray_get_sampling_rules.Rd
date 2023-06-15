@@ -12,6 +12,6 @@ xray_get_sampling_rules(NextToken = NULL)
 \description{
 Retrieves all sampling rules.
 
-See \url{https://paws-r.github.io/docs/xray/get_sampling_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_sampling_rules/} for full documentation.
 }
 \keyword{internal}

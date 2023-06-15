@@ -17,6 +17,6 @@ element of the collection.}
 \description{
 Gets API mappings.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_api_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_api_mappings/} for full documentation.
 }
 \keyword{internal}

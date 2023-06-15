@@ -15,6 +15,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists the IAM Identity Center instances that the caller has access to.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_instances/} for full documentation.
 }
 \keyword{internal}

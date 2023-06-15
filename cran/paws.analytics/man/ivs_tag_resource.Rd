@@ -20,6 +20,6 @@ constraints beyond what is documented there.}
 \description{
 Adds or updates tags for the Amazon Web Services resource with the specified ARN.
 
-See \url{https://paws-r.github.io/docs/ivs/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_tag_resource/} for full documentation.
 }
 \keyword{internal}

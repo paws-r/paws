@@ -37,6 +37,6 @@ event) is returned. The default is \code{true}.}
 \description{
 Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the \code{timeStamp} of the events. Use the \code{reverseOrder} parameter to get the latest events first.
 
-See \url{https://paws-r.github.io/docs/sfn/get_execution_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_get_execution_history/} for full documentation.
 }
 \keyword{internal}

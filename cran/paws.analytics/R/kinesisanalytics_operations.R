@@ -9,7 +9,7 @@ NULL
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/add_application_cloud_watch_logging_option.html](https://paws-r.github.io/docs/kinesisanalytics/add_application_cloud_watch_logging_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_cloud_watch_logging_option/](https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_cloud_watch_logging_option/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Analytics application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Analytics application.
@@ -43,7 +43,7 @@ kinesisanalytics_add_application_cloud_watch_logging_option <- function(Applicat
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/add_application_input.html](https://paws-r.github.io/docs/kinesisanalytics/add_application_input.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_input/](https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_input/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of your existing Amazon Kinesis Analytics application to which you
 #' want to add the streaming source.
@@ -80,7 +80,7 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/add_application_input_processing_configuration.html](https://paws-r.github.io/docs/kinesisanalytics/add_application_input_processing_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_input_processing_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_input_processing_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the application to which you want to add the input processing
 #' configuration.
@@ -125,7 +125,7 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/add_application_output.html](https://paws-r.github.io/docs/kinesisanalytics/add_application_output.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_output/](https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_output/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the application to which you want to add the output
 #' configuration.
@@ -167,7 +167,7 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/add_application_reference_data_source.html](https://paws-r.github.io/docs/kinesisanalytics/add_application_reference_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_reference_data_source/](https://www.paws-r-sdk.com/docs/kinesisanalytics_add_application_reference_data_source/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; Version of the application for which you are adding the reference data
@@ -210,7 +210,7 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/create_application.html](https://paws-r.github.io/docs/kinesisanalytics/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_create_application/](https://www.paws-r-sdk.com/docs/kinesisanalytics_create_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of your Amazon Kinesis Analytics application (for example,
 #' `sample-app`).
@@ -302,7 +302,7 @@ kinesisanalytics_create_application <- function(ApplicationName, ApplicationDesc
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/delete_application.html](https://paws-r.github.io/docs/kinesisanalytics/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application/](https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the Amazon Kinesis Analytics application to delete.
 #' @param CreateTimestamp &#91;required&#93; You can use the
@@ -335,7 +335,7 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/delete_application_cloud_watch_logging_option.html](https://paws-r.github.io/docs/kinesisanalytics/delete_application_cloud_watch_logging_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_cloud_watch_logging_option/](https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_cloud_watch_logging_option/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Analytics application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Analytics application.
@@ -370,7 +370,7 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/delete_application_input_processing_configuration.html](https://paws-r.github.io/docs/kinesisanalytics/delete_application_input_processing_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_input_processing_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_input_processing_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Analytics application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version ID of the Kinesis Analytics application.
@@ -406,7 +406,7 @@ kinesisanalytics_delete_application_input_processing_configuration <- function(A
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/delete_application_output.html](https://paws-r.github.io/docs/kinesisanalytics/delete_application_output.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_output/](https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_output/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Amazon Kinesis Analytics application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; Amazon Kinesis Analytics application version. You can use the
@@ -450,7 +450,7 @@ kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentA
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/delete_application_reference_data_source.html](https://paws-r.github.io/docs/kinesisanalytics/delete_application_reference_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_reference_data_source/](https://www.paws-r-sdk.com/docs/kinesisanalytics_delete_application_reference_data_source/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; Version of the application. You can use the
@@ -491,7 +491,7 @@ kinesisanalytics_delete_application_reference_data_source <- function(Applicatio
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/describe_application.html](https://paws-r.github.io/docs/kinesisanalytics/describe_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_describe_application/](https://www.paws-r-sdk.com/docs/kinesisanalytics_describe_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the application.
 #'
@@ -521,7 +521,7 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/discover_input_schema.html](https://paws-r.github.io/docs/kinesisanalytics/discover_input_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_discover_input_schema/](https://www.paws-r-sdk.com/docs/kinesisanalytics_discover_input_schema/) for full documentation.
 #'
 #' @param ResourceARN Amazon Resource Name (ARN) of the streaming source.
 #' @param RoleARN ARN of the IAM role that Amazon Kinesis Analytics can assume to access
@@ -561,7 +561,7 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/list_applications.html](https://paws-r.github.io/docs/kinesisanalytics/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_list_applications/](https://www.paws-r-sdk.com/docs/kinesisanalytics_list_applications/) for full documentation.
 #'
 #' @param Limit Maximum number of applications to list.
 #' @param ExclusiveStartApplicationName Name of the application to start the list with. When using pagination to
@@ -594,7 +594,7 @@ kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartAppli
 #' @description
 #' Retrieves the list of key-value tags assigned to the application. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/list_tags_for_resource.html](https://paws-r.github.io/docs/kinesisanalytics/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kinesisanalytics_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the application for which to retrieve tags.
 #'
@@ -624,7 +624,7 @@ kinesisanalytics_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/start_application.html](https://paws-r.github.io/docs/kinesisanalytics/start_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_start_application/](https://www.paws-r-sdk.com/docs/kinesisanalytics_start_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the application.
 #' @param InputConfigurations &#91;required&#93; Identifies the specific input, by ID, that the application starts
@@ -658,7 +658,7 @@ kinesisanalytics_start_application <- function(ApplicationName, InputConfigurati
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/stop_application.html](https://paws-r.github.io/docs/kinesisanalytics/stop_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_stop_application/](https://www.paws-r-sdk.com/docs/kinesisanalytics_stop_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the running application to stop.
 #'
@@ -687,7 +687,7 @@ kinesisanalytics_stop_application <- function(ApplicationName) {
 #' @description
 #' Adds one or more key-value tags to a Kinesis Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/tag_resource.html](https://paws-r.github.io/docs/kinesisanalytics/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_tag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalytics_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the application to assign the tags.
 #' @param Tags &#91;required&#93; The key-value tags to assign to the application.
@@ -717,7 +717,7 @@ kinesisanalytics_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes one or more tags from a Kinesis Analytics application. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/untag_resource.html](https://paws-r.github.io/docs/kinesisanalytics/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_untag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalytics_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the Kinesis Analytics application from which to remove the
 #' tags.
@@ -749,7 +749,7 @@ kinesisanalytics_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalytics/update_application.html](https://paws-r.github.io/docs/kinesisanalytics/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalytics_update_application/](https://www.paws-r-sdk.com/docs/kinesisanalytics_update_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; Name of the Amazon Kinesis Analytics application to update.
 #' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can use the

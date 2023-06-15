@@ -13,6 +13,6 @@ The maximum number of instance names you can specify is 25.}
 \description{
 Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_on_premises_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_on_premises_instances/} for full documentation.
 }
 \keyword{internal}

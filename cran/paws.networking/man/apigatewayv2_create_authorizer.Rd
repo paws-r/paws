@@ -91,6 +91,6 @@ authorizer type. Supported only for HTTP APIs.}
 \description{
 Creates an Authorizer for an API.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/create_authorizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_create_authorizer/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ redshift_describe_storage()
 \description{
 Returns account level backups storage size and provisional storage.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_storage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_storage/} for full documentation.
 }
 \keyword{internal}

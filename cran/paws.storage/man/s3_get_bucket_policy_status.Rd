@@ -18,6 +18,6 @@ different account, the request fails with the HTTP status code
 \description{
 Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the \code{s3:GetBucketPolicyStatus} permission. For more information about Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_policy_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_policy_status/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages
 \description{
 Gets metadata information about a slot type.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_slot_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_slot_type/} for full documentation.
 }
 \keyword{internal}

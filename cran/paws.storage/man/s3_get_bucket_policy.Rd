@@ -25,6 +25,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the \code{\link[=s3_get_bucket_policy]{get_bucket_policy}} permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_policy/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ Access Point.}
 \description{
 Deletes the specified Object Lambda Access Point.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_access_point_for_object_lambda.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_access_point_for_object_lambda/} for full documentation.
 }
 \keyword{internal}

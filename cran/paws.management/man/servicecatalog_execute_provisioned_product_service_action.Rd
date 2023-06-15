@@ -35,6 +35,6 @@ as \code{TARGET}.}
 \description{
 Executes a self-service action against a provisioned product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_service_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_service_action/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates the name and description of a quick connect. The request accepts the following data in JSON format. At least \code{Name} or \code{Description} must be provided.
 
-See \url{https://paws-r.github.io/docs/connect/update_quick_connect_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_quick_connect_name/} for full documentation.
 }
 \keyword{internal}

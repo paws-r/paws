@@ -204,7 +204,10 @@ NULL
 #'  \link[=connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region\cr
 #'  \link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call\cr
 #'  \link[=connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
+#'  \link[=connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
+#'  \link[=connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_queues]{search_queues} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_search_quick_connects]{search_quick_connects} \tab Searches quick connects in an Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_routing_profiles]{search_routing_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_search_security_profiles]{search_security_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr

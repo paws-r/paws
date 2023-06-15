@@ -23,6 +23,6 @@ Supported resource types are: \verb{AWS::EC2::Instance},
 \description{
 Retrieves violations for a resource based on the specified Firewall Manager policy and Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/fms/get_violation_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_violation_details/} for full documentation.
 }
 \keyword{internal}

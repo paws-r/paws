@@ -14,6 +14,6 @@ or \code{DISABLE}.}
 \description{
 Enables the Network Manager service for an Amazon Web Services Organization. This can only be called by a management account within the organization.
 
-See \url{https://paws-r.github.io/docs/networkmanager/start_organization_service_access_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_start_organization_service_access_update/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ guardduty_get_member_detectors(DetectorId, AccountIds)
 \description{
 Describes which data sources are enabled for the member account's detector.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_member_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_member_detectors/} for full documentation.
 }
 \keyword{internal}

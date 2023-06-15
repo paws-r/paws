@@ -32,6 +32,6 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 \description{
 Creates a workgroup with the specified name. A workgroup can be an Apache Spark enabled workgroup or an Athena SQL workgroup.
 
-See \url{https://paws-r.github.io/docs/athena/create_work_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_create_work_group/} for full documentation.
 }
 \keyword{internal}

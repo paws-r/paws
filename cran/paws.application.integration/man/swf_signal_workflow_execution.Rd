@@ -30,6 +30,6 @@ workflow execution's history.}
 \description{
 Records a \code{WorkflowExecutionSignaled} event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId. The event is recorded with the specified user defined signalName and input (if provided).
 
-See \url{https://paws-r.github.io/docs/swf/signal_workflow_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_signal_workflow_execution/} for full documentation.
 }
 \keyword{internal}

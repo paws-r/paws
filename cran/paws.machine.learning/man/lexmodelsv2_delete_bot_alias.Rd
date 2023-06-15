@@ -20,6 +20,6 @@ alias even if it is being used by another resource.}
 \description{
 Deletes the specified bot alias.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_bot_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_bot_alias/} for full documentation.
 }
 \keyword{internal}

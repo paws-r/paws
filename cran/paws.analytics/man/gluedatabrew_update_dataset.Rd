@@ -28,6 +28,6 @@ of the dataset.}
 \description{
 Modifies the definition of an existing DataBrew dataset.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/update_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_update_dataset/} for full documentation.
 }
 \keyword{internal}

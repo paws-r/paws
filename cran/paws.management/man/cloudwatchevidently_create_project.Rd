@@ -53,6 +53,6 @@ For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/us
 \description{
 Creates a project, which is the logical object in Evidently that can contain features, launches, and experiments. Use projects to group similar features together.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/create_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_project/} for full documentation.
 }
 \keyword{internal}

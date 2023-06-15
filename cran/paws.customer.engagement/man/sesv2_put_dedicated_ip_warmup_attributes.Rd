@@ -16,6 +16,6 @@ address.}
 \description{
 Put dedicated ip warmup attributes
 
-See \url{https://paws-r.github.io/docs/sesv2/put_dedicated_ip_warmup_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_dedicated_ip_warmup_attributes/} for full documentation.
 }
 \keyword{internal}

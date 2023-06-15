@@ -12,6 +12,6 @@ sagemaker_delete_model_card(ModelCardName)
 \description{
 Deletes an Amazon SageMaker Model Card.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model_card.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_card/} for full documentation.
 }
 \keyword{internal}

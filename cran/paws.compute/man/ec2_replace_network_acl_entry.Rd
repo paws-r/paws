@@ -57,6 +57,6 @@ type and code.}
 \description{
 Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/replace_network_acl_entry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_entry/} for full documentation.
 }
 \keyword{internal}

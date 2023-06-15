@@ -16,6 +16,6 @@ exists, the value is replaced by the one specified in this parameter.}
 \description{
 Tags an Amazon FSx resource.
 
-See \url{https://paws-r.github.io/docs/fsx/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_tag_resource/} for full documentation.
 }
 \keyword{internal}

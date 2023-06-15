@@ -15,6 +15,6 @@ is associated with.}
 \description{
 Sets the password for the guest user \code{smbguest}. The \code{smbguest} user is the user when the authentication method for the file share is set to \code{GuestAccess}. This operation only supported for S3 File Gateways
 
-See \url{https://paws-r.github.io/docs/storagegateway/set_smb_guest_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_set_smb_guest_password/} for full documentation.
 }
 \keyword{internal}

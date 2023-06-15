@@ -22,6 +22,6 @@ collection.}
 \description{
 Creates an association between a geofence collection and a tracker resource. This allows the tracker resource to communicate location data to the linked geofence collection.
 
-See \url{https://paws-r.github.io/docs/locationservice/associate_tracker_consumer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_associate_tracker_consumer/} for full documentation.
 }
 \keyword{internal}

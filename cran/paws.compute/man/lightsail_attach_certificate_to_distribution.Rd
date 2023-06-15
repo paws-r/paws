@@ -30,6 +30,6 @@ certificate might be \code{example.com}.}
 \description{
 Attaches an SSL/TLS certificate to your Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/attach_certificate_to_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_attach_certificate_to_distribution/} for full documentation.
 }
 \keyword{internal}

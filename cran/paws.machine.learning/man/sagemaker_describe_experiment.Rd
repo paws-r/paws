@@ -12,6 +12,6 @@ sagemaker_describe_experiment(ExperimentName)
 \description{
 Provides a list of an experiment's properties.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_experiment/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ kafkaconnect_describe_custom_plugin(customPluginArn)
 \description{
 A summary description of the custom plugin.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/describe_custom_plugin.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_describe_custom_plugin/} for full documentation.
 }
 \keyword{internal}

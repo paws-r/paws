@@ -92,6 +92,7 @@ the following automatically:
 
 \tabular{ll}{
 \link[paws.application.integration:sqs_add_permission]{add_permission} \tab Adds a permission to a queue for a specific principal\cr
+\link[paws.application.integration:sqs_cancel_message_move_task]{cancel_message_move_task} \tab Cancels a specified message movement task\cr
 \link[paws.application.integration:sqs_change_message_visibility]{change_message_visibility} \tab Changes the visibility timeout of a specified message in a queue to a new value\cr
 \link[paws.application.integration:sqs_change_message_visibility_batch]{change_message_visibility_batch} \tab Changes the visibility timeout of multiple messages\cr
 \link[paws.application.integration:sqs_create_queue]{create_queue} \tab Creates a new standard or FIFO queue\cr
@@ -101,14 +102,16 @@ the following automatically:
 \link[paws.application.integration:sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue\cr
 \link[paws.application.integration:sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue\cr
 \link[paws.application.integration:sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
+\link[paws.application.integration:sqs_list_message_move_tasks]{list_message_move_tasks} \tab Gets the most recent message movement tasks (up to 10) under a specific source queue\cr
 \link[paws.application.integration:sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr
 \link[paws.application.integration:sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue\cr
 \link[paws.application.integration:sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter\cr
 \link[paws.application.integration:sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue\cr
 \link[paws.application.integration:sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter\cr
 \link[paws.application.integration:sqs_send_message]{send_message} \tab Delivers a message to the specified queue\cr
-\link[paws.application.integration:sqs_send_message_batch]{send_message_batch} \tab Delivers up to ten messages to the specified queue\cr
+\link[paws.application.integration:sqs_send_message_batch]{send_message_batch} \tab You can use SendMessageBatch to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all)\cr
 \link[paws.application.integration:sqs_set_queue_attributes]{set_queue_attributes} \tab Sets the value of one or more queue attributes\cr
+\link[paws.application.integration:sqs_start_message_move_task]{start_message_move_task} \tab Starts an asynchronous task to move messages from a specified source queue to a specified destination queue\cr
 \link[paws.application.integration:sqs_tag_queue]{tag_queue} \tab Add cost allocation tags to the specified Amazon SQS queue\cr
 \link[paws.application.integration:sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue
 }

@@ -45,6 +45,6 @@ fail.}
 \description{
 Creates a session for running calculations within a workgroup. The session is ready when it reaches an \code{IDLE} state.
 
-See \url{https://paws-r.github.io/docs/athena/start_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_start_session/} for full documentation.
 }
 \keyword{internal}

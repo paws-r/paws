@@ -37,6 +37,6 @@ response.}
 \description{
 Returns a list of findings that match the specified criteria.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_findings/} for full documentation.
 }
 \keyword{internal}

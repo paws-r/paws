@@ -152,7 +152,7 @@ NULL
 #'  \link[=configservice_put_aggregation_authorization]{put_aggregation_authorization} \tab Authorizes the aggregator account and region to collect data from the source account and region\cr
 #'  \link[=configservice_put_config_rule]{put_config_rule} \tab Adds or updates an Config rule to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
 #'  \link[=configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions\cr
-#'  \link[=configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record the selected resource configurations\cr
+#'  \link[=configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record configuration changes for specified resource types\cr
 #'  \link[=configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
 #'  \link[=configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic\cr
 #'  \link[=configservice_put_evaluations]{put_evaluations} \tab Used by an Lambda function to deliver evaluation results to Config\cr

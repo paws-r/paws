@@ -35,6 +35,6 @@ unsupported entities, it stops the process and throws an exception.}
 \description{
 Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket. Then, in CloudFormation, you create a stack from the template, to create the web ACL and its resources in AWS WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest version of AWS WAF.
 
-See \url{https://paws-r.github.io/docs/waf/create_web_acl_migration_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/waf_create_web_acl_migration_stack/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ _ . : / = + \\ - @}
 \description{
 Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 
-See \url{https://paws-r.github.io/docs/appstream/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_tag_resource/} for full documentation.
 }
 \keyword{internal}

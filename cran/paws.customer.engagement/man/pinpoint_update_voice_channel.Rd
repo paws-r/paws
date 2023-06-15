@@ -16,6 +16,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Enables the voice channel for an application or updates the status and settings of the voice channel for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_voice_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_voice_channel/} for full documentation.
 }
 \keyword{internal}

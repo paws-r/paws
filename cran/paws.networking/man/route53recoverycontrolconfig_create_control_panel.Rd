@@ -25,6 +25,6 @@ request.}
 \description{
 Creates a new control panel. A control panel represents a group of routing controls that can be changed together in a single transaction. You can use a control panel to centrally view the operational status of applications across your organization, and trigger multi-app failovers in a single transaction, for example, to fail over an Availability Zone or Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/create_control_panel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_control_panel/} for full documentation.
 }
 \keyword{internal}

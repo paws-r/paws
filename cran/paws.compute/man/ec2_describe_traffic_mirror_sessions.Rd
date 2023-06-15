@@ -45,6 +45,6 @@ value.}
 \description{
 Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror sessions are described. Alternatively, you can filter the results.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_traffic_mirror_sessions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_traffic_mirror_sessions/} for full documentation.
 }
 \keyword{internal}

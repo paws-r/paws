@@ -13,6 +13,6 @@ ses_delete_receipt_rule_set(RuleSetName)
 \description{
 Deletes the specified receipt rule set and all of the receipt rules it contains.
 
-See \url{https://paws-r.github.io/docs/ses/delete_receipt_rule_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_delete_receipt_rule_set/} for full documentation.
 }
 \keyword{internal}

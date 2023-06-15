@@ -12,6 +12,6 @@ apigateway_delete_domain_name(domainName)
 \description{
 Deletes the DomainName resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_domain_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name/} for full documentation.
 }
 \keyword{internal}

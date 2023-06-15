@@ -18,6 +18,6 @@ swf_request_cancel_workflow_execution(domain, workflowId, runId = NULL)
 \description{
 Records a \code{WorkflowExecutionCancelRequested} event in the currently running workflow execution identified by the given domain, workflowId, and runId. This logically requests the cancellation of the workflow execution as a whole. It is up to the decider to take appropriate actions when it receives an execution history with this event.
 
-See \url{https://paws-r.github.io/docs/swf/request_cancel_workflow_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_request_cancel_workflow_execution/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ directoryservice_update_trust(TrustId, SelectiveAuth = NULL)
 \description{
 Updates the trust that has been set up between your Managed Microsoft AD directory and an self-managed Active Directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/update_trust.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_trust/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ transformed into a set).}
 \description{
 Remove one or more specified aliases from a set of aliases for a given user.
 
-See \url{https://paws-r.github.io/docs/workmail/delete_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_alias/} for full documentation.
 }
 \keyword{internal}

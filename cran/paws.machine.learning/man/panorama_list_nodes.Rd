@@ -33,6 +33,6 @@ next page of results.}
 \description{
 Returns a list of nodes.
 
-See \url{https://paws-r.github.io/docs/panorama/list_nodes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_list_nodes/} for full documentation.
 }
 \keyword{internal}

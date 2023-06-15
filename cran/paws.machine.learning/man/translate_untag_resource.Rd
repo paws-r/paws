@@ -17,6 +17,6 @@ particular resource.}
 \description{
 Removes a specific tag associated with an Amazon Translate resource. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/tagging.html}{Tagging your resources}.
 
-See \url{https://paws-r.github.io/docs/translate/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_untag_resource/} for full documentation.
 }
 \keyword{internal}

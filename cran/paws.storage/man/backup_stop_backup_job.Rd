@@ -12,6 +12,6 @@ backup_stop_backup_job(BackupJobId)
 \description{
 Attempts to cancel a job to create a one-time backup of a resource.
 
-See \url{https://paws-r.github.io/docs/backup/stop_backup_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_stop_backup_job/} for full documentation.
 }
 \keyword{internal}

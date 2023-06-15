@@ -13,6 +13,6 @@ account and in each region.}
 \description{
 Creates a new schema in a development state. A schema can exist in three phases:
 
-See \url{https://paws-r.github.io/docs/clouddirectory/create_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_create_schema/} for full documentation.
 }
 \keyword{internal}

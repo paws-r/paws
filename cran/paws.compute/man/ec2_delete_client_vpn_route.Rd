@@ -26,6 +26,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a route from a Client VPN endpoint. You can only delete routes that you manually added using the \strong{CreateClientVpnRoute} action. You cannot delete routes that were automatically added when associating a subnet. To remove routes that have been automatically added, disassociate the target subnet from the Client VPN endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_client_vpn_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_client_vpn_route/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ eks_delete_cluster(name)
 \description{
 Deletes the Amazon EKS cluster control plane.
 
-See \url{https://paws-r.github.io/docs/eks/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_delete_cluster/} for full documentation.
 }
 \keyword{internal}

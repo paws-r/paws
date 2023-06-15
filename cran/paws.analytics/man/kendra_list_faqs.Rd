@@ -19,6 +19,6 @@ results in the list, this response contains only the actual results.}
 \description{
 Gets a list of FAQ lists associated with an index.
 
-See \url{https://paws-r.github.io/docs/kendra/list_faqs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_faqs/} for full documentation.
 }
 \keyword{internal}

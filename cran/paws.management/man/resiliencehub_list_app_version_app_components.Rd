@@ -28,6 +28,6 @@ Hub application version.}
 \description{
 Lists all the Application Components in the Resilience Hub application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_app_version_app_components.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_app_components/} for full documentation.
 }
 \keyword{internal}

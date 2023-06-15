@@ -12,6 +12,6 @@ opsworks_reboot_instance(InstanceId)
 \description{
 Reboots a specified instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
 
-See \url{https://paws-r.github.io/docs/opsworks/reboot_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_reboot_instance/} for full documentation.
 }
 \keyword{internal}

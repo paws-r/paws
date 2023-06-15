@@ -15,6 +15,6 @@ string with 1 to 10000 characters.}
 \description{
 InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/infer_snomedct.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_infer_snomedct/} for full documentation.
 }
 \keyword{internal}

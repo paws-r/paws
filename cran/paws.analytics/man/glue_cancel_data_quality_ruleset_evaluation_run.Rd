@@ -12,6 +12,6 @@ glue_cancel_data_quality_ruleset_evaluation_run(RunId)
 \description{
 Cancels a run where a ruleset is being evaluated against a data source.
 
-See \url{https://paws-r.github.io/docs/glue/cancel_data_quality_ruleset_evaluation_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_cancel_data_quality_ruleset_evaluation_run/} for full documentation.
 }
 \keyword{internal}

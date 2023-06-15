@@ -215,6 +215,6 @@ in the \emph{Application Auto Scaling User Guide}.}
 \description{
 Registers or updates a scalable target, which is the resource that you want to scale.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/register_scalable_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_register_scalable_target/} for full documentation.
 }
 \keyword{internal}

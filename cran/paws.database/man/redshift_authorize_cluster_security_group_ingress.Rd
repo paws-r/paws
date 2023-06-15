@@ -27,6 +27,6 @@ Example: \code{111122223333}}
 \description{
 Adds an inbound (ingress) rule to an Amazon Redshift security group. Depending on whether the application accessing your cluster is running on the Internet or an Amazon EC2 instance, you can authorize inbound access to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP) range or to an Amazon EC2 security group. You can add as many as 20 ingress rules to an Amazon Redshift security group.
 
-See \url{https://paws-r.github.io/docs/redshift/authorize_cluster_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_authorize_cluster_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

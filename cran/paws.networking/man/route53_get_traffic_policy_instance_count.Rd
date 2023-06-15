@@ -10,6 +10,6 @@ route53_get_traffic_policy_instance_count()
 \description{
 Gets the number of traffic policy instances that are associated with the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/get_traffic_policy_instance_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance_count/} for full documentation.
 }
 \keyword{internal}

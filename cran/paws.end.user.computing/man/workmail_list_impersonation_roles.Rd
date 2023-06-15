@@ -22,6 +22,6 @@ doesn't require a token.}
 \description{
 Lists all the impersonation roles for the given WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/list_impersonation_roles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_impersonation_roles/} for full documentation.
 }
 \keyword{internal}

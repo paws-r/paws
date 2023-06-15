@@ -25,10 +25,6 @@ available when you upgrade a DB snapshot.
 
 \strong{Oracle}
 \itemize{
-\item \verb{19.0.0.0.ru-2022-01.rur-2022-01.r1} (supported for 12.2.0.1 DB
-snapshots)
-\item \verb{19.0.0.0.ru-2022-07.rur-2022-07.r1} (supported for 12.1.0.2 DB
-snapshots)
 \item \verb{12.1.0.2.v8} (supported for 12.1.0.1 DB snapshots)
 \item \verb{11.2.0.4.v12} (supported for 11.2.0.2 DB snapshots)
 \item \verb{11.2.0.4.v11} (supported for 11.2.0.3 DB snapshots)
@@ -49,6 +45,6 @@ in the \emph{Amazon RDS User Guide.}}
 \description{
 Updates a manual DB snapshot with a new engine version. The snapshot can be encrypted or unencrypted, but not shared or public.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_snapshot/} for full documentation.
 }
 \keyword{internal}

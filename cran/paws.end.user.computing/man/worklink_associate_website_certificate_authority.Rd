@@ -22,6 +22,6 @@ worklink_associate_website_certificate_authority(
 \description{
 Imports the root certificate of a certificate authority (CA) used to obtain TLS certificates used by associated websites within the company network.
 
-See \url{https://paws-r.github.io/docs/worklink/associate_website_certificate_authority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_associate_website_certificate_authority/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ codepipeline_get_pipeline_state(name)
 \description{
 Returns information about the state of a pipeline, including the stages and actions.
 
-See \url{https://paws-r.github.io/docs/codepipeline/get_pipeline_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline_state/} for full documentation.
 }
 \keyword{internal}

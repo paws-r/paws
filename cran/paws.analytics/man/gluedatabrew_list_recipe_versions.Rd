@@ -18,6 +18,6 @@ results.}
 \description{
 Lists the versions of a particular DataBrew recipe, except for \code{LATEST_WORKING}.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_recipe_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_recipe_versions/} for full documentation.
 }
 \keyword{internal}

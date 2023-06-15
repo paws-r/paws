@@ -16,6 +16,6 @@ then deletes the cluster immediately afterward.}
 \description{
 Deletes a cluster. It also deletes all associated nodes and node endpoints
 
-See \url{https://paws-r.github.io/docs/memorydb/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_delete_cluster/} for full documentation.
 }
 \keyword{internal}

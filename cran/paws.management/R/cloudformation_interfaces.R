@@ -3,6 +3,18 @@
 #' @include cloudformation_service.R
 NULL
 
+.cloudformation$activate_organizations_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$activate_organizations_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "ActivateOrganizationsAccessResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$activate_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Type = structure(logical(0), tags = list(type = "string")), PublicTypeArn = structure(logical(0), tags = list(type = "string")), PublisherId = structure(logical(0), tags = list(type = "string")), TypeName = structure(logical(0), tags = list(type = "string")), TypeNameAlias = structure(logical(0), tags = list(type = "string")), AutoUpdate = structure(logical(0), tags = list(type = "boolean")), LoggingConfig = structure(list(LogRoleArn = structure(logical(0), tags = list(type = "string")), LogGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutionRoleArn = structure(logical(0), tags = list(type = "string")), VersionBump = structure(logical(0), tags = list(type = "string")), MajorVersion = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
@@ -94,6 +106,18 @@ NULL
 .cloudformation$create_stack_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackSetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateStackSetResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$deactivate_organizations_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$deactivate_organizations_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure", resultWrapper = "DeactivateOrganizationsAccessResult"))
   return(populate(args, shape))
 }
 
@@ -200,6 +224,18 @@ NULL
 .cloudformation$describe_change_set_hooks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetName = structure(logical(0), tags = list(type = "string")), Hooks = structure(list(structure(list(InvocationPoint = structure(logical(0), tags = list(type = "string")), FailureMode = structure(logical(0), tags = list(type = "string")), TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), TypeConfigurationVersionId = structure(logical(0), tags = list(type = "string")), TargetDetails = structure(list(TargetType = structure(logical(0), tags = list(type = "string")), ResourceTargetDetails = structure(list(LogicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), StackId = structure(logical(0), tags = list(type = "string")), StackName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeChangeSetHooksResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$describe_organizations_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CallAs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$describe_organizations_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeOrganizationsAccessResult"))
   return(populate(args, shape))
 }
 

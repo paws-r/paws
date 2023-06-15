@@ -15,6 +15,6 @@ replace the current description.}
 \description{
 Updates the \code{DataSourceName} of a \code{DataSource}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/update_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_update_data_source/} for full documentation.
 }
 \keyword{internal}

@@ -137,6 +137,6 @@ Valid Values: \verb{[-180 to 180,-90 to 90]}}
 \description{
 \href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html}{Calculates a route} given the following required parameters: \code{DeparturePosition} and \code{DestinationPosition}. Requires that you first \href{https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html}{create a route calculator resource}.
 
-See \url{https://paws-r.github.io/docs/locationservice/calculate_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_calculate_route/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ string. The search is not case sensitive.}
 \description{
 Provides a list of custom medical vocabularies that match the specified criteria. If no criteria are specified, all custom medical vocabularies are returned.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/list_medical_vocabularies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_vocabularies/} for full documentation.
 }
 \keyword{internal}

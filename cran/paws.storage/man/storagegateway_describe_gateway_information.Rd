@@ -14,6 +14,6 @@ storagegateway_describe_gateway_information(GatewayARN)
 \description{
 Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_gateway_information.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_gateway_information/} for full documentation.
 }
 \keyword{internal}

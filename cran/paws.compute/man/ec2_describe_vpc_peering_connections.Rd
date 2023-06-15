@@ -63,6 +63,6 @@ output. For more information, see
 \description{
 Describes one or more of your VPC peering connections.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_peering_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_peering_connections/} for full documentation.
 }
 \keyword{internal}

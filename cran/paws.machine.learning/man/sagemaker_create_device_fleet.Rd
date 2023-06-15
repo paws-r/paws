@@ -35,6 +35,6 @@ the role alias will be "SageMakerEdge-demo-fleet".}
 \description{
 Creates a device fleet.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_device_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_device_fleet/} for full documentation.
 }
 \keyword{internal}

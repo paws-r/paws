@@ -51,6 +51,6 @@ the web portal.}
 \description{
 Creates a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/create_portal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_create_portal/} for full documentation.
 }
 \keyword{internal}

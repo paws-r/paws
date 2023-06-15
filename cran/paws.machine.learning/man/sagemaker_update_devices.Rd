@@ -14,6 +14,6 @@ sagemaker_update_devices(DeviceFleetName, Devices)
 \description{
 Updates one or more devices in a fleet.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_devices/} for full documentation.
 }
 \keyword{internal}

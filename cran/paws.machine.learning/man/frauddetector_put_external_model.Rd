@@ -32,6 +32,6 @@ frauddetector_put_external_model(
 \description{
 Creates or updates an Amazon SageMaker model endpoint. You can also use this action to update the configuration of the model endpoint, including the IAM role and/or the mapped variables.
 
-See \url{https://paws-r.github.io/docs/frauddetector/put_external_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_put_external_model/} for full documentation.
 }
 \keyword{internal}

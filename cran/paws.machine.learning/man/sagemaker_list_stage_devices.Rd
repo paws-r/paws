@@ -28,6 +28,6 @@ neeed tokening.}
 \description{
 Lists devices allocated to the stage, containing detailed device information and deployment status.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_stage_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_stage_devices/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ characters.}
 \description{
 Creates a backup plan using a backup plan name and backup rules. A backup plan is a document that contains information that Backup uses to schedule tasks that create recovery points for resources.
 
-See \url{https://paws-r.github.io/docs/backup/create_backup_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_create_backup_plan/} for full documentation.
 }
 \keyword{internal}

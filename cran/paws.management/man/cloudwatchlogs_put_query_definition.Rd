@@ -39,6 +39,6 @@ the updated definition will contain no log groups.}
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_query_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_query_definition/} for full documentation.
 }
 \keyword{internal}

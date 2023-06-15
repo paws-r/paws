@@ -71,6 +71,6 @@ task run fails.}
 \description{
 Updates an existing machine learning transform. Call this operation to tune the algorithm parameters to achieve better results.
 
-See \url{https://paws-r.github.io/docs/glue/update_ml_transform.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_ml_transform/} for full documentation.
 }
 \keyword{internal}

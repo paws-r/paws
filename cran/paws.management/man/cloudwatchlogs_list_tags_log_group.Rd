@@ -12,6 +12,6 @@ cloudwatchlogs_list_tags_log_group(logGroupName)
 \description{
 The ListTagsLogGroup operation is on the path to deprecation. We recommend that you use \code{\link[=cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource}} instead.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/list_tags_log_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_tags_log_group/} for full documentation.
 }
 \keyword{internal}

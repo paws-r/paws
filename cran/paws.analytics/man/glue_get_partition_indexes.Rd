@@ -25,6 +25,6 @@ partition indexes.}
 \description{
 Retrieves the partition indexes associated with a table.
 
-See \url{https://paws-r.github.io/docs/glue/get_partition_indexes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_partition_indexes/} for full documentation.
 }
 \keyword{internal}

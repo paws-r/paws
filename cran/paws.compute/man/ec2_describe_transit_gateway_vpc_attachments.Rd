@@ -40,6 +40,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more VPC attachments. By default, all VPC attachments are described. Alternatively, you can filter the results.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_vpc_attachments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_transit_gateway_vpc_attachments/} for full documentation.
 }
 \keyword{internal}

@@ -31,6 +31,6 @@ for the OpenZFS volume.}
 \description{
 Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
 
-See \url{https://paws-r.github.io/docs/fsx/update_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_update_volume/} for full documentation.
 }
 \keyword{internal}

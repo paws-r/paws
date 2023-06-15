@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Gets network performance data.
 
-See \url{https://paws-r.github.io/docs/ec2/get_aws_network_performance_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_aws_network_performance_data/} for full documentation.
 }
 \keyword{internal}

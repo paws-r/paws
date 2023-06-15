@@ -34,6 +34,6 @@ for Amazon Web Services use
 \description{
 Creates a new cost anomaly detection monitor with the requested type and monitor specification.
 
-See \url{https://paws-r.github.io/docs/costexplorer/create_anomaly_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_create_anomaly_monitor/} for full documentation.
 }
 \keyword{internal}

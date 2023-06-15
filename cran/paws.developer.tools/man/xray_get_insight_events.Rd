@@ -19,6 +19,6 @@ the next page of events.}
 \description{
 X-Ray reevaluates insights periodically until they're resolved, and records each intermediate state as an event. You can review an insight's events in the Impact Timeline on the Inspect page in the X-Ray console.
 
-See \url{https://paws-r.github.io/docs/xray/get_insight_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_insight_events/} for full documentation.
 }
 \keyword{internal}

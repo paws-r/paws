@@ -9,6 +9,6 @@ auditmanager_get_insights()
 \description{
 Gets the latest analytics data for all your current active assessments.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_insights.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_insights/} for full documentation.
 }
 \keyword{internal}

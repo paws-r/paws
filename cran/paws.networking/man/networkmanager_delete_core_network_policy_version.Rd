@@ -17,6 +17,6 @@ networkmanager_delete_core_network_policy_version(
 \description{
 Deletes a policy version from a core network. You can't delete the current LIVE policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/delete_core_network_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_delete_core_network_policy_version/} for full documentation.
 }
 \keyword{internal}

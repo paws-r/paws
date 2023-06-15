@@ -16,6 +16,6 @@ enabled.}
 \description{
 Rotates the encryption keys for a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/rotate_encryption_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_rotate_encryption_key/} for full documentation.
 }
 \keyword{internal}

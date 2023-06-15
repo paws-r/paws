@@ -18,6 +18,6 @@ resource or the \code{ProtectionID} of the protection, but not both.}
 \description{
 Lists the details of a Protection object.
 
-See \url{https://paws-r.github.io/docs/shield/describe_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_protection/} for full documentation.
 }
 \keyword{internal}

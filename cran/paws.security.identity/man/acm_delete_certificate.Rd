@@ -17,6 +17,6 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \description{
 Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}} action or be retrieved by calling the \code{\link[=acm_get_certificate]{get_certificate}} action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.
 
-See \url{https://paws-r.github.io/docs/acm/delete_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_delete_certificate/} for full documentation.
 }
 \keyword{internal}

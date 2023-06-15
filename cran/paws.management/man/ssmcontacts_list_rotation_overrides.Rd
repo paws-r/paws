@@ -32,6 +32,6 @@ next set of results.}
 \description{
 Retrieves a list of overrides currently specified for an on-call rotation.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_rotation_overrides.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_rotation_overrides/} for full documentation.
 }
 \keyword{internal}

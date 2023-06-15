@@ -12,6 +12,6 @@ cloudsearch_describe_domains(DomainNames = NULL)
 \description{
 Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default. To get the number of searchable documents in a domain, use the console or submit a \code{matchall} request to your domain's search endpoint: \verb{q=matchall&amp;q.parser=structured&amp;size=0}. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">}}Getting Information about a Search Domain\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/describe_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_describe_domains/} for full documentation.
 }
 \keyword{internal}

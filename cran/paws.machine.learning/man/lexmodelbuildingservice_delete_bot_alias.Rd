@@ -14,6 +14,6 @@ lexmodelbuildingservice_delete_bot_alias(name, botName)
 \description{
 Deletes an alias for the specified bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_alias/} for full documentation.
 }
 \keyword{internal}

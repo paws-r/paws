@@ -17,6 +17,6 @@ and the maximum value is 500.}
 \description{
 Represents a collection of BasePathMapping resources.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_base_path_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mappings/} for full documentation.
 }
 \keyword{internal}

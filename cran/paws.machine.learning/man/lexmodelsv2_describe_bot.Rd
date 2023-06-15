@@ -12,6 +12,6 @@ lexmodelsv2_describe_bot(botId)
 \description{
 Provides metadata information about a bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_bot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ devopsguru_describe_organization_health(
 \description{
 Returns active insights, predictive insights, and resource hours analyzed in last hour.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_organization_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_health/} for full documentation.
 }
 \keyword{internal}

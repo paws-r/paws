@@ -34,6 +34,6 @@ with the user.}
 \description{
 Updates the settings that a bot has for a specific locale.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_bot_locale.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_bot_locale/} for full documentation.
 }
 \keyword{internal}

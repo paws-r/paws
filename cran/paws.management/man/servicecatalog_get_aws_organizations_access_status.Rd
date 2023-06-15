@@ -9,6 +9,6 @@ servicecatalog_get_aws_organizations_access_status()
 \description{
 Get the Access Status for Organizations portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_get_aws_organizations_access_status/} for full documentation.
 }
 \keyword{internal}

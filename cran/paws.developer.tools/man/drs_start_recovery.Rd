@@ -16,6 +16,6 @@ drs_start_recovery(isDrill = NULL, sourceServers, tags = NULL)
 \description{
 Launches Recovery Instances for the specified Source Servers. For each Source Server you may choose a point in time snapshot to launch from, or use an on demand snapshot.
 
-See \url{https://paws-r.github.io/docs/drs/start_recovery.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_start_recovery/} for full documentation.
 }
 \keyword{internal}

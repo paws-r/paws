@@ -20,6 +20,6 @@ request.}
 \description{
 Gets operations for a specific resource (e.g., an instance or a static IP).
 
-See \url{https://paws-r.github.io/docs/lightsail/get_operations_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_operations_for_resource/} for full documentation.
 }
 \keyword{internal}

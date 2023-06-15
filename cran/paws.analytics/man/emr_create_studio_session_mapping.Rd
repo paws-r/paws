@@ -44,6 +44,6 @@ information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{
 \description{
 Maps a user or group to the Amazon EMR Studio specified by \code{StudioId}, and applies a session policy to refine Studio permissions for that user or group. Use \code{\link[=emr_create_studio_session_mapping]{create_studio_session_mapping}} to assign users to a Studio when you use IAM Identity Center authentication. For instructions on how to assign users to a Studio when you use IAM authentication, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups}{Assign a user or group to your EMR Studio}.
 
-See \url{https://paws-r.github.io/docs/emr/create_studio_session_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_create_studio_session_mapping/} for full documentation.
 }
 \keyword{internal}

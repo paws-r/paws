@@ -13,6 +13,6 @@ opensearchservice_get_upgrade_status(DomainName)
 \description{
 Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/get_upgrade_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_get_upgrade_status/} for full documentation.
 }
 \keyword{internal}

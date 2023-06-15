@@ -38,6 +38,6 @@ is \code{50} and the maximum value is \code{100}.}
 \description{
 Gets information about the scheduled actions that haven't run or that have not reached their end time.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_scheduled_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_scheduled_actions/} for full documentation.
 }
 \keyword{internal}

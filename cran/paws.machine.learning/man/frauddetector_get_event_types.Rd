@@ -16,6 +16,6 @@ frauddetector_get_event_types(name = NULL, nextToken = NULL, maxResults = NULL)
 \description{
 Gets all event types or a specific event type if name is provided. This is a paginated API. If you provide a null \code{maxResults}, this action retrieves a maximum of 10 records per page. If you provide a \code{maxResults}, the value must be between 5 and 10. To get the next page results, provide the pagination token from the \code{GetEventTypesResponse} as part of your request. A null pagination token fetches the records from the beginning.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_event_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_event_types/} for full documentation.
 }
 \keyword{internal}

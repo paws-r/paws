@@ -15,6 +15,6 @@ workspaces_modify_selfservice_permissions(ResourceId, SelfservicePermissions)
 \description{
 Modifies the self-service WorkSpace management capabilities for your users. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html}{Enable Self-Service WorkSpace Management Capabilities for Your Users}.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_selfservice_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_selfservice_permissions/} for full documentation.
 }
 \keyword{internal}

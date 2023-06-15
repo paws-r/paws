@@ -16,6 +16,6 @@ return. To request the first page, leave nextToken empty.}
 \description{
 Returns a list of all brokers.
 
-See \url{https://paws-r.github.io/docs/mq/list_brokers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_list_brokers/} for full documentation.
 }
 \keyword{internal}

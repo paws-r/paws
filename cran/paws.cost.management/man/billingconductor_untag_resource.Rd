@@ -14,6 +14,6 @@ billingconductor_untag_resource(ResourceArn, TagKeys)
 \description{
 Deletes specified tags from a resource.
 
-See \url{https://paws-r.github.io/docs/billingconductor/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_untag_resource/} for full documentation.
 }
 \keyword{internal}

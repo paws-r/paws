@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an application instance and deploys it to a device.
 #'
-#' See [https://paws-r.github.io/docs/panorama/create_application_instance.html](https://paws-r.github.io/docs/panorama/create_application_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_create_application_instance/](https://www.paws-r-sdk.com/docs/panorama_create_application_instance/) for full documentation.
 #'
 #' @param ApplicationInstanceIdToReplace The ID of an application instance to replace with the new instance.
 #' @param DefaultRuntimeContextDevice &#91;required&#93; A device's ID.
@@ -44,7 +44,7 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
 #' @description
 #' Creates a job to run on a device. A job can update a device's software or reboot it.
 #'
-#' See [https://paws-r.github.io/docs/panorama/create_job_for_devices.html](https://paws-r.github.io/docs/panorama/create_job_for_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_create_job_for_devices/](https://www.paws-r-sdk.com/docs/panorama_create_job_for_devices/) for full documentation.
 #'
 #' @param DeviceIds &#91;required&#93; ID of target device.
 #' @param DeviceJobConfig Configuration settings for a software update job.
@@ -75,7 +75,7 @@ panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig = NULL, J
 #' @description
 #' Creates a camera stream node.
 #'
-#' See [https://paws-r.github.io/docs/panorama/create_node_from_template_job.html](https://paws-r.github.io/docs/panorama/create_node_from_template_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_create_node_from_template_job/](https://www.paws-r-sdk.com/docs/panorama_create_node_from_template_job/) for full documentation.
 #'
 #' @param JobTags Tags for the job.
 #' @param NodeDescription A description for the node.
@@ -110,7 +110,7 @@ panorama_create_node_from_template_job <- function(JobTags = NULL, NodeDescripti
 #' @description
 #' Creates a package and storage location in an Amazon S3 access point.
 #'
-#' See [https://paws-r.github.io/docs/panorama/create_package.html](https://paws-r.github.io/docs/panorama/create_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_create_package/](https://www.paws-r-sdk.com/docs/panorama_create_package/) for full documentation.
 #'
 #' @param PackageName &#91;required&#93; A name for the package.
 #' @param Tags Tags for the package.
@@ -140,7 +140,7 @@ panorama_create_package <- function(PackageName, Tags = NULL) {
 #' @description
 #' Imports a node package.
 #'
-#' See [https://paws-r.github.io/docs/panorama/create_package_import_job.html](https://paws-r.github.io/docs/panorama/create_package_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_create_package_import_job/](https://www.paws-r-sdk.com/docs/panorama_create_package_import_job/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; A client token for the package import job.
 #' @param InputConfig &#91;required&#93; An input config for the package import job.
@@ -173,7 +173,7 @@ panorama_create_package_import_job <- function(ClientToken, InputConfig, JobTags
 #' @description
 #' Deletes a device.
 #'
-#' See [https://paws-r.github.io/docs/panorama/delete_device.html](https://paws-r.github.io/docs/panorama/delete_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_delete_device/](https://www.paws-r-sdk.com/docs/panorama_delete_device/) for full documentation.
 #'
 #' @param DeviceId &#91;required&#93; The device's ID.
 #'
@@ -202,7 +202,7 @@ panorama_delete_device <- function(DeviceId) {
 #' @description
 #' Deletes a package.
 #'
-#' See [https://paws-r.github.io/docs/panorama/delete_package.html](https://paws-r.github.io/docs/panorama/delete_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_delete_package/](https://www.paws-r-sdk.com/docs/panorama_delete_package/) for full documentation.
 #'
 #' @param ForceDelete Delete the package even if it has artifacts stored in its access point.
 #' Deletes the package's artifacts from Amazon S3.
@@ -233,7 +233,7 @@ panorama_delete_package <- function(ForceDelete = NULL, PackageId) {
 #' @description
 #' Deregisters a package version.
 #'
-#' See [https://paws-r.github.io/docs/panorama/deregister_package_version.html](https://paws-r.github.io/docs/panorama/deregister_package_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_deregister_package_version/](https://www.paws-r-sdk.com/docs/panorama_deregister_package_version/) for full documentation.
 #'
 #' @param OwnerAccount An owner account.
 #' @param PackageId &#91;required&#93; A package ID.
@@ -266,7 +266,7 @@ panorama_deregister_package_version <- function(OwnerAccount = NULL, PackageId, 
 #' @description
 #' Returns information about an application instance on a device.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_application_instance.html](https://paws-r.github.io/docs/panorama/describe_application_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_application_instance/](https://www.paws-r-sdk.com/docs/panorama_describe_application_instance/) for full documentation.
 #'
 #' @param ApplicationInstanceId &#91;required&#93; The application instance's ID.
 #'
@@ -296,7 +296,7 @@ panorama_describe_application_instance <- function(ApplicationInstanceId) {
 #' @description
 #' Returns information about an application instance's configuration manifest.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_application_instance_details.html](https://paws-r.github.io/docs/panorama/describe_application_instance_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_application_instance_details/](https://www.paws-r-sdk.com/docs/panorama_describe_application_instance_details/) for full documentation.
 #'
 #' @param ApplicationInstanceId &#91;required&#93; The application instance's ID.
 #'
@@ -325,7 +325,7 @@ panorama_describe_application_instance_details <- function(ApplicationInstanceId
 #' @description
 #' Returns information about a device.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_device.html](https://paws-r.github.io/docs/panorama/describe_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_device/](https://www.paws-r-sdk.com/docs/panorama_describe_device/) for full documentation.
 #'
 #' @param DeviceId &#91;required&#93; The device's ID.
 #'
@@ -354,7 +354,7 @@ panorama_describe_device <- function(DeviceId) {
 #' @description
 #' Returns information about a device job.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_device_job.html](https://paws-r.github.io/docs/panorama/describe_device_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_device_job/](https://www.paws-r-sdk.com/docs/panorama_describe_device_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job's ID.
 #'
@@ -383,7 +383,7 @@ panorama_describe_device_job <- function(JobId) {
 #' @description
 #' Returns information about a node.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_node.html](https://paws-r.github.io/docs/panorama/describe_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_node/](https://www.paws-r-sdk.com/docs/panorama_describe_node/) for full documentation.
 #'
 #' @param NodeId &#91;required&#93; The node's ID.
 #' @param OwnerAccount The account ID of the node's owner.
@@ -413,7 +413,7 @@ panorama_describe_node <- function(NodeId, OwnerAccount = NULL) {
 #' @description
 #' Returns information about a job to create a camera stream node.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_node_from_template_job.html](https://paws-r.github.io/docs/panorama/describe_node_from_template_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_node_from_template_job/](https://www.paws-r-sdk.com/docs/panorama_describe_node_from_template_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job's ID.
 #'
@@ -442,7 +442,7 @@ panorama_describe_node_from_template_job <- function(JobId) {
 #' @description
 #' Returns information about a package.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_package.html](https://paws-r.github.io/docs/panorama/describe_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_package/](https://www.paws-r-sdk.com/docs/panorama_describe_package/) for full documentation.
 #'
 #' @param PackageId &#91;required&#93; The package's ID.
 #'
@@ -471,7 +471,7 @@ panorama_describe_package <- function(PackageId) {
 #' @description
 #' Returns information about a package import job.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_package_import_job.html](https://paws-r.github.io/docs/panorama/describe_package_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_package_import_job/](https://www.paws-r-sdk.com/docs/panorama_describe_package_import_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job's ID.
 #'
@@ -500,7 +500,7 @@ panorama_describe_package_import_job <- function(JobId) {
 #' @description
 #' Returns information about a package version.
 #'
-#' See [https://paws-r.github.io/docs/panorama/describe_package_version.html](https://paws-r.github.io/docs/panorama/describe_package_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_describe_package_version/](https://www.paws-r-sdk.com/docs/panorama_describe_package_version/) for full documentation.
 #'
 #' @param OwnerAccount The version's owner account.
 #' @param PackageId &#91;required&#93; The version's ID.
@@ -532,7 +532,7 @@ panorama_describe_package_version <- function(OwnerAccount = NULL, PackageId, Pa
 #' @description
 #' Returns a list of application instance dependencies.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_application_instance_dependencies.html](https://paws-r.github.io/docs/panorama/list_application_instance_dependencies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_application_instance_dependencies/](https://www.paws-r-sdk.com/docs/panorama_list_application_instance_dependencies/) for full documentation.
 #'
 #' @param ApplicationInstanceId &#91;required&#93; The application instance's ID.
 #' @param MaxResults The maximum number of application instance dependencies to return in one
@@ -565,7 +565,7 @@ panorama_list_application_instance_dependencies <- function(ApplicationInstanceI
 #' @description
 #' Returns a list of application node instances.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_application_instance_node_instances.html](https://paws-r.github.io/docs/panorama/list_application_instance_node_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_application_instance_node_instances/](https://www.paws-r-sdk.com/docs/panorama_list_application_instance_node_instances/) for full documentation.
 #'
 #' @param ApplicationInstanceId &#91;required&#93; The node instances' application instance ID.
 #' @param MaxResults The maximum number of node instances to return in one page of results.
@@ -597,7 +597,7 @@ panorama_list_application_instance_node_instances <- function(ApplicationInstanc
 #' @description
 #' Returns a list of application instances.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_application_instances.html](https://paws-r.github.io/docs/panorama/list_application_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_application_instances/](https://www.paws-r-sdk.com/docs/panorama_list_application_instances/) for full documentation.
 #'
 #' @param DeviceId The application instances' device ID.
 #' @param MaxResults The maximum number of application instances to return in one page of
@@ -631,7 +631,7 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #' @description
 #' Returns a list of devices.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_devices.html](https://paws-r.github.io/docs/panorama/list_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_devices/](https://www.paws-r-sdk.com/docs/panorama_list_devices/) for full documentation.
 #'
 #' @param DeviceAggregatedStatusFilter Filter based on a device's status.
 #' @param MaxResults The maximum number of devices to return in one page of results.
@@ -667,7 +667,7 @@ panorama_list_devices <- function(DeviceAggregatedStatusFilter = NULL, MaxResult
 #' @description
 #' Returns a list of jobs.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_devices_jobs.html](https://paws-r.github.io/docs/panorama/list_devices_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_devices_jobs/](https://www.paws-r-sdk.com/docs/panorama_list_devices_jobs/) for full documentation.
 #'
 #' @param DeviceId Filter results by the job's target device ID.
 #' @param MaxResults The maximum number of device jobs to return in one page of results.
@@ -699,7 +699,7 @@ panorama_list_devices_jobs <- function(DeviceId = NULL, MaxResults = NULL, NextT
 #' @description
 #' Returns a list of camera stream node jobs.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_node_from_template_jobs.html](https://paws-r.github.io/docs/panorama/list_node_from_template_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_node_from_template_jobs/](https://www.paws-r-sdk.com/docs/panorama_list_node_from_template_jobs/) for full documentation.
 #'
 #' @param MaxResults The maximum number of node from template jobs to return in one page of
 #' results.
@@ -731,7 +731,7 @@ panorama_list_node_from_template_jobs <- function(MaxResults = NULL, NextToken =
 #' @description
 #' Returns a list of nodes.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_nodes.html](https://paws-r.github.io/docs/panorama/list_nodes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_nodes/](https://www.paws-r-sdk.com/docs/panorama_list_nodes/) for full documentation.
 #'
 #' @param Category Search for nodes by category.
 #' @param MaxResults The maximum number of nodes to return in one page of results.
@@ -767,7 +767,7 @@ panorama_list_nodes <- function(Category = NULL, MaxResults = NULL, NextToken = 
 #' @description
 #' Returns a list of package import jobs.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_package_import_jobs.html](https://paws-r.github.io/docs/panorama/list_package_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_package_import_jobs/](https://www.paws-r-sdk.com/docs/panorama_list_package_import_jobs/) for full documentation.
 #'
 #' @param MaxResults The maximum number of package import jobs to return in one page of
 #' results.
@@ -799,7 +799,7 @@ panorama_list_package_import_jobs <- function(MaxResults = NULL, NextToken = NUL
 #' @description
 #' Returns a list of packages.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_packages.html](https://paws-r.github.io/docs/panorama/list_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_packages/](https://www.paws-r-sdk.com/docs/panorama_list_packages/) for full documentation.
 #'
 #' @param MaxResults The maximum number of packages to return in one page of results.
 #' @param NextToken Specify the pagination token from a previous request to retrieve the
@@ -830,7 +830,7 @@ panorama_list_packages <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/panorama/list_tags_for_resource.html](https://paws-r.github.io/docs/panorama/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/panorama_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource's ARN.
 #'
@@ -859,7 +859,7 @@ panorama_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Creates a device and returns a configuration archive. The configuration archive is a ZIP file that contains a provisioning certificate that is valid for 5 minutes. Name the configuration archive `certificates-omni_device-name.zip` and transfer it to the device within 5 minutes. Use the included USB storage device and connect it to the USB 3.0 port next to the HDMI output.
 #'
-#' See [https://paws-r.github.io/docs/panorama/provision_device.html](https://paws-r.github.io/docs/panorama/provision_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_provision_device/](https://www.paws-r-sdk.com/docs/panorama_provision_device/) for full documentation.
 #'
 #' @param Description A description for the device.
 #' @param Name &#91;required&#93; A name for the device.
@@ -891,7 +891,7 @@ panorama_provision_device <- function(Description = NULL, Name, NetworkingConfig
 #' @description
 #' Registers a package version.
 #'
-#' See [https://paws-r.github.io/docs/panorama/register_package_version.html](https://paws-r.github.io/docs/panorama/register_package_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_register_package_version/](https://www.paws-r-sdk.com/docs/panorama_register_package_version/) for full documentation.
 #'
 #' @param MarkLatest Whether to mark the new version as the latest version.
 #' @param OwnerAccount An owner account.
@@ -924,7 +924,7 @@ panorama_register_package_version <- function(MarkLatest = NULL, OwnerAccount = 
 #' @description
 #' Removes an application instance.
 #'
-#' See [https://paws-r.github.io/docs/panorama/remove_application_instance.html](https://paws-r.github.io/docs/panorama/remove_application_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_remove_application_instance/](https://www.paws-r-sdk.com/docs/panorama_remove_application_instance/) for full documentation.
 #'
 #' @param ApplicationInstanceId &#91;required&#93; An application instance ID.
 #'
@@ -953,7 +953,7 @@ panorama_remove_application_instance <- function(ApplicationInstanceId) {
 #' @description
 #' Signal camera nodes to stop or resume.
 #'
-#' See [https://paws-r.github.io/docs/panorama/signal_application_instance_node_instances.html](https://paws-r.github.io/docs/panorama/signal_application_instance_node_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_signal_application_instance_node_instances/](https://www.paws-r-sdk.com/docs/panorama_signal_application_instance_node_instances/) for full documentation.
 #'
 #' @param ApplicationInstanceId &#91;required&#93; An application instance ID.
 #' @param NodeSignals &#91;required&#93; A list of signals.
@@ -983,7 +983,7 @@ panorama_signal_application_instance_node_instances <- function(ApplicationInsta
 #' @description
 #' Tags a resource.
 #'
-#' See [https://paws-r.github.io/docs/panorama/tag_resource.html](https://paws-r.github.io/docs/panorama/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_tag_resource/](https://www.paws-r-sdk.com/docs/panorama_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource's ARN.
 #' @param Tags &#91;required&#93; Tags for the resource.
@@ -1013,7 +1013,7 @@ panorama_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/panorama/untag_resource.html](https://paws-r.github.io/docs/panorama/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_untag_resource/](https://www.paws-r-sdk.com/docs/panorama_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The resource's ARN.
 #' @param TagKeys &#91;required&#93; Tag keys to remove.
@@ -1043,7 +1043,7 @@ panorama_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates a device's metadata.
 #'
-#' See [https://paws-r.github.io/docs/panorama/update_device_metadata.html](https://paws-r.github.io/docs/panorama/update_device_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/panorama_update_device_metadata/](https://www.paws-r-sdk.com/docs/panorama_update_device_metadata/) for full documentation.
 #'
 #' @param Description A description for the device.
 #' @param DeviceId &#91;required&#93; The device's ID.

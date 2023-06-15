@@ -19,6 +19,6 @@ as possible, regardless of the maintenance window for the database.}
 \description{
 Stops a database activity stream that was started using the Amazon Web Services console, the \code{start-activity-stream} CLI command, or the \code{\link[=rds_start_activity_stream]{start_activity_stream}} action.
 
-See \url{https://paws-r.github.io/docs/rds/stop_activity_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_stop_activity_stream/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ retrieved for the request.}
 \description{
 Fetches the temporarily cached result of an SQL statement. A token is returned to page through the statement results.
 
-See \url{https://paws-r.github.io/docs/redshiftdataapiservice/get_statement_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_get_statement_result/} for full documentation.
 }
 \keyword{internal}

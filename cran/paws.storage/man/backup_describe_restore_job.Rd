@@ -13,6 +13,6 @@ backup_describe_restore_job(RestoreJobId)
 \description{
 Returns metadata associated with a restore job that is specified by a job ID.
 
-See \url{https://paws-r.github.io/docs/backup/describe_restore_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_restore_job/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ proton_delete_service(name)
 \description{
 Delete a service, with its instances and pipeline.
 
-See \url{https://paws-r.github.io/docs/proton/delete_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_delete_service/} for full documentation.
 }
 \keyword{internal}

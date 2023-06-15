@@ -12,6 +12,6 @@ comprehend_delete_document_classifier(DocumentClassifierArn)
 \description{
 Deletes a previously created document classifier
 
-See \url{https://paws-r.github.io/docs/comprehend/delete_document_classifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_delete_document_classifier/} for full documentation.
 }
 \keyword{internal}

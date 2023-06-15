@@ -22,6 +22,6 @@ organization.}
 \description{
 Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/delete_organization.html}{Removing an organization} in the \emph{WorkMail Administrator Guide}.
 
-See \url{https://paws-r.github.io/docs/workmail/delete_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_organization/} for full documentation.
 }
 \keyword{internal}

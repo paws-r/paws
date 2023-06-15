@@ -21,6 +21,6 @@ this is the response from the last list of stages returned.}
 \description{
 Describes an edge deployment plan with deployment status per stage.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_edge_deployment_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_edge_deployment_plan/} for full documentation.
 }
 \keyword{internal}

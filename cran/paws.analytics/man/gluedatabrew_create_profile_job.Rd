@@ -69,6 +69,6 @@ CUSTOM_ROWS for the mode parameter and 20000 for the size parameter.}
 \description{
 Creates a new job to analyze a dataset and create its data profile.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/create_profile_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_create_profile_job/} for full documentation.
 }
 \keyword{internal}

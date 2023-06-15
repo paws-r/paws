@@ -16,6 +16,6 @@ Amazon QuickSight namespace from.}
 \description{
 Deletes a namespace and the users and groups that are associated with the namespace. This is an asynchronous process. Assets including dashboards, analyses, datasets and data sources are not deleted. To delete these assets, you use the API operations for the relevant asset.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_namespace/} for full documentation.
 }
 \keyword{internal}

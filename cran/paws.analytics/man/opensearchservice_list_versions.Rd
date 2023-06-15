@@ -20,6 +20,6 @@ returns results in the next page.}
 \description{
 Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_versions/} for full documentation.
 }
 \keyword{internal}

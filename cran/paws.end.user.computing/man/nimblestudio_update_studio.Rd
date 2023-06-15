@@ -31,6 +31,6 @@ Studio portal.}
 \description{
 Update a Studio resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/update_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_update_studio/} for full documentation.
 }
 \keyword{internal}

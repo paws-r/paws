@@ -13,6 +13,6 @@ the default event bus is displayed.}
 \description{
 Displays details about an event bus in your account. This can include the external Amazon Web Services accounts that are permitted to write events to your default event bus, and the associated policy. For custom event buses and partner event buses, it displays the name, ARN, policy, state, and creation time.
 
-See \url{https://paws-r.github.io/docs/eventbridge/describe_event_bus.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_describe_event_bus/} for full documentation.
 }
 \keyword{internal}

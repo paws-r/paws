@@ -16,6 +16,6 @@ next page of results.}
 \description{
 Returns a list of package import jobs.
 
-See \url{https://paws-r.github.io/docs/panorama/list_package_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_list_package_import_jobs/} for full documentation.
 }
 \keyword{internal}

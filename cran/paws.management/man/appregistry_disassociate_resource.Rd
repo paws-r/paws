@@ -16,6 +16,6 @@ appregistry_disassociate_resource(application, resourceType, resource)
 \description{
 Disassociates a resource from application. Both the resource and the application can be specified either by ID or name.
 
-See \url{https://paws-r.github.io/docs/appregistry/disassociate_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_disassociate_resource/} for full documentation.
 }
 \keyword{internal}

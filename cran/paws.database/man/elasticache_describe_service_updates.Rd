@@ -26,6 +26,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns details of the service updates
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_service_updates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_service_updates/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ glue_get_resource_policies(NextToken = NULL, MaxResults = NULL)
 \description{
 Retrieves the resource policies set on individual resources by Resource Access Manager during cross-account permission grants. Also retrieves the Data Catalog resource policy.
 
-See \url{https://paws-r.github.io/docs/glue/get_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_resource_policies/} for full documentation.
 }
 \keyword{internal}

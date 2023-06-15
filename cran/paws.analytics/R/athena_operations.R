@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings. Requires you to have access to the workgroup in which the queries were saved. Use ListNamedQueriesInput to get the list of named query IDs in the specified workgroup. If information could not be retrieved for a submitted query ID, information about the query ID submitted is listed under UnprocessedNamedQueryId. Named queries differ from executed queries. Use BatchGetQueryExecutionInput to get details about each unique query execution, and ListQueryExecutionsInput to get a list of query execution IDs.
 #'
-#' See [https://paws-r.github.io/docs/athena/batch_get_named_query.html](https://paws-r.github.io/docs/athena/batch_get_named_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_batch_get_named_query/](https://www.paws-r-sdk.com/docs/athena_batch_get_named_query/) for full documentation.
 #'
 #' @param NamedQueryIds &#91;required&#93; An array of query IDs.
 #'
@@ -40,7 +40,7 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 #' @description
 #' Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide. Requires you to have access to the workgroup to which the prepared statements belong. If a prepared statement cannot be retrieved for the name specified, the statement is listed in `UnprocessedPreparedStatementNames`.
 #'
-#' See [https://paws-r.github.io/docs/athena/batch_get_prepared_statement.html](https://paws-r.github.io/docs/athena/batch_get_prepared_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_batch_get_prepared_statement/](https://www.paws-r-sdk.com/docs/athena_batch_get_prepared_statement/) for full documentation.
 #'
 #' @param PreparedStatementNames &#91;required&#93; A list of prepared statement names to return.
 #' @param WorkGroup &#91;required&#93; The name of the workgroup to which the prepared statements belong.
@@ -72,7 +72,7 @@ athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGrou
 #' @description
 #' Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings. Requires you to have access to the workgroup in which the queries ran. To get a list of query execution IDs, use ListQueryExecutionsInput$WorkGroup. Query executions differ from named (saved) queries. Use BatchGetNamedQueryInput to get details about named queries.
 #'
-#' See [https://paws-r.github.io/docs/athena/batch_get_query_execution.html](https://paws-r.github.io/docs/athena/batch_get_query_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_batch_get_query_execution/](https://www.paws-r-sdk.com/docs/athena_batch_get_query_execution/) for full documentation.
 #'
 #' @param QueryExecutionIds &#91;required&#93; An array of query execution IDs.
 #'
@@ -99,9 +99,9 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' Cancels the capacity reservation with the specified name
 #'
 #' @description
-#' Cancels the capacity reservation with the specified name.
+#' Cancels the capacity reservation with the specified name. Cancelled reservations remain in your account and will be deleted 45 days after cancellation. During the 45 days, you cannot re-purpose or reuse a reservation that has been cancelled, but you can refer to its tags and view it for historical reference.
 #'
-#' See [https://paws-r.github.io/docs/athena/cancel_capacity_reservation.html](https://paws-r.github.io/docs/athena/cancel_capacity_reservation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_cancel_capacity_reservation/](https://www.paws-r-sdk.com/docs/athena_cancel_capacity_reservation/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the capacity reservation to cancel.
 #'
@@ -131,7 +131,7 @@ athena_cancel_capacity_reservation <- function(Name) {
 #' @description
 #' Creates a capacity reservation with the specified name and number of requested data processing units.
 #'
-#' See [https://paws-r.github.io/docs/athena/create_capacity_reservation.html](https://paws-r.github.io/docs/athena/create_capacity_reservation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_capacity_reservation/](https://www.paws-r-sdk.com/docs/athena_create_capacity_reservation/) for full documentation.
 #'
 #' @param TargetDpus &#91;required&#93; The number of requested data processing units.
 #' @param Name &#91;required&#93; The name of the capacity reservation to create.
@@ -163,7 +163,7 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
 #' @description
 #' Creates (registers) a data catalog with the specified name and properties. Catalogs created are visible to all users of the same Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/athena/create_data_catalog.html](https://paws-r.github.io/docs/athena/create_data_catalog.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_data_catalog/](https://www.paws-r-sdk.com/docs/athena_create_data_catalog/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to create. The catalog name must be unique
 #' for the Amazon Web Services account and can use a maximum of 127
@@ -242,7 +242,7 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' @description
 #' Creates a named query in the specified workgroup. Requires that you have access to the workgroup.
 #'
-#' See [https://paws-r.github.io/docs/athena/create_named_query.html](https://paws-r.github.io/docs/athena/create_named_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_named_query/](https://www.paws-r-sdk.com/docs/athena_create_named_query/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The query name.
 #' @param Description The query description.
@@ -288,7 +288,7 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #' @description
 #' Creates an empty `ipynb` file in the specified Apache Spark enabled workgroup. Throws an error if a file in the workgroup with the same name already exists.
 #'
-#' See [https://paws-r.github.io/docs/athena/create_notebook.html](https://paws-r.github.io/docs/athena/create_notebook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_notebook/](https://www.paws-r-sdk.com/docs/athena_create_notebook/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The name of the Spark enabled workgroup in which the notebook will be
 #' created.
@@ -328,7 +328,7 @@ athena_create_notebook <- function(WorkGroup, Name, ClientRequestToken = NULL) {
 #' @description
 #' Creates a prepared statement for use with SQL queries in Athena.
 #'
-#' See [https://paws-r.github.io/docs/athena/create_prepared_statement.html](https://paws-r.github.io/docs/athena/create_prepared_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_prepared_statement/](https://www.paws-r-sdk.com/docs/athena_create_prepared_statement/) for full documentation.
 #'
 #' @param StatementName &#91;required&#93; The name of the prepared statement.
 #' @param WorkGroup &#91;required&#93; The name of the workgroup to which the prepared statement belongs.
@@ -361,7 +361,7 @@ athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 #' @description
 #' Gets an authentication token and the URL at which the notebook can be accessed. During programmatic access, [`create_presigned_notebook_url`][athena_create_presigned_notebook_url] must be called every 10 minutes to refresh the authentication token. For information about granting programmatic access, see [Grant programmatic access](https://docs.aws.amazon.com/athena/latest/ug/setting-up.html#setting-up-grant-programmatic-access).
 #'
-#' See [https://paws-r.github.io/docs/athena/create_presigned_notebook_url.html](https://paws-r.github.io/docs/athena/create_presigned_notebook_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_presigned_notebook_url/](https://www.paws-r-sdk.com/docs/athena_create_presigned_notebook_url/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #'
@@ -390,7 +390,7 @@ athena_create_presigned_notebook_url <- function(SessionId) {
 #' @description
 #' Creates a workgroup with the specified name. A workgroup can be an Apache Spark enabled workgroup or an Athena SQL workgroup.
 #'
-#' See [https://paws-r.github.io/docs/athena/create_work_group.html](https://paws-r.github.io/docs/athena/create_work_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_create_work_group/](https://www.paws-r-sdk.com/docs/athena_create_work_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The workgroup name.
 #' @param Configuration Contains configuration information for creating an Athena SQL workgroup
@@ -426,12 +426,41 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
 }
 .athena$operations$create_work_group <- athena_create_work_group
 
+#' Deletes a cancelled capacity reservation
+#'
+#' @description
+#' Deletes a cancelled capacity reservation. A reservation must be cancelled before it can be deleted. A deleted reservation is immediately removed from your account and can no longer be referenced, including by its ARN. A deleted reservation cannot be called by [`get_capacity_reservation`][athena_get_capacity_reservation], and deleted reservations do not appear in the output of [`list_capacity_reservations`][athena_list_capacity_reservations].
+#'
+#' See [https://www.paws-r-sdk.com/docs/athena_delete_capacity_reservation/](https://www.paws-r-sdk.com/docs/athena_delete_capacity_reservation/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the capacity reservation to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_capacity_reservation
+athena_delete_capacity_reservation <- function(Name) {
+  op <- new_operation(
+    name = "DeleteCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_capacity_reservation_input(Name = Name)
+  output <- .athena$delete_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_capacity_reservation <- athena_delete_capacity_reservation
+
 #' Deletes a data catalog
 #'
 #' @description
 #' Deletes a data catalog.
 #'
-#' See [https://paws-r.github.io/docs/athena/delete_data_catalog.html](https://paws-r.github.io/docs/athena/delete_data_catalog.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_delete_data_catalog/](https://www.paws-r-sdk.com/docs/athena_delete_data_catalog/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to delete.
 #'
@@ -461,7 +490,7 @@ athena_delete_data_catalog <- function(Name) {
 #' @description
 #' Deletes the named query if you have access to the workgroup in which the query was saved.
 #'
-#' See [https://paws-r.github.io/docs/athena/delete_named_query.html](https://paws-r.github.io/docs/athena/delete_named_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_delete_named_query/](https://www.paws-r-sdk.com/docs/athena_delete_named_query/) for full documentation.
 #'
 #' @param NamedQueryId &#91;required&#93; The unique ID of the query to delete.
 #'
@@ -490,7 +519,7 @@ athena_delete_named_query <- function(NamedQueryId) {
 #' @description
 #' Deletes the specified notebook.
 #'
-#' See [https://paws-r.github.io/docs/athena/delete_notebook.html](https://paws-r.github.io/docs/athena/delete_notebook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_delete_notebook/](https://www.paws-r-sdk.com/docs/athena_delete_notebook/) for full documentation.
 #'
 #' @param NotebookId &#91;required&#93; The ID of the notebook to delete.
 #'
@@ -520,7 +549,7 @@ athena_delete_notebook <- function(NotebookId) {
 #' @description
 #' Deletes the prepared statement with the specified name from the specified workgroup.
 #'
-#' See [https://paws-r.github.io/docs/athena/delete_prepared_statement.html](https://paws-r.github.io/docs/athena/delete_prepared_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_delete_prepared_statement/](https://www.paws-r-sdk.com/docs/athena_delete_prepared_statement/) for full documentation.
 #'
 #' @param StatementName &#91;required&#93; The name of the prepared statement to delete.
 #' @param WorkGroup &#91;required&#93; The workgroup to which the statement to be deleted belongs.
@@ -550,7 +579,7 @@ athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
 #' @description
 #' Deletes the workgroup with the specified name. The primary workgroup cannot be deleted.
 #'
-#' See [https://paws-r.github.io/docs/athena/delete_work_group.html](https://paws-r.github.io/docs/athena/delete_work_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_delete_work_group/](https://www.paws-r-sdk.com/docs/athena_delete_work_group/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The unique name of the workgroup to delete.
 #' @param RecursiveDeleteOption The option to delete the workgroup and its contents even if the
@@ -581,7 +610,7 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
 #' @description
 #' Exports the specified notebook and its metadata.
 #'
-#' See [https://paws-r.github.io/docs/athena/export_notebook.html](https://paws-r.github.io/docs/athena/export_notebook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_export_notebook/](https://www.paws-r-sdk.com/docs/athena_export_notebook/) for full documentation.
 #'
 #' @param NotebookId &#91;required&#93; The ID of the notebook to export.
 #'
@@ -610,7 +639,7 @@ athena_export_notebook <- function(NotebookId) {
 #' @description
 #' Describes a previously submitted calculation execution.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_calculation_execution.html](https://paws-r.github.io/docs/athena/get_calculation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_calculation_execution/](https://www.paws-r-sdk.com/docs/athena_get_calculation_execution/) for full documentation.
 #'
 #' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
 #'
@@ -639,7 +668,7 @@ athena_get_calculation_execution <- function(CalculationExecutionId) {
 #' @description
 #' Retrieves the unencrypted code that was executed for the calculation.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_calculation_execution_code.html](https://paws-r.github.io/docs/athena/get_calculation_execution_code.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_calculation_execution_code/](https://www.paws-r-sdk.com/docs/athena_get_calculation_execution_code/) for full documentation.
 #'
 #' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
 #'
@@ -668,7 +697,7 @@ athena_get_calculation_execution_code <- function(CalculationExecutionId) {
 #' @description
 #' Gets the status of a current calculation.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_calculation_execution_status.html](https://paws-r.github.io/docs/athena/get_calculation_execution_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_calculation_execution_status/](https://www.paws-r-sdk.com/docs/athena_get_calculation_execution_status/) for full documentation.
 #'
 #' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
 #'
@@ -698,7 +727,7 @@ athena_get_calculation_execution_status <- function(CalculationExecutionId) {
 #' @description
 #' Gets the capacity assignment configuration for a capacity reservation, if one exists.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_capacity_assignment_configuration.html](https://paws-r.github.io/docs/athena/get_capacity_assignment_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_capacity_assignment_configuration/](https://www.paws-r-sdk.com/docs/athena_get_capacity_assignment_configuration/) for full documentation.
 #'
 #' @param CapacityReservationName &#91;required&#93; The name of the capacity reservation to retrieve the capacity assignment
 #' configuration for.
@@ -729,7 +758,7 @@ athena_get_capacity_assignment_configuration <- function(CapacityReservationName
 #' @description
 #' Returns information about the capacity reservation with the specified name.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_capacity_reservation.html](https://paws-r.github.io/docs/athena/get_capacity_reservation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_capacity_reservation/](https://www.paws-r-sdk.com/docs/athena_get_capacity_reservation/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the capacity reservation.
 #'
@@ -758,7 +787,7 @@ athena_get_capacity_reservation <- function(Name) {
 #' @description
 #' Returns the specified data catalog.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_data_catalog.html](https://paws-r.github.io/docs/athena/get_data_catalog.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_data_catalog/](https://www.paws-r-sdk.com/docs/athena_get_data_catalog/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to return.
 #'
@@ -787,7 +816,7 @@ athena_get_data_catalog <- function(Name) {
 #' @description
 #' Returns a database object for the specified database and data catalog.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_database.html](https://paws-r.github.io/docs/athena/get_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_database/](https://www.paws-r-sdk.com/docs/athena_get_database/) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database to return.
 #' @param DatabaseName &#91;required&#93; The name of the database to return.
@@ -817,7 +846,7 @@ athena_get_database <- function(CatalogName, DatabaseName) {
 #' @description
 #' Returns information about a single query. Requires that you have access to the workgroup in which the query was saved.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_named_query.html](https://paws-r.github.io/docs/athena/get_named_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_named_query/](https://www.paws-r-sdk.com/docs/athena_get_named_query/) for full documentation.
 #'
 #' @param NamedQueryId &#91;required&#93; The unique ID of the query. Use
 #' [`list_named_queries`][athena_list_named_queries] to get query IDs.
@@ -847,7 +876,7 @@ athena_get_named_query <- function(NamedQueryId) {
 #' @description
 #' Retrieves notebook metadata for the specified notebook ID.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_notebook_metadata.html](https://paws-r.github.io/docs/athena/get_notebook_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_notebook_metadata/](https://www.paws-r-sdk.com/docs/athena_get_notebook_metadata/) for full documentation.
 #'
 #' @param NotebookId &#91;required&#93; The ID of the notebook whose metadata is to be retrieved.
 #'
@@ -877,7 +906,7 @@ athena_get_notebook_metadata <- function(NotebookId) {
 #' @description
 #' Retrieves the prepared statement with the specified name from the specified workgroup.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_prepared_statement.html](https://paws-r.github.io/docs/athena/get_prepared_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_prepared_statement/](https://www.paws-r-sdk.com/docs/athena_get_prepared_statement/) for full documentation.
 #'
 #' @param StatementName &#91;required&#93; The name of the prepared statement to retrieve.
 #' @param WorkGroup &#91;required&#93; The workgroup to which the statement to be retrieved belongs.
@@ -908,7 +937,7 @@ athena_get_prepared_statement <- function(StatementName, WorkGroup) {
 #' @description
 #' Returns information about a single execution of a query if you have access to the workgroup in which the query ran. Each time a query executes, information about the query execution is saved with a unique ID.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_query_execution.html](https://paws-r.github.io/docs/athena/get_query_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_query_execution/](https://www.paws-r-sdk.com/docs/athena_get_query_execution/) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
 #'
@@ -938,7 +967,7 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' @description
 #' Streams the results of a single query execution specified by `QueryExecutionId` from the Athena query results location in Amazon S3. For more information, see [Working with query results, recent queries, and output files](https://docs.aws.amazon.com/athena/latest/ug/querying.html) in the *Amazon Athena User Guide*. This request does not execute the query but returns results. Use [`start_query_execution`][athena_start_query_execution] to run a query.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_query_results.html](https://paws-r.github.io/docs/athena/get_query_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_query_results/](https://www.paws-r-sdk.com/docs/athena_get_query_results/) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -973,7 +1002,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #' @description
 #' Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran. Query execution runtime statistics are returned only when QueryExecutionStatus$State is in a SUCCEEDED or FAILED state. Stage-level input and output row count and data size statistics are not shown when a query has row-level filters defined in Lake Formation.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html](https://paws-r.github.io/docs/athena/get_query_runtime_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_query_runtime_statistics/](https://www.paws-r-sdk.com/docs/athena_get_query_runtime_statistics/) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution.
 #'
@@ -1003,7 +1032,7 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
 #' @description
 #' Gets the full details of a previously created session, including the session status and configuration.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_session.html](https://paws-r.github.io/docs/athena/get_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_session/](https://www.paws-r-sdk.com/docs/athena_get_session/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #'
@@ -1032,7 +1061,7 @@ athena_get_session <- function(SessionId) {
 #' @description
 #' Gets the current status of a session.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_session_status.html](https://paws-r.github.io/docs/athena/get_session_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_session_status/](https://www.paws-r-sdk.com/docs/athena_get_session_status/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #'
@@ -1061,7 +1090,7 @@ athena_get_session_status <- function(SessionId) {
 #' @description
 #' Returns table metadata for the specified catalog, database, and table.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_table_metadata.html](https://paws-r.github.io/docs/athena/get_table_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_table_metadata/](https://www.paws-r-sdk.com/docs/athena_get_table_metadata/) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the database and table
 #' metadata to return.
@@ -1093,7 +1122,7 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
 #' @description
 #' Returns information about the workgroup with the specified name.
 #'
-#' See [https://paws-r.github.io/docs/athena/get_work_group.html](https://paws-r.github.io/docs/athena/get_work_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_get_work_group/](https://www.paws-r-sdk.com/docs/athena_get_work_group/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The name of the workgroup.
 #'
@@ -1122,7 +1151,7 @@ athena_get_work_group <- function(WorkGroup) {
 #' @description
 #' Imports a single `ipynb` file to a Spark enabled workgroup. The maximum file size that can be imported is 10 megabytes. If an `ipynb` file with the same name already exists in the workgroup, throws an error.
 #'
-#' See [https://paws-r.github.io/docs/athena/import_notebook.html](https://paws-r.github.io/docs/athena/import_notebook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_import_notebook/](https://www.paws-r-sdk.com/docs/athena_import_notebook/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The name of the Spark enabled workgroup to import the notebook to.
 #' @param Name &#91;required&#93; The name of the notebook to import.
@@ -1163,7 +1192,7 @@ athena_import_notebook <- function(WorkGroup, Name, Payload, Type, ClientRequest
 #' @description
 #' Returns the supported DPU sizes for the supported application runtimes (for example, `Athena notebook version 1`).
 #'
-#' See [https://paws-r.github.io/docs/athena/list_application_dpu_sizes.html](https://paws-r.github.io/docs/athena/list_application_dpu_sizes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_application_dpu_sizes/](https://www.paws-r-sdk.com/docs/athena_list_application_dpu_sizes/) for full documentation.
 #'
 #' @param MaxResults Specifies the maximum number of results to return.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -1195,7 +1224,7 @@ athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NUL
 #' @description
 #' Lists the calculations that have been submitted to a session in descending order. Newer calculations are listed first; older calculations are listed later.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_calculation_executions.html](https://paws-r.github.io/docs/athena/list_calculation_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_calculation_executions/](https://www.paws-r-sdk.com/docs/athena_list_calculation_executions/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #' @param StateFilter A filter for a specific calculation execution state. A description of
@@ -1249,7 +1278,7 @@ athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, Ma
 #' @description
 #' Lists the capacity reservations for the current account.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_capacity_reservations.html](https://paws-r.github.io/docs/athena/list_capacity_reservations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_capacity_reservations/](https://www.paws-r-sdk.com/docs/athena_list_capacity_reservations/) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated.
@@ -1280,7 +1309,7 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
 #' @description
 #' Lists the data catalogs in the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_data_catalogs.html](https://paws-r.github.io/docs/athena/list_data_catalogs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_data_catalogs/](https://www.paws-r-sdk.com/docs/athena_list_data_catalogs/) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1313,7 +1342,7 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the databases in the specified data catalog.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_databases.html](https://paws-r.github.io/docs/athena/list_databases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_databases/](https://www.paws-r-sdk.com/docs/athena_list_databases/) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog that contains the databases to return.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -1348,7 +1377,7 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 #' @description
 #' Returns a list of engine versions that are available to choose from, including the Auto option.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_engine_versions.html](https://paws-r.github.io/docs/athena/list_engine_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_engine_versions/](https://www.paws-r-sdk.com/docs/athena_list_engine_versions/) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1381,7 +1410,7 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists, in descending order, the executors that joined a session. Newer executors are listed first; older executors are listed later. The result can be optionally filtered by state.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_executors.html](https://paws-r.github.io/docs/athena/list_executors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_executors/](https://www.paws-r-sdk.com/docs/athena_list_executors/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #' @param ExecutorStateFilter A filter for a specific executor state. A description of each state
@@ -1431,7 +1460,7 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
 #' @description
 #' Provides a list of available query IDs only for queries saved in the specified workgroup. Requires that you have access to the specified workgroup. If a workgroup is not specified, lists the saved queries for the primary workgroup.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_named_queries.html](https://paws-r.github.io/docs/athena/list_named_queries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_named_queries/](https://www.paws-r-sdk.com/docs/athena_list_named_queries/) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1468,7 +1497,7 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' @description
 #' Displays the notebook files for the specified workgroup in paginated format.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_notebook_metadata.html](https://paws-r.github.io/docs/athena/list_notebook_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_notebook_metadata/](https://www.paws-r-sdk.com/docs/athena_list_notebook_metadata/) for full documentation.
 #'
 #' @param Filters Search filter string.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -1504,7 +1533,7 @@ athena_list_notebook_metadata <- function(Filters = NULL, NextToken = NULL, MaxR
 #' @description
 #' Lists, in descending order, the sessions that have been created in a notebook that are in an active state like `CREATING`, `CREATED`, `IDLE` or `BUSY`. Newer sessions are listed first; older sessions are listed later.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_notebook_sessions.html](https://paws-r.github.io/docs/athena/list_notebook_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_notebook_sessions/](https://www.paws-r-sdk.com/docs/athena_list_notebook_sessions/) for full documentation.
 #'
 #' @param NotebookId &#91;required&#93; The ID of the notebook to list sessions for.
 #' @param MaxResults The maximum number of notebook sessions to return.
@@ -1538,7 +1567,7 @@ athena_list_notebook_sessions <- function(NotebookId, MaxResults = NULL, NextTok
 #' @description
 #' Lists the prepared statements in the specified workgroup.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_prepared_statements.html](https://paws-r.github.io/docs/athena/list_prepared_statements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_prepared_statements/](https://www.paws-r-sdk.com/docs/athena_list_prepared_statements/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The workgroup to list the prepared statements for.
 #' @param NextToken A token generated by the Athena service that specifies where to continue
@@ -1573,7 +1602,7 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
 #' @description
 #' Provides a list of available query execution IDs for the queries in the specified workgroup. If a workgroup is not specified, returns a list of query execution IDs for the primary workgroup. Requires you to have access to the workgroup in which the queries ran.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_query_executions.html](https://paws-r.github.io/docs/athena/list_query_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_query_executions/](https://www.paws-r-sdk.com/docs/athena_list_query_executions/) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1610,7 +1639,7 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 #' @description
 #' Lists the sessions in a workgroup that are in an active state like `CREATING`, `CREATED`, `IDLE`, or `BUSY`. Newer sessions are listed first; older sessions are listed later.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_sessions.html](https://paws-r.github.io/docs/athena/list_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_sessions/](https://www.paws-r-sdk.com/docs/athena_list_sessions/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The workgroup to which the session belongs.
 #' @param StateFilter A filter for a specific session state. A description of each state
@@ -1665,7 +1694,7 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
 #' @description
 #' Lists the metadata for the tables in the specified data catalog database.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_table_metadata.html](https://paws-r.github.io/docs/athena/list_table_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_table_metadata/](https://www.paws-r-sdk.com/docs/athena_list_table_metadata/) for full documentation.
 #'
 #' @param CatalogName &#91;required&#93; The name of the data catalog for which table metadata should be
 #' returned.
@@ -1703,7 +1732,7 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
 #' @description
 #' Lists the tags associated with an Athena resource.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_tags_for_resource.html](https://paws-r.github.io/docs/athena/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/athena_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Lists the tags for the resource with the specified ARN.
 #' @param NextToken The token for the next set of results, or null if there are no
@@ -1737,7 +1766,7 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #' @description
 #' Lists available workgroups for the account.
 #'
-#' See [https://paws-r.github.io/docs/athena/list_work_groups.html](https://paws-r.github.io/docs/athena/list_work_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_list_work_groups/](https://www.paws-r-sdk.com/docs/athena_list_work_groups/) for full documentation.
 #'
 #' @param NextToken A token generated by the Athena service that specifies where to continue
 #' pagination if a previous request was truncated. To obtain the next set
@@ -1771,7 +1800,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Puts a new capacity assignment configuration for a specified capacity reservation. If a capacity assignment configuration already exists for the capacity reservation, replaces the existing capacity assignment configuration.
 #'
-#' See [https://paws-r.github.io/docs/athena/put_capacity_assignment_configuration.html](https://paws-r.github.io/docs/athena/put_capacity_assignment_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_put_capacity_assignment_configuration/](https://www.paws-r-sdk.com/docs/athena_put_capacity_assignment_configuration/) for full documentation.
 #'
 #' @param CapacityReservationName &#91;required&#93; The name of the capacity reservation to put a capacity assignment
 #' configuration for.
@@ -1802,7 +1831,7 @@ athena_put_capacity_assignment_configuration <- function(CapacityReservationName
 #' @description
 #' Submits calculations for execution within a session. You can supply the code to run as an inline code block within the request.
 #'
-#' See [https://paws-r.github.io/docs/athena/start_calculation_execution.html](https://paws-r.github.io/docs/athena/start_calculation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_start_calculation_execution/](https://www.paws-r-sdk.com/docs/athena_start_calculation_execution/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #' @param Description A description of the calculation.
@@ -1845,7 +1874,7 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
 #' @description
 #' Runs the SQL query statements contained in the `Query`. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires [`get_data_catalog`][athena_get_data_catalog] permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see [Examples and Code Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html) in the *Amazon Athena User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/athena/start_query_execution.html](https://paws-r.github.io/docs/athena/start_query_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_start_query_execution/](https://www.paws-r-sdk.com/docs/athena_start_query_execution/) for full documentation.
 #'
 #' @param QueryString &#91;required&#93; The SQL query statements to be executed.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
@@ -1899,7 +1928,7 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #' @description
 #' Creates a session for running calculations within a workgroup. The session is ready when it reaches an `IDLE` state.
 #'
-#' See [https://paws-r.github.io/docs/athena/start_session.html](https://paws-r.github.io/docs/athena/start_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_start_session/](https://www.paws-r-sdk.com/docs/athena_start_session/) for full documentation.
 #'
 #' @param Description The session description.
 #' @param WorkGroup &#91;required&#93; The workgroup to which the session belongs.
@@ -1949,7 +1978,7 @@ athena_start_session <- function(Description = NULL, WorkGroup, EngineConfigurat
 #' @description
 #' Requests the cancellation of a calculation. A [`stop_calculation_execution`][athena_stop_calculation_execution] call on a calculation that is already in a terminal state (for example, `STOPPED`, `FAILED`, or `COMPLETED`) succeeds but has no effect.
 #'
-#' See [https://paws-r.github.io/docs/athena/stop_calculation_execution.html](https://paws-r.github.io/docs/athena/stop_calculation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_stop_calculation_execution/](https://www.paws-r-sdk.com/docs/athena_stop_calculation_execution/) for full documentation.
 #'
 #' @param CalculationExecutionId &#91;required&#93; The calculation execution UUID.
 #'
@@ -1978,7 +2007,7 @@ athena_stop_calculation_execution <- function(CalculationExecutionId) {
 #' @description
 #' Stops a query execution. Requires you to have access to the workgroup in which the query ran.
 #'
-#' See [https://paws-r.github.io/docs/athena/stop_query_execution.html](https://paws-r.github.io/docs/athena/stop_query_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_stop_query_execution/](https://www.paws-r-sdk.com/docs/athena_stop_query_execution/) for full documentation.
 #'
 #' @param QueryExecutionId &#91;required&#93; The unique ID of the query execution to stop.
 #'
@@ -2007,7 +2036,7 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #' @description
 #' Adds one or more tags to an Athena resource. A tag is a label that you assign to a resource. Each tag consists of a key and an optional value, both of which you define. For example, you can use tags to categorize Athena workgroups, data catalogs, or capacity reservations by purpose, owner, or environment. Use a consistent set of tag keys to make it easier to search and filter the resources in your account. For best practices, see [Tagging Best Practices](https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/tagging-best-practices.html). Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and numbers representable in UTF-8, and the following characters: + - = . _ : / @@. Tag keys and values are case-sensitive. Tag keys must be unique per resource. If you specify more than one tag, separate them by commas.
 #'
-#' See [https://paws-r.github.io/docs/athena/tag_resource.html](https://paws-r.github.io/docs/athena/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_tag_resource/](https://www.paws-r-sdk.com/docs/athena_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Specifies the ARN of the Athena resource to which tags are to be added.
 #' @param Tags &#91;required&#93; A collection of one or more tags, separated by commas, to be added to an
@@ -2038,7 +2067,7 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Terminates an active session. A [`terminate_session`][athena_terminate_session] call on a session that is already inactive (for example, in a `FAILED`, `TERMINATED` or `TERMINATING` state) succeeds but has no effect. Calculations running in the session when [`terminate_session`][athena_terminate_session] is called are forcefully stopped, but may display as `FAILED` instead of `STOPPED`.
 #'
-#' See [https://paws-r.github.io/docs/athena/terminate_session.html](https://paws-r.github.io/docs/athena/terminate_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_terminate_session/](https://www.paws-r-sdk.com/docs/athena_terminate_session/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The session ID.
 #'
@@ -2067,7 +2096,7 @@ athena_terminate_session <- function(SessionId) {
 #' @description
 #' Removes one or more tags from an Athena resource.
 #'
-#' See [https://paws-r.github.io/docs/athena/untag_resource.html](https://paws-r.github.io/docs/athena/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_untag_resource/](https://www.paws-r-sdk.com/docs/athena_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Specifies the ARN of the resource from which tags are to be removed.
 #' @param TagKeys &#91;required&#93; A comma-separated list of one or more tag keys whose tags are to be
@@ -2099,7 +2128,7 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the number of requested data processing units for the capacity reservation with the specified name.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_capacity_reservation.html](https://paws-r.github.io/docs/athena/update_capacity_reservation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_capacity_reservation/](https://www.paws-r-sdk.com/docs/athena_update_capacity_reservation/) for full documentation.
 #'
 #' @param TargetDpus &#91;required&#93; The new number of requested data processing units.
 #' @param Name &#91;required&#93; The name of the capacity reservation.
@@ -2129,7 +2158,7 @@ athena_update_capacity_reservation <- function(TargetDpus, Name) {
 #' @description
 #' Updates the data catalog that has the specified name.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_data_catalog.html](https://paws-r.github.io/docs/athena/update_data_catalog.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_data_catalog/](https://www.paws-r-sdk.com/docs/athena_update_data_catalog/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to update. The catalog name must be unique
 #' for the Amazon Web Services account and can use a maximum of 127
@@ -2189,7 +2218,7 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' @description
 #' Updates a NamedQuery object. The database or workgroup cannot be updated.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_named_query.html](https://paws-r.github.io/docs/athena/update_named_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_named_query/](https://www.paws-r-sdk.com/docs/athena_update_named_query/) for full documentation.
 #'
 #' @param NamedQueryId &#91;required&#93; The unique identifier (UUID) of the query.
 #' @param Name &#91;required&#93; The name of the query.
@@ -2221,7 +2250,7 @@ athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, Qu
 #' @description
 #' Updates the contents of a Spark notebook.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_notebook.html](https://paws-r.github.io/docs/athena/update_notebook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_notebook/](https://www.paws-r-sdk.com/docs/athena_update_notebook/) for full documentation.
 #'
 #' @param NotebookId &#91;required&#93; The ID of the notebook to update.
 #' @param Payload &#91;required&#93; The updated content for the notebook.
@@ -2262,7 +2291,7 @@ athena_update_notebook <- function(NotebookId, Payload, Type, SessionId = NULL, 
 #' @description
 #' Updates the metadata for a notebook.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_notebook_metadata.html](https://paws-r.github.io/docs/athena/update_notebook_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_notebook_metadata/](https://www.paws-r-sdk.com/docs/athena_update_notebook_metadata/) for full documentation.
 #'
 #' @param NotebookId &#91;required&#93; The ID of the notebook to update the metadata for.
 #' @param ClientRequestToken A unique case-sensitive string used to ensure the request to create the
@@ -2300,7 +2329,7 @@ athena_update_notebook_metadata <- function(NotebookId, ClientRequestToken = NUL
 #' @description
 #' Updates a prepared statement.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_prepared_statement.html](https://paws-r.github.io/docs/athena/update_prepared_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_prepared_statement/](https://www.paws-r-sdk.com/docs/athena_update_prepared_statement/) for full documentation.
 #'
 #' @param StatementName &#91;required&#93; The name of the prepared statement.
 #' @param WorkGroup &#91;required&#93; The workgroup for the prepared statement.
@@ -2332,7 +2361,7 @@ athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 #' @description
 #' Updates the workgroup with the specified name. The workgroup's name cannot be changed. Only `ConfigurationUpdates` can be specified.
 #'
-#' See [https://paws-r.github.io/docs/athena/update_work_group.html](https://paws-r.github.io/docs/athena/update_work_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/athena_update_work_group/](https://www.paws-r-sdk.com/docs/athena_update_work_group/) for full documentation.
 #'
 #' @param WorkGroup &#91;required&#93; The specified workgroup that will be updated.
 #' @param Description The workgroup description.

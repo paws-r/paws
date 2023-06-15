@@ -12,6 +12,6 @@ autoscaling_delete_tags(Tags)
 \description{
 Deletes the specified tags.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_tags/} for full documentation.
 }
 \keyword{internal}

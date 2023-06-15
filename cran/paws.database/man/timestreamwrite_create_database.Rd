@@ -18,6 +18,6 @@ your account. For more information, see \href{https://docs.aws.amazon.com/kms/la
 \description{
 Creates a new Timestream database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed keys}. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. For details, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html}{code sample}.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/create_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_create_database/} for full documentation.
 }
 \keyword{internal}

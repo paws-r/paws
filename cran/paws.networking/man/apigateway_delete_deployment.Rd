@@ -14,6 +14,6 @@ apigateway_delete_deployment(restApiId, deploymentId)
 \description{
 Deletes a Deployment resource. Deleting a deployment will only succeed if there are no Stage resources associated with it.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_deployment/} for full documentation.
 }
 \keyword{internal}

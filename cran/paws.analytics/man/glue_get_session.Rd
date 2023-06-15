@@ -14,6 +14,6 @@ glue_get_session(Id, RequestOrigin = NULL)
 \description{
 Retrieves the session.
 
-See \url{https://paws-r.github.io/docs/glue/get_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_session/} for full documentation.
 }
 \keyword{internal}

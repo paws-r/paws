@@ -35,6 +35,6 @@ access to.}
 \description{
 Updates an access control configuration for your documents in an index. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 
-See \url{https://paws-r.github.io/docs/kendra/update_access_control_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_update_access_control_configuration/} for full documentation.
 }
 \keyword{internal}

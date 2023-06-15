@@ -12,6 +12,6 @@ route53recoverycontrolconfig_delete_safety_rule(SafetyRuleArn)
 \description{
 Deletes a safety rule.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_safety_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_safety_rule/} for full documentation.
 }
 \keyword{internal}

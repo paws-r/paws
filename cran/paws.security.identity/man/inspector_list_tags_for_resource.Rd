@@ -13,6 +13,6 @@ list.}
 \description{
 Lists all tags associated with an assessment template.
 
-See \url{https://paws-r.github.io/docs/inspector/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

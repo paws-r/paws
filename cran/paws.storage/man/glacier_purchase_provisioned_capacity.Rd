@@ -16,6 +16,6 @@ include any hyphens ('-') in the ID.}
 \description{
 This operation purchases a provisioned capacity unit for an AWS account.
 
-See \url{https://paws-r.github.io/docs/glacier/purchase_provisioned_capacity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_purchase_provisioned_capacity/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances.
 
-See \url{https://paws-r.github.io/docs/ec2/deregister_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_deregister_image/} for full documentation.
 }
 \keyword{internal}

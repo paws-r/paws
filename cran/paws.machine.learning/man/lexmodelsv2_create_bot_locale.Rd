@@ -51,6 +51,6 @@ with the user.}
 \description{
 Creates a locale in the bot. The locale contains the intents and slot types that the bot uses in conversations with users in the specified language and locale. You must add a locale to a bot before you can add intents and slot types to the bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_bot_locale.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_bot_locale/} for full documentation.
 }
 \keyword{internal}

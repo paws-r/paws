@@ -13,6 +13,6 @@ cloudwatchevents_describe_event_source(Name)
 \description{
 This operation lists details about a partner event source that is shared with your account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/describe_event_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_event_source/} for full documentation.
 }
 \keyword{internal}

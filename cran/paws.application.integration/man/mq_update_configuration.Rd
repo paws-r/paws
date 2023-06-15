@@ -16,6 +16,6 @@ mq_update_configuration(ConfigurationId, Data, Description = NULL)
 \description{
 Updates the specified configuration.
 
-See \url{https://paws-r.github.io/docs/mq/update_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_update_configuration/} for full documentation.
 }
 \keyword{internal}

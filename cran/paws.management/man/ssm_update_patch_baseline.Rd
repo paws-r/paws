@@ -75,6 +75,6 @@ set to null.}
 \description{
 Modifies an existing patch baseline. Fields not specified in the request are left unchanged.
 
-See \url{https://paws-r.github.io/docs/ssm/update_patch_baseline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_patch_baseline/} for full documentation.
 }
 \keyword{internal}

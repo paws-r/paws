@@ -38,6 +38,6 @@ Security Hub on or after February 23, 2023.}
 \description{
 Enables Security Hub for your account in the current Region or the Region you specify in the request.
 
-See \url{https://paws-r.github.io/docs/securityhub/enable_security_hub.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_enable_security_hub/} for full documentation.
 }
 \keyword{internal}

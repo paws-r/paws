@@ -18,6 +18,6 @@ elasticache_rebalance_slots_in_global_replication_group(
 \description{
 Redistribute slots to ensure uniform distribution across existing shards in the cluster.
 
-See \url{https://paws-r.github.io/docs/elasticache/rebalance_slots_in_global_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_rebalance_slots_in_global_replication_group/} for full documentation.
 }
 \keyword{internal}

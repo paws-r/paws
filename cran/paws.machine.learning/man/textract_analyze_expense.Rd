@@ -13,6 +13,6 @@ textract_analyze_expense(Document)
 \description{
 \code{\link[=textract_analyze_expense]{analyze_expense}} synchronously analyzes an input document for financially related relationships between text.
 
-See \url{https://paws-r.github.io/docs/textract/analyze_expense.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_analyze_expense/} for full documentation.
 }
 \keyword{internal}

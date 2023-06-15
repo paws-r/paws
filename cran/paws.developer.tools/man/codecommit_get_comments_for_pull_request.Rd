@@ -35,6 +35,6 @@ with a single request.}
 \description{
 Returns comments made on a pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_comments_for_pull_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_comments_for_pull_request/} for full documentation.
 }
 \keyword{internal}

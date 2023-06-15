@@ -35,6 +35,6 @@ available licenses have been exceeded. Logical operators are
 \description{
 Lists the license configurations for your account.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_license_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_license_configurations/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels a query that has been issued. Cancellation is provided only if the query has not completed running before the cancellation request was issued. Because cancellation is an idempotent operation, subsequent cancellation requests will return a `CancellationMessage`, indicating that the query has already been canceled. See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.cancel-query.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/cancel_query.html](https://paws-r.github.io/docs/timestreamquery/cancel_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_cancel_query/](https://www.paws-r-sdk.com/docs/timestreamquery_cancel_query/) for full documentation.
 #'
 #' @param QueryId &#91;required&#93; The ID of the query that needs to be cancelled. `QueryID` is returned as
 #' part of the query result.
@@ -39,7 +39,7 @@ timestreamquery_cancel_query <- function(QueryId) {
 #' @description
 #' Create a scheduled query that will be run on your behalf at the configured schedule. Timestream assumes the execution role provided as part of the `ScheduledQueryExecutionRoleArn` parameter to run the query. You can use the `NotificationConfiguration` parameter to configure notification for your scheduled query operations.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/create_scheduled_query.html](https://paws-r.github.io/docs/timestreamquery/create_scheduled_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_create_scheduled_query/](https://www.paws-r-sdk.com/docs/timestreamquery_create_scheduled_query/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the scheduled query.
 #' @param QueryString &#91;required&#93; The query string to run. Parameter names can be specified in the query
@@ -107,7 +107,7 @@ timestreamquery_create_scheduled_query <- function(Name, QueryString, ScheduleCo
 #' @description
 #' Deletes a given scheduled query. This is an irreversible operation.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/delete_scheduled_query.html](https://paws-r.github.io/docs/timestreamquery/delete_scheduled_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_delete_scheduled_query/](https://www.paws-r-sdk.com/docs/timestreamquery_delete_scheduled_query/) for full documentation.
 #'
 #' @param ScheduledQueryArn &#91;required&#93; The ARN of the scheduled query.
 #'
@@ -137,7 +137,7 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
 #' @description
 #' DescribeEndpoints returns a list of available endpoints to make Timestream API calls against. This API is available through both Write and Query.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/describe_endpoints.html](https://paws-r.github.io/docs/timestreamquery/describe_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_describe_endpoints/](https://www.paws-r-sdk.com/docs/timestreamquery_describe_endpoints/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -164,7 +164,7 @@ timestreamquery_describe_endpoints <- function() {
 #' @description
 #' Provides detailed information about a scheduled query.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/describe_scheduled_query.html](https://paws-r.github.io/docs/timestreamquery/describe_scheduled_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_describe_scheduled_query/](https://www.paws-r-sdk.com/docs/timestreamquery_describe_scheduled_query/) for full documentation.
 #'
 #' @param ScheduledQueryArn &#91;required&#93; The ARN of the scheduled query.
 #'
@@ -193,7 +193,7 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
 #' @description
 #' You can use this API to run a scheduled query manually.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/execute_scheduled_query.html](https://paws-r.github.io/docs/timestreamquery/execute_scheduled_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_execute_scheduled_query/](https://www.paws-r-sdk.com/docs/timestreamquery_execute_scheduled_query/) for full documentation.
 #'
 #' @param ScheduledQueryArn &#91;required&#93; ARN of the scheduled query.
 #' @param InvocationTime &#91;required&#93; The timestamp in UTC. Query will be run as if it was invoked at this
@@ -226,7 +226,7 @@ timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, Invocatio
 #' @description
 #' Gets a list of all scheduled queries in the caller's Amazon account and Region. [`list_scheduled_queries`][timestreamquery_list_scheduled_queries] is eventually consistent.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/list_scheduled_queries.html](https://paws-r.github.io/docs/timestreamquery/list_scheduled_queries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_list_scheduled_queries/](https://www.paws-r-sdk.com/docs/timestreamquery_list_scheduled_queries/) for full documentation.
 #'
 #' @param MaxResults The maximum number of items to return in the output. If the total number
 #' of items available is more than the value specified, a `NextToken` is
@@ -260,7 +260,7 @@ timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken 
 #' @description
 #' List all tags on a Timestream query resource.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/list_tags_for_resource.html](https://paws-r.github.io/docs/timestreamquery/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/timestreamquery_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Timestream resource with tags to be listed. This value is an Amazon
 #' Resource Name (ARN).
@@ -293,7 +293,7 @@ timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NUL
 #' @description
 #' A synchronous operation that allows you to submit a query with parameters to be stored by Timestream for later running. Timestream only supports using this operation with the `PrepareQueryRequest$ValidateOnly` set to `true`.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/prepare_query.html](https://paws-r.github.io/docs/timestreamquery/prepare_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_prepare_query/](https://www.paws-r-sdk.com/docs/timestreamquery_prepare_query/) for full documentation.
 #'
 #' @param QueryString &#91;required&#93; The Timestream query string that you want to use as a prepared
 #' statement. Parameter names can be specified in the query string `@@`
@@ -328,7 +328,7 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' @description
 #' [`query`][timestreamquery_query] is a synchronous operation that enables you to run a query against your Amazon Timestream data. [`query`][timestreamquery_query] will time out after 60 seconds. You must update the default timeout in the SDK to support a timeout of 60 seconds. See the [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.run-query.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/query.html](https://paws-r.github.io/docs/timestreamquery/query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_query/](https://www.paws-r-sdk.com/docs/timestreamquery_query/) for full documentation.
 #'
 #' @param QueryString &#91;required&#93; The query to be run by Timestream.
 #' @param ClientToken Unique, case-sensitive string of up to 64 ASCII characters specified
@@ -431,7 +431,7 @@ timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = N
 #' @description
 #' Associate a set of tags with a Timestream resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/tag_resource.html](https://paws-r.github.io/docs/timestreamquery/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_tag_resource/](https://www.paws-r-sdk.com/docs/timestreamquery_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Identifies the Timestream resource to which tags should be added. This
 #' value is an Amazon Resource Name (ARN).
@@ -462,7 +462,7 @@ timestreamquery_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes the association of tags from a Timestream query resource.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/untag_resource.html](https://paws-r.github.io/docs/timestreamquery/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_untag_resource/](https://www.paws-r-sdk.com/docs/timestreamquery_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Timestream resource that the tags will be removed from. This value
 #' is an Amazon Resource Name (ARN).
@@ -494,7 +494,7 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Update a scheduled query.
 #'
-#' See [https://paws-r.github.io/docs/timestreamquery/update_scheduled_query.html](https://paws-r.github.io/docs/timestreamquery/update_scheduled_query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamquery_update_scheduled_query/](https://www.paws-r-sdk.com/docs/timestreamquery_update_scheduled_query/) for full documentation.
 #'
 #' @param ScheduledQueryArn &#91;required&#93; ARN of the scheuled query.
 #' @param State &#91;required&#93; State of the scheduled query.

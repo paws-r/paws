@@ -53,6 +53,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this request to return information about other instances.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_classic_link_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_classic_link_instances/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ where you would like to update the Amazon ECS container agent.}
 \description{
 Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent doesn't interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.
 
-See \url{https://paws-r.github.io/docs/ecs/update_container_agent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_container_agent/} for full documentation.
 }
 \keyword{internal}

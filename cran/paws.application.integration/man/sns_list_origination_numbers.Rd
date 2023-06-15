@@ -17,6 +17,6 @@ returns.}
 \description{
 Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more information about origination numbers, see \href{https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html}{Origination numbers} in the \emph{Amazon SNS Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sns/list_origination_numbers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/} for full documentation.
 }
 \keyword{internal}

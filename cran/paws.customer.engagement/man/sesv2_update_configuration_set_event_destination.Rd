@@ -21,6 +21,6 @@ modify.}
 \description{
 Update the configuration of an event destination for a configuration set.
 
-See \url{https://paws-r.github.io/docs/sesv2/update_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_update_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

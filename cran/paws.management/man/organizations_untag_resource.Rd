@@ -25,6 +25,6 @@ similar to: \verb{p-12abcdefg3 }
 \description{
 Removes any tags with the specified keys from the specified resource.
 
-See \url{https://paws-r.github.io/docs/organizations/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_untag_resource/} for full documentation.
 }
 \keyword{internal}

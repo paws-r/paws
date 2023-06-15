@@ -78,6 +78,6 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Creates a new custom vocabulary.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/create_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_create_vocabulary/} for full documentation.
 }
 \keyword{internal}

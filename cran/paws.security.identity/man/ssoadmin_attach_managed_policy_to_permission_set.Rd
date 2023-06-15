@@ -23,6 +23,6 @@ to.}
 \description{
 Attaches an AWS managed policy ARN to a permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/attach_managed_policy_to_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_attach_managed_policy_to_permission_set/} for full documentation.
 }
 \keyword{internal}

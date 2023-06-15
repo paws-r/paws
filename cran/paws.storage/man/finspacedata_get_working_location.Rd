@@ -21,6 +21,6 @@ creation operation.
 \description{
 A temporary Amazon S3 location, where you can copy your files from a source location to stage or use as a scratch space in FinSpace notebook.
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_working_location.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_working_location/} for full documentation.
 }
 \keyword{internal}

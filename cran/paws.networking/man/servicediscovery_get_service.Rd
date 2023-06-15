@@ -12,6 +12,6 @@ servicediscovery_get_service(Id)
 \description{
 Gets the settings for a specified service.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/get_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_get_service/} for full documentation.
 }
 \keyword{internal}

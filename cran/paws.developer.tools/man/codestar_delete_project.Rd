@@ -22,6 +22,6 @@ itself. Recommended for most use cases.}
 \description{
 Deletes a project, including project resources. Does not delete users associated with the project, but does delete the IAM roles that allowed access to the project.
 
-See \url{https://paws-r.github.io/docs/codestar/delete_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_delete_project/} for full documentation.
 }
 \keyword{internal}

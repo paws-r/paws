@@ -19,6 +19,6 @@ a task, when the task is created.}
 \description{
 Gets details about a specific task template in the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/get_task_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_task_template/} for full documentation.
 }
 \keyword{internal}

@@ -50,6 +50,6 @@ this time.
 \description{
 Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
 
-See \url{https://paws-r.github.io/docs/workspaces/import_workspace_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_import_workspace_image/} for full documentation.
 }
 \keyword{internal}

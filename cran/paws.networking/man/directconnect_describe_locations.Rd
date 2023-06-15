@@ -10,6 +10,6 @@ directconnect_describe_locations()
 \description{
 Lists the Direct Connect locations in the current Amazon Web Services Region. These are the locations that can be selected when calling \code{\link[=directconnect_create_connection]{create_connection}} or \code{\link[=directconnect_create_interconnect]{create_interconnect}}.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_locations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_locations/} for full documentation.
 }
 \keyword{internal}

@@ -10,7 +10,7 @@ NULL
 #' @description
 #' Authorizes the Shield Response Team (SRT) to access the specified Amazon S3 bucket containing log data such as Application Load Balancer access logs, CloudFront logs, or logs from third party sources. You can associate up to 10 Amazon S3 buckets with your subscription.
 #'
-#' See [https://paws-r.github.io/docs/shield/associate_drt_log_bucket.html](https://paws-r.github.io/docs/shield/associate_drt_log_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_associate_drt_log_bucket/](https://www.paws-r-sdk.com/docs/shield_associate_drt_log_bucket/) for full documentation.
 #'
 #' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains the logs that you want to share.
 #'
@@ -41,7 +41,7 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' @description
 #' Authorizes the Shield Response Team (SRT) using the specified role, to access your Amazon Web Services account to assist with DDoS attack mitigation during potential attacks. This enables the SRT to inspect your WAF configuration and create or update WAF rules and web ACLs.
 #'
-#' See [https://paws-r.github.io/docs/shield/associate_drt_role.html](https://paws-r.github.io/docs/shield/associate_drt_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_associate_drt_role/](https://www.paws-r-sdk.com/docs/shield_associate_drt_role/) for full documentation.
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role the SRT will use to access
 #' your Amazon Web Services account.
@@ -77,7 +77,7 @@ shield_associate_drt_role <- function(RoleArn) {
 #' @description
 #' Adds health-based detection to the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response.
 #'
-#' See [https://paws-r.github.io/docs/shield/associate_health_check.html](https://paws-r.github.io/docs/shield/associate_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_associate_health_check/](https://www.paws-r-sdk.com/docs/shield_associate_health_check/) for full documentation.
 #'
 #' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to add the health
 #' check association to.
@@ -110,7 +110,7 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' @description
 #' Initializes proactive engagement and sets the list of contacts for the Shield Response Team (SRT) to use. You must provide at least one phone number in the emergency contact list.
 #'
-#' See [https://paws-r.github.io/docs/shield/associate_proactive_engagement_details.html](https://paws-r.github.io/docs/shield/associate_proactive_engagement_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_associate_proactive_engagement_details/](https://www.paws-r-sdk.com/docs/shield_associate_proactive_engagement_details/) for full documentation.
 #'
 #' @param EmergencyContactList &#91;required&#93; A list of email addresses and phone numbers that the Shield Response
 #' Team (SRT) can use to contact you for escalations to the SRT and to
@@ -150,7 +150,7 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' @description
 #' Enables Shield Advanced for a specific Amazon Web Services resource. The resource can be an Amazon CloudFront distribution, Amazon Route 53 hosted zone, Global Accelerator standard accelerator, Elastic IP Address, Application Load Balancer, or a Classic Load Balancer. You can protect Amazon EC2 instances and Network Load Balancers by association with protected Amazon EC2 Elastic IP addresses.
 #'
-#' See [https://paws-r.github.io/docs/shield/create_protection.html](https://paws-r.github.io/docs/shield/create_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_create_protection/](https://www.paws-r-sdk.com/docs/shield_create_protection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Friendly name for the `Protection` you are creating.
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource to be protected.
@@ -202,7 +202,7 @@ shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
 #' @description
 #' Creates a grouping of protected resources so they can be handled as a collective. This resource grouping improves the accuracy of detection and reduces false positives.
 #'
-#' See [https://paws-r.github.io/docs/shield/create_protection_group.html](https://paws-r.github.io/docs/shield/create_protection_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_create_protection_group/](https://www.paws-r-sdk.com/docs/shield_create_protection_group/) for full documentation.
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
@@ -261,7 +261,7 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @description
 #' Activates Shield Advanced for an account.
 #'
-#' See [https://paws-r.github.io/docs/shield/create_subscription.html](https://paws-r.github.io/docs/shield/create_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_create_subscription/](https://www.paws-r-sdk.com/docs/shield_create_subscription/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -288,7 +288,7 @@ shield_create_subscription <- function() {
 #' @description
 #' Deletes an Shield Advanced Protection.
 #'
-#' See [https://paws-r.github.io/docs/shield/delete_protection.html](https://paws-r.github.io/docs/shield/delete_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_delete_protection/](https://www.paws-r-sdk.com/docs/shield_delete_protection/) for full documentation.
 #'
 #' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to be deleted.
 #'
@@ -317,7 +317,7 @@ shield_delete_protection <- function(ProtectionId) {
 #' @description
 #' Removes the specified protection group.
 #'
-#' See [https://paws-r.github.io/docs/shield/delete_protection_group.html](https://paws-r.github.io/docs/shield/delete_protection_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_delete_protection_group/](https://www.paws-r-sdk.com/docs/shield_delete_protection_group/) for full documentation.
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
@@ -348,7 +348,7 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 #' @description
 #' Removes Shield Advanced from an account. Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
 #'
-#' See [https://paws-r.github.io/docs/shield/delete_subscription.html](https://paws-r.github.io/docs/shield/delete_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_delete_subscription/](https://www.paws-r-sdk.com/docs/shield_delete_subscription/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -375,7 +375,7 @@ shield_delete_subscription <- function() {
 #' @description
 #' Describes the details of a DDoS attack.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_attack.html](https://paws-r.github.io/docs/shield/describe_attack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_attack/](https://www.paws-r-sdk.com/docs/shield_describe_attack/) for full documentation.
 #'
 #' @param AttackId &#91;required&#93; The unique identifier (ID) for the attack.
 #'
@@ -406,7 +406,7 @@ shield_describe_attack <- function(AttackId) {
 #' @description
 #' Provides information about the number and type of attacks Shield has detected in the last year for all resources that belong to your account, regardless of whether you've defined Shield protections for them. This operation is available to Shield customers as well as to Shield Advanced customers.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_attack_statistics.html](https://paws-r.github.io/docs/shield/describe_attack_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_attack_statistics/](https://www.paws-r-sdk.com/docs/shield_describe_attack_statistics/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -435,7 +435,7 @@ shield_describe_attack_statistics <- function() {
 #' @description
 #' Returns the current role and list of Amazon S3 log buckets used by the Shield Response Team (SRT) to access your Amazon Web Services account while assisting with attack mitigation.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_drt_access.html](https://paws-r.github.io/docs/shield/describe_drt_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_drt_access/](https://www.paws-r-sdk.com/docs/shield_describe_drt_access/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -465,7 +465,7 @@ shield_describe_drt_access <- function() {
 #' @description
 #' A list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_emergency_contact_settings.html](https://paws-r.github.io/docs/shield/describe_emergency_contact_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_emergency_contact_settings/](https://www.paws-r-sdk.com/docs/shield_describe_emergency_contact_settings/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -492,7 +492,7 @@ shield_describe_emergency_contact_settings <- function() {
 #' @description
 #' Lists the details of a Protection object.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_protection.html](https://paws-r.github.io/docs/shield/describe_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_protection/](https://www.paws-r-sdk.com/docs/shield_describe_protection/) for full documentation.
 #'
 #' @param ProtectionId The unique identifier (ID) for the Protection object to describe. You
 #' must provide either the `ResourceArn` of the protected resource or the
@@ -526,7 +526,7 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #' @description
 #' Returns the specification for the specified protection group.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_protection_group.html](https://paws-r.github.io/docs/shield/describe_protection_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_protection_group/](https://www.paws-r-sdk.com/docs/shield_describe_protection_group/) for full documentation.
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
@@ -557,7 +557,7 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #' @description
 #' Provides details about the Shield Advanced subscription for an account.
 #'
-#' See [https://paws-r.github.io/docs/shield/describe_subscription.html](https://paws-r.github.io/docs/shield/describe_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_describe_subscription/](https://www.paws-r-sdk.com/docs/shield_describe_subscription/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -585,7 +585,7 @@ shield_describe_subscription <- function() {
 #' @description
 #' Disable the Shield Advanced automatic application layer DDoS mitigation feature for the protected resource. This stops Shield Advanced from creating, verifying, and applying WAF rules for attacks that it detects for the resource.
 #'
-#' See [https://paws-r.github.io/docs/shield/disable_application_layer_automatic_response.html](https://paws-r.github.io/docs/shield/disable_application_layer_automatic_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_disable_application_layer_automatic_response/](https://www.paws-r-sdk.com/docs/shield_disable_application_layer_automatic_response/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the protected resource.
 #'
@@ -616,7 +616,7 @@ shield_disable_application_layer_automatic_response <- function(ResourceArn) {
 #' @description
 #' Removes authorization from the Shield Response Team (SRT) to notify contacts about escalations to the SRT and to initiate proactive customer support.
 #'
-#' See [https://paws-r.github.io/docs/shield/disable_proactive_engagement.html](https://paws-r.github.io/docs/shield/disable_proactive_engagement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_disable_proactive_engagement/](https://www.paws-r-sdk.com/docs/shield_disable_proactive_engagement/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -644,7 +644,7 @@ shield_disable_proactive_engagement <- function() {
 #' @description
 #' Removes the Shield Response Team's (SRT) access to the specified Amazon S3 bucket containing the logs that you shared previously.
 #'
-#' See [https://paws-r.github.io/docs/shield/disassociate_drt_log_bucket.html](https://paws-r.github.io/docs/shield/disassociate_drt_log_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_disassociate_drt_log_bucket/](https://www.paws-r-sdk.com/docs/shield_disassociate_drt_log_bucket/) for full documentation.
 #'
 #' @param LogBucket &#91;required&#93; The Amazon S3 bucket that contains the logs that you want to share.
 #'
@@ -674,7 +674,7 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #' @description
 #' Removes the Shield Response Team's (SRT) access to your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/shield/disassociate_drt_role.html](https://paws-r.github.io/docs/shield/disassociate_drt_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_disassociate_drt_role/](https://www.paws-r-sdk.com/docs/shield_disassociate_drt_role/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -702,7 +702,7 @@ shield_disassociate_drt_role <- function() {
 #' @description
 #' Removes health-based detection from the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response.
 #'
-#' See [https://paws-r.github.io/docs/shield/disassociate_health_check.html](https://paws-r.github.io/docs/shield/disassociate_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_disassociate_health_check/](https://www.paws-r-sdk.com/docs/shield_disassociate_health_check/) for full documentation.
 #'
 #' @param ProtectionId &#91;required&#93; The unique identifier (ID) for the Protection object to remove the
 #' health check association from.
@@ -735,7 +735,7 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' @description
 #' Enable the Shield Advanced automatic application layer DDoS mitigation for the protected resource.
 #'
-#' See [https://paws-r.github.io/docs/shield/enable_application_layer_automatic_response.html](https://paws-r.github.io/docs/shield/enable_application_layer_automatic_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_enable_application_layer_automatic_response/](https://www.paws-r-sdk.com/docs/shield_enable_application_layer_automatic_response/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the protected resource.
 #' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF
@@ -773,7 +773,7 @@ shield_enable_application_layer_automatic_response <- function(ResourceArn, Acti
 #' @description
 #' Authorizes the Shield Response Team (SRT) to use email and phone to notify contacts about escalations to the SRT and to initiate proactive customer support.
 #'
-#' See [https://paws-r.github.io/docs/shield/enable_proactive_engagement.html](https://paws-r.github.io/docs/shield/enable_proactive_engagement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_enable_proactive_engagement/](https://www.paws-r-sdk.com/docs/shield_enable_proactive_engagement/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -800,7 +800,7 @@ shield_enable_proactive_engagement <- function() {
 #' @description
 #' Returns the `SubscriptionState`, either `Active` or `Inactive`.
 #'
-#' See [https://paws-r.github.io/docs/shield/get_subscription_state.html](https://paws-r.github.io/docs/shield/get_subscription_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_get_subscription_state/](https://www.paws-r-sdk.com/docs/shield_get_subscription_state/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -828,7 +828,7 @@ shield_get_subscription_state <- function() {
 #' @description
 #' Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.
 #'
-#' See [https://paws-r.github.io/docs/shield/list_attacks.html](https://paws-r.github.io/docs/shield/list_attacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_list_attacks/](https://www.paws-r-sdk.com/docs/shield_list_attacks/) for full documentation.
 #'
 #' @param ResourceArns The ARNs (Amazon Resource Names) of the resources that were attacked. If
 #' you leave this blank, all applicable resources for this account will be
@@ -891,7 +891,7 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #' @description
 #' Retrieves ProtectionGroup objects for the account. You can retrieve all protection groups or you can provide filtering criteria and retrieve just the subset of protection groups that match the criteria.
 #'
-#' See [https://paws-r.github.io/docs/shield/list_protection_groups.html](https://paws-r.github.io/docs/shield/list_protection_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_list_protection_groups/](https://www.paws-r-sdk.com/docs/shield_list_protection_groups/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects from Shield Advanced, if the response
 #' does not include all of the remaining available objects, Shield Advanced
@@ -947,7 +947,7 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
 #' @description
 #' Retrieves Protection objects for the account. You can retrieve all protections or you can provide filtering criteria and retrieve just the subset of protections that match the criteria.
 #'
-#' See [https://paws-r.github.io/docs/shield/list_protections.html](https://paws-r.github.io/docs/shield/list_protections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_list_protections/](https://www.paws-r-sdk.com/docs/shield_list_protections/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects from Shield Advanced, if the response
 #' does not include all of the remaining available objects, Shield Advanced
@@ -1003,7 +1003,7 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
 #' @description
 #' Retrieves the resources that are included in the protection group.
 #'
-#' See [https://paws-r.github.io/docs/shield/list_resources_in_protection_group.html](https://paws-r.github.io/docs/shield/list_resources_in_protection_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_list_resources_in_protection_group/](https://www.paws-r-sdk.com/docs/shield_list_resources_in_protection_group/) for full documentation.
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
@@ -1057,7 +1057,7 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
 #' @description
 #' Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in Shield.
 #'
-#' See [https://paws-r.github.io/docs/shield/list_tags_for_resource.html](https://paws-r.github.io/docs/shield/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/shield_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
 #'
@@ -1086,7 +1086,7 @@ shield_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Adds or updates tags for a resource in Shield.
 #'
-#' See [https://paws-r.github.io/docs/shield/tag_resource.html](https://paws-r.github.io/docs/shield/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_tag_resource/](https://www.paws-r-sdk.com/docs/shield_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
 #' update tags for.
@@ -1117,7 +1117,7 @@ shield_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes tags from a resource in Shield.
 #'
-#' See [https://paws-r.github.io/docs/shield/untag_resource.html](https://paws-r.github.io/docs/shield/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_untag_resource/](https://www.paws-r-sdk.com/docs/shield_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
 #' tags from.
@@ -1149,7 +1149,7 @@ shield_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates an existing Shield Advanced automatic application layer DDoS mitigation configuration for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/shield/update_application_layer_automatic_response.html](https://paws-r.github.io/docs/shield/update_application_layer_automatic_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_update_application_layer_automatic_response/](https://www.paws-r-sdk.com/docs/shield_update_application_layer_automatic_response/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource.
 #' @param Action &#91;required&#93; Specifies the action setting that Shield Advanced should use in the WAF
@@ -1188,7 +1188,7 @@ shield_update_application_layer_automatic_response <- function(ResourceArn, Acti
 #' @description
 #' Updates the details of the list of email addresses and phone numbers that the Shield Response Team (SRT) can use to contact you if you have proactive engagement enabled, for escalations to the SRT and to initiate proactive customer support.
 #'
-#' See [https://paws-r.github.io/docs/shield/update_emergency_contact_settings.html](https://paws-r.github.io/docs/shield/update_emergency_contact_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_update_emergency_contact_settings/](https://www.paws-r-sdk.com/docs/shield_update_emergency_contact_settings/) for full documentation.
 #'
 #' @param EmergencyContactList A list of email addresses and phone numbers that the Shield Response
 #' Team (SRT) can use to contact you if you have proactive engagement
@@ -1223,7 +1223,7 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #' @description
 #' Updates an existing protection group. A protection group is a grouping of protected resources so they can be handled as a collective. This resource grouping improves the accuracy of detection and reduces false positives.
 #'
-#' See [https://paws-r.github.io/docs/shield/update_protection_group.html](https://paws-r.github.io/docs/shield/update_protection_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_update_protection_group/](https://www.paws-r-sdk.com/docs/shield_update_protection_group/) for full documentation.
 #'
 #' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
 #' protection group in lists and to manage the protection group, for
@@ -1280,7 +1280,7 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @description
 #' Updates the details of an existing subscription. Only enter values for parameters you want to change. Empty parameters are not updated.
 #'
-#' See [https://paws-r.github.io/docs/shield/update_subscription.html](https://paws-r.github.io/docs/shield/update_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/shield_update_subscription/](https://www.paws-r-sdk.com/docs/shield_update_subscription/) for full documentation.
 #'
 #' @param AutoRenew When you initally create a subscription, `AutoRenew` is set to
 #' `ENABLED`. If `ENABLED`, the subscription will be automatically renewed

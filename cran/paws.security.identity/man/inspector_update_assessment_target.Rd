@@ -22,6 +22,6 @@ group to associate with the assessment target.}
 \description{
 Updates the assessment target that is specified by the ARN of the assessment target.
 
-See \url{https://paws-r.github.io/docs/inspector/update_assessment_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_update_assessment_target/} for full documentation.
 }
 \keyword{internal}

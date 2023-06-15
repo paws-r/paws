@@ -33,6 +33,6 @@ a previously truncated response.}
 \description{
 Returns a list of image recipes.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_image_recipes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_image_recipes/} for full documentation.
 }
 \keyword{internal}

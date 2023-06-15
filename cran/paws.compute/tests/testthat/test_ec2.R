@@ -228,6 +228,14 @@ test_that("describe_import_snapshot_tasks", {
   expect_error(svc$describe_import_snapshot_tasks(MaxResults = 20), NA)
 })
 
+test_that("describe_instance_connect_endpoints", {
+  expect_error(svc$describe_instance_connect_endpoints(), NA)
+})
+
+test_that("describe_instance_connect_endpoints", {
+  expect_error(svc$describe_instance_connect_endpoints(MaxResults = 20), NA)
+})
+
 test_that("describe_instance_credit_specifications", {
   expect_error(svc$describe_instance_credit_specifications(), NA)
 })

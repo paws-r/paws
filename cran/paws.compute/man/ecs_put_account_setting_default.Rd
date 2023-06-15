@@ -34,6 +34,6 @@ values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.}
 \description{
 Modifies an account setting for all users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
 
-See \url{https://paws-r.github.io/docs/ecs/put_account_setting_default.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_put_account_setting_default/} for full documentation.
 }
 \keyword{internal}

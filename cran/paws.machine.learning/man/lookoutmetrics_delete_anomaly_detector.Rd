@@ -12,6 +12,6 @@ lookoutmetrics_delete_anomaly_detector(AnomalyDetectorArn)
 \description{
 Deletes a detector. Deleting an anomaly detector will delete all of its corresponding resources including any configured datasets and alerts.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/delete_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_delete_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

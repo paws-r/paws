@@ -179,6 +179,6 @@ outside of Amazon Web Services such as in your corporate data center.}
 \description{
 Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html}{CloudHSM key stores} backed by an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{CloudHSM cluster} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html}{external key stores} backed by an external key store proxy and external key manager outside of Amazon Web Services.
 
-See \url{https://paws-r.github.io/docs/kms/create_custom_key_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_create_custom_key_store/} for full documentation.
 }
 \keyword{internal}

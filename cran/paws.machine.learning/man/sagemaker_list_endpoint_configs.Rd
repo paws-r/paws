@@ -37,6 +37,6 @@ greater than or equal to the specified time (timestamp).}
 \description{
 Lists endpoint configurations.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_endpoint_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_endpoint_configs/} for full documentation.
 }
 \keyword{internal}

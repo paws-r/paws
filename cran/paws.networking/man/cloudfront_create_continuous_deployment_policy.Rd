@@ -15,6 +15,6 @@ cloudfront_create_continuous_deployment_policy(
 \description{
 Creates a continuous deployment policy that distributes traffic for a custom domain name to two different CloudFront distributions.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_continuous_deployment_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_continuous_deployment_policy/} for full documentation.
 }
 \keyword{internal}

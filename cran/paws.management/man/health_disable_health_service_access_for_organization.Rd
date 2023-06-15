@@ -9,6 +9,6 @@ health_disable_health_service_access_for_organization()
 \description{
 Disables Health from working with Organizations. To call this operation, you must sign in to the organization's management account. For more information, see \href{https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html}{Aggregating Health events} in the \emph{Health User Guide}.
 
-See \url{https://paws-r.github.io/docs/health/disable_health_service_access_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_disable_health_service_access_for_organization/} for full documentation.
 }
 \keyword{internal}

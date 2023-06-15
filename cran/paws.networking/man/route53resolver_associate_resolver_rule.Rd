@@ -19,6 +19,6 @@ and a VPC.}
 \description{
 Associates a Resolver rule with a VPC. When you associate a rule with a VPC, Resolver forwards all DNS queries for the domain name that is specified in the rule and that originate in the VPC. The queries are forwarded to the IP addresses for the DNS resolvers that are specified in the rule. For more information about rules, see \code{\link[=route53resolver_create_resolver_rule]{create_resolver_rule}}.
 
-See \url{https://paws-r.github.io/docs/route53resolver/associate_resolver_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_associate_resolver_rule/} for full documentation.
 }
 \keyword{internal}

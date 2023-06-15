@@ -12,6 +12,6 @@ opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
 \description{
 Deregisters an Amazon RDS instance.
 
-See \url{https://paws-r.github.io/docs/opsworks/deregister_rds_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_deregister_rds_db_instance/} for full documentation.
 }
 \keyword{internal}

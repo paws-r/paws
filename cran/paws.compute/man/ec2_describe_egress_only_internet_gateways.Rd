@@ -43,6 +43,6 @@ regardless of the tag value.
 \description{
 Describes one or more of your egress-only internet gateways.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_egress_only_internet_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_egress_only_internet_gateways/} for full documentation.
 }
 \keyword{internal}

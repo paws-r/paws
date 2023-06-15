@@ -33,6 +33,6 @@ resource.}
 \description{
 Creates a data quality ruleset with DQDL rules applied to a specified Glue table.
 
-See \url{https://paws-r.github.io/docs/glue/create_data_quality_ruleset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_data_quality_ruleset/} for full documentation.
 }
 \keyword{internal}

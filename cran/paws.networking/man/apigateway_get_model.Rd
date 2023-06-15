@@ -18,6 +18,6 @@ The default is \code{false}.}
 \description{
 Describes an existing model defined for a RestApi resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_model/} for full documentation.
 }
 \keyword{internal}

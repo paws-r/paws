@@ -20,6 +20,6 @@ the same client token for other API requests.}
 \description{
 Deletes an Resilience Hub application assessment. This is a destructive action that can't be undone.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/delete_app_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_assessment/} for full documentation.
 }
 \keyword{internal}

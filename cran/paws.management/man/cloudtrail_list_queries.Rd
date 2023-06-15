@@ -36,6 +36,6 @@ for \code{QueryStatus} include \code{QUEUED}, \code{RUNNING}, \code{FINISHED}, \
 \description{
 Returns a list of queries and query statuses for the past seven days. You must specify an ARN value for \code{EventDataStore}. Optionally, to shorten the list of results, you can specify a time range, formatted as timestamps, by adding \code{StartTime} and \code{EndTime} parameters, and a \code{QueryStatus} value. Valid values for \code{QueryStatus} include \code{QUEUED}, \code{RUNNING}, \code{FINISHED}, \code{FAILED}, \code{TIMED_OUT}, or \code{CANCELLED}.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/list_queries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_queries/} for full documentation.
 }
 \keyword{internal}

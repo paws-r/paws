@@ -44,6 +44,6 @@ this property.}
 \description{
 Describes the versions for an add-on. Information such as the Kubernetes versions that you can use the add-on with, the \code{owner}, \code{publisher}, and the \code{type} of the add-on are returned.
 
-See \url{https://paws-r.github.io/docs/eks/describe_addon_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_addon_versions/} for full documentation.
 }
 \keyword{internal}

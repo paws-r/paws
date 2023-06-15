@@ -20,20 +20,67 @@ servicecatalog_associate_principal_with_portfolio(
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{PrincipalARN}{[required] The ARN of the principal (user, role, or group). This field allows an
-ARN with no \code{accountID} if \code{PrincipalType} is \code{IAM_PATTERN}.
+\item{PrincipalARN}{[required] The ARN of the principal (user, role, or group). If the \code{PrincipalType}
+is \code{IAM}, the supported value is a fully defined \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM Amazon Resource Name (ARN)}.
+If the \code{PrincipalType} is \code{IAM_PATTERN}, the supported value is an \code{IAM}
+ARN \emph{without an AccountID} in the following format:
 
-You can associate multiple \code{IAM} patterns even if the account has no
-principal with that name. This is useful in Principal Name Sharing if
-you want to share a principal without creating it in the account that
-owns the portfolio.}
+\emph{arn:partition:iam:::resource-type/resource-id}
+
+The ARN resource-id can be either:
+\itemize{
+\item A fully formed resource-id. For example,
+\emph{arn:aws:iam:::role/resource-name} or
+\emph{arn:aws:iam:::role/resource-path/resource-name}
+\item A wildcard ARN. The wildcard ARN accepts \code{IAM_PATTERN} values with a
+"*" or "?" in the resource-id segment of the ARN. For example
+\emph{arn:partition:service:::resource-type/resource-path/resource-name}.
+The new symbols are exclusive to the \strong{resource-path} and
+\strong{resource-name} and cannot replace the \strong{resource-type} or other
+ARN values.
+
+The ARN path and principal name allow unlimited wildcard characters.
+}
+
+Examples of an \strong{acceptable} wildcard ARN:
+\itemize{
+\item arn:aws:iam:::role/ResourceName_*
+\item arn:aws:iam:::role/*/ResourceName_?
+}
+
+Examples of an \strong{unacceptable} wildcard ARN:
+\itemize{
+\item arn:aws:iam:::*/ResourceName
+}
+
+You can associate multiple \code{IAM_PATTERN}s even if the account has no
+principal with that name.
+
+The "?" wildcard character matches zero or one of any character. This is
+similar to ".?" in regular regex context. The "\emph{" wildcard character
+matches any number of any characters. This is similar to ".}" in
+regular regex context.
+
+In the IAM Principal ARN format
+(\emph{arn:partition:iam:::resource-type/resource-path/resource-name}), valid
+resource-type values include \strong{user/}, \strong{group/}, or \strong{role/}. The
+"?" and "*" characters are allowed only after the resource-type in the
+resource-id segment. You can use special characters anywhere within the
+resource-id.
+
+The "\emph{" character also matches the "/" character, allowing paths to be
+formed \emph{within} the resource-id. For example,
+\emph{arn:aws:iam:::role/}/ResourceName_?} matches both
+\emph{arn:aws:iam:::role/pathA/pathB/ResourceName_1} and
+\emph{arn:aws:iam:::role/pathA/ResourceName_1}.}
 
 \item{PrincipalType}{[required] The principal type. The supported value is \code{IAM} if you use a fully
-defined ARN, or \code{IAM_PATTERN} if you use an ARN with no \code{accountID}.}
+defined Amazon Resource Name (ARN), or \code{IAM_PATTERN} if you use an ARN
+with no \code{accountID}, with or without wildcard characters.}
 }
 \description{
 Associates the specified principal ARN with the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/associate_principal_with_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_associate_principal_with_portfolio/} for full documentation.
 }
 \keyword{internal}

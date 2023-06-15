@@ -14,6 +14,6 @@ specified. You cannot specify a shared project using its name.}
 \description{
 Gets information about one or more build projects.
 
-See \url{https://paws-r.github.io/docs/codebuild/batch_get_projects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_batch_get_projects/} for full documentation.
 }
 \keyword{internal}

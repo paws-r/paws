@@ -41,6 +41,6 @@ the response.}
 \description{
 Sends a command to an Amazon QLDB ledger.
 
-See \url{https://paws-r.github.io/docs/qldbsession/send_command.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldbsession_send_command/} for full documentation.
 }
 \keyword{internal}

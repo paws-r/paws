@@ -36,6 +36,6 @@ value to \code{false}, the resize type is elastic.}
 \description{
 Changes the size of the cluster. You can change the cluster's type, or change the number or type of nodes. The default behavior is to use the elastic resize method. With an elastic resize, your cluster is available for read and write operations more quickly than with the classic resize method.
 
-See \url{https://paws-r.github.io/docs/redshift/resize_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_resize_cluster/} for full documentation.
 }
 \keyword{internal}

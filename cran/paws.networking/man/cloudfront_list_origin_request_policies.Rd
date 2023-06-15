@@ -32,6 +32,6 @@ response.}
 \description{
 Gets a list of origin request policies.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_origin_request_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_origin_request_policies/} for full documentation.
 }
 \keyword{internal}

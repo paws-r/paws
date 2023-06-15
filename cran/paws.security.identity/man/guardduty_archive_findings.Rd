@@ -16,6 +16,6 @@ findings you want to archive.}
 \description{
 Archives GuardDuty findings that are specified by the list of finding IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/archive_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_archive_findings/} for full documentation.
 }
 \keyword{internal}

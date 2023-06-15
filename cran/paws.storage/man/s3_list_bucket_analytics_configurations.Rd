@@ -24,6 +24,6 @@ different account, the request fails with the HTTP status code
 \description{
 Lists the analytics configurations for the bucket. You can have up to 1,000 analytics configurations per bucket.
 
-See \url{https://paws-r.github.io/docs/s3/list_bucket_analytics_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_bucket_analytics_configurations/} for full documentation.
 }
 \keyword{internal}

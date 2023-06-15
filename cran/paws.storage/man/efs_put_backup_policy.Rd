@@ -15,6 +15,6 @@ efs_put_backup_policy(FileSystemId, BackupPolicy)
 \description{
 Updates the file system's backup policy. Use this action to start or stop automatic backups of the file system.
 
-See \url{https://paws-r.github.io/docs/efs/put_backup_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_put_backup_policy/} for full documentation.
 }
 \keyword{internal}

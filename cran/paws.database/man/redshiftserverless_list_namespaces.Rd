@@ -19,6 +19,6 @@ which returns results in the next page.}
 \description{
 Returns information about a list of specified namespaces.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/list_namespaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_list_namespaces/} for full documentation.
 }
 \keyword{internal}

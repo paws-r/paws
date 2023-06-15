@@ -16,6 +16,6 @@ operation.}
 \description{
 Deletes an OpenID Connect identity provider (IdP) resource object in IAM.
 
-See \url{https://paws-r.github.io/docs/iam/delete_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

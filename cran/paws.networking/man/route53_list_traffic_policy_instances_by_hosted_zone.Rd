@@ -51,6 +51,6 @@ return if you submit another request.}
 \description{
 Gets information about the traffic policy instances that you created in a specified hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_hosted_zone.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances_by_hosted_zone/} for full documentation.
 }
 \keyword{internal}

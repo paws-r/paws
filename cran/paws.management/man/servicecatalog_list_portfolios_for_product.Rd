@@ -28,6 +28,6 @@ results, use null.}
 \description{
 Lists all portfolios that the specified product is associated with.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_portfolios_for_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios_for_product/} for full documentation.
 }
 \keyword{internal}

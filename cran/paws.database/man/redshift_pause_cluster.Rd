@@ -12,6 +12,6 @@ redshift_pause_cluster(ClusterIdentifier)
 \description{
 Pauses a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/pause_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_pause_cluster/} for full documentation.
 }
 \keyword{internal}

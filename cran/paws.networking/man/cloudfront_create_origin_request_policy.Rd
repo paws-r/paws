@@ -12,6 +12,6 @@ cloudfront_create_origin_request_policy(OriginRequestPolicyConfig)
 \description{
 Creates an origin request policy.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_origin_request_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_origin_request_policy/} for full documentation.
 }
 \keyword{internal}

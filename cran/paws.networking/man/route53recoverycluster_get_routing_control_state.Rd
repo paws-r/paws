@@ -13,6 +13,6 @@ get the state for.}
 \description{
 Get the state for a routing control. A routing control is a simple on/off switch that you can use to route traffic to cells. When a routing control state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
 
-See \url{https://paws-r.github.io/docs/route53recoverycluster/get_routing_control_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycluster_get_routing_control_state/} for full documentation.
 }
 \keyword{internal}

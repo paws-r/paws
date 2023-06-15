@@ -53,6 +53,6 @@ status.}
 \description{
 Lists training jobs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_training_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_training_jobs/} for full documentation.
 }
 \keyword{internal}

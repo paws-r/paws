@@ -43,6 +43,6 @@ For example, to list all jobs that export a forecast named
 \description{
 Returns a list of what-if forecast exports created using the \code{\link[=forecastservice_create_what_if_forecast_export]{create_what_if_forecast_export}} operation. For each what-if forecast export, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the what-if forecast export ARN with the \code{\link[=forecastservice_describe_what_if_forecast_export]{describe_what_if_forecast_export}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_what_if_forecast_exports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_what_if_forecast_exports/} for full documentation.
 }
 \keyword{internal}

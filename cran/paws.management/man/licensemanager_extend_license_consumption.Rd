@@ -19,6 +19,6 @@ have the required permissions.}
 \description{
 Extends the expiration date for license consumption.
 
-See \url{https://paws-r.github.io/docs/licensemanager/extend_license_consumption.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_extend_license_consumption/} for full documentation.
 }
 \keyword{internal}

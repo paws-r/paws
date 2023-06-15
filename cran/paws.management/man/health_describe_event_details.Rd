@@ -16,6 +16,6 @@ default and the only supported value at this time.}
 \description{
 Returns detailed information about one or more specified events. Information includes standard event data (Amazon Web Services Region, service, and so on, as returned by \code{\link[=health_describe_events]{describe_events}}), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included. To retrieve the entities, use the \code{\link[=health_describe_affected_entities]{describe_affected_entities}} operation.
 
-See \url{https://paws-r.github.io/docs/health/describe_event_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_event_details/} for full documentation.
 }
 \keyword{internal}

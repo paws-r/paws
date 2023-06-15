@@ -23,6 +23,6 @@ opsworks_register_rds_db_instance(
 \description{
 Registers an Amazon RDS instance with a stack.
 
-See \url{https://paws-r.github.io/docs/opsworks/register_rds_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_register_rds_db_instance/} for full documentation.
 }
 \keyword{internal}

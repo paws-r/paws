@@ -17,6 +17,6 @@ a tag.}
 \description{
 Adds one or more tags to the specified Amazon Lightsail resource. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see the Amazon Lightsail Developer Guide.
 
-See \url{https://paws-r.github.io/docs/lightsail/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_tag_resource/} for full documentation.
 }
 \keyword{internal}

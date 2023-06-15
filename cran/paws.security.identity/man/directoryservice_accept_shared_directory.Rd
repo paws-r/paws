@@ -14,6 +14,6 @@ This identifier is different for each directory owner account.}
 \description{
 Accepts a directory sharing request that was sent from the directory owner account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/accept_shared_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_accept_shared_directory/} for full documentation.
 }
 \keyword{internal}

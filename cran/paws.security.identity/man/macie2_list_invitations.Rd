@@ -17,6 +17,6 @@ paginated response.}
 \description{
 Retrieves information about the Amazon Macie membership invitations that were received by an account.
 
-See \url{https://paws-r.github.io/docs/macie2/list_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_invitations/} for full documentation.
 }
 \keyword{internal}

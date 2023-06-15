@@ -22,6 +22,6 @@ content will be logged. There can be only one type of destination
 \description{
 Updates a specified logging configuration.
 
-See \url{https://paws-r.github.io/docs/ivschat/update_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_update_logging_configuration/} for full documentation.
 }
 \keyword{internal}

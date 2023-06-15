@@ -24,6 +24,6 @@ one filter at a time.}
 \description{
 Gets a list of the documentation classification jobs that you have submitted.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_document_classification_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_document_classification_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -42,6 +42,6 @@ Audit Manager.}
 \description{
 Updates Audit Manager settings for the current account.
 
-See \url{https://paws-r.github.io/docs/auditmanager/update_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_update_settings/} for full documentation.
 }
 \keyword{internal}

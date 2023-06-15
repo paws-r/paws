@@ -32,6 +32,6 @@ Constraints: Up to 1000 tags.}
 \description{
 Deletes the specified set of tags from the specified set of resources.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_tags/} for full documentation.
 }
 \keyword{internal}

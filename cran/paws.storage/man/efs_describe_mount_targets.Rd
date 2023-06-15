@@ -41,6 +41,6 @@ access point ID or ARN as input.}
 \description{
 Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.
 
-See \url{https://paws-r.github.io/docs/efs/describe_mount_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_mount_targets/} for full documentation.
 }
 \keyword{internal}

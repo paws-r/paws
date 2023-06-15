@@ -26,6 +26,6 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Lists the platform versions available for your account in an AWS Region. Provides summary information about each platform version. Compare to \code{\link[=elasticbeanstalk_describe_platform_version]{describe_platform_version}}, which provides full details about a single platform version.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_platform_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_versions/} for full documentation.
 }
 \keyword{internal}

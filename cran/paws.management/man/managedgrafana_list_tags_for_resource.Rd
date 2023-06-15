@@ -14,6 +14,6 @@ managedgrafana_list_tags_for_resource(resourceArn)
 \description{
 The \code{\link[=managedgrafana_list_tags_for_resource]{list_tags_for_resource}} operation returns the tags that are associated with the Amazon Managed Service for Grafana resource specified by the \code{resourceArn}. Currently, the only resource that can be tagged is a workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

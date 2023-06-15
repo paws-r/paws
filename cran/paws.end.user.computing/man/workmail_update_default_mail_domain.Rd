@@ -14,6 +14,6 @@ workmail_update_default_mail_domain(OrganizationId, DomainName)
 \description{
 Updates the default mail domain for an organization. The default mail domain is used by the WorkMail AWS Console to suggest an email address when enabling a mail user. You can only have one default domain.
 
-See \url{https://paws-r.github.io/docs/workmail/update_default_mail_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_update_default_mail_domain/} for full documentation.
 }
 \keyword{internal}

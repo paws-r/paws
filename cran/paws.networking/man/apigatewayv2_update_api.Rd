@@ -73,6 +73,6 @@ remove it from an API. Supported only for HTTP APIs.}
 \description{
 Updates an Api resource.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/update_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_update_api/} for full documentation.
 }
 \keyword{internal}

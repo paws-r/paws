@@ -36,6 +36,6 @@ and Amazon S3 buckets.}
 \description{
 Updates the configuration of an existing bot alias.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_bot_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_bot_alias/} for full documentation.
 }
 \keyword{internal}

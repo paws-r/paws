@@ -12,6 +12,6 @@ networkmanager_get_connect_peer(ConnectPeerId)
 \description{
 Returns information about a core network Connect peer.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_connect_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_connect_peer/} for full documentation.
 }
 \keyword{internal}

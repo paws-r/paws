@@ -23,6 +23,6 @@ number you specified in this parameter, then the response includes a
 \description{
 List the dedicated IP addresses that are associated with your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_dedicated_ips.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_dedicated_ips/} for full documentation.
 }
 \keyword{internal}

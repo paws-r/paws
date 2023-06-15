@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/accept_administrator_invitation.html](https://paws-r.github.io/docs/guardduty/accept_administrator_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_accept_administrator_invitation/](https://www.paws-r-sdk.com/docs/guardduty_accept_administrator_invitation/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #' @param AdministratorId &#91;required&#93; The account ID of the GuardDuty administrator account whose invitation
@@ -43,7 +43,7 @@ guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorI
 #' @description
 #' Accepts the invitation to be monitored by a GuardDuty administrator account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/accept_invitation.html](https://paws-r.github.io/docs/guardduty/accept_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_accept_invitation/](https://www.paws-r-sdk.com/docs/guardduty_accept_invitation/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #' @param MasterId &#91;required&#93; The account ID of the GuardDuty administrator account whose invitation
@@ -77,7 +77,7 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' @description
 #' Archives GuardDuty findings that are specified by the list of finding IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/archive_findings.html](https://paws-r.github.io/docs/guardduty/archive_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_archive_findings/](https://www.paws-r-sdk.com/docs/guardduty_archive_findings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to archive.
@@ -108,7 +108,7 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' @description
 #' Creates a single Amazon GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_detector.html](https://paws-r.github.io/docs/guardduty/create_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_detector/](https://www.paws-r-sdk.com/docs/guardduty_create_detector/) for full documentation.
 #'
 #' @param Enable &#91;required&#93; A Boolean value that specifies whether the detector is to be enabled.
 #' @param ClientToken The idempotency token for the create request.
@@ -147,7 +147,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' @description
 #' Creates a filter using the specified finding criteria. The maximum number of saved filters per Amazon Web Services account per Region is 100. For more information, see [Quotas for GuardDuty](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_limits.html).
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_filter.html](https://paws-r.github.io/docs/guardduty/create_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_filter/](https://www.paws-r-sdk.com/docs/guardduty_create_filter/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector belonging to the GuardDuty account that you want
 #' to create a filter for.
@@ -310,7 +310,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' @description
 #' Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_ip_set.html](https://paws-r.github.io/docs/guardduty/create_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_ip_set/](https://www.paws-r-sdk.com/docs/guardduty_create_ip_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' create an IPSet for.
@@ -351,7 +351,7 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' @description
 #' Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs. This step is a prerequisite for managing the associated member accounts either by invitation or through an organization.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_members.html](https://paws-r.github.io/docs/guardduty/create_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_members/](https://www.paws-r-sdk.com/docs/guardduty_create_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' associate member accounts with.
@@ -383,7 +383,7 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 #' @description
 #' Creates a publishing destination to export findings to. The resource to export findings to must exist before you use this operation.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_publishing_destination.html](https://paws-r.github.io/docs/guardduty/create_publishing_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_publishing_destination/](https://www.paws-r-sdk.com/docs/guardduty_create_publishing_destination/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the GuardDuty detector associated with the publishing
 #' destination.
@@ -419,7 +419,7 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 #' @description
 #' Generates sample findings of types specified by the list of finding types. If 'NULL' is specified for `findingTypes`, the API generates sample findings of all supported finding types.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_sample_findings.html](https://paws-r.github.io/docs/guardduty/create_sample_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_sample_findings/](https://www.paws-r-sdk.com/docs/guardduty_create_sample_findings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to create sample findings for.
 #' @param FindingTypes The types of sample findings to generate.
@@ -449,7 +449,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' @description
 #' Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator account can use this operation.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/create_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/create_threat_intel_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_create_threat_intel_set/](https://www.paws-r-sdk.com/docs/guardduty_create_threat_intel_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' create a threatIntelSet for.
@@ -489,7 +489,7 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
 #' @description
 #' Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/decline_invitations.html](https://paws-r.github.io/docs/guardduty/decline_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_decline_invitations/](https://www.paws-r-sdk.com/docs/guardduty_decline_invitations/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; A list of account IDs of the Amazon Web Services accounts that sent
 #' invitations to the current member account that you want to decline
@@ -521,7 +521,7 @@ guardduty_decline_invitations <- function(AccountIds) {
 #' @description
 #' Deletes an Amazon GuardDuty detector that is specified by the detector ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_detector.html](https://paws-r.github.io/docs/guardduty/delete_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_detector/](https://www.paws-r-sdk.com/docs/guardduty_delete_detector/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to delete.
 #'
@@ -550,7 +550,7 @@ guardduty_delete_detector <- function(DetectorId) {
 #' @description
 #' Deletes the filter specified by the filter name.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_filter.html](https://paws-r.github.io/docs/guardduty/delete_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_filter/](https://www.paws-r-sdk.com/docs/guardduty_delete_filter/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param FilterName &#91;required&#93; The name of the filter that you want to delete.
@@ -580,7 +580,7 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 #' @description
 #' Deletes the IPSet specified by the `ipSetId`. IPSets are called trusted IP lists in the console user interface.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_ip_set.html](https://paws-r.github.io/docs/guardduty/delete_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_ip_set/](https://www.paws-r-sdk.com/docs/guardduty_delete_ip_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the IPSet.
 #' @param IpSetId &#91;required&#93; The unique ID of the IPSet to delete.
@@ -611,7 +611,7 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 #' @description
 #' Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_invitations.html](https://paws-r.github.io/docs/guardduty/delete_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_invitations/](https://www.paws-r-sdk.com/docs/guardduty_delete_invitations/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; A list of account IDs of the Amazon Web Services accounts that sent
 #' invitations to the current member account that you want to delete
@@ -643,7 +643,7 @@ guardduty_delete_invitations <- function(AccountIds) {
 #' @description
 #' Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_members.html](https://paws-r.github.io/docs/guardduty/delete_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_members/](https://www.paws-r-sdk.com/docs/guardduty_delete_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
 #' want to delete.
@@ -675,7 +675,7 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Deletes the publishing definition with the specified `destinationId`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_publishing_destination.html](https://paws-r.github.io/docs/guardduty/delete_publishing_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_publishing_destination/](https://www.paws-r-sdk.com/docs/guardduty_delete_publishing_destination/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
 #' to delete.
@@ -706,7 +706,7 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
 #' @description
 #' Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/delete_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/delete_threat_intel_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_delete_threat_intel_set/](https://www.paws-r-sdk.com/docs/guardduty_delete_threat_intel_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
@@ -737,7 +737,7 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @description
 #' Returns a list of malware scans. Each member account can view the malware scans for their own accounts. An administrator can view the malware scans for all the member accounts.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/describe_malware_scans.html](https://paws-r.github.io/docs/guardduty/describe_malware_scans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_describe_malware_scans/](https://www.paws-r-sdk.com/docs/guardduty_describe_malware_scans/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the request is associated with.
 #' @param NextToken You can use this parameter when paginating results. Set the value of
@@ -779,7 +779,7 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #' @description
 #' Returns information about the account selected as the delegated administrator for GuardDuty.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/describe_organization_configuration.html](https://paws-r.github.io/docs/guardduty/describe_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/guardduty_describe_organization_configuration/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to retrieve information about the delegated
 #' administrator from.
@@ -817,7 +817,7 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
 #' @description
 #' Returns information about the publishing destination specified by the provided `destinationId`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/describe_publishing_destination.html](https://paws-r.github.io/docs/guardduty/describe_publishing_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_describe_publishing_destination/](https://www.paws-r-sdk.com/docs/guardduty_describe_publishing_destination/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
 #' to retrieve.
@@ -849,7 +849,7 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 #' @description
 #' Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/disable_organization_admin_account.html](https://paws-r.github.io/docs/guardduty/disable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_disable_organization_admin_account/](https://www.paws-r-sdk.com/docs/guardduty_disable_organization_admin_account/) for full documentation.
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organizations account to be
 #' disabled as a GuardDuty delegated administrator.
@@ -880,7 +880,7 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' @description
 #' Disassociates the current GuardDuty member account from its administrator account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/disassociate_from_administrator_account.html](https://paws-r.github.io/docs/guardduty/disassociate_from_administrator_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_disassociate_from_administrator_account/](https://www.paws-r-sdk.com/docs/guardduty_disassociate_from_administrator_account/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #'
@@ -910,7 +910,7 @@ guardduty_disassociate_from_administrator_account <- function(DetectorId) {
 #' @description
 #' Disassociates the current GuardDuty member account from its administrator account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/disassociate_from_master_account.html](https://paws-r.github.io/docs/guardduty/disassociate_from_master_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_disassociate_from_master_account/](https://www.paws-r-sdk.com/docs/guardduty_disassociate_from_master_account/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #'
@@ -940,7 +940,7 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' @description
 #' Disassociates GuardDuty member accounts (to the current administrator account) specified by the account IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/disassociate_members.html](https://paws-r.github.io/docs/guardduty/disassociate_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_disassociate_members/](https://www.paws-r-sdk.com/docs/guardduty_disassociate_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
 #' want to disassociate from the administrator account.
@@ -973,7 +973,7 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/enable_organization_admin_account.html](https://paws-r.github.io/docs/guardduty/enable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/guardduty_enable_organization_admin_account/) for full documentation.
 #'
 #' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organization account to be
 #' enabled as a GuardDuty delegated administrator.
@@ -1004,7 +1004,7 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 #' @description
 #' Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_administrator_account.html](https://paws-r.github.io/docs/guardduty/get_administrator_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_administrator_account/](https://www.paws-r-sdk.com/docs/guardduty_get_administrator_account/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #'
@@ -1033,7 +1033,7 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #' @description
 #' Retrieves aggregated statistics for your account. If you are a GuardDuty administrator, you can retrieve the statistics for all the resources associated with the active member accounts in your organization who have enabled EKS Runtime Monitoring and have the GuardDuty agent running on their EKS nodes.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_coverage_statistics.html](https://paws-r.github.io/docs/guardduty/get_coverage_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_coverage_statistics/](https://www.paws-r-sdk.com/docs/guardduty_get_coverage_statistics/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the GuardDuty detector associated to the coverage
 #' statistics.
@@ -1065,7 +1065,7 @@ guardduty_get_coverage_statistics <- function(DetectorId, FilterCriteria = NULL,
 #' @description
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_detector.html](https://paws-r.github.io/docs/guardduty/get_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_detector/](https://www.paws-r-sdk.com/docs/guardduty_get_detector/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to get.
 #'
@@ -1094,7 +1094,7 @@ guardduty_get_detector <- function(DetectorId) {
 #' @description
 #' Returns the details of the filter specified by the filter name.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_filter.html](https://paws-r.github.io/docs/guardduty/get_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_filter/](https://www.paws-r-sdk.com/docs/guardduty_get_filter/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param FilterName &#91;required&#93; The name of the filter you want to get.
@@ -1124,7 +1124,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #' @description
 #' Describes Amazon GuardDuty findings specified by finding IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_findings.html](https://paws-r.github.io/docs/guardduty/get_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_findings/](https://www.paws-r-sdk.com/docs/guardduty_get_findings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to retrieve.
@@ -1156,7 +1156,7 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #' @description
 #' Lists Amazon GuardDuty findings statistics for the specified detector ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_findings_statistics.html](https://paws-r.github.io/docs/guardduty/get_findings_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_findings_statistics/](https://www.paws-r-sdk.com/docs/guardduty_get_findings_statistics/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings' statistics you want to retrieve.
@@ -1188,7 +1188,7 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
 #' @description
 #' Retrieves the IPSet specified by the `ipSetId`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_ip_set.html](https://paws-r.github.io/docs/guardduty/get_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_ip_set/](https://www.paws-r-sdk.com/docs/guardduty_get_ip_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the IPSet is associated with.
 #' @param IpSetId &#91;required&#93; The unique ID of the IPSet to retrieve.
@@ -1219,7 +1219,7 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #' @description
 #' Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_invitations_count.html](https://paws-r.github.io/docs/guardduty/get_invitations_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_invitations_count/](https://www.paws-r-sdk.com/docs/guardduty_get_invitations_count/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1246,7 +1246,7 @@ guardduty_get_invitations_count <- function() {
 #' @description
 #' Returns the details of the malware scan settings.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_malware_scan_settings.html](https://paws-r.github.io/docs/guardduty/get_malware_scan_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_malware_scan_settings/](https://www.paws-r-sdk.com/docs/guardduty_get_malware_scan_settings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the scan setting is associated with.
 #'
@@ -1276,7 +1276,7 @@ guardduty_get_malware_scan_settings <- function(DetectorId) {
 #' @description
 #' Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_master_account.html](https://paws-r.github.io/docs/guardduty/get_master_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_master_account/](https://www.paws-r-sdk.com/docs/guardduty_get_master_account/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #'
@@ -1306,7 +1306,7 @@ guardduty_get_master_account <- function(DetectorId) {
 #' @description
 #' Describes which data sources are enabled for the member account's detector.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_member_detectors.html](https://paws-r.github.io/docs/guardduty/get_member_detectors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_member_detectors/](https://www.paws-r-sdk.com/docs/guardduty_get_member_detectors/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detector ID for the administrator account.
 #' @param AccountIds &#91;required&#93; The account ID of the member account.
@@ -1337,7 +1337,7 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
 #' @description
 #' Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_members.html](https://paws-r.github.io/docs/guardduty/get_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_members/](https://www.paws-r-sdk.com/docs/guardduty_get_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
 #' want to retrieve.
@@ -1370,7 +1370,7 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Provides the number of days left for each data source used in the free trial period.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_remaining_free_trial_days.html](https://paws-r.github.io/docs/guardduty/get_remaining_free_trial_days.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_remaining_free_trial_days/](https://www.paws-r-sdk.com/docs/guardduty_get_remaining_free_trial_days/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #' @param AccountIds A list of account identifiers of the GuardDuty member account.
@@ -1400,7 +1400,7 @@ guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NUL
 #' @description
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/get_threat_intel_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_threat_intel_set/](https://www.paws-r-sdk.com/docs/guardduty_get_threat_intel_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
@@ -1432,7 +1432,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @description
 #' Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see [Understanding How Usage Costs are Calculated](https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations).
 #'
-#' See [https://paws-r.github.io/docs/guardduty/get_usage_statistics.html](https://paws-r.github.io/docs/guardduty/get_usage_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_get_usage_statistics/](https://www.paws-r-sdk.com/docs/guardduty_get_usage_statistics/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose usage
 #' statistics you want to retrieve.
@@ -1475,7 +1475,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' @description
 #' Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/invite_members.html](https://paws-r.github.io/docs/guardduty/invite_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_invite_members/](https://www.paws-r-sdk.com/docs/guardduty_invite_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' invite members with.
@@ -1512,7 +1512,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' @description
 #' Lists coverage details for your GuardDuty account. If you're a GuardDuty administrator, you can retrieve all resources associated with the active member accounts in your organization.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_coverage.html](https://paws-r.github.io/docs/guardduty/list_coverage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_coverage/](https://www.paws-r-sdk.com/docs/guardduty_list_coverage/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector whose coverage details you want to
 #' retrieve.
@@ -1550,7 +1550,7 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
 #' @description
 #' Lists detectorIds of all the existing Amazon GuardDuty detector resources.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_detectors.html](https://paws-r.github.io/docs/guardduty/list_detectors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_detectors/](https://www.paws-r-sdk.com/docs/guardduty_list_detectors/) for full documentation.
 #'
 #' @param MaxResults You can use this parameter to indicate the maximum number of items that
 #' you want in the response. The default value is 50. The maximum value is
@@ -1585,7 +1585,7 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a paginated list of the current filters.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_filters.html](https://paws-r.github.io/docs/guardduty/list_filters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_filters/](https://www.paws-r-sdk.com/docs/guardduty_list_filters/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items that
@@ -1621,7 +1621,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @description
 #' Lists Amazon GuardDuty findings for the specified detector ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_findings.html](https://paws-r.github.io/docs/guardduty/list_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_findings/](https://www.paws-r-sdk.com/docs/guardduty_list_findings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to list.
@@ -1763,7 +1763,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #' @description
 #' Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_ip_sets.html](https://paws-r.github.io/docs/guardduty/list_ip_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_ip_sets/](https://www.paws-r-sdk.com/docs/guardduty_list_ip_sets/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the IPSet is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items you
@@ -1799,7 +1799,7 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @description
 #' Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_invitations.html](https://paws-r.github.io/docs/guardduty/list_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_invitations/](https://www.paws-r-sdk.com/docs/guardduty_list_invitations/) for full documentation.
 #'
 #' @param MaxResults You can use this parameter to indicate the maximum number of items that
 #' you want in the response. The default value is 50. The maximum value is
@@ -1835,7 +1835,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists details about all member accounts for the current GuardDuty administrator account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_members.html](https://paws-r.github.io/docs/guardduty/list_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_members/](https://www.paws-r-sdk.com/docs/guardduty_list_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector the member is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items you
@@ -1876,7 +1876,7 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @description
 #' Lists the accounts configured as GuardDuty delegated administrators.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_organization_admin_accounts.html](https://paws-r.github.io/docs/guardduty/list_organization_admin_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/guardduty_list_organization_admin_accounts/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in the response.
 #' @param NextToken A token to use for paginating results that are returned in the response.
@@ -1910,7 +1910,7 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 #' @description
 #' Returns a list of publishing destinations associated with the specified `detectorId`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_publishing_destinations.html](https://paws-r.github.io/docs/guardduty/list_publishing_destinations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_publishing_destinations/](https://www.paws-r-sdk.com/docs/guardduty_list_publishing_destinations/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to retrieve publishing destinations for.
 #' @param MaxResults The maximum number of results to return in the response.
@@ -1944,7 +1944,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' @description
 #' Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, and threat intel sets, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_tags_for_resource.html](https://paws-r.github.io/docs/guardduty/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/guardduty_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource.
 #'
@@ -1974,7 +1974,7 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the ThreatIntelSets associated with the administrator account are returned.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/list_threat_intel_sets.html](https://paws-r.github.io/docs/guardduty/list_threat_intel_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_list_threat_intel_sets/](https://www.paws-r-sdk.com/docs/guardduty_list_threat_intel_sets/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
@@ -2012,7 +2012,7 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' @description
 #' Initiates the malware scan. Invoking this API will automatically create the [Service-linked role](https://docs.aws.amazon.com/guardduty/latest/ug/slr-permissions-malware-protection.html) in the corresponding account.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/start_malware_scan.html](https://paws-r.github.io/docs/guardduty/start_malware_scan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_start_malware_scan/](https://www.paws-r-sdk.com/docs/guardduty_start_malware_scan/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource for which you invoked the
 #' API.
@@ -2042,7 +2042,7 @@ guardduty_start_malware_scan <- function(ResourceArn) {
 #' @description
 #' Turns on GuardDuty monitoring of the specified member accounts. Use this operation to restart monitoring of accounts that you stopped monitoring with the [`stop_monitoring_members`][guardduty_stop_monitoring_members] operation.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/start_monitoring_members.html](https://paws-r.github.io/docs/guardduty/start_monitoring_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_start_monitoring_members/](https://www.paws-r-sdk.com/docs/guardduty_start_monitoring_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty administrator account
 #' associated with the member accounts to monitor.
@@ -2074,7 +2074,7 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Stops GuardDuty monitoring for the specified member accounts. Use the [`start_monitoring_members`][guardduty_start_monitoring_members] operation to restart monitoring for those accounts.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/stop_monitoring_members.html](https://paws-r.github.io/docs/guardduty/stop_monitoring_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_stop_monitoring_members/](https://www.paws-r-sdk.com/docs/guardduty_stop_monitoring_members/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the GuardDuty
 #' administrator account that is monitoring member accounts.
@@ -2105,7 +2105,7 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Adds tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/tag_resource.html](https://paws-r.github.io/docs/guardduty/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_tag_resource/](https://www.paws-r-sdk.com/docs/guardduty_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag
 #' to.
@@ -2136,7 +2136,7 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Unarchives GuardDuty findings specified by the `findingIds`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/unarchive_findings.html](https://paws-r.github.io/docs/guardduty/unarchive_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_unarchive_findings/](https://www.paws-r-sdk.com/docs/guardduty_unarchive_findings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to unarchive.
 #' @param FindingIds &#91;required&#93; The IDs of the findings to unarchive.
@@ -2166,7 +2166,7 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/untag_resource.html](https://paws-r.github.io/docs/guardduty/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_untag_resource/](https://www.paws-r-sdk.com/docs/guardduty_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource to remove tags from.
 #' @param TagKeys &#91;required&#93; The tag keys to remove from the resource.
@@ -2196,7 +2196,7 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the Amazon GuardDuty detector specified by the detectorId.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_detector.html](https://paws-r.github.io/docs/guardduty/update_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_detector/](https://www.paws-r-sdk.com/docs/guardduty_update_detector/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector to update.
 #' @param Enable Specifies whether the detector is enabled or not enabled.
@@ -2235,7 +2235,7 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' @description
 #' Updates the filter specified by the filter name.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_filter.html](https://paws-r.github.io/docs/guardduty/update_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_filter/](https://www.paws-r-sdk.com/docs/guardduty_update_filter/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that specifies the GuardDuty service where
 #' you want to update a filter.
@@ -2277,7 +2277,7 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
 #' @description
 #' Marks the specified GuardDuty findings as useful or not useful.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_findings_feedback.html](https://paws-r.github.io/docs/guardduty/update_findings_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_findings_feedback/](https://www.paws-r-sdk.com/docs/guardduty_update_findings_feedback/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to update feedback
 #' for.
@@ -2310,7 +2310,7 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 #' @description
 #' Updates the IPSet specified by the IPSet ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_ip_set.html](https://paws-r.github.io/docs/guardduty/update_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_ip_set/](https://www.paws-r-sdk.com/docs/guardduty_update_ip_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detectorID that specifies the GuardDuty service whose IPSet you want
 #' to update.
@@ -2345,7 +2345,7 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 #' @description
 #' Updates the malware scan settings.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_malware_scan_settings.html](https://paws-r.github.io/docs/guardduty/update_malware_scan_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_malware_scan_settings/](https://www.paws-r-sdk.com/docs/guardduty_update_malware_scan_settings/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that specifies the GuardDuty service where
 #' you want to update scan settings.
@@ -2378,7 +2378,7 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #' @description
 #' Contains information on member accounts to be updated.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_member_detectors.html](https://paws-r.github.io/docs/guardduty/update_member_detectors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_member_detectors/](https://www.paws-r-sdk.com/docs/guardduty_update_member_detectors/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detector ID of the administrator account.
 #' @param AccountIds &#91;required&#93; A list of member account IDs to be updated.
@@ -2411,7 +2411,7 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' @description
 #' Configures the delegated administrator account with the provided values. You must provide the value for either `autoEnableOrganizationMembers` or `autoEnable`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_organization_configuration.html](https://paws-r.github.io/docs/guardduty/update_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_organization_configuration/](https://www.paws-r-sdk.com/docs/guardduty_update_organization_configuration/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that configures the delegated administrator.
 #' @param AutoEnable Indicates whether to automatically enable member accounts in the
@@ -2462,7 +2462,7 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable =
 #' @description
 #' Updates information about the publishing destination specified by the `destinationId`.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_publishing_destination.html](https://paws-r.github.io/docs/guardduty/update_publishing_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_publishing_destination/](https://www.paws-r-sdk.com/docs/guardduty_update_publishing_destination/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the publishing destinations to
 #' update.
@@ -2495,7 +2495,7 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' @description
 #' Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 #'
-#' See [https://paws-r.github.io/docs/guardduty/update_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/update_threat_intel_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/guardduty_update_threat_intel_set/](https://www.paws-r-sdk.com/docs/guardduty_update_threat_intel_set/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detectorID that specifies the GuardDuty service whose ThreatIntelSet
 #' you want to update.

@@ -52,6 +52,6 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 \description{
 Creates a new Stage resource that references a pre-existing Deployment for the API.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_stage/} for full documentation.
 }
 \keyword{internal}

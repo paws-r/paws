@@ -14,6 +14,6 @@ of your rules, use
 \description{
 Disables the specified Contributor Insights rules. When rules are disabled, they do not analyze log groups and do not incur costs.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/disable_insight_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_disable_insight_rules/} for full documentation.
 }
 \keyword{internal}

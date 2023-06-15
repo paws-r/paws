@@ -12,6 +12,6 @@ accessanalyzer_get_analyzer(analyzerName)
 \description{
 Retrieves information about the specified analyzer.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/get_analyzer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_analyzer/} for full documentation.
 }
 \keyword{internal}

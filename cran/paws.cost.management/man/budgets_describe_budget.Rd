@@ -15,6 +15,6 @@ description of.}
 \description{
 Describes a budget.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budget.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budget/} for full documentation.
 }
 \keyword{internal}

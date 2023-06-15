@@ -22,6 +22,6 @@ are updating.}
 \description{
 Updates a CloudFront origin access control.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_origin_access_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_origin_access_control/} for full documentation.
 }
 \keyword{internal}

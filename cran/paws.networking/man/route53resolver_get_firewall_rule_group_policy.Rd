@@ -13,6 +13,6 @@ route53resolver_get_firewall_rule_group_policy(Arn)
 \description{
 Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group. You can use the policy to share the rule group using Resource Access Manager (RAM).
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group_policy/} for full documentation.
 }
 \keyword{internal}

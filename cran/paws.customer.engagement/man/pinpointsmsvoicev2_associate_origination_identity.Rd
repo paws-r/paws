@@ -33,6 +33,6 @@ randomly generated token is used for the request to ensure idempotency.}
 \description{
 Associates the specified origination identity with a pool.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/associate_origination_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_associate_origination_identity/} for full documentation.
 }
 \keyword{internal}

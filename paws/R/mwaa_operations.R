@@ -76,8 +76,8 @@ mwaa_create_cli_token <- function(Name) {
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
 #' @param AirflowVersion The Apache Airflow version for your environment. If no value is
 #' specified, it defaults to the latest version. Valid values: `1.10.12`,
-#' `2.0.2`, `2.2.2`, and `2.4.3`. For more information, see [Apache Airflow
-#' versions on Amazon Managed Workflows for Apache Airflow
+#' `2.0.2`, `2.2.2`, `2.4.3`, and `2.5.1`. For more information, see
+#' [Apache Airflow versions on Amazon Managed Workflows for Apache Airflow
 #' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
 #' @param DagS3Path &#91;required&#93; The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
@@ -448,7 +448,7 @@ mwaa_delete_environment <- function(Name) {
 #'     SourceBucketArn = "string",
 #'     StartupScriptS3ObjectVersion = "string",
 #'     StartupScriptS3Path = "string",
-#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED"|"UNAVAILABLE"|"UPDATE_FAILED",
+#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED"|"UNAVAILABLE"|"UPDATE_FAILED"|"ROLLING_BACK"|"CREATING_SNAPSHOT",
 #'     Tags = list(
 #'       "string"
 #'     ),
@@ -791,9 +791,17 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' options you want to attach to your environment. For more information,
 #' see [Apache Airflow configuration
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
-#' @param AirflowVersion The Apache Airflow version for your environment. If no value is
-#' specified, defaults to the latest version. Valid values: `1.10.12`,
-#' `2.0.2`, `2.2.2`, and `2.4.3`.
+#' @param AirflowVersion The Apache Airflow version for your environment. To upgrade your
+#' environment, specify a newer version of Apache Airflow supported by
+#' Amazon MWAA.
+#' 
+#' Before you upgrade an environment, make sure your requirements, DAGs,
+#' plugins, and other resources used in your workflows are compatible with
+#' the new Apache Airflow version. For more information about updating your
+#' resources, see [Upgrading an Amazon MWAA
+#' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html).
+#' 
+#' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, and `2.5.1`.
 #' @param DagS3Path The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
 #' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).

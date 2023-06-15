@@ -23,6 +23,6 @@ cognitoidentityprovider_admin_update_device_status(
 \description{
 Updates the device status as an administrator.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_device_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_device_status/} for full documentation.
 }
 \keyword{internal}

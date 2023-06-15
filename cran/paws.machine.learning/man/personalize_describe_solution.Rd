@@ -12,6 +12,6 @@ personalize_describe_solution(solutionArn)
 \description{
 Describes a solution. For more information on solutions, see \code{\link[=personalize_create_solution]{create_solution}}.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_solution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_solution/} for full documentation.
 }
 \keyword{internal}

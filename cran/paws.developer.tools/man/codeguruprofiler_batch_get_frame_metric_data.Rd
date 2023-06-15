@@ -51,6 +51,6 @@ There are 3 valid values.
 \description{
 Returns the time series of values for a requested list of frame metrics from a time period.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/batch_get_frame_metric_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_batch_get_frame_metric_data/} for full documentation.
 }
 \keyword{internal}

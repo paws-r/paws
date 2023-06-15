@@ -12,6 +12,6 @@ athena_get_calculation_execution_status(CalculationExecutionId)
 \description{
 Gets the status of a current calculation.
 
-See \url{https://paws-r.github.io/docs/athena/get_calculation_execution_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_calculation_execution_status/} for full documentation.
 }
 \keyword{internal}

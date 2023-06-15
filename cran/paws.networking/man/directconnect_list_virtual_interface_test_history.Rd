@@ -35,6 +35,6 @@ returned.}
 \description{
 Lists the virtual interface failover test history.
 
-See \url{https://paws-r.github.io/docs/directconnect/list_virtual_interface_test_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_test_history/} for full documentation.
 }
 \keyword{internal}

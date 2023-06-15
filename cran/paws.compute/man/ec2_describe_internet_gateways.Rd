@@ -52,6 +52,6 @@ output. For more information, see
 \description{
 Describes one or more of your internet gateways.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_internet_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_internet_gateways/} for full documentation.
 }
 \keyword{internal}

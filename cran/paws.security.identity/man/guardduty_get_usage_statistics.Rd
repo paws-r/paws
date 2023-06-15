@@ -35,6 +35,6 @@ previous request to continue listing results after the first page.}
 \description{
 Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations}{Understanding How Usage Costs are Calculated}.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_usage_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_usage_statistics/} for full documentation.
 }
 \keyword{internal}

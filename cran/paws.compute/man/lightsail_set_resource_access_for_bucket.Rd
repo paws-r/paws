@@ -26,6 +26,6 @@ setting to remove access for a resource previously set to \code{allow}.
 \description{
 Sets the Amazon Lightsail resources that can access the specified Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/set_resource_access_for_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_set_resource_access_for_bucket/} for full documentation.
 }
 \keyword{internal}

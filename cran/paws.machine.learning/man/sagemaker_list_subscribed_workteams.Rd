@@ -25,6 +25,6 @@ the next set of labeling jobs, use the token in the next request.}
 \description{
 Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace. The list may be empty if no work team satisfies the filter specified in the \code{NameContains} parameter.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_subscribed_workteams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_subscribed_workteams/} for full documentation.
 }
 \keyword{internal}

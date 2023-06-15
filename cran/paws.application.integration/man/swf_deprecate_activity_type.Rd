@@ -14,6 +14,6 @@ swf_deprecate_activity_type(domain, activityType)
 \description{
 Deprecates the specified \emph{activity type}. After an activity type has been deprecated, you cannot create new tasks of that activity type. Tasks of this type that were scheduled before the type was deprecated continue to run.
 
-See \url{https://paws-r.github.io/docs/swf/deprecate_activity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_deprecate_activity_type/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ the Active Directory domain.}
 \description{
 Adds a file gateway to an Active Directory domain. This operation is only supported for file gateways that support the SMB file protocol.
 
-See \url{https://paws-r.github.io/docs/storagegateway/join_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_join_domain/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ is \code{50} and the maximum value is \code{100}.}
 \description{
 Describes the specified tags.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_tags/} for full documentation.
 }
 \keyword{internal}

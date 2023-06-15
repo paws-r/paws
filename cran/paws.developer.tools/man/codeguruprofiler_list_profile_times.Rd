@@ -58,6 +58,6 @@ group. There are 3 valid values.
 \description{
 Lists the start times of the available aggregated profiles of a profiling group for an aggregation period within the specified time range.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/list_profile_times.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_list_profile_times/} for full documentation.
 }
 \keyword{internal}

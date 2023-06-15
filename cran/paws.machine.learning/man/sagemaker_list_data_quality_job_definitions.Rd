@@ -44,6 +44,6 @@ created after the specified time.}
 \description{
 Lists the data quality job definitions in your account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_data_quality_job_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_data_quality_job_definitions/} for full documentation.
 }
 \keyword{internal}

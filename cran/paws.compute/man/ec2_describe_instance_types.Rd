@@ -136,6 +136,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the details of the instance types that are offered in a location. The results can be filtered by the attributes of the instance types.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_types/} for full documentation.
 }
 \keyword{internal}

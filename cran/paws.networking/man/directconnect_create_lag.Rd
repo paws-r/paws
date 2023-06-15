@@ -48,6 +48,6 @@ in the \emph{Direct Connect User Guide}.}
 \description{
 Creates a link aggregation group (LAG) with the specified number of bundled physical dedicated connections between the customer network and a specific Direct Connect location. A LAG is a logical interface that uses the Link Aggregation Control Protocol (LACP) to aggregate multiple interfaces, enabling you to treat them as a single interface.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_lag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_lag/} for full documentation.
 }
 \keyword{internal}

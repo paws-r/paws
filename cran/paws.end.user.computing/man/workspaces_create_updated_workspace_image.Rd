@@ -28,6 +28,6 @@ must create an IAM policy that grants your IAM user permissions to use
 \description{
 Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components.
 
-See \url{https://paws-r.github.io/docs/workspaces/create_updated_workspace_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_create_updated_workspace_image/} for full documentation.
 }
 \keyword{internal}

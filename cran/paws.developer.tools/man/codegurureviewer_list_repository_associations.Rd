@@ -79,6 +79,6 @@ the next items in a list and not for other programmatic purposes.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html}{RepositoryAssociationSummary} objects that contain summary information about a repository association. You can filter the returned list by \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType}{ProviderType}, \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name}{Name}, \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State}{State}, and \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner}{Owner}.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/list_repository_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_list_repository_associations/} for full documentation.
 }
 \keyword{internal}

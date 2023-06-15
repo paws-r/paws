@@ -31,6 +31,6 @@ clients and plugins.}
 \description{
 Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/upgrade_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_upgrade_domain/} for full documentation.
 }
 \keyword{internal}

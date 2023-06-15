@@ -18,6 +18,6 @@ more labels from. If it isn't present, the call will fail.}
 \description{
 Remove a label or labels from a parameter.
 
-See \url{https://paws-r.github.io/docs/ssm/unlabel_parameter_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_unlabel_parameter_version/} for full documentation.
 }
 \keyword{internal}

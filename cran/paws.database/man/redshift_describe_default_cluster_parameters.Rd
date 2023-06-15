@@ -35,6 +35,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns a list of parameter settings for the specified parameter group family.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_default_cluster_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_default_cluster_parameters/} for full documentation.
 }
 \keyword{internal}

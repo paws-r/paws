@@ -22,6 +22,6 @@ must create a unique role.}
 \description{
 Changes the Identity and Access Management (IAM) role that is assigned to the on-premises server, edge device, or virtual machines (VM). IAM roles are first assigned to these hybrid nodes during the activation process. For more information, see \code{\link[=ssm_create_activation]{create_activation}}.
 
-See \url{https://paws-r.github.io/docs/ssm/update_managed_instance_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_managed_instance_role/} for full documentation.
 }
 \keyword{internal}

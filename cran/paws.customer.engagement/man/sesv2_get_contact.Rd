@@ -14,6 +14,6 @@ sesv2_get_contact(ContactListName, EmailAddress)
 \description{
 Returns a contact from a contact list.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_contact/} for full documentation.
 }
 \keyword{internal}

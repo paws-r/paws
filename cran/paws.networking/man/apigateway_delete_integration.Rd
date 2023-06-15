@@ -16,6 +16,6 @@ apigateway_delete_integration(restApiId, resourceId, httpMethod)
 \description{
 Represents a delete integration.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_integration/} for full documentation.
 }
 \keyword{internal}

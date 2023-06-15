@@ -36,6 +36,6 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about DB proxy target groups, represented by \code{DBProxyTargetGroup} data structures.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_proxy_target_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_proxy_target_groups/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ directconnect_delete_direct_connect_gateway_association_proposal(proposalId)
 \description{
 Deletes the association proposal request between the specified Direct Connect gateway and virtual private gateway or transit gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway_association_proposal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway_association_proposal/} for full documentation.
 }
 \keyword{internal}

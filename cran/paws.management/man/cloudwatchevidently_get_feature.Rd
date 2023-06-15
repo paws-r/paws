@@ -14,6 +14,6 @@ cloudwatchevidently_get_feature(feature, project)
 \description{
 Returns the details about one feature. You must already know the feature name. To retrieve a list of features in your account, use \code{\link[=cloudwatchevidently_list_features]{list_features}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/get_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_feature/} for full documentation.
 }
 \keyword{internal}

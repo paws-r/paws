@@ -31,6 +31,6 @@ the number of returned parts never exceeds the limit.}
 \description{
 This operation lists the parts of an archive that have been uploaded in a specific multipart upload. You can make this request at any time during an in-progress multipart upload before you complete the upload (see \code{\link[=glacier_complete_multipart_upload]{complete_multipart_upload}}. List Parts returns an error for completed uploads. The list returned in the List Parts response is sorted by part range.
 
-See \url{https://paws-r.github.io/docs/glacier/list_parts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_list_parts/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ supplied.
 \description{
 Adds a source identifier to an existing RDS event notification subscription.
 
-See \url{https://paws-r.github.io/docs/rds/add_source_identifier_to_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_add_source_identifier_to_subscription/} for full documentation.
 }
 \keyword{internal}

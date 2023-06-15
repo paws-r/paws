@@ -34,6 +34,6 @@ AWS::Route53RecoveryReadiness::DNSTargetResource}
 \description{
 Creates a resource set. A resource set is a set of resources of one type that span multiple cells. You can associate a resource set with a readiness check to monitor the resources for failover readiness.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/create_resource_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_resource_set/} for full documentation.
 }
 \keyword{internal}

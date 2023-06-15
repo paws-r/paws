@@ -37,6 +37,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the IAM roles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
-See \url{https://paws-r.github.io/docs/iam/list_roles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_roles/} for full documentation.
 }
 \keyword{internal}

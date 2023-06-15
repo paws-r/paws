@@ -23,6 +23,6 @@ the \verb{/24} CIDR.}
 \description{
 Deprovision a CIDR from a public IPv4 pool.
 
-See \url{https://paws-r.github.io/docs/ec2/deprovision_public_ipv_4_pool_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_deprovision_public_ipv_4_pool_cidr/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ specified table.}
 \description{
 The \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} method enables or disables Time to Live (TTL) for the specified table. A successful \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} call returns the current \code{TimeToLiveSpecification}. It can take up to one hour for the change to fully process. Any additional \code{\link[=dynamodb_update_time_to_live]{update_time_to_live}} calls for the same table during this one hour duration result in a \code{ValidationException}.
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_time_to_live.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_time_to_live/} for full documentation.
 }
 \keyword{internal}

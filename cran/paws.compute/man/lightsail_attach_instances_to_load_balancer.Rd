@@ -22,6 +22,6 @@ can create in your account (20).}
 \description{
 Attaches one or more Lightsail instances to a load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/attach_instances_to_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_attach_instances_to_load_balancer/} for full documentation.
 }
 \keyword{internal}

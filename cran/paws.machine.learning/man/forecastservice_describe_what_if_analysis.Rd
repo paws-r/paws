@@ -14,6 +14,6 @@ interested in.}
 \description{
 Describes the what-if analysis created using the \code{\link[=forecastservice_create_what_if_analysis]{create_what_if_analysis}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_what_if_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_what_if_analysis/} for full documentation.
 }
 \keyword{internal}

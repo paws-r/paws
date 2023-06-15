@@ -14,6 +14,6 @@ canaries, use
 \description{
 Stops the canary to prevent all future runs. If the canary is currently running,the run that is in progress completes on its own, publishes metrics, and uploads artifacts, but it is not recorded in Synthetics as a completed run.
 
-See \url{https://paws-r.github.io/docs/synthetics/stop_canary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_stop_canary/} for full documentation.
 }
 \keyword{internal}

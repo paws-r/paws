@@ -12,6 +12,6 @@ ivschat_delete_room(identifier)
 \description{
 Deletes the specified room.
 
-See \url{https://paws-r.github.io/docs/ivschat/delete_room.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_delete_room/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ allowed: 0-256.}
 \description{
 Removes a tag or list of tags from a resource (either an \href{https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets}{change set}).
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_untag_resource/} for full documentation.
 }
 \keyword{internal}

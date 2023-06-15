@@ -54,6 +54,6 @@ allow it to write to the S3 destination bucket.}
 \description{
 Creates a connector using the specified properties.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/create_connector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_create_connector/} for full documentation.
 }
 \keyword{internal}

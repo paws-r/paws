@@ -17,6 +17,6 @@ example:
 \description{
 Removes one or more tags from a specified Amazon QLDB resource. You can specify up to 50 tag keys to remove.
 
-See \url{https://paws-r.github.io/docs/qldb/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_untag_resource/} for full documentation.
 }
 \keyword{internal}

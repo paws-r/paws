@@ -15,6 +15,6 @@ mq_describe_configuration_revision(ConfigurationId, ConfigurationRevision)
 \description{
 Returns the specified configuration revision for the specified configuration.
 
-See \url{https://paws-r.github.io/docs/mq/describe_configuration_revision.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_describe_configuration_revision/} for full documentation.
 }
 \keyword{internal}

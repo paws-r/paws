@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/complete_attachment_upload.html](https://paws-r.github.io/docs/connectparticipant/complete_attachment_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_complete_attachment_upload/](https://www.paws-r-sdk.com/docs/connectparticipant_complete_attachment_upload/) for full documentation.
 #'
 #' @param AttachmentIds &#91;required&#93; A list of unique identifiers for the attachments.
 #' @param ClientToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
@@ -44,7 +44,7 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' @description
 #' Creates the participant's connection.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/create_participant_connection.html](https://paws-r.github.io/docs/connectparticipant/create_participant_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_create_participant_connection/](https://www.paws-r-sdk.com/docs/connectparticipant_create_participant_connection/) for full documentation.
 #'
 #' @param Type Type of connection information required. This can be omitted if
 #' `ConnectParticipant` is `true`.
@@ -82,7 +82,7 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
 #' @description
 #' Disconnects a participant.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/disconnect_participant.html](https://paws-r.github.io/docs/connectparticipant/disconnect_participant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_disconnect_participant/](https://www.paws-r-sdk.com/docs/connectparticipant_disconnect_participant/) for full documentation.
 #'
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -116,7 +116,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' @description
 #' Provides a pre-signed URL for download of a completed attachment. This is an asynchronous API for use with active contacts.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/get_attachment.html](https://paws-r.github.io/docs/connectparticipant/get_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_get_attachment/](https://www.paws-r-sdk.com/docs/connectparticipant_get_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; A unique identifier for the attachment.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
@@ -147,7 +147,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' @description
 #' Retrieves a transcript of the session, including details about any attachments. For information about accessing past chat contact transcripts for a persistent chat, see [Enable persistent chat](https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html).
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/get_transcript.html](https://paws-r.github.io/docs/connectparticipant/get_transcript.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_get_transcript/](https://www.paws-r-sdk.com/docs/connectparticipant_get_transcript/) for full documentation.
 #'
 #' @param ContactId The contactId from the current contact chain for which transcript is
 #' needed.
@@ -186,7 +186,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' @description
 #' Sends an event.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/send_event.html](https://paws-r.github.io/docs/connectparticipant/send_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_send_event/](https://www.paws-r-sdk.com/docs/connectparticipant_send_event/) for full documentation.
 #'
 #' @param ContentType &#91;required&#93; The content type of the request. Supported types are:
 #' 
@@ -235,7 +235,7 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' @description
 #' Sends a message.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/send_message.html](https://paws-r.github.io/docs/connectparticipant/send_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_send_message/](https://www.paws-r-sdk.com/docs/connectparticipant_send_message/) for full documentation.
 #'
 #' @param ContentType &#91;required&#93; The type of the content. Supported types are `text/plain`,
 #' `text/markdown`, `application/json`, and
@@ -284,7 +284,7 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' @description
 #' Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3.
 #'
-#' See [https://paws-r.github.io/docs/connectparticipant/start_attachment_upload.html](https://paws-r.github.io/docs/connectparticipant/start_attachment_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/connectparticipant_start_attachment_upload/](https://www.paws-r-sdk.com/docs/connectparticipant_start_attachment_upload/) for full documentation.
 #'
 #' @param ContentType &#91;required&#93; Describes the MIME file type of the attachment. For a list of supported
 #' file types, see [Feature

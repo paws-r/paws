@@ -43,6 +43,6 @@ the next page. Keep all other arguments unchanged.}
 \description{
 Returns events related to clusters, security groups, and parameter groups. You can obtain events specific to a particular cluster, security group, or parameter group by providing the name as a parameter. By default, only the events occurring within the last hour are returned; however, you can retrieve up to 14 days' worth of events if necessary.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_events/} for full documentation.
 }
 \keyword{internal}

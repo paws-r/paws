@@ -36,6 +36,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Updates a resiliency policy.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/update_resiliency_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_update_resiliency_policy/} for full documentation.
 }
 \keyword{internal}

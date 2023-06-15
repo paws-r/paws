@@ -23,6 +23,6 @@ than one time.}
 \description{
 Notifies the pipeline that the execution of a callback step failed, along with a message describing why. When a callback step is run, the pipeline generates a callback token and includes the token in a message sent to Amazon Simple Queue Service (Amazon SQS).
 
-See \url{https://paws-r.github.io/docs/sagemaker/send_pipeline_execution_step_failure.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_send_pipeline_execution_step_failure/} for full documentation.
 }
 \keyword{internal}

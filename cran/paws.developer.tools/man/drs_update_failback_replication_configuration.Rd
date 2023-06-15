@@ -26,6 +26,6 @@ Instance.}
 \description{
 Allows you to update the failback replication configuration of a Recovery Instance by ID.
 
-See \url{https://paws-r.github.io/docs/drs/update_failback_replication_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_update_failback_replication_configuration/} for full documentation.
 }
 \keyword{internal}

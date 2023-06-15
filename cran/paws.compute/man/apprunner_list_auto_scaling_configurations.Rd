@@ -42,6 +42,6 @@ page.}
 \description{
 Returns a list of active App Runner automatic scaling configurations in your Amazon Web Services account. You can query the revisions for a specific configuration name or the revisions for all active configurations in your account. You can optionally query only the latest revision of each requested name.
 
-See \url{https://paws-r.github.io/docs/apprunner/list_auto_scaling_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_list_auto_scaling_configurations/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ data.}
 \description{
 Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the ThreatIntelSets associated with the administrator account are returned.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_threat_intel_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_threat_intel_sets/} for full documentation.
 }
 \keyword{internal}

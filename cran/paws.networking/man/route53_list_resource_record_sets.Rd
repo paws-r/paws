@@ -61,6 +61,6 @@ record set in the next group of \code{maxitems} resource record sets.}
 \description{
 Lists the resource record sets in a specified hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/list_resource_record_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_resource_record_sets/} for full documentation.
 }
 \keyword{internal}

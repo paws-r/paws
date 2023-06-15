@@ -50,6 +50,6 @@ Constraints: Maximum length of 128 characters.}
 \description{
 Creates a new device in a global network. If you specify both a site ID and a location, the location of the site is used for visualization in the Network Manager console.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_device/} for full documentation.
 }
 \keyword{internal}

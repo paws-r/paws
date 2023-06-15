@@ -31,6 +31,6 @@ that is created by the node.
 \description{
 Associates a new node with the server. For more information about how to disassociate a node, see \code{\link[=opsworkscm_disassociate_node]{disassociate_node}}.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/associate_node.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_associate_node/} for full documentation.
 }
 \keyword{internal}

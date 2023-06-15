@@ -31,6 +31,6 @@ underscore (_), and dash (-).}
 \description{
 Merges two users having different \code{IdentityId}s, existing in the same identity pool, and identified by the same developer provider. You can use this action to request that discrete users be merged and identified as a single user in the Cognito environment. Cognito associates the given source user (\code{SourceUserIdentifier}) with the \code{IdentityId} of the \code{DestinationUserIdentifier}. Only developer-authenticated users can be merged. If the users to be merged are associated with the same public provider, but as two different users, an exception will be thrown.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/merge_developer_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_merge_developer_identities/} for full documentation.
 }
 \keyword{internal}

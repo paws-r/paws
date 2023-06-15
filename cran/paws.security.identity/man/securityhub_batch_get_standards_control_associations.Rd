@@ -19,6 +19,6 @@ standard. The security control ID or ARN is the same across standards.}
 \description{
 For a batch of security controls and standards, identifies whether each control is currently enabled or disabled in a standard.
 
-See \url{https://paws-r.github.io/docs/securityhub/batch_get_standards_control_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_get_standards_control_associations/} for full documentation.
 }
 \keyword{internal}

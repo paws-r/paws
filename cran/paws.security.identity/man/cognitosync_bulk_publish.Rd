@@ -15,6 +15,6 @@ Cognito. GUID generation is unique within a region.}
 \description{
 Initiates a bulk publish of all existing datasets for an Identity Pool to the configured stream. Customers are limited to one successful bulk publish per 24 hours. Bulk publish is an asynchronous request, customers can see the status of the request via the GetBulkPublishDetails operation.
 
-See \url{https://paws-r.github.io/docs/cognitosync/bulk_publish.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_bulk_publish/} for full documentation.
 }
 \keyword{internal}

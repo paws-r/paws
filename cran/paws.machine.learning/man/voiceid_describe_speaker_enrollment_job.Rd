@@ -14,6 +14,6 @@ voiceid_describe_speaker_enrollment_job(DomainId, JobId)
 \description{
 Describes the specified speaker enrollment job.
 
-See \url{https://paws-r.github.io/docs/voiceid/describe_speaker_enrollment_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_describe_speaker_enrollment_job/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ cloudfront_get_origin_access_control_config(Id)
 \description{
 Gets a CloudFront origin access control configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_origin_access_control_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_origin_access_control_config/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ carriage return (\verb{U+000D})
 \description{
 Uploads an X.509 signing certificate and associates it with the specified IAM user. Some Amazon Web Services services require you to use certificates to validate requests that are signed with a corresponding private key. When you upload the certificate, its default status is \code{Active}.
 
-See \url{https://paws-r.github.io/docs/iam/upload_signing_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_upload_signing_certificate/} for full documentation.
 }
 \keyword{internal}

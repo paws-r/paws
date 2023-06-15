@@ -14,6 +14,6 @@ machinelearning_describe_tags(ResourceId, ResourceType)
 \description{
 Describes one or more of the tags for your Amazon ML object.
 
-See \url{https://paws-r.github.io/docs/machinelearning/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_describe_tags/} for full documentation.
 }
 \keyword{internal}

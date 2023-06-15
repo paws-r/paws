@@ -30,6 +30,6 @@ accounts.}
 \description{
 This is a paginated call to list linked accounts that are linked to the payer account for the specified time period. If no information is provided, the current billing period is used. The response will optionally include the billing group that's associated with the linked account.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_account_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_account_associations/} for full documentation.
 }
 \keyword{internal}

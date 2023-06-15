@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes an egress-only internet gateway.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_egress_only_internet_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_egress_only_internet_gateway/} for full documentation.
 }
 \keyword{internal}

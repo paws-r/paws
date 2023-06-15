@@ -13,6 +13,6 @@ codecommit_get_pull_request(pullRequestId)
 \description{
 Gets information about a pull request in a specified repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_pull_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_pull_request/} for full documentation.
 }
 \keyword{internal}

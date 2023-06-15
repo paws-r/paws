@@ -14,6 +14,6 @@ lambda_delete_layer_version(LayerName, VersionNumber)
 \description{
 Deletes a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a copy of the version remains in Lambda until no functions refer to it.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_layer_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_layer_version/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates a target for your Traffic Mirror session.
 
-See \url{https://paws-r.github.io/docs/ec2/create_traffic_mirror_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_traffic_mirror_target/} for full documentation.
 }
 \keyword{internal}

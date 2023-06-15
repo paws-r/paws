@@ -17,6 +17,6 @@ characters.}
 \description{
 Applies tag values to a behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_tag_resource/} for full documentation.
 }
 \keyword{internal}

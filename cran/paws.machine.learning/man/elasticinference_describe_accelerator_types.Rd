@@ -10,6 +10,6 @@ elasticinference_describe_accelerator_types()
 \description{
 Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput.
 
-See \url{https://paws-r.github.io/docs/elasticinference/describe_accelerator_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/} for full documentation.
 }
 \keyword{internal}

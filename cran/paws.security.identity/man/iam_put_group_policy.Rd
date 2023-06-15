@@ -42,6 +42,6 @@ carriage return (\verb{U+000D})
 \description{
 Adds or updates an inline policy document that is embedded in the specified IAM group.
 
-See \url{https://paws-r.github.io/docs/iam/put_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_put_group_policy/} for full documentation.
 }
 \keyword{internal}

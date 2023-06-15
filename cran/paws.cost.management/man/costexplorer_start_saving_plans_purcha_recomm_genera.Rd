@@ -9,6 +9,6 @@ costexplorer_start_savings_plans_purchase_recommendation_generation()
 \description{
 Requests a Savings Plans recommendation generation. This enables you to calculate a fresh set of Savings Plans recommendations that takes your latest usage data and current Savings Plans inventory into account. You can refresh Savings Plans recommendations up to three times daily for a consolidated billing family.
 
-See \url{https://paws-r.github.io/docs/costexplorer/start_savings_plans_purchase_recommendation_generation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_start_savings_plans_purchase_recommendation_generation/} for full documentation.
 }
 \keyword{internal}

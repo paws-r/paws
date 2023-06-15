@@ -20,6 +20,6 @@ at a time.}
 \description{
 The \code{\link[=mturk_notify_workers]{notify_workers}} operation sends an email to one or more Workers that you specify with the Worker ID. You can specify up to 100 Worker IDs to send the same message with a single call to the NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only if you have previously approved or rejected work from the Worker.
 
-See \url{https://paws-r.github.io/docs/mturk/notify_workers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_notify_workers/} for full documentation.
 }
 \keyword{internal}

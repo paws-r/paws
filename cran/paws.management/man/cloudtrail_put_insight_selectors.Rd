@@ -26,6 +26,6 @@ unsuccessful.}
 \description{
 Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail. You also use \code{\link[=cloudtrail_put_insight_selectors]{put_insight_selectors}} to turn off Insights event logging, by passing an empty list of insight types. The valid Insights event types in this release are \code{ApiErrorRateInsight} and \code{ApiCallRateInsight}.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/put_insight_selectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_put_insight_selectors/} for full documentation.
 }
 \keyword{internal}

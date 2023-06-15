@@ -71,6 +71,6 @@ in the \emph{Amazon EC2 User Guide}.}
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.
 
-See \url{https://paws-r.github.io/docs/ec2/allocate_hosts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_allocate_hosts/} for full documentation.
 }
 \keyword{internal}

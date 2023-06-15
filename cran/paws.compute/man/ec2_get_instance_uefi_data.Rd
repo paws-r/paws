@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 A binary representation of the UEFI variable store. Only non-volatile variables are stored. This is a base64 encoded and zlib compressed binary value that must be properly encoded.
 
-See \url{https://paws-r.github.io/docs/ec2/get_instance_uefi_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_instance_uefi_data/} for full documentation.
 }
 \keyword{internal}

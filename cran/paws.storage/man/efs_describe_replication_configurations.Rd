@@ -23,6 +23,6 @@ can specify the \code{MaxItems} parameter. The default value is 100.}
 \description{
 Retrieves the replication configuration for a specific file system. If a file system is not specified, all of the replication configurations for the Amazon Web Services account in an Amazon Web Services Region are retrieved.
 
-See \url{https://paws-r.github.io/docs/efs/describe_replication_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_replication_configurations/} for full documentation.
 }
 \keyword{internal}

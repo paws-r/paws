@@ -23,6 +23,6 @@ eventbridge_update_archive(
 \description{
 Updates the specified archive.
 
-See \url{https://paws-r.github.io/docs/eventbridge/update_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_update_archive/} for full documentation.
 }
 \keyword{internal}

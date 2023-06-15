@@ -9,6 +9,6 @@ servicequotas_associate_service_quota_template()
 \description{
 Associates your quota request template with your organization. When a new account is created in your organization, the quota increase requests in the template are automatically applied to the account. You can add a quota increase request for any adjustable quota to your template.
 
-See \url{https://paws-r.github.io/docs/servicequotas/associate_service_quota_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_associate_service_quota_template/} for full documentation.
 }
 \keyword{internal}

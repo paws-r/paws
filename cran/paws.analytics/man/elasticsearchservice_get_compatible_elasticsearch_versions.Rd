@@ -12,6 +12,6 @@ elasticsearchservice_get_compatible_elasticsearch_versions(DomainName = NULL)
 \description{
 Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a \code{DomainName} to get all upgrade compatible Elasticsearch versions for that specific domain.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/get_compatible_elasticsearch_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_get_compatible_elasticsearch_versions/} for full documentation.
 }
 \keyword{internal}

@@ -126,6 +126,6 @@ specified.}
 \description{
 Creates or updates a \emph{composite alarm}. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_composite_alarm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_composite_alarm/} for full documentation.
 }
 \keyword{internal}

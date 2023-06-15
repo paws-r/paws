@@ -21,6 +21,6 @@ message in a browser.}
 \description{
 Updates a certificate. Currently, you can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency}{Opting Out of Certificate Transparency Logging}.
 
-See \url{https://paws-r.github.io/docs/acm/update_certificate_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_update_certificate_options/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon S3 Glacier (Glacier) completes the job. For more information about initiating a job, see \code{\link[=glacier_initiate_job]{initiate_job}}.
 
-See \url{https://paws-r.github.io/docs/glacier/describe_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_describe_job/} for full documentation.
 }
 \keyword{internal}

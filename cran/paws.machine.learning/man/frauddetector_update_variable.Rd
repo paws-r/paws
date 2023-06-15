@@ -23,6 +23,6 @@ frauddetector_update_variable(
 \description{
 Updates a variable.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_variable.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_variable/} for full documentation.
 }
 \keyword{internal}

@@ -57,6 +57,6 @@ you no longer need it.}
 \description{
 Replaces the EBS-backed root volume for a \code{running} instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance.
 
-See \url{https://paws-r.github.io/docs/ec2/create_replace_root_volume_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_replace_root_volume_task/} for full documentation.
 }
 \keyword{internal}

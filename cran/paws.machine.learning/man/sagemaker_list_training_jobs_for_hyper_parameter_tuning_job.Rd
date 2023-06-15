@@ -36,6 +36,6 @@ jobs that did not return an objective metric are not listed.}
 \description{
 Gets a list of \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html}{TrainingJobSummary} objects that describe the training jobs that a hyperparameter tuning job launched.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_training_jobs_for_hyper_parameter_tuning_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_training_jobs_for_hyper_parameter_tuning_job/} for full documentation.
 }
 \keyword{internal}

@@ -44,6 +44,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Update a major or minor version of a service template.
 
-See \url{https://paws-r.github.io/docs/proton/update_service_template_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_service_template_version/} for full documentation.
 }
 \keyword{internal}

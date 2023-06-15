@@ -25,6 +25,6 @@ results.}
 \description{
 Provides a list of analysis segments for a real-time analysis session.
 
-See \url{https://paws-r.github.io/docs/connectcontactlens/list_realtime_contact_analysis_segments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcontactlens_list_realtime_contact_analysis_segments/} for full documentation.
 }
 \keyword{internal}

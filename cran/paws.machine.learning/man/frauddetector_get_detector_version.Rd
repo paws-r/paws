@@ -14,6 +14,6 @@ frauddetector_get_detector_version(detectorId, detectorVersionId)
 \description{
 Gets a particular detector version.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_detector_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_detector_version/} for full documentation.
 }
 \keyword{internal}

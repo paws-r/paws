@@ -16,6 +16,6 @@ URLs cannot contain the ARN.}
 \description{
 Deletes the content.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/delete_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_content/} for full documentation.
 }
 \keyword{internal}

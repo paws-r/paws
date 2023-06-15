@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified conversion tasks or all your conversion tasks. For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_conversion_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_conversion_tasks/} for full documentation.
 }
 \keyword{internal}

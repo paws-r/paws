@@ -15,6 +15,6 @@ workspaces_associate_ip_groups(DirectoryId, GroupIds)
 \description{
 Associates the specified IP access control group with the specified directory.
 
-See \url{https://paws-r.github.io/docs/workspaces/associate_ip_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_associate_ip_groups/} for full documentation.
 }
 \keyword{internal}

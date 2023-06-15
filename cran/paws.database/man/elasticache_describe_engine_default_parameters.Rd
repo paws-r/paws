@@ -34,6 +34,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns the default engine and system parameter information for the specified cache engine.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_engine_default_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_engine_default_parameters/} for full documentation.
 }
 \keyword{internal}

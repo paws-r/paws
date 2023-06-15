@@ -13,6 +13,6 @@ cells filter.}
 \description{
 Updates a data cell filter.
 
-See \url{https://paws-r.github.io/docs/lakeformation/update_data_cells_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_update_data_cells_filter/} for full documentation.
 }
 \keyword{internal}

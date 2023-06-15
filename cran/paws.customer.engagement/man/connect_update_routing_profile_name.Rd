@@ -25,6 +25,6 @@ characters.}
 \description{
 Updates the name and description of a routing profile. The request accepts the following data in JSON format. At least \code{Name} or \code{Description} must be provided.
 
-See \url{https://paws-r.github.io/docs/connect/update_routing_profile_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_routing_profile_name/} for full documentation.
 }
 \keyword{internal}

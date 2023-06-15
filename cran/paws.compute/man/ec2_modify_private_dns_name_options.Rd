@@ -35,6 +35,6 @@ DNS AAAA records.}
 \description{
 Modifies the options for instance hostnames for the specified instance.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_private_dns_name_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_private_dns_name_options/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ the domain. It does not include dashes or spaces.}
 \description{
 Returns a \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html}{DomainDescription} object that contains information about the requested domain.
 
-See \url{https://paws-r.github.io/docs/codeartifact/describe_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_describe_domain/} for full documentation.
 }
 \keyword{internal}

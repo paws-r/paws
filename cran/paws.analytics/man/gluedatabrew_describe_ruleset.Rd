@@ -12,6 +12,6 @@ gluedatabrew_describe_ruleset(Name)
 \description{
 Retrieves detailed information about the ruleset.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_ruleset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_ruleset/} for full documentation.
 }
 \keyword{internal}

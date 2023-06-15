@@ -13,6 +13,6 @@ route53domains_disable_domain_auto_renew(DomainName)
 \description{
 This operation disables automatic renewal of domain registration for the specified domain.
 
-See \url{https://paws-r.github.io/docs/route53domains/disable_domain_auto_renew.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_disable_domain_auto_renew/} for full documentation.
 }
 \keyword{internal}

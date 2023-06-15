@@ -13,6 +13,6 @@ macie2_get_bucket_statistics(accountId = NULL)
 \description{
 Retrieves (queries) aggregated statistical data about all the S3 buckets that Amazon Macie monitors and analyzes for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/get_bucket_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_bucket_statistics/} for full documentation.
 }
 \keyword{internal}

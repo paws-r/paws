@@ -20,6 +20,6 @@ frauddetector_get_entity_types(
 \description{
 Gets all entity types or a specific entity type if a name is specified. This is a paginated API. If you provide a null \code{maxResults}, this action retrieves a maximum of 10 records per page. If you provide a \code{maxResults}, the value must be between 5 and 10. To get the next page results, provide the pagination token from the \code{GetEntityTypesResponse} as part of your request. A null pagination token fetches the records from the beginning.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_entity_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_entity_types/} for full documentation.
 }
 \keyword{internal}

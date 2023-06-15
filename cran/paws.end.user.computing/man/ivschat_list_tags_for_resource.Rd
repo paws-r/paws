@@ -12,6 +12,6 @@ ivschat_list_tags_for_resource(resourceArn)
 \description{
 Gets information about AWS tags for the specified ARN.
 
-See \url{https://paws-r.github.io/docs/ivschat/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

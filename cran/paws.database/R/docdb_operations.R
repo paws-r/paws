@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds a source identifier to an existing event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/docdb/add_source_identifier_to_subscription.html](https://paws-r.github.io/docs/docdb/add_source_identifier_to_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_add_source_identifier_to_subscription/](https://www.paws-r-sdk.com/docs/docdb_add_source_identifier_to_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
 #' you want to add a source identifier to.
@@ -51,7 +51,7 @@ docdb_add_source_identifier_to_subscription <- function(SubscriptionName, Source
 #' @description
 #' Adds metadata tags to an Amazon DocumentDB resource. You can use these tags with cost allocation reporting to track costs that are associated with Amazon DocumentDB resources or in a `Condition` statement in an Identity and Access Management (IAM) policy for Amazon DocumentDB.
 #'
-#' See [https://paws-r.github.io/docs/docdb/add_tags_to_resource.html](https://paws-r.github.io/docs/docdb/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/docdb_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource that the tags are added to. This value is
 #' an Amazon Resource Name .
@@ -83,7 +83,7 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @description
 #' Applies a pending maintenance action to a resource (for example, to an Amazon DocumentDB instance).
 #'
-#' See [https://paws-r.github.io/docs/docdb/apply_pending_maintenance_action.html](https://paws-r.github.io/docs/docdb/apply_pending_maintenance_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_apply_pending_maintenance_action/](https://www.paws-r-sdk.com/docs/docdb_apply_pending_maintenance_action/) for full documentation.
 #'
 #' @param ResourceIdentifier &#91;required&#93; The Amazon Resource Name (ARN) of the resource that the pending
 #' maintenance action applies to.
@@ -128,7 +128,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' @description
 #' Copies the specified cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/docdb/copy_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/copy_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_copy_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/docdb_copy_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param SourceDBClusterParameterGroupIdentifier &#91;required&#93; The identifier or Amazon Resource Name (ARN) for the source cluster
 #' parameter group.
@@ -187,7 +187,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' @description
 #' Copies a snapshot of a cluster.
 #'
-#' See [https://paws-r.github.io/docs/docdb/copy_db_cluster_snapshot.html](https://paws-r.github.io/docs/docdb/copy_db_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_copy_db_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdb_copy_db_cluster_snapshot/) for full documentation.
 #'
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to copy. This parameter is not
 #' case sensitive.
@@ -299,7 +299,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @description
 #' Creates a new Amazon DocumentDB cluster.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_db_cluster.html](https://paws-r.github.io/docs/docdb/create_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_db_cluster/](https://www.paws-r-sdk.com/docs/docdb_create_db_cluster/) for full documentation.
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -437,7 +437,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #' @description
 #' Creates a new cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/create_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/docdb_create_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
@@ -475,7 +475,7 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' @description
 #' Creates a snapshot of a cluster.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_db_cluster_snapshot.html](https://paws-r.github.io/docs/docdb/create_db_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_db_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdb_create_db_cluster_snapshot/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot. This parameter is stored as a
 #' lowercase string.
@@ -524,7 +524,7 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' @description
 #' Creates a new instance.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_db_instance.html](https://paws-r.github.io/docs/docdb/create_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_db_instance/](https://www.paws-r-sdk.com/docs/docdb_create_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
@@ -614,7 +614,7 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #' @description
 #' Creates a new subnet group. subnet groups must contain at least one subnet in at least two Availability Zones in the Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_db_subnet_group.html](https://paws-r.github.io/docs/docdb/create_db_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_db_subnet_group/](https://www.paws-r-sdk.com/docs/docdb_create_db_subnet_group/) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
 #' string.
@@ -652,7 +652,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' @description
 #' Creates an Amazon DocumentDB event notification subscription. This action requires a topic Amazon Resource Name (ARN) created by using the Amazon DocumentDB console, the Amazon SNS console, or the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the Amazon SNS console.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_event_subscription.html](https://paws-r.github.io/docs/docdb/create_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_event_subscription/](https://www.paws-r-sdk.com/docs/docdb_create_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the subscription.
 #' 
@@ -720,7 +720,7 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
 #' @description
 #' Creates an Amazon DocumentDB global cluster that can span multiple multiple Amazon Web Services Regions. The global cluster contains one primary cluster with read-write capability, and up-to give read-only secondary clusters. Global clusters uses storage-based fast replication across regions with latencies less than one second, using dedicated infrastructure with no impact to your workload’s performance.
 #'
-#' See [https://paws-r.github.io/docs/docdb/create_global_cluster.html](https://paws-r.github.io/docs/docdb/create_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_create_global_cluster/](https://www.paws-r-sdk.com/docs/docdb_create_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the new global cluster.
 #' @param SourceDBClusterIdentifier The Amazon Resource Name (ARN) to use as the primary cluster of the
@@ -759,7 +759,7 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #' @description
 #' Deletes a previously provisioned cluster. When you delete a cluster, all automated backups for that cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified cluster are not deleted.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_db_cluster.html](https://paws-r.github.io/docs/docdb/delete_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster/](https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster to be deleted. This parameter
 #' isn't case sensitive.
@@ -815,7 +815,7 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' @description
 #' Deletes a specified cluster parameter group. The cluster parameter group to be deleted can't be associated with any clusters.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/delete_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group.
 #' 
@@ -852,7 +852,7 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 #' @description
 #' Deletes a cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_db_cluster_snapshot.html](https://paws-r.github.io/docs/docdb/delete_db_cluster_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster_snapshot/](https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster_snapshot/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to delete.
 #' 
@@ -884,7 +884,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @description
 #' Deletes a previously provisioned instance.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_db_instance.html](https://paws-r.github.io/docs/docdb/delete_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_db_instance/](https://www.paws-r-sdk.com/docs/docdb_delete_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier for the instance to be deleted. This parameter
 #' isn't case sensitive.
@@ -918,7 +918,7 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 #' @description
 #' Deletes a subnet group.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_db_subnet_group.html](https://paws-r.github.io/docs/docdb/delete_db_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_db_subnet_group/](https://www.paws-r-sdk.com/docs/docdb_delete_db_subnet_group/) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name of the database subnet group to delete.
 #' 
@@ -955,7 +955,7 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @description
 #' Deletes an Amazon DocumentDB event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_event_subscription.html](https://paws-r.github.io/docs/docdb/delete_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_event_subscription/](https://www.paws-r-sdk.com/docs/docdb_delete_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
 #' you want to delete.
@@ -985,7 +985,7 @@ docdb_delete_event_subscription <- function(SubscriptionName) {
 #' @description
 #' Deletes a global cluster. The primary and secondary clusters must already be detached or deleted before attempting to delete a global cluster.
 #'
-#' See [https://paws-r.github.io/docs/docdb/delete_global_cluster.html](https://paws-r.github.io/docs/docdb/delete_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_delete_global_cluster/](https://www.paws-r-sdk.com/docs/docdb_delete_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier of the global cluster being deleted.
 #'
@@ -1015,7 +1015,7 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' @description
 #' Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for this Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_certificates.html](https://paws-r.github.io/docs/docdb/describe_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_certificates/](https://www.paws-r-sdk.com/docs/docdb_describe_certificates/) for full documentation.
 #'
 #' @param CertificateIdentifier The user-supplied certificate identifier. If this parameter is
 #' specified, information for only the specified certificate is returned.
@@ -1068,7 +1068,7 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 #' @description
 #' Returns a list of `DBClusterParameterGroup` descriptions. If a `DBClusterParameterGroupName` parameter is specified, the list contains only the description of the specified cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_parameter_groups.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_parameter_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_parameter_groups/](https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_parameter_groups/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName The name of a specific cluster parameter group to return details for.
 #' 
@@ -1115,7 +1115,7 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #' @description
 #' Returns the detailed parameter list for a particular cluster parameter group.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_parameters.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_parameters/](https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_parameters/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of a specific cluster parameter group to return parameter
 #' details for.
@@ -1165,7 +1165,7 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #' @description
 #' Returns a list of cluster snapshot attribute names and values for a manual DB cluster snapshot.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshot_attributes.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshot_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_snapshot_attributes/](https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_snapshot_attributes/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to describe the attributes for.
 #'
@@ -1194,7 +1194,7 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' @description
 #' Returns information about cluster snapshots. This API operation supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshots.html](https://paws-r.github.io/docs/docdb/describe_db_cluster_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_snapshots/](https://www.paws-r-sdk.com/docs/docdb_describe_db_cluster_snapshots/) for full documentation.
 #'
 #' @param DBClusterIdentifier The ID of the cluster to retrieve the list of cluster snapshots for.
 #' This parameter can't be used with the `DBClusterSnapshotIdentifier`
@@ -1285,7 +1285,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #' @description
 #' Returns information about provisioned Amazon DocumentDB clusters. This API operation supports pagination. For certain management features such as cluster and instance lifecycle management, Amazon DocumentDB leverages operational technology that is shared with Amazon RDS and Amazon Neptune. Use the `filterName=engine,Values=docdb` filter parameter to return only Amazon DocumentDB clusters.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_clusters.html](https://paws-r.github.io/docs/docdb/describe_db_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_clusters/](https://www.paws-r-sdk.com/docs/docdb_describe_db_clusters/) for full documentation.
 #'
 #' @param DBClusterIdentifier The user-provided cluster identifier. If this parameter is specified,
 #' information from only the specific cluster is returned. This parameter
@@ -1338,7 +1338,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' @description
 #' Returns a list of the available engines.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_engine_versions.html](https://paws-r.github.io/docs/docdb/describe_db_engine_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_engine_versions/](https://www.paws-r-sdk.com/docs/docdb_describe_db_engine_versions/) for full documentation.
 #'
 #' @param Engine The database engine to return.
 #' @param EngineVersion The database engine version to return.
@@ -1397,7 +1397,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #' @description
 #' Returns information about provisioned Amazon DocumentDB instances. This API supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_instances.html](https://paws-r.github.io/docs/docdb/describe_db_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_instances/](https://www.paws-r-sdk.com/docs/docdb_describe_db_instances/) for full documentation.
 #'
 #' @param DBInstanceIdentifier The user-provided instance identifier. If this parameter is specified,
 #' information from only the specific instance is returned. This parameter
@@ -1455,7 +1455,7 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #' @description
 #' Returns a list of `DBSubnetGroup` descriptions. If a `DBSubnetGroupName` is specified, the list will contain only the descriptions of the specified `DBSubnetGroup`.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_db_subnet_groups.html](https://paws-r.github.io/docs/docdb/describe_db_subnet_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_db_subnet_groups/](https://www.paws-r-sdk.com/docs/docdb_describe_db_subnet_groups/) for full documentation.
 #'
 #' @param DBSubnetGroupName The name of the subnet group to return details for.
 #' @param Filters This parameter is not currently supported.
@@ -1497,7 +1497,7 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #' @description
 #' Returns the default engine and system parameter information for the cluster database engine.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_engine_default_cluster_parameters.html](https://paws-r.github.io/docs/docdb/describe_engine_default_cluster_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_engine_default_cluster_parameters/](https://www.paws-r-sdk.com/docs/docdb_describe_engine_default_cluster_parameters/) for full documentation.
 #'
 #' @param DBParameterGroupFamily &#91;required&#93; The name of the cluster parameter group family to return the engine
 #' parameter information for.
@@ -1540,7 +1540,7 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
 #' @description
 #' Displays a list of categories for all event source types, or, if specified, for a specified source type.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_event_categories.html](https://paws-r.github.io/docs/docdb/describe_event_categories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_event_categories/](https://www.paws-r-sdk.com/docs/docdb_describe_event_categories/) for full documentation.
 #'
 #' @param SourceType The type of source that is generating the events.
 #' 
@@ -1572,7 +1572,7 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' @description
 #' Lists all the subscription descriptions for a customer account. The description for a subscription includes `SubscriptionName`, `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`, and `Status`.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_event_subscriptions.html](https://paws-r.github.io/docs/docdb/describe_event_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_event_subscriptions/](https://www.paws-r-sdk.com/docs/docdb_describe_event_subscriptions/) for full documentation.
 #'
 #' @param SubscriptionName The name of the Amazon DocumentDB event notification subscription that
 #' you want to describe.
@@ -1615,7 +1615,7 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
 #' @description
 #' Returns events related to instances, security groups, snapshots, and DB parameter groups for the past 14 days. You can obtain events specific to a particular DB instance, security group, snapshot, or parameter group by providing the name as a parameter. By default, the events of the past hour are returned.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_events.html](https://paws-r.github.io/docs/docdb/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_events/](https://www.paws-r-sdk.com/docs/docdb_describe_events/) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events are returned. If not
 #' specified, then all sources are included in the response.
@@ -1691,7 +1691,7 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 #' @description
 #' Returns information about Amazon DocumentDB global clusters. This API supports pagination.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_global_clusters.html](https://paws-r.github.io/docs/docdb/describe_global_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_global_clusters/](https://www.paws-r-sdk.com/docs/docdb_describe_global_clusters/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier The user-supplied cluster identifier. If this parameter is specified,
 #' information from only the specific cluster is returned. This parameter
@@ -1735,7 +1735,7 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
 #' @description
 #' Returns a list of orderable instance options for the specified engine.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_orderable_db_instance_options.html](https://paws-r.github.io/docs/docdb/describe_orderable_db_instance_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_orderable_db_instance_options/](https://www.paws-r-sdk.com/docs/docdb_describe_orderable_db_instance_options/) for full documentation.
 #'
 #' @param Engine &#91;required&#93; The name of the engine to retrieve instance options for.
 #' @param EngineVersion The engine version filter value. Specify this parameter to show only the
@@ -1785,7 +1785,7 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' @description
 #' Returns a list of resources (for example, instances) that have at least one pending maintenance action.
 #'
-#' See [https://paws-r.github.io/docs/docdb/describe_pending_maintenance_actions.html](https://paws-r.github.io/docs/docdb/describe_pending_maintenance_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_describe_pending_maintenance_actions/](https://www.paws-r-sdk.com/docs/docdb_describe_pending_maintenance_actions/) for full documentation.
 #'
 #' @param ResourceIdentifier The ARN of a resource to return pending maintenance actions for.
 #' @param Filters A filter that specifies one or more resources to return pending
@@ -1837,7 +1837,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #' @description
 #' Forces a failover for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/docdb/failover_db_cluster.html](https://paws-r.github.io/docs/docdb/failover_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_failover_db_cluster/](https://www.paws-r-sdk.com/docs/docdb_failover_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier A cluster identifier to force a failover for. This parameter is not case
 #' sensitive.
@@ -1875,7 +1875,7 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #' @description
 #' Lists all tags on an Amazon DocumentDB resource.
 #'
-#' See [https://paws-r.github.io/docs/docdb/list_tags_for_resource.html](https://paws-r.github.io/docs/docdb/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/docdb_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource with tags to be listed. This value is an
 #' Amazon Resource Name (ARN).
@@ -1906,7 +1906,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @description
 #' Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_db_cluster.html](https://paws-r.github.io/docs/docdb/modify_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster/](https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
@@ -2026,7 +2026,7 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 #' @description
 #' Modifies the parameters of a cluster parameter group. To modify more than one parameter, submit a list of the following: `ParameterName`, `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be modified in a single request.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/modify_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to modify.
 #' @param Parameters &#91;required&#93; A list of parameters in the cluster parameter group to modify.
@@ -2057,7 +2057,7 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' @description
 #' Adds an attribute and values to, or removes an attribute and values from, a manual cluster snapshot.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_db_cluster_snapshot_attribute.html](https://paws-r.github.io/docs/docdb/modify_db_cluster_snapshot_attribute.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster_snapshot_attribute/](https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster_snapshot_attribute/) for full documentation.
 #'
 #' @param DBClusterSnapshotIdentifier &#91;required&#93; The identifier for the cluster snapshot to modify the attributes for.
 #' @param AttributeName &#91;required&#93; The name of the cluster snapshot attribute to modify.
@@ -2109,7 +2109,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' @description
 #' Modifies settings for an instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_db_instance.html](https://paws-r.github.io/docs/docdb/modify_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_db_instance/](https://www.paws-r-sdk.com/docs/docdb_modify_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This value is stored as a lowercase string.
 #' 
@@ -2216,7 +2216,7 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #' @description
 #' Modifies an existing subnet group. subnet groups must contain at least one subnet in at least two Availability Zones in the Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_db_subnet_group.html](https://paws-r.github.io/docs/docdb/modify_db_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_db_subnet_group/](https://www.paws-r-sdk.com/docs/docdb_modify_db_subnet_group/) for full documentation.
 #'
 #' @param DBSubnetGroupName &#91;required&#93; The name for the subnet group. This value is stored as a lowercase
 #' string. You can't modify the default subnet group.
@@ -2253,7 +2253,7 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' @description
 #' Modifies an existing Amazon DocumentDB event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_event_subscription.html](https://paws-r.github.io/docs/docdb/modify_event_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_event_subscription/](https://www.paws-r-sdk.com/docs/docdb_modify_event_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription.
 #' @param SnsTopicArn The Amazon Resource Name (ARN) of the SNS topic created for event
@@ -2294,7 +2294,7 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
 #' @description
 #' Modify a setting for an Amazon DocumentDB global cluster. You can change one or more configuration parameters (for example: deletion protection), or the global cluster identifier by specifying these parameters and the new values in the request.
 #'
-#' See [https://paws-r.github.io/docs/docdb/modify_global_cluster.html](https://paws-r.github.io/docs/docdb/modify_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_modify_global_cluster/](https://www.paws-r-sdk.com/docs/docdb_modify_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The identifier for the global cluster being modified. This parameter
 #' isn't case-sensitive.
@@ -2340,7 +2340,7 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
 #' @description
 #' You might need to reboot your instance, usually for maintenance reasons. For example, if you make certain changes, or if you change the cluster parameter group that is associated with the instance, you must reboot the instance for the changes to take effect.
 #'
-#' See [https://paws-r.github.io/docs/docdb/reboot_db_instance.html](https://paws-r.github.io/docs/docdb/reboot_db_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_reboot_db_instance/](https://www.paws-r-sdk.com/docs/docdb_reboot_db_instance/) for full documentation.
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
@@ -2377,7 +2377,7 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
 #' @description
 #' Detaches an Amazon DocumentDB secondary cluster from a global cluster. The cluster becomes a standalone cluster with read-write capability instead of being read-only and receiving data from a primary in a different region.
 #'
-#' See [https://paws-r.github.io/docs/docdb/remove_from_global_cluster.html](https://paws-r.github.io/docs/docdb/remove_from_global_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_remove_from_global_cluster/](https://www.paws-r-sdk.com/docs/docdb_remove_from_global_cluster/) for full documentation.
 #'
 #' @param GlobalClusterIdentifier &#91;required&#93; The cluster identifier to detach from the Amazon DocumentDB global
 #' cluster.
@@ -2410,7 +2410,7 @@ docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterI
 #' @description
 #' Removes a source identifier from an existing Amazon DocumentDB event notification subscription.
 #'
-#' See [https://paws-r.github.io/docs/docdb/remove_source_identifier_from_subscription.html](https://paws-r.github.io/docs/docdb/remove_source_identifier_from_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_remove_source_identifier_from_subscription/](https://www.paws-r-sdk.com/docs/docdb_remove_source_identifier_from_subscription/) for full documentation.
 #'
 #' @param SubscriptionName &#91;required&#93; The name of the Amazon DocumentDB event notification subscription that
 #' you want to remove a source identifier from.
@@ -2442,7 +2442,7 @@ docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, S
 #' @description
 #' Removes metadata tags from an Amazon DocumentDB resource.
 #'
-#' See [https://paws-r.github.io/docs/docdb/remove_tags_from_resource.html](https://paws-r.github.io/docs/docdb/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/docdb_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource that the tags are removed from. This
 #' value is an Amazon Resource Name (ARN).
@@ -2474,7 +2474,7 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @description
 #' Modifies the parameters of a cluster parameter group to the default value. To reset specific parameters, submit a list of the following: `ParameterName` and `ApplyMethod`. To reset the entire cluster parameter group, specify the `DBClusterParameterGroupName` and `ResetAllParameters` parameters.
 #'
-#' See [https://paws-r.github.io/docs/docdb/reset_db_cluster_parameter_group.html](https://paws-r.github.io/docs/docdb/reset_db_cluster_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_reset_db_cluster_parameter_group/](https://www.paws-r-sdk.com/docs/docdb_reset_db_cluster_parameter_group/) for full documentation.
 #'
 #' @param DBClusterParameterGroupName &#91;required&#93; The name of the cluster parameter group to reset.
 #' @param ResetAllParameters A value that is set to `true` to reset all parameters in the cluster
@@ -2510,7 +2510,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @description
 #' Creates a new cluster from a snapshot or cluster snapshot.
 #'
-#' See [https://paws-r.github.io/docs/docdb/restore_db_cluster_from_snapshot.html](https://paws-r.github.io/docs/docdb/restore_db_cluster_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_restore_db_cluster_from_snapshot/](https://www.paws-r-sdk.com/docs/docdb_restore_db_cluster_from_snapshot/) for full documentation.
 #'
 #' @param AvailabilityZones Provides the list of Amazon EC2 Availability Zones that instances in the
 #' restored DB cluster can be created in.
@@ -2615,7 +2615,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' @description
 #' Restores a cluster to an arbitrary point in time. Users can restore to any point in time before `LatestRestorableTime` for up to `BackupRetentionPeriod` days. The target cluster is created from the source cluster with the same configuration as the original cluster, except that the new cluster is created with the default security group.
 #'
-#' See [https://paws-r.github.io/docs/docdb/restore_db_cluster_to_point_in_time.html](https://paws-r.github.io/docs/docdb/restore_db_cluster_to_point_in_time.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_restore_db_cluster_to_point_in_time/](https://www.paws-r-sdk.com/docs/docdb_restore_db_cluster_to_point_in_time/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The name of the new cluster to be created.
 #' 
@@ -2740,7 +2740,7 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
 #' @description
 #' Restarts the stopped cluster that is specified by `DBClusterIdentifier`. For more information, see [Stopping and Starting an Amazon DocumentDB Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
 #'
-#' See [https://paws-r.github.io/docs/docdb/start_db_cluster.html](https://paws-r.github.io/docs/docdb/start_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_start_db_cluster/](https://www.paws-r-sdk.com/docs/docdb_start_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster to restart. Example:
 #' `docdb-2019-05-28-15-24-52`
@@ -2770,7 +2770,7 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #' @description
 #' Stops the running cluster that is specified by `DBClusterIdentifier`. The cluster must be in the *available* state. For more information, see [Stopping and Starting an Amazon DocumentDB Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
 #'
-#' See [https://paws-r.github.io/docs/docdb/stop_db_cluster.html](https://paws-r.github.io/docs/docdb/stop_db_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/docdb_stop_db_cluster/](https://www.paws-r-sdk.com/docs/docdb_stop_db_cluster/) for full documentation.
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster to stop. Example:
 #' `docdb-2019-05-28-15-24-52`

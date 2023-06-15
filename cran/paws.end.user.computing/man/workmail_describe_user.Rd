@@ -14,6 +14,6 @@ workmail_describe_user(OrganizationId, UserId)
 \description{
 Provides information regarding the user.
 
-See \url{https://paws-r.github.io/docs/workmail/describe_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_describe_user/} for full documentation.
 }
 \keyword{internal}

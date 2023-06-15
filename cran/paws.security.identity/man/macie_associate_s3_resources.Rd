@@ -17,6 +17,6 @@ Macie Classic for monitoring and data classification.}
 \description{
 (Discontinued) Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification. If \code{memberAccountId} isn't specified, the action associates specified S3 resources with Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action associates specified S3 resources with Macie Classic for the specified member account.
 
-See \url{https://paws-r.github.io/docs/macie/associate_s3_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_associate_s3_resources/} for full documentation.
 }
 \keyword{internal}

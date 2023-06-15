@@ -24,6 +24,6 @@ Services administrator credentials to access the API.}
 \description{
 Deletes a specific version of a document.
 
-See \url{https://paws-r.github.io/docs/workdocs/delete_document_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_delete_document_version/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Unassigns secondary private IPv4 addresses from a private NAT gateway. You cannot unassign your primary private IP. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary}{Edit secondary IP address associations} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/unassign_private_nat_gateway_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_unassign_private_nat_gateway_address/} for full documentation.
 }
 \keyword{internal}

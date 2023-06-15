@@ -16,6 +16,6 @@ action. The ARN value must have the form
 \description{
 Deletes the resource-based policy attached to a private CA. Deletion will remove any access that the policy has granted. If there is no policy attached to the private CA, this action will return successful.
 
-See \url{https://paws-r.github.io/docs/acmpca/delete_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_delete_policy/} for full documentation.
 }
 \keyword{internal}

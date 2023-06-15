@@ -26,6 +26,6 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a restart.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/rebuild_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_rebuild_environment/} for full documentation.
 }
 \keyword{internal}

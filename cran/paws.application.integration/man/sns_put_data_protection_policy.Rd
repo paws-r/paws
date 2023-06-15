@@ -23,6 +23,6 @@ Length Constraints: Maximum length of 30,720.}
 \description{
 Adds or updates an inline policy document that is stored in the specified Amazon SNS topic.
 
-See \url{https://paws-r.github.io/docs/sns/put_data_protection_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_put_data_protection_policy/} for full documentation.
 }
 \keyword{internal}

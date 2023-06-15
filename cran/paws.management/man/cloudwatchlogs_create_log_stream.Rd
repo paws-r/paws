@@ -14,6 +14,6 @@ cloudwatchlogs_create_log_stream(logGroupName, logStreamName)
 \description{
 Creates a log stream for the specified log group. A log stream is a sequence of log events that originate from a single source, such as an application instance or a resource that is being monitored.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/create_log_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_stream/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ stream.}
 \description{
 Describes the specified delivery stream and its status. For example, after your delivery stream is created, call \code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}} to see whether the delivery stream is \code{ACTIVE} and therefore ready for data to be sent to it.
 
-See \url{https://paws-r.github.io/docs/firehose/describe_delivery_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_describe_delivery_stream/} for full documentation.
 }
 \keyword{internal}

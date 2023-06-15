@@ -19,6 +19,6 @@ beginning.}
 \description{
 Returns a paginated list of CIDR collections in the Amazon Web Services account (metadata only).
 
-See \url{https://paws-r.github.io/docs/route53/list_cidr_collections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_cidr_collections/} for full documentation.
 }
 \keyword{internal}

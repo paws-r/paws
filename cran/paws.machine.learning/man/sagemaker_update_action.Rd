@@ -26,6 +26,6 @@ sagemaker_update_action(
 \description{
 Updates an action.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_action/} for full documentation.
 }
 \keyword{internal}

@@ -69,6 +69,6 @@ from the IANA Time Zone Database (such as \code{Etc/GMT+9} or
 \description{
 Creates or updates a scheduled scaling action for an Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/put_scheduled_update_group_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_put_scheduled_update_group_action/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ iam_delete_account_password_policy()
 \description{
 Deletes the password policy for the Amazon Web Services account. There are no parameters.
 
-See \url{https://paws-r.github.io/docs/iam/delete_account_password_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_account_password_policy/} for full documentation.
 }
 \keyword{internal}

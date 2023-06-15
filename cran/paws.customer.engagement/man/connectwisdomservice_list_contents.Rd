@@ -23,6 +23,6 @@ results.}
 \description{
 Lists the content.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/list_contents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_list_contents/} for full documentation.
 }
 \keyword{internal}

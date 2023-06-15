@@ -10,7 +10,8 @@ wellarchitected_list_lens_review_improvements(
   PillarId = NULL,
   MilestoneNumber = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  QuestionPriority = NULL
 )
 }
 \arguments{
@@ -25,10 +26,12 @@ wellarchitected_list_lens_review_improvements(
 \item{NextToken}{}
 
 \item{MaxResults}{The maximum number of results to return for this request.}
+
+\item{QuestionPriority}{The priority of the question.}
 }
 \description{
 List lens review improvements.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_lens_review_improvements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_review_improvements/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ the theme.}
 \description{
 Deletes a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_theme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_theme/} for full documentation.
 }
 \keyword{internal}

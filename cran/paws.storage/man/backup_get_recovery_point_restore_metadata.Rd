@@ -20,6 +20,6 @@ for example,
 \description{
 Returns a set of metadata key-value pairs that were used to create the backup.
 
-See \url{https://paws-r.github.io/docs/backup/get_recovery_point_restore_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_recovery_point_restore_metadata/} for full documentation.
 }
 \keyword{internal}

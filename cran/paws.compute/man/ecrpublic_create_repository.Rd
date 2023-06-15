@@ -24,6 +24,6 @@ length of 128 characters, and tag values can have a maximum length of
 \description{
 Creates a repository in a public registry. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR repositories} in the \emph{Amazon Elastic Container Registry User Guide}.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/create_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_create_repository/} for full documentation.
 }
 \keyword{internal}

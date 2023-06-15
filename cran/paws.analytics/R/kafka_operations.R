@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates one or more Scram Secrets with an Amazon MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/batch_associate_scram_secret.html](https://paws-r.github.io/docs/kafka/batch_associate_scram_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_batch_associate_scram_secret/](https://www.paws-r-sdk.com/docs/kafka_batch_associate_scram_secret/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster to be updated.
 #' @param SecretArnList &#91;required&#93; List of AWS Secrets Manager secret ARNs.
@@ -38,7 +38,7 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @description
 #' Creates a new MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/create_cluster.html](https://paws-r.github.io/docs/kafka/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_cluster/](https://www.paws-r-sdk.com/docs/kafka_create_cluster/) for full documentation.
 #'
 #' @param BrokerNodeGroupInfo &#91;required&#93; Information about the broker nodes in the cluster.
 #' @param ClientAuthentication Includes all client authentication related information.
@@ -81,7 +81,7 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #' @description
 #' Creates a new MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/create_cluster_v2.html](https://paws-r.github.io/docs/kafka/create_cluster_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_cluster_v2/](https://www.paws-r-sdk.com/docs/kafka_create_cluster_v2/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the cluster.
 #' @param Tags A map of tags that you want the cluster to have.
@@ -113,7 +113,7 @@ kafka_create_cluster_v2 <- function(ClusterName, Tags = NULL, Provisioned = NULL
 #' @description
 #' Creates a new MSK configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafka/create_configuration.html](https://paws-r.github.io/docs/kafka/create_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_configuration/](https://www.paws-r-sdk.com/docs/kafka_create_configuration/) for full documentation.
 #'
 #' @param Description The description of the configuration.
 #' @param KafkaVersions The versions of Apache Kafka with which you can use this MSK
@@ -149,7 +149,7 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #' @description
 #' Creates a new MSK VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/kafka/create_vpc_connection.html](https://paws-r.github.io/docs/kafka/create_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_vpc_connection/](https://www.paws-r-sdk.com/docs/kafka_create_vpc_connection/) for full documentation.
 #'
 #' @param TargetClusterArn &#91;required&#93; The cluster Amazon Resource Name (ARN) for the VPC connection.
 #' @param Authentication &#91;required&#93; The authentication type of VPC connection.
@@ -184,7 +184,7 @@ kafka_create_vpc_connection <- function(TargetClusterArn, Authentication, VpcId,
 #' @description
 #' Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.
 #'
-#' See [https://paws-r.github.io/docs/kafka/delete_cluster.html](https://paws-r.github.io/docs/kafka/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_cluster/](https://www.paws-r-sdk.com/docs/kafka_delete_cluster/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param CurrentVersion The current version of the MSK cluster.
@@ -215,7 +215,7 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 #' @description
 #' Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request.
 #'
-#' See [https://paws-r.github.io/docs/kafka/delete_cluster_policy.html](https://paws-r.github.io/docs/kafka/delete_cluster_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_cluster_policy/](https://www.paws-r-sdk.com/docs/kafka_delete_cluster_policy/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
 #'
@@ -244,7 +244,7 @@ kafka_delete_cluster_policy <- function(ClusterArn) {
 #' @description
 #' Deletes an MSK Configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafka/delete_configuration.html](https://paws-r.github.io/docs/kafka/delete_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_configuration/](https://www.paws-r-sdk.com/docs/kafka_delete_configuration/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an MSK
 #' configuration.
@@ -274,7 +274,7 @@ kafka_delete_configuration <- function(Arn) {
 #' @description
 #' Deletes a MSK VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/kafka/delete_vpc_connection.html](https://paws-r.github.io/docs/kafka/delete_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_vpc_connection/](https://www.paws-r-sdk.com/docs/kafka_delete_vpc_connection/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an MSK VPC
 #' connection.
@@ -305,7 +305,7 @@ kafka_delete_vpc_connection <- function(Arn) {
 #' @description
 #' Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.
 #'
-#' See [https://paws-r.github.io/docs/kafka/describe_cluster.html](https://paws-r.github.io/docs/kafka/describe_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_cluster/](https://www.paws-r-sdk.com/docs/kafka_describe_cluster/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #'
@@ -335,7 +335,7 @@ kafka_describe_cluster <- function(ClusterArn) {
 #' @description
 #' Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.
 #'
-#' See [https://paws-r.github.io/docs/kafka/describe_cluster_v2.html](https://paws-r.github.io/docs/kafka/describe_cluster_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_cluster_v2/](https://www.paws-r-sdk.com/docs/kafka_describe_cluster_v2/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #'
@@ -364,7 +364,7 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #' @description
 #' Returns a description of the cluster operation specified by the ARN.
 #'
-#' See [https://paws-r.github.io/docs/kafka/describe_cluster_operation.html](https://paws-r.github.io/docs/kafka/describe_cluster_operation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_cluster_operation/](https://www.paws-r-sdk.com/docs/kafka_describe_cluster_operation/) for full documentation.
 #'
 #' @param ClusterOperationArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the MSK cluster
 #' operation.
@@ -394,7 +394,7 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #' @description
 #' Returns a description of this MSK configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafka/describe_configuration.html](https://paws-r.github.io/docs/kafka/describe_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_configuration/](https://www.paws-r-sdk.com/docs/kafka_describe_configuration/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an MSK
 #' configuration and all of its revisions.
@@ -424,7 +424,7 @@ kafka_describe_configuration <- function(Arn) {
 #' @description
 #' Returns a description of this revision of the configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafka/describe_configuration_revision.html](https://paws-r.github.io/docs/kafka/describe_configuration_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_configuration_revision/](https://www.paws-r-sdk.com/docs/kafka_describe_configuration_revision/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an MSK
 #' configuration and all of its revisions.
@@ -455,7 +455,7 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #' @description
 #' Returns a description of this MSK VPC connection.
 #'
-#' See [https://paws-r.github.io/docs/kafka/describe_vpc_connection.html](https://paws-r.github.io/docs/kafka/describe_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_vpc_connection/](https://www.paws-r-sdk.com/docs/kafka_describe_vpc_connection/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies a MSK VPC
 #' connection.
@@ -485,7 +485,7 @@ kafka_describe_vpc_connection <- function(Arn) {
 #' @description
 #' Disassociates one or more Scram Secrets from an Amazon MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/batch_disassociate_scram_secret.html](https://paws-r.github.io/docs/kafka/batch_disassociate_scram_secret.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_batch_disassociate_scram_secret/](https://www.paws-r-sdk.com/docs/kafka_batch_disassociate_scram_secret/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster to be updated.
 #' @param SecretArnList &#91;required&#93; List of AWS Secrets Manager secret ARNs.
@@ -515,7 +515,7 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @description
 #' A list of brokers that a client application can use to bootstrap.
 #'
-#' See [https://paws-r.github.io/docs/kafka/get_bootstrap_brokers.html](https://paws-r.github.io/docs/kafka/get_bootstrap_brokers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_get_bootstrap_brokers/](https://www.paws-r-sdk.com/docs/kafka_get_bootstrap_brokers/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #'
@@ -544,7 +544,7 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
 #' @description
 #' Gets the Apache Kafka versions to which you can update the MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/get_compatible_kafka_versions.html](https://paws-r.github.io/docs/kafka/get_compatible_kafka_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_get_compatible_kafka_versions/](https://www.paws-r-sdk.com/docs/kafka_get_compatible_kafka_versions/) for full documentation.
 #'
 #' @param ClusterArn The Amazon Resource Name (ARN) of the cluster check.
 #'
@@ -574,7 +574,7 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #' @description
 #' Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request.
 #'
-#' See [https://paws-r.github.io/docs/kafka/get_cluster_policy.html](https://paws-r.github.io/docs/kafka/get_cluster_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_get_cluster_policy/](https://www.paws-r-sdk.com/docs/kafka_get_cluster_policy/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
 #'
@@ -604,7 +604,7 @@ kafka_get_cluster_policy <- function(ClusterArn) {
 #' @description
 #' Returns a list of all the operations that have been performed on the specified MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_cluster_operations.html](https://paws-r.github.io/docs/kafka/list_cluster_operations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_cluster_operations/](https://www.paws-r-sdk.com/docs/kafka_list_cluster_operations/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param MaxResults The maximum number of results to return in the response. If there are
@@ -638,7 +638,7 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #' @description
 #' Returns a list of all the MSK clusters in the current Region.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_clusters.html](https://paws-r.github.io/docs/kafka/list_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_clusters/](https://www.paws-r-sdk.com/docs/kafka_list_clusters/) for full documentation.
 #'
 #' @param ClusterNameFilter Specify a prefix of the name of the clusters that you want to list. The
 #' service lists all the clusters whose names start with this prefix.
@@ -673,7 +673,7 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #' @description
 #' Returns a list of all the MSK clusters in the current Region.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_clusters_v2.html](https://paws-r.github.io/docs/kafka/list_clusters_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_clusters_v2/](https://www.paws-r-sdk.com/docs/kafka_list_clusters_v2/) for full documentation.
 #'
 #' @param ClusterNameFilter Specify a prefix of the names of the clusters that you want to list. The
 #' service lists all the clusters whose names start with this prefix.
@@ -709,7 +709,7 @@ kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter =
 #' @description
 #' Returns a list of all the MSK configurations in this Region.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_configuration_revisions.html](https://paws-r.github.io/docs/kafka/list_configuration_revisions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_configuration_revisions/](https://www.paws-r-sdk.com/docs/kafka_list_configuration_revisions/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an MSK
 #' configuration and all of its revisions.
@@ -744,7 +744,7 @@ kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken
 #' @description
 #' Returns a list of all the MSK configurations in this Region.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_configurations.html](https://paws-r.github.io/docs/kafka/list_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_configurations/](https://www.paws-r-sdk.com/docs/kafka_list_configurations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in the response. If there are
 #' more results, the response includes a NextToken parameter.
@@ -777,7 +777,7 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of Apache Kafka versions.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_kafka_versions.html](https://paws-r.github.io/docs/kafka/list_kafka_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_kafka_versions/](https://www.paws-r-sdk.com/docs/kafka_list_kafka_versions/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in the response. If there are
 #' more results, the response includes a NextToken parameter.
@@ -810,7 +810,7 @@ kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of the broker nodes in the cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_nodes.html](https://paws-r.github.io/docs/kafka/list_nodes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_nodes/](https://www.paws-r-sdk.com/docs/kafka_list_nodes/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param MaxResults The maximum number of results to return in the response. If there are
@@ -845,7 +845,7 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of the Scram Secrets associated with an Amazon MSK cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_scram_secrets.html](https://paws-r.github.io/docs/kafka/list_scram_secrets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_scram_secrets/](https://www.paws-r-sdk.com/docs/kafka_list_scram_secrets/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The arn of the cluster.
 #' @param MaxResults The maxResults of the query.
@@ -876,7 +876,7 @@ kafka_list_scram_secrets <- function(ClusterArn, MaxResults = NULL, NextToken = 
 #' @description
 #' Returns a list of the tags associated with the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_tags_for_resource.html](https://paws-r.github.io/docs/kafka/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kafka_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the resource
 #' that's associated with the tags.
@@ -906,7 +906,7 @@ kafka_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Returns a list of all the VPC connections in this Region.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_client_vpc_connections.html](https://paws-r.github.io/docs/kafka/list_client_vpc_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_client_vpc_connections/](https://www.paws-r-sdk.com/docs/kafka_list_client_vpc_connections/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
 #' @param MaxResults The maximum number of results to return in the response. If there are
@@ -940,7 +940,7 @@ kafka_list_client_vpc_connections <- function(ClusterArn, MaxResults = NULL, Nex
 #' @description
 #' Returns a list of all the VPC connections in this Region.
 #'
-#' See [https://paws-r.github.io/docs/kafka/list_vpc_connections.html](https://paws-r.github.io/docs/kafka/list_vpc_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_vpc_connections/](https://www.paws-r-sdk.com/docs/kafka_list_vpc_connections/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in the response. If there are
 #' more results, the response includes a NextToken parameter.
@@ -973,7 +973,7 @@ kafka_list_vpc_connections <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns empty response.
 #'
-#' See [https://paws-r.github.io/docs/kafka/reject_client_vpc_connection.html](https://paws-r.github.io/docs/kafka/reject_client_vpc_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_reject_client_vpc_connection/](https://www.paws-r-sdk.com/docs/kafka_reject_client_vpc_connection/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
 #' @param VpcConnectionArn &#91;required&#93; The VPC connection ARN.
@@ -1004,7 +1004,7 @@ kafka_reject_client_vpc_connection <- function(ClusterArn, VpcConnectionArn) {
 #' @description
 #' Creates or updates the MSK cluster policy specified by the cluster Amazon Resource Name (ARN) in the request.
 #'
-#' See [https://paws-r.github.io/docs/kafka/put_cluster_policy.html](https://paws-r.github.io/docs/kafka/put_cluster_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_put_cluster_policy/](https://www.paws-r-sdk.com/docs/kafka_put_cluster_policy/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster.
 #' @param CurrentVersion The policy version.
@@ -1035,7 +1035,7 @@ kafka_put_cluster_policy <- function(ClusterArn, CurrentVersion = NULL, Policy) 
 #' @description
 #' Reboots brokers.
 #'
-#' See [https://paws-r.github.io/docs/kafka/reboot_broker.html](https://paws-r.github.io/docs/kafka/reboot_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_reboot_broker/](https://www.paws-r-sdk.com/docs/kafka_reboot_broker/) for full documentation.
 #'
 #' @param BrokerIds &#91;required&#93; The list of broker IDs to be rebooted. The reboot-broker operation
 #' supports rebooting one broker at a time.
@@ -1066,7 +1066,7 @@ kafka_reboot_broker <- function(BrokerIds, ClusterArn) {
 #' @description
 #' Adds tags to the specified MSK resource.
 #'
-#' See [https://paws-r.github.io/docs/kafka/tag_resource.html](https://paws-r.github.io/docs/kafka/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_tag_resource/](https://www.paws-r-sdk.com/docs/kafka_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the resource
 #' that's associated with the tags.
@@ -1097,7 +1097,7 @@ kafka_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the tags associated with the keys that are provided in the query.
 #'
-#' See [https://paws-r.github.io/docs/kafka/untag_resource.html](https://paws-r.github.io/docs/kafka/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_untag_resource/](https://www.paws-r-sdk.com/docs/kafka_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the resource
 #' that's associated with the tags.
@@ -1142,7 +1142,7 @@ kafka_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the number of broker nodes in the cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_broker_count.html](https://paws-r.github.io/docs/kafka/update_broker_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_broker_count/](https://www.paws-r-sdk.com/docs/kafka_update_broker_count/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param CurrentVersion &#91;required&#93; The version of cluster to update from. A successful operation will then
@@ -1175,7 +1175,7 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
 #' @description
 #' Updates EC2 instance type.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_broker_type.html](https://paws-r.github.io/docs/kafka/update_broker_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_broker_type/](https://www.paws-r-sdk.com/docs/kafka_update_broker_type/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param CurrentVersion &#91;required&#93; The cluster version that you want to change. After this operation
@@ -1208,7 +1208,7 @@ kafka_update_broker_type <- function(ClusterArn, CurrentVersion, TargetInstanceT
 #' @description
 #' Updates the EBS storage associated with MSK brokers.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_broker_storage.html](https://paws-r.github.io/docs/kafka/update_broker_storage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_broker_storage/](https://www.paws-r-sdk.com/docs/kafka_update_broker_storage/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param CurrentVersion &#91;required&#93; The version of cluster to update from. A successful operation will then
@@ -1241,7 +1241,7 @@ kafka_update_broker_storage <- function(ClusterArn, CurrentVersion, TargetBroker
 #' @description
 #' Updates an MSK configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_configuration.html](https://paws-r.github.io/docs/kafka/update_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_configuration/](https://www.paws-r-sdk.com/docs/kafka_update_configuration/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the configuration.
 #' @param Description The description of the configuration revision.
@@ -1275,7 +1275,7 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #' @description
 #' Updates the cluster's connectivity configuration.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_connectivity.html](https://paws-r.github.io/docs/kafka/update_connectivity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_connectivity/](https://www.paws-r-sdk.com/docs/kafka_update_connectivity/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the configuration.
 #' @param ConnectivityInfo &#91;required&#93; Information about the broker access configuration.
@@ -1309,7 +1309,7 @@ kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersi
 #' @description
 #' Updates the cluster with the configuration that is specified in the request body.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_cluster_configuration.html](https://paws-r.github.io/docs/kafka/update_cluster_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_cluster_configuration/](https://www.paws-r-sdk.com/docs/kafka_update_cluster_configuration/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param ConfigurationInfo &#91;required&#93; Represents the configuration that you want MSK to use for the brokers in
@@ -1341,7 +1341,7 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 #' @description
 #' Updates the Apache Kafka version for the cluster.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_cluster_kafka_version.html](https://paws-r.github.io/docs/kafka/update_cluster_kafka_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_cluster_kafka_version/](https://www.paws-r-sdk.com/docs/kafka_update_cluster_kafka_version/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster to be updated.
 #' @param ConfigurationInfo The custom configuration that should be applied on the new version of
@@ -1374,7 +1374,7 @@ kafka_update_cluster_kafka_version <- function(ClusterArn, ConfigurationInfo = N
 #' @description
 #' Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_monitoring.html](https://paws-r.github.io/docs/kafka/update_monitoring.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_monitoring/](https://www.paws-r-sdk.com/docs/kafka_update_monitoring/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 #' @param CurrentVersion &#91;required&#93; The version of the MSK cluster to update. Cluster versions aren't simple
@@ -1410,7 +1410,7 @@ kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitori
 #' @description
 #' Updates the security settings for the cluster. You can use this operation to specify encryption and authentication on existing clusters.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_security.html](https://paws-r.github.io/docs/kafka/update_security.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_security/](https://www.paws-r-sdk.com/docs/kafka_update_security/) for full documentation.
 #'
 #' @param ClientAuthentication Includes all client authentication related information.
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies the cluster.
@@ -1445,7 +1445,7 @@ kafka_update_security <- function(ClientAuthentication = NULL, ClusterArn, Curre
 #' @description
 #' Updates cluster broker volume size (or) sets cluster storage mode to TIERED.
 #'
-#' See [https://paws-r.github.io/docs/kafka/update_storage.html](https://paws-r.github.io/docs/kafka/update_storage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_storage/](https://www.paws-r-sdk.com/docs/kafka_update_storage/) for full documentation.
 #'
 #' @param ClusterArn &#91;required&#93; The Amazon Resource Name (ARN) of the cluster to be updated.
 #' @param CurrentVersion &#91;required&#93; The version of cluster to update from. A successful operation will then

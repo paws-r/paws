@@ -21,6 +21,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates the configuration settings for the specified quick connect.
 
-See \url{https://paws-r.github.io/docs/connect/update_quick_connect_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_quick_connect_config/} for full documentation.
 }
 \keyword{internal}

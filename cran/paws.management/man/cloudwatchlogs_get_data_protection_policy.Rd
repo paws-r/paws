@@ -13,6 +13,6 @@ policy that you want to see.}
 \description{
 Returns information about a log group data protection policy.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_data_protection_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_data_protection_policy/} for full documentation.
 }
 \keyword{internal}

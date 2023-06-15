@@ -37,6 +37,6 @@ describe.}
 \description{
 Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_configuration_options/} for full documentation.
 }
 \keyword{internal}

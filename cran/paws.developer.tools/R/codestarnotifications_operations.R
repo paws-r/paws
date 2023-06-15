@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a notification rule for a resource. The rule specifies the events you want notifications about and the targets (such as Chatbot topics or Chatbot clients configured for Slack) where you want to receive them.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/create_notification_rule.html](https://paws-r.github.io/docs/codestarnotifications/create_notification_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_create_notification_rule/](https://www.paws-r-sdk.com/docs/codestarnotifications_create_notification_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the notification rule. Notification rule names must be
 #' unique in your Amazon Web Services account.
@@ -66,7 +66,7 @@ codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, R
 #' @description
 #' Deletes a notification rule for a resource.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/delete_notification_rule.html](https://paws-r.github.io/docs/codestarnotifications/delete_notification_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_delete_notification_rule/](https://www.paws-r-sdk.com/docs/codestarnotifications_delete_notification_rule/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule you want to
 #' delete.
@@ -96,7 +96,7 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
 #' @description
 #' Deletes a specified target for notifications.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/delete_target.html](https://paws-r.github.io/docs/codestarnotifications/delete_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_delete_target/](https://www.paws-r-sdk.com/docs/codestarnotifications_delete_target/) for full documentation.
 #'
 #' @param TargetAddress &#91;required&#93; The Amazon Resource Name (ARN) of the Chatbot topic or Chatbot client to
 #' delete.
@@ -130,7 +130,7 @@ codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeA
 #' @description
 #' Returns information about a specified notification rule.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/describe_notification_rule.html](https://paws-r.github.io/docs/codestarnotifications/describe_notification_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_describe_notification_rule/](https://www.paws-r-sdk.com/docs/codestarnotifications_describe_notification_rule/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
 #'
@@ -160,7 +160,7 @@ codestarnotifications_describe_notification_rule <- function(Arn) {
 #' @description
 #' Returns information about the event types available for configuring notifications.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/list_event_types.html](https://paws-r.github.io/docs/codestarnotifications/list_event_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_list_event_types/](https://www.paws-r-sdk.com/docs/codestarnotifications_list_event_types/) for full documentation.
 #'
 #' @param Filters The filters to use to return information by service or resource type.
 #' @param NextToken An enumeration token that, when provided in a request, returns the next
@@ -195,7 +195,7 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
 #' @description
 #' Returns a list of the notification rules for an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/list_notification_rules.html](https://paws-r.github.io/docs/codestarnotifications/list_notification_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_list_notification_rules/](https://www.paws-r-sdk.com/docs/codestarnotifications_list_notification_rules/) for full documentation.
 #'
 #' @param Filters The filters to use to return information by service or resource type.
 #' For valid values, see ListNotificationRulesFilter.
@@ -233,7 +233,7 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
 #' @description
 #' Returns a list of the tags associated with a notification rule.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/list_tags_for_resource.html](https://paws-r.github.io/docs/codestarnotifications/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codestarnotifications_list_tags_for_resource/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) for the notification rule.
 #'
@@ -263,7 +263,7 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
 #' @description
 #' Returns a list of the notification rule targets for an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/list_targets.html](https://paws-r.github.io/docs/codestarnotifications/list_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_list_targets/](https://www.paws-r-sdk.com/docs/codestarnotifications_list_targets/) for full documentation.
 #'
 #' @param Filters The filters to use to return information by service or resource type.
 #' Valid filters include target type, target address, and target status.
@@ -303,7 +303,7 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
 #' @description
 #' Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/subscribe.html](https://paws-r.github.io/docs/codestarnotifications/subscribe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_subscribe/](https://www.paws-r-sdk.com/docs/codestarnotifications_subscribe/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule for which you
 #' want to create the association.
@@ -336,7 +336,7 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
 #' @description
 #' Associates a set of provided tags with a notification rule.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/tag_resource.html](https://paws-r.github.io/docs/codestarnotifications/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_tag_resource/](https://www.paws-r-sdk.com/docs/codestarnotifications_tag_resource/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule to tag.
 #' @param Tags &#91;required&#93; The list of tags to associate with the resource. Tag key names cannot
@@ -369,7 +369,7 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
 #' @description
 #' Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/unsubscribe.html](https://paws-r.github.io/docs/codestarnotifications/unsubscribe.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_unsubscribe/](https://www.paws-r-sdk.com/docs/codestarnotifications_unsubscribe/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
 #' @param TargetAddress &#91;required&#93; The ARN of the Chatbot topic to unsubscribe from the notification rule.
@@ -400,7 +400,7 @@ codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
 #' @description
 #' Removes the association between one or more provided tags and a notification rule.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/untag_resource.html](https://paws-r.github.io/docs/codestarnotifications/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_untag_resource/](https://www.paws-r-sdk.com/docs/codestarnotifications_untag_resource/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule from which to
 #' remove the tags.
@@ -431,7 +431,7 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 #' @description
 #' Updates a notification rule for a resource. You can change the events that trigger the notification rule, the status of the rule, and the targets that receive the notifications.
 #'
-#' See [https://paws-r.github.io/docs/codestarnotifications/update_notification_rule.html](https://paws-r.github.io/docs/codestarnotifications/update_notification_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codestarnotifications_update_notification_rule/](https://www.paws-r-sdk.com/docs/codestarnotifications_update_notification_rule/) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
 #' @param Name The name of the notification rule.

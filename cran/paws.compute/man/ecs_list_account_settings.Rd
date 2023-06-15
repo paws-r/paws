@@ -57,6 +57,6 @@ results and a \code{nextToken} value if applicable.}
 \description{
 Lists the account settings for a specified principal.
 
-See \url{https://paws-r.github.io/docs/ecs/list_account_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_account_settings/} for full documentation.
 }
 \keyword{internal}

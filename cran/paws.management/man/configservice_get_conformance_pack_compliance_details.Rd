@@ -26,6 +26,6 @@ request the next page of results in a paginated response.}
 \description{
 Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack.
 
-See \url{https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_conformance_pack_compliance_details/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ user specified date.}
 \description{
 Lists all FHIR import jobs associated with an account and their statuses.
 
-See \url{https://paws-r.github.io/docs/healthlake/list_fhir_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_list_fhir_import_jobs/} for full documentation.
 }
 \keyword{internal}

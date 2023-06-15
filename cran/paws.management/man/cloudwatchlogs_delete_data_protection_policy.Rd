@@ -13,6 +13,6 @@ protection policy for.}
 \description{
 Deletes the data protection policy from the specified log group.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_data_protection_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_data_protection_policy/} for full documentation.
 }
 \keyword{internal}

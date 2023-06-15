@@ -12,6 +12,6 @@ serverlessapplicationrepository_get_application_policy(ApplicationId)
 \description{
 Retrieves the policy for the application.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/get_application_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_application_policy/} for full documentation.
 }
 \keyword{internal}

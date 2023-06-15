@@ -13,6 +13,6 @@ cognitosync_get_cognito_events(IdentityPoolId)
 \description{
 Gets the events and the corresponding Lambda functions associated with an identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitosync/get_cognito_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_get_cognito_events/} for full documentation.
 }
 \keyword{internal}

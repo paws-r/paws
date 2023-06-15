@@ -25,6 +25,6 @@ set.}
 \description{
 Associate a configuration set with a dedicated IP pool. You can use dedicated IP pools to create groups of dedicated IP addresses for sending specific types of email.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_configuration_set_delivery_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_delivery_options/} for full documentation.
 }
 \keyword{internal}

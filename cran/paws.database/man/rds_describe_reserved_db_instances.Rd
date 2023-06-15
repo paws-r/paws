@@ -68,6 +68,6 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns information about reserved DB instances for this account, or about a specified reserved DB instance.
 
-See \url{https://paws-r.github.io/docs/rds/describe_reserved_db_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_reserved_db_instances/} for full documentation.
 }
 \keyword{internal}

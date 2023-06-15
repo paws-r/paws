@@ -27,6 +27,6 @@ The value must be URL encoded.}
 \description{
 This action deletes an Amazon S3 on Outposts bucket. To delete an S3 bucket, see \code{\link[=s3control_delete_bucket]{delete_bucket}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_bucket/} for full documentation.
 }
 \keyword{internal}

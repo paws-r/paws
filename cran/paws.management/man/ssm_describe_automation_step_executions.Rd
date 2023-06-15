@@ -33,6 +33,6 @@ time. The default value is 'false'.}
 \description{
 Information about all active and terminated step executions in an Automation workflow.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_automation_step_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_automation_step_executions/} for full documentation.
 }
 \keyword{internal}

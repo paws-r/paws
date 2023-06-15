@@ -17,6 +17,6 @@ you have the required permissions, the error response is
 \description{
 Delete a public IPv4 pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools only.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_public_ipv_4_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_public_ipv_4_pool/} for full documentation.
 }
 \keyword{internal}

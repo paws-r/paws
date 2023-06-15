@@ -24,6 +24,6 @@ next set of recommenders (if they exist).}
 \description{
 Returns a list of recommenders in a given Domain dataset group. When a Domain dataset group is not specified, all the recommenders associated with the account are listed. The response provides the properties for each recommender, including the Amazon Resource Name (ARN). For more information on recommenders, see \code{\link[=personalize_create_recommender]{create_recommender}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_recommenders.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_recommenders/} for full documentation.
 }
 \keyword{internal}

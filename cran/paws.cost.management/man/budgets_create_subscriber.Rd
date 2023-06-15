@@ -20,6 +20,6 @@ be unique within an account.}
 \description{
 Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
 
-See \url{https://paws-r.github.io/docs/budgets/create_subscriber.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_create_subscriber/} for full documentation.
 }
 \keyword{internal}

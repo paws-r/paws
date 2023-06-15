@@ -31,6 +31,6 @@ results.}
 \description{
 Returns a list of the Amazon Web Services services that you enabled to integrate with your organization. After a service on this list creates the resources that it requires for the integration, it can perform operations on your organization and its accounts.
 
-See \url{https://paws-r.github.io/docs/organizations/list_aws_service_access_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_aws_service_access_for_organization/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ storagegateway_update_smb_file_share_visibility(GatewayARN, FileSharesVisible)
 \description{
 Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_smb_file_share_visibility.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_smb_file_share_visibility/} for full documentation.
 }
 \keyword{internal}

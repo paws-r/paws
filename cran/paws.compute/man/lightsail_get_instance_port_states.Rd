@@ -14,6 +14,6 @@ lightsail_get_instance_port_states(instanceName)
 \description{
 Returns the firewall port states for a specific Amazon Lightsail instance, the IP addresses allowed to connect to the instance through the ports, and the protocol.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_instance_port_states.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_instance_port_states/} for full documentation.
 }
 \keyword{internal}

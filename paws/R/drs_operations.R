@@ -3,6 +3,84 @@
 #' @include drs_service.R
 NULL
 
+#' Associate a Source Network to an existing CloudFormation Stack and
+#' modify launch templates to use this network
+#'
+#' @description
+#' Associate a Source Network to an existing CloudFormation Stack and
+#' modify launch templates to use this network. Can be used for reverting
+#' to previously deployed CloudFormation stacks.
+#'
+#' @usage
+#' drs_associate_source_network_stack(cfnStackName, sourceNetworkID)
+#'
+#' @param cfnStackName &#91;required&#93; CloudFormation template to associate with a Source Network.
+#' @param sourceNetworkID &#91;required&#93; The Source Network ID to associate with CloudFormation template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   job = list(
+#'     arn = "string",
+#'     creationDateTime = "string",
+#'     endDateTime = "string",
+#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT"|"CREATE_NETWORK_RECOVERY"|"UPDATE_NETWORK_RECOVERY"|"ASSOCIATE_NETWORK_RECOVERY",
+#'     jobID = "string",
+#'     participatingResources = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         participatingResourceID = list(
+#'           sourceNetworkID = "string"
+#'         )
+#'       )
+#'     ),
+#'     participatingServers = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         recoveryInstanceID = "string",
+#'         sourceServerID = "string"
+#'       )
+#'     ),
+#'     status = "PENDING"|"STARTED"|"COMPLETED",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     type = "LAUNCH"|"TERMINATE"|"CREATE_CONVERTED_SNAPSHOT"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_source_network_stack(
+#'   cfnStackName = "string",
+#'   sourceNetworkID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_associate_source_network_stack
+#'
+#' @aliases drs_associate_source_network_stack
+drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
+  op <- new_operation(
+    name = "AssociateSourceNetworkStack",
+    http_method = "POST",
+    http_path = "/AssociateSourceNetworkStack",
+    paginator = list()
+  )
+  input <- .drs$associate_source_network_stack_input(cfnStackName = cfnStackName, sourceNetworkID = sourceNetworkID)
+  output <- .drs$associate_source_network_stack_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$associate_source_network_stack <- drs_associate_source_network_stack
+
 #' Create an extended source server in the target Account based on the
 #' source server in staging account
 #'
@@ -75,6 +153,7 @@ NULL
 #'       originAvailabilityZone = "string",
 #'       originRegion = "string"
 #'     ),
+#'     sourceNetworkID = "string",
 #'     sourceProperties = list(
 #'       cpus = list(
 #'         list(
@@ -164,10 +243,12 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'
 #' @usage
 #' drs_create_launch_configuration_template(copyPrivateIp, copyTags,
-#'   launchDisposition, licensing, tags, targetInstanceTypeRightSizingMethod)
+#'   exportBucketArn, launchDisposition, licensing, tags,
+#'   targetInstanceTypeRightSizingMethod)
 #'
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
+#' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchDisposition Launch disposition.
 #' @param licensing Licensing.
 #' @param tags Request to associate tags during creation of a Launch Configuration
@@ -182,6 +263,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'     arn = "string",
 #'     copyPrivateIp = TRUE|FALSE,
 #'     copyTags = TRUE|FALSE,
+#'     exportBucketArn = "string",
 #'     launchConfigurationTemplateID = "string",
 #'     launchDisposition = "STOPPED"|"STARTED",
 #'     licensing = list(
@@ -200,6 +282,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' svc$create_launch_configuration_template(
 #'   copyPrivateIp = TRUE|FALSE,
 #'   copyTags = TRUE|FALSE,
+#'   exportBucketArn = "string",
 #'   launchDisposition = "STOPPED"|"STARTED",
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
@@ -216,14 +299,14 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @rdname drs_create_launch_configuration_template
 #'
 #' @aliases drs_create_launch_configuration_template
-drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "CreateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/CreateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$create_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -282,7 +365,7 @@ drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   pitPolicy = list(
 #'     list(
@@ -318,7 +401,7 @@ drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   pitPolicy = list(
 #'     list(
@@ -365,6 +448,61 @@ drs_create_replication_configuration_template <- function(associateDefaultSecuri
   return(response)
 }
 .drs$operations$create_replication_configuration_template <- drs_create_replication_configuration_template
+
+#' Create a new Source Network resource for a provided VPC ID
+#'
+#' @description
+#' Create a new Source Network resource for a provided VPC ID.
+#'
+#' @usage
+#' drs_create_source_network(originAccountID, originRegion, tags, vpcID)
+#'
+#' @param originAccountID &#91;required&#93; Account containing the VPC to protect.
+#' @param originRegion &#91;required&#93; Region containing the VPC to protect.
+#' @param tags A set of tags to be associated with the Source Network resource.
+#' @param vpcID &#91;required&#93; Which VPC ID to protect.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceNetworkID = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_source_network(
+#'   originAccountID = "string",
+#'   originRegion = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   vpcID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_create_source_network
+#'
+#' @aliases drs_create_source_network
+drs_create_source_network <- function(originAccountID, originRegion, tags = NULL, vpcID) {
+  op <- new_operation(
+    name = "CreateSourceNetwork",
+    http_method = "POST",
+    http_path = "/CreateSourceNetwork",
+    paginator = list()
+  )
+  input <- .drs$create_source_network_input(originAccountID = originAccountID, originRegion = originRegion, tags = tags, vpcID = vpcID)
+  output <- .drs$create_source_network_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$create_source_network <- drs_create_source_network
 
 #' Deletes a single Job by ID
 #'
@@ -537,6 +675,48 @@ drs_delete_replication_configuration_template <- function(replicationConfigurati
 }
 .drs$operations$delete_replication_configuration_template <- drs_delete_replication_configuration_template
 
+#' Delete Source Network resource
+#'
+#' @description
+#' Delete Source Network resource.
+#'
+#' @usage
+#' drs_delete_source_network(sourceNetworkID)
+#'
+#' @param sourceNetworkID &#91;required&#93; ID of the Source Network to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_source_network(
+#'   sourceNetworkID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_delete_source_network
+#'
+#' @aliases drs_delete_source_network
+drs_delete_source_network <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "DeleteSourceNetwork",
+    http_method = "POST",
+    http_path = "/DeleteSourceNetwork",
+    paginator = list()
+  )
+  input <- .drs$delete_source_network_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$delete_source_network_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$delete_source_network <- drs_delete_source_network
+
 #' Deletes a single Source Server by ID
 #'
 #' @description
@@ -598,7 +778,7 @@ drs_delete_source_server <- function(sourceServerID) {
 #' list(
 #'   items = list(
 #'     list(
-#'       event = "JOB_START"|"SERVER_SKIPPED"|"CLEANUP_START"|"CLEANUP_END"|"CLEANUP_FAIL"|"SNAPSHOT_START"|"SNAPSHOT_END"|"SNAPSHOT_FAIL"|"USING_PREVIOUS_SNAPSHOT"|"USING_PREVIOUS_SNAPSHOT_FAILED"|"CONVERSION_START"|"CONVERSION_END"|"CONVERSION_FAIL"|"LAUNCH_START"|"LAUNCH_FAILED"|"JOB_CANCEL"|"JOB_END",
+#'       event = "JOB_START"|"SERVER_SKIPPED"|"CLEANUP_START"|"CLEANUP_END"|"CLEANUP_FAIL"|"SNAPSHOT_START"|"SNAPSHOT_END"|"SNAPSHOT_FAIL"|"USING_PREVIOUS_SNAPSHOT"|"USING_PREVIOUS_SNAPSHOT_FAILED"|"CONVERSION_START"|"CONVERSION_END"|"CONVERSION_FAIL"|"LAUNCH_START"|"LAUNCH_FAILED"|"JOB_CANCEL"|"JOB_END"|"DEPLOY_NETWORK_CONFIGURATION_START"|"DEPLOY_NETWORK_CONFIGURATION_END"|"DEPLOY_NETWORK_CONFIGURATION_FAILED"|"UPDATE_NETWORK_CONFIGURATION_START"|"UPDATE_NETWORK_CONFIGURATION_END"|"UPDATE_NETWORK_CONFIGURATION_FAILED"|"UPDATE_LAUNCH_TEMPLATE_START"|"UPDATE_LAUNCH_TEMPLATE_END"|"UPDATE_LAUNCH_TEMPLATE_FAILED"|"NETWORK_RECOVERY_FAIL",
 #'       eventData = list(
 #'         conversionProperties = list(
 #'           dataTimestamp = "string",
@@ -614,6 +794,14 @@ drs_delete_source_server <- function(sourceServerID) {
 #'           )
 #'         ),
 #'         conversionServerID = "string",
+#'         eventResourceData = list(
+#'           sourceNetworkData = list(
+#'             sourceNetworkID = "string",
+#'             sourceVpc = "string",
+#'             stackName = "string",
+#'             targetVpc = "string"
+#'           )
+#'         ),
 #'         rawError = "string",
 #'         sourceServerID = "string",
 #'         targetInstanceID = "string"
@@ -683,8 +871,16 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
 #'       arn = "string",
 #'       creationDateTime = "string",
 #'       endDateTime = "string",
-#'       initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT",
+#'       initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT"|"CREATE_NETWORK_RECOVERY"|"UPDATE_NETWORK_RECOVERY"|"ASSOCIATE_NETWORK_RECOVERY",
 #'       jobID = "string",
+#'       participatingResources = list(
+#'         list(
+#'           launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'           participatingResourceID = list(
+#'             sourceNetworkID = "string"
+#'           )
+#'         )
+#'       ),
 #'       participatingServers = list(
 #'         list(
 #'           launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
@@ -765,6 +961,7 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #'       arn = "string",
 #'       copyPrivateIp = TRUE|FALSE,
 #'       copyTags = TRUE|FALSE,
+#'       exportBucketArn = "string",
 #'       launchConfigurationTemplateID = "string",
 #'       launchDisposition = "STOPPED"|"STARTED",
 #'       licensing = list(
@@ -1062,7 +1259,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
 #'       createPublicIP = TRUE|FALSE,
 #'       dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'       defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'       ebsEncryption = "DEFAULT"|"CUSTOM",
+#'       ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'       ebsEncryptionKeyArn = "string",
 #'       pitPolicy = list(
 #'         list(
@@ -1124,6 +1321,86 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
   return(response)
 }
 .drs$operations$describe_replication_configuration_templates <- drs_describe_replication_configuration_templates
+
+#' Lists all Source Networks or multiple Source Networks filtered by ID
+#'
+#' @description
+#' Lists all Source Networks or multiple Source Networks filtered by ID.
+#'
+#' @usage
+#' drs_describe_source_networks(filters, maxResults, nextToken)
+#'
+#' @param filters A set of filters by which to return Source Networks.
+#' @param maxResults Maximum number of Source Networks to retrieve.
+#' @param nextToken The token of the next Source Networks to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       cfnStackName = "string",
+#'       lastRecovery = list(
+#'         apiCallDateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         jobID = "string",
+#'         lastRecoveryResult = "NOT_STARTED"|"IN_PROGRESS"|"SUCCESS"|"FAIL"|"PARTIAL_SUCCESS"|"ASSOCIATE_SUCCESS"|"ASSOCIATE_FAIL"
+#'       ),
+#'       launchedVpcID = "string",
+#'       replicationStatus = "STOPPED"|"IN_PROGRESS"|"PROTECTED"|"ERROR",
+#'       replicationStatusDetails = "string",
+#'       sourceAccountID = "string",
+#'       sourceNetworkID = "string",
+#'       sourceRegion = "string",
+#'       sourceVpcID = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_source_networks(
+#'   filters = list(
+#'     originAccountID = "string",
+#'     originRegion = "string",
+#'     sourceNetworkIDs = list(
+#'       "string"
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_describe_source_networks
+#'
+#' @aliases drs_describe_source_networks
+drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSourceNetworks",
+    http_method = "POST",
+    http_path = "/DescribeSourceNetworks",
+    paginator = list()
+  )
+  input <- .drs$describe_source_networks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .drs$describe_source_networks_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$describe_source_networks <- drs_describe_source_networks
 
 #' Lists all Source Servers or multiple Source Servers filtered by ID
 #'
@@ -1196,6 +1473,7 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
 #'         originAvailabilityZone = "string",
 #'         originRegion = "string"
 #'       ),
+#'       sourceNetworkID = "string",
 #'       sourceProperties = list(
 #'         cpus = list(
 #'           list(
@@ -1421,6 +1699,7 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #'     originAvailabilityZone = "string",
 #'     originRegion = "string"
 #'   ),
+#'   sourceNetworkID = "string",
 #'   sourceProperties = list(
 #'     cpus = list(
 #'       list(
@@ -1498,6 +1777,54 @@ drs_disconnect_source_server <- function(sourceServerID) {
   return(response)
 }
 .drs$operations$disconnect_source_server <- drs_disconnect_source_server
+
+#' Export the Source Network CloudFormation template to an S3 bucket
+#'
+#' @description
+#' Export the Source Network CloudFormation template to an S3 bucket.
+#'
+#' @usage
+#' drs_export_source_network_cfn_template(sourceNetworkID)
+#'
+#' @param sourceNetworkID &#91;required&#93; The Source Network ID to export its CloudFormation template to an S3
+#' bucket.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   s3DestinationUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_source_network_cfn_template(
+#'   sourceNetworkID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_export_source_network_cfn_template
+#'
+#' @aliases drs_export_source_network_cfn_template
+drs_export_source_network_cfn_template <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "ExportSourceNetworkCfnTemplate",
+    http_method = "POST",
+    http_path = "/ExportSourceNetworkCfnTemplate",
+    paginator = list()
+  )
+  input <- .drs$export_source_network_cfn_template_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$export_source_network_cfn_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$export_source_network_cfn_template <- drs_export_source_network_cfn_template
 
 #' Lists all Failback ReplicationConfigurations, filtered by Recovery
 #' Instance ID
@@ -1629,7 +1956,7 @@ drs_get_launch_configuration <- function(sourceServerID) {
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   name = "string",
 #'   pitPolicy = list(
@@ -1973,6 +2300,7 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #'     originAvailabilityZone = "string",
 #'     originRegion = "string"
 #'   ),
+#'   sourceNetworkID = "string",
 #'   sourceProperties = list(
 #'     cpus = list(
 #'       list(
@@ -2128,8 +2456,16 @@ drs_reverse_replication <- function(recoveryInstanceID) {
 #'     arn = "string",
 #'     creationDateTime = "string",
 #'     endDateTime = "string",
-#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT",
+#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT"|"CREATE_NETWORK_RECOVERY"|"UPDATE_NETWORK_RECOVERY"|"ASSOCIATE_NETWORK_RECOVERY",
 #'     jobID = "string",
+#'     participatingResources = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         participatingResourceID = list(
+#'           sourceNetworkID = "string"
+#'         )
+#'       )
+#'     ),
 #'     participatingServers = list(
 #'       list(
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
@@ -2202,8 +2538,16 @@ drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
 #'     arn = "string",
 #'     creationDateTime = "string",
 #'     endDateTime = "string",
-#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT",
+#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT"|"CREATE_NETWORK_RECOVERY"|"UPDATE_NETWORK_RECOVERY"|"ASSOCIATE_NETWORK_RECOVERY",
 #'     jobID = "string",
+#'     participatingResources = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         participatingResourceID = list(
+#'           sourceNetworkID = "string"
+#'         )
+#'       )
+#'     ),
 #'     participatingServers = list(
 #'       list(
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
@@ -2327,6 +2671,7 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 #'       originAvailabilityZone = "string",
 #'       originRegion = "string"
 #'     ),
+#'     sourceNetworkID = "string",
 #'     sourceProperties = list(
 #'       cpus = list(
 #'         list(
@@ -2405,6 +2750,162 @@ drs_start_replication <- function(sourceServerID) {
   return(response)
 }
 .drs$operations$start_replication <- drs_start_replication
+
+#' Deploy VPC for the specified Source Network and modify launch templates
+#' to use this network
+#'
+#' @description
+#' Deploy VPC for the specified Source Network and modify launch templates
+#' to use this network. The VPC will be deployed using a dedicated
+#' CloudFormation stack.
+#'
+#' @usage
+#' drs_start_source_network_recovery(deployAsNew, sourceNetworks, tags)
+#'
+#' @param deployAsNew Don't update existing CloudFormation Stack, recover the network using a
+#' new stack.
+#' @param sourceNetworks &#91;required&#93; The Source Networks that we want to start a Recovery Job for.
+#' @param tags The tags to be associated with the Source Network recovery Job.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   job = list(
+#'     arn = "string",
+#'     creationDateTime = "string",
+#'     endDateTime = "string",
+#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT"|"CREATE_NETWORK_RECOVERY"|"UPDATE_NETWORK_RECOVERY"|"ASSOCIATE_NETWORK_RECOVERY",
+#'     jobID = "string",
+#'     participatingResources = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         participatingResourceID = list(
+#'           sourceNetworkID = "string"
+#'         )
+#'       )
+#'     ),
+#'     participatingServers = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         recoveryInstanceID = "string",
+#'         sourceServerID = "string"
+#'       )
+#'     ),
+#'     status = "PENDING"|"STARTED"|"COMPLETED",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     type = "LAUNCH"|"TERMINATE"|"CREATE_CONVERTED_SNAPSHOT"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_source_network_recovery(
+#'   deployAsNew = TRUE|FALSE,
+#'   sourceNetworks = list(
+#'     list(
+#'       cfnStackName = "string",
+#'       sourceNetworkID = "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_start_source_network_recovery
+#'
+#' @aliases drs_start_source_network_recovery
+drs_start_source_network_recovery <- function(deployAsNew = NULL, sourceNetworks, tags = NULL) {
+  op <- new_operation(
+    name = "StartSourceNetworkRecovery",
+    http_method = "POST",
+    http_path = "/StartSourceNetworkRecovery",
+    paginator = list()
+  )
+  input <- .drs$start_source_network_recovery_input(deployAsNew = deployAsNew, sourceNetworks = sourceNetworks, tags = tags)
+  output <- .drs$start_source_network_recovery_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$start_source_network_recovery <- drs_start_source_network_recovery
+
+#' Starts replication for a Source Network
+#'
+#' @description
+#' Starts replication for a Source Network. This action would make the
+#' Source Network protected.
+#'
+#' @usage
+#' drs_start_source_network_replication(sourceNetworkID)
+#'
+#' @param sourceNetworkID &#91;required&#93; ID of the Source Network to replicate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceNetwork = list(
+#'     arn = "string",
+#'     cfnStackName = "string",
+#'     lastRecovery = list(
+#'       apiCallDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobID = "string",
+#'       lastRecoveryResult = "NOT_STARTED"|"IN_PROGRESS"|"SUCCESS"|"FAIL"|"PARTIAL_SUCCESS"|"ASSOCIATE_SUCCESS"|"ASSOCIATE_FAIL"
+#'     ),
+#'     launchedVpcID = "string",
+#'     replicationStatus = "STOPPED"|"IN_PROGRESS"|"PROTECTED"|"ERROR",
+#'     replicationStatusDetails = "string",
+#'     sourceAccountID = "string",
+#'     sourceNetworkID = "string",
+#'     sourceRegion = "string",
+#'     sourceVpcID = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_source_network_replication(
+#'   sourceNetworkID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_start_source_network_replication
+#'
+#' @aliases drs_start_source_network_replication
+drs_start_source_network_replication <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "StartSourceNetworkReplication",
+    http_method = "POST",
+    http_path = "/StartSourceNetworkReplication",
+    paginator = list()
+  )
+  input <- .drs$start_source_network_replication_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$start_source_network_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$start_source_network_replication <- drs_start_source_network_replication
 
 #' Stops the failback process for a specified Recovery Instance
 #'
@@ -2520,6 +3021,7 @@ drs_stop_failback <- function(recoveryInstanceID) {
 #'       originAvailabilityZone = "string",
 #'       originRegion = "string"
 #'     ),
+#'     sourceNetworkID = "string",
 #'     sourceProperties = list(
 #'       cpus = list(
 #'         list(
@@ -2599,6 +3101,74 @@ drs_stop_replication <- function(sourceServerID) {
 }
 .drs$operations$stop_replication <- drs_stop_replication
 
+#' Stops replication for a Source Network
+#'
+#' @description
+#' Stops replication for a Source Network. This action would make the
+#' Source Network unprotected.
+#'
+#' @usage
+#' drs_stop_source_network_replication(sourceNetworkID)
+#'
+#' @param sourceNetworkID &#91;required&#93; ID of the Source Network to stop replication.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sourceNetwork = list(
+#'     arn = "string",
+#'     cfnStackName = "string",
+#'     lastRecovery = list(
+#'       apiCallDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       jobID = "string",
+#'       lastRecoveryResult = "NOT_STARTED"|"IN_PROGRESS"|"SUCCESS"|"FAIL"|"PARTIAL_SUCCESS"|"ASSOCIATE_SUCCESS"|"ASSOCIATE_FAIL"
+#'     ),
+#'     launchedVpcID = "string",
+#'     replicationStatus = "STOPPED"|"IN_PROGRESS"|"PROTECTED"|"ERROR",
+#'     replicationStatusDetails = "string",
+#'     sourceAccountID = "string",
+#'     sourceNetworkID = "string",
+#'     sourceRegion = "string",
+#'     sourceVpcID = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_source_network_replication(
+#'   sourceNetworkID = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_stop_source_network_replication
+#'
+#' @aliases drs_stop_source_network_replication
+drs_stop_source_network_replication <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "StopSourceNetworkReplication",
+    http_method = "POST",
+    http_path = "/StopSourceNetworkReplication",
+    paginator = list()
+  )
+  input <- .drs$stop_source_network_replication_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$stop_source_network_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$stop_source_network_replication <- drs_stop_source_network_replication
+
 #' Adds or overwrites only the specified tags for the specified Elastic
 #' Disaster Recovery resource or resources
 #'
@@ -2672,8 +3242,16 @@ drs_tag_resource <- function(resourceArn, tags) {
 #'     arn = "string",
 #'     creationDateTime = "string",
 #'     endDateTime = "string",
-#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT",
+#'     initiatedBy = "START_RECOVERY"|"START_DRILL"|"FAILBACK"|"DIAGNOSTIC"|"TERMINATE_RECOVERY_INSTANCES"|"TARGET_ACCOUNT"|"CREATE_NETWORK_RECOVERY"|"UPDATE_NETWORK_RECOVERY"|"ASSOCIATE_NETWORK_RECOVERY",
 #'     jobID = "string",
+#'     participatingResources = list(
+#'       list(
+#'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
+#'         participatingResourceID = list(
+#'           sourceNetworkID = "string"
+#'         )
+#'       )
+#'     ),
 #'     participatingServers = list(
 #'       list(
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
@@ -2906,11 +3484,12 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'
 #' @usage
 #' drs_update_launch_configuration_template(copyPrivateIp, copyTags,
-#'   launchConfigurationTemplateID, launchDisposition, licensing,
-#'   targetInstanceTypeRightSizingMethod)
+#'   exportBucketArn, launchConfigurationTemplateID, launchDisposition,
+#'   licensing, targetInstanceTypeRightSizingMethod)
 #'
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
+#' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
 #' @param launchDisposition Launch disposition.
 #' @param licensing Licensing.
@@ -2924,6 +3503,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'     arn = "string",
 #'     copyPrivateIp = TRUE|FALSE,
 #'     copyTags = TRUE|FALSE,
+#'     exportBucketArn = "string",
 #'     launchConfigurationTemplateID = "string",
 #'     launchDisposition = "STOPPED"|"STARTED",
 #'     licensing = list(
@@ -2942,6 +3522,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' svc$update_launch_configuration_template(
 #'   copyPrivateIp = TRUE|FALSE,
 #'   copyTags = TRUE|FALSE,
+#'   exportBucketArn = "string",
 #'   launchConfigurationTemplateID = "string",
 #'   launchDisposition = "STOPPED"|"STARTED",
 #'   licensing = list(
@@ -2956,14 +3537,14 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @rdname drs_update_launch_configuration_template
 #'
 #' @aliases drs_update_launch_configuration_template
-drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/UpdateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -3022,7 +3603,7 @@ drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   name = "string",
 #'   pitPolicy = list(
@@ -3066,7 +3647,7 @@ drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   name = "string",
 #'   pitPolicy = list(
@@ -3172,7 +3753,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   pitPolicy = list(
 #'     list(
@@ -3209,7 +3790,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #'   createPublicIP = TRUE|FALSE,
 #'   dataPlaneRouting = "PRIVATE_IP"|"PUBLIC_IP",
 #'   defaultLargeStagingDiskType = "GP2"|"GP3"|"ST1"|"AUTO",
-#'   ebsEncryption = "DEFAULT"|"CUSTOM",
+#'   ebsEncryption = "DEFAULT"|"CUSTOM"|"NONE",
 #'   ebsEncryptionKeyArn = "string",
 #'   pitPolicy = list(
 #'     list(

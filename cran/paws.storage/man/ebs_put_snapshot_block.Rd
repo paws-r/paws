@@ -57,6 +57,6 @@ supported algorithm is \code{SHA256}.}
 \description{
 Writes a block of data to a snapshot. If the specified block contains data, the existing data is overwritten. The target snapshot must be in the \code{pending} state.
 
-See \url{https://paws-r.github.io/docs/ebs/put_snapshot_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ebs_put_snapshot_block/} for full documentation.
 }
 \keyword{internal}

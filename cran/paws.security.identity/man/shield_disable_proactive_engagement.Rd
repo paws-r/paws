@@ -11,6 +11,6 @@ shield_disable_proactive_engagement()
 \description{
 Removes authorization from the Shield Response Team (SRT) to notify contacts about escalations to the SRT and to initiate proactive customer support.
 
-See \url{https://paws-r.github.io/docs/shield/disable_proactive_engagement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_disable_proactive_engagement/} for full documentation.
 }
 \keyword{internal}

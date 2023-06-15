@@ -31,6 +31,6 @@ but one or more of the parameters are different, the retry fails.}
 \description{
 Creates a new attribute group as a container for user-defined attributes. This feature enables users to have full control over their cloud application's metadata in a rich machine-readable format to facilitate integration with automated workflows and third-party tools.
 
-See \url{https://paws-r.github.io/docs/appregistry/create_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_create_attribute_group/} for full documentation.
 }
 \keyword{internal}

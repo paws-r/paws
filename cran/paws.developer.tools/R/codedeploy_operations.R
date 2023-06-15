@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds tags to on-premises instances.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/add_tags_to_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/add_tags_to_on_premises_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_add_tags_to_on_premises_instances/](https://www.paws-r-sdk.com/docs/codedeploy_add_tags_to_on_premises_instances/) for full documentation.
 #'
 #' @param tags &#91;required&#93; The tag key-value pairs to add to the on-premises instances.
 #' 
@@ -41,7 +41,7 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
 #' @description
 #' Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_application_revisions.html](https://paws-r.github.io/docs/codedeploy/batch_get_application_revisions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_application_revisions/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_application_revisions/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application about which to get revision
 #' information.
@@ -74,7 +74,7 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 #' @description
 #' Gets information about one or more applications. The maximum number of applications that can be returned is 100.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_applications.html](https://paws-r.github.io/docs/codedeploy/batch_get_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_applications/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_applications/) for full documentation.
 #'
 #' @param applicationNames &#91;required&#93; A list of application names separated by spaces. The maximum number of
 #' application names you can specify is 100.
@@ -104,7 +104,7 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 #' @description
 #' Gets information about one or more deployment groups.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployment_groups.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployment_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_groups/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_groups/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the applicable IAM
 #' or Amazon Web Services account.
@@ -135,7 +135,7 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 #' @description
 #' This method works, but is deprecated. Use [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets] instead.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployment_instances.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployment_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_instances/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_instances/) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param instanceIds &#91;required&#93; The unique IDs of instances used in the deployment. The maximum number
@@ -166,7 +166,7 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' @description
 #' Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated [`batch_get_deployment_instances`][codedeploy_batch_get_deployment_instances]. The maximum number of targets that can be returned is 25.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployment_targets.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployment_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_targets/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployment_targets/) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param targetIds The unique IDs of the deployment targets. The compute platform of the
@@ -215,7 +215,7 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 #' @description
 #' Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_deployments.html](https://paws-r.github.io/docs/codedeploy/batch_get_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployments/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployments/) for full documentation.
 #'
 #' @param deploymentIds &#91;required&#93; A list of deployment IDs, separated by spaces. The maximum number of
 #' deployment IDs you can specify is 25.
@@ -245,7 +245,7 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
 #' @description
 #' Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/batch_get_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/batch_get_on_premises_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_batch_get_on_premises_instances/](https://www.paws-r-sdk.com/docs/codedeploy_batch_get_on_premises_instances/) for full documentation.
 #'
 #' @param instanceNames &#91;required&#93; The names of the on-premises instances about which to get information.
 #' The maximum number of instance names you can specify is 25.
@@ -278,7 +278,7 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #' @description
 #' For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/continue_deployment.html](https://paws-r.github.io/docs/codedeploy/continue_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_continue_deployment/](https://www.paws-r-sdk.com/docs/codedeploy_continue_deployment/) for full documentation.
 #'
 #' @param deploymentId The unique ID of a blue/green deployment for which you want to start
 #' rerouting traffic to the replacement environment.
@@ -312,7 +312,7 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #' @description
 #' Creates an application.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/create_application.html](https://paws-r.github.io/docs/codedeploy/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_create_application/](https://www.paws-r-sdk.com/docs/codedeploy_create_application/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of the application. This name must be unique with the
 #' applicable IAM or Amazon Web Services account.
@@ -347,7 +347,7 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' @description
 #' Deploys an application revision through the specified deployment group.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/create_deployment.html](https://paws-r.github.io/docs/codedeploy/create_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_create_deployment/](https://www.paws-r-sdk.com/docs/codedeploy_create_deployment/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -450,7 +450,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' @description
 #' Creates a deployment configuration.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/create_deployment_config.html](https://paws-r.github.io/docs/codedeploy/create_deployment_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_create_deployment_config/](https://www.paws-r-sdk.com/docs/codedeploy_create_deployment_config/) for full documentation.
 #'
 #' @param deploymentConfigName &#91;required&#93; The name of the deployment configuration to create.
 #' @param minimumHealthyHosts The minimum number of healthy instances that should be available at any
@@ -501,7 +501,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @description
 #' Creates a deployment group to which application revisions are deployed.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/create_deployment_group.html](https://paws-r.github.io/docs/codedeploy/create_deployment_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_create_deployment_group/](https://www.paws-r-sdk.com/docs/codedeploy_create_deployment_group/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -591,7 +591,7 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
 #' @description
 #' Deletes an application.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/delete_application.html](https://paws-r.github.io/docs/codedeploy/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_delete_application/](https://www.paws-r-sdk.com/docs/codedeploy_delete_application/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -621,7 +621,7 @@ codedeploy_delete_application <- function(applicationName) {
 #' @description
 #' Deletes a deployment configuration.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/delete_deployment_config.html](https://paws-r.github.io/docs/codedeploy/delete_deployment_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_delete_deployment_config/](https://www.paws-r-sdk.com/docs/codedeploy_delete_deployment_config/) for full documentation.
 #'
 #' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or
 #' Amazon Web Services account.
@@ -651,7 +651,7 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
 #' @description
 #' Deletes a deployment group.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/delete_deployment_group.html](https://paws-r.github.io/docs/codedeploy/delete_deployment_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_delete_deployment_group/](https://www.paws-r-sdk.com/docs/codedeploy_delete_deployment_group/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -682,7 +682,7 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
 #' @description
 #' Deletes a GitHub account connection.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/delete_git_hub_account_token.html](https://paws-r.github.io/docs/codedeploy/delete_git_hub_account_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_delete_git_hub_account_token/](https://www.paws-r-sdk.com/docs/codedeploy_delete_git_hub_account_token/) for full documentation.
 #'
 #' @param tokenName The name of the GitHub account connection to delete.
 #'
@@ -711,7 +711,7 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
 #' @description
 #' Deletes resources linked to an external ID.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/delete_resources_by_external_id.html](https://paws-r.github.io/docs/codedeploy/delete_resources_by_external_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_delete_resources_by_external_id/](https://www.paws-r-sdk.com/docs/codedeploy_delete_resources_by_external_id/) for full documentation.
 #'
 #' @param externalId The unique ID of an external resource (for example, a CloudFormation
 #' stack ID) that is linked to one or more CodeDeploy resources.
@@ -741,7 +741,7 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
 #' @description
 #' Deregisters an on-premises instance.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/deregister_on_premises_instance.html](https://paws-r.github.io/docs/codedeploy/deregister_on_premises_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_deregister_on_premises_instance/](https://www.paws-r-sdk.com/docs/codedeploy_deregister_on_premises_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance to deregister.
 #'
@@ -770,7 +770,7 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
 #' @description
 #' Gets information about an application.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_application.html](https://paws-r.github.io/docs/codedeploy/get_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_application/](https://www.paws-r-sdk.com/docs/codedeploy_get_application/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -800,7 +800,7 @@ codedeploy_get_application <- function(applicationName) {
 #' @description
 #' Gets information about an application revision.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_application_revision.html](https://paws-r.github.io/docs/codedeploy/get_application_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_application_revision/](https://www.paws-r-sdk.com/docs/codedeploy_get_application_revision/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of the application that corresponds to the revision.
 #' @param revision &#91;required&#93; Information about the application revision to get, including type and
@@ -831,7 +831,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #' @description
 #' Gets information about a deployment.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_deployment.html](https://paws-r.github.io/docs/codedeploy/get_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_deployment/](https://www.paws-r-sdk.com/docs/codedeploy_get_deployment/) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment associated with the IAM user or Amazon Web
 #' Services account.
@@ -861,7 +861,7 @@ codedeploy_get_deployment <- function(deploymentId) {
 #' @description
 #' Gets information about a deployment configuration.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_config.html](https://paws-r.github.io/docs/codedeploy/get_deployment_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_config/](https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_config/) for full documentation.
 #'
 #' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or
 #' Amazon Web Services account.
@@ -891,7 +891,7 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 #' @description
 #' Gets information about a deployment group.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_group.html](https://paws-r.github.io/docs/codedeploy/get_deployment_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_group/](https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_group/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -922,7 +922,7 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
 #' @description
 #' Gets information about an instance as part of a deployment.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_instance.html](https://paws-r.github.io/docs/codedeploy/get_deployment_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_instance/](https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_instance/) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param instanceId &#91;required&#93; The unique ID of an instance in the deployment group.
@@ -952,7 +952,7 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
 #' @description
 #' Returns information about a deployment target.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_deployment_target.html](https://paws-r.github.io/docs/codedeploy/get_deployment_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_target/](https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_target/) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param targetId The unique ID of a deployment target.
@@ -982,7 +982,7 @@ codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NUL
 #' @description
 #' Gets information about an on-premises instance.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/get_on_premises_instance.html](https://paws-r.github.io/docs/codedeploy/get_on_premises_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_get_on_premises_instance/](https://www.paws-r-sdk.com/docs/codedeploy_get_on_premises_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance about which to get information.
 #'
@@ -1011,7 +1011,7 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' @description
 #' Lists information about revisions for an application.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_application_revisions.html](https://paws-r.github.io/docs/codedeploy/list_application_revisions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_application_revisions/](https://www.paws-r-sdk.com/docs/codedeploy_list_application_revisions/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -1082,7 +1082,7 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
 #' @description
 #' Lists the applications registered with the IAM user or Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_applications.html](https://paws-r.github.io/docs/codedeploy/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_applications/](https://www.paws-r-sdk.com/docs/codedeploy_list_applications/) for full documentation.
 #'
 #' @param nextToken An identifier returned from the previous list applications call. It can
 #' be used to return the next set of applications in the list.
@@ -1113,7 +1113,7 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 #' @description
 #' Lists the deployment configurations with the IAM user or Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_configs.html](https://paws-r.github.io/docs/codedeploy/list_deployment_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_configs/](https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_configs/) for full documentation.
 #'
 #' @param nextToken An identifier returned from the previous
 #' [`list_deployment_configs`][codedeploy_list_deployment_configs] call. It
@@ -1146,7 +1146,7 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
 #' @description
 #' Lists the deployment groups for an application registered with the IAM user or Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_groups.html](https://paws-r.github.io/docs/codedeploy/list_deployment_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_groups/](https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_groups/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -1179,7 +1179,7 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' @description
 #' The newer [`batch_get_deployment_targets`][codedeploy_batch_get_deployment_targets] should be used instead because it works with all compute types. [`list_deployment_instances`][codedeploy_list_deployment_instances] throws an exception if it is used with a compute platform other than EC2/On-premises or Lambda.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_instances.html](https://paws-r.github.io/docs/codedeploy/list_deployment_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_instances/](https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_instances/) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param nextToken An identifier returned from the previous list deployment instances call.
@@ -1229,7 +1229,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' @description
 #' Returns an array of target IDs that are associated a deployment.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_deployment_targets.html](https://paws-r.github.io/docs/codedeploy/list_deployment_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_targets/](https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_targets/) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment.
 #' @param nextToken A token identifier returned from the previous
@@ -1270,7 +1270,7 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' @description
 #' Lists the deployments in a deployment group for an application registered with the IAM user or Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_deployments.html](https://paws-r.github.io/docs/codedeploy/list_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_deployments/](https://www.paws-r-sdk.com/docs/codedeploy_list_deployments/) for full documentation.
 #'
 #' @param applicationName The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -1329,7 +1329,7 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 #' @description
 #' Lists the names of stored connections to GitHub accounts.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_git_hub_account_token_names.html](https://paws-r.github.io/docs/codedeploy/list_git_hub_account_token_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_git_hub_account_token_names/](https://www.paws-r-sdk.com/docs/codedeploy_list_git_hub_account_token_names/) for full documentation.
 #'
 #' @param nextToken An identifier returned from the previous
 #' [`list_git_hub_account_token_names`][codedeploy_list_git_hub_account_token_names]
@@ -1360,7 +1360,7 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #' @description
 #' Gets a list of names for one or more on-premises instances.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/list_on_premises_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_on_premises_instances/](https://www.paws-r-sdk.com/docs/codedeploy_list_on_premises_instances/) for full documentation.
 #'
 #' @param registrationStatus The registration status of the on-premises instances:
 #' 
@@ -1401,7 +1401,7 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #' @description
 #' Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN). Tags are used to organize and categorize your CodeDeploy resources.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/list_tags_for_resource.html](https://paws-r.github.io/docs/codedeploy/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codedeploy_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of a CodeDeploy resource.
 #' [`list_tags_for_resource`][codedeploy_list_tags_for_resource] returns
@@ -1436,7 +1436,7 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #' @description
 #' Sets the result of a Lambda validation function. The function validates lifecycle hooks during a deployment that uses the Lambda or Amazon ECS compute platform. For Lambda deployments, the available lifecycle hooks are `BeforeAllowTraffic` and `AfterAllowTraffic`. For Amazon ECS deployments, the available lifecycle hooks are `BeforeInstall`, `AfterInstall`, `AfterAllowTestTraffic`, `BeforeAllowTraffic`, and `AfterAllowTraffic`. Lambda validation functions return `Succeeded` or `Failed`. For more information, see [AppSpec 'hooks' Section for an Lambda Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda) and [AppSpec 'hooks' Section for an Amazon ECS Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs).
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/put_lifecycle_event_hook_execution_status.html](https://paws-r.github.io/docs/codedeploy/put_lifecycle_event_hook_execution_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_put_lifecycle_event_hook_execution_status/](https://www.paws-r-sdk.com/docs/codedeploy_put_lifecycle_event_hook_execution_status/) for full documentation.
 #'
 #' @param deploymentId The unique ID of a deployment. Pass this ID to a Lambda function that
 #' validates a deployment lifecycle event.
@@ -1472,7 +1472,7 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
 #' @description
 #' Registers with CodeDeploy a revision for the specified application.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/register_application_revision.html](https://paws-r.github.io/docs/codedeploy/register_application_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_register_application_revision/](https://www.paws-r-sdk.com/docs/codedeploy_register_application_revision/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
 #' Amazon Web Services account.
@@ -1505,7 +1505,7 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
 #' @description
 #' Registers an on-premises instance.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/register_on_premises_instance.html](https://paws-r.github.io/docs/codedeploy/register_on_premises_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_register_on_premises_instance/](https://www.paws-r-sdk.com/docs/codedeploy_register_on_premises_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance to register.
 #' @param iamSessionArn The ARN of the IAM session to associate with the on-premises instance.
@@ -1536,7 +1536,7 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
 #' @description
 #' Removes one or more tags from one or more on-premises instances.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/remove_tags_from_on_premises_instances.html](https://paws-r.github.io/docs/codedeploy/remove_tags_from_on_premises_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_remove_tags_from_on_premises_instances/](https://www.paws-r-sdk.com/docs/codedeploy_remove_tags_from_on_premises_instances/) for full documentation.
 #'
 #' @param tags &#91;required&#93; The tag key-value pairs to remove from the on-premises instances.
 #' @param instanceNames &#91;required&#93; The names of the on-premises instances from which to remove tags.
@@ -1567,7 +1567,7 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
 #' @description
 #' In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/skip_wait_time_for_instance_termination.html](https://paws-r.github.io/docs/codedeploy/skip_wait_time_for_instance_termination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_skip_wait_time_for_instance_termination/](https://www.paws-r-sdk.com/docs/codedeploy_skip_wait_time_for_instance_termination/) for full documentation.
 #'
 #' @param deploymentId The unique ID of a blue/green deployment for which you want to skip the
 #' instance termination wait time.
@@ -1597,7 +1597,7 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
 #' @description
 #' Attempts to stop an ongoing deployment.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/stop_deployment.html](https://paws-r.github.io/docs/codedeploy/stop_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_stop_deployment/](https://www.paws-r-sdk.com/docs/codedeploy_stop_deployment/) for full documentation.
 #'
 #' @param deploymentId &#91;required&#93; The unique ID of a deployment.
 #' @param autoRollbackEnabled Indicates, when a deployment is stopped, whether instances that have
@@ -1630,7 +1630,7 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
 #' @description
 #' Associates the list of tags in the input `Tags` parameter with the resource identified by the `ResourceArn` input parameter.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/tag_resource.html](https://paws-r.github.io/docs/codedeploy/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_tag_resource/](https://www.paws-r-sdk.com/docs/codedeploy_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of a resource, such as a CodeDeploy application or deployment
 #' group.
@@ -1663,7 +1663,7 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Disassociates a resource from a list of tags. The resource is identified by the `ResourceArn` input parameter. The tags are identified by the list of keys in the `TagKeys` input parameter.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/untag_resource.html](https://paws-r.github.io/docs/codedeploy/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_untag_resource/](https://www.paws-r-sdk.com/docs/codedeploy_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that specifies from which resource to
 #' disassociate the tags with the keys in the `TagKeys` input parameter.
@@ -1696,7 +1696,7 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Changes the name of an application.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/update_application.html](https://paws-r.github.io/docs/codedeploy/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_update_application/](https://www.paws-r-sdk.com/docs/codedeploy_update_application/) for full documentation.
 #'
 #' @param applicationName The current name of the application you want to change.
 #' @param newApplicationName The new name to give the application.
@@ -1726,7 +1726,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @description
 #' Changes information about a deployment group.
 #'
-#' See [https://paws-r.github.io/docs/codedeploy/update_deployment_group.html](https://paws-r.github.io/docs/codedeploy/update_deployment_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codedeploy_update_deployment_group/](https://www.paws-r-sdk.com/docs/codedeploy_update_deployment_group/) for full documentation.
 #'
 #' @param applicationName &#91;required&#93; The application name that corresponds to the deployment group to update.
 #' @param currentDeploymentGroupName &#91;required&#93; The current name of the deployment group.

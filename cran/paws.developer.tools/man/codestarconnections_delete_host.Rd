@@ -12,6 +12,6 @@ codestarconnections_delete_host(HostArn)
 \description{
 The host to be deleted. Before you delete a host, all connections associated to the host must be deleted.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/delete_host.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_delete_host/} for full documentation.
 }
 \keyword{internal}

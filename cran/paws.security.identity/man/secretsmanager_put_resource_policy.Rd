@@ -26,6 +26,6 @@ principal. By default, public policies aren't blocked.}
 \description{
 Attaches a resource-based permission policy to a secret. A resource-based policy is optional. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html}{Authentication and access control for Secrets Manager}
 
-See \url{https://paws-r.github.io/docs/secretsmanager/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

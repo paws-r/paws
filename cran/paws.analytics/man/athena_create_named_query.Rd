@@ -40,6 +40,6 @@ fail.}
 \description{
 Creates a named query in the specified workgroup. Requires that you have access to the workgroup.
 
-See \url{https://paws-r.github.io/docs/athena/create_named_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_create_named_query/} for full documentation.
 }
 \keyword{internal}

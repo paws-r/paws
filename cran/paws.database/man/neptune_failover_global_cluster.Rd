@@ -24,6 +24,6 @@ you want to promote to primary for the global database.}
 \description{
 Initiates the failover process for a Neptune global database.
 
-See \url{https://paws-r.github.io/docs/neptune/failover_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_failover_global_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 \description{
 Creates an SageMaker \emph{trial}. A trial is a set of steps called \emph{trial components} that produce a machine learning model. A trial is part of a single SageMaker \emph{experiment}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_trial.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_trial/} for full documentation.
 }
 \keyword{internal}

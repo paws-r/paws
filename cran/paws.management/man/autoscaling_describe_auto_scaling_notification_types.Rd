@@ -10,6 +10,6 @@ autoscaling_describe_auto_scaling_notification_types()
 \description{
 Describes the notification types that are supported by Amazon EC2 Auto Scaling.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_notification_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_notification_types/} for full documentation.
 }
 \keyword{internal}

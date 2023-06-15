@@ -17,6 +17,6 @@ protection.}
 \description{
 Adds health-based detection to the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response.
 
-See \url{https://paws-r.github.io/docs/shield/associate_health_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_associate_health_check/} for full documentation.
 }
 \keyword{internal}

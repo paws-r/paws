@@ -37,6 +37,6 @@ resource after it's created.}
 \description{
 Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_disk_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_disk_snapshot/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ swf_deprecate_domain(name)
 \description{
 Deprecates the specified domain. After a domain has been deprecated it cannot be used to create new workflow executions or register new types. However, you can still use visibility actions on this domain. Deprecating a domain also deprecates all activity and workflow types registered in the domain. Executions that were started before the domain was deprecated continues to run.
 
-See \url{https://paws-r.github.io/docs/swf/deprecate_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_deprecate_domain/} for full documentation.
 }
 \keyword{internal}

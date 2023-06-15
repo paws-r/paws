@@ -13,6 +13,6 @@ directconnect_describe_tags(resourceArns)
 \description{
 Describes the tags associated with the specified Direct Connect resources.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_tags/} for full documentation.
 }
 \keyword{internal}

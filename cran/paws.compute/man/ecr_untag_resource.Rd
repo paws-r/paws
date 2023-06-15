@@ -16,6 +16,6 @@ repository.}
 \description{
 Deletes specified tags from a resource.
 
-See \url{https://paws-r.github.io/docs/ecr/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_untag_resource/} for full documentation.
 }
 \keyword{internal}

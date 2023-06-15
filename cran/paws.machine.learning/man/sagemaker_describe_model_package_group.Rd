@@ -12,6 +12,6 @@ sagemaker_describe_model_package_group(ModelPackageGroupName)
 \description{
 Gets a description for the specified model group.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_model_package_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package_group/} for full documentation.
 }
 \keyword{internal}

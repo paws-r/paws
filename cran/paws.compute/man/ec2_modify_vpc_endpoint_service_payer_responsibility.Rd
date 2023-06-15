@@ -25,6 +25,6 @@ owner, you cannot set it back to the endpoint owner.}
 \description{
 Modifies the payer responsibility for your VPC endpoint service.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_service_payer_responsibility.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_service_payer_responsibility/} for full documentation.
 }
 \keyword{internal}

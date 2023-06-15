@@ -25,6 +25,6 @@ provide this token to receive the next set of results.}
 \description{
 Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL).
 
-See \url{https://paws-r.github.io/docs/workspaces/list_available_management_cidr_ranges.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_list_available_management_cidr_ranges/} for full documentation.
 }
 \keyword{internal}

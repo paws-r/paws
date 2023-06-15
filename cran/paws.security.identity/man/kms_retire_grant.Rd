@@ -32,6 +32,6 @@ For example:
 \description{
 Deletes a grant. Typically, you retire a grant when you no longer need its permissions. To identify the grant to retire, use a \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{grant token}, or both the grant ID and a key identifier (key ID or key ARN) of the KMS key. The \code{\link[=kms_create_grant]{create_grant}} operation returns both values.
 
-See \url{https://paws-r.github.io/docs/kms/retire_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_retire_grant/} for full documentation.
 }
 \keyword{internal}

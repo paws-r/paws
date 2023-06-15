@@ -37,6 +37,6 @@ want to retrieve.}
 \description{
 Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_rightsizing_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_rightsizing_recommendation/} for full documentation.
 }
 \keyword{internal}

@@ -90,6 +90,6 @@ value is 300. The maximum value is 3600, or 1 hour.}
 \description{
 Adds a new Authorizer resource to an existing RestApi resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_authorizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_authorizer/} for full documentation.
 }
 \keyword{internal}

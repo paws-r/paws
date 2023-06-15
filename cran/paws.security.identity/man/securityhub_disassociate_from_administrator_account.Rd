@@ -10,6 +10,6 @@ securityhub_disassociate_from_administrator_account()
 \description{
 Disassociates the current Security Hub member account from the associated administrator account.
 
-See \url{https://paws-r.github.io/docs/securityhub/disassociate_from_administrator_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_disassociate_from_administrator_account/} for full documentation.
 }
 \keyword{internal}

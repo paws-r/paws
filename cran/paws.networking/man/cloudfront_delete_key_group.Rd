@@ -18,6 +18,6 @@ key group's \code{ETag} value. To get the \code{ETag}, use
 \description{
 Deletes a key group.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_key_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_key_group/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ route53domains_delete_tags_for_domain(DomainName, TagsToDelete)
 \description{
 This operation deletes the specified tags for a domain.
 
-See \url{https://paws-r.github.io/docs/route53domains/delete_tags_for_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_delete_tags_for_domain/} for full documentation.
 }
 \keyword{internal}

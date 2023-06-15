@@ -27,6 +27,6 @@ size is 100.}
 \description{
 Lists the queues associated with a routing profile.
 
-See \url{https://paws-r.github.io/docs/connect/list_routing_profile_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_routing_profile_queues/} for full documentation.
 }
 \keyword{internal}

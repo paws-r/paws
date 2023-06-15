@@ -13,6 +13,6 @@ currently being trained.}
 \description{
 Stops an entity recognizer training job while in progress.
 
-See \url{https://paws-r.github.io/docs/comprehend/stop_training_entity_recognizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_stop_training_entity_recognizer/} for full documentation.
 }
 \keyword{internal}

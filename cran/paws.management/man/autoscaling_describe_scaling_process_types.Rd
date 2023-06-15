@@ -10,6 +10,6 @@ autoscaling_describe_scaling_process_types()
 \description{
 Describes the scaling process types for use with the \code{\link[=autoscaling_resume_processes]{resume_processes}} and \code{\link[=autoscaling_suspend_processes]{suspend_processes}} APIs.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_scaling_process_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_scaling_process_types/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ password contains at least one of every character type.}
 \description{
 Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/get_random_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_get_random_password/} for full documentation.
 }
 \keyword{internal}

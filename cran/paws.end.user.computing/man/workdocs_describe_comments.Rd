@@ -28,6 +28,6 @@ previous call.}
 \description{
 List all the comments for the specified document version.
 
-See \url{https://paws-r.github.io/docs/workdocs/describe_comments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_describe_comments/} for full documentation.
 }
 \keyword{internal}

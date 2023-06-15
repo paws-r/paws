@@ -31,6 +31,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Returns a list of IAM users that are in the specified IAM group. You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 
-See \url{https://paws-r.github.io/docs/iam/get_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_group/} for full documentation.
 }
 \keyword{internal}

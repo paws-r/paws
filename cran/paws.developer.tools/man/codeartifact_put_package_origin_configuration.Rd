@@ -51,6 +51,6 @@ You must include both the desired \code{upstream} and \code{publish} restriction
 \description{
 Sets the package origin configuration for a package.
 
-See \url{https://paws-r.github.io/docs/codeartifact/put_package_origin_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_put_package_origin_configuration/} for full documentation.
 }
 \keyword{internal}

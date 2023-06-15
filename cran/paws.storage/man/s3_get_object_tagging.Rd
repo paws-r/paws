@@ -46,6 +46,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the tag-set of an object. You send the GET request against the tagging subresource associated with the object.
 
-See \url{https://paws-r.github.io/docs/s3/get_object_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object_tagging/} for full documentation.
 }
 \keyword{internal}

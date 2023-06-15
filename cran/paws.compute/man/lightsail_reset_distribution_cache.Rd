@@ -16,6 +16,6 @@ a list of distribution names that you can specify.}
 \description{
 Deletes currently cached content from your Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/reset_distribution_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_reset_distribution_cache/} for full documentation.
 }
 \keyword{internal}

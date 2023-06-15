@@ -46,6 +46,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Provides information to Amazon Web Services about your customer gateway device. The customer gateway device is the appliance at your end of the VPN connection. You must provide the IP address of the customer gateway device’s external interface. The IP address must be static and can be behind a device performing network address translation (NAT).
 
-See \url{https://paws-r.github.io/docs/ec2/create_customer_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_customer_gateway/} for full documentation.
 }
 \keyword{internal}

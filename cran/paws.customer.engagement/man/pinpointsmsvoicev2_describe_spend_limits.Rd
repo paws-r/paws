@@ -16,6 +16,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes the current Amazon Pinpoint monthly spend limits for sending voice and text messages.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_spend_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_spend_limits/} for full documentation.
 }
 \keyword{internal}

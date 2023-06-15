@@ -67,6 +67,6 @@ To tag an AMI or snapshot after it has been created, see
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
 
-See \url{https://paws-r.github.io/docs/ec2/create_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_image/} for full documentation.
 }
 \keyword{internal}

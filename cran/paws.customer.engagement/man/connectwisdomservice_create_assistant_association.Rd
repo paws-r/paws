@@ -31,6 +31,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates an association between an Amazon Connect Wisdom assistant and another resource. Currently, the only supported association is with a knowledge base. An assistant can have only a single association.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/create_assistant_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_create_assistant_association/} for full documentation.
 }
 \keyword{internal}

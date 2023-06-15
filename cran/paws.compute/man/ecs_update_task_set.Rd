@@ -22,6 +22,6 @@ keep running in the task set.}
 \description{
 Modifies a task set. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/update_task_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_task_set/} for full documentation.
 }
 \keyword{internal}

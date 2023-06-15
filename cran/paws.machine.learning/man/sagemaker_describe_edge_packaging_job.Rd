@@ -12,6 +12,6 @@ sagemaker_describe_edge_packaging_job(EdgePackagingJobName)
 \description{
 A description of edge packaging jobs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_edge_packaging_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_edge_packaging_job/} for full documentation.
 }
 \keyword{internal}

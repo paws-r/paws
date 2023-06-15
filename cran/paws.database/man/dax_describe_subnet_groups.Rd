@@ -27,6 +27,6 @@ specified by \code{MaxResults}.}
 \description{
 Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.
 
-See \url{https://paws-r.github.io/docs/dax/describe_subnet_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_describe_subnet_groups/} for full documentation.
 }
 \keyword{internal}

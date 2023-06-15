@@ -23,6 +23,6 @@ clouddirectory_list_facet_attributes(
 \description{
 Retrieves attributes attached to the facet.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_facet_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_facet_attributes/} for full documentation.
 }
 \keyword{internal}

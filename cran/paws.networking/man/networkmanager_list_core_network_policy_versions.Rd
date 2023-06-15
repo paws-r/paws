@@ -20,6 +20,6 @@ networkmanager_list_core_network_policy_versions(
 \description{
 Returns a list of core network policy versions.
 
-See \url{https://paws-r.github.io/docs/networkmanager/list_core_network_policy_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_list_core_network_policy_versions/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ receive all of the results.}
 \description{
 Retrieves details about invitations that you have received for resource shares.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_share_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_share_invitations/} for full documentation.
 }
 \keyword{internal}

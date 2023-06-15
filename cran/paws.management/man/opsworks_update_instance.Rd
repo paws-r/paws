@@ -113,6 +113,6 @@ AgentVersion cannot be set to Chef 12.2.}
 \description{
 Updates a specified instance.
 
-See \url{https://paws-r.github.io/docs/opsworks/update_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_update_instance/} for full documentation.
 }
 \keyword{internal}

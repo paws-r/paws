@@ -23,6 +23,6 @@ is set to none.}
 \description{
 Associates an existing vocabulary as the default. Contact Lens for Amazon Connect uses the vocabulary in post-call and real-time analysis sessions for the given language.
 
-See \url{https://paws-r.github.io/docs/connect/associate_default_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_associate_default_vocabulary/} for full documentation.
 }
 \keyword{internal}

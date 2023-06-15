@@ -30,6 +30,6 @@ connect_create_instance(
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/create_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_instance/} for full documentation.
 }
 \keyword{internal}

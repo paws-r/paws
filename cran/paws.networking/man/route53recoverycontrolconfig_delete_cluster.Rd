@@ -12,6 +12,6 @@ route53recoverycontrolconfig_delete_cluster(ClusterArn)
 \description{
 Delete a cluster.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_delete_cluster/} for full documentation.
 }
 \keyword{internal}

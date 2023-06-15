@@ -37,6 +37,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the IAM groups that have the specified path prefix.
 
-See \url{https://paws-r.github.io/docs/iam/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_groups/} for full documentation.
 }
 \keyword{internal}

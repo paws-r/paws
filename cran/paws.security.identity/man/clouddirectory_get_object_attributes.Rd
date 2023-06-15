@@ -28,6 +28,6 @@ SchemaFacet for details.}
 \description{
 Retrieves attributes within a facet that are associated with an object.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/get_object_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_get_object_attributes/} for full documentation.
 }
 \keyword{internal}

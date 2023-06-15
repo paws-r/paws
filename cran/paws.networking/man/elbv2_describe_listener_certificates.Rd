@@ -22,6 +22,6 @@ previous call.)}
 \description{
 Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
 
-See \url{https://paws-r.github.io/docs/elbv2/describe_listener_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_describe_listener_certificates/} for full documentation.
 }
 \keyword{internal}

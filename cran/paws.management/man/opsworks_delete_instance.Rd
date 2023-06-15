@@ -21,6 +21,6 @@ opsworks_delete_instance(
 \description{
 Deletes a specified instance, which terminates the associated Amazon EC2 instance. You must stop an instance before you can delete it.
 
-See \url{https://paws-r.github.io/docs/opsworks/delete_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_delete_instance/} for full documentation.
 }
 \keyword{internal}

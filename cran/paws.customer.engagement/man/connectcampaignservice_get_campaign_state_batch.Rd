@@ -12,6 +12,6 @@ connectcampaignservice_get_campaign_state_batch(campaignIds)
 \description{
 Get state of campaigns for the specified Amazon Connect account.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/get_campaign_state_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_get_campaign_state_batch/} for full documentation.
 }
 \keyword{internal}

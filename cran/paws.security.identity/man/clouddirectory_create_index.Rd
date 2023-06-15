@@ -28,6 +28,6 @@ or not.}
 \description{
 Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html}{Indexing and search} for more information.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/create_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_create_index/} for full documentation.
 }
 \keyword{internal}

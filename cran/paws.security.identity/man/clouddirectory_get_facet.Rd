@@ -16,6 +16,6 @@ more information, see arns.}
 \description{
 Gets details of the Facet, such as facet name, attributes, Rules, or \code{ObjectType}. You can call this on all kinds of schema facets -- published, development, or applied.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/get_facet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_get_facet/} for full documentation.
 }
 \keyword{internal}

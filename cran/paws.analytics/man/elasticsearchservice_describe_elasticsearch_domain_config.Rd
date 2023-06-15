@@ -14,6 +14,6 @@ elasticsearchservice_describe_elasticsearch_domain_config(DomainName)
 \description{
 Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domain_config/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ apply to themes.}
 \description{
 Describes a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_theme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_theme/} for full documentation.
 }
 \keyword{internal}

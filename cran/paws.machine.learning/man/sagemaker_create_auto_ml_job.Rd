@@ -61,6 +61,6 @@ Autopilot model deployment.}
 \description{
 Creates an Autopilot job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_auto_ml_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job/} for full documentation.
 }
 \keyword{internal}

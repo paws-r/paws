@@ -92,6 +92,6 @@ policy and double quotes to enclose the JSON names and values:
 \description{
 Creates an entity recognizer using submitted files. After your \code{\link[=comprehend_create_entity_recognizer]{create_entity_recognizer}} request is submitted, you can check job status using the \code{\link[=comprehend_describe_entity_recognizer]{describe_entity_recognizer}} API.
 
-See \url{https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_create_entity_recognizer/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ redshiftserverless_get_endpoint_access(endpointName)
 \description{
 Returns information, such as the name, about a VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_endpoint_access/} for full documentation.
 }
 \keyword{internal}

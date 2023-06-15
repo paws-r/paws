@@ -23,6 +23,6 @@ permissions.}
 \description{
 Removes the specified member Amazon Web Services account as a delegated administrator for the specified Amazon Web Services service.
 
-See \url{https://paws-r.github.io/docs/organizations/deregister_delegated_administrator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_deregister_delegated_administrator/} for full documentation.
 }
 \keyword{internal}

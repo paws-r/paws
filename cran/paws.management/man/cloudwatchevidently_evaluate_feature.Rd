@@ -31,6 +31,6 @@ array is not supported.}
 \description{
 This operation assigns a feature variation to one given user session. You pass in an \code{entityID} that represents the user. Evidently then checks the evaluation rules and assigns the variation.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/evaluate_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_evaluate_feature/} for full documentation.
 }
 \keyword{internal}

@@ -42,6 +42,6 @@ randomly generated token is used for the request to ensure idempotency.}
 \description{
 Creates a new pool and associates the specified origination identity to the pool. A pool can include one or more phone numbers and SenderIds that are associated with your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/create_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_pool/} for full documentation.
 }
 \keyword{internal}

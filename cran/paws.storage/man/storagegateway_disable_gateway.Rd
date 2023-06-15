@@ -12,6 +12,6 @@ storagegateway_disable_gateway(GatewayARN)
 \description{
 Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM is damaged, you can disable the gateway so you can recover virtual tapes.
 
-See \url{https://paws-r.github.io/docs/storagegateway/disable_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_disable_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ both.}
 \description{
 Returns the current status of Easy DKIM signing for an entity. For domain name identities, this operation also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES has successfully verified that these tokens have been published.
 
-See \url{https://paws-r.github.io/docs/ses/get_identity_dkim_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_identity_dkim_attributes/} for full documentation.
 }
 \keyword{internal}

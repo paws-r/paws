@@ -16,6 +16,6 @@ or
 \description{
 Deletes the content of a comment made on a change, file, or commit in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/delete_comment_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_delete_comment_content/} for full documentation.
 }
 \keyword{internal}

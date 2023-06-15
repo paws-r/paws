@@ -20,6 +20,6 @@ language.}
 \description{
 Returns the current list of Amazon Web Services services and a list of service categories for each service. You then use service names and categories in your \code{\link[=support_create_case]{create_case}} requests. Each Amazon Web Services service has its own set of categories.
 
-See \url{https://paws-r.github.io/docs/support/describe_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_services/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ the \href{https://docs.aws.amazon.com/ses/latest/dg/}{Amazon SES Developer Guide
 \description{
 Creates the specified sending authorization policy for the given identity (an email address or a domain).
 
-See \url{https://paws-r.github.io/docs/sesv2/create_email_identity_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_create_email_identity_policy/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Retrieve a list of application versions.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_application_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_application_versions/} for full documentation.
 }
 \keyword{internal}

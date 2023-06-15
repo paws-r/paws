@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a subnet CIDR reservation.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_subnet_cidr_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_subnet_cidr_reservation/} for full documentation.
 }
 \keyword{internal}

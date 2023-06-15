@@ -15,6 +15,6 @@ elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)
 \description{
 Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
 
-See \url{https://paws-r.github.io/docs/elbv2/set_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_set_security_groups/} for full documentation.
 }
 \keyword{internal}

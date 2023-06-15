@@ -35,6 +35,6 @@ default of 5 is used.}
 \description{
 Provides a list of custom language models that match the specified criteria. If no criteria are specified, all custom language models are returned.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/list_language_models.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_list_language_models/} for full documentation.
 }
 \keyword{internal}

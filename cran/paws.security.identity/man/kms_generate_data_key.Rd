@@ -104,6 +104,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Returns a unique symmetric data key for use outside of KMS. This operation returns a plaintext copy of the data key and a copy that is encrypted under a symmetric encryption KMS key that you specify. The bytes in the plaintext key are random; they are not related to the caller or the KMS key. You can use the plaintext key to encrypt your data outside of KMS and store the encrypted data key with the encrypted data.
 
-See \url{https://paws-r.github.io/docs/kms/generate_data_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key/} for full documentation.
 }
 \keyword{internal}

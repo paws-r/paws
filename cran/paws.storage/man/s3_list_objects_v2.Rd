@@ -71,6 +71,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A \verb{200 OK} response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html}{Listing object keys programmatically}
 
-See \url{https://paws-r.github.io/docs/s3/list_objects_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_objects_v2/} for full documentation.
 }
 \keyword{internal}

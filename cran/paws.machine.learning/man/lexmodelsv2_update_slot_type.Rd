@@ -49,6 +49,6 @@ information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages
 \description{
 Updates the configuration of an existing slot type.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_slot_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_slot_type/} for full documentation.
 }
 \keyword{internal}

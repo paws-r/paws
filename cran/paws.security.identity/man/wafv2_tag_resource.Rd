@@ -14,6 +14,6 @@ wafv2_tag_resource(ResourceARN, Tags)
 \description{
 Associates tags with the specified Amazon Web Services resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 
-See \url{https://paws-r.github.io/docs/wafv2/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -44,6 +44,6 @@ mappings.}
 \description{
 Removes resource mappings from a draft application version.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/remove_draft_app_version_resource_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_remove_draft_app_version_resource_mappings/} for full documentation.
 }
 \keyword{internal}

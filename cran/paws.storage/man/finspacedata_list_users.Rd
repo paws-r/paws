@@ -14,6 +14,6 @@ finspacedata_list_users(nextToken = NULL, maxResults)
 \description{
 Lists all available user accounts in FinSpace.
 
-See \url{https://paws-r.github.io/docs/finspacedata/list_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_users/} for full documentation.
 }
 \keyword{internal}

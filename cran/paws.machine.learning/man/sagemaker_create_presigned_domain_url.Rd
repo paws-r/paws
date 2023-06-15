@@ -28,6 +28,6 @@ defaults to 300.}
 \description{
 Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to Amazon SageMaker Studio, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_presigned_domain_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_domain_url/} for full documentation.
 }
 \keyword{internal}

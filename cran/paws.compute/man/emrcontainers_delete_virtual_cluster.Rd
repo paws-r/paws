@@ -12,6 +12,6 @@ emrcontainers_delete_virtual_cluster(id)
 \description{
 Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 
-See \url{https://paws-r.github.io/docs/emrcontainers/delete_virtual_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrcontainers_delete_virtual_cluster/} for full documentation.
 }
 \keyword{internal}

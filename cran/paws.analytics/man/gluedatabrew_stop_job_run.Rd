@@ -14,6 +14,6 @@ gluedatabrew_stop_job_run(Name, RunId)
 \description{
 Stops a particular run of a job.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/stop_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_stop_job_run/} for full documentation.
 }
 \keyword{internal}

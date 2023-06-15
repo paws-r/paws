@@ -34,6 +34,6 @@ ready for work. The action will be performed on this session.}
 \description{
 Performs a recipe step within an interactive DataBrew session that's currently open.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/send_project_session_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_send_project_session_action/} for full documentation.
 }
 \keyword{internal}

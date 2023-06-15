@@ -14,6 +14,6 @@ directoryservice_update_settings(DirectoryId, Settings)
 \description{
 Updates the configurable settings for the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/update_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_settings/} for full documentation.
 }
 \keyword{internal}

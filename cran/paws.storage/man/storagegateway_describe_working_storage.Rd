@@ -12,6 +12,6 @@ storagegateway_describe_working_storage(GatewayARN)
 \description{
 Returns information about the working storage of a gateway. This operation is only supported in the stored volumes gateway type. This operation is deprecated in cached volumes API version (20120630). Use DescribeUploadBuffer instead.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_working_storage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_working_storage/} for full documentation.
 }
 \keyword{internal}

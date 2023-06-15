@@ -28,6 +28,6 @@ generate a new version.}
 \description{
 Updates cluster broker volume size (or) sets cluster storage mode to TIERED.
 
-See \url{https://paws-r.github.io/docs/kafka/update_storage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_storage/} for full documentation.
 }
 \keyword{internal}

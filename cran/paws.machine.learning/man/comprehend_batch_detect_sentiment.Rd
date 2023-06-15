@@ -19,6 +19,6 @@ same language.}
 \description{
 Inspects a batch of documents and returns an inference of the prevailing sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.
 
-See \url{https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_batch_detect_sentiment/} for full documentation.
 }
 \keyword{internal}

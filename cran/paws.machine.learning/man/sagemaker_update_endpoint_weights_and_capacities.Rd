@@ -19,6 +19,6 @@ sagemaker_update_endpoint_weights_and_capacities(
 \description{
 Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint. When it receives the request, SageMaker sets the endpoint status to \code{Updating}. After updating the endpoint, it sets the status to \code{InService}. To check the status of an endpoint, use the \code{\link[=sagemaker_describe_endpoint]{describe_endpoint}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_endpoint_weights_and_capacities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint_weights_and_capacities/} for full documentation.
 }
 \keyword{internal}

@@ -242,6 +242,6 @@ Balancer, Network Load Balancer, and VPC Lattice.}
 \description{
 \strong{We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}
 
-See \url{https://paws-r.github.io/docs/autoscaling/create_auto_scaling_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_create_auto_scaling_group/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates a new cache security group. Use a cache security group to control access to one or more clusters.
 
-See \url{https://paws-r.github.io/docs/elasticache/create_cache_security_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_create_cache_security_group/} for full documentation.
 }
 \keyword{internal}

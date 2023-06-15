@@ -12,6 +12,6 @@ xray_get_groups(NextToken = NULL)
 \description{
 Retrieves all active group details.
 
-See \url{https://paws-r.github.io/docs/xray/get_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_groups/} for full documentation.
 }
 \keyword{internal}

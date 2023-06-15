@@ -14,6 +14,6 @@ directconnect_tag_resource(resourceArn, tags)
 \description{
 Adds the specified tags to the specified Direct Connect resource. Each resource can have a maximum of 50 tags.
 
-See \url{https://paws-r.github.io/docs/directconnect/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_tag_resource/} for full documentation.
 }
 \keyword{internal}

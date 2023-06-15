@@ -2,7 +2,7 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_update_storage_virtual_machine}
 \alias{fsx_update_storage_virtual_machine}
-\title{Updates an Amazon FSx for ONTAP storage virtual machine (SVM)}
+\title{Updates an FSx for ONTAP storage virtual machine (SVM)}
 \usage{
 fsx_update_storage_virtual_machine(
   ActiveDirectoryConfiguration = NULL,
@@ -12,19 +12,19 @@ fsx_update_storage_virtual_machine(
 )
 }
 \arguments{
-\item{ActiveDirectoryConfiguration}{Updates the Microsoft Active Directory (AD) configuration for an SVM
-that is joined to an AD.}
+\item{ActiveDirectoryConfiguration}{Specifies updates to an SVM's Microsoft Active Directory (AD)
+configuration.}
 
 \item{ClientRequestToken}{}
 
 \item{StorageVirtualMachineId}{[required] The ID of the SVM that you want to update, in the format
 \verb{svm-0123456789abcdef0}.}
 
-\item{SvmAdminPassword}{Enter a new SvmAdminPassword if you are updating it.}
+\item{SvmAdminPassword}{Specifies a new SvmAdminPassword.}
 }
 \description{
-Updates an Amazon FSx for ONTAP storage virtual machine (SVM).
+Updates an FSx for ONTAP storage virtual machine (SVM).
 
-See \url{https://paws-r.github.io/docs/fsx/update_storage_virtual_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_update_storage_virtual_machine/} for full documentation.
 }
 \keyword{internal}

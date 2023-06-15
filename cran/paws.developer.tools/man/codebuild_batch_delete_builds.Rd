@@ -12,6 +12,6 @@ codebuild_batch_delete_builds(ids)
 \description{
 Deletes one or more builds.
 
-See \url{https://paws-r.github.io/docs/codebuild/batch_delete_builds.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_batch_delete_builds/} for full documentation.
 }
 \keyword{internal}

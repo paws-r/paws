@@ -72,6 +72,6 @@ results.}
 \description{
 Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_ops_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_ops_items/} for full documentation.
 }
 \keyword{internal}

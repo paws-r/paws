@@ -13,6 +13,6 @@ cloudfront_create_public_key(PublicKeyConfig)
 \description{
 Uploads a public key to CloudFront that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{signed URLs and signed cookies}, or with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html}{field-level encryption}.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_public_key/} for full documentation.
 }
 \keyword{internal}

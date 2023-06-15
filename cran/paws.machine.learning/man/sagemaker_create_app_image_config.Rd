@@ -24,6 +24,6 @@ JupyterLab.}
 \description{
 Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the kernels in the image.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_app_image_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/} for full documentation.
 }
 \keyword{internal}

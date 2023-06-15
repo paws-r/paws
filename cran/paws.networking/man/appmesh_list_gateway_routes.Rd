@@ -44,6 +44,6 @@ the \code{nextToken} value.}
 \description{
 Returns a list of existing gateway routes that are associated to a virtual gateway.
 
-See \url{https://paws-r.github.io/docs/appmesh/list_gateway_routes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_list_gateway_routes/} for full documentation.
 }
 \keyword{internal}

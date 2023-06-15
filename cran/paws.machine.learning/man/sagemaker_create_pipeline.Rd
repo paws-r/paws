@@ -44,6 +44,6 @@ If specified, it applies to all runs of this pipeline by default.}
 \description{
 Creates a pipeline using a JSON pipeline definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_pipeline/} for full documentation.
 }
 \keyword{internal}

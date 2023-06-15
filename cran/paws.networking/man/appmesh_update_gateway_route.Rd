@@ -37,6 +37,6 @@ with.}
 \description{
 Updates an existing gateway route that is associated to a specified virtual gateway in a service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/update_gateway_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_update_gateway_route/} for full documentation.
 }
 \keyword{internal}

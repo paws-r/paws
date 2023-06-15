@@ -45,6 +45,6 @@ all of the search criteria that you provide.}
 \description{
 Retrieves ProtectionGroup objects for the account. You can retrieve all protection groups or you can provide filtering criteria and retrieve just the subset of protection groups that match the criteria.
 
-See \url{https://paws-r.github.io/docs/shield/list_protection_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_list_protection_groups/} for full documentation.
 }
 \keyword{internal}

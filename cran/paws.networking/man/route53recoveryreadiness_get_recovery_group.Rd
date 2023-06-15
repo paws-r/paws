@@ -13,6 +13,6 @@ route53recoveryreadiness_get_recovery_group(RecoveryGroupName)
 \description{
 Gets details about a recovery group, including a list of the cells that are included in it.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/get_recovery_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_recovery_group/} for full documentation.
 }
 \keyword{internal}

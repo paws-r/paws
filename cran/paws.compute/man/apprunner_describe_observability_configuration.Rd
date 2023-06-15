@@ -18,6 +18,6 @@ isn't specified, the latest active revision is described.}
 \description{
 Return a full description of an App Runner observability configuration resource.
 
-See \url{https://paws-r.github.io/docs/apprunner/describe_observability_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_describe_observability_configuration/} for full documentation.
 }
 \keyword{internal}

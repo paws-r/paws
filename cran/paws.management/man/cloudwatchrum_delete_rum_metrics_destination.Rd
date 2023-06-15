@@ -26,6 +26,6 @@ destination to delete.}
 \description{
 Deletes a destination for CloudWatch RUM extended metrics, so that the specified app monitor stops sending extended metrics to that destination.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/delete_rum_metrics_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_rum_metrics_destination/} for full documentation.
 }
 \keyword{internal}

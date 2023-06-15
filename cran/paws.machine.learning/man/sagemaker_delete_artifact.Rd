@@ -14,6 +14,6 @@ sagemaker_delete_artifact(ArtifactArn = NULL, Source = NULL)
 \description{
 Deletes an artifact. Either \code{ArtifactArn} or \code{Source} must be specified.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_artifact/} for full documentation.
 }
 \keyword{internal}

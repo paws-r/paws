@@ -98,6 +98,6 @@ Default: \code{true}}
 \description{
 Transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
 
-See \url{https://paws-r.github.io/docs/route53domains/transfer_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_transfer_domain/} for full documentation.
 }
 \keyword{internal}

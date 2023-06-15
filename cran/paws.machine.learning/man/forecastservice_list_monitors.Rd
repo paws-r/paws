@@ -40,6 +40,6 @@ specify:
 \description{
 Returns a list of monitors created with the \code{\link[=forecastservice_create_monitor]{create_monitor}} operation and \code{\link[=forecastservice_create_auto_predictor]{create_auto_predictor}} operation. For each monitor resource, this operation returns of a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve a complete set of properties of a monitor resource by specify the monitor's ARN in the \code{\link[=forecastservice_describe_monitor]{describe_monitor}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_monitors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_monitors/} for full documentation.
 }
 \keyword{internal}

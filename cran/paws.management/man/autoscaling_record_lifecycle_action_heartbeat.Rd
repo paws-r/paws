@@ -27,6 +27,6 @@ hook.}
 \description{
 Records a heartbeat for the lifecycle action associated with the specified token or instance. This extends the timeout by the length of time defined using the \code{\link[=autoscaling_put_lifecycle_hook]{put_lifecycle_hook}} API call.
 
-See \url{https://paws-r.github.io/docs/autoscaling/record_lifecycle_action_heartbeat.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_record_lifecycle_action_heartbeat/} for full documentation.
 }
 \keyword{internal}

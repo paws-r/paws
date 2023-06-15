@@ -30,6 +30,6 @@ JSON schema draft 4 model.}
 \description{
 Updates a Model.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/update_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_update_model/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ next page of results.}
 \description{
 Lists the metrics for the metric attribution.
 
-See \url{https://paws-r.github.io/docs/personalize/list_metric_attribution_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_metric_attribution_metrics/} for full documentation.
 }
 \keyword{internal}

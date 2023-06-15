@@ -66,6 +66,6 @@ S3, you can specify component content up to your service quota. Either
 \description{
 Imports a component and transforms its data into a component document.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/import_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_import_component/} for full documentation.
 }
 \keyword{internal}

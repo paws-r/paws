@@ -15,6 +15,6 @@ workmail_create_group(OrganizationId, Name)
 \description{
 Creates a group that can be used in WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 
-See \url{https://paws-r.github.io/docs/workmail/create_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_create_group/} for full documentation.
 }
 \keyword{internal}

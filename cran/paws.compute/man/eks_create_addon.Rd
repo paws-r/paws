@@ -74,6 +74,6 @@ values that you provide are validated against the schema in
 \description{
 Creates an Amazon EKS add-on.
 
-See \url{https://paws-r.github.io/docs/eks/create_addon.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_create_addon/} for full documentation.
 }
 \keyword{internal}

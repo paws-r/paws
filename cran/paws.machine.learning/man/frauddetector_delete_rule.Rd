@@ -12,6 +12,6 @@ frauddetector_delete_rule(rule)
 \description{
 Deletes the rule. You cannot delete a rule if it is used by an \code{ACTIVE} or \code{INACTIVE} detector version.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_rule/} for full documentation.
 }
 \keyword{internal}

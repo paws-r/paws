@@ -17,6 +17,6 @@ configuration change.}
 \description{
 Returns information about the current blue/green deployment happening on an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html}{Making configuration changes in Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_change_progress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_domain_change_progress/} for full documentation.
 }
 \keyword{internal}

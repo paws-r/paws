@@ -21,6 +21,6 @@ elb_set_load_balancer_listener_ssl_certificate(
 \description{
 Sets the certificate that terminates the specified listener's SSL connections. The specified certificate replaces any prior certificate that was used on the same load balancer and port.
 
-See \url{https://paws-r.github.io/docs/elb/set_load_balancer_listener_ssl_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_set_load_balancer_listener_ssl_certificate/} for full documentation.
 }
 \keyword{internal}

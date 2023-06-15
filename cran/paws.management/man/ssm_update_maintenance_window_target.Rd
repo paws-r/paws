@@ -37,6 +37,6 @@ aren't specified are set to null.}
 \description{
 Modifies the target of an existing maintenance window. You can change the following:
 
-See \url{https://paws-r.github.io/docs/ssm/update_maintenance_window_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_target/} for full documentation.
 }
 \keyword{internal}

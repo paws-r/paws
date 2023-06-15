@@ -131,6 +131,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_images/} for full documentation.
 }
 \keyword{internal}

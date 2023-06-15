@@ -18,6 +18,6 @@ set of featured results sets.}
 \description{
 Lists all your sets of featured results for a given index. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
 
-See \url{https://paws-r.github.io/docs/kendra/list_featured_results_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_featured_results_sets/} for full documentation.
 }
 \keyword{internal}

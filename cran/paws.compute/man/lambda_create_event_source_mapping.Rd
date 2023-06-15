@@ -153,6 +153,6 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sq
 \description{
 Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and invokes the function.
 
-See \url{https://paws-r.github.io/docs/lambda/create_event_source_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_create_event_source_mapping/} for full documentation.
 }
 \keyword{internal}

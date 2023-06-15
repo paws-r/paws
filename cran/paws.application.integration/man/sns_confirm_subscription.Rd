@@ -22,6 +22,6 @@ Services authentication.}
 \description{
 Verifies an endpoint owner's intent to receive messages by validating the token sent to the endpoint by an earlier \code{\link[=sns_subscribe]{subscribe}} action. If the token is valid, the action creates a new subscription and returns its Amazon Resource Name (ARN). This call requires an AWS signature only when the \code{AuthenticateOnUnsubscribe} flag is set to "true".
 
-See \url{https://paws-r.github.io/docs/sns/confirm_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_confirm_subscription/} for full documentation.
 }
 \keyword{internal}

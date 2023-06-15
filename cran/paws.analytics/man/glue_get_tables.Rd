@@ -38,6 +38,6 @@ with \code{TransactionId}.}
 \description{
 Retrieves the definitions of some or all of the tables in a given \code{Database}.
 
-See \url{https://paws-r.github.io/docs/glue/get_tables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_tables/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ rule.}
 \description{
 Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many organization Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/configservice/put_organization_config_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_organization_config_rule/} for full documentation.
 }
 \keyword{internal}

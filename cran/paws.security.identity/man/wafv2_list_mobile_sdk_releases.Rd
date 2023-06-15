@@ -23,6 +23,6 @@ batch of objects.}
 \description{
 Retrieves a list of the available releases for the mobile SDK and the specified device platform.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_mobile_sdk_releases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_mobile_sdk_releases/} for full documentation.
 }
 \keyword{internal}

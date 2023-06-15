@@ -70,6 +70,6 @@ variation used in the experiment.}
 \description{
 Creates an Evidently \emph{experiment}. Before you create an experiment, you must create the feature to use for the experiment.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/create_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_experiment/} for full documentation.
 }
 \keyword{internal}

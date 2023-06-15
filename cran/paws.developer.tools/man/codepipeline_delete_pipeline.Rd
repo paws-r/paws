@@ -12,6 +12,6 @@ codepipeline_delete_pipeline(name)
 \description{
 Deletes the specified pipeline.
 
-See \url{https://paws-r.github.io/docs/codepipeline/delete_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_delete_pipeline/} for full documentation.
 }
 \keyword{internal}

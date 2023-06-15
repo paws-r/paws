@@ -12,6 +12,6 @@ redshiftserverless_delete_resource_policy(resourceArn)
 \description{
 Deletes the specified resource policy.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

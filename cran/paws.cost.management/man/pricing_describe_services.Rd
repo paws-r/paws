@@ -30,6 +30,6 @@ want to retrieve.}
 \description{
 Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as \code{AmazonEC2}, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation}, \code{locationType}, and \code{instanceCapacity10xlarge}.
 
-See \url{https://paws-r.github.io/docs/pricing/describe_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pricing_describe_services/} for full documentation.
 }
 \keyword{internal}

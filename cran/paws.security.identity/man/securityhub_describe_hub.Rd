@@ -13,6 +13,6 @@ securityhub_describe_hub(HubArn = NULL)
 \description{
 Returns details about the Hub resource in your account, including the \code{HubArn} and the time when you enabled Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/describe_hub.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_describe_hub/} for full documentation.
 }
 \keyword{internal}

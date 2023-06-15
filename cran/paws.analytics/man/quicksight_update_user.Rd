@@ -100,6 +100,6 @@ is set to \code{CUSTOM_OIDC}.}
 \description{
 Updates an Amazon QuickSight user.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_user/} for full documentation.
 }
 \keyword{internal}

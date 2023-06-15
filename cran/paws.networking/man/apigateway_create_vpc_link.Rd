@@ -24,6 +24,6 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 \description{
 Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_vpc_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_vpc_link/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_delete_experiment(ExperimentName)
 \description{
 Deletes an SageMaker experiment. All trials associated with the experiment must be deleted first. Use the \code{\link[=sagemaker_list_trials]{list_trials}} API to get a list of the trials associated with the experiment.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_experiment/} for full documentation.
 }
 \keyword{internal}

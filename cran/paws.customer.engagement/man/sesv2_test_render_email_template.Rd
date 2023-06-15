@@ -17,6 +17,6 @@ correspond to replacement tags in the email template.}
 \description{
 Creates a preview of the MIME content of an email when provided with a template and a set of replacement data.
 
-See \url{https://paws-r.github.io/docs/sesv2/test_render_email_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_test_render_email_template/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ IAM OpenID Connect provider. For more information, see
 \description{
 Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints.
 
-See \url{https://paws-r.github.io/docs/iam/update_open_id_connect_provider_thumbprint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_open_id_connect_provider_thumbprint/} for full documentation.
 }
 \keyword{internal}

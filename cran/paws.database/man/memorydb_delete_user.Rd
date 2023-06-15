@@ -12,6 +12,6 @@ memorydb_delete_user(UserName)
 \description{
 Deletes a user. The user will be removed from all ACLs and in turn removed from all clusters.
 
-See \url{https://paws-r.github.io/docs/memorydb/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_delete_user/} for full documentation.
 }
 \keyword{internal}

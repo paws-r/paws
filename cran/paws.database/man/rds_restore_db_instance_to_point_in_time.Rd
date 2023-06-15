@@ -376,6 +376,6 @@ for future growth.}
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.
 
-See \url{https://paws-r.github.io/docs/rds/restore_db_instance_to_point_in_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_instance_to_point_in_time/} for full documentation.
 }
 \keyword{internal}

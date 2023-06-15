@@ -20,6 +20,6 @@ idempotency token for each call, ACM treats each call as a new request.}
 \description{
 Adds or modifies account-level configurations in ACM.
 
-See \url{https://paws-r.github.io/docs/acm/put_account_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_put_account_configuration/} for full documentation.
 }
 \keyword{internal}

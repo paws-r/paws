@@ -14,6 +14,6 @@ codecommit_list_branches(repositoryName, nextToken = NULL)
 \description{
 Gets information about one or more branches in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/list_branches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_list_branches/} for full documentation.
 }
 \keyword{internal}

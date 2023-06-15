@@ -23,6 +23,6 @@ schemas_get_code_binding_source(
 \description{
 Get the code binding source URI.
 
-See \url{https://paws-r.github.io/docs/schemas/get_code_binding_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_get_code_binding_source/} for full documentation.
 }
 \keyword{internal}

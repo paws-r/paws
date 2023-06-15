@@ -23,6 +23,6 @@ character.}
 \description{
 This operation initiates the vault locking process by doing the following:
 
-See \url{https://paws-r.github.io/docs/glacier/initiate_vault_lock.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_initiate_vault_lock/} for full documentation.
 }
 \keyword{internal}

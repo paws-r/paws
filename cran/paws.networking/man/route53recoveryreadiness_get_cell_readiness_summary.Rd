@@ -20,6 +20,6 @@ route53recoveryreadiness_get_cell_readiness_summary(
 \description{
 Gets readiness for a cell. Aggregates the readiness of all the resources that are associated with the cell into a single value.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/get_cell_readiness_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_cell_readiness_summary/} for full documentation.
 }
 \keyword{internal}

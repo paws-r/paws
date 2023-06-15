@@ -19,6 +19,6 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation creates a new vault with the specified name. The name of the vault must be unique within a region for an AWS account. You can create up to 1,000 vaults per account. If you need to create more vaults, contact Amazon S3 Glacier.
 
-See \url{https://paws-r.github.io/docs/glacier/create_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_create_vault/} for full documentation.
 }
 \keyword{internal}

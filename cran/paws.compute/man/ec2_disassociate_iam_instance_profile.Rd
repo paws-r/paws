@@ -12,6 +12,6 @@ ec2_disassociate_iam_instance_profile(AssociationId)
 \description{
 Disassociates an IAM instance profile from a running or stopped instance.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_iam_instance_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_iam_instance_profile/} for full documentation.
 }
 \keyword{internal}

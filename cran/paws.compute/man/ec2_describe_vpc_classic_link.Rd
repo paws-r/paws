@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the ClassicLink status of one or more VPCs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_classic_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_classic_link/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymme
 \description{
 Associates the specified KMS key with the specified log group.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/associate_kms_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_associate_kms_key/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ The default value is 10,000.}
 \description{
 Gets data records from a Kinesis data stream's shard.
 
-See \url{https://paws-r.github.io/docs/kinesis/get_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_get_records/} for full documentation.
 }
 \keyword{internal}

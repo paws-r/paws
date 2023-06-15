@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Checks the availability of one or more image layers in a repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/batch_check_layer_availability.html](https://paws-r.github.io/docs/ecr/batch_check_layer_availability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_batch_check_layer_availability/](https://www.paws-r-sdk.com/docs/ecr_batch_check_layer_availability/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the image layers to check. If you do not specify a registry,
@@ -42,7 +42,7 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' @description
 #' Deletes a list of specified images within a repository. Images are specified with either an `imageTag` or `imageDigest`.
 #'
-#' See [https://paws-r.github.io/docs/ecr/batch_delete_image.html](https://paws-r.github.io/docs/ecr/batch_delete_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_batch_delete_image/](https://www.paws-r-sdk.com/docs/ecr_batch_delete_image/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the image to delete. If you do not specify a registry, the
@@ -77,7 +77,7 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' @description
 #' Gets detailed information for an image. Images are specified with either an `imageTag` or `imageDigest`.
 #'
-#' See [https://paws-r.github.io/docs/ecr/batch_get_image.html](https://paws-r.github.io/docs/ecr/batch_get_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_batch_get_image/](https://www.paws-r-sdk.com/docs/ecr_batch_get_image/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the images to describe. If you do not specify a registry, the
@@ -117,7 +117,7 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 #' @description
 #' Gets the scanning configuration for one or more repositories.
 #'
-#' See [https://paws-r.github.io/docs/ecr/batch_get_repository_scanning_configuration.html](https://paws-r.github.io/docs/ecr/batch_get_repository_scanning_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_batch_get_repository_scanning_configuration/](https://www.paws-r-sdk.com/docs/ecr_batch_get_repository_scanning_configuration/) for full documentation.
 #'
 #' @param repositoryNames &#91;required&#93; One or more repository names to get the scanning configuration for.
 #'
@@ -147,7 +147,7 @@ ecr_batch_get_repository_scanning_configuration <- function(repositoryNames) {
 #' @description
 #' Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID. You can optionally provide a `sha256` digest of the image layer for data validation purposes.
 #'
-#' See [https://paws-r.github.io/docs/ecr/complete_layer_upload.html](https://paws-r.github.io/docs/ecr/complete_layer_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_complete_layer_upload/](https://www.paws-r-sdk.com/docs/ecr_complete_layer_upload/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry to which
 #' to upload layers. If you do not specify a registry, the default registry
@@ -183,7 +183,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @description
 #' Creates a pull through cache rule. A pull through cache rule provides a way to cache images from an external public registry in your Amazon ECR private registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/create_pull_through_cache_rule.html](https://paws-r.github.io/docs/ecr/create_pull_through_cache_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_create_pull_through_cache_rule/](https://www.paws-r-sdk.com/docs/ecr_create_pull_through_cache_rule/) for full documentation.
 #'
 #' @param ecrRepositoryPrefix &#91;required&#93; The repository name prefix to use when caching images from the source
 #' registry.
@@ -218,7 +218,7 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #' @description
 #' Creates a repository. For more information, see [Amazon ECR repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecr/create_repository.html](https://paws-r.github.io/docs/ecr/create_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_create_repository/](https://www.paws-r-sdk.com/docs/ecr_create_repository/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry to
 #' create the repository. If you do not specify a registry, the default
@@ -267,7 +267,7 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #' @description
 #' Deletes the lifecycle policy associated with the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/delete_lifecycle_policy.html](https://paws-r.github.io/docs/ecr/delete_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_delete_lifecycle_policy/](https://www.paws-r-sdk.com/docs/ecr_delete_lifecycle_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -299,7 +299,7 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' @description
 #' Deletes a pull through cache rule.
 #'
-#' See [https://paws-r.github.io/docs/ecr/delete_pull_through_cache_rule.html](https://paws-r.github.io/docs/ecr/delete_pull_through_cache_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_delete_pull_through_cache_rule/](https://www.paws-r-sdk.com/docs/ecr_delete_pull_through_cache_rule/) for full documentation.
 #'
 #' @param ecrRepositoryPrefix &#91;required&#93; The Amazon ECR repository prefix associated with the pull through cache
 #' rule to delete.
@@ -332,7 +332,7 @@ ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId =
 #' @description
 #' Deletes the registry permissions policy.
 #'
-#' See [https://paws-r.github.io/docs/ecr/delete_registry_policy.html](https://paws-r.github.io/docs/ecr/delete_registry_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_delete_registry_policy/](https://www.paws-r-sdk.com/docs/ecr_delete_registry_policy/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -359,7 +359,7 @@ ecr_delete_registry_policy <- function() {
 #' @description
 #' Deletes a repository. If the repository contains images, you must either delete all images in the repository or use the `force` option to delete the repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/delete_repository.html](https://paws-r.github.io/docs/ecr/delete_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_delete_repository/](https://www.paws-r-sdk.com/docs/ecr_delete_repository/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository to delete. If you do not specify a registry, the
@@ -392,7 +392,7 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #' @description
 #' Deletes the repository policy associated with the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/delete_repository_policy.html](https://paws-r.github.io/docs/ecr/delete_repository_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_delete_repository_policy/](https://www.paws-r-sdk.com/docs/ecr_delete_repository_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository policy to delete. If you do not specify a
@@ -425,7 +425,7 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @description
 #' Returns the replication status for a specified image.
 #'
-#' See [https://paws-r.github.io/docs/ecr/describe_image_replication_status.html](https://paws-r.github.io/docs/ecr/describe_image_replication_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_image_replication_status/](https://www.paws-r-sdk.com/docs/ecr_describe_image_replication_status/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that the image is in.
 #' @param imageId &#91;required&#93; 
@@ -457,7 +457,7 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #' @description
 #' Returns the scan findings for the specified image.
 #'
-#' See [https://paws-r.github.io/docs/ecr/describe_image_scan_findings.html](https://paws-r.github.io/docs/ecr/describe_image_scan_findings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_image_scan_findings/](https://www.paws-r-sdk.com/docs/ecr_describe_image_scan_findings/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to describe the image scan findings
@@ -508,7 +508,7 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #' @description
 #' Returns metadata about the images in a repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/describe_images.html](https://paws-r.github.io/docs/ecr/describe_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_images/](https://www.paws-r-sdk.com/docs/ecr_describe_images/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to describe images. If you do not
@@ -561,7 +561,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #' @description
 #' Returns the pull through cache rules for a registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/describe_pull_through_cache_rules.html](https://paws-r.github.io/docs/ecr/describe_pull_through_cache_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_pull_through_cache_rules/](https://www.paws-r-sdk.com/docs/ecr_describe_pull_through_cache_rules/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry to
 #' return the pull through cache rules for. If you do not specify a
@@ -610,7 +610,7 @@ ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrReposito
 #' @description
 #' Describes the settings for a registry. The replication configuration for a repository can be created or updated with the [`put_replication_configuration`][ecr_put_replication_configuration] API action.
 #'
-#' See [https://paws-r.github.io/docs/ecr/describe_registry.html](https://paws-r.github.io/docs/ecr/describe_registry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_registry/](https://www.paws-r-sdk.com/docs/ecr_describe_registry/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -637,7 +637,7 @@ ecr_describe_registry <- function() {
 #' @description
 #' Describes image repositories in a registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/describe_repositories.html](https://paws-r.github.io/docs/ecr/describe_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_describe_repositories/](https://www.paws-r-sdk.com/docs/ecr_describe_repositories/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repositories to be described. If you do not specify a
@@ -693,7 +693,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #' @description
 #' Retrieves an authorization token. An authorization token represents your IAM authentication credentials and can be used to access any Amazon ECR registry that your IAM principal has access to. The authorization token is valid for 12 hours.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_authorization_token.html](https://paws-r.github.io/docs/ecr/get_authorization_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_authorization_token/](https://www.paws-r-sdk.com/docs/ecr_get_authorization_token/) for full documentation.
 #'
 #' @param registryIds A list of Amazon Web Services account IDs that are associated with the
 #' registries for which to get AuthorizationData objects. If you do not
@@ -725,7 +725,7 @@ ecr_get_authorization_token <- function(registryIds = NULL) {
 #' @description
 #' Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_download_url_for_layer.html](https://paws-r.github.io/docs/ecr/get_download_url_for_layer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_download_url_for_layer/](https://www.paws-r-sdk.com/docs/ecr_get_download_url_for_layer/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the image layer to download. If you do not specify a registry,
@@ -759,7 +759,7 @@ ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, la
 #' @description
 #' Retrieves the lifecycle policy for the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_lifecycle_policy.html](https://paws-r.github.io/docs/ecr/get_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_lifecycle_policy/](https://www.paws-r-sdk.com/docs/ecr_get_lifecycle_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -792,7 +792,7 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' @description
 #' Retrieves the results of the lifecycle policy preview request for the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_lifecycle_policy_preview.html](https://paws-r.github.io/docs/ecr/get_lifecycle_policy_preview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_lifecycle_policy_preview/](https://www.paws-r-sdk.com/docs/ecr_get_lifecycle_policy_preview/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -844,7 +844,7 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #' @description
 #' Retrieves the permissions policy for a registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_registry_policy.html](https://paws-r.github.io/docs/ecr/get_registry_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_registry_policy/](https://www.paws-r-sdk.com/docs/ecr_get_registry_policy/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -871,7 +871,7 @@ ecr_get_registry_policy <- function() {
 #' @description
 #' Retrieves the scanning configuration for a registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_registry_scanning_configuration.html](https://paws-r.github.io/docs/ecr/get_registry_scanning_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_registry_scanning_configuration/](https://www.paws-r-sdk.com/docs/ecr_get_registry_scanning_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -898,7 +898,7 @@ ecr_get_registry_scanning_configuration <- function() {
 #' @description
 #' Retrieves the repository policy for the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/get_repository_policy.html](https://paws-r.github.io/docs/ecr/get_repository_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_get_repository_policy/](https://www.paws-r-sdk.com/docs/ecr_get_repository_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -930,7 +930,7 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @description
 #' Notifies Amazon ECR that you intend to upload an image layer.
 #'
-#' See [https://paws-r.github.io/docs/ecr/initiate_layer_upload.html](https://paws-r.github.io/docs/ecr/initiate_layer_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_initiate_layer_upload/](https://www.paws-r-sdk.com/docs/ecr_initiate_layer_upload/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry to which
 #' you intend to upload layers. If you do not specify a registry, the
@@ -962,7 +962,7 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' @description
 #' Lists all the image IDs for the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/list_images.html](https://paws-r.github.io/docs/ecr/list_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_list_images/](https://www.paws-r-sdk.com/docs/ecr_list_images/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to list images. If you do not specify a
@@ -1014,7 +1014,7 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
 #' @description
 #' List the tags for an Amazon ECR resource.
 #'
-#' See [https://paws-r.github.io/docs/ecr/list_tags_for_resource.html](https://paws-r.github.io/docs/ecr/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ecr_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the only supported resource is an Amazon ECR
@@ -1045,7 +1045,7 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates or updates the image manifest and tags associated with an image.
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_image.html](https://paws-r.github.io/docs/ecr/put_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_image/](https://www.paws-r-sdk.com/docs/ecr_put_image/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to put the image. If you do not specify
@@ -1086,7 +1086,7 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
 #' @description
 #' The [`put_image_scanning_configuration`][ecr_put_image_scanning_configuration] API is being deprecated, in favor of specifying the image scanning configuration at the registry level. For more information, see [`put_registry_scanning_configuration`][ecr_put_registry_scanning_configuration].
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_image_scanning_configuration.html](https://paws-r.github.io/docs/ecr/put_image_scanning_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_image_scanning_configuration/](https://www.paws-r-sdk.com/docs/ecr_put_image_scanning_configuration/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to update the image scanning
@@ -1123,7 +1123,7 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #' @description
 #' Updates the image tag mutability settings for the specified repository. For more information, see [Image tag mutability](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_image_tag_mutability.html](https://paws-r.github.io/docs/ecr/put_image_tag_mutability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_image_tag_mutability/](https://www.paws-r-sdk.com/docs/ecr_put_image_tag_mutability/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to update the image tag mutability
@@ -1161,7 +1161,7 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
 #' @description
 #' Creates or updates the lifecycle policy for the specified repository. For more information, see [Lifecycle policy template](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_lifecycle_policy.html](https://paws-r.github.io/docs/ecr/put_lifecycle_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_lifecycle_policy/](https://www.paws-r-sdk.com/docs/ecr_put_lifecycle_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -1194,7 +1194,7 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #' @description
 #' Creates or updates the permissions policy for your registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_registry_policy.html](https://paws-r.github.io/docs/ecr/put_registry_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_registry_policy/](https://www.paws-r-sdk.com/docs/ecr_put_registry_policy/) for full documentation.
 #'
 #' @param policyText &#91;required&#93; The JSON policy text to apply to your registry. The policy text follows
 #' the same format as IAM policy text. For more information, see [Registry
@@ -1226,7 +1226,7 @@ ecr_put_registry_policy <- function(policyText) {
 #' @description
 #' Creates or updates the scanning configuration for your private registry.
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_registry_scanning_configuration.html](https://paws-r.github.io/docs/ecr/put_registry_scanning_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_registry_scanning_configuration/](https://www.paws-r-sdk.com/docs/ecr_put_registry_scanning_configuration/) for full documentation.
 #'
 #' @param scanType The scanning type to set for the registry.
 #' 
@@ -1269,7 +1269,7 @@ ecr_put_registry_scanning_configuration <- function(scanType = NULL, rules = NUL
 #' @description
 #' Creates or updates the replication configuration for a registry. The existing replication configuration for a repository can be retrieved with the [`describe_registry`][ecr_describe_registry] API action. The first time the PutReplicationConfiguration API is called, a service-linked IAM role is created in your account for the replication process. For more information, see [Using service-linked roles for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecr/put_replication_configuration.html](https://paws-r.github.io/docs/ecr/put_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_put_replication_configuration/](https://www.paws-r-sdk.com/docs/ecr_put_replication_configuration/) for full documentation.
 #'
 #' @param replicationConfiguration &#91;required&#93; An object representing the replication configuration for a registry.
 #'
@@ -1299,7 +1299,7 @@ ecr_put_replication_configuration <- function(replicationConfiguration) {
 #' @description
 #' Applies a repository policy to the specified repository to control access permissions. For more information, see [Amazon ECR Repository policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecr/set_repository_policy.html](https://paws-r.github.io/docs/ecr/set_repository_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_set_repository_policy/](https://www.paws-r-sdk.com/docs/ecr_set_repository_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -1339,7 +1339,7 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #' @description
 #' Starts an image vulnerability scan. An image scan can only be started once per 24 hours on an individual image. This limit includes if an image was scanned on initial push. For more information, see [Image scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecr/start_image_scan.html](https://paws-r.github.io/docs/ecr/start_image_scan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_start_image_scan/](https://www.paws-r-sdk.com/docs/ecr_start_image_scan/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository in which to start an image scan request. If you
@@ -1372,7 +1372,7 @@ ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
 #' @description
 #' Starts a preview of a lifecycle policy for the specified repository. This allows you to see the results before associating the lifecycle policy with the repository.
 #'
-#' See [https://paws-r.github.io/docs/ecr/start_lifecycle_policy_preview.html](https://paws-r.github.io/docs/ecr/start_lifecycle_policy_preview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_start_lifecycle_policy_preview/](https://www.paws-r-sdk.com/docs/ecr_start_lifecycle_policy_preview/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry that
 #' contains the repository. If you do not specify a registry, the default
@@ -1406,7 +1406,7 @@ ecr_start_lifecycle_policy_preview <- function(registryId = NULL, repositoryName
 #' @description
 #' Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
 #'
-#' See [https://paws-r.github.io/docs/ecr/tag_resource.html](https://paws-r.github.io/docs/ecr/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_tag_resource/](https://www.paws-r-sdk.com/docs/ecr_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the the resource to which to add tags.
 #' Currently, the only supported resource is an Amazon ECR repository.
@@ -1439,7 +1439,7 @@ ecr_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/ecr/untag_resource.html](https://paws-r.github.io/docs/ecr/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_untag_resource/](https://www.paws-r-sdk.com/docs/ecr_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to remove
 #' tags. Currently, the only supported resource is an Amazon ECR
@@ -1471,7 +1471,7 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Uploads an image layer part to Amazon ECR.
 #'
-#' See [https://paws-r.github.io/docs/ecr/upload_layer_part.html](https://paws-r.github.io/docs/ecr/upload_layer_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecr_upload_layer_part/](https://www.paws-r-sdk.com/docs/ecr_upload_layer_part/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID associated with the registry to which
 #' you are uploading layer parts. If you do not specify a registry, the

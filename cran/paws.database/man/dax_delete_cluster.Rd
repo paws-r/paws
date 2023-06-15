@@ -12,6 +12,6 @@ dax_delete_cluster(ClusterName)
 \description{
 Deletes a previously provisioned DAX cluster. \emph{DeleteCluster} deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.
 
-See \url{https://paws-r.github.io/docs/dax/delete_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_delete_cluster/} for full documentation.
 }
 \keyword{internal}

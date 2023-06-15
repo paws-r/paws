@@ -21,6 +21,6 @@ paginated.}
 \description{
 Lists all tags for a top-level EFS resource. You must provide the ID of the resource that you want to retrieve the tags for.
 
-See \url{https://paws-r.github.io/docs/efs/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

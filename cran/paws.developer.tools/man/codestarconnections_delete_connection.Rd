@@ -14,6 +14,6 @@ The ARN is never reused if the connection is deleted.}
 \description{
 The connection to be deleted.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_delete_connection/} for full documentation.
 }
 \keyword{internal}

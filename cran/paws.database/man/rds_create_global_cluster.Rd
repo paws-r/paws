@@ -38,6 +38,6 @@ global database cluster you are creating.}
 \description{
 Creates an Aurora global database spread across multiple Amazon Web Services Regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.
 
-See \url{https://paws-r.github.io/docs/rds/create_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_global_cluster/} for full documentation.
 }
 \keyword{internal}

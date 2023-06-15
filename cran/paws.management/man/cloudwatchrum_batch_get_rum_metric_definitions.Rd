@@ -37,6 +37,6 @@ page of results.}
 \description{
 Retrieves the list of metrics and dimensions that a RUM app monitor is sending to a single destination.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/batch_get_rum_metric_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_get_rum_metric_definitions/} for full documentation.
 }
 \keyword{internal}

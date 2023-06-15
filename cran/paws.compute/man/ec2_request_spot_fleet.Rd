@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a Spot Fleet request.
 
-See \url{https://paws-r.github.io/docs/ec2/request_spot_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_request_spot_fleet/} for full documentation.
 }
 \keyword{internal}

@@ -139,6 +139,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \description{
 Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value.
 
-See \url{https://paws-r.github.io/docs/dynamodb/delete_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_delete_item/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ hours, and cannot be shared with other accounts.}
 \description{
 Search the schemas
 
-See \url{https://paws-r.github.io/docs/schemas/search_schemas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_search_schemas/} for full documentation.
 }
 \keyword{internal}

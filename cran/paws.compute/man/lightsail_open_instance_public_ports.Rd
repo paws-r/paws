@@ -16,6 +16,6 @@ lightsail_open_instance_public_ports(portInfo, instanceName)
 \description{
 Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol.
 
-See \url{https://paws-r.github.io/docs/lightsail/open_instance_public_ports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_open_instance_public_ports/} for full documentation.
 }
 \keyword{internal}

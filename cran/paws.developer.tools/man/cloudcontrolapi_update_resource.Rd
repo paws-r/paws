@@ -70,6 +70,6 @@ in the \emph{Amazon Web Services Cloud Control API User Guide}.}
 \description{
 Updates the specified property values in the resource.
 
-See \url{https://paws-r.github.io/docs/cloudcontrolapi/update_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudcontrolapi_update_resource/} for full documentation.
 }
 \keyword{internal}

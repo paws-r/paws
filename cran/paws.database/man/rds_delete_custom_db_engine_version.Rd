@@ -18,6 +18,6 @@ Services Region.}
 \description{
 Deletes a custom engine version. To run this command, make sure you meet the following prerequisites:
 
-See \url{https://paws-r.github.io/docs/rds/delete_custom_db_engine_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_custom_db_engine_version/} for full documentation.
 }
 \keyword{internal}

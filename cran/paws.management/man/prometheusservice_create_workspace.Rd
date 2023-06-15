@@ -22,6 +22,6 @@ idempotency of the request.}
 \description{
 Creates a new AMP workspace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/create_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_workspace/} for full documentation.
 }
 \keyword{internal}

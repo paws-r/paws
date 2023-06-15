@@ -27,6 +27,6 @@ from a previous call.)}
 \description{
 Gets information about the Auto Scaling instances in the account and Region.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_instances/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ shield_disable_application_layer_automatic_response(ResourceArn)
 \description{
 Disable the Shield Advanced automatic application layer DDoS mitigation feature for the protected resource. This stops Shield Advanced from creating, verifying, and applying WAF rules for attacks that it detects for the resource.
 
-See \url{https://paws-r.github.io/docs/shield/disable_application_layer_automatic_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_disable_application_layer_automatic_response/} for full documentation.
 }
 \keyword{internal}

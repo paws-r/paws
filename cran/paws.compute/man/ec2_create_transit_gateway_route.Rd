@@ -30,6 +30,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a static route for the specified transit gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_route/} for full documentation.
 }
 \keyword{internal}

@@ -59,7 +59,14 @@ VectorOpenDataVisualizationLight, VectorOpenDataVisualizationDark –
 \verb{Amazon Ember Medium,Noto Sans Medium} |
 \verb{Amazon Ember Regular Italic,Noto Sans Italic} |
 \verb{Amazon Ember Condensed RC Regular,Noto Sans Regular} |
-\verb{Amazon Ember Condensed RC Bold,Noto Sans Bold}
+\verb{Amazon Ember Condensed RC Bold,Noto Sans Bold} |
+\verb{Amazon Ember Regular,Noto Sans Regular,Noto Sans Arabic Regular} |
+\verb{Amazon Ember Condensed RC Bold,Noto Sans Bold,Noto Sans Arabic Condensed Bold}
+| \verb{Amazon Ember Bold,Noto Sans Bold,Noto Sans Arabic Bold} |
+\verb{Amazon Ember Regular Italic,Noto Sans Italic,Noto Sans Arabic Regular}
+|
+\verb{Amazon Ember Condensed RC Regular,Noto Sans Regular,Noto Sans Arabic Condensed Regular}
+| \verb{Amazon Ember Medium,Noto Sans Medium,Noto Sans Arabic Medium}
 }
 
 The fonts used by the Open Data map styles are combined fonts that use
@@ -78,6 +85,6 @@ to authorize the request.}
 \description{
 Retrieves glyphs used to display labels on a map.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_map_glyphs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_glyphs/} for full documentation.
 }
 \keyword{internal}

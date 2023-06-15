@@ -12,6 +12,6 @@ ivs_get_recording_configuration(arn)
 \description{
 Gets the recording configuration for the specified ARN.
 
-See \url{https://paws-r.github.io/docs/ivs/get_recording_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_get_recording_configuration/} for full documentation.
 }
 \keyword{internal}

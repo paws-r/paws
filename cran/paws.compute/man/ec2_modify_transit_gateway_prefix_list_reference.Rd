@@ -30,6 +30,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies a reference (route) to a prefix list in a specified transit gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_transit_gateway_prefix_list_reference.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_transit_gateway_prefix_list_reference/} for full documentation.
 }
 \keyword{internal}

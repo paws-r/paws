@@ -14,6 +14,6 @@ elb_modify_load_balancer_attributes(LoadBalancerName, LoadBalancerAttributes)
 \description{
 Modifies the attributes of the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/modify_load_balancer_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_modify_load_balancer_attributes/} for full documentation.
 }
 \keyword{internal}

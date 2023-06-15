@@ -55,6 +55,6 @@ horizon, the iterator returned is for the oldest untrimmed data record
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5 minutes after it is returned to the requester.
 
-See \url{https://paws-r.github.io/docs/kinesis/get_shard_iterator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_get_shard_iterator/} for full documentation.
 }
 \keyword{internal}

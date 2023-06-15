@@ -30,6 +30,6 @@ file specified in \code{SourceS3Path}.}
 \description{
 Updates a thesaurus for an index.
 
-See \url{https://paws-r.github.io/docs/kendra/update_thesaurus.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_update_thesaurus/} for full documentation.
 }
 \keyword{internal}

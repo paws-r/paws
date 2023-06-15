@@ -27,6 +27,6 @@ DimensionFilterList.}
 \description{
 Make changes to an existing alert.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/update_alert.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_update_alert/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about the settings and attributes of a specific endpoint for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_endpoint/} for full documentation.
 }
 \keyword{internal}

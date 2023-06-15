@@ -30,6 +30,6 @@ want to retrieve.}
 \description{
 Returns hook-related information for the change set and a list of changes that CloudFormation makes when you run the change set.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_change_set_hooks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set_hooks/} for full documentation.
 }
 \keyword{internal}

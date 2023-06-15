@@ -12,6 +12,6 @@ elasticbeanstalk_delete_platform_version(PlatformArn = NULL)
 \description{
 Deletes the specified version of a custom platform.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_platform_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_platform_version/} for full documentation.
 }
 \keyword{internal}

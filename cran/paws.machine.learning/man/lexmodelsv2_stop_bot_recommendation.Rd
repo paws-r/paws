@@ -26,6 +26,6 @@ information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages
 \description{
 Stop an already running Bot Recommendation request.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/stop_bot_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_stop_bot_recommendation/} for full documentation.
 }
 \keyword{internal}

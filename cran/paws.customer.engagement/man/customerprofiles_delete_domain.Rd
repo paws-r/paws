@@ -13,6 +13,6 @@ customerprofiles_delete_domain(DomainName)
 \description{
 Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/delete_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_delete_domain/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ remove the tags.}
 \description{
 Removes the association between one or more provided tags and a notification rule.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ rekognition_create_project(ProjectName)
 \description{
 Creates a new Amazon Rekognition Custom Labels project. A project is a group of resources (datasets, model versions) that you use to create and manage Amazon Rekognition Custom Labels models.
 
-See \url{https://paws-r.github.io/docs/rekognition/create_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_create_project/} for full documentation.
 }
 \keyword{internal}

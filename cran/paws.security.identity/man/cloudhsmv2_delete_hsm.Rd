@@ -21,6 +21,6 @@ you are deleting.}
 \description{
 Deletes the specified HSM. To specify an HSM, you can use its identifier (ID), the IP address of the HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of these values. To find these values, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/delete_hsm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_hsm/} for full documentation.
 }
 \keyword{internal}

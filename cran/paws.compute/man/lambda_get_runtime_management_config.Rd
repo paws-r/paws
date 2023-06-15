@@ -27,6 +27,6 @@ version number. If no value is specified, the configuration for the
 \description{
 Retrieves the runtime management configuration for a function's version. If the runtime update mode is \strong{Manual}, this includes the ARN of the runtime version and the runtime update mode. If the runtime update mode is \strong{Auto} or \strong{Function update}, this includes the runtime update mode and \code{null} is returned for the ARN. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html}{Runtime updates}.
 
-See \url{https://paws-r.github.io/docs/lambda/get_runtime_management_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_runtime_management_config/} for full documentation.
 }
 \keyword{internal}

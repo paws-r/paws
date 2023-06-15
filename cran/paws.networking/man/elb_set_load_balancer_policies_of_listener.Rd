@@ -23,6 +23,6 @@ If the list is empty, all current policies are disabled.}
 \description{
 Replaces the current set of policies for the specified load balancer port with the specified set of policies.
 
-See \url{https://paws-r.github.io/docs/elb/set_load_balancer_policies_of_listener.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_set_load_balancer_policies_of_listener/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ wellarchitected_get_lens_review(WorkloadId, LensAlias, MilestoneNumber = NULL)
 \description{
 Get lens review.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/get_lens_review.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_review/} for full documentation.
 }
 \keyword{internal}

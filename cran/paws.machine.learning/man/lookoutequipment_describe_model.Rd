@@ -14,6 +14,6 @@ lookoutequipment_describe_model(ModelName)
 \description{
 Provides a JSON containing the overall information about a specific ML model, including model name and ARN, dataset, training and evaluation information, status, and so on.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/describe_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_describe_model/} for full documentation.
 }
 \keyword{internal}

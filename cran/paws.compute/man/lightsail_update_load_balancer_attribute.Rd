@@ -48,6 +48,6 @@ action to get a list of TLS policy names that you can specify.
 \description{
 Updates the specified attribute for a load balancer. You can only update one attribute at a time.
 
-See \url{https://paws-r.github.io/docs/lightsail/update_load_balancer_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_update_load_balancer_attribute/} for full documentation.
 }
 \keyword{internal}

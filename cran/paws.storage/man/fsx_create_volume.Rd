@@ -30,6 +30,6 @@ only valid volume types.}
 \description{
 Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
 
-See \url{https://paws-r.github.io/docs/fsx/create_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_create_volume/} for full documentation.
 }
 \keyword{internal}

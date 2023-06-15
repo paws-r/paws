@@ -31,6 +31,6 @@ in the \emph{Amazon Web Services General Reference Guide}.}
 \description{
 Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_project/} for full documentation.
 }
 \keyword{internal}

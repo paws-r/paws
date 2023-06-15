@@ -16,6 +16,6 @@ sagemaker_describe_device(NextToken = NULL, DeviceName, DeviceFleetName)
 \description{
 Describes the device.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_device/} for full documentation.
 }
 \keyword{internal}

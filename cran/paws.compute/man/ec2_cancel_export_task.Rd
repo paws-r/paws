@@ -13,6 +13,6 @@ ec2_cancel_export_task(ExportTaskId)
 \description{
 Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_export_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_export_task/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ resource. A tag is a key-value pair.}
 \description{
 Create an App Runner connection resource. App Runner requires a connection resource when you create App Runner services that access private repositories from certain third-party providers. You can share a connection across multiple services.
 
-See \url{https://paws-r.github.io/docs/apprunner/create_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_create_connection/} for full documentation.
 }
 \keyword{internal}

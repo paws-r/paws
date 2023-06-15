@@ -80,6 +80,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
 
-See \url{https://paws-r.github.io/docs/s3/list_multipart_uploads.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/} for full documentation.
 }
 \keyword{internal}

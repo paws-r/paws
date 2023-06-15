@@ -70,6 +70,6 @@ in the \emph{Amazon S3 User Guide}.}
 \description{
 Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the \code{max-parts} request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an \code{IsTruncated} field with the value of true, and a \code{NextPartNumberMarker} element. In subsequent \code{\link[=s3_list_parts]{list_parts}} requests you can include the part-number-marker query string parameter and set its value to the \code{NextPartNumberMarker} field value from the previous response.
 
-See \url{https://paws-r.github.io/docs/s3/list_parts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_parts/} for full documentation.
 }
 \keyword{internal}

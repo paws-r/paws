@@ -14,6 +14,6 @@ worklink_describe_website_certificate_authority(FleetArn, WebsiteCaId)
 \description{
 Provides information about the certificate authority.
 
-See \url{https://paws-r.github.io/docs/worklink/describe_website_certificate_authority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_describe_website_certificate_authority/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ ssm_update_association_status(Name, InstanceId, AssociationStatus)
 \description{
 Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node.
 
-See \url{https://paws-r.github.io/docs/ssm/update_association_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_association_status/} for full documentation.
 }
 \keyword{internal}

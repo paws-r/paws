@@ -28,6 +28,6 @@ operations, which returns results in the next page.}
 \description{
 Lists all Amazon OpenSearch Service domains associated with a given package. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_domains_for_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_domains_for_package/} for full documentation.
 }
 \keyword{internal}

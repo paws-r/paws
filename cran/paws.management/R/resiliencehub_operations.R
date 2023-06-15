@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds the resource mapping for the draft application version. You can also update an existing resource mapping to a new physical resource.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/add_draft_app_version_resource_mappings.html](https://paws-r.github.io/docs/resiliencehub/add_draft_app_version_resource_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_add_draft_app_version_resource_mappings/](https://www.paws-r-sdk.com/docs/resiliencehub_add_draft_app_version_resource_mappings/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -47,7 +47,7 @@ resiliencehub_add_draft_app_version_resource_mappings <- function(appArn, resour
 #' @description
 #' Creates an Resilience Hub application. An Resilience Hub application is a collection of Amazon Web Services resources structured to prevent and recover Amazon Web Services application disruptions. To describe an Resilience Hub application, you provide an application name, resources from one or more CloudFormation stacks, Resource Groups, Terraform state files, AppRegistry applications, and an appropriate resiliency policy. For more information about the number of resources supported per application, see [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub).
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/create_app.html](https://paws-r.github.io/docs/resiliencehub/create_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_create_app/](https://www.paws-r-sdk.com/docs/resiliencehub_create_app/) for full documentation.
 #'
 #' @param assessmentSchedule Assessment execution schedule with 'Daily' or 'Disabled' values.
 #' @param clientToken Used for an idempotency token. A client token is a unique,
@@ -89,7 +89,7 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
 #' @description
 #' Creates a new Application Component in the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/create_app_version_app_component.html](https://paws-r.github.io/docs/resiliencehub/create_app_version_app_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_create_app_version_app_component/](https://www.paws-r-sdk.com/docs/resiliencehub_create_app_version_app_component/) for full documentation.
 #'
 #' @param additionalInfo Currently, there is no supported additional information for Application
 #' Components.
@@ -134,7 +134,7 @@ resiliencehub_create_app_version_app_component <- function(additionalInfo = NULL
 #' @description
 #' Adds a resource to the Resilience Hub application and assigns it to the specified Application Components. If you specify a new Application Component, Resilience Hub will automatically create the Application Component.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/create_app_version_resource.html](https://paws-r.github.io/docs/resiliencehub/create_app_version_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_create_app_version_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_create_app_version_resource/) for full documentation.
 #'
 #' @param additionalInfo Currently, there is no supported additional information for resources.
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
@@ -181,7 +181,7 @@ resiliencehub_create_app_version_resource <- function(additionalInfo = NULL, app
 #' @description
 #' Creates a new recommendation template for the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/create_recommendation_template.html](https://paws-r.github.io/docs/resiliencehub/create_recommendation_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_create_recommendation_template/](https://www.paws-r-sdk.com/docs/resiliencehub_create_recommendation_template/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -248,7 +248,7 @@ resiliencehub_create_recommendation_template <- function(assessmentArn, bucketNa
 #' @description
 #' Creates a resiliency policy for an application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/create_resiliency_policy.html](https://paws-r.github.io/docs/resiliencehub/create_resiliency_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_create_resiliency_policy/](https://www.paws-r-sdk.com/docs/resiliencehub_create_resiliency_policy/) for full documentation.
 #'
 #' @param clientToken Used for an idempotency token. A client token is a unique,
 #' case-sensitive string of up to 64 ASCII characters. You should not reuse
@@ -289,7 +289,7 @@ resiliencehub_create_resiliency_policy <- function(clientToken = NULL, dataLocat
 #' @description
 #' Deletes an Resilience Hub application. This is a destructive action that can't be undone.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_app.html](https://paws-r.github.io/docs/resiliencehub/delete_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_app/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_app/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -327,7 +327,7 @@ resiliencehub_delete_app <- function(appArn, clientToken = NULL, forceDelete = N
 #' @description
 #' Deletes an Resilience Hub application assessment. This is a destructive action that can't be undone.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_app_assessment.html](https://paws-r.github.io/docs/resiliencehub/delete_app_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_assessment/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_assessment/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -365,7 +365,7 @@ resiliencehub_delete_app_assessment <- function(assessmentArn, clientToken = NUL
 #' @description
 #' Deletes the input source and all of its imported resources from the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_app_input_source.html](https://paws-r.github.io/docs/resiliencehub/delete_app_input_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_input_source/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_input_source/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -411,7 +411,7 @@ resiliencehub_delete_app_input_source <- function(appArn, clientToken = NULL, ek
 #' @description
 #' Deletes an Application Component from the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_app_version_app_component.html](https://paws-r.github.io/docs/resiliencehub/delete_app_version_app_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_version_app_component/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_version_app_component/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -449,7 +449,7 @@ resiliencehub_delete_app_version_app_component <- function(appArn, clientToken =
 #' @description
 #' Deletes a resource from the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_app_version_resource.html](https://paws-r.github.io/docs/resiliencehub/delete_app_version_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_version_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_app_version_resource/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -491,7 +491,7 @@ resiliencehub_delete_app_version_resource <- function(appArn, awsAccountId = NUL
 #' @description
 #' Deletes a recommendation template. This is a destructive action that can't be undone.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_recommendation_template.html](https://paws-r.github.io/docs/resiliencehub/delete_recommendation_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_recommendation_template/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_recommendation_template/) for full documentation.
 #'
 #' @param clientToken Used for an idempotency token. A client token is a unique,
 #' case-sensitive string of up to 64 ASCII characters. You should not reuse
@@ -523,7 +523,7 @@ resiliencehub_delete_recommendation_template <- function(clientToken = NULL, rec
 #' @description
 #' Deletes a resiliency policy. This is a destructive action that can't be undone.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/delete_resiliency_policy.html](https://paws-r.github.io/docs/resiliencehub/delete_resiliency_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_delete_resiliency_policy/](https://www.paws-r-sdk.com/docs/resiliencehub_delete_resiliency_policy/) for full documentation.
 #'
 #' @param clientToken Used for an idempotency token. A client token is a unique,
 #' case-sensitive string of up to 64 ASCII characters. You should not reuse
@@ -560,7 +560,7 @@ resiliencehub_delete_resiliency_policy <- function(clientToken = NULL, policyArn
 #' @description
 #' Describes an Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app.html](https://paws-r.github.io/docs/resiliencehub/describe_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -594,7 +594,7 @@ resiliencehub_describe_app <- function(appArn) {
 #' @description
 #' Describes an assessment for an Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app_assessment.html](https://paws-r.github.io/docs/resiliencehub/describe_app_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_assessment/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_assessment/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -628,7 +628,7 @@ resiliencehub_describe_app_assessment <- function(assessmentArn) {
 #' @description
 #' Describes the Resilience Hub application version.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app_version.html](https://paws-r.github.io/docs/resiliencehub/describe_app_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -663,7 +663,7 @@ resiliencehub_describe_app_version <- function(appArn, appVersion) {
 #' @description
 #' Describes an Application Component in the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app_version_app_component.html](https://paws-r.github.io/docs/resiliencehub/describe_app_version_app_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_app_component/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_app_component/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -699,7 +699,7 @@ resiliencehub_describe_app_version_app_component <- function(appArn, appVersion,
 #' @description
 #' Describes a resource of the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app_version_resource.html](https://paws-r.github.io/docs/resiliencehub/describe_app_version_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resource/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -740,7 +740,7 @@ resiliencehub_describe_app_version_resource <- function(appArn, appVersion, awsA
 #' @description
 #' Returns the resolution status for the specified resolution identifier for an application version. If `resolutionId` is not specified, the current resolution status is returned.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app_version_resources_resolution_status.html](https://paws-r.github.io/docs/resiliencehub/describe_app_version_resources_resolution_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resources_resolution_status/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_resources_resolution_status/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -776,7 +776,7 @@ resiliencehub_describe_app_version_resources_resolution_status <- function(appAr
 #' @description
 #' Describes details about an Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_app_version_template.html](https://paws-r.github.io/docs/resiliencehub/describe_app_version_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_template/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_app_version_template/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -811,7 +811,7 @@ resiliencehub_describe_app_version_template <- function(appArn, appVersion) {
 #' @description
 #' Describes the status of importing resources to an application version.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_draft_app_version_resources_import_status.html](https://paws-r.github.io/docs/resiliencehub/describe_draft_app_version_resources_import_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_draft_app_version_resources_import_status/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_draft_app_version_resources_import_status/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -846,7 +846,7 @@ resiliencehub_describe_draft_app_version_resources_import_status <- function(app
 #' @description
 #' Describes a specified resiliency policy for an Resilience Hub application. The returned policy object includes creation time, data location constraints, the Amazon Resource Name (ARN) for the policy, tags, tier, and more.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/describe_resiliency_policy.html](https://paws-r.github.io/docs/resiliencehub/describe_resiliency_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_resiliency_policy/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_resiliency_policy/) for full documentation.
 #'
 #' @param policyArn &#91;required&#93; The Amazon Resource Name (ARN) of the resiliency policy. The format for
 #' this ARN is:
@@ -881,7 +881,7 @@ resiliencehub_describe_resiliency_policy <- function(policyArn) {
 #' @description
 #' Imports resources to Resilience Hub application draft version from different input sources. For more information about the input sources supported by Resilience Hub, see [Discover the structure and describe your Resilience Hub application](https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html).
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/import_resources_to_draft_app_version.html](https://paws-r.github.io/docs/resiliencehub/import_resources_to_draft_app_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_import_resources_to_draft_app_version/](https://www.paws-r-sdk.com/docs/resiliencehub_import_resources_to_draft_app_version/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -921,7 +921,7 @@ resiliencehub_import_resources_to_draft_app_version <- function(appArn, eksSourc
 #' @description
 #' Lists the alarm recommendations for an Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_alarm_recommendations.html](https://paws-r.github.io/docs/resiliencehub/list_alarm_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_alarm_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_list_alarm_recommendations/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -959,7 +959,7 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
 #' @description
 #' Lists the assessments for an Resilience Hub application. You can use request parameters to refine the results for the response object.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_assessments.html](https://paws-r.github.io/docs/resiliencehub/list_app_assessments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_assessments/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_assessments/) for full documentation.
 #'
 #' @param appArn The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1004,7 +1004,7 @@ resiliencehub_list_app_assessments <- function(appArn = NULL, assessmentName = N
 #' @description
 #' Lists the compliances for an Resilience Hub Application Component.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_component_compliances.html](https://paws-r.github.io/docs/resiliencehub/list_app_component_compliances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_component_compliances/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_component_compliances/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -1042,7 +1042,7 @@ resiliencehub_list_app_component_compliances <- function(assessmentArn, maxResul
 #' @description
 #' Lists the recommendations for an Resilience Hub Application Component.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_component_recommendations.html](https://paws-r.github.io/docs/resiliencehub/list_app_component_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_component_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_component_recommendations/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -1080,7 +1080,7 @@ resiliencehub_list_app_component_recommendations <- function(assessmentArn, maxR
 #' @description
 #' Lists all the input sources of the Resilience Hub application. For more information about the input sources supported by Resilience Hub, see [Discover the structure and describe your Resilience Hub application](https://docs.aws.amazon.com/resilience-hub/latest/userguide/discover-structure.html).
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_input_sources.html](https://paws-r.github.io/docs/resiliencehub/list_app_input_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_input_sources/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_input_sources/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1118,7 +1118,7 @@ resiliencehub_list_app_input_sources <- function(appArn, appVersion, maxResults 
 #' @description
 #' Lists all the Application Components in the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_version_app_components.html](https://paws-r.github.io/docs/resiliencehub/list_app_version_app_components.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_app_components/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_app_components/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1157,7 +1157,7 @@ resiliencehub_list_app_version_app_components <- function(appArn, appVersion, ma
 #' @description
 #' Lists how the resources in an application version are mapped/sourced from. Mappings can be physical resource identifiers, CloudFormation stacks, resource-groups, or an application registry app.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_version_resource_mappings.html](https://paws-r.github.io/docs/resiliencehub/list_app_version_resource_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resource_mappings/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resource_mappings/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1196,7 +1196,7 @@ resiliencehub_list_app_version_resource_mappings <- function(appArn, appVersion,
 #' @description
 #' Lists all the resources in an Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_version_resources.html](https://paws-r.github.io/docs/resiliencehub/list_app_version_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resources/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resources/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1236,7 +1236,7 @@ resiliencehub_list_app_version_resources <- function(appArn, appVersion, maxResu
 #' @description
 #' Lists the different versions for the Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_app_versions.html](https://paws-r.github.io/docs/resiliencehub/list_app_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_versions/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_versions/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1274,7 +1274,7 @@ resiliencehub_list_app_versions <- function(appArn, maxResults = NULL, nextToken
 #' @description
 #' Lists your Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_apps.html](https://paws-r.github.io/docs/resiliencehub/list_apps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_apps/](https://www.paws-r-sdk.com/docs/resiliencehub_list_apps/) for full documentation.
 #'
 #' @param appArn The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1313,7 +1313,7 @@ resiliencehub_list_apps <- function(appArn = NULL, maxResults = NULL, name = NUL
 #' @description
 #' Lists the recommendation templates for the Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_recommendation_templates.html](https://paws-r.github.io/docs/resiliencehub/list_recommendation_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_recommendation_templates/](https://www.paws-r-sdk.com/docs/resiliencehub_list_recommendation_templates/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -1356,7 +1356,7 @@ resiliencehub_list_recommendation_templates <- function(assessmentArn, maxResult
 #' @description
 #' Lists the resiliency policies for the Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_resiliency_policies.html](https://paws-r.github.io/docs/resiliencehub/list_resiliency_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_resiliency_policies/](https://www.paws-r-sdk.com/docs/resiliencehub_list_resiliency_policies/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1390,7 +1390,7 @@ resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken 
 #' @description
 #' Lists the standard operating procedure (SOP) recommendations for the Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_sop_recommendations.html](https://paws-r.github.io/docs/resiliencehub/list_sop_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_sop_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_list_sop_recommendations/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -1429,7 +1429,7 @@ resiliencehub_list_sop_recommendations <- function(assessmentArn, maxResults = N
 #' @description
 #' Lists the suggested resiliency policies for the Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_suggested_resiliency_policies.html](https://paws-r.github.io/docs/resiliencehub/list_suggested_resiliency_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_suggested_resiliency_policies/](https://www.paws-r-sdk.com/docs/resiliencehub_list_suggested_resiliency_policies/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1461,7 +1461,7 @@ resiliencehub_list_suggested_resiliency_policies <- function(maxResults = NULL, 
 #' @description
 #' Lists the tags for your resources in your Resilience Hub applications.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_tags_for_resource.html](https://paws-r.github.io/docs/resiliencehub/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for a specific resource in your
 #' Resilience Hub application.
@@ -1491,7 +1491,7 @@ resiliencehub_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists the test recommendations for the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_test_recommendations.html](https://paws-r.github.io/docs/resiliencehub/list_test_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_test_recommendations/](https://www.paws-r-sdk.com/docs/resiliencehub_list_test_recommendations/) for full documentation.
 #'
 #' @param assessmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the assessment. The format for this
 #' ARN is:
@@ -1529,7 +1529,7 @@ resiliencehub_list_test_recommendations <- function(assessmentArn, maxResults = 
 #' @description
 #' Lists the resources that are not currently supported in Resilience Hub. An unsupported resource is a resource that exists in the object that was used to create an app, but is not supported by Resilience Hub.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/list_unsupported_app_version_resources.html](https://paws-r.github.io/docs/resiliencehub/list_unsupported_app_version_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_unsupported_app_version_resources/](https://www.paws-r-sdk.com/docs/resiliencehub_list_unsupported_app_version_resources/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1569,7 +1569,7 @@ resiliencehub_list_unsupported_app_version_resources <- function(appArn, appVers
 #' @description
 #' Publishes a new version of a specific Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/publish_app_version.html](https://paws-r.github.io/docs/resiliencehub/publish_app_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_publish_app_version/](https://www.paws-r-sdk.com/docs/resiliencehub_publish_app_version/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1604,7 +1604,7 @@ resiliencehub_publish_app_version <- function(appArn) {
 #' @description
 #' Adds or updates the app template for an Resilience Hub application draft version.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/put_draft_app_version_template.html](https://paws-r.github.io/docs/resiliencehub/put_draft_app_version_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_put_draft_app_version_template/](https://www.paws-r-sdk.com/docs/resiliencehub_put_draft_app_version_template/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1861,7 +1861,7 @@ resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody
 #' @description
 #' Removes resource mappings from a draft application version.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/remove_draft_app_version_resource_mappings.html](https://paws-r.github.io/docs/resiliencehub/remove_draft_app_version_resource_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_remove_draft_app_version_resource_mappings/](https://www.paws-r-sdk.com/docs/resiliencehub_remove_draft_app_version_resource_mappings/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1909,7 +1909,7 @@ resiliencehub_remove_draft_app_version_resource_mappings <- function(appArn, app
 #' @description
 #' Resolves the resources for an application version.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/resolve_app_version_resources.html](https://paws-r.github.io/docs/resiliencehub/resolve_app_version_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_resolve_app_version_resources/](https://www.paws-r-sdk.com/docs/resiliencehub_resolve_app_version_resources/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1944,7 +1944,7 @@ resiliencehub_resolve_app_version_resources <- function(appArn, appVersion) {
 #' @description
 #' Creates a new application assessment for an application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/start_app_assessment.html](https://paws-r.github.io/docs/resiliencehub/start_app_assessment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_start_app_assessment/](https://www.paws-r-sdk.com/docs/resiliencehub_start_app_assessment/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -1985,7 +1985,7 @@ resiliencehub_start_app_assessment <- function(appArn, appVersion, assessmentNam
 #' @description
 #' Applies one or more tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/tag_resource.html](https://paws-r.github.io/docs/resiliencehub/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_tag_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; The tags to assign to the resource. Each tag consists of a key/value
@@ -2016,7 +2016,7 @@ resiliencehub_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes one or more tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/untag_resource.html](https://paws-r.github.io/docs/resiliencehub/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_untag_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The keys of the tags you want to remove.
@@ -2046,7 +2046,7 @@ resiliencehub_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/update_app.html](https://paws-r.github.io/docs/resiliencehub/update_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_update_app/](https://www.paws-r-sdk.com/docs/resiliencehub_update_app/) for full documentation.
 #'
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
 #' format for this ARN is:
@@ -2089,7 +2089,7 @@ resiliencehub_update_app <- function(appArn, assessmentSchedule = NULL, clearRes
 #' @description
 #' Updates the Resilience Hub application version.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/update_app_version.html](https://paws-r.github.io/docs/resiliencehub/update_app_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version/](https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version/) for full documentation.
 #'
 #' @param additionalInfo Additional configuration parameters for an Resilience Hub application.
 #' If you want to implement `additionalInfo` through the Resilience Hub
@@ -2136,7 +2136,7 @@ resiliencehub_update_app_version <- function(additionalInfo = NULL, appArn) {
 #' @description
 #' Updates an existing Application Component in the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/update_app_version_app_component.html](https://paws-r.github.io/docs/resiliencehub/update_app_version_app_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version_app_component/](https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version_app_component/) for full documentation.
 #'
 #' @param additionalInfo Currently, there is no supported additional information for Application
 #' Components.
@@ -2177,7 +2177,7 @@ resiliencehub_update_app_version_app_component <- function(additionalInfo = NULL
 #' @description
 #' Updates the resource details in the Resilience Hub application.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/update_app_version_resource.html](https://paws-r.github.io/docs/resiliencehub/update_app_version_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version_resource/](https://www.paws-r-sdk.com/docs/resiliencehub_update_app_version_resource/) for full documentation.
 #'
 #' @param additionalInfo Currently, there is no supported additional information for resources.
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the Resilience Hub application. The
@@ -2225,7 +2225,7 @@ resiliencehub_update_app_version_resource <- function(additionalInfo = NULL, app
 #' @description
 #' Updates a resiliency policy.
 #'
-#' See [https://paws-r.github.io/docs/resiliencehub/update_resiliency_policy.html](https://paws-r.github.io/docs/resiliencehub/update_resiliency_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_update_resiliency_policy/](https://www.paws-r-sdk.com/docs/resiliencehub_update_resiliency_policy/) for full documentation.
 #'
 #' @param dataLocationConstraint Specifies a high-level geographical location constraint for where your
 #' resilience policy data can be stored.

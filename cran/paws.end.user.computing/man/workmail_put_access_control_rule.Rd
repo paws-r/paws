@@ -51,6 +51,6 @@ and \code{WebMail}.}
 \description{
 Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, user IDs and impersonation IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
 
-See \url{https://paws-r.github.io/docs/workmail/put_access_control_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_put_access_control_rule/} for full documentation.
 }
 \keyword{internal}

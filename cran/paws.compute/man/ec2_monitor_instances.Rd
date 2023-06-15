@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitor your instances using CloudWatch} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/monitor_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_monitor_instances/} for full documentation.
 }
 \keyword{internal}

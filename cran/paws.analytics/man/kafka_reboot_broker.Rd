@@ -15,6 +15,6 @@ supports rebooting one broker at a time.}
 \description{
 Reboots brokers.
 
-See \url{https://paws-r.github.io/docs/kafka/reboot_broker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_reboot_broker/} for full documentation.
 }
 \keyword{internal}

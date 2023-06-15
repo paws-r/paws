@@ -13,6 +13,6 @@ parameter is stored as a lowercase string.}
 \description{
 Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune retains the DB cluster's metadata, including its endpoints and DB parameter groups.
 
-See \url{https://paws-r.github.io/docs/neptune/stop_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_stop_db_cluster/} for full documentation.
 }
 \keyword{internal}

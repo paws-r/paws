@@ -14,6 +14,6 @@ replication.}
 \description{
 Stops all replication and removes the domain controllers from the specified Region. You cannot remove the primary Region with this operation. Instead, use the \code{\link[=directoryservice_delete_directory]{delete_directory}} API.
 
-See \url{https://paws-r.github.io/docs/directoryservice/remove_region.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_remove_region/} for full documentation.
 }
 \keyword{internal}

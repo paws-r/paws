@@ -231,6 +231,6 @@ instance, which overrides the stack's default setting.}
 \description{
 Creates a clone of a specified stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html}{Clone a Stack}. By default, all parameters are set to the values used by the parent stack.
 
-See \url{https://paws-r.github.io/docs/opsworks/clone_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_clone_stack/} for full documentation.
 }
 \keyword{internal}

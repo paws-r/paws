@@ -12,6 +12,6 @@ route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 \description{
 Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint depends on whether it's an inbound or an outbound Resolver endpoint:
 
-See \url{https://paws-r.github.io/docs/route53resolver/delete_resolver_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_endpoint/} for full documentation.
 }
 \keyword{internal}

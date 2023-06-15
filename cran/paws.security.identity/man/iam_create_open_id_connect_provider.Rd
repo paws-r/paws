@@ -72,6 +72,6 @@ created.}
 \description{
 Creates an IAM entity to describe an identity provider (IdP) that supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.
 
-See \url{https://paws-r.github.io/docs/iam/create_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

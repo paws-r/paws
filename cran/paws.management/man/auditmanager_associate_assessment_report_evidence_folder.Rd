@@ -18,6 +18,6 @@ auditmanager_associate_assessment_report_evidence_folder(
 \description{
 Associates an evidence folder to an assessment report in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/associate_assessment_report_evidence_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_associate_assessment_report_evidence_folder/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ codeguruprofiler_describe_profiling_group(profilingGroupName)
 \description{
 Returns a \href{https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html}{\code{ProfilingGroupDescription}} object that contains information about the requested profiling group.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/describe_profiling_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_describe_profiling_group/} for full documentation.
 }
 \keyword{internal}

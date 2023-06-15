@@ -60,6 +60,6 @@ use when resolving conflicts during a merge.}
 \description{
 Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the fast-forward merge strategy because that strategy does not create a merge commit.
 
-See \url{https://paws-r.github.io/docs/codecommit/create_unreferenced_merge_commit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_create_unreferenced_merge_commit/} for full documentation.
 }
 \keyword{internal}

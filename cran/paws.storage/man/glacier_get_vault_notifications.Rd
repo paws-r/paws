@@ -19,6 +19,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation retrieves the \code{notification-configuration} subresource of the specified vault.
 
-See \url{https://paws-r.github.io/docs/glacier/get_vault_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_get_vault_notifications/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ lexmodelsv2_describe_bot_version(botId, botVersion)
 \description{
 Provides metadata about a version of a bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_bot_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_version/} for full documentation.
 }
 \keyword{internal}

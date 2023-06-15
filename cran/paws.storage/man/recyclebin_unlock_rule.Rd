@@ -12,6 +12,6 @@ recyclebin_unlock_rule(Identifier)
 \description{
 Unlocks a retention rule. After a retention rule is unlocked, it can be modified or deleted only after the unlock delay period expires.
 
-See \url{https://paws-r.github.io/docs/recyclebin/unlock_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_unlock_rule/} for full documentation.
 }
 \keyword{internal}

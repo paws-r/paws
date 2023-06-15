@@ -14,6 +14,6 @@ costexplorer_update_anomaly_monitor(MonitorArn, MonitorName = NULL)
 \description{
 Updates an existing cost anomaly monitor. The changes made are applied going forward, and doesn't change anomalies detected in the past.
 
-See \url{https://paws-r.github.io/docs/costexplorer/update_anomaly_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_monitor/} for full documentation.
 }
 \keyword{internal}

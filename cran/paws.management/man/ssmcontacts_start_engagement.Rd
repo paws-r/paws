@@ -40,6 +40,6 @@ specified details.}
 \description{
 Starts an engagement to a contact or escalation plan. The engagement engages each contact specified in the incident.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/start_engagement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_start_engagement/} for full documentation.
 }
 \keyword{internal}

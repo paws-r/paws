@@ -24,6 +24,6 @@ API.}
 \description{
 Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address.
 
-See \url{https://paws-r.github.io/docs/autoscaling/put_notification_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_put_notification_configuration/} for full documentation.
 }
 \keyword{internal}

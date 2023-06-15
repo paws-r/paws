@@ -32,6 +32,6 @@ pagination.}
 \description{
 Returns information about the human task user interfaces in your account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_human_task_uis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_human_task_uis/} for full documentation.
 }
 \keyword{internal}

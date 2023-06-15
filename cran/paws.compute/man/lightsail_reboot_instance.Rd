@@ -12,6 +12,6 @@ lightsail_reboot_instance(instanceName)
 \description{
 Restarts a specific instance.
 
-See \url{https://paws-r.github.io/docs/lightsail/reboot_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_reboot_instance/} for full documentation.
 }
 \keyword{internal}

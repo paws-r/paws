@@ -23,6 +23,6 @@ page.}
 \description{
 Returns a list of versions of the package, along with their creation time and commit message.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/get_package_version_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_get_package_version_history/} for full documentation.
 }
 \keyword{internal}

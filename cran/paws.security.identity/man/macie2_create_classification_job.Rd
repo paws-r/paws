@@ -108,6 +108,6 @@ characters. The maximum length of a tag value is 256 characters.}
 \description{
 Creates and defines the settings for a classification job.
 
-See \url{https://paws-r.github.io/docs/macie2/create_classification_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_classification_job/} for full documentation.
 }
 \keyword{internal}

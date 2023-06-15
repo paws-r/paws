@@ -12,6 +12,6 @@ memorydb_delete_acl(ACLName)
 \description{
 Deletes an Access Control List. The ACL must first be disassociated from the cluster before it can be deleted. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/clusters.acls.html}{Authenticating users with Access Contol Lists (ACLs)}.
 
-See \url{https://paws-r.github.io/docs/memorydb/delete_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_delete_acl/} for full documentation.
 }
 \keyword{internal}

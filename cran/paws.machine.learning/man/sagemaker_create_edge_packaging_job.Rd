@@ -39,6 +39,6 @@ the edge packaging job runs on.}
 \description{
 Starts a SageMaker Edge Manager model packaging job. Edge Manager will use the model artifacts from the Amazon Simple Storage Service bucket that you specify. After the model has been packaged, Amazon SageMaker saves the resulting artifacts to an S3 bucket that you specify.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_edge_packaging_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_edge_packaging_job/} for full documentation.
 }
 \keyword{internal}

@@ -36,6 +36,6 @@ created.}
 \description{
 Creates an IAM resource that describes an identity provider (IdP) that supports SAML 2.0.
 
-See \url{https://paws-r.github.io/docs/iam/create_saml_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_saml_provider/} for full documentation.
 }
 \keyword{internal}

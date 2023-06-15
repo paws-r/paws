@@ -41,6 +41,6 @@ moderation labels over time.}
 \description{
 Gets the inappropriate, unwanted, or offensive content analysis results for a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_content_moderation]{start_content_moderation}}. For a list of moderation labels in Amazon Rekognition, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api}{Using the image and video moderation APIs}.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_content_moderation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_content_moderation/} for full documentation.
 }
 \keyword{internal}

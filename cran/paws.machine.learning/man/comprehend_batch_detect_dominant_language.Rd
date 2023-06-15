@@ -15,6 +15,6 @@ at least 20 characters. The maximum size of each document is 5 KB.}
 \description{
 Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html}{Amazon Comprehend Supported Languages}.
 
-See \url{https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_batch_detect_dominant_language/} for full documentation.
 }
 \keyword{internal}

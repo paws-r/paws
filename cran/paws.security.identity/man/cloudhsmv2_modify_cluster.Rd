@@ -15,6 +15,6 @@ cluster ID, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.}
 \description{
 Modifies AWS CloudHSM cluster.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/modify_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ networkmanager_associate_connect_peer(
 \description{
 Associates a core network Connect peer with a device and optionally, with a link.
 
-See \url{https://paws-r.github.io/docs/networkmanager/associate_connect_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_associate_connect_peer/} for full documentation.
 }
 \keyword{internal}

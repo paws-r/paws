@@ -14,6 +14,6 @@ comprehend_describe_flywheel_iteration(FlywheelArn, FlywheelIterationId)
 \description{
 Retrieve the configuration properties of a flywheel iteration. For more information about flywheels, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_flywheel_iteration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_flywheel_iteration/} for full documentation.
 }
 \keyword{internal}

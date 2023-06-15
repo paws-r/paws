@@ -45,6 +45,6 @@ Enabled by default.}
 \description{
 Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/create_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_image/} for full documentation.
 }
 \keyword{internal}

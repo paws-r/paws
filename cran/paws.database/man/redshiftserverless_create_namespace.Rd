@@ -43,6 +43,6 @@ encrypt your data.}
 \description{
 Creates a namespace in Amazon Redshift Serverless.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/create_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_create_namespace/} for full documentation.
 }
 \keyword{internal}

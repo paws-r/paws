@@ -34,6 +34,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified Verified Access groups.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_verified_access_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_verified_access_groups/} for full documentation.
 }
 \keyword{internal}

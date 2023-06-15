@@ -53,6 +53,6 @@ This attribute is only valid for association compliance.}
 \description{
 Registers a compliance type and other compliance details on a designated resource. This operation lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
 
-See \url{https://paws-r.github.io/docs/ssm/put_compliance_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_put_compliance_items/} for full documentation.
 }
 \keyword{internal}

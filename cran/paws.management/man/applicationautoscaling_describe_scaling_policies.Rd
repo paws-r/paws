@@ -142,6 +142,6 @@ parameter is not used, the operation returns up to 10 results and a
 \description{
 Describes the Application Auto Scaling scaling policies for the specified service namespace.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/describe_scaling_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scaling_policies/} for full documentation.
 }
 \keyword{internal}

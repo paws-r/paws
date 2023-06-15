@@ -24,6 +24,6 @@ networkmanager_get_transit_gateway_connect_peer_associations(
 \description{
 Gets information about one or more of your transit gateway Connect peer associations in a global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_transit_gateway_connect_peer_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_connect_peer_associations/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ ec2_replace_iam_instance_profile_association(IamInstanceProfile, AssociationId)
 \description{
 Replaces an IAM instance profile for the specified running instance. You can use this action to change the IAM instance profile that's associated with an instance without having to disassociate the existing IAM instance profile first.
 
-See \url{https://paws-r.github.io/docs/ec2/replace_iam_instance_profile_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_replace_iam_instance_profile_association/} for full documentation.
 }
 \keyword{internal}

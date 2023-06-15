@@ -30,6 +30,6 @@ after the list of major or minor versions that was previously requested.}
 \description{
 List major or minor versions of an environment template with detail data.
 
-See \url{https://paws-r.github.io/docs/proton/list_environment_template_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_environment_template_versions/} for full documentation.
 }
 \keyword{internal}

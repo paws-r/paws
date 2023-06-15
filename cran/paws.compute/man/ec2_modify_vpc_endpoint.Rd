@@ -64,6 +64,6 @@ associated with the VPC.}
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint/} for full documentation.
 }
 \keyword{internal}

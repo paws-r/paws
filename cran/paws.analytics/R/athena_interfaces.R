@@ -135,6 +135,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$delete_capacity_reservation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$delete_capacity_reservation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$delete_data_catalog_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -371,7 +383,7 @@ NULL
 
 .athena$get_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EngineConfiguration = structure(list(CoordinatorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxConcurrentDpus = structure(logical(0), tags = list(type = "integer")), DefaultExecutorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), AdditionalConfigs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), SessionConfiguration = structure(list(ExecutionRole = structure(logical(0), tags = list(type = "string")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), IdleTimeoutSeconds = structure(logical(0), tags = list(type = "long")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(StartDateTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), IdleSinceDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Statistics = structure(list(DpuExecutionInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EngineConfiguration = structure(list(CoordinatorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxConcurrentDpus = structure(logical(0), tags = list(type = "integer")), DefaultExecutorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), AdditionalConfigs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SparkProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), SessionConfiguration = structure(list(ExecutionRole = structure(logical(0), tags = list(type = "string")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), IdleTimeoutSeconds = structure(logical(0), tags = list(type = "long")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(StartDateTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), IdleSinceDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Statistics = structure(list(DpuExecutionInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -653,7 +665,7 @@ NULL
 
 .athena$start_session_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineConfiguration = structure(list(CoordinatorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxConcurrentDpus = structure(logical(0), tags = list(type = "integer")), DefaultExecutorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), AdditionalConfigs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), SessionIdleTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineConfiguration = structure(list(CoordinatorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxConcurrentDpus = structure(logical(0), tags = list(type = "integer")), DefaultExecutorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), AdditionalConfigs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SparkProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), SessionIdleTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

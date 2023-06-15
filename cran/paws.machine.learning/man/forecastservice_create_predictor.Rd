@@ -155,6 +155,6 @@ do not count against your tags per resource limit.
 \description{
 This operation creates a legacy predictor that does not include all the predictor functionalities provided by Amazon Forecast. To create a predictor that is compatible with all aspects of Forecast, use \code{\link[=forecastservice_create_auto_predictor]{create_auto_predictor}}.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_predictor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_predictor/} for full documentation.
 }
 \keyword{internal}

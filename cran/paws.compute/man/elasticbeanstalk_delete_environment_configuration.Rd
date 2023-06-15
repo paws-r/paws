@@ -17,6 +17,6 @@ elasticbeanstalk_delete_environment_configuration(
 \description{
 Deletes the draft configuration associated with the running environment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_environment_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_environment_configuration/} for full documentation.
 }
 \keyword{internal}

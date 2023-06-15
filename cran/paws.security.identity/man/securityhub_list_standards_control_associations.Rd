@@ -30,6 +30,6 @@ standards that you've enabled in the calling account.}
 \description{
 Specifies whether a control is currently enabled or disabled in each enabled standard in the calling account.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_standards_control_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_standards_control_associations/} for full documentation.
 }
 \keyword{internal}

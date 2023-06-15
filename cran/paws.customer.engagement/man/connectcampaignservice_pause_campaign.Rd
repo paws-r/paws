@@ -12,6 +12,6 @@ connectcampaignservice_pause_campaign(id)
 \description{
 Pauses a campaign for the specified Amazon Connect account.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/pause_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_pause_campaign/} for full documentation.
 }
 \keyword{internal}

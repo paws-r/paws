@@ -14,6 +14,6 @@ lightsail_close_instance_public_ports(portInfo, instanceName)
 \description{
 Closes ports for a specific Amazon Lightsail instance.
 
-See \url{https://paws-r.github.io/docs/lightsail/close_instance_public_ports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_close_instance_public_ports/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of cache subnet group descriptions. If a subnet group name is specified, the list contains only the description of that group. This is applicable only when you have ElastiCache in VPC setup. All ElastiCache clusters now launch in VPC by default.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_cache_subnet_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_cache_subnet_groups/} for full documentation.
 }
 \keyword{internal}

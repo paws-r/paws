@@ -27,6 +27,6 @@ Amazon Web Services account ID.}
 \description{
 Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image. If the copy image permission is granted, the image is shared with that account. If the copy image permission is revoked, the image is unshared with the account.
 
-See \url{https://paws-r.github.io/docs/workspaces/update_workspace_image_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_update_workspace_image_permission/} for full documentation.
 }
 \keyword{internal}

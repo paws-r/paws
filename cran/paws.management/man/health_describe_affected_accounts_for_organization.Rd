@@ -32,6 +32,6 @@ inclusive.}
 \description{
 Returns a list of accounts in the organization from Organizations that are affected by the provided event. For more information about the different types of Health events, see \href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
 
-See \url{https://paws-r.github.io/docs/health/describe_affected_accounts_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_affected_accounts_for_organization/} for full documentation.
 }
 \keyword{internal}

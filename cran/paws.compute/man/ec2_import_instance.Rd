@@ -30,6 +30,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates an import instance task using metadata from the specified disk image.
 
-See \url{https://paws-r.github.io/docs/ec2/import_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_import_instance/} for full documentation.
 }
 \keyword{internal}

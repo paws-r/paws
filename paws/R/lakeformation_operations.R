@@ -2183,7 +2183,7 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #' 
 #' For information about permissions, see [Security and Access Control to
 #' Metadata and
-#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
+#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/).
 #'
 #' @usage
 #' lakeformation_grant_permissions(CatalogId, Principal, Resource,
@@ -2886,7 +2886,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #' Sets the list of data lake administrators who have admin privileges on
 #' all resources managed by Lake Formation. For more information on admin
 #' privileges, see [Granting Lake Formation
-#' Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/lake-formation-permissions.html).
+#' Permissions](https://docs.aws.amazon.com/lake-formation/latest/dg/).
 #' 
 #' This API replaces the current list of data lake admins with the new list
 #' being passed. To add an admin, fetch the current list and add the new
@@ -3203,7 +3203,7 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' @param Permissions &#91;required&#93; The permissions revoked to the principal on the resource. For
 #' information about permissions, see [Security and Access Control to
 #' Metadata and
-#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/security-data-access.html).
+#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/).
 #' @param PermissionsWithGrantOption Indicates a list of permissions for which to revoke the grant option
 #' allowing the principal to pass permissions to other principals.
 #'

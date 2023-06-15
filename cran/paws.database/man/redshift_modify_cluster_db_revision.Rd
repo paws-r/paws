@@ -20,6 +20,6 @@ request.}
 \description{
 Modifies the database revision of a cluster. The database revision is a unique revision of the database running in a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster_db_revision.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster_db_revision/} for full documentation.
 }
 \keyword{internal}

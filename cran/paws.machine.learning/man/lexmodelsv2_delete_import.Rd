@@ -12,6 +12,6 @@ lexmodelsv2_delete_import(importId)
 \description{
 Removes a previous import and the associated file stored in an S3 bucket.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_import/} for full documentation.
 }
 \keyword{internal}

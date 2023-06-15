@@ -12,6 +12,6 @@ redshift_delete_hsm_client_certificate(HsmClientCertificateIdentifier)
 \description{
 Deletes the specified HSM client certificate.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_hsm_client_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_hsm_client_certificate/} for full documentation.
 }
 \keyword{internal}

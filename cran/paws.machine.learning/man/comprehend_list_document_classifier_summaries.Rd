@@ -19,6 +19,6 @@ comprehend_list_document_classifier_summaries(
 \description{
 Gets a list of summaries of the document classifiers that you have created
 
-See \url{https://paws-r.github.io/docs/comprehend/list_document_classifier_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_document_classifier_summaries/} for full documentation.
 }
 \keyword{internal}

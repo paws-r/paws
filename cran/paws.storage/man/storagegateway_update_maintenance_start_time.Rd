@@ -35,6 +35,6 @@ the month and 28 represents the last day of the month.}
 \description{
 Updates a gateway's weekly maintenance start time information, including day and time of the week. The maintenance time is the time in your gateway's time zone.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_maintenance_start_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_maintenance_start_time/} for full documentation.
 }
 \keyword{internal}

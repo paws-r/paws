@@ -30,6 +30,6 @@ of.}
 \description{
 Runs a command remotely on a container within a task.
 
-See \url{https://paws-r.github.io/docs/ecs/execute_command.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_execute_command/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels the deprecation of the specified AMI.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_image_deprecation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_image_deprecation/} for full documentation.
 }
 \keyword{internal}

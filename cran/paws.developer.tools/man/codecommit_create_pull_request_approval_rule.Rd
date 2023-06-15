@@ -53,6 +53,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Creates an approval rule for a pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/create_pull_request_approval_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_create_pull_request_approval_rule/} for full documentation.
 }
 \keyword{internal}

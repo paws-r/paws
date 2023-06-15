@@ -15,6 +15,6 @@ the typed link.}
 \description{
 Detaches a typed link from a specified source and target object. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/detach_typed_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_detach_typed_link/} for full documentation.
 }
 \keyword{internal}

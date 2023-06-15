@@ -14,6 +14,6 @@ codebuild_delete_webhook(projectName)
 \description{
 For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 
-See \url{https://paws-r.github.io/docs/codebuild/delete_webhook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_delete_webhook/} for full documentation.
 }
 \keyword{internal}

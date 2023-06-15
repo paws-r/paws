@@ -22,6 +22,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes one or more specified Directory Config objects for AppStream 2.0, if the names for these objects are provided. Otherwise, all Directory Config objects in the account are described. These objects include the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_directory_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_directory_configs/} for full documentation.
 }
 \keyword{internal}

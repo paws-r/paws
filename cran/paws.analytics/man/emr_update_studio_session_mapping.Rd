@@ -39,6 +39,6 @@ the specified user or group.}
 \description{
 Updates the session policy attached to the user or group for the specified Amazon EMR Studio.
 
-See \url{https://paws-r.github.io/docs/emr/update_studio_session_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_update_studio_session_mapping/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ can be used to return the next set of applications in the list.}
 \description{
 Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN). Tags are used to organize and categorize your CodeDeploy resources.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Used to cancel an open change request. Must be sent before the status of the request changes to `APPLYING`, the final stage of completing your change request. You can describe a change during the 60-day request history retention period for API calls.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/cancel_change_set.html](https://paws-r.github.io/docs/marketplacecatalog/cancel_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_cancel_change_set/](https://www.paws-r-sdk.com/docs/marketplacecatalog_cancel_change_set/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; Required. The catalog related to the request. Fixed value:
 #' `AWSMarketplace`.
@@ -42,7 +42,7 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 #' @description
 #' Deletes a resource-based policy on an Entity that is identified by its resource ARN.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/delete_resource_policy.html](https://paws-r.github.io/docs/marketplacecatalog/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_delete_resource_policy/](https://www.paws-r-sdk.com/docs/marketplacecatalog_delete_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
 #' with the resource policy.
@@ -72,7 +72,7 @@ marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
 #' @description
 #' Provides information about a given change set.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/describe_change_set.html](https://paws-r.github.io/docs/marketplacecatalog/describe_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_describe_change_set/](https://www.paws-r-sdk.com/docs/marketplacecatalog_describe_change_set/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; Required. The catalog related to the request. Fixed value:
 #' `AWSMarketplace`
@@ -105,7 +105,7 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
 #' @description
 #' Returns the metadata and content of the entity.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/describe_entity.html](https://paws-r.github.io/docs/marketplacecatalog/describe_entity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_describe_entity/](https://www.paws-r-sdk.com/docs/marketplacecatalog_describe_entity/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; Required. The catalog related to the request. Fixed value:
 #' `AWSMarketplace`
@@ -137,7 +137,7 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 #' @description
 #' Gets a resource-based policy of an Entity that is identified by its resource ARN.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/get_resource_policy.html](https://paws-r.github.io/docs/marketplacecatalog/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_get_resource_policy/](https://www.paws-r-sdk.com/docs/marketplacecatalog_get_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
 #' with the resource policy.
@@ -168,7 +168,7 @@ marketplacecatalog_get_resource_policy <- function(ResourceArn) {
 #' @description
 #' Returns the list of change sets owned by the account being used to make the call. You can filter this list by providing any combination of `entityId`, `ChangeSetName`, and status. If you provide more than one filter, the API operation applies a logical AND between the filters.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/list_change_sets.html](https://paws-r.github.io/docs/marketplacecatalog/list_change_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_list_change_sets/](https://www.paws-r-sdk.com/docs/marketplacecatalog_list_change_sets/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param FilterList An array of filter objects.
@@ -204,7 +204,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @description
 #' Provides the list of entities of a given type.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/list_entities.html](https://paws-r.github.io/docs/marketplacecatalog/list_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_list_entities/](https://www.paws-r-sdk.com/docs/marketplacecatalog_list_entities/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param EntityType &#91;required&#93; The type of entities to retrieve.
@@ -243,7 +243,7 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' @description
 #' Lists all tags that have been added to a resource (either an [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/list_tags_for_resource.html](https://paws-r.github.io/docs/marketplacecatalog/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/marketplacecatalog_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Required. The Amazon Resource Name (ARN) associated with the resource
 #' you want to list tags on.
@@ -273,7 +273,7 @@ marketplacecatalog_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Attaches a resource-based policy to an Entity. Examples of an entity include: `AmiProduct` and `ContainerProduct`.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/put_resource_policy.html](https://paws-r.github.io/docs/marketplacecatalog/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_put_resource_policy/](https://www.paws-r-sdk.com/docs/marketplacecatalog_put_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource you want to
 #' associate with a resource policy.
@@ -304,7 +304,7 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' @description
 #' Allows you to request changes for your entities. Within a single `ChangeSet`, you can't start the same change type against the same entity multiple times. Additionally, when a `ChangeSet` is running, all the entities targeted by the different changes are locked until the change set has completed (either succeeded, cancelled, or failed). If you try to start a change set containing a change against an entity that is already locked, you will receive a `ResourceInUseException` error.
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/start_change_set.html](https://paws-r.github.io/docs/marketplacecatalog/start_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_start_change_set/](https://www.paws-r-sdk.com/docs/marketplacecatalog_start_change_set/) for full documentation.
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param ChangeSet &#91;required&#93; Array of `change` object.
@@ -339,7 +339,7 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
 #' @description
 #' Tags a resource (either an [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/tag_resource.html](https://paws-r.github.io/docs/marketplacecatalog/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_tag_resource/](https://www.paws-r-sdk.com/docs/marketplacecatalog_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Required. The Amazon Resource Name (ARN) associated with the resource
 #' you want to tag.
@@ -372,7 +372,7 @@ marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a tag or list of tags from a resource (either an [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
 #'
-#' See [https://paws-r.github.io/docs/marketplacecatalog/untag_resource.html](https://paws-r.github.io/docs/marketplacecatalog/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_untag_resource/](https://www.paws-r-sdk.com/docs/marketplacecatalog_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Required. The Amazon Resource Name (ARN) associated with the resource
 #' you want to remove the tag from.

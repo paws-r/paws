@@ -17,6 +17,6 @@ page call.}
 \description{
 Lists the data catalogs in the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/athena/list_data_catalogs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_data_catalogs/} for full documentation.
 }
 \keyword{internal}

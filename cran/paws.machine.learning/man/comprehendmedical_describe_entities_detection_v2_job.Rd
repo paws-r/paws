@@ -14,6 +14,6 @@ operation returns this identifier in its response.}
 \description{
 Gets the properties associated with a medical entities detection job. Use this operation to get the status of a detection job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/describe_entities_detection_v2_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_describe_entities_detection_v2_job/} for full documentation.
 }
 \keyword{internal}

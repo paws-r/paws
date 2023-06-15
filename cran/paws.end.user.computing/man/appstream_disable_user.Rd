@@ -16,6 +16,6 @@ Users' email addresses are case-sensitive.}
 \description{
 Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
 
-See \url{https://paws-r.github.io/docs/appstream/disable_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_disable_user/} for full documentation.
 }
 \keyword{internal}

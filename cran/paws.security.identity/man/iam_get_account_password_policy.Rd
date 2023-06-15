@@ -9,6 +9,6 @@ iam_get_account_password_policy()
 \description{
 Retrieves the password policy for the Amazon Web Services account. This tells you the complexity requirements and mandatory rotation periods for the IAM user passwords in your account. For more information about using a password policy, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM password policy}.
 
-See \url{https://paws-r.github.io/docs/iam/get_account_password_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_account_password_policy/} for full documentation.
 }
 \keyword{internal}

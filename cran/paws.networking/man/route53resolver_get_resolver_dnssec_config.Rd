@@ -13,6 +13,6 @@ status.}
 \description{
 Gets DNSSEC validation information for a specified resource.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_dnssec_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_dnssec_config/} for full documentation.
 }
 \keyword{internal}

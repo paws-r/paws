@@ -16,6 +16,6 @@ return. To request the first page, leave nextToken empty.}
 \description{
 Returns a list of all configurations.
 
-See \url{https://paws-r.github.io/docs/mq/list_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_list_configurations/} for full documentation.
 }
 \keyword{internal}

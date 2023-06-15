@@ -48,6 +48,6 @@ next set of components.}
 \description{
 Lists the trial components in your account. You can sort the list by trial component name or creation time. You can filter the list to show only components that were created in a specific time range. You can also filter on one of the following:
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_trial_components.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_trial_components/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ different account, the request fails with the HTTP status code
 \description{
 This implementation of the GET action uses the \code{accelerate} subresource to return the Transfer Acceleration state of a bucket, which is either \code{Enabled} or \code{Suspended}. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to and from Amazon S3.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_accelerate_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ apigateway_delete_stage(restApiId, stageName)
 \description{
 Deletes a Stage resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_stage/} for full documentation.
 }
 \keyword{internal}

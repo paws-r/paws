@@ -20,6 +20,6 @@ searchable using the \code{\link[=sagemaker_search]{search}} API.}
 \description{
 Creates a space used for real time collaboration in a Domain.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_space.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_space/} for full documentation.
 }
 \keyword{internal}

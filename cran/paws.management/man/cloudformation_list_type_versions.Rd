@@ -62,6 +62,6 @@ Extensions published by Amazon aren't assigned a publisher ID.}
 \description{
 Returns summary information about the versions of an extension.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_type_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_type_versions/} for full documentation.
 }
 \keyword{internal}

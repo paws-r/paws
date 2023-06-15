@@ -49,6 +49,6 @@ results.}
 \description{
 Returns the direct dependencies for a package version. The dependencies are returned as \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html}{PackageDependency} objects. CodeArtifact extracts the dependencies for a package version from the metadata file for the package format (for example, the \code{package.json} file for npm packages and the \code{pom.xml} file for Maven). Any package version dependencies that are not listed in the configuration file are not returned.
 
-See \url{https://paws-r.github.io/docs/codeartifact/list_package_version_dependencies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_list_package_version_dependencies/} for full documentation.
 }
 \keyword{internal}

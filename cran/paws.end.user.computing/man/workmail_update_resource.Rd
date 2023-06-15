@@ -24,6 +24,6 @@ is updated.}
 \description{
 Updates data for the resource. To have the latest information, it must be preceded by a \code{\link[=workmail_describe_resource]{describe_resource}} call. The dataset in the request should be the one expected when performing another \code{\link[=workmail_describe_resource]{describe_resource}} call.
 
-See \url{https://paws-r.github.io/docs/workmail/update_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_update_resource/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ only role that proxies for RDS for Microsoft SQL Server support is
 \description{
 Creates a \code{DBProxyEndpoint}. Only applies to proxies that are associated with Aurora DB clusters. You can use DB proxy endpoints to specify read/write or read-only access to the DB cluster. You can also use DB proxy endpoints to access a DB proxy through a different VPC than the proxy's default VPC.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_proxy_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_proxy_endpoint/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ condition expressions.}
 \description{
 Creates a new DataBrew recipe.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/create_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_create_recipe/} for full documentation.
 }
 \keyword{internal}

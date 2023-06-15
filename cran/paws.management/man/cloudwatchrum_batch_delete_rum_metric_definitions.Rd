@@ -34,6 +34,6 @@ sending.}
 \description{
 Removes the specified metrics from being sent to an extended metrics destination.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/batch_delete_rum_metric_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_batch_delete_rum_metric_definitions/} for full documentation.
 }
 \keyword{internal}

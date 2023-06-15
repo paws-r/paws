@@ -39,6 +39,6 @@ backupstorage_notify_object_complete(
 \description{
 Complete upload
 
-See \url{https://paws-r.github.io/docs/backupstorage/notify_object_complete.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupstorage_notify_object_complete/} for full documentation.
 }
 \keyword{internal}

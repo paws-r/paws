@@ -14,6 +14,6 @@ frauddetector_delete_model(modelId, modelType)
 \description{
 Deletes a model.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_model/} for full documentation.
 }
 \keyword{internal}

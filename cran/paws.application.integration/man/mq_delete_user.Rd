@@ -16,6 +16,6 @@ _ ~). This value must be 2-100 characters long.}
 \description{
 Deletes an ActiveMQ user.
 
-See \url{https://paws-r.github.io/docs/mq/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_delete_user/} for full documentation.
 }
 \keyword{internal}

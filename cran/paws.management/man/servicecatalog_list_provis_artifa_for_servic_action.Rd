@@ -29,6 +29,6 @@ results, use null.}
 \description{
 Lists all provisioning artifacts (also known as versions) for the specified self-service action.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts_for_service_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts_for_service_action/} for full documentation.
 }
 \keyword{internal}

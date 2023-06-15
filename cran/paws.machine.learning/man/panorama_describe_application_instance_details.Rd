@@ -13,6 +13,6 @@ panorama_describe_application_instance_details(ApplicationInstanceId)
 \description{
 Returns information about an application instance's configuration manifest.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_application_instance_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_application_instance_details/} for full documentation.
 }
 \keyword{internal}

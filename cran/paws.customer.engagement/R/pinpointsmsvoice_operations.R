@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set.html](https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_create_configuration_set/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_create_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSetName The name that you want to give the configuration set.
 #'
@@ -37,7 +37,7 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
 #' @description
 #' Create a new event destination in a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_create_configuration_set_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_create_configuration_set_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #' @param EventDestination 
@@ -68,7 +68,7 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
 #' @description
 #' Deletes an existing configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set.html](https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_delete_configuration_set/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_delete_configuration_set/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #'
@@ -97,7 +97,7 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
 #' @description
 #' Deletes an event destination in a configuration set.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_delete_configuration_set_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_delete_configuration_set_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #' @param EventDestinationName &#91;required&#93; EventDestinationName
@@ -129,7 +129,7 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
 #' @description
 #' Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/get_configuration_set_event_destinations.html](https://paws-r.github.io/docs/pinpointsmsvoice/get_configuration_set_event_destinations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_get_configuration_set_event_destinations/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_get_configuration_set_event_destinations/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #'
@@ -159,7 +159,7 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
 #' @description
 #' List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/list_configuration_sets.html](https://paws-r.github.io/docs/pinpointsmsvoice/list_configuration_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_list_configuration_sets/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_list_configuration_sets/) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to the API that indicates the
 #' position in the list of results.
@@ -191,7 +191,7 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
 #' @description
 #' Create a new voice message and send it to a recipient's phone number.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/send_voice_message.html](https://paws-r.github.io/docs/pinpointsmsvoice/send_voice_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_send_voice_message/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_send_voice_message/) for full documentation.
 #'
 #' @param CallerId The phone number that appears on recipients' devices when they receive
 #' the message.
@@ -229,7 +229,7 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
 #' @description
 #' Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
 #'
-#' See [https://paws-r.github.io/docs/pinpointsmsvoice/update_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoice/update_configuration_set_event_destination.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pinpointsmsvoice_update_configuration_set_event_destination/](https://www.paws-r-sdk.com/docs/pinpointsmsvoice_update_configuration_set_event_destination/) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #' @param EventDestination 

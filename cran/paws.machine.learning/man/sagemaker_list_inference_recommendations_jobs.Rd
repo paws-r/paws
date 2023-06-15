@@ -56,6 +56,6 @@ model package.}
 \description{
 Lists recommendation jobs that satisfy various filters.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_inference_recommendations_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_inference_recommendations_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_delete_endpoint_config(EndpointConfigName)
 \description{
 Deletes an endpoint configuration. The \code{\link[=sagemaker_delete_endpoint_config]{delete_endpoint_config}} API deletes only the specified configuration. It does not delete endpoints created using the configuration.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_endpoint_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_endpoint_config/} for full documentation.
 }
 \keyword{internal}

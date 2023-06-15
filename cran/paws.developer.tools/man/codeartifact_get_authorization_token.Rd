@@ -27,6 +27,6 @@ temporary credentials.}
 \description{
 Generates a temporary authorization token for accessing repositories in the domain. This API requires the \code{codeartifact:GetAuthorizationToken} and \code{sts:GetServiceBearerToken} permissions. For more information about authorization tokens, see \href{https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html}{CodeArtifact authentication and tokens}.
 
-See \url{https://paws-r.github.io/docs/codeartifact/get_authorization_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_get_authorization_token/} for full documentation.
 }
 \keyword{internal}

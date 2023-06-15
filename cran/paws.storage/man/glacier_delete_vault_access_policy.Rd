@@ -19,6 +19,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation deletes the access policy associated with the specified vault. The operation is eventually consistent; that is, it might take some time for Amazon S3 Glacier to completely remove the access policy, and you might still see the effect of the policy for a short time after you send the delete request.
 
-See \url{https://paws-r.github.io/docs/glacier/delete_vault_access_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_delete_vault_access_policy/} for full documentation.
 }
 \keyword{internal}

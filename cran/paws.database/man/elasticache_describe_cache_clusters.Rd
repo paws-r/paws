@@ -43,6 +43,6 @@ Redis clusters.}
 \description{
 Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_cache_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_cache_clusters/} for full documentation.
 }
 \keyword{internal}

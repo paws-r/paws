@@ -13,6 +13,6 @@ to delete.}
 \description{
 Delete an App Runner service.
 
-See \url{https://paws-r.github.io/docs/apprunner/delete_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_delete_service/} for full documentation.
 }
 \keyword{internal}

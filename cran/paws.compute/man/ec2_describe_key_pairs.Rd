@@ -46,6 +46,6 @@ Default: \code{false}}
 \description{
 Describes the specified key pairs or all of your key pairs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_key_pairs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_key_pairs/} for full documentation.
 }
 \keyword{internal}

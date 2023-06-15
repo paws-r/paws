@@ -30,6 +30,6 @@ access.}
 \description{
 Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 
-See \url{https://paws-r.github.io/docs/codestar/create_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_create_user_profile/} for full documentation.
 }
 \keyword{internal}

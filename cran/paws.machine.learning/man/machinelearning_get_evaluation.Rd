@@ -15,6 +15,6 @@ information.}
 \description{
 Returns an \code{Evaluation} that includes metadata as well as the current status of the \code{Evaluation}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/get_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_get_evaluation/} for full documentation.
 }
 \keyword{internal}

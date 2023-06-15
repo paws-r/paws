@@ -32,6 +32,6 @@ directory.}
 \description{
 Set up a template to create new template versions automatically by tracking a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see \code{\link[=proton_create_repository]{create_repository}}.
 
-See \url{https://paws-r.github.io/docs/proton/create_template_sync_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_template_sync_config/} for full documentation.
 }
 \keyword{internal}

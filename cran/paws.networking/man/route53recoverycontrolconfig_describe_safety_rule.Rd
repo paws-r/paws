@@ -12,6 +12,6 @@ route53recoverycontrolconfig_describe_safety_rule(SafetyRuleArn)
 \description{
 Returns information about a safety rule.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_safety_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_safety_rule/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a pool of customer-owned IP (CoIP) addresses.
 
-See \url{https://paws-r.github.io/docs/ec2/create_coip_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_coip_pool/} for full documentation.
 }
 \keyword{internal}

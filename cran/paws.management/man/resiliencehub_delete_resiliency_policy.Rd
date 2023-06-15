@@ -20,6 +20,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Deletes a resiliency policy. This is a destructive action that can't be undone.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/delete_resiliency_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_delete_resiliency_policy/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ eventbridge_delete_connection(Name)
 \description{
 Deletes a connection.
 
-See \url{https://paws-r.github.io/docs/eventbridge/delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_delete_connection/} for full documentation.
 }
 \keyword{internal}

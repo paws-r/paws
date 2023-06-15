@@ -12,6 +12,6 @@ kafka_get_compatible_kafka_versions(ClusterArn = NULL)
 \description{
 Gets the Apache Kafka versions to which you can update the MSK cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/get_compatible_kafka_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_get_compatible_kafka_versions/} for full documentation.
 }
 \keyword{internal}

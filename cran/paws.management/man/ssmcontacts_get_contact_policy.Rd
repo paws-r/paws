@@ -13,6 +13,6 @@ ssmcontacts_get_contact_policy(ContactArn)
 \description{
 Retrieves the resource policies attached to the specified contact or escalation plan.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/get_contact_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_get_contact_policy/} for full documentation.
 }
 \keyword{internal}

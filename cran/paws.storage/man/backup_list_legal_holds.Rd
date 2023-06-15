@@ -17,6 +17,6 @@ starting at the location pointed to by the next token.}
 \description{
 This action returns metadata about active and previous legal holds.
 
-See \url{https://paws-r.github.io/docs/backup/list_legal_holds.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_legal_holds/} for full documentation.
 }
 \keyword{internal}

@@ -52,6 +52,6 @@ to apply to the dataset.}
 \description{
 Creates a dataset.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/create_metric_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_create_metric_set/} for full documentation.
 }
 \keyword{internal}

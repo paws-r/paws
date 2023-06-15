@@ -12,6 +12,6 @@ workspacesweb_get_user_settings(userSettingsArn)
 \description{
 Gets user settings.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/get_user_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_get_user_settings/} for full documentation.
 }
 \keyword{internal}

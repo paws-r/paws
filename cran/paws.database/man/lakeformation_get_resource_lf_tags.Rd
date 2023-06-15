@@ -24,6 +24,6 @@ LF-tags.}
 \description{
 Returns the LF-tags applied to a resource.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_resource_lf_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_resource_lf_tags/} for full documentation.
 }
 \keyword{internal}

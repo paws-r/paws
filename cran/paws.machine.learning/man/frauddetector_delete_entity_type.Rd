@@ -12,6 +12,6 @@ frauddetector_delete_entity_type(name)
 \description{
 Deletes an entity type.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_entity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_entity_type/} for full documentation.
 }
 \keyword{internal}

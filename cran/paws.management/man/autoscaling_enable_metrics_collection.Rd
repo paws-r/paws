@@ -51,6 +51,6 @@ CloudWatch. The only valid value is \verb{1Minute}.}
 \description{
 Enables group metrics collection for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/enable_metrics_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_enable_metrics_collection/} for full documentation.
 }
 \keyword{internal}

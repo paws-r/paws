@@ -15,6 +15,6 @@ that can consist of any upper- or lowercase letter or digit.}
 \description{
 Returns the account identifier for the specified access key ID.
 
-See \url{https://paws-r.github.io/docs/sts/get_access_key_info.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_get_access_key_info/} for full documentation.
 }
 \keyword{internal}

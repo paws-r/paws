@@ -23,6 +23,6 @@ field of the response.}
 \description{
 Deletes the specified rule.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/delete_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_delete_rule/} for full documentation.
 }
 \keyword{internal}

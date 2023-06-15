@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified VPC endpoint service configurations. Before you can delete an endpoint service configuration, you must reject any \code{Available} or \code{PendingAcceptance} interface endpoint connections that are attached to the service.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoint_service_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_vpc_endpoint_service_configurations/} for full documentation.
 }
 \keyword{internal}

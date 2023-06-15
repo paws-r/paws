@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see [Amazon Comprehend Supported Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html](https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_batch_detect_dominant_language/](https://www.paws-r-sdk.com/docs/comprehend_batch_detect_dominant_language/) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
 #' list can contain a maximum of 25 documents. Each document should contain
@@ -41,7 +41,7 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' @description
 #' Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see [Entities](https://docs.aws.amazon.com/comprehend/latest/dg/how-entities.html) in the Comprehend Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/batch_detect_entities.html](https://paws-r.github.io/docs/comprehend/batch_detect_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_batch_detect_entities/](https://www.paws-r-sdk.com/docs/comprehend_batch_detect_entities/) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
 #' list can contain a maximum of 25 documents. The maximum size of each
@@ -75,7 +75,7 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #' @description
 #' Detects the key noun phrases found in a batch of documents.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/batch_detect_key_phrases.html](https://paws-r.github.io/docs/comprehend/batch_detect_key_phrases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_batch_detect_key_phrases/](https://www.paws-r-sdk.com/docs/comprehend_batch_detect_key_phrases/) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
 #' list can contain a maximum of 25 documents. The maximum size of each
@@ -110,7 +110,7 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' @description
 #' Inspects a batch of documents and returns an inference of the prevailing sentiment, `POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`, in each one.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html](https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_batch_detect_sentiment/](https://www.paws-r-sdk.com/docs/comprehend_batch_detect_sentiment/) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
 #' list can contain a maximum of 25 documents. The maximum size of each
@@ -145,7 +145,7 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' @description
 #' Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see [Syntax](https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html) in the Comprehend Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html](https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_batch_detect_syntax/](https://www.paws-r-sdk.com/docs/comprehend_batch_detect_syntax/) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
 #' list can contain a maximum of 25 documents. The maximum size for each
@@ -181,7 +181,7 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' @description
 #' Inspects a batch of documents and returns a sentiment analysis for each entity identified in the documents.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/batch_detect_targeted_sentiment.html](https://paws-r.github.io/docs/comprehend/batch_detect_targeted_sentiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_batch_detect_targeted_sentiment/](https://www.paws-r-sdk.com/docs/comprehend_batch_detect_targeted_sentiment/) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
 #' list can contain a maximum of 25 documents. The maximum size of each
@@ -216,7 +216,7 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 #' @description
 #' Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/classify_document.html](https://paws-r.github.io/docs/comprehend/classify_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_classify_document/](https://www.paws-r-sdk.com/docs/comprehend_classify_document/) for full documentation.
 #'
 #' @param Text The document text to be analyzed. If you enter text using this
 #' parameter, do not use the `Bytes` parameter.
@@ -267,7 +267,7 @@ comprehend_classify_document <- function(Text = NULL, EndpointArn, Bytes = NULL,
 #' @description
 #' Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/contains_pii_entities.html](https://paws-r.github.io/docs/comprehend/contains_pii_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_contains_pii_entities/](https://www.paws-r-sdk.com/docs/comprehend_contains_pii_entities/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 100 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
@@ -299,7 +299,7 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
 #' @description
 #' Creates a dataset to upload training or test data for a model associated with a flywheel. For more information about datasets, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/create_dataset.html](https://paws-r.github.io/docs/comprehend/create_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_create_dataset/](https://www.paws-r-sdk.com/docs/comprehend_create_dataset/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel of the flywheel to
 #' receive the data.
@@ -340,7 +340,7 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
 #' @description
 #' Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that are labeled with the categories that you want to use. For more information, see [Training classifier models](https://docs.aws.amazon.com/comprehend/latest/dg/training-classifier-model.html) in the Comprehend Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/create_document_classifier.html](https://paws-r.github.io/docs/comprehend/create_document_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_create_document_classifier/](https://www.paws-r-sdk.com/docs/comprehend_create_document_classifier/) for full documentation.
 #'
 #' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
 #' @param VersionName The version name given to the newly created classifier. Version names
@@ -433,7 +433,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, Versio
 #' @description
 #' Creates a model-specific endpoint for synchronous inference for a previously trained custom model For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/create_endpoint.html](https://paws-r.github.io/docs/comprehend/create_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_create_endpoint/](https://www.paws-r-sdk.com/docs/comprehend_create_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; This is the descriptive suffix that becomes part of the `EndpointArn`
 #' used for all subsequent requests to this resource.
@@ -480,7 +480,7 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn = NULL, DesiredInf
 #' @description
 #' Creates an entity recognizer using submitted files. After your [`create_entity_recognizer`][comprehend_create_entity_recognizer] request is submitted, you can check job status using the [`describe_entity_recognizer`][comprehend_describe_entity_recognizer] API.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_create_entity_recognizer/](https://www.paws-r-sdk.com/docs/comprehend_create_entity_recognizer/) for full documentation.
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
@@ -570,7 +570,7 @@ comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NU
 #' @description
 #' A flywheel is an Amazon Web Services resource that orchestrates the ongoing training of a model for custom classification or custom entity recognition. You can create a flywheel to start with an existing trained model, or Comprehend can create and train a new model.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/create_flywheel.html](https://paws-r.github.io/docs/comprehend/create_flywheel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_create_flywheel/](https://www.paws-r-sdk.com/docs/comprehend_create_flywheel/) for full documentation.
 #'
 #' @param FlywheelName &#91;required&#93; Name for the flywheel.
 #' @param ActiveModelArn To associate an existing model with the flywheel, specify the Amazon
@@ -613,7 +613,7 @@ comprehend_create_flywheel <- function(FlywheelName, ActiveModelArn = NULL, Data
 #' @description
 #' Deletes a previously created document classifier
 #'
-#' See [https://paws-r.github.io/docs/comprehend/delete_document_classifier.html](https://paws-r.github.io/docs/comprehend/delete_document_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_delete_document_classifier/](https://www.paws-r-sdk.com/docs/comprehend_delete_document_classifier/) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
 #'
@@ -642,7 +642,7 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
 #' @description
 #' Deletes a model-specific endpoint for a previously-trained custom model. All endpoints must be deleted in order for the model to be deleted. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/delete_endpoint.html](https://paws-r.github.io/docs/comprehend/delete_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_delete_endpoint/](https://www.paws-r-sdk.com/docs/comprehend_delete_endpoint/) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being deleted.
 #'
@@ -671,7 +671,7 @@ comprehend_delete_endpoint <- function(EndpointArn) {
 #' @description
 #' Deletes an entity recognizer.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/delete_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/delete_entity_recognizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_delete_entity_recognizer/](https://www.paws-r-sdk.com/docs/comprehend_delete_entity_recognizer/) for full documentation.
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
 #'
@@ -700,7 +700,7 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 #' @description
 #' Deletes a flywheel. When you delete the flywheel, Amazon Comprehend does not delete the data lake or the model associated with the flywheel.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/delete_flywheel.html](https://paws-r.github.io/docs/comprehend/delete_flywheel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_delete_flywheel/](https://www.paws-r-sdk.com/docs/comprehend_delete_flywheel/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel to delete.
 #'
@@ -729,7 +729,7 @@ comprehend_delete_flywheel <- function(FlywheelArn) {
 #' @description
 #' Deletes a resource-based policy that is attached to a custom model.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/delete_resource_policy.html](https://paws-r.github.io/docs/comprehend/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_delete_resource_policy/](https://www.paws-r-sdk.com/docs/comprehend_delete_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model version that has the
 #' policy to delete.
@@ -760,7 +760,7 @@ comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NU
 #' @description
 #' Returns information about the dataset that you specify. For more information about datasets, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_dataset.html](https://paws-r.github.io/docs/comprehend/describe_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_dataset/](https://www.paws-r-sdk.com/docs/comprehend_describe_dataset/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The ARN of the dataset.
 #'
@@ -789,7 +789,7 @@ comprehend_describe_dataset <- function(DatasetArn) {
 #' @description
 #' Gets the properties associated with a document classification job. Use this operation to get the status of a classification job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_document_classification_job.html](https://paws-r.github.io/docs/comprehend/describe_document_classification_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_document_classification_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_document_classification_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' [`start_document_classification_job`][comprehend_start_document_classification_job]
@@ -820,7 +820,7 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a document classifier.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_document_classifier.html](https://paws-r.github.io/docs/comprehend/describe_document_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_document_classifier/](https://www.paws-r-sdk.com/docs/comprehend_describe_document_classifier/) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
 #' The
@@ -852,7 +852,7 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 #' @description
 #' Gets the properties associated with a dominant language detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_dominant_language_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_dominant_language_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_dominant_language_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' [`start_dominant_language_detection_job`][comprehend_start_dominant_language_detection_job]
@@ -883,7 +883,7 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a specific endpoint. Use this operation to get the status of an endpoint. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_endpoint.html](https://paws-r.github.io/docs/comprehend/describe_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_endpoint/](https://www.paws-r-sdk.com/docs/comprehend_describe_endpoint/) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being described.
 #'
@@ -912,7 +912,7 @@ comprehend_describe_endpoint <- function(EndpointArn) {
 #' @description
 #' Gets the properties associated with an entities detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_entities_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_entities_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' [`start_entities_detection_job`][comprehend_start_entities_detection_job]
@@ -944,7 +944,7 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #' @description
 #' Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/describe_entity_recognizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_entity_recognizer/](https://www.paws-r-sdk.com/docs/comprehend_describe_entity_recognizer/) for full documentation.
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
 #'
@@ -973,7 +973,7 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
 #' @description
 #' Gets the status and details of an events detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_events_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_events_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_events_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_events_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the events detection job.
 #'
@@ -1002,7 +1002,7 @@ comprehend_describe_events_detection_job <- function(JobId) {
 #' @description
 #' Provides configuration information about the flywheel. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_flywheel.html](https://paws-r.github.io/docs/comprehend/describe_flywheel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_flywheel/](https://www.paws-r-sdk.com/docs/comprehend_describe_flywheel/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel.
 #'
@@ -1031,7 +1031,7 @@ comprehend_describe_flywheel <- function(FlywheelArn) {
 #' @description
 #' Retrieve the configuration properties of a flywheel iteration. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_flywheel_iteration.html](https://paws-r.github.io/docs/comprehend/describe_flywheel_iteration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_flywheel_iteration/](https://www.paws-r-sdk.com/docs/comprehend_describe_flywheel_iteration/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; 
 #' @param FlywheelIterationId &#91;required&#93; 
@@ -1061,7 +1061,7 @@ comprehend_describe_flywheel_iteration <- function(FlywheelArn, FlywheelIteratio
 #' @description
 #' Gets the properties associated with a key phrases detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_key_phrases_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_key_phrases_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_key_phrases_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' [`start_key_phrases_detection_job`][comprehend_start_key_phrases_detection_job]
@@ -1092,7 +1092,7 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a PII entities detection job. For example, you can use this operation to get the job status.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_pii_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_pii_entities_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_pii_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_pii_entities_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
@@ -1123,7 +1123,7 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
 #' @description
 #' Gets the details of a resource-based policy that is attached to a custom model, including the JSON body of the policy.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_resource_policy.html](https://paws-r.github.io/docs/comprehend/describe_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_resource_policy/](https://www.paws-r-sdk.com/docs/comprehend_describe_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model version that has the
 #' resource policy.
@@ -1153,7 +1153,7 @@ comprehend_describe_resource_policy <- function(ResourceArn) {
 #' @description
 #' Gets the properties associated with a sentiment detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_sentiment_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_sentiment_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_sentiment_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
@@ -1183,7 +1183,7 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a targeted sentiment detection job. Use this operation to get the status of the job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_targeted_sentiment_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_targeted_sentiment_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_targeted_sentiment_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' [`start_targeted_sentiment_detection_job`][comprehend_start_targeted_sentiment_detection_job]
@@ -1214,7 +1214,7 @@ comprehend_describe_targeted_sentiment_detection_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/describe_topics_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_topics_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_describe_topics_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_describe_topics_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier assigned by the user to the detection job.
 #'
@@ -1243,7 +1243,7 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #' @description
 #' Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see [Amazon Comprehend Supported Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_dominant_language.html](https://paws-r.github.io/docs/comprehend/detect_dominant_language.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_dominant_language/](https://www.paws-r-sdk.com/docs/comprehend_detect_dominant_language/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The string must contain at least 20 characters. The
 #' maximum string size is 100 KB.
@@ -1273,7 +1273,7 @@ comprehend_detect_dominant_language <- function(Text) {
 #' @description
 #' Detects named entities in input text when you use the pre-trained model. Detects custom entities if you have a custom entity recognition model.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_entities.html](https://paws-r.github.io/docs/comprehend/detect_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_entities/](https://www.paws-r-sdk.com/docs/comprehend_detect_entities/) for full documentation.
 #'
 #' @param Text A UTF-8 text string. The maximum string size is 100 KB. If you enter
 #' text using this parameter, do not use the `Bytes` parameter.
@@ -1345,7 +1345,7 @@ comprehend_detect_entities <- function(Text = NULL, LanguageCode = NULL, Endpoin
 #' @description
 #' Detects the key noun phrases found in the text.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_key_phrases.html](https://paws-r.github.io/docs/comprehend/detect_key_phrases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_key_phrases/](https://www.paws-r-sdk.com/docs/comprehend_detect_key_phrases/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The string must contain less than 100 KB of UTF-8
 #' encoded characters.
@@ -1379,7 +1379,7 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' @description
 #' Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_pii_entities.html](https://paws-r.github.io/docs/comprehend/detect_pii_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_pii_entities/](https://www.paws-r-sdk.com/docs/comprehend_detect_pii_entities/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 100 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
@@ -1411,7 +1411,7 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
 #' @description
 #' Inspects text and returns an inference of the prevailing sentiment (`POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_sentiment.html](https://paws-r.github.io/docs/comprehend/detect_sentiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_sentiment/](https://www.paws-r-sdk.com/docs/comprehend_detect_sentiment/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
@@ -1443,7 +1443,7 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' @description
 #' Inspects text for syntax and the part of speech of words in the document. For more information, see [Syntax](https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html) in the Comprehend Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_syntax.html](https://paws-r.github.io/docs/comprehend/detect_syntax.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_syntax/](https://www.paws-r-sdk.com/docs/comprehend_detect_syntax/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 string. The maximum string size is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language code of the input documents. You can specify any of the
@@ -1477,7 +1477,7 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' @description
 #' Inspects the input text and returns a sentiment analysis for each entity identified in the text.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/detect_targeted_sentiment.html](https://paws-r.github.io/docs/comprehend/detect_targeted_sentiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_detect_targeted_sentiment/](https://www.paws-r-sdk.com/docs/comprehend_detect_targeted_sentiment/) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. The maximum string length is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
@@ -1509,7 +1509,7 @@ comprehend_detect_targeted_sentiment <- function(Text, LanguageCode) {
 #' @description
 #' Creates a new custom model that replicates a source custom model that you import. The source model can be in your Amazon Web Services account or another one.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/import_model.html](https://paws-r.github.io/docs/comprehend/import_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_import_model/](https://www.paws-r-sdk.com/docs/comprehend_import_model/) for full documentation.
 #'
 #' @param SourceModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model to import.
 #' @param ModelName The name to assign to the custom model that is created in Amazon
@@ -1559,7 +1559,7 @@ comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionNam
 #' @description
 #' List the datasets that you have configured in this Region. For more information about datasets, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_datasets.html](https://paws-r.github.io/docs/comprehend/list_datasets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_datasets/](https://www.paws-r-sdk.com/docs/comprehend_list_datasets/) for full documentation.
 #'
 #' @param FlywheelArn The Amazon Resource Number (ARN) of the flywheel.
 #' @param Filter Filters the datasets to be returned in the response.
@@ -1592,7 +1592,7 @@ comprehend_list_datasets <- function(FlywheelArn = NULL, Filter = NULL, NextToke
 #' @description
 #' Gets a list of the documentation classification jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_document_classification_jobs.html](https://paws-r.github.io/docs/comprehend/list_document_classification_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_document_classification_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_document_classification_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their names,
 #' status, or the date and time that they were submitted. You can only set
@@ -1627,7 +1627,7 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 #' @description
 #' Gets a list of summaries of the document classifiers that you have created
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_document_classifier_summaries.html](https://paws-r.github.io/docs/comprehend/list_document_classifier_summaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_document_classifier_summaries/](https://www.paws-r-sdk.com/docs/comprehend_list_document_classifier_summaries/) for full documentation.
 #'
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return on each page. The default is
@@ -1658,7 +1658,7 @@ comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxR
 #' @description
 #' Gets a list of the document classifiers that you have created.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_document_classifiers.html](https://paws-r.github.io/docs/comprehend/list_document_classifiers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_document_classifiers/](https://www.paws-r-sdk.com/docs/comprehend_list_document_classifiers/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -1693,7 +1693,7 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #' @description
 #' Gets a list of the dominant language detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_dominant_language_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_dominant_language_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_dominant_language_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_dominant_language_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters that jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -1727,7 +1727,7 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #' @description
 #' Gets a list of all existing endpoints that you've created. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_endpoints.html](https://paws-r.github.io/docs/comprehend/list_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_endpoints/](https://www.paws-r-sdk.com/docs/comprehend_list_endpoints/) for full documentation.
 #'
 #' @param Filter Filters the endpoints that are returned. You can filter endpoints on
 #' their name, model, status, or the date and time that they were created.
@@ -1761,7 +1761,7 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
 #' @description
 #' Gets a list of the entity detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_entities_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_entities_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_entities_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_entities_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -1796,7 +1796,7 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #' @description
 #' Gets a list of summaries for the entity recognizers that you have created.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_entity_recognizer_summaries.html](https://paws-r.github.io/docs/comprehend/list_entity_recognizer_summaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_entity_recognizer_summaries/](https://www.paws-r-sdk.com/docs/comprehend_list_entity_recognizer_summaries/) for full documentation.
 #'
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return on each page. The default is
@@ -1828,7 +1828,7 @@ comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxRes
 #' @description
 #' Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training. Allows you to filter the list of recognizers based on criteria such as status and submission time. This call returns up to 500 entity recognizers in the list, with a default number of 100 recognizers in the list.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_entity_recognizers.html](https://paws-r.github.io/docs/comprehend/list_entity_recognizers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_entity_recognizers/](https://www.paws-r-sdk.com/docs/comprehend_list_entity_recognizers/) for full documentation.
 #'
 #' @param Filter Filters the list of entities returned. You can filter on `Status`,
 #' `SubmitTimeBefore`, or `SubmitTimeAfter`. You can only set one filter at
@@ -1862,7 +1862,7 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
 #' @description
 #' Gets a list of the events detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_events_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_events_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_events_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_events_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -1895,7 +1895,7 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @description
 #' Information about the history of a flywheel iteration. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_flywheel_iteration_history.html](https://paws-r.github.io/docs/comprehend/list_flywheel_iteration_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_flywheel_iteration_history/](https://www.paws-r-sdk.com/docs/comprehend_list_flywheel_iteration_history/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; The ARN of the flywheel.
 #' @param Filter Filter the flywheel iteration history based on creation time.
@@ -1927,7 +1927,7 @@ comprehend_list_flywheel_iteration_history <- function(FlywheelArn, Filter = NUL
 #' @description
 #' Gets a list of the flywheels that you have created.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_flywheels.html](https://paws-r.github.io/docs/comprehend/list_flywheels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_flywheels/](https://www.paws-r-sdk.com/docs/comprehend_list_flywheels/) for full documentation.
 #'
 #' @param Filter Filters the flywheels that are returned. You can filter flywheels on
 #' their status, or the date and time that they were submitted. You can
@@ -1960,7 +1960,7 @@ comprehend_list_flywheels <- function(Filter = NULL, NextToken = NULL, MaxResult
 #' @description
 #' Get a list of key phrase detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_key_phrases_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_key_phrases_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_key_phrases_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_key_phrases_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -1994,7 +1994,7 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
 #' @description
 #' Gets a list of the PII entity detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_pii_entities_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_pii_entities_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_pii_entities_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_pii_entities_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2027,7 +2027,7 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
 #' @description
 #' Gets a list of sentiment detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_sentiment_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_sentiment_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_sentiment_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_sentiment_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2061,7 +2061,7 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 #' @description
 #' Lists all tags associated with a given Amazon Comprehend resource.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_tags_for_resource.html](https://paws-r.github.io/docs/comprehend/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/comprehend_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' you are querying.
@@ -2091,7 +2091,7 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Gets a list of targeted sentiment detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_targeted_sentiment_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_targeted_sentiment_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_targeted_sentiment_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_targeted_sentiment_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2125,7 +2125,7 @@ comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, Nex
 #' @description
 #' Gets a list of the topic detection jobs that you have submitted.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/list_topics_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_topics_detection_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_list_topics_detection_jobs/](https://www.paws-r-sdk.com/docs/comprehend_list_topics_detection_jobs/) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. Jobs can be filtered on their name,
 #' status, or the date and time that they were submitted. You can set only
@@ -2159,7 +2159,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @description
 #' Attaches a resource-based policy to a custom model. You can use this policy to authorize an entity in another Amazon Web Services account to import the custom model, which replicates it in Amazon Comprehend in their account.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/put_resource_policy.html](https://paws-r.github.io/docs/comprehend/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_put_resource_policy/](https://www.paws-r-sdk.com/docs/comprehend_put_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model to attach the policy
 #' to.
@@ -2205,7 +2205,7 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
 #' @description
 #' Starts an asynchronous document classification job. Use the [`describe_document_classification_job`][comprehend_describe_document_classification_job] operation to track the progress of the job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_document_classification_job.html](https://paws-r.github.io/docs/comprehend/start_document_classification_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_document_classification_job/](https://www.paws-r-sdk.com/docs/comprehend_start_document_classification_job/) for full documentation.
 #'
 #' @param JobName The identifier of the job.
 #' @param DocumentClassifierArn The Amazon Resource Name (ARN) of the document classifier to use to
@@ -2262,7 +2262,7 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' @description
 #' Starts an asynchronous dominant language detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/start_dominant_language_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_dominant_language_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_dominant_language_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -2317,7 +2317,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' @description
 #' Starts an asynchronous entity detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/start_entities_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_entities_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -2382,7 +2382,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @description
 #' Starts an asynchronous event detection job for a collection of documents.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_events_detection_job.html](https://paws-r.github.io/docs/comprehend/start_events_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_events_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_events_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -2423,7 +2423,7 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' @description
 #' Start the flywheel iteration.This operation uses any new datasets to train a new model version. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_flywheel_iteration.html](https://paws-r.github.io/docs/comprehend/start_flywheel_iteration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_flywheel_iteration/](https://www.paws-r-sdk.com/docs/comprehend_start_flywheel_iteration/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; The ARN of the flywheel.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
@@ -2455,7 +2455,7 @@ comprehend_start_flywheel_iteration <- function(FlywheelArn, ClientRequestToken 
 #' @description
 #' Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/start_key_phrases_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_key_phrases_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_key_phrases_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -2513,7 +2513,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @description
 #' Starts an asynchronous PII entity detection job for a collection of documents.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_pii_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/start_pii_entities_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_pii_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_pii_entities_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; The input properties for a PII entities detection job.
 #' @param OutputDataConfig &#91;required&#93; Provides conﬁguration parameters for the output of PII entity detection
@@ -2563,7 +2563,7 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' @description
 #' Starts an asynchronous sentiment detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/start_sentiment_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_sentiment_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_sentiment_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -2621,7 +2621,7 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' @description
 #' Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the [`describe_targeted_sentiment_detection_job`][comprehend_describe_targeted_sentiment_detection_job] operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_targeted_sentiment_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_targeted_sentiment_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; 
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -2672,7 +2672,7 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
 #' @description
 #' Starts an asynchronous topic detection job. Use the `DescribeTopicDetectionJob` operation to track the status of a job.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/start_topics_detection_job.html](https://paws-r.github.io/docs/comprehend/start_topics_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_start_topics_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_start_topics_detection_job/) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files. The output is a compressed
@@ -2730,7 +2730,7 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 #' @description
 #' Stops a dominant language detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_dominant_language_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_dominant_language_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_dominant_language_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the dominant language detection job to stop.
 #'
@@ -2759,7 +2759,7 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 #' @description
 #' Stops an entities detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_entities_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_entities_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the entities detection job to stop.
 #'
@@ -2788,7 +2788,7 @@ comprehend_stop_entities_detection_job <- function(JobId) {
 #' @description
 #' Stops an events detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_events_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_events_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_events_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_events_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the events detection job to stop.
 #'
@@ -2817,7 +2817,7 @@ comprehend_stop_events_detection_job <- function(JobId) {
 #' @description
 #' Stops a key phrases detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_key_phrases_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_key_phrases_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_key_phrases_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the key phrases detection job to stop.
 #'
@@ -2846,7 +2846,7 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
 #' @description
 #' Stops a PII entities detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_pii_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_pii_entities_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_pii_entities_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_pii_entities_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the PII entities detection job to stop.
 #'
@@ -2875,7 +2875,7 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
 #' @description
 #' Stops a sentiment detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_sentiment_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_sentiment_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_sentiment_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the sentiment detection job to stop.
 #'
@@ -2904,7 +2904,7 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
 #' @description
 #' Stops a targeted sentiment detection job in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_targeted_sentiment_detection_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_targeted_sentiment_detection_job/](https://www.paws-r-sdk.com/docs/comprehend_stop_targeted_sentiment_detection_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the targeted sentiment detection job to stop.
 #'
@@ -2933,7 +2933,7 @@ comprehend_stop_targeted_sentiment_detection_job <- function(JobId) {
 #' @description
 #' Stops a document classifier training job while in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_training_document_classifier.html](https://paws-r.github.io/docs/comprehend/stop_training_document_classifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_training_document_classifier/](https://www.paws-r-sdk.com/docs/comprehend_stop_training_document_classifier/) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier
 #' currently being trained.
@@ -2963,7 +2963,7 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
 #' @description
 #' Stops an entity recognizer training job while in progress.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/stop_training_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/stop_training_entity_recognizer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_stop_training_entity_recognizer/](https://www.paws-r-sdk.com/docs/comprehend_stop_training_entity_recognizer/) for full documentation.
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer
 #' currently being trained.
@@ -2993,7 +2993,7 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
 #' @description
 #' Associates a specific tag with an Amazon Comprehend resource. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/tag_resource.html](https://paws-r.github.io/docs/comprehend/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_tag_resource/](https://www.paws-r-sdk.com/docs/comprehend_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' to which you want to associate the tags.
@@ -3026,7 +3026,7 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a specific tag associated with an Amazon Comprehend resource.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/untag_resource.html](https://paws-r.github.io/docs/comprehend/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_untag_resource/](https://www.paws-r-sdk.com/docs/comprehend_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' from which you want to remove the tags.
@@ -3060,7 +3060,7 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates information about the specified endpoint. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' See [https://paws-r.github.io/docs/comprehend/update_endpoint.html](https://paws-r.github.io/docs/comprehend/update_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_update_endpoint/](https://www.paws-r-sdk.com/docs/comprehend_update_endpoint/) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being updated.
 #' @param DesiredModelArn The ARN of the new model to use when updating an existing endpoint.
@@ -3096,7 +3096,7 @@ comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, Desi
 #' @description
 #' Update the configuration information for an existing flywheel.
 #'
-#' See [https://paws-r.github.io/docs/comprehend/update_flywheel.html](https://paws-r.github.io/docs/comprehend/update_flywheel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/comprehend_update_flywheel/](https://www.paws-r-sdk.com/docs/comprehend_update_flywheel/) for full documentation.
 #'
 #' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel to update.
 #' @param ActiveModelArn The Amazon Resource Number (ARN) of the active model version.

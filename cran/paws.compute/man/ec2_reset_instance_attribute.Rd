@@ -22,6 +22,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Resets an attribute of an instance to its default value. To reset the \code{kernel} or \code{ramdisk}, the instance must be in a stopped state. To reset the \code{sourceDestCheck}, the instance can be either running or stopped.
 
-See \url{https://paws-r.github.io/docs/ec2/reset_instance_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reset_instance_attribute/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ licensemanager_delete_grant(GrantArn, StatusReason = NULL, Version)
 \description{
 Deletes the specified grant.
 
-See \url{https://paws-r.github.io/docs/licensemanager/delete_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_delete_grant/} for full documentation.
 }
 \keyword{internal}

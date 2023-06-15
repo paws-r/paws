@@ -17,6 +17,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates the name of the user hierarchy group.
 
-See \url{https://paws-r.github.io/docs/connect/update_user_hierarchy_group_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_user_hierarchy_group_name/} for full documentation.
 }
 \keyword{internal}

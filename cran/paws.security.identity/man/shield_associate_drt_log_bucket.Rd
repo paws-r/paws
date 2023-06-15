@@ -14,6 +14,6 @@ shield_associate_drt_log_bucket(LogBucket)
 \description{
 Authorizes the Shield Response Team (SRT) to access the specified Amazon S3 bucket containing log data such as Application Load Balancer access logs, CloudFront logs, or logs from third party sources. You can associate up to 10 Amazon S3 buckets with your subscription.
 
-See \url{https://paws-r.github.io/docs/shield/associate_drt_log_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_associate_drt_log_bucket/} for full documentation.
 }
 \keyword{internal}

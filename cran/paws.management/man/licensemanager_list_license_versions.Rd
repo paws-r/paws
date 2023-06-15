@@ -20,6 +20,6 @@ licensemanager_list_license_versions(
 \description{
 Lists all versions of the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_license_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_license_versions/} for full documentation.
 }
 \keyword{internal}

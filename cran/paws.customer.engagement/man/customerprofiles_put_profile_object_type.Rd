@@ -58,6 +58,6 @@ up.}
 \description{
 Defines a ProfileObjectType.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/put_profile_object_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_put_profile_object_type/} for full documentation.
 }
 \keyword{internal}
