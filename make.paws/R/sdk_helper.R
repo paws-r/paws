@@ -501,9 +501,18 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
 
 # list paws packages
 list_paws_pkgs <- function(in_dir = "../cran", pkg_list = list()){
+  all_pkgs <- list.files(in_dir)
+
+  # list active files
   lines <- readLines(file.path(in_dir, "paws", "DESCRIPTION"))
   pkgs <- lines[grepl("paws\\.[a-z\\.]", lines, perl = T)]
-  pkgs <- file.path(in_dir,c("paws", trimws(gsub("\\([^)]*\\).*", "", pkgs))))
+  pkgs <- trimws(gsub("\\([^)]*\\).*", "", pkgs))
+
+  # pick up any sub categories
+  active_pkgs <- all_pkgs[unlist(lapply(pkgs, grep, x= all_pkgs))]
+  pkgs <- file.path(in_dir,c("paws", active_pkgs))
+
+  # filter on pkg list
   if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
   return(pkgs)
 }
