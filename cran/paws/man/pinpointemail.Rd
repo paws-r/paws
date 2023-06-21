@@ -52,7 +52,7 @@ The Amazon Pinpoint Email API is available in several AWS Regions and it
 provides an endpoint for each of these Regions. For a list of all the
 Regions and endpoints where the API is currently available, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region}{AWS Service Endpoints}
 in the \emph{Amazon Web Services General Reference}. To learn more about AWS
-Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html}{Managing AWS Regions}
+Regions, see \href{https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html}{Managing AWS Regions}
 in the \emph{Amazon Web Services General Reference}.
 
 In each Region, AWS maintains multiple Availability Zones. These
