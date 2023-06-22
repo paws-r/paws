@@ -473,8 +473,8 @@ remove_html_span_r <- function(files) {
     idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
     for (idx_range in idx_ranges) {
       line <- paste(result[idx_range], collapse = "\n")
-      line <- gsub("<span.*href=\"", "\\\\href{", line)
-
+      line <- gsub("<span.*href=\"|href=\"", "\\\\href{", line)
+      line <- gsub("<span", "", line)
 
       line <- gsub("\">", "}{", line)
       line <- gsub("</span>", "}", line)
@@ -482,10 +482,10 @@ remove_html_span_r <- function(files) {
       tidy_link <- gsub("\n#'[ ]+", " ", href_link)
       line <- gsub(href_link, tidy_link, line, fixed = T)
       split_line <- strsplit(line, "\n")[[1]]
-      padding <- rep("#'", length(result[idx_range])- length(split_line))
+      padding <- rep("NA", length(result[idx_range])- length(split_line))
       result[idx_range] <- c(split_line, padding)
     }
-    writeLines(result, file)
+    writeLines(Filter(function(x) x != "NA", result), file)
   }
 }
 
@@ -511,10 +511,10 @@ remove_html_span_rd <- function(files) {
       tidy_link <- gsub("\n", "", href_link)
       line <- gsub(href_link, tidy_link, line, fixed = T)
       split_line <- strsplit(line, "\n")[[1]]
-      padding <- rep("", length(result[idx_range])- length(split_line))
+      padding <- rep("NA", length(result[idx_range])- length(split_line))
       result[idx_range] <- c(split_line, padding)
     }
-    writeLines(result, file)
+    writeLines(Filter(function(x) x != "NA", result), file)
   }
 }
 
