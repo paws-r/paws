@@ -18,8 +18,6 @@ NULL
 #' build time you consume. For more information about CodeBuild, see the
 #' *\href{https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html}{CodeBuild User Guide}.*
 #'
-#'
-#'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.

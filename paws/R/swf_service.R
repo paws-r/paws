@@ -20,8 +20,6 @@ NULL
 #' This documentation serves as reference only. For a broader overview of
 #' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
 #'
-#'
-#'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.

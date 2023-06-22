@@ -29,8 +29,6 @@ NULL
 #' GuardDuty console or through Amazon EventBridge. For more information,
 #' see the *\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}* .
 #'
-#'
-#'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.

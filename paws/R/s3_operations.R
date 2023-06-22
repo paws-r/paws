@@ -12474,8 +12474,6 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #'     -   *Cause: The tag provided was not a valid tag. This error can
 #'         occur if the tag did not pass input validation. For more
 #'         information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.*
-#'
-#'
 #' 
 #' -   -   *Code: MalformedXMLError*
 #' 

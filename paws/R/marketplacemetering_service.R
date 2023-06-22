@@ -60,8 +60,6 @@ NULL
 #' also use CloudTrail to audit records over time. For more information,
 #' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
-#'
-#'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.

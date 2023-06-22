@@ -40,8 +40,6 @@ build environments in CodeBuild to use your own build tools. CodeBuild
 scales automatically to meet peak build requests. You pay only for the
 build time you consume. For more information about CodeBuild, see the
 \emph{\href{https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html}{CodeBuildUser Guide}.}
-
-
 }
 \section{Service syntax}{
 

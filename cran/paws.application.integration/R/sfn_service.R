@@ -27,8 +27,6 @@ NULL
 #' console, the Amazon Web Services SDKs, or an HTTP API. For more
 #' information about Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
 #'
-#'
-#'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.

@@ -42,8 +42,6 @@ tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{AmazonSWF Developer Guide}} .
-
-
 }
 \section{Service syntax}{
 

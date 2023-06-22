@@ -95,8 +95,6 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' 
 #' The string for each service name and resource type is the same as that
 #' embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
-#'
-#'
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service
 #'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).

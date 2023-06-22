@@ -173,8 +173,6 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' *This feature is in preview release and is subject to change. Your use
 #' of Amazon Web Services Price List API is subject to the Beta Service
 #' Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
-#'
-#'
 #' 
 #' This returns the URL that you can retrieve your Price List file from.
 #' This URL is based on the `PriceListArn` and `FileFormat` that you
@@ -308,8 +306,6 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
 #' *This feature is in preview release and is subject to change. Your use
 #' of Amazon Web Services Price List API is subject to the Beta Service
 #' Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
-#'
-#'
 #' 
 #' This returns a list of Price List references that the requester if
 #' authorized to view, given a `ServiceCode`, `CurrencyCode`, and an
