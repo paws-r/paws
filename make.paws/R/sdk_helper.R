@@ -435,6 +435,89 @@ paws_unescape_latex_post_build <- function(
   }
 }
 
+paws_fix_html_span <- function(root = "..") {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+
+  paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
+  cran_pkg <- fs::dir_ls(file.path(root, "cran"))
+  cran_r <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+  )
+  cran_rd <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+  )
+
+  remove_html_span_r(paws_r)
+  log_info(
+    "Removed escaped latex scripts from paws directory."
+  )
+
+  for (pkg in cran_pkg) {
+    remove_html_span_r(cran_r[[pkg]])
+    remove_html_span_rd(cran_rd[[pkg]])
+    log_info("Removed escaped latex: %s", pkg)
+  }
+}
+
+find_str <- function(line, pattern) {
+  m <- regexpr(pattern, line)
+  regmatches(line, m)
+}
+
+remove_html_span_r <- function(files) {
+  for (file in files) {
+    result <- readLines(file)
+    start_idx <- grep("<span", result, perl = T)
+    end_idx <- grep("</span>", result, perl = T)
+    if (length(start_idx) == 0) next
+    idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
+    for (idx_range in idx_ranges) {
+      line <- paste(result[idx_range], collapse = "\n")
+      line <- gsub("<span.*href=\"", "\\\\href{", line)
+
+
+      line <- gsub("\">", "}{", line)
+      line <- gsub("</span>", "}", line)
+      href_link <- find_str(line, "\\{.*\\}")
+      tidy_link <- gsub("\n#'[ ]+", " ", href_link)
+      line <- gsub(href_link, tidy_link, line, fixed = T)
+      split_line <- strsplit(line, "\n")[[1]]
+      padding <- rep("#'", length(result[idx_range])- length(split_line))
+      result[idx_range] <- c(split_line, padding)
+    }
+    writeLines(result, file)
+  }
+}
+
+remove_html_span_rd <- function(files) {
+  for (file in files) {
+    result <- readLines(file)
+    start_idx <- grep("<span", result, perl = T)
+    end_idx <- grep("</span>", result, perl = T)
+    if (length(start_idx) == 0) next
+    idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
+    for (idx_range in idx_ranges) {
+      line <- paste(result[idx_range], collapse = "\n")
+      line <- gsub("\\\\if\\{html\\}\\{\\\\out\\{", "", line)
+      line <- gsub("}}", "}", line)
+      line <- gsub(">}", ">", line)
+
+      line <- gsub("<span.*href=\"|href=\"", "\\\\href{", line)
+      line <- gsub("<span", "", line)
+
+      line <- gsub("\">", "}{", line)
+      line <- gsub("</span>", "}", line)
+      href_link <- find_str(line, "\\{.*\\}")
+      tidy_link <- gsub("\n", "", href_link)
+      line <- gsub(href_link, tidy_link, line, fixed = T)
+      split_line <- strsplit(line, "\n")[[1]]
+      padding <- rep("", length(result[idx_range])- length(split_line))
+      result[idx_range] <- c(split_line, padding)
+    }
+    writeLines(result, file)
+  }
+}
+
 #' @title Update paws version
 #' @param dir Directory containing paws sdk packages.
 #' @param version Version to set paws sdk.
