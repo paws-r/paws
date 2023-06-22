@@ -18,7 +18,7 @@ response.}
 response.}
 }
 \description{
-\emph{This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the \if{html}{\out{<span href="https://aws.amazon.com/service-terms/">}}Amazon Web Services Service Terms\if{html}{\out{</span>}} (Section 1.10).}
+\emph{This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).}
 
 See \url{https://www.paws-r-sdk.com/docs/pricing_get_price_list_file_url/} for full documentation.
 }

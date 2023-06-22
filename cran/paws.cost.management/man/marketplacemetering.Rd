@@ -80,9 +80,9 @@ the SaaS metering records that you sent are accurate by searching for
 records with the \code{eventName} of
 \code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}}. You can
 also use CloudTrail to audit records over time. For more information,
-see the \emph{\if{html}{\out{<span
-href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">}}AWS
-CloudTrail User Guide\if{html}{\out{</span>}}.}
+see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWSCloudTrail User Guide}.}
+
+
 }
 \section{Service syntax}{
 

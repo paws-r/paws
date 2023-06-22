@@ -58,9 +58,9 @@ NULL
 #' records with the `eventName` of
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage]. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *<span
-#' href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">AWS
-#' CloudTrail User Guide</span>.*
+#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#'
+#'
 #'
 #' @param
 #' config

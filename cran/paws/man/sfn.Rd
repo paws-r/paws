@@ -48,9 +48,9 @@ ensure your application is available at any scale. You can run tasks on
 Amazon Web Services, your own servers, or any system that has access to
 Amazon Web Services. You can access and use Step Functions using the
 console, the Amazon Web Services SDKs, or an HTTP API. For more
-information about Step Functions, see the \emph{\if{html}{\out{<span
-href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">}}Step
-Functions Developer Guide\if{html}{\out{</span>}}} .
+information about Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{StepFunctions Developer Guide}} .
+
+
 }
 \section{Service syntax}{
 

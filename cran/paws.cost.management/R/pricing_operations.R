@@ -80,7 +80,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' This feature is in preview release and is subject to change
 #'
 #' @description
-#' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
+#' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
 #'
 #' See [https://www.paws-r-sdk.com/docs/pricing_get_price_list_file_url/](https://www.paws-r-sdk.com/docs/pricing_get_price_list_file_url/) for full documentation.
 #'
@@ -153,7 +153,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
 #' This feature is in preview release and is subject to change
 #'
 #' @description
-#' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
+#' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
 #'
 #' See [https://www.paws-r-sdk.com/docs/pricing_list_price_lists/](https://www.paws-r-sdk.com/docs/pricing_list_price_lists/) for full documentation.
 #'

@@ -9726,9 +9726,9 @@ cloudcontrolapi <- function(config = list()) {
 #' build environments in CodeBuild to use your own build tools. CodeBuild
 #' scales automatically to meet peak build requests. You pay only for the
 #' build time you consume. For more information about CodeBuild, see the
-#' *<span
-#' href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild
-#' User Guide</span>.*
+#' *\href{https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html}{CodeBuild User Guide}.*
+#'
+#'
 #'
 #' @param
 #' config
@@ -10926,9 +10926,9 @@ codeguruprofiler <- function(config = list()) {
 #' code defects and implementing best practices, CodeGuru Reviewer improves
 #' the overall quality and maintainability of your code base during the
 #' code review stage. For more information about CodeGuru Reviewer, see the
-#' *<span
-#' href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html">Amazon
-#' CodeGuru Reviewer User Guide</span>.*
+#' *\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}.*
+#'
+#'
 #' 
 #' To improve the security of your CodeGuru Reviewer API calls, you can
 #' establish a private connection between your VPC and CodeGuru Reviewer by
@@ -15230,19 +15230,19 @@ organizations <- function(config = list()) {
 #' Examples include SQL, Wait event, User, and Host.
 #' 
 #' -   To learn more about Performance Insights and Amazon Aurora DB
-#'     instances, go to the *<span
-#'     href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html">
-#'     Amazon Aurora User Guide</span>* .
+#'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}* .
+#'
+#'
 #' 
 #' -   To learn more about Performance Insights and Amazon RDS DB
-#'     instances, go to the *<span
-#'     href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">
-#'     Amazon RDS User Guide</span>* .
+#'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
+#'
+#'
 #' 
 #' -   To learn more about Performance Insights and Amazon DocumentDB
-#'     clusters, go to the *<span
-#'     href="https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html">
-#'     Amazon DocumentDB Developer Guide</span>* .
+#'     clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
+#'
+#'
 #'
 #' @param
 #' config
@@ -16099,23 +16099,23 @@ appregistry <- function(config = list()) {
 #'     in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' -   For details about predefined runbooks for Automation, a capability
-#'     of Amazon Web Services Systems Manager, see the *<span
-#'     href="https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html">Systems
-#'     Manager Automation runbook reference</span>* .
+#'     of Amazon Web Services Systems Manager, see the *\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}* .
+#'
+#'
 #' 
 #' -   For information about AppConfig, a capability of Systems Manager,
-#'     see the *<span
-#'     href="https://docs.aws.amazon.com/appconfig/latest/userguide/">AppConfig
-#'     User Guide</span>* and the *<span
-#'     href="https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/">AppConfig
-#'     API Reference</span>* .
+#'     see the *\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}* and the *<span
+#'
+#'
+#'     href="https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
+#'
 #' 
 #' -   For information about Incident Manager, a capability of Systems
-#'     Manager, see the *<span
-#'     href="https://docs.aws.amazon.com/incident-manager/latest/userguide/">Systems
-#'     Manager Incident Manager User Guide</span>* and the *<span
-#'     href="https://docs.aws.amazon.com/incident-manager/latest/APIReference/">Systems
-#'     Manager Incident Manager API Reference</span>* .
+#'     Manager, see the *\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}* and the *<span
+#'
+#'
+#'     href="https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
+#'
 #'
 #' @param
 #' config
@@ -24304,9 +24304,9 @@ fms <- function(config = list()) {
 #' GuardDuty informs you about the status of your Amazon Web Services
 #' environment by producing security findings that you can view in the
 #' GuardDuty console or through Amazon EventBridge. For more information,
-#' see the *<span
-#' href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon
-#' GuardDuty User Guide</span>* .
+#' see the *\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}* .
+#'
+#'
 #'
 #' @param
 #' config
@@ -27671,9 +27671,9 @@ schemas <- function(config = list()) {
 #' Amazon Web Services, your own servers, or any system that has access to
 #' Amazon Web Services. You can access and use Step Functions using the
 #' console, the Amazon Web Services SDKs, or an HTTP API. For more
-#' information about Step Functions, see the *<span
-#' href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">Step
-#' Functions Developer Guide</span>* .
+#' information about Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
+#'
+#'
 #'
 #' @param
 #' config
@@ -28041,9 +28041,9 @@ sqs <- function(config = list()) {
 #' tracking their progress and maintaining their state.
 #' 
 #' This documentation serves as reference only. For a broader overview of
-#' the Amazon SWF programming model, see the *<span
-#' href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/">Amazon
-#' SWF Developer Guide</span>* .
+#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
+#'
+#'
 #'
 #' @param
 #' config
@@ -28890,9 +28890,9 @@ marketplaceentitlementservice <- function(config = list()) {
 #' records with the `eventName` of
 #' `batch_meter_usage`. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *<span
-#' href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html">AWS
-#' CloudTrail User Guide</span>.*
+#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#'
+#'
 #'
 #' @param
 #' config
