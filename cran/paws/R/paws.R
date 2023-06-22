@@ -30125,7 +30125,7 @@ pinpoint <- function(config = list()) {
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region)
 #' in the *Amazon Web Services General Reference*. To learn more about AWS
 #' Regions, see [Managing AWS
-#' Regions](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html)
+#' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' In each Region, AWS maintains multiple Availability Zones. These

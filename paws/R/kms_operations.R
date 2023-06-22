@@ -6871,9 +6871,9 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*. For information about
 #' enabling and disabling Regions, see [Enabling a
-#' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable)
+#' Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable)
 #' and [Disabling a
-#' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-disable)
+#' Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable)
 #' in the *Amazon Web Services General Reference*.
 #' @param Policy The key policy to attach to the KMS key. This parameter is optional. If
 #' you do not provide a key policy, KMS attaches the [default key

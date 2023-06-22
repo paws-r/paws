@@ -34241,7 +34241,7 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #' 
 #' For information about enabling and disabling Regions for your account,
 #' see [Managing Amazon Web Services
-#' Regions](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html)
+#' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
