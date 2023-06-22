@@ -439,3 +439,29 @@ test_that("check if version is updated correctly", {
     expect_equal(actual[[i]][[1]], expected[[i]])
   }
 })
+
+test_that("check if script html span link formatted", {
+  temp1 <- tempfile()
+  temp2 <- tempfile()
+  mock_writelines_1 <- mock2(side_effect = function(lines, path) {
+    writeLines(lines, temp1)
+  })
+  mock_writelines_2 <- mock2(side_effect = function(lines, path) {
+    writeLines(lines, temp2)
+  })
+  mockery::stub(
+    remove_html_span_r, 'writeLines', mock_writelines_1
+  )
+  mockery::stub(
+    remove_html_span_rd, 'writeLines', mock_writelines_2
+  )
+  remove_html_span_r("dummy/scripts/script.R")
+  remove_html_span_rd("dummy/scripts/script.Rd")
+
+  actual_r_script <- readLines(temp1)
+  actual_rd_script <- readLines(temp2)
+  expect_equal(actual_r_script, readLines("dummy/scripts/expected_script.R"))
+  expect_equal(actual_rd_script, readLines("dummy/scripts/expected_script.Rd"))
+  unlink(c(temp1, temp2))
+})
+
