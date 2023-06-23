@@ -25,9 +25,7 @@ NULL
 #' Amazon Web Services, your own servers, or any system that has access to
 #' Amazon Web Services. You can access and use Step Functions using the
 #' console, the Amazon Web Services SDKs, or an HTTP API. For more
-#' information about Step Functions, see the *<span
-#' href="https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html">Step
-#' Functions Developer Guide</span>* .
+#' information about Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
 #'
 #' @param
 #' config

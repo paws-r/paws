@@ -52,9 +52,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' Specifying a resource type of `ec2:instance` returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
-#' embedded in a resource's Amazon Resource Name (ARN). Consult the *<span
-#' href="https://docs.aws.amazon.com/general/latest/gr/">Amazon Web
-#' Services General Reference</span>* for the following:
+#' embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service
 #'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).

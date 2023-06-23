@@ -41,9 +41,7 @@ coordinating them without worrying about underlying complexities such as
 tracking their progress and maintaining their state.
 
 This documentation serves as reference only. For a broader overview of
-the Amazon SWF programming model, see the \emph{\if{html}{\out{<span
-href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/">}}Amazon
-SWF Developer Guide\if{html}{\out{</span>}}} .
+the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{AmazonSWF Developer Guide}} .
 }
 \section{Service syntax}{
 

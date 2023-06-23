@@ -63,35 +63,29 @@ application before deploying. If you don't specify this parameter for an
 application that requires capabilities, the call will fail.}
 
 \item{ChangeSetName}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{ClientToken}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{Description}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{NotificationArns}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{ParameterOverrides}{A list of parameter values for the parameters of the application.}
 
 \item{ResourceTypes}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{RollbackConfiguration}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{SemanticVersion}{The semantic version of the application:
@@ -99,13 +93,11 @@ API.}
 \url{https://semver.org/}}
 
 \item{StackName}{[required] This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{Tags}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation \if{html}{\out{<span
-href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">}}CreateChangeSet\if{html}{\out{</span>}}}
+CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}}
 API.}
 
 \item{TemplateId}{The UUID returned by CreateCloudFormationTemplate.

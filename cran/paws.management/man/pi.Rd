@@ -49,17 +49,11 @@ relation to the requested dimensions, measured at that time point.
 Examples include SQL, Wait event, User, and Host.
 \itemize{
 \item To learn more about Performance Insights and Amazon Aurora DB
-instances, go to the \emph{\if{html}{\out{<span
-href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html">}}
-Amazon Aurora User Guide\if{html}{\out{</span>}}} .
+instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{Amazon Aurora User Guide}} .
 \item To learn more about Performance Insights and Amazon RDS DB
-instances, go to the \emph{\if{html}{\out{<span
-href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">}}
-Amazon RDS User Guide\if{html}{\out{</span>}}} .
+instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Amazon RDS User Guide}} .
 \item To learn more about Performance Insights and Amazon DocumentDB
-clusters, go to the \emph{\if{html}{\out{<span
-href="https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html">}}
-Amazon DocumentDB Developer Guide\if{html}{\out{</span>}}} .
+clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{Amazon DocumentDB Developer Guide}} .
 }
 }
 \section{Service syntax}{

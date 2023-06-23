@@ -26,19 +26,13 @@ NULL
 #' Examples include SQL, Wait event, User, and Host.
 #' 
 #' -   To learn more about Performance Insights and Amazon Aurora DB
-#'     instances, go to the *<span
-#'     href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html">
-#'     Amazon Aurora User Guide</span>* .
+#'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}* .
 #' 
 #' -   To learn more about Performance Insights and Amazon RDS DB
-#'     instances, go to the *<span
-#'     href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">
-#'     Amazon RDS User Guide</span>* .
+#'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
 #' 
 #' -   To learn more about Performance Insights and Amazon DocumentDB
-#'     clusters, go to the *<span
-#'     href="https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html">
-#'     Amazon DocumentDB Developer Guide</span>* .
+#'     clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
 #'
 #' @param
 #' config
