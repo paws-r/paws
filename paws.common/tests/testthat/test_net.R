@@ -53,6 +53,9 @@ test_that("don't decompress the body when already decompressed", {
 })
 
 test_that("write content to disk", {
+  # Avoid CRAN check errors due to unavailable network resources.
+  skip_on_cran()
+
   tmp <- tempfile()
   req <- HttpRequest(
     method = "GET",
