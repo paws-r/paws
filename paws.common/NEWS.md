@@ -1,3 +1,6 @@
+# paws.common 0.5.7
+* skip network unit test on cran (#632)
+
 # paws.common 0.5.6
 * add logging to credentials (#599 thanks to @jonocarroll for contribution)
 * display log output while code is still running (jupyter notebook issue)
