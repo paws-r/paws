@@ -102,6 +102,7 @@ NULL
 #' @rdname sts
 #' @export
 sts <- function(config = list()) {
+  .sts$metadata$endpoints <- .get_sts_endpoints(config$profile)
   svc <- .sts$operations
   svc <- set_config(svc, config)
   return(svc)
@@ -114,8 +115,8 @@ sts <- function(config = list()) {
 
 .sts$metadata <- list(
   service_name = "sts",
-  endpoints = list("*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE)),
   service_id = "STS",
+  endpoints = "",  # Will be set later when sts client is established
   api_version = "2011-06-15",
   signing_name = "sts",
   json_version = "",
@@ -125,4 +126,25 @@ sts <- function(config = list()) {
 .sts$service <- function(config = list()) {
   handlers <- new_handlers("query", "v4")
   new_service(.sts$metadata, handlers, config)
+}
+
+.get_sts_endpoints <- function(profile = "") {
+
+  sts_regional_endpoint <- get_sts_regional_endpoint(profile)
+
+  if (sts_regional_endpoint != "") {
+    default_endpoint <- list(endpoint = "sts.{region}.amazonaws.com", global = FALSE)
+  } else {
+    default_endpoint <- list(endpoint = "sts.amazonaws.com", global = TRUE)
+  }
+
+  endpoints <- list(
+    "*" = default_endpoint,
+    "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE),
+    "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE),
+    "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE),
+    "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE)
+  )
+
+  return(endpoints)
 }
