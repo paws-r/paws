@@ -29,11 +29,11 @@ test_that("connect_timeout", {
   expect_equivalent(time["elapsed"], 1, tolerance = 0.5)
 })
 
-test_that("timeout", {
+test_that("timeout_ms", {
   req <- HttpRequest(
     method = "GET",
     url = parse_url("https://example.com:81"),
-    timeout = 1
+    timeout_ms = 1000
   )
   quietly <- function(expr) suppressMessages(tryCatch(expr, error = function(e) {}))
   time <- system.time({
