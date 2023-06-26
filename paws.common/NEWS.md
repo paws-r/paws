@@ -1,5 +1,6 @@
 # paws.common 0.5.8
 * fix mismatch apparent method as.list.struct (#634)
+* split timeout and connecttimeout in http call (#610)
 
 # paws.common 0.5.7
 * skip network unit test on cran (#632)

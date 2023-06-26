@@ -13,7 +13,7 @@ Config <- struct(
   disable_ssl = FALSE,
   close_connection = FALSE,
   max_retries = -1,
-  timeout = 60,
+  connect_timeout = 60,
   retryer = NULL,
   disable_param_validation = FALSE,
   disable_compute_checksums = FALSE,

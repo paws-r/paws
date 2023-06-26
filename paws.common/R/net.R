@@ -23,6 +23,7 @@ HttpRequest <- struct(
   request_uri = "",
   tls = NULL,
   cancel = NULL,
+  connect_timeout = NULL,
   timeout = NULL,
   response = NULL,
   ctx = list(),
@@ -53,10 +54,11 @@ HttpResponse <- struct(
 # @param url The URL to send the request to.
 # @param body The body to send in the request, in bytes.
 # @param close Whether to immediately close the connection, or else reuse connections.
-# @param timeout How long to wait for an initial response.
+# @param connect_timeout How long to wait for an initial response.
+# @param timeout Timeout for the entire request.
 # @param dest Control where the response body is written
 # @param header list of HTTP headers to add to the request
-new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, dest = NULL, header = list()) {
+new_http_request <- function(method, url, body = NULL, close = FALSE, connect_timeout = NULL, timeout = NULL, dest = NULL, header = list()) {
   if (method == "") {
     method <- "GET"
   }
@@ -74,6 +76,7 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = 
     body = body,
     host = u$host,
     close = close,
+    connect_timeout = connect_timeout,
     timeout = timeout,
     dest = dest
   )
@@ -104,8 +107,12 @@ issue <- function(http_request) {
     headers["Connection"] <- "close"
   }
   body <- http_request$body
-  timeout <- httr::config(connecttimeout = http_request$timeout)
-  if (is.null(http_request$timeout)) timeout <- NULL
+
+  timeout_config <- Filter(
+    Negate(is.null),
+    list(connecttimeout = http_request$connect_timeout, timeout = http_request$timeout)
+  )
+  timeout <- do.call(httr::config, timeout_config)
 
   if (url == "") {
     stop("no url provided")
