@@ -332,3 +332,42 @@ get_web_identity_token_file <- function(web_identity_token_file = "") {
 
   return(web_identity_token_file)
 }
+
+# Check if sts_regional_endpoint is present in config file 
+check_config_file_sts_regional_endpoint <- function(profile = "") {
+  config_path <- get_config_file_path()
+  if (is.null(config_path)) {
+    return(NULL)
+  }
+
+  profile <- get_profile_name(profile)
+  if (profile != "default") profile <- paste("profile", profile)
+
+  config_values <- read_ini(config_path)
+
+  if (is.null(config_values[[profile]])) {
+    return(NULL)
+  }
+
+  sts_regional_endpoint <- config_values[[profile]]$sts_regional_endpoint
+
+  return(sts_regional_endpoint)
+}
+
+# Get the AWS STS Regional Endpoint property from envvar or 
+# config file. Envvar takes precedence as per general AWS strategy
+get_sts_regional_endpoint <- function(profile = "") {
+  sts_regional_endpoint <- get_env("AWS_STS_REGIONAL_ENDPOINTS")
+  if (sts_regional_endpoint != "") {
+    return(sts_regional_endpoint)
+  }
+
+  sts_regional_endpoint <- check_config_file_sts_regional_endpoint(profile)
+
+  if (is.null(sts_regional_endpoint)) sts_regional_endpoint <- ""
+
+  return(sts_regional_endpoint)
+}
+
+paws.common/R/config.R
+#       modified:   paws.common/R/credential_providers.R
