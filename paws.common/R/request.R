@@ -114,7 +114,7 @@ new_request <- function(client, operation, params, data, dest = NULL) {
     url = "",
     body = NULL,
     close = client$config$close_connection,
-    timeout = client$config$timeout,
+    connect_timeout = client$config$connect_timeout,
     dest = dest
   )
 

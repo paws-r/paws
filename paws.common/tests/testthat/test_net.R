@@ -16,6 +16,19 @@ test_that("issue", {
   }
 })
 
+test_that("connect_timeout", {
+  req <- HttpRequest(
+    method = "GET",
+    url = parse_url("https://example.com:81"),
+    connect_timeout = 1
+  )
+  quietly <- function(expr) suppressMessages(tryCatch(expr, error = function(e) {}))
+  time <- system.time({
+    quietly(issue(req))
+  })
+  expect_equivalent(time["elapsed"], 1, tolerance = 0.5)
+})
+
 test_that("timeout", {
   req <- HttpRequest(
     method = "GET",
@@ -29,14 +42,14 @@ test_that("timeout", {
   expect_equivalent(time["elapsed"], 1, tolerance = 0.5)
 })
 
-test_that("timeout does not affect established connections", {
+test_that("connect_timeout does not affect established connections", {
   # Avoid CRAN check errors due to unavailable network resources.
   skip_on_cran()
 
   req <- HttpRequest(
     method = "GET",
     url = parse_url("https://httpbin.org/delay/3"),
-    timeout = 1
+    connect_timeout = 1
   )
   resp <- issue(req)
 
