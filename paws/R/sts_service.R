@@ -115,8 +115,8 @@ sts <- function(config = list()) {
 
 .sts$metadata <- list(
   service_name = "sts",
+  endpoints = list(),  # Will be set later when sts client is established
   service_id = "STS",
-  endpoints = "",  # Will be set later when sts client is established
   api_version = "2011-06-15",
   signing_name = "sts",
   json_version = "",
