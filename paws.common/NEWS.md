@@ -1,3 +1,6 @@
+# paws.common 0.5.8
+* fix mismatch apparent method as.list.struct (#634)
+
 # paws.common 0.5.7
 * skip network unit test on cran (#632)
 
