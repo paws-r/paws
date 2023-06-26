@@ -116,6 +116,7 @@ sts <- function(config = list()) {
 .sts$metadata <- list(
   service_name = "sts",
   service_id = "STS",
+  endpoints = "",  # Will be set later when sts client is established
   api_version = "2011-06-15",
   signing_name = "sts",
   json_version = "",
@@ -142,7 +143,8 @@ sts <- function(config = list()) {
     "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE),
     "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE),
     "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE),
-    "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE))
+    "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE)
+  )
 
   return(endpoints)
 }
