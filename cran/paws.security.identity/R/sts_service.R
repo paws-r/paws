@@ -125,4 +125,4 @@ sts <- function(config = list()) {
 .sts$service <- function(config = list()) {
   handlers <- new_handlers("query", "v4")
   new_service(.sts$metadata, handlers, config)
-} 
+}
