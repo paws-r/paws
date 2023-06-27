@@ -6,7 +6,7 @@ NULL
 #'
 #' @description
 #' Security Token Service
-#'
+#' 
 #' Security Token Service (STS) enables you to request temporary,
 #' limited-privilege credentials for users. This guide provides
 #' descriptions of the STS API. For more information about using this
@@ -54,7 +54,7 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- sts()
-#' #
+#' # 
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
