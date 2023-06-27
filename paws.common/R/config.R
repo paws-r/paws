@@ -89,6 +89,7 @@ set_config <- function(svc, cfgs = list()) {
   shape <- tag_annotate(Config())
   config <- populate(cfgs, shape)
   config$credentials <- as.environment(config$credentials)
+  config$sts_regional_endpoint <- get_sts_regional_endpoint(config$credentials$profile)
   svc$.internal <- list(config = config)
   return(svc)
 }
@@ -364,7 +365,7 @@ get_sts_regional_endpoint <- function(profile = "") {
 
   sts_regional_endpoint <- check_config_file_sts_regional_endpoint(profile)
 
-  if (is.null(sts_regional_endpoint)) sts_regional_endpoint <- ""
+  # if (is.null(sts_regional_endpoint)) sts_regional_endpoint <- ""
 
-  return(sts_regional_endpoint)
+  return(sts_regional_endpoint %||% "")
 }
