@@ -75,7 +75,7 @@ new_session <- function() {
 
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
-resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint, scheme = "https") {
+resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https") {
   get_region_pattern <- function(region, endpoints) {
     patterns <- names(endpoints)
     matches <- patterns[sapply(patterns, function(pattern) grepl(pattern, region))]
