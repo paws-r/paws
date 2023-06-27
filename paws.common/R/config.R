@@ -365,7 +365,5 @@ get_sts_regional_endpoint <- function(profile = "") {
 
   sts_regional_endpoint <- check_config_file_sts_regional_endpoint(profile)
 
-  # if (is.null(sts_regional_endpoint)) sts_regional_endpoint <- ""
-
   return(sts_regional_endpoint %||% "")
 }
