@@ -24,7 +24,8 @@ Config <- struct(
   ec2_metadata_disable_timeout_override = FALSE,
   use_dual_stack = FALSE,
   sleep_delay = NULL,
-  disable_rest_protocol_uri_cleaning = FALSE
+  disable_rest_protocol_uri_cleaning = FALSE,
+  sts_regional_endpoint = ""
 )
 
 # A Session object stores configuration and request handlers for a service.
@@ -74,13 +75,25 @@ new_session <- function() {
 
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
-resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
+resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint, scheme = "https") {
   get_region_pattern <- function(region, endpoints) {
     patterns <- names(endpoints)
     matches <- patterns[sapply(patterns, function(pattern) grepl(pattern, region))]
     match <- matches[order(nchar(matches), decreasing = TRUE)][1]
     return(match)
   }
+  signing_region <- NULL
+  if (service == "sts" & nzchar(sts_regional_endpoint)) {
+    global <- vapply(endpoints, function(x) x$global, FUN.VALUE = logical(1))
+    endpoint <- endpoints[global][[1]]$endpoint
+    endpoints[global][[1]]$endpoint <- set_sts_regional_endpoint(
+      sts_regional_endpoint,
+      endpoint
+    )
+    signing_region <- set_sts_signing_region(sts_regional_endpoint, region)
+  }
+
+
   e <- endpoints[[get_region_pattern(region, endpoints)]]
   # TODO: Delete old endpoint format handling once all packages are updated.
   if (is.character(e)) {
@@ -89,14 +102,29 @@ resolver_endpoint <- function(service, region, endpoints, scheme = "https") {
   endpoint <- gsub("{service}", service, e$endpoint, fixed = TRUE)
   endpoint <- gsub("{region}", region, endpoint, fixed = TRUE)
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
-  signing_region <- ifelse(e$global, "us-east-1", region)
+  signing_region <- signing_region %||% ifelse(e$global, "us-east-1", region)
   return(list(
     endpoint = endpoint,
     signing_region = signing_region
   ))
 }
 
+set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {
+  switch(
+    sts_regional_endpoint,
+    "legacy" = "sts.amazonaws.com",
+    "regional" = "sts.{region}.amazonaws.com",
+    endpoint
+  )
+}
 
+set_sts_signing_region <- function(sts_regional_endpoint, region) {
+  switch(
+    sts_regional_endpoint,
+    "legacy" = "us-east-1",
+    "regional" = region
+  )
+}
 
 # client_config returns a ClientConfig configured for the service.
 client_config <- function(service_name, endpoints, cfgs) {
@@ -113,7 +141,8 @@ client_config <- function(service_name, endpoints, cfgs) {
     endpoint <- s$config$endpoint
     signing_region <- region
   } else {
-    e <- resolver_endpoint(service_name, region, endpoints)
+    sts_regional_endpoint <- s$config$sts_regional_endpoint
+    e <- resolver_endpoint(service_name, region, endpoints, sts_regional_endpoint)
     endpoint <- e$endpoint
     signing_region <- e$signing_region
   }
