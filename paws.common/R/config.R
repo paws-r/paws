@@ -382,3 +382,34 @@ get_sts_regional_endpoint <- function(profile = "") {
   "sts_regional_endpoint" = get_sts_regional_endpoint
 )
 
+build_config <- function(cfg){
+  add_list <- function(x) if(length(x) == 0) NULL else x
+
+  creds <- list()
+  credentials <- list()
+  config <- list()
+
+  cred_names <- names(Creds())
+  credentails_names <- names(Credentials())
+  config_names <- names(Config())
+
+  for (nm in cred_names) {
+    creds[[nm]] <- cfg[[nm]]
+  }
+  for (nm in credentails_names) {
+    credentials[[nm]] <- cfg[[nm]]
+  }
+  for (nm in config_names) {
+    config[[nm]] <- cfg[[nm]]
+  }
+
+  credentials$creds <- add_list(creds)
+  config$credentials <- add_list(credentials)
+
+  return(config)
+}
+
+merge_config <- function(orig_cfg, kwargs_cfg) {
+  built_cfg <- build_config(kwargs_cfg)
+  return(modifyList(orig_cfg, built_cfg))
+}

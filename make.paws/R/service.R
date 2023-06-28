@@ -23,7 +23,8 @@ service_file_template <- template(
   #'
   #' @rdname ${service}
   #' @export
-  ${service} <- function(config = list()) {
+  ${service} <- function(config = list(), ...) {
+    config <- merge_config(config, list(...))
     svc <- .${service}$operations
     svc <- set_config(svc, config)
     return(svc)
@@ -121,11 +122,20 @@ service_params <- function() {
     s3_force_path_style = paste(
       "Set this to `true` to force the request to use path-style addressing,",
       "i.e., `http://s3.amazonaws.com/BUCKET/KEY`."
+    ),
+    sts_regional_endpoint = paste(
+      "Set sts regional endpoint resolver to regional or legacy",
+      "`https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html`"
     )
   )
   desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
-  paste("@param", param, desc, sep = "\n")
+  param <- paste("@param", param, desc, sep = "\n")
+
+  kwargs <- comment(paste("...", collapse = "\n"), "#'")
+  desc <- "Optional configuration shorthand for the config parameter"
+  desc <- comment(paste(desc, collapse = "\n"), "#'")
+  paste(param, "@param", kwargs, desc, sep = "\n") 
 }
 
 # Return the documentation for the service syntax.
@@ -149,7 +159,8 @@ service_syntax <- function(api) {
         region = "string",
         close_connection = "logical",
         timeout = "numeric",
-        s3_force_path_style = "logical"
+        s3_force_path_style = "logical",
+        sts_regional_endpoint = "string"
       )
     )
     ```',

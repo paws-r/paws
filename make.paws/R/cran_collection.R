@@ -90,8 +90,8 @@ get_client_docs <- function(path, service) {
 
 collection_client_template <- template(
   `
-  ${service} <- function(config = list()) {
-    ${package}::${service}(config)
+  ${service} <- function(config = list(), ...) {
+    ${package}::${service}(config, ...)
   }
   `
 )
