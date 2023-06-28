@@ -32,6 +32,17 @@ test_that("get_config", {
   expect_equal(operation(), Config())
 })
 
+test_that("get_config optional parameter update", {
+  svc <- set_config(
+    svc = list(
+      operation = function() get_config()
+    ),
+    cfgs = list(sts_regional_endpoint = "legacy")
+  )
+  actual <- svc$operation()
+  expect_equivalent(actual$sts_regional_endpoint , "legacy")
+})
+
 test_that("set_config", {
   svc <- list(
     f = function() "foo",
@@ -450,4 +461,24 @@ test_that("check for invalid token, missing expiresAt", {
     ),
     "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start is invalid."
   )
+})
+
+test_that("check sts regional from environment", {
+  Sys.setenv("AWS_STS_REGIONAL_ENDPOINTS" = "regional")
+  actual <- get_sts_regional_endpoint()
+  expect_equal(actual, "regional")
+  Sys.unsetenv("AWS_STS_REGIONAL_ENDPOINTS")
+})
+
+test_that("check sts regional from config file", {
+  mock_get_config_file_path <- mock2("data_ini")
+  mockery::stub(
+    check_config_file_sts_regional_endpoint,
+    "get_config_file_path",
+    mock_get_config_file_path
+  )
+
+  actual <- check_config_file_sts_regional_endpoint("sts")
+
+  expect_equal(actual, "legacy")
 })

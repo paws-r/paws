@@ -25,3 +25,7 @@ arg2=value2
 [spaces]
 arg1 = value1
 arg2 = value2
+
+
+[profile sts]
+sts_regional_endpoint = legacy
