@@ -87,11 +87,21 @@ get_config <- function() {
 #' @export
 set_config <- function(svc, cfgs = list()) {
   shape <- tag_annotate(Config())
+
+  # update optional config parameters
+  cfgs <- update_optional_config_parameter(cfgs, cfgs$credentials$profile)
   config <- populate(cfgs, shape)
   config$credentials <- as.environment(config$credentials)
-  config$sts_regional_endpoint <- get_sts_regional_endpoint(config$credentials$profile)
   svc$.internal <- list(config = config)
   return(svc)
+}
+
+update_optional_config_parameter <- function(cfgs, profile) {
+  for (cfg_param in names(.optional_config_parameter)) {
+    if (is.null(cfgs[[cfg_param]]))
+      cfgs[[cfg_param]] <- .optional_config_parameter[[cfg_param]](profile)
+  }
+  return(cfgs)
 }
 
 #-------------------------------------------------------------------------------
@@ -367,3 +377,8 @@ get_sts_regional_endpoint <- function(profile = "") {
 
   return(sts_regional_endpoint %||% "")
 }
+
+.optional_config_parameter <- list(
+  "sts_regional_endpoint" = get_sts_regional_endpoint
+)
+
