@@ -311,7 +311,7 @@ get_creds_from_sts_resp <- function(resp) {
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
 get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
-  svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
+  svc <- sts(config = list(credentials = list(creds = creds)))
   if (is.null(mfa_serial) || mfa_serial == "") {
     resp <- svc$assume_role(
       RoleArn = role_arn,
