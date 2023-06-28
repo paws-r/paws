@@ -409,7 +409,14 @@ build_config <- function(cfg){
   return(config)
 }
 
-merge_config <- function(orig_cfg, kwargs_cfg) {
-  built_cfg <- build_config(kwargs_cfg)
+
+#' @title Merges config lists for paws services
+#' @description Allows config list to be flatten from shorthand.
+#' @param orig_cfg Original config list
+#' @param flat_cfg Flatten config list
+#' @keywords internal
+#' @export
+merge_config <- function(orig_cfg, flat_cfg) {
+  built_cfg <- build_config(flat_cfg)
   return(modifyList(orig_cfg, built_cfg))
 }
