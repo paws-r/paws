@@ -382,6 +382,7 @@ get_sts_regional_endpoint <- function(profile = "") {
   "sts_regional_endpoint" = get_sts_regional_endpoint
 )
 
+# Ensures config is built correctly from service parameters
 build_config <- function(cfg){
   add_list <- function(x) if(length(x) == 0) NULL else x
 
@@ -391,32 +392,36 @@ build_config <- function(cfg){
 
   cred_names <- names(Creds())
   credentails_names <- names(Credentials())
-  config_names <- names(Config())
+  cred_names <- cred_names[cred_names != "provider_name"]
+  credentails_names <- credentails_names[credentails_names != "provider"]
 
-  for (nm in cred_names) {
-    creds[[nm]] <- cfg[[nm]]
+  for (cfg_name in names(cfg)) {
+    if (cfg_name == "credentials") {
+      for (credentails_name in credentails_names) {
+        if (credentails_name == "creds") {
+          for (cred_name in cred_names) {
+            creds[[cred_name]] <- cfg[[cfg_name]][[credentails_name]][[cred_name]]
+          }
+          credentials[[credentails_name]] <- add_list(creds)
+        } else {
+          credentials[[credentails_name]] <- cfg[[cfg_name]][[credentails_name]]
+        }
+      }
+      config[[cfg_name]] <- add_list(credentials)
+    } else {
+      config[[cfg_name]] <- cfg[[cfg_name]]
+    }
   }
-  for (nm in credentails_names) {
-    credentials[[nm]] <- cfg[[nm]]
-  }
-  for (nm in config_names) {
-    config[[nm]] <- cfg[[nm]]
-  }
-
-  credentials$creds <- add_list(creds)
-  config$credentials <- add_list(credentials)
-
   return(config)
 }
-
 
 #' @title Merges config lists for paws services
 #' @description Allows config list to be flatten from shorthand.
 #' @param orig_cfg Original config list
-#' @param flat_cfg Flatten config list
+#' @param param_cfg Config list developed from service parameters
 #' @keywords internal
 #' @export
-merge_config <- function(orig_cfg, flat_cfg) {
-  built_cfg <- build_config(flat_cfg)
+merge_config <- function(orig_cfg, param_cfg) {
+  built_cfg <- build_config(param_cfg)
   return(modifyList(orig_cfg, built_cfg))
 }

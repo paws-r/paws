@@ -23,8 +23,15 @@ service_file_template <- template(
   #'
   #' @rdname ${service}
   #' @export
-  ${service} <- function(config = list(), ...) {
-    config <- merge_config(config, list(...))
+  ${service} <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+    config <- merge_config(
+      config,
+      list(
+        credentials = credentials,
+        endpoint = endpoint,
+        region = region
+      )
+    )
     svc <- .${service}$operations
     svc <- set_config(svc, config)
     return(svc)
@@ -100,8 +107,7 @@ service_description <- function(api) {
 
 # Return the documentation for the parameters to the service function.
 service_params <- function() {
-  param <- "config"
-  param <- comment(paste(param, collapse = "\n"), "#'")
+  param <- comment(paste("config", collapse = "\n"), "#'")
   desc <- "Optional configuration of credentials, endpoint, and/or region."
   config <- list(
     access_key_id = "AWS access key ID",
@@ -132,10 +138,31 @@ service_params <- function() {
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   param <- paste("@param", param, desc, sep = "\n")
 
-  kwargs <- comment(paste("...", collapse = "\n"), "#'")
-  desc <- "Optional configuration shorthand for the config parameter"
+  kwargs <- comment(paste("credentails", collapse = "\n"), "#'")
+  desc <- "Optional credentials shorthand for the config parameter"
+  credentails <- list(
+    access_key_id = "AWS access key ID",
+    secret_access_key = "AWS secret access key",
+    session_token = "AWS temporary session token",
+    profile = paste(
+      "The name of a profile to use. If not given, then the default profile",
+      "is used."
+    ),
+    anonymous = "Set anonymous credentials."
+  )
+  desc <- c(desc, comment_list_itemize(credentails))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
-  paste(param, "#' @param", kwargs, desc, sep = "\n")
+  param <- paste(param, "#' @param", kwargs, desc, sep = "\n")
+
+  endpoint <- comment(paste("endpoint", collapse = "\n"), "#'")
+  desc <- "Optional shorthand for complete URL to use for the constructed client."
+  desc <- comment(paste(desc, collapse = "\n"), "#'")
+  param <- paste(param, "#' @param", endpoint, desc, sep = "\n")
+
+  region <- comment(paste("region", collapse = "\n"), "#'")
+  desc <- "Optional shorthand for AWS Region used in instantiating the client."
+  desc <- comment(paste(desc, collapse = "\n"), "#'")
+  return(paste(param, "#' @param", region, desc, sep = "\n"))
 }
 
 # Return the documentation for the service syntax.
@@ -161,7 +188,18 @@ service_syntax <- function(api) {
         timeout = "numeric",
         s3_force_path_style = "logical",
         sts_regional_endpoint = "string"
-      )
+      ),
+      credentials = list(
+        creds = list(
+          access_key_id = "string",
+          secret_access_key = "string",
+          session_token = "string"
+        ),
+        profile = "string",
+        anonymous = "logical"
+      ),
+      endpoint = "string",
+      region = "string"
     )
     ```',
     service)

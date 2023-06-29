@@ -4,12 +4,12 @@
 \alias{merge_config}
 \title{Merges config lists for paws services}
 \usage{
-merge_config(orig_cfg, flat_cfg)
+merge_config(orig_cfg, param_cfg)
 }
 \arguments{
 \item{orig_cfg}{Original config list}
 
-\item{flat_cfg}{Flatten config list}
+\item{param_cfg}{Config list developed from service parameters}
 }
 \description{
 Allows config list to be flatten from shorthand.
