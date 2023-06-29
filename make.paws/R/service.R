@@ -110,16 +110,20 @@ service_params <- function() {
   param <- comment(paste("config", collapse = "\n"), "#'")
   desc <- "Optional configuration of credentials, endpoint, and/or region."
   config <- list(
-    access_key_id = "AWS access key ID",
-    secret_access_key = "AWS secret access key",
-    session_token = "AWS temporary session token",
-    profile = paste(
-      "The name of a profile to use. If not given, then the default profile",
-      "is used."
+    credentails = list(
+      creds = list(
+        access_key_id = "AWS access key ID",
+        secret_access_key = "AWS secret access key",
+        session_token = "AWS temporary session token"
+      ),
+      profile = paste(
+        "The name of a profile to use. If not given, then the default profile",
+        "is used."
+      ),
+      anonymous = "Set anonymous credentials.",
+      endpoint = "The complete URL to use for the constructed client.",
+      region = "The AWS Region used in instantiating the client."
     ),
-    anonymous = "Set anonymous credentials.",
-    endpoint = "The complete URL to use for the constructed client.",
-    region = "The AWS Region used in instantiating the client.",
     close_connection = "Immediately close all HTTP connections.",
     timeout = paste(
       "The time in seconds till a timeout exception is thrown when attempting",
@@ -133,7 +137,7 @@ service_params <- function() {
       "Set sts regional endpoint resolver to regional or legacy",
       "`https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html`"
     )
-  )
+)
   desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   param <- paste("@param", param, desc, sep = "\n")
@@ -141,9 +145,11 @@ service_params <- function() {
   kwargs <- comment(paste("credentails", collapse = "\n"), "#'")
   desc <- "Optional credentials shorthand for the config parameter"
   credentails <- list(
-    access_key_id = "AWS access key ID",
-    secret_access_key = "AWS secret access key",
-    session_token = "AWS temporary session token",
+    creds = list(
+      access_key_id = "AWS access key ID",
+      secret_access_key = "AWS secret access key",
+      session_token = "AWS temporary session token"
+    ),
     profile = paste(
       "The name of a profile to use. If not given, then the default profile",
       "is used."
