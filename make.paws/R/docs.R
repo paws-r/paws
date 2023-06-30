@@ -299,7 +299,7 @@ comment_bold <- function(x){
 # create roxygen2 list from list
 comment_list_item <- function(items = list()){
   items_names <- names(items)
-  items_list <- ""
+  items_list <- setNames(character(length(items_names)), items_names)
   for (i in items_names) {
     if (is.list(items[[i]])) {
       items_list[i] <- sprintf("\\item{%s:} {%s}", comment_bold(i), comment_list_itemize(items[[i]]))
