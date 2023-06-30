@@ -75,6 +75,7 @@ Collate:
     'tags.R'
     'queryutil.R'
     'request.R'
+    'service_parameter_helper.R'
     'signer_v4.R'
     'signer_query.R'
     'signer_s3.R'
