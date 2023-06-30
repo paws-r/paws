@@ -1,6 +1,8 @@
 # paws.common 0.5.8
 * fix mismatch apparent method as.list.struct (#634)
 * split timeout and connecttimeout in http call (#610). Thanks to @stuart-storypark for identifying issue, and @joakibo for extra insight and testing.
+* add STS regional endpoint support (#631). Thanks to @daniepi for identifying issue, and @joakibo for implementing solution.
+* fix windows root path by adding HOMEDRIVE environmental variable (#640). Thanks to @karen5780 for identifying issue and proposing solution.
 
 # paws.common 0.5.7
 * skip network unit test on cran (#632)
