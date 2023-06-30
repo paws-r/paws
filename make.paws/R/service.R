@@ -110,7 +110,7 @@ service_params <- function() {
   param <- comment(paste("config", collapse = "\n"), "#'")
   desc <- "Optional configuration of credentials, endpoint, and/or region."
   config <- list(
-    credentails = list(
+    credentials = list(
       creds = list(
         access_key_id = "AWS access key ID",
         secret_access_key = "AWS secret access key",
@@ -131,20 +131,20 @@ service_params <- function() {
     ),
     s3_force_path_style = paste(
       "Set this to `true` to force the request to use path-style addressing,",
-      "i.e., `http://s3.amazonaws.com/BUCKET/KEY`."
+      "i.e. `http://s3.amazonaws.com/BUCKET/KEY`."
     ),
     sts_regional_endpoint = paste(
       "Set sts regional endpoint resolver to regional or legacy",
-      "`https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html`"
+      "\\url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}"
     )
 )
   desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   param <- paste("@param", param, desc, sep = "\n")
 
-  kwargs <- comment(paste("credentails", collapse = "\n"), "#'")
+  kwargs <- comment(paste("credentials", collapse = "\n"), "#'")
   desc <- "Optional credentials shorthand for the config parameter"
-  credentails <- list(
+  credentials <- list(
     creds = list(
       access_key_id = "AWS access key ID",
       secret_access_key = "AWS secret access key",
@@ -156,7 +156,7 @@ service_params <- function() {
     ),
     anonymous = "Set anonymous credentials."
   )
-  desc <- c(desc, comment_list_itemize(credentails))
+  desc <- c(desc, comment_list_itemize(credentials))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   param <- paste(param, "#' @param", kwargs, desc, sep = "\n")
 
