@@ -482,3 +482,65 @@ test_that("check sts regional from config file", {
 
   expect_equal(actual, "legacy")
 })
+
+test_that("merge_config default param config", {
+  cfg <- list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string",
+      anonymous = "logical"
+    ),
+    endpoint = "string",
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
+  )
+
+  actual_1 <- merge_config(
+    cfg,
+    list(credentials = credentials(), endpoint = NULL, region = NULL)
+  )
+  actual_2 <- merge_config(
+    cfg,
+    list(credentials = list(), endpoint = NULL, region = NULL)
+  )
+  actual_3 <- merge_config(
+    config(),
+    list(credentials = credentials(), endpoint = NULL, region = NULL)
+  )
+  actual_4 <- merge_config(
+    list(),
+    list(credentials = credentials(), endpoint = NULL, region = NULL)
+  )
+
+  expect_equal(actual_1, cfg)
+  expect_equal(actual_2, cfg)
+  expect_equal(actual_3, config())
+  expect_equal(actual_4, list())
+})
+
+test_that("merge_config default param config", {
+  actual_1 <- merge_config(
+    list(),
+    list(credentials = credentials(profile = "dummy"), endpoint = NULL, region = NULL)
+  )
+  actual_2 <- merge_config(
+    list(),
+    list(credentials = list(profile = "dummy"), endpoint = NULL, region = NULL)
+  )
+  actual_3 <- merge_config(
+    config(),
+    list(credentials = credentials(profile = "dummy"), endpoint = "bar", region = "zoo")
+  )
+
+  expect_credentials <- credentials(profile = "dummy")
+  class(expect_credentials) <- "list" # remove class
+  expect_equal(actual_1, list(credentials = expect_credentials))
+  expect_equal(actual_2, list(credentials = list(profile = "dummy")))
+  expect_equal(actual_3, config(credentials = expect_credentials, endpoint = "bar", region = "zoo"))
+})
