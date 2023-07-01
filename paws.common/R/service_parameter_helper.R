@@ -63,17 +63,17 @@ build_service_parameter <- function(param) {
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}
 #' @return list set of parameter variables for paws services.
 #' @examples
-#' svc_config(credentials = list(creds = list(access_key_id = "dummy")))
-#' svc_config(
-#'   credentials = svc_credentials(
+#' config(credentials = list(creds = list(access_key_id = "dummy")))
+#' config(
+#'   credentials = credentials(
 #'     creds = list(access_key_id = "dummy", secret_access_key = "bob"),
 #'     profile = "hi"
 #'   )
 #' )
 #'
-#' svc_config(
-#'   credentials = svc_credentials(
-#'     creds = svc_creds(
+#' config(
+#'   credentials = credentials(
+#'     creds = creds(
 #'       access_key_id = "dummy",
 #'       secret_access_key = "bob"
 #'     ),

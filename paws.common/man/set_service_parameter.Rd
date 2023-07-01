@@ -118,17 +118,17 @@ list set of parameter variables for paws services.
 Help functions for setting the parameters for services
 }
 \examples{
-svc_config(credentials = list(creds = list(access_key_id = "dummy")))
-svc_config(
-  credentials = svc_credentials(
+config(credentials = list(creds = list(access_key_id = "dummy")))
+config(
+  credentials = credentials(
     creds = list(access_key_id = "dummy", secret_access_key = "bob"),
     profile = "hi"
   )
 )
 
-svc_config(
-  credentials = svc_credentials(
-    creds = svc_creds(
+config(
+  credentials = credentials(
+    creds = creds(
       access_key_id = "dummy",
       secret_access_key = "bob"
     ),
