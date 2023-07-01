@@ -2,12 +2,12 @@
 % Please edit documentation in R/service_parameter_helper.R
 \name{set_service_parameter}
 \alias{set_service_parameter}
-\alias{SetConfig}
-\alias{SetCredentials}
-\alias{SetCreds}
+\alias{config}
+\alias{credentials}
+\alias{creds}
 \title{Set service parameters}
 \usage{
-SetConfig(
+config(
   credentials = list(creds = list(access_key_id = "", secret_access_key = "",
     session_token = "", access_token = "", expiration = Inf), profile = "", force_refresh
     = FALSE, anonymous = FALSE),
@@ -33,7 +33,7 @@ SetConfig(
   sts_regional_endpoint = ""
 )
 
-SetCredentials(
+credentials(
   creds = list(access_key_id = "", secret_access_key = "", session_token = "",
     access_token = "", expiration = Inf),
   profile = "",
@@ -41,7 +41,7 @@ SetCredentials(
   anonymous = FALSE
 )
 
-SetCreds(
+creds(
   access_key_id = "",
   secret_access_key = "",
   session_token = "",
@@ -118,17 +118,17 @@ list set of parameter variables for paws services.
 Help functions for setting the parameters for services
 }
 \examples{
-SetConfig(credentials = list(creds = list(access_key_id = "dummy")))
-SetConfig(
-  credentials = SetCredentials(
-    creds = SetCreds(access_key_id = "dummy", secret_access_key = "bob"),
+svc_config(credentials = list(creds = list(access_key_id = "dummy")))
+svc_config(
+  credentials = svc_credentials(
+    creds = list(access_key_id = "dummy", secret_access_key = "bob"),
     profile = "hi"
   )
 )
 
-SetConfig(
-  credentials = SetCredentials(
-    creds = SetCreds(
+svc_config(
+  credentials = svc_credentials(
+    creds = svc_creds(
       access_key_id = "dummy",
       secret_access_key = "bob"
     ),

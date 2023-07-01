@@ -63,17 +63,17 @@ build_service_parameter <- function(param) {
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}
 #' @return list set of parameter variables for paws services.
 #' @examples
-#' SetConfig(credentials = list(creds = list(access_key_id = "dummy")))
-#' SetConfig(
-#'   credentials = SetCredentials(
-#'     creds = SetCreds(access_key_id = "dummy", secret_access_key = "bob"),
+#' svc_config(credentials = list(creds = list(access_key_id = "dummy")))
+#' svc_config(
+#'   credentials = svc_credentials(
+#'     creds = list(access_key_id = "dummy", secret_access_key = "bob"),
 #'     profile = "hi"
 #'   )
 #' )
 #'
-#' SetConfig(
-#'   credentials = SetCredentials(
-#'     creds = SetCreds(
+#' svc_config(
+#'   credentials = svc_credentials(
+#'     creds = svc_creds(
 #'       access_key_id = "dummy",
 #'       secret_access_key = "bob"
 #'     ),
@@ -85,13 +85,12 @@ NULL
 
 #' @rdname set_service_parameter
 #' @export
-SetConfig <- build_service_parameter("Config")
-
-
-#' @rdname set_service_parameter
-#' @export
-SetCredentials <- build_service_parameter("Credentials")
+config <- build_service_parameter("Config")
 
 #' @rdname set_service_parameter
 #' @export
-SetCreds <- build_service_parameter("Creds")
+credentials <- build_service_parameter("Credentials")
+
+#' @rdname set_service_parameter
+#' @export
+creds <- build_service_parameter("Creds")
