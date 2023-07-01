@@ -229,7 +229,11 @@ sso_credential_process <- function(sso_session,
   input_str <- sso_session %||% sso_start_url
   cache_key <- digest::digest(enc2utf8(input_str), algo = "sha1", serialize = FALSE)
   json_file <- paste0(cache_key, ".json")
-  root <- ifelse(Sys.info()[[1]] == "Windows", Sys.getenv("HOMEPATH"), "~")
+  root <- ifelse(
+    Sys.info()[[1]] == "Windows",
+    file.path(Sys.getenv("HOMEDRIVE"), Sys.getenv("HOMEPATH")),
+    "~"
+  )
   sso_cache <- file.path(root, ".aws", "sso", "cache", json_file)
   if (!file.exists(sso_cache)) {
     stop(sprintf(
