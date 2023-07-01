@@ -422,6 +422,9 @@ build_config <- function(cfg){
 #' @keywords internal
 #' @export
 merge_config <- function(orig_cfg, param_cfg) {
+  if (identical(param_cfg$credentials, credentials())) {
+    param_cfg$credentials <- list()
+  }
   built_cfg <- build_config(param_cfg)
   return(modifyList(orig_cfg, built_cfg))
 }
