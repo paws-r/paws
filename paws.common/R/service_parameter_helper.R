@@ -30,8 +30,8 @@ build_service_parameter <- function(param) {
 #' @description
 #' Help functions for setting the parameters for services
 #'
-#' @param credentials list or \code{SetCredentials()}
-#' @param creds list or \code{SetCreds()}
+#' @param credentials \code{credentials()} or \code{list()} is same format.
+#' @param creds \code{creds()} or list ins same format.
 #' @param access_key_id AWS access key ID
 #' @param secret_access_key AWS secret access key
 #' @param session_token AWS temporary session token

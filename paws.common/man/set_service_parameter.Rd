@@ -50,7 +50,7 @@ creds(
 )
 }
 \arguments{
-\item{credentials}{list or \code{SetCredentials()}}
+\item{credentials}{\code{credentials()} or \code{list()} is same format.}
 
 \item{endpoint}{The complete URL to use for the constructed client.}
 
@@ -92,7 +92,7 @@ creds(
 
 \item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 
-\item{creds}{list or \code{SetCreds()}}
+\item{creds}{\code{creds()} or list ins same format.}
 
 \item{profile}{The name of a profile to use. If not given, then the default profile is used}
 
