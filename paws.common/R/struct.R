@@ -17,6 +17,7 @@ struct <- function(...) {
 
 # Get an element from a struct. Throw an error if the requested element is not
 # part of the struct.
+#' @export
 `[.struct` <- function(x, key) {
   if (!(key %in% names(x))) {
     stop(sprintf("invalid element: %s", key))
@@ -25,11 +26,13 @@ struct <- function(...) {
   return(value)
 }
 
+#' @export
 `$.struct` <- `[.struct`
 
 # Replace an element from a struct. If the replacement is NULL, replace the
 # value with NULL but do not delete the element. Throw an error if the requested
 # element is not part of the struct.
+#' @export
 `[<-.struct` <- function(x, key, value) {
   if (!(key %in% names(x))) {
     stop(sprintf("invalid element: %s", key))
@@ -45,8 +48,16 @@ struct <- function(...) {
   return(x)
 }
 
+#' @export
 `$<-.struct` <- `[<-.struct`
 
+#' Create a list from an struct object
+#'
+#'
+#' @param x An struct object.
+#' @param ... Other arguments, which will be ignored.
+#'
+#' @export
 as.list.struct <- function(x, ...) {
   class(x) <- "list"
   return(x)
