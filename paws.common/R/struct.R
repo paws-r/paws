@@ -6,17 +6,12 @@
 # by names passed into the function.
 struct <- function(...) {
   .struct <- list(...)
-
   .f <- function() {
     .args <- as.list(environment(), all.names = TRUE)
-    for (.key in names(.args)) {
-      .struct[.key] <- .args[.key]
-    }
-    class(.struct) <- "struct"
-    return(.struct)
+    class(.args) <- "struct"
+    return(.args)
   }
   formals(.f) <- do.call(alist, .struct)
-
   return(.f)
 }
 
