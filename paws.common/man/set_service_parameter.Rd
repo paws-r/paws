@@ -9,35 +9,19 @@
 \usage{
 config(
   credentials = list(creds = list(access_key_id = "", secret_access_key = "",
-    session_token = "", access_token = "", expiration = Inf), profile = "", force_refresh
-    = FALSE, anonymous = FALSE),
+    session_token = "", access_token = ""), profile = "", anonymous = FALSE),
   endpoint = "",
-  endpoint_resolver = "",
-  enforce_should_retry_check = FALSE,
   region = "",
-  disable_ssl = FALSE,
   close_connection = FALSE,
-  max_retries = -1,
   connect_timeout = 60,
-  retryer = NULL,
-  disable_param_validation = FALSE,
-  disable_compute_checksums = FALSE,
   s3_force_path_style = FALSE,
-  s3_disable_100_continue = FALSE,
-  s3_use_accelerate = FALSE,
-  s3_disable_content_md5_validation = FALSE,
-  ec2_metadata_disable_timeout_override = FALSE,
-  use_dual_stack = FALSE,
-  sleep_delay = NULL,
-  disable_rest_protocol_uri_cleaning = FALSE,
   sts_regional_endpoint = ""
 )
 
 credentials(
   creds = list(access_key_id = "", secret_access_key = "", session_token = "",
-    access_token = "", expiration = Inf),
+    access_token = ""),
   profile = "",
-  force_refresh = FALSE,
   anonymous = FALSE
 )
 
@@ -45,58 +29,51 @@ creds(
   access_key_id = "",
   secret_access_key = "",
   session_token = "",
-  access_token = "",
-  expiration = Inf
+  access_token = ""
 )
 }
 \arguments{
-\item{credentials}{\code{credentials()} or \code{list()} is same format.}
+\item{credentials}{\code{credentials()} or \code{list} is same format.
+\itemize{
+\item{\strong{creds}:} {\code{creds()} or \code{list} in same format.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
+\href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
+in the \verb{IAM Identity Center OIDC API Reference Guide}.}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 
 \item{endpoint}{The complete URL to use for the constructed client.}
 
-\item{endpoint_resolver}{Currently not used}
-
-\item{enforce_should_retry_check}{Currently not used}
-
 \item{region}{The AWS Region used in instantiating the client.}
 
-\item{disable_ssl}{Currently not used}
+\item{close_connection}{Immediately close all HTTP connections.}
 
-\item{close_connection}{Currently not used}
+\item{connect_timeout}{The time in seconds till a timeout exception is thrown
+when attempting to make a connection. The default is 60 seconds.}
 
-\item{max_retries}{Currently not used}
+\item{s3_force_path_style}{Set this to \code{true} to force the request to use path-style
+addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 
-\item{connect_timeout}{Currently not used}
+\item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or
+legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 
-\item{retryer}{Currently not used}
+\item{creds}{\code{creds()} or \code{list} in same format.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
+\href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
+in the \verb{IAM Identity Center OIDC API Reference Guide}.
+}}}
 
-\item{disable_param_validation}{Currently not used}
-
-\item{disable_compute_checksums}{Currently not used}
-
-\item{s3_force_path_style}{Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
-
-\item{s3_disable_100_continue}{Currently not used}
-
-\item{s3_use_accelerate}{Currently not used}
-
-\item{s3_disable_content_md5_validation}{Currently not used}
-
-\item{ec2_metadata_disable_timeout_override}{Currently not used}
-
-\item{use_dual_stack}{Currently not used}
-
-\item{sleep_delay}{Currently not used}
-
-\item{disable_rest_protocol_uri_cleaning}{Currently not used}
-
-\item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
-
-\item{creds}{\code{creds()} or list ins same format.}
-
-\item{profile}{The name of a profile to use. If not given, then the default profile is used}
-
-\item{force_refresh}{Currently not used}
+\item{profile}{The name of a profile to use. If not given, then the default profile is used.}
 
 \item{anonymous}{Set anonymous credentials.}
 
@@ -106,10 +83,9 @@ creds(
 
 \item{session_token}{AWS temporary session token}
 
-\item{access_token}{he token issued by the \code{CreateToken} API call. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken} in the \verb{IAM Identity Center OIDC API Reference Guide}.}
-
-\item{expiration}{Currently not used}
+\item{access_token}{The token issued by the \code{CreateToken} API call. For more information, see
+\href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
+in the \verb{IAM Identity Center OIDC API Reference Guide}.}
 }
 \value{
 list set of parameter variables for paws services.
@@ -118,21 +94,18 @@ list set of parameter variables for paws services.
 Help functions for setting the parameters for services
 }
 \examples{
-config(credentials = list(creds = list(access_key_id = "dummy")))
+# set service parameter access_key_id and secret_access_key
+
+config(credentials(creds("dummy", "secret")))
+
+# set service parameter access_key_id and secret_access_key using using lists
 config(
-  credentials = credentials(
-    creds = list(access_key_id = "dummy", secret_access_key = "bob"),
-    profile = "hi"
-  )
+    credentials = list(
+        creds = list(
+            access_key_id = "dummy",
+            secret_access_key = "secret"
+        )
+    )
 )
 
-config(
-  credentials = credentials(
-    creds = creds(
-      access_key_id = "dummy",
-      secret_access_key = "bob"
-    ),
-    profile = "hi"
-  )
-)
 }

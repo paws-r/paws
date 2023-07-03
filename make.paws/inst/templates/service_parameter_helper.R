@@ -65,33 +65,12 @@
 #'
 #' @name set_service_parameter
 #' @export
-config <- function (credentials = list(creds = list(access_key_id = "", 
-    secret_access_key = "", session_token = "", access_token = ""), 
-    profile = "", anonymous = FALSE), endpoint = "", region = "", 
-    close_connection = FALSE, connect_timeout = 60, s3_force_path_style = FALSE, 
-    sts_regional_endpoint = "") 
-{
-    .args <- as.list(environment(), all.names = TRUE)
-    class(.args) <- "struct"
-    return(.args)
-}
+{{config}}
 
 #' @rdname set_service_parameter
 #' @export
-credentials <- function (creds = list(access_key_id = "", secret_access_key = "", 
-    session_token = "", access_token = ""), profile = "", anonymous = FALSE) 
-{
-    .args <- as.list(environment(), all.names = TRUE)
-    class(.args) <- "struct"
-    return(.args)
-}
+{{credentials}}
 
 #' @rdname set_service_parameter
 #' @export
-creds <- function (access_key_id = "", secret_access_key = "", session_token = "", 
-    access_token = "") 
-{
-    .args <- as.list(environment(), all.names = TRUE)
-    class(.args) <- "struct"
-    return(.args)
-}
+{{creds}}
