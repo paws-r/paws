@@ -482,3 +482,118 @@ test_that("check sts regional from config file", {
 
   expect_equal(actual, "legacy")
 })
+
+test_that("merge_config default param config", {
+  cfg <- list(
+    credentials = list(
+      creds = list(
+        access_key_id = "string",
+        secret_access_key = "string",
+        session_token = "string"
+      ),
+      profile = "string",
+      anonymous = "logical"
+    ),
+    endpoint = "string",
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
+  )
+
+  # Check cfg is not affected by default credentials()
+  actual1 <- merge_config(
+    cfg,
+    list(credentials = credentials(), endpoint = NULL, region = NULL)
+  )
+
+  # Check if cfg is not affected by credentials list()
+  actual2 <- merge_config(
+    cfg,
+    list(credentials = list(), endpoint = NULL, region = NULL)
+  )
+
+  # Check if default config is not affected by default credentials()
+  actual3 <- merge_config(
+    config(),
+    list(credentials = credentials(), endpoint = NULL, region = NULL)
+  )
+  # Check if empty list isnt affect by default credentials()
+  actual4 <- merge_config(
+    list(),
+    list(credentials = credentials(), endpoint = NULL, region = NULL)
+  )
+
+  expect_equal(actual1, cfg)
+  expect_equal(actual2, cfg)
+  expect_equal(actual3, config())
+  expect_equal(actual4, list())
+})
+
+test_that("merge_config modify default config with param config", {
+  # check if list config is modified by credentials()
+  actual1 <- merge_config(
+    list(),
+    list(credentials = credentials(profile = "dummy"), endpoint = NULL, region = NULL)
+  )
+
+  # check if list config is modified by credentials
+  actual2 <- merge_config(
+    list(),
+    list(credentials = list(profile = "dummy"), endpoint = NULL, region = NULL)
+  )
+
+  # check if config() is modified by all param config
+  actual3 <- merge_config(
+    config(),
+    list(credentials = credentials(profile = "dummy"), endpoint = "bar", region = "zoo")
+  )
+
+  expect_credentials <- as.list(credentials(profile = "dummy"))
+  expect_equal(actual1, list(credentials = expect_credentials))
+  expect_equal(actual2, list(credentials = list(profile = "dummy")))
+  expect_equal(actual3, config(credentials = expect_credentials, endpoint = "bar", region = "zoo"))
+})
+
+
+test_that("merge_config config and param config", {
+  # check if config is modified by param config
+  actual1 <- merge_config(
+    config(credentials(profile = "dummy"), sts_regional_endpoint = "regional"),
+    list(credentials = credentials(profile = "dummy"), endpoint = NULL, region = "us-east-1")
+  )
+
+  # check if list config is modified by credentials
+  actual2 <- merge_config(
+    config(credentials(profile = "dummy"), endpoint = "endpoint1", region = "eu-west-1"),
+    list(credentials = list(profile = "edited"), endpoint = "my-endpoint", region = "us-east-1")
+  )
+
+  # check if list config is modified by list param config
+  actual3 <- merge_config(
+    list(credentials=list(profile = "dummy"), endpoint = "endpoint1", region = "eu-west-1"),
+    list(credentials = list(profile = "edited"), endpoint = "my-endpoint", region = "us-east-1")
+  )
+
+  expect1 <- config(
+    credentials(profile = "dummy"),
+    region = "us-east-1",
+    sts_regional_endpoint = "regional"
+  )
+  expect2 <- config(
+    credentials(profile = "edited"),
+    region = "us-east-1",
+    endpoint = "my-endpoint"
+  )
+  expect3 <- list(
+    credentials = list(
+      profile = "edited"
+    ),
+    endpoint = "my-endpoint",
+    region = "us-east-1"
+  )
+
+  expect_equal(actual1, expect1)
+  expect_equal(actual2, expect2)
+  expect_equal(actual3, expect3)
+})

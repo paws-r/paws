@@ -143,7 +143,7 @@ paws_verbose <- function(data_out = TRUE, data_in = FALSE, ssl = FALSE) {
            sslDataOut = if (ssl && data_out) prefix_info("*> ", msg, TRUE)
     )
   }
-  config(debugfunction = Debug, verbose = TRUE)
+  httr::config(debugfunction = Debug, verbose = TRUE)
 }
 
 prefix_info <- function(prefix, x, blank_line = FALSE) {

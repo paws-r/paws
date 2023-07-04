@@ -6,22 +6,18 @@
 # by names passed into the function.
 struct <- function(...) {
   .struct <- list(...)
-
   .f <- function() {
     .args <- as.list(environment(), all.names = TRUE)
-    for (.key in names(.args)) {
-      .struct[.key] <- .args[.key]
-    }
-    class(.struct) <- "struct"
-    return(.struct)
+    class(.args) <- "struct"
+    return(.args)
   }
   formals(.f) <- do.call(alist, .struct)
-
   return(.f)
 }
 
 # Get an element from a struct. Throw an error if the requested element is not
 # part of the struct.
+#' @export
 `[.struct` <- function(x, key) {
   if (!(key %in% names(x))) {
     stop(sprintf("invalid element: %s", key))
@@ -30,11 +26,13 @@ struct <- function(...) {
   return(value)
 }
 
+#' @export
 `$.struct` <- `[.struct`
 
 # Replace an element from a struct. If the replacement is NULL, replace the
 # value with NULL but do not delete the element. Throw an error if the requested
 # element is not part of the struct.
+#' @export
 `[<-.struct` <- function(x, key, value) {
   if (!(key %in% names(x))) {
     stop(sprintf("invalid element: %s", key))
@@ -50,8 +48,16 @@ struct <- function(...) {
   return(x)
 }
 
+#' @export
 `$<-.struct` <- `[<-.struct`
 
+#' Create a list from an struct object
+#'
+#'
+#' @param x An struct object.
+#' @param ... Other arguments, which will be ignored.
+#'
+#' @export
 as.list.struct <- function(x, ...) {
   class(x) <- "list"
   return(x)
