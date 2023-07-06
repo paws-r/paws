@@ -1,3 +1,6 @@
+# paws.common 0.5.9
+* add expiration parameter to creds
+
 # paws.common 0.5.8
 * fix mismatch apparent method as.list.struct (#634)
 * split timeout and connecttimeout in http call (#610). Thanks to @stuart-storypark for identifying issue, and @joakibo for extra insight and testing.

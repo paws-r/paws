@@ -17,6 +17,8 @@
 #' \item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
 #' \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
 #' in the `IAM Identity Center OIDC API Reference Guide`.}
+#' \item{\strong{expiration}:} {The date and time when the temporary credentials expire.
+#' `expiration` must be a `POSIXct` date-time or able to be compared with them.}
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
@@ -37,8 +39,10 @@
 #' \item{\strong{session_token}:} {AWS temporary session token}
 #' \item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
 #' \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-#' in the `IAM Identity Center OIDC API Reference Guide`.
-#' }}
+#' in the `IAM Identity Center OIDC API Reference Guide`.}
+#' \item{\strong{expiration}:} {The date and time when the temporary credentials expire.
+#' `expiration` must be a `POSIXct` date-time or able to be compared with them.}
+#' }
 #' @param profile The name of a profile to use. If not given, then the default profile is used.
 #' @param anonymous Set anonymous credentials.
 #' @param access_key_id AWS access key ID
@@ -47,6 +51,8 @@
 #' @param access_token The token issued by the \code{CreateToken} API call. For more information, see
 #' \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
 #' in the `IAM Identity Center OIDC API Reference Guide`.
+#' @param expiration The date and time when the temporary credentials expire.
+#' `expiration` must be a `POSIXct` date-time or able to be compared with them.
 #' @return list set of parameter variables for paws services.
 #' @examples
 #' # set service parameter access_key_id and secret_access_key
@@ -66,10 +72,10 @@
 #' @name set_service_parameter
 #' @export
 config <- function (credentials = list(creds = list(access_key_id = "", 
-    secret_access_key = "", session_token = "", access_token = ""), 
-    profile = "", anonymous = FALSE), endpoint = "", region = "", 
-    close_connection = FALSE, connect_timeout = 60, s3_force_path_style = FALSE, 
-    sts_regional_endpoint = "") 
+    secret_access_key = "", session_token = "", access_token = "", 
+    expiration = Inf), profile = "", anonymous = FALSE), endpoint = "", 
+    region = "", close_connection = FALSE, connect_timeout = 60, 
+    s3_force_path_style = FALSE, sts_regional_endpoint = "") 
 {
     .args <- as.list(environment(), all.names = TRUE)
     class(.args) <- "struct"
@@ -79,7 +85,8 @@ config <- function (credentials = list(creds = list(access_key_id = "",
 #' @rdname set_service_parameter
 #' @export
 credentials <- function (creds = list(access_key_id = "", secret_access_key = "", 
-    session_token = "", access_token = ""), profile = "", anonymous = FALSE) 
+    session_token = "", access_token = "", expiration = Inf), 
+    profile = "", anonymous = FALSE) 
 {
     .args <- as.list(environment(), all.names = TRUE)
     class(.args) <- "struct"
@@ -89,7 +96,7 @@ credentials <- function (creds = list(access_key_id = "", secret_access_key = ""
 #' @rdname set_service_parameter
 #' @export
 creds <- function (access_key_id = "", secret_access_key = "", session_token = "", 
-    access_token = "") 
+    access_token = "", expiration = Inf) 
 {
     .args <- as.list(environment(), all.names = TRUE)
     class(.args) <- "struct"

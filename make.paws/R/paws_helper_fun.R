@@ -1,5 +1,4 @@
 .param_not_used <- c(
-  "expiration",
   "force_refresh",
   "endpoint_resolver",
   "enforce_should_retry_check",
