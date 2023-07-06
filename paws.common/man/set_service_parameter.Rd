@@ -9,7 +9,8 @@
 \usage{
 config(
   credentials = list(creds = list(access_key_id = "", secret_access_key = "",
-    session_token = "", access_token = ""), profile = "", anonymous = FALSE),
+    session_token = "", access_token = "", expiration = Inf), profile = "", anonymous =
+    FALSE),
   endpoint = "",
   region = "",
   close_connection = FALSE,
@@ -20,7 +21,7 @@ config(
 
 credentials(
   creds = list(access_key_id = "", secret_access_key = "", session_token = "",
-    access_token = ""),
+    access_token = "", expiration = Inf),
   profile = "",
   anonymous = FALSE
 )
@@ -29,7 +30,8 @@ creds(
   access_key_id = "",
   secret_access_key = "",
   session_token = "",
-  access_token = ""
+  access_token = "",
+  expiration = Inf
 )
 }
 \arguments{
@@ -43,6 +45,8 @@ creds(
 \item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
 in the \verb{IAM Identity Center OIDC API Reference Guide}.}
+\item{\strong{expiration}:} {The date and time when the temporary credentials expire.
+\code{expiration} must be a \code{POSIXct} date-time or able to be compared with them.}
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
@@ -70,8 +74,10 @@ legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regional
 \item{\strong{session_token}:} {AWS temporary session token}
 \item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \verb{IAM Identity Center OIDC API Reference Guide}.
-}}}
+in the \verb{IAM Identity Center OIDC API Reference Guide}.}
+\item{\strong{expiration}:} {The date and time when the temporary credentials expire.
+\code{expiration} must be a \code{POSIXct} date-time or able to be compared with them.}
+}}
 
 \item{profile}{The name of a profile to use. If not given, then the default profile is used.}
 
@@ -86,6 +92,9 @@ in the \verb{IAM Identity Center OIDC API Reference Guide}.
 \item{access_token}{The token issued by the \code{CreateToken} API call. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
 in the \verb{IAM Identity Center OIDC API Reference Guide}.}
+
+\item{expiration}{The date and time when the temporary credentials expire.
+\code{expiration} must be a \code{POSIXct} date-time or able to be compared with them.}
 }
 \value{
 list set of parameter variables for paws services.

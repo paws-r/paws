@@ -106,6 +106,26 @@ svc <- paws::svc(
 )
 ```
 
+As of `paws.common (>= 0.5.8)` 3 new helper functions have been added to help
+set credentials for an individual service (`config`, `credentials` and `creds`).
+These new helper functions aim to provide auto-complete functionality to aid
+the construction of config list.
+
+```r
+# paws.common (>= 0.5.8)
+library(paws.common)
+svc <- paws::svc(
+  config(
+    credentials(
+      creds(
+        access_key_id = "your AWS access key",
+        secret_access_key = "your AWS secret key"
+      )
+    )
+  )
+)
+```
+
 In this example, `paws::svc` is a placeholder for an AWS service. Use a
 specific service instead, for example, `paws::s3`. Paws supports having
 multiple service objects with different credentials.
@@ -128,11 +148,36 @@ svc <- paws::svc(
 )
 ```
 
+Alternatively:
+```r
+# paws.common (>= 0.5.8)
+library(paws.common)
+svc <- paws::svc(
+  config(
+    credentials(
+      creds(
+        access_key_id = "your AWS access key",
+        secret_access_key = "your AWS secret key",
+        session_token = "your session token",
+        expiration = as.POSIXct("2001-02-03 04:05:06")
+      )
+    )
+  )
+)
+```
+
 `expiration` must be a `POSIXct` date-time or able to be compared with them.
 
 Additionally, anonymous credentials may be used (e.g., before calling `assume_role_with_web_identity()` on an STS service)
 ``` r
 svc <- paws::svc(config = list(credentials = list(anonymous = TRUE)))
+```
+
+Alternatively:
+```r
+# paws.common (>= 0.5.8)
+library(paws.common)
+svc <- paws::svc(config(credentials(anonymous = TRUE)))
 ```
 
 ---
