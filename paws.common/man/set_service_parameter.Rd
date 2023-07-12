@@ -16,7 +16,8 @@ config(
   close_connection = FALSE,
   connect_timeout = 60,
   s3_force_path_style = FALSE,
-  sts_regional_endpoint = ""
+  sts_regional_endpoint = "",
+  signature_version = ""
 )
 
 credentials(
@@ -66,6 +67,9 @@ addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 
 \item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or
 legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+
+\item{signature_version}{The signature version used when signing requests.
+Note that the default version is Signature Version 4.}
 
 \item{creds}{\code{creds()} or \code{list} in same format.
 \itemize{

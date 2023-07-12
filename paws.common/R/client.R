@@ -25,7 +25,8 @@ Config <- struct(
   use_dual_stack = FALSE,
   sleep_delay = NULL,
   disable_rest_protocol_uri_cleaning = FALSE,
-  sts_regional_endpoint = ""
+  sts_regional_endpoint = "",
+  signature_version = ""
 )
 
 # A Session object stores configuration and request handlers for a service.
