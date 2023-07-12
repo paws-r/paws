@@ -1,5 +1,6 @@
 # paws.common 0.5.9
 * add expiration parameter to creds
+* add signature_version to config
 
 # paws.common 0.5.8
 * fix mismatch apparent method as.list.struct (#634)

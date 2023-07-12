@@ -32,6 +32,8 @@
 #' addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or
 #' legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}
+#' @param signature_version The signature version used when signing requests.
+#' Note that the default version is Signature Version 4.
 #' @param creds \code{creds()} or \code{list} in same format.
 #' \itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}

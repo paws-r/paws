@@ -78,6 +78,12 @@ SigningContextQuery <- struct(
   anonymous = FALSE
 )
 
+# Generates a presigned request for s3.
+# https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html#RESTAuthenticationQueryStringAuth
+v1_sign_request_handler <- function(request) {
+  return(sign_v1_auth_query(request))
+}
+
 sign_v1_auth_query <- function(request) {
   region <- request$client_info$signing_region
   if (region == "") {
