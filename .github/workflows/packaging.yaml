@@ -74,6 +74,7 @@ jobs:
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
+          make.paws::paws_install("cran")
         shell: Rscript {0}
 
       - name: Build binary package
