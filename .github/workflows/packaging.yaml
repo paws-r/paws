@@ -61,24 +61,30 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
-          sudo apt-get install ca-certificates
 
       - name: Install Paws Dependencies
         run: |
           install.packages(c('remotes', 'pkgbuild'))
-          remotes::install_local('paws.common')
-          remotes::install_local('make.paws')
         shell: Rscript {0}
 
       - name: Install Paws
         run: |
-          make.paws::paws_install("cran")
+          # Enable repository from paws-r
+          options(repos = c(
+            pawsr = 'https://paws-r.r-universe.dev',
+            CRAN = 'https://cloud.r-project.org')
+          )
+
+          # Download and install paws in R
+          install.packages('paws')
         shell: Rscript {0}
 
       - name: Build binary package
         id: build
         run: |
-          pkgs <- make.paws:::list_paws_pkgs("cran")
+          lines <- readLines(file.path("cran", "paws", "DESCRIPTION"))
+          pkgs <- lines[grepl("paws\\.[a-z\\.]", lines, perl = T)]
+          pkgs <- file.path("cran", c("paws", trimws(gsub("\\([^)]*\\).*", "", pkgs))))
           dest_path <- contrib.url("../binaries", type="binary")
           dir.create(dest_path, recursive = TRUE)
 
