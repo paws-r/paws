@@ -56,7 +56,7 @@ jobs:
           pandoc-version: "2.17.1"
 
       - name: Install System Dependencies
-        if: runner.os == 'ubuntu'
+        if: runner.os == 'Linux'
         shell: bash
         run: |
           sudo apt-get update
@@ -81,7 +81,7 @@ jobs:
         run: |
           dest_path <- contrib.url("binaries", type="binary")
           dir.create(dest_path, recursive = TRUE)
-          pkgs <- make.paws:::list_paws_pkgs("cran")
+          pkgs <- sort(make.paws:::list_paws_pkgs("cran"), decreasing = T)
           for (pkg in pkgs) {
             binary_path <- pkgbuild::build(path = pkg, binary = TRUE, dest_path=dest_path)
             tools::write_PACKAGES(dest_path, type = "${{ matrix.type }}", addFiles = TRUE)
