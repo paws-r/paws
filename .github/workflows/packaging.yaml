@@ -57,7 +57,6 @@ jobs:
 
       - name: Install System Dependencies
         if: runner.os == 'Linux'
-        shell: bash
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
@@ -66,8 +65,8 @@ jobs:
       - name: Install Paws Dependencies
         run: |
           install.packages(c('remotes', 'pkgbuild'))
-          remotes::install_local('paws.common', force = TRUE)
-          remotes::install_local('make.paws', force = TRUE)
+          remotes::install_local('paws.common')
+          remotes::install_local('make.paws')
         shell: Rscript {0}
 
       - name: Install Paws
