@@ -70,10 +70,14 @@ jobs:
           remotes::install_deps('make.paws', dependencies = TRUE)
         shell: Rscript {0}
 
-      - name: Install Paws Packages
+      - name: Install Paws Build Components
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Install Paws
+        run: |
           make.paws::paws_install("cran")
         shell: Rscript {0}
 
