@@ -81,7 +81,7 @@ jobs:
         id: build
         run: |
           pkgs <- make.paws:::list_paws_pkgs("cran")
-          dest_path <- contrib.url("binaries", type="binary")
+          dest_path <- contrib.url("../binaries", type="binary")
           dir.create(dest_path, recursive = TRUE)
 
           for (pkg in pkgs) {
