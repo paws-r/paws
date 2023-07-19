@@ -64,7 +64,7 @@ jobs:
 
       - name: Install Paws Dependencies
         run: |
-          install.packages(c('remotes', 'pkgbuild', 'desc'))
+          install.packages(c('remotes', 'pkgbuild'))
           remotes::install_deps('paws.common', dependencies = TRUE)
           remotes::install_deps('make.paws', dependencies = TRUE)
         shell: Rscript {0}
@@ -85,7 +85,8 @@ jobs:
             binary_path <- pkgbuild::build(path = pkg, binary = TRUE, dest_path=dest_path)
             tools::write_PACKAGES(dest_path, type = "${{ matrix.type }}", addFiles = TRUE)
           }
-          cat("pkg_version=", desc::desc_get("Version", "cran/paws"), "\n", sep="", file = Sys.getenv("GITHUB_OUTPUT"))
+          paws_version <- gsub("Version:[ ]+", "", readLines("cran/paws/DESCRIPTION", n = 3)[3])
+          cat("pkg_version=", paws_version, "\n", sep="", file = Sys.getenv("GITHUB_OUTPUT"))
         shell: Rscript {0}
 
       - name: 'upload-file'
