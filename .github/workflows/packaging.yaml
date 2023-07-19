@@ -1,0 +1,89 @@
+name: Packaging
+
+on:
+  schedule:
+    # At 12:00, on day 10 of the month, every 4 months
+    # Giving 10 days for paws regen to be approved
+    - cron: "0 12 10 */4 *"
+  workflow_dispatch:
+    inputs:
+    text_to_print:
+      description: "Manual re-build"
+
+jobs:
+  binaries:
+    runs-on: ${{ matrix.config.runner }}
+    container: ${{ matrix.container }}
+    strategy:
+      fail-fast: false
+      matrix:
+
+        config:
+          - {r_version: 'release', os: macOS, version: cpu-intel, runner: macOS-latest}
+          # - {r_version: '',        os: macOS, version: cpu-m1, runner: [self-hosted, m1]}
+          - {r_version: 'release', os: ubuntu, runner: ubuntu-latest}
+          - {r_version: 'release', os: windows, runner: windows-latest}
+
+        include:
+          - config: {os: ubuntu}
+            type: 'source'
+            r_install_tar: "tar"
+
+          - config: {os: windows}
+            type: 'win.binary'
+            r_install_tar: ""
+
+          - config: {os: macOS}
+            type: 'mac.binary'
+            r_install_tar: ""
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      R_INSTALL_TAR: ${{ matrix.r_install_tar }}
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup-r
+        with:
+          r_version: ${{ matrix.config.r_version}}
+          makevars: true
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+
+      - name: Install Paws Dependencies
+        run: |
+          install.packages(c('remotes', 'pkgbuild', 'desc'))
+          remotes::install_deps('paws.common', dependencies = TRUE)
+          remotes::install_deps('make.paws', dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install Paws Packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Build binary package
+        id: build
+        run: |
+          dest_path <- contrib.url("binaries", type="binary")
+          dir.create(dest_path, recursive = TRUE)
+          pkgs <- make.paws:::list_paws_pkgs("cran")
+          for (pkg in pkgs) {
+            binary_path <- pkgbuild::build(path = pkg, binary = TRUE, dest_path=dest_path)
+            tools::write_PACKAGES(dest_path, type = "${{ matrix.type }}", addFiles = TRUE)
+          }
+          cat("pkg_version=", desc::desc_get("Version", "cran/paws"), "\n", sep="", file = Sys.getenv("GITHUB_OUTPUT"))
+        shell: Rscript {0}
+
+      - name: 'upload-file'
+        run:
+          aws s3 sync "../binaries" "s3://paws-r-builds/packages/${{ matrix.config.version }}/${{ steps.build.outputs.pkg_version }}/" --quiet
