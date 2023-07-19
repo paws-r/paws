@@ -80,17 +80,19 @@ jobs:
       - name: Build binary package
         id: build
         run: |
-          dest_path <- contrib.url("../binaries", type="binary")
+          pkgs <- make.paws:::list_paws_pkgs("cran")
+          dest_path <- contrib.url("binaries", type="binary")
           dir.create(dest_path, recursive = TRUE)
-          pkgs <- sort(make.paws:::list_paws_pkgs("cran"), decreasing = T)
+
           for (pkg in pkgs) {
             binary_path <- pkgbuild::build(path = pkg, binary = TRUE, dest_path=dest_path)
             tools::write_PACKAGES(dest_path, type = "${{ matrix.type }}", addFiles = TRUE)
           }
           paws_version <- gsub("Version:[ ]+", "", readLines("cran/paws/DESCRIPTION", n = 3)[3])
           cat("pkg_version=", paws_version, "\n", sep="", file = Sys.getenv("GITHUB_OUTPUT"))
+
         shell: Rscript {0}
 
       - name: 'upload-file'
         run:
-          aws s3 sync "../binaries" "s3://paws-r-builds/packages/${{ matrix.config.version }}/${{ steps.build.outputs.pkg_version }}/" --quiet
+          aws s3 sync "../binaries" "s3://paws-r-builds/packages/${{ steps.build.outputs.pkg_version }}/" --acl public-read --quiet
