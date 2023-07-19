@@ -79,7 +79,7 @@ jobs:
       - name: Build binary package
         id: build
         run: |
-          dest_path <- contrib.url("binaries", type="binary")
+          dest_path <- contrib.url("../binaries", type="binary")
           dir.create(dest_path, recursive = TRUE)
           pkgs <- sort(make.paws:::list_paws_pkgs("cran"), decreasing = T)
           for (pkg in pkgs) {
