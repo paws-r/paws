@@ -64,19 +64,12 @@ jobs:
 
       - name: Install Paws Dependencies
         run: |
-          install.packages(c('remotes', 'pkgbuild'))
+          install.packages('pkgbuild')
         shell: Rscript {0}
 
       - name: Install Paws
         run: |
-          # Enable repository from paws-r
-          options(repos = c(
-            pawsr = 'https://paws-r.r-universe.dev',
-            CRAN = 'https://cloud.r-project.org')
-          )
-
-          # Download and install paws in R
-          install.packages('paws')
+          install.packages('paws', repos = c(pawsr = 'https://paws-r.r-universe.dev', CRAN = 'https://cloud.r-project.org'))
         shell: Rscript {0}
 
       - name: Build binary package
