@@ -55,6 +55,8 @@ jobs:
           pandoc-version: "2.17.1"
 
       - name: Install System Dependencies
+        if: runner.os == 'ubuntu'
+        shell: bash
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
