@@ -20,9 +20,11 @@ jobs:
 
         config:
           - {r_version: 'release', os: macOS, version: cpu-intel, runner: macOS-latest}
-          # - {r_version: '',        os: macOS, version: cpu-m1, runner: [self-hosted, m1]}
           - {r_version: 'release', os: ubuntu, runner: ubuntu-latest}
           - {r_version: 'release', os: windows, runner: windows-latest}
+          - {r_version: 'oldrel-1'', os: macOS, version: cpu-intel, runner: macOS-latest}
+          - {r_version: 'oldrel-1', os: ubuntu, runner: ubuntu-latest}
+          - {r_version: 'oldrel-1', os: windows, runner: windows-latest}
 
         include:
           - config: {os: ubuntu}
