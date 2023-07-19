@@ -66,12 +66,6 @@ jobs:
       - name: Install Paws Dependencies
         run: |
           install.packages(c('remotes', 'pkgbuild'))
-          remotes::install_deps('paws.common', dependencies = TRUE)
-          remotes::install_deps('make.paws', dependencies = TRUE)
-        shell: Rscript {0}
-
-      - name: Install Paws Build Components
-        run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
         shell: Rscript {0}
