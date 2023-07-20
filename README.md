@@ -33,14 +33,20 @@ If you are using Linux, you will need to install the following OS packages:
 
 Or install the development version from [r-universe](https://paws-r.r-universe.dev/ui#builds):
 ``` r
-# Enable repository from paws-r
-options(repos = c(
-  pawsr = 'https://paws-r.r-universe.dev',
-  CRAN = 'https://cloud.r-project.org')
-)
+install.packages('paws', repos = c(pawsr = 'https://paws-r.r-universe.dev', CRAN = 'https://cloud.r-project.org'))
+```
 
-# Download and install paws in R
-install.packages('paws')
+As of `paws v0.3.0` it's possible to install paws from pre-build binaries from a CRAN like repository host on AWS S3. We currently provide
+pre-built binaries for Linux as Mac and Windows binaries are supported on the CRAN. The main focus of this is to provide linux with some pre-built binaries so that the install time is spead up.
+
+To get the latest pre-built binaries you can use the following:
+```r
+install.packages('paws', repos = c(pawsr = 'https://paws-r-builds.s3.amazonaws.com/packages/latest/', CRAN = 'https://cloud.r-project.org'))
+```
+
+You can also get a specific version of paws by setting the version:
+```r
+install.packages('paws', repos = c(pawsr = 'https://paws-r-builds.s3.amazonaws.com/packages/0.3.0/', CRAN = 'https://cloud.r-project.org'))
 ```
 
 ## Credentials
