@@ -109,7 +109,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
 
     steps:
-      - name:
+      - name: Update Latest Binaries
         run:
           aws s3 rm s3://paws-r-builds/packages/latest/ --recursive --quiet
           aws s3 cp s3://paws-r-builds/packages/${{ needs.binaries.outputs.pkg_version }}/ s3://paws-r-builds/packages/latest/ --acl public-read --recursive --quiet
