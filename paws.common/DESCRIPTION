@@ -70,6 +70,7 @@ Collate:
     'idempotency.R'
     'jsonutil.R'
     'onLoad.R'
+    'paginate.R'
     'populate.R'
     'populateutil.R'
     'tags.R'
