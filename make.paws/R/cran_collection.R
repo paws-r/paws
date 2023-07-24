@@ -62,6 +62,7 @@ write_source_collection <- function(sdk_dir,
     }
   }
   write_list(clients, file.path(out_dir, "R", "paws.R"))
+  write_list(make_reexports(), file.path(out_dir, "R", "reexports_paws.common.R"))
 }
 
 # Add the category packages to the DESCRIPTION file's Imports.
@@ -70,6 +71,7 @@ write_source_collection <- function(sdk_dir,
 # generate the package.
 write_imports_collection <- function(path, version, imports) {
   packages <- sprintf("%s (>= %s)", imports, version)
+  packages <- c(packages, .paws.common.import.version)
   desc::desc_set(
     Imports = paste0(packages, collapse = ","),
     file = file.path(path, "DESCRIPTION"),
