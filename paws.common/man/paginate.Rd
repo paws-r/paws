@@ -2,9 +2,19 @@
 % Please edit documentation in R/paginate.R
 \name{paginate}
 \alias{paginate}
+\alias{paginate_lapply}
 \title{Paginate over an operation.}
 \usage{
 paginate(operation, MaxRetries = 5, MaxItems = NULL, StartingToken = NULL)
+
+paginate_lapply(
+  operation,
+  FUN,
+  ...,
+  MaxRetries = 5,
+  MaxItems = NULL,
+  StartingToken = NULL
+)
 }
 \arguments{
 \item{operation}{The operation}
@@ -15,6 +25,10 @@ paginate(operation, MaxRetries = 5, MaxItems = NULL, StartingToken = NULL)
 
 \item{StartingToken}{Can be used to modify the starting marker or token of a paginator.
 This argument if useful for resuming pagination from a previous token or starting pagination at a known position.}
+
+\item{FUN}{the function to be applied to each response element of \code{operation}.}
+
+\item{...}{optional arguments to \code{FUN}.}
 }
 \description{
 Some AWS operations return results that are incomplete and require subsequent
