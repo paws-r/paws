@@ -14,6 +14,10 @@ read_api <- function(api_name, path) {
     examples <- jsonlite::read_json(files$examples)
     api <- merge_examples(api, examples$examples)
   }
+  if (!is.null(files$paginators)) {
+    paginators <- jsonlite::read_json(files$paginators)
+    api <- merge_paginators(api, paginators$pagination)
+  }
   region_config <- jsonlite::read_json(region_config_path)
   api <- merge_region_config(api, region_config)
   api <- fix_region_config(api)
@@ -43,6 +47,16 @@ merge_examples <- function(api, examples) {
   for (name in names(examples)) {
     operation <- api$operations[[name]]
     operation[["examples"]] <- examples[[name]]
+    api$operations[[name]] <- operation
+  }
+  return(api)
+}
+
+# Returns an API object with paginators merged into the corresponding operations.
+merge_paginators <- function(api, paginators) {
+  for (name in names(paginators)) {
+    operation <- api$operations[[name]]
+    operation[["paginators"]] <- paginators[[name]]
     api$operations[[name]] <- operation
   }
   return(api)

@@ -1,4 +1,5 @@
 #' @include templates.R
+#' @include utils.R
 NULL
 
 operation_file_template <- template(
@@ -36,7 +37,7 @@ operation_template <- template(
       name = ${operation_name},
       http_method = ${http_method},
       http_path = ${http_path},
-      paginator = list()
+      paginator = ${paginator}
     )
     input <- .${service}$${operation_input}
     output <- .${service}$${operation_output}
@@ -62,8 +63,24 @@ make_operation <- function(operation, api, doc_maker) {
     operation_input = get_operation_input(operation, api),
     operation_output = get_operation_output(operation),
     http_method = quoted(operation$http$method),
-    http_path = quoted(operation$http$requestUri)
+    http_path = quoted(operation$http$requestUri),
+    paginator = set_paginator(operation$paginators)
   )
+}
+
+set_paginator <- function(paginator) {
+  if (!is.null(paginator)) {
+    output_token <- paginator$output_token
+    if (!is.null(output_token)) {
+      for (i in seq_along(output_token)) {
+        output_token[[i]] <- strsplit(output_token[[i]], " ")[[1]][[1]]
+      }
+      paginator$output_token <- output_token
+    }
+    paste(trimws(deparse(paginator)), collapse = " ")
+  } else {
+    "list()"
+  }
 }
 
 # Override operation name from extdata/operation_name_override.yml
