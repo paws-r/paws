@@ -16,6 +16,7 @@
 #' @param StartingToken Can be used to modify the starting marker or token of a paginator.
 #' This argument if useful for resuming pagination from a previous token or starting pagination at a known position.
 #' @param FUN the function to be applied to each response element of \code{operation}.
+#' @param simplify See \link[base:sapply]{base::sapply()}.
 #' @param ... optional arguments to \code{FUN}.
 #' @examples
 #' \dontrun{
@@ -48,24 +49,38 @@ paginate <- function(operation,
   }
 
   fn_body <- body(fn_call)
-  fn_input <- names(formals(fn_call))
-  output_name <- names(eval(fn_body[[4]][[3]], envir = getNamespace(pkg_name)))
+  paginator <- fn_body[[2]][[3]]$paginator
 
-  # Get Tokens
-  # Identify token parameter names
-  token_nms <- output_name[grep("token", output_name, ignore.case = T)]
-  next_token <- token_nms[grepl("next.*token", token_nms, ignore.case = T)]
-  continuation_token <- token_nms[token_nms %in% fn_input]
-  fn[continuation_token] <- StartingToken
+  # Check if method can paginate
+  if (!all(c("input_token","output_token") %in% names(paginator))) {
+    stop(sprintf(
+      "Method: `%s` is unable to paginate.",
+      as.character(fn)[1]),
+      call. = F
+    )
+  }
 
-  # Identify if MaxKey/MaxItems/maxResults used
-  max_items <- fn_input[grep("^max", fn_input, ignore.case = T)]
-  fn[max_items] <- MaxItems
+  # Get input_token/output_token and limit_key from paginator
+  input_token <- paginator$input_token
+  output_token <- paginator$output_token
+  limit_key <- paginator$limit_key
 
+  # only update input_token if single token
+  if (length(input_token) == 1) {
+    if (is.null(fn[[input_token]])) {
+      fn[input_token] <- StartingToken
+    }
+  }
+  if(is.null(fn[[limit_key]])) {
+    fn[limit_key] <- MaxItems
+  }
   result <- list()
-  while (!identical(fn[[continuation_token]], character(0))) {
+  while (!identical(fn[[input_token[[1]]]], character(0))) {
     resp <- retry_api_call(eval(fn), MaxRetries)
-    fn[[continuation_token]] <- resp[[next_token]]
+    new_tokens <- get_tokens(resp, output_token)
+    for (i in seq_along(new_tokens)) {
+      fn[[input_token[[i]]]] <- new_tokens[[i]]
+    }
     result[[length(result) + 1]] <- resp
   }
   return(result)
@@ -94,54 +109,167 @@ paginate_lapply <- function(operation,
   }
 
   fn_body <- body(fn_call)
-  fn_input <- names(formals(fn_call))
-  output_name <- names(eval(fn_body[[4]][[3]], envir = getNamespace(pkg_name)))
+  paginator <- fn_body[[2]][[3]]$paginator
 
-  # Get Tokens
-  # Identify token parameter names
-  token_nms <- output_name[grep("token", output_name, ignore.case = T)]
-  next_token <- token_nms[grepl("next.*token", token_nms, ignore.case = T)]
-  continuation_token <- token_nms[token_nms %in% fn_input]
-  fn[continuation_token] <- StartingToken
+  # Check if method can paginate
+  if (!all(c("input_token","output_token") %in% names(paginator))) {
+    stop(sprintf(
+      "Method: `%s` is unable to paginate.",
+      as.character(fn)[1]),
+      call. = F
+    )
+  }
 
-  # Identify if MaxKey/MaxItems/maxResults used
-  max_items <- fn_input[grep("^max", fn_input, ignore.case = T)]
-  fn[max_items] <- MaxItems
+  # Get input_token/output_token and limit_key from paginator
+  input_token <- paginator$input_token
+  output_token <- paginator$output_token
+  limit_key <- paginator$limit_key
 
+  # only update input_token if single token
+  if (length(input_token) == 1) {
+    if (is.null(fn[[input_token]])) {
+      fn[input_token] <- StartingToken
+    }
+  }
+  if(is.null(fn[[limit_key]])) {
+    fn[limit_key] <- MaxItems
+  }
   result <- list()
-  while (!identical(fn[[continuation_token]], character(0))) {
+  while (!identical(fn[[input_token[[1]]]], character(0))) {
     resp <- retry_api_call(eval(fn), MaxRetries)
-    fn[[continuation_token]] <- resp[[next_token]]
+    new_tokens <- get_tokens(resp, output_token)
+    for (i in seq_along(new_tokens)) {
+      fn[[input_token[[i]]]] <- new_tokens[[i]]
+    }
     result[[length(result) + 1]] <- FUN(resp, ...)
   }
   return(result)
 }
+
+#' @rdname paginate
+#' @export
+paginate_sapply <- function(operation,
+                            FUN,
+                            ...,
+                            simplify = TRUE,
+                            MaxRetries = 5,
+                            MaxItems = NULL,
+                            StartingToken = NULL) {
+  FUN <- match.fun(FUN)
+  fn <- substitute(operation)
+  fn_call <- eval(fn[[1]])
+  pkg_name <- environmentName(environment(fn_call))
+
+  # Ensure method can be found.
+  if (!nzchar(pkg_name)) {
+    stop(sprintf(
+      "Unknown method: `%s`. Please check service methods and try again.",
+      as.character(fn)[1]),
+      call. = F
+    )
+  }
+
+  fn_body <- body(fn_call)
+  paginator <- fn_body[[2]][[3]]$paginator
+
+  # Check if method can paginate
+  if (!all(c("input_token","output_token") %in% names(paginator))) {
+    stop(sprintf(
+      "Method: `%s` is unable to paginate.",
+      as.character(fn)[1]),
+      call. = F
+    )
+  }
+
+  # Get input_token/output_token and limit_key from paginator
+  input_token <- paginator$input_token
+  output_token <- paginator$output_token
+  limit_key <- paginator$limit_key
+
+  # only update input_token if single token
+  if (length(input_token) == 1) {
+    if (is.null(fn[[input_token]])) {
+      fn[input_token] <- StartingToken
+    }
+  }
+  if(is.null(fn[[limit_key]])) {
+    fn[limit_key] <- MaxItems
+  }
+  result <- list()
+  while (!identical(fn[[input_token[[1]]]], character(0))) {
+    resp <- retry_api_call(eval(fn), MaxRetries)
+    new_tokens <- get_tokens(resp, output_token)
+    for (i in seq_along(new_tokens)) {
+      fn[[input_token[[i]]]] <- new_tokens[[i]]
+    }
+    result[[length(result) + 1]] <- FUN(resp, ...)
+  }
+
+  if (!isFALSE(simplify))
+    simplify2array(result, higher = (simplify == "array"))
+  else result
+}
+
+# Get all output tokens
+get_tokens <- function(resp, output_tokens) {
+  tokens <- list()
+  for (token in output_tokens) {
+    if(grepl("\\[-1\\]", token)) {
+      tokens[[token]] <- get_token_len(resp, token)
+    } else {
+      tokens[[token]] <- get_token_path(resp, token)
+    }
+  }
+  return(tokens)
+}
+
+# Get Token along a response path: i.e.
+# Path.To.Token
+get_token_path <- function(resp, token) {
+  token_prts <- strsplit(token, "\\.")[[1]]
+  build_key <- c()
+  for (i in seq_along(token_prts)) {
+    build_key[i] <- token_prts[[i]]
+  }
+  location <- paste0('resp[["',paste(build_key, collapse = '"]][["'), '"]]')
+  return(eval(parse(text = location), envir = environment()))
+}
+
+# Get Token from the last element in a response path: i.e.
+# Path.To[-1].Token
+get_token_len <- function(resp, token) {
+  last_element <- function(x) x[[length(x)]]
+  build_part <- function(x) {
+    paste0('last_element(resp[["', paste0(x, collapse = '"]][["'), '"]])')
+  }
+  token_prts <- strsplit(token, "\\.")[[1]]
+
+  build_key <- c()
+  for (i in seq_along(token_prts)) {
+    if(grepl("\\[-1\\]", token_prts[[i]])) {
+      build_key[length(build_key) +1] <- gsub("\\[-1\\]", "", key)
+      build_key <- build_part(build_key)
+    } else {
+      build_key[length(build_key) +1] <- token_prts[[i]]
+    }
+  }
+  location <- paste0(paste(build_key, collapse = '[["'), '"]]')
+  return(eval(parse(text = location), envir = environment()))
+}
+
 
 # See https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html
 retry_api_call <- function(expr, retries){
   for (i in seq_len(retries + 1)){
     tryCatch({
       return(eval.parent(substitute(expr)))
-    }, http_400 = function(err) {
-      back_off(err, i, retries)
-    }, http_403 = function(err) {
-      back_off(err, i, retries)
-    }, http_408 = function(err) {
-      back_off(err, i, retries)
-    }, http_429 = function(err) {
-      back_off(err, i, retries)
-    }, http_500 = function(err) {
-      back_off(err, i, retries)
-    }, http_502 = function(err) {
-      stop(err)
-    }, http_503 = function(err) {
-      back_off(err, i, retries)
-    }, http_504 = function(err) {
-      back_off(err, i, retries)
-    }, http_509 = function(err) {
-      back_off(err, i, retries)
     }, error = function(err) {
-      stop(err)
+      msg <- err$message
+      if (grepl("rate exceeded", msg, ignore.case = T)) {
+        back_off(err, i, retries)
+      } else {
+        stop(err)
+      }
     })
   }
 }

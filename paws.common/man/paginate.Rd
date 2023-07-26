@@ -3,6 +3,7 @@
 \name{paginate}
 \alias{paginate}
 \alias{paginate_lapply}
+\alias{paginate_sapply}
 \title{Paginate over an operation.}
 \usage{
 paginate(operation, MaxRetries = 5, MaxItems = NULL, StartingToken = NULL)
@@ -11,6 +12,16 @@ paginate_lapply(
   operation,
   FUN,
   ...,
+  MaxRetries = 5,
+  MaxItems = NULL,
+  StartingToken = NULL
+)
+
+paginate_sapply(
+  operation,
+  FUN,
+  ...,
+  simplify = TRUE,
   MaxRetries = 5,
   MaxItems = NULL,
   StartingToken = NULL
@@ -29,6 +40,8 @@ This argument if useful for resuming pagination from a previous token or startin
 \item{FUN}{the function to be applied to each response element of \code{operation}.}
 
 \item{...}{optional arguments to \code{FUN}.}
+
+\item{simplify}{See \link[base:sapply]{base::sapply()}.}
 }
 \description{
 Some AWS operations return results that are incomplete and require subsequent
