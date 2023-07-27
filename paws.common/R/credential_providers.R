@@ -4,6 +4,7 @@
 #' @include dateutil.R
 #' @include iniutil.R
 #' @include logging.R
+#' @include util.R
 NULL
 
 Creds <- struct(
@@ -236,17 +237,17 @@ sso_credential_process <- function(sso_session,
   )
   sso_cache <- file.path(root, ".aws", "sso", "cache", json_file)
   if (!file.exists(sso_cache)) {
-    stop(sprintf(
+    stopf(
       "Error loading SSO Token: Token for %s does not exist",
       input_str
-    ), call. = F)
+    )
   }
   cache_creds <- jsonlite::fromJSON(sso_cache)
   if (!("accessToken" %in% names(cache_creds)) || !("expiresAt" %in% names(cache_creds))) {
-    stop(sprintf(
+    stopf(
       "Error loading SSO Token: Token for %s is invalid.",
       sso_start_url
-    ), call. = F)
+    )
   }
   svc <- sso(
     config = list(
@@ -494,11 +495,10 @@ iam_credentials_provider <- function() {
 
 no_credentials <- function() {
   message <- (
-    if (isTRUE(getOption('paws.log_level') <= 2L)) {
+    if (isTRUE(getOption("paws.log_level") <= 2L)) {
       'No compatible credentials provided. Use `options("paws.log_level" = 3L)` for more information.'
     } else {
       "No compatible credentials provided."
-    }
-  )
+    })
   stop(message, call. = FALSE)
 }
