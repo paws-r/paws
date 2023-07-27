@@ -38,13 +38,11 @@ paginate <- function(operation,
   fn <- substitute(operation)
   fn_call <- eval(fn[[1]])
   pkg_name <- environmentName(environment(fn_call))
-
   # Ensure method can be found.
-  if (!nzchar(pkg_name)) {
-    stop(sprintf(
+  if (!grepl("^paws", pkg_name, perl = T)) {
+    stopf(
       "Unknown method: `%s`. Please check service methods and try again.",
-      as.character(fn)[1]),
-      call. = F
+      as.character(fn)[1]
     )
   }
 
@@ -52,11 +50,10 @@ paginate <- function(operation,
   paginator <- fn_body[[2]][[3]]$paginator
 
   # Check if method can paginate
-  if (!all(c("input_token","output_token") %in% names(paginator))) {
-    stop(sprintf(
+  if (!all(c("input_token", "output_token") %in% names(paginator))) {
+    stopf(
       "Method: `%s` is unable to paginate.",
-      as.character(fn)[1]),
-      call. = F
+      as.character(fn)[1]
     )
   }
 
@@ -71,12 +68,14 @@ paginate <- function(operation,
       fn[input_token] <- StartingToken
     }
   }
-  if(is.null(fn[[limit_key]])) {
-    fn[limit_key] <- MaxItems
+  if (!is.null(limit_key)) {
+    if (is.null(fn[[limit_key]])) {
+      fn[limit_key] <- MaxItems
+    }
   }
   result <- list()
   while (!identical(fn[[input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), MaxRetries)
+    resp <- retry_api_call(eval(fn), retries = MaxRetries)
     new_tokens <- get_tokens(resp, output_token)
     for (i in seq_along(new_tokens)) {
       fn[[input_token[[i]]]] <- new_tokens[[i]]
@@ -100,11 +99,10 @@ paginate_lapply <- function(operation,
   pkg_name <- environmentName(environment(fn_call))
 
   # Ensure method can be found.
-  if (!nzchar(pkg_name)) {
-    stop(sprintf(
+  if (!grepl("^paws", pkg_name, perl = T)) {
+    stopf(
       "Unknown method: `%s`. Please check service methods and try again.",
-      as.character(fn)[1]),
-      call. = F
+      as.character(fn)[1]
     )
   }
 
@@ -112,11 +110,10 @@ paginate_lapply <- function(operation,
   paginator <- fn_body[[2]][[3]]$paginator
 
   # Check if method can paginate
-  if (!all(c("input_token","output_token") %in% names(paginator))) {
-    stop(sprintf(
+  if (!all(c("input_token", "output_token") %in% names(paginator))) {
+    stopf(
       "Method: `%s` is unable to paginate.",
-      as.character(fn)[1]),
-      call. = F
+      as.character(fn)[1]
     )
   }
 
@@ -131,12 +128,14 @@ paginate_lapply <- function(operation,
       fn[input_token] <- StartingToken
     }
   }
-  if(is.null(fn[[limit_key]])) {
-    fn[limit_key] <- MaxItems
+  if (!is.null(limit_key)) {
+    if (is.null(fn[[limit_key]])) {
+      fn[limit_key] <- MaxItems
+    }
   }
   result <- list()
   while (!identical(fn[[input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), MaxRetries)
+    resp <- retry_api_call(eval(fn), retries = MaxRetries)
     new_tokens <- get_tokens(resp, output_token)
     for (i in seq_along(new_tokens)) {
       fn[[input_token[[i]]]] <- new_tokens[[i]]
@@ -161,11 +160,10 @@ paginate_sapply <- function(operation,
   pkg_name <- environmentName(environment(fn_call))
 
   # Ensure method can be found.
-  if (!nzchar(pkg_name)) {
-    stop(sprintf(
+  if (!grepl("^paws", pkg_name, perl = T)) {
+    stopf(
       "Unknown method: `%s`. Please check service methods and try again.",
-      as.character(fn)[1]),
-      call. = F
+      as.character(fn)[1]
     )
   }
 
@@ -173,11 +171,10 @@ paginate_sapply <- function(operation,
   paginator <- fn_body[[2]][[3]]$paginator
 
   # Check if method can paginate
-  if (!all(c("input_token","output_token") %in% names(paginator))) {
-    stop(sprintf(
+  if (!all(c("input_token", "output_token") %in% names(paginator))) {
+    stopf(
       "Method: `%s` is unable to paginate.",
-      as.character(fn)[1]),
-      call. = F
+      as.character(fn)[1]
     )
   }
 
@@ -192,12 +189,14 @@ paginate_sapply <- function(operation,
       fn[input_token] <- StartingToken
     }
   }
-  if(is.null(fn[[limit_key]])) {
-    fn[limit_key] <- MaxItems
+  if (!is.null(limit_key)) {
+    if (is.null(fn[[limit_key]])) {
+      fn[limit_key] <- MaxItems
+    }
   }
   result <- list()
   while (!identical(fn[[input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), MaxRetries)
+    resp <- retry_api_call(eval(fn), retries = MaxRetries)
     new_tokens <- get_tokens(resp, output_token)
     for (i in seq_along(new_tokens)) {
       fn[[input_token[[i]]]] <- new_tokens[[i]]
@@ -205,16 +204,18 @@ paginate_sapply <- function(operation,
     result[[length(result) + 1]] <- FUN(resp, ...)
   }
 
-  if (!isFALSE(simplify))
+  if (!isFALSE(simplify)) {
     simplify2array(result, higher = (simplify == "array"))
-  else result
+  } else {
+    result
+  }
 }
 
 # Get all output tokens
 get_tokens <- function(resp, output_tokens) {
   tokens <- list()
   for (token in output_tokens) {
-    if(grepl("\\[-1\\]", token)) {
+    if (grepl("\\[-1\\]", token)) {
       tokens[[token]] <- get_token_len(resp, token)
     } else {
       tokens[[token]] <- get_token_path(resp, token)
@@ -231,7 +232,7 @@ get_token_path <- function(resp, token) {
   for (i in seq_along(token_prts)) {
     build_key[i] <- token_prts[[i]]
   }
-  location <- paste0('resp[["',paste(build_key, collapse = '"]][["'), '"]]')
+  location <- paste0('resp[["', paste(build_key, collapse = '"]][["'), '"]]')
   return(eval(parse(text = location), envir = environment()))
 }
 
@@ -246,11 +247,11 @@ get_token_len <- function(resp, token) {
 
   build_key <- c()
   for (i in seq_along(token_prts)) {
-    if(grepl("\\[-1\\]", token_prts[[i]])) {
-      build_key[length(build_key) +1] <- gsub("\\[-1\\]", "", key)
+    if (grepl("\\[-1\\]", token_prts[[i]])) {
+      build_key[length(build_key) + 1] <- gsub("\\[-1\\]", "", token_prts[[i]])
       build_key <- build_part(build_key)
     } else {
-      build_key[length(build_key) +1] <- token_prts[[i]]
+      build_key[length(build_key) + 1] <- token_prts[[i]]
     }
   }
   location <- paste0(paste(build_key, collapse = '[["'), '"]]')
@@ -259,26 +260,32 @@ get_token_len <- function(resp, token) {
 
 
 # See https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html
-retry_api_call <- function(expr, retries){
-  for (i in seq_len(retries + 1)){
-    tryCatch({
-      return(eval.parent(substitute(expr)))
-    }, error = function(err) {
-      msg <- err$message
-      if (grepl("rate exceeded", msg, ignore.case = T)) {
-        back_off(err, i, retries)
-      } else {
-        stop(err)
+retry_api_call <- function(expr, retries) {
+  for (i in seq_len(retries + 1)) {
+    tryCatch(
+      {
+        return(eval.parent(substitute(expr)))
+      },
+      error = function(err) {
+        msg <- err$message
+
+        # Only Retry rate exceeded errors.
+        if (grepl("rate exceeded", msg, ignore.case = T)) {
+          exp_back_off(err, i, retries)
+        } else {
+          stop(err)
+        }
       }
-    })
+    )
   }
 }
 
-# Retry with exponential backoff.
-back_off <- function(error, i, retries) {
-  if(i == (retries + 1))
+# Retry with exponential backoff with jitter
+exp_back_off <- function(error, i, retries) {
+  if (i == (retries + 1)) {
     stop(error)
-  time = min(runif(1)*2^i, 20)
+  }
+  time <- min(runif(1) * 2^i, 20)
   log_error("Request failed. Retrying in %s seconds...", time)
   Sys.sleep(time)
 }
