@@ -6,13 +6,20 @@
 \alias{paginate_sapply}
 \title{Paginate over an operation.}
 \usage{
-paginate(operation, MaxRetries = 5, MaxItems = NULL, StartingToken = NULL)
+paginate(
+  operation,
+  MaxRetries = 5,
+  PageSize = NULL,
+  MaxItems = NULL,
+  StartingToken = NULL
+)
 
 paginate_lapply(
   operation,
   FUN,
   ...,
   MaxRetries = 5,
+  PageSize = NULL,
   MaxItems = NULL,
   StartingToken = NULL
 )
@@ -23,6 +30,7 @@ paginate_sapply(
   ...,
   simplify = TRUE,
   MaxRetries = 5,
+  PageSize = NULL,
   MaxItems = NULL,
   StartingToken = NULL
 )
@@ -31,6 +39,8 @@ paginate_sapply(
 \item{operation}{The operation}
 
 \item{MaxRetries}{Max number of retries call AWS API.}
+
+\item{PageSize}{The size of each page.}
 
 \item{MaxItems}{Limits the maximum number of total returned items returned while paginating.}
 
@@ -42,6 +52,9 @@ This argument if useful for resuming pagination from a previous token or startin
 \item{...}{optional arguments to \code{FUN}.}
 
 \item{simplify}{See \link[base:sapply]{base::sapply()}.}
+}
+\value{
+list of responses from the operation.
 }
 \description{
 Some AWS operations return results that are incomplete and require subsequent

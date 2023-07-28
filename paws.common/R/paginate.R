@@ -1,6 +1,8 @@
 #' @include logging.R
 #' @include util.R
 
+.do_call <- as.name("do.call")
+
 #' @title Paginate over an operation.
 #' @description
 #' Some AWS operations return results that are incomplete and require subsequent
@@ -12,12 +14,14 @@
 #'
 #' @param operation The operation
 #' @param MaxRetries Max number of retries call AWS API.
+#' @param PageSize The size of each page.
 #' @param MaxItems Limits the maximum number of total returned items returned while paginating.
 #' @param StartingToken Can be used to modify the starting marker or token of a paginator.
 #' This argument if useful for resuming pagination from a previous token or starting pagination at a known position.
 #' @param FUN the function to be applied to each response element of \code{operation}.
 #' @param simplify See \link[base:sapply]{base::sapply()}.
 #' @param ... optional arguments to \code{FUN}.
+#' @return list of responses from the operation.
 #' @examples
 #' \dontrun{
 #' # The following example retrieves object list. The request specifies max
@@ -33,54 +37,38 @@
 #' @export
 paginate <- function(operation,
                      MaxRetries = 5,
+                     PageSize = NULL,
                      MaxItems = NULL,
                      StartingToken = NULL) {
   fn <- substitute(operation)
-  fn_call <- eval(fn[[1]])
-  pkg_name <- environmentName(environment(fn_call))
-  # Ensure method can be found.
-  if (!grepl("^paws", pkg_name, perl = T)) {
-    stopf(
-      "Unknown method: `%s`. Please check service methods and try again.",
-      as.character(fn)[1]
-    )
-  }
-
-  fn_body <- body(fn_call)
-  paginator <- fn_body[[2]][[3]]$paginator
-
-  # Check if method can paginate
-  if (!all(c("input_token", "output_token") %in% names(paginator))) {
-    stopf(
-      "Method: `%s` is unable to paginate.",
-      as.character(fn)[1]
-    )
-  }
-
-  # Get input_token/output_token and limit_key from paginator
-  input_token <- paginator$input_token
-  output_token <- paginator$output_token
-  limit_key <- paginator$limit_key
-
-  # only update input_token if single token
-  if (length(input_token) == 1) {
-    if (is.null(fn[[input_token]])) {
-      fn[input_token] <- StartingToken
+  # rebuild fn for do.call
+  if(identical(fn[[1]], .do_call)) {
+    kwargs <- eval(fn[[3]])
+    fn <- fn[2]
+    for (key in names(kwargs)) {
+      fn[key] <- kwargs[[key]]
     }
   }
-  if (!is.null(limit_key)) {
-    if (is.null(fn[[limit_key]])) {
-      fn[limit_key] <- MaxItems
-    }
-  }
+
+  fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
+  fn <- fn_update$fn
+  paginator <- fn_update$paginator
+
+  no_items <- 0
   result <- list()
-  while (!identical(fn[[input_token[[1]]]], character(0))) {
+  while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
     resp <- retry_api_call(eval(fn), retries = MaxRetries)
-    new_tokens <- get_tokens(resp, output_token)
+    new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
-      fn[[input_token[[i]]]] <- new_tokens[[i]]
+      fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
-    result[[length(result) + 1]] <- resp
+    result[[length(result) + 1]] <- resp[paginator$result_key]
+    if (!is.null(MaxItems)) {
+      no_items <- no_items + length(resp[[paginator$result_key]])
+      if (no_items >= MaxItems) {
+        break
+      }
+    }
   }
   return(result)
 }
@@ -91,57 +79,30 @@ paginate_lapply <- function(operation,
                             FUN,
                             ...,
                             MaxRetries = 5,
+                            PageSize = NULL,
                             MaxItems = NULL,
                             StartingToken = NULL) {
   FUN <- match.fun(FUN)
   fn <- substitute(operation)
-  fn_call <- eval(fn[[1]])
-  pkg_name <- environmentName(environment(fn_call))
 
-  # Ensure method can be found.
-  if (!grepl("^paws", pkg_name, perl = T)) {
-    stopf(
-      "Unknown method: `%s`. Please check service methods and try again.",
-      as.character(fn)[1]
-    )
-  }
-
-  fn_body <- body(fn_call)
-  paginator <- fn_body[[2]][[3]]$paginator
-
-  # Check if method can paginate
-  if (!all(c("input_token", "output_token") %in% names(paginator))) {
-    stopf(
-      "Method: `%s` is unable to paginate.",
-      as.character(fn)[1]
-    )
-  }
-
-  # Get input_token/output_token and limit_key from paginator
-  input_token <- paginator$input_token
-  output_token <- paginator$output_token
-  limit_key <- paginator$limit_key
-
-  # only update input_token if single token
-  if (length(input_token) == 1) {
-    if (is.null(fn[[input_token]])) {
-      fn[input_token] <- StartingToken
+  # rebuild fn for do.call
+  if(identical(fn[[1]], .do_call)) {
+    kwargs <- eval(fn[[3]])
+    fn <- fn[2]
+    for (key in names(kwargs)) {
+      fn[key] <- kwargs[[key]]
     }
   }
-  if (!is.null(limit_key)) {
-    if (is.null(fn[[limit_key]])) {
-      fn[limit_key] <- MaxItems
-    }
-  }
-  result <- list()
-  while (!identical(fn[[input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), retries = MaxRetries)
-    new_tokens <- get_tokens(resp, output_token)
-    for (i in seq_along(new_tokens)) {
-      fn[[input_token[[i]]]] <- new_tokens[[i]]
-    }
-    result[[length(result) + 1]] <- FUN(resp, ...)
-  }
+
+  fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
+  result <- paginate_xapply(
+    fn = fn_update$fn,
+    paginator = fn_update$paginator,
+    FUN = FUN,
+    ...,
+    MaxRetries = MaxRetries,
+    MaxItems = MaxItems
+  )
   return(result)
 }
 
@@ -152,10 +113,42 @@ paginate_sapply <- function(operation,
                             ...,
                             simplify = TRUE,
                             MaxRetries = 5,
+                            PageSize = NULL,
                             MaxItems = NULL,
                             StartingToken = NULL) {
   FUN <- match.fun(FUN)
   fn <- substitute(operation)
+
+  # rebuild fn for do.call
+  if(identical(fn[[1]], .do_call)) {
+    kwargs <- eval(fn[[3]])
+    fn <- fn[2]
+    for (key in names(kwargs)) {
+      fn[key] <- kwargs[[key]]
+    }
+  }
+
+  fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
+  result <- paginate_xapply(
+    fn = fn_update$fn,
+    paginator = fn_update$paginator,
+    FUN = FUN,
+    ...,
+    MaxRetries = MaxRetries,
+    MaxItems = MaxItems
+  )
+
+  if (!isFALSE(simplify)) {
+    simplify2array(result, higher = (simplify == "array"))
+  } else {
+    result
+  }
+}
+
+paginate_update_fn <- function(
+    fn,
+    PageSize = NULL,
+    StartingToken = NULL) {
   fn_call <- eval(fn[[1]])
   pkg_name <- environmentName(environment(fn_call))
 
@@ -178,37 +171,48 @@ paginate_sapply <- function(operation,
     )
   }
 
-  # Get input_token/output_token and limit_key from paginator
-  input_token <- paginator$input_token
-  output_token <- paginator$output_token
-  limit_key <- paginator$limit_key
-
   # only update input_token if single token
-  if (length(input_token) == 1) {
-    if (is.null(fn[[input_token]])) {
-      fn[input_token] <- StartingToken
+  if (length(paginator$input_token) == 1) {
+    if (is.null(fn[[paginator$input_token]])) {
+      fn[paginator$input_token] <- StartingToken
     }
   }
-  if (!is.null(limit_key)) {
-    if (is.null(fn[[limit_key]])) {
-      fn[limit_key] <- MaxItems
+  if (!is.null(paginator$limit_key)) {
+    if (is.null(fn[[paginator$limit_key]])) {
+      fn[paginator$limit_key] <- PageSize
     }
-  }
-  result <- list()
-  while (!identical(fn[[input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), retries = MaxRetries)
-    new_tokens <- get_tokens(resp, output_token)
-    for (i in seq_along(new_tokens)) {
-      fn[[input_token[[i]]]] <- new_tokens[[i]]
-    }
-    result[[length(result) + 1]] <- FUN(resp, ...)
   }
 
-  if (!isFALSE(simplify)) {
-    simplify2array(result, higher = (simplify == "array"))
-  } else {
-    result
+  return(list(
+    fn = fn,
+    paginator = paginator
+  ))
+}
+
+paginate_xapply <- function(
+    fn,
+    paginator,
+    FUN,
+    ...,
+    MaxRetries = 5,
+    MaxItems = NULL) {
+  no_items <- 0
+  result <- list()
+  while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
+    resp <- retry_api_call(eval(fn), retries = MaxRetries)
+    new_tokens <- get_tokens(resp, paginator$output_token)
+    for (i in seq_along(new_tokens)) {
+      fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
+    }
+    result[[length(result) + 1]] <- FUN(resp[paginator$result_key], ...)
+    if (!is.null(MaxItems)) {
+      no_items <- no_items + length(resp[[paginator$result_key]])
+      if (no_items >= MaxItems) {
+        break
+      }
+    }
   }
+  return(result)
 }
 
 # Get all output tokens
