@@ -154,9 +154,9 @@ test_that("check paginate", {
   )
 
   expected <- list(
-    list(Contents = list("foo")),
-    list(Contents = list("bar")),
-    list(Contents = list("zoo"))
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2"),
+    list(Contents = list("zoo"), NextToken = character())
   )
 
   mockery::stub(paginate, "substitute", mock_substitute)
@@ -210,9 +210,9 @@ test_that("check paginate do.call", {
   )
 
   expected <- list(
-    list(Contents = list("foo")),
-    list(Contents = list("bar")),
-    list(Contents = list("zoo"))
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2"),
+    list(Contents = list("zoo"), NextToken = character())
   )
 
   mockery::stub(paginate, "substitute", mock_substitute)
@@ -265,8 +265,8 @@ test_that("check paginate restrict MaxItems", {
   )
 
   expected <- list(
-    list(Contents = list("foo")),
-    list(Contents = list("bar"))
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2")
   )
 
   mockery::stub(paginate, "substitute", mock_substitute)
@@ -310,9 +310,9 @@ test_that("check paginate_xapply", {
   )
 
   expected <- list(
-    list(Contents = list("foo")),
-    list(Contents = list("bar")),
-    list(Contents = list("zoo"))
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2"),
+    list(Contents = list("zoo"), NextToken = character())
   )
 
   mockery::stub(paginate_xapply, "retry_api_call", mock_retry_api_call)
@@ -362,8 +362,8 @@ test_that("check paginate_xapply restrict MaxItems", {
   )
 
   expected <- list(
-    list(Contents = list("foo")),
-    list(Contents = list("bar"))
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2")
   )
 
   mockery::stub(paginate_xapply, "retry_api_call", mock_retry_api_call)

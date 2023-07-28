@@ -54,6 +54,8 @@ paginate <- function(Operation,
   fn <- fn_update$fn
   paginator <- fn_update$paginator
 
+
+  primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
@@ -62,9 +64,9 @@ paginate <- function(Operation,
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
-    result[[length(result) + 1]] <- resp[paginator$result_key]
+    result[[length(result) + 1]] <- resp
     if (!is.null(MaxItems)) {
-      no_items <- no_items + length(resp[[paginator$result_key]])
+      no_items <- no_items + length(resp[[primary_result_key]])
       if (no_items >= MaxItems) {
         break
       }
@@ -196,6 +198,8 @@ paginate_xapply <- function(
     ...,
     MaxRetries = 5,
     MaxItems = NULL) {
+
+  primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
@@ -204,9 +208,9 @@ paginate_xapply <- function(
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
-    result[[length(result) + 1]] <- FUN(resp[paginator$result_key], ...)
+    result[[length(result) + 1]] <- FUN(resp, ...)
     if (!is.null(MaxItems)) {
-      no_items <- no_items + length(resp[[paginator$result_key]])
+      no_items <- no_items + length(resp[[primary_result_key]])
       if (no_items >= MaxItems) {
         break
       }
