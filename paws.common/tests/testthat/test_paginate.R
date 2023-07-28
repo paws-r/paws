@@ -61,12 +61,12 @@ test_that("check paginate_update_fn", {
     mockery::stub(paginate_update_fn, "environmentName", mock_environmentName)
     actual <- paginate_update_fn(substitute(dummy_op(x = "hi")), PageSize = 10, StartingToken = "token1")
     expect_fn <- substitute(dummy_op(x = "hi", NextToken = "token1", MaxKey = 10))
-    expect_paginator <- substitute(list(
+    expect_paginator <- list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    ))
+    )
 
     expect_equal(actual$fn, expect_fn)
     expect_equal(actual$paginator, expect_paginator)
@@ -173,7 +173,6 @@ test_that("check paginate", {
   ))
   expect_equal(actual, expected)
 })
-
 
 test_that("check paginate do.call", {
 
