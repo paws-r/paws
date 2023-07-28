@@ -7,7 +7,7 @@
 \title{Paginate over an operation.}
 \usage{
 paginate(
-  operation,
+  Operation,
   MaxRetries = 5,
   PageSize = NULL,
   MaxItems = NULL,
@@ -15,7 +15,7 @@ paginate(
 )
 
 paginate_lapply(
-  operation,
+  Operation,
   FUN,
   ...,
   MaxRetries = 5,
@@ -25,7 +25,7 @@ paginate_lapply(
 )
 
 paginate_sapply(
-  operation,
+  Operation,
   FUN,
   ...,
   simplify = TRUE,
@@ -36,7 +36,7 @@ paginate_sapply(
 )
 }
 \arguments{
-\item{operation}{The operation}
+\item{Operation}{The operation for example an s3 operation: \code{svc$list_buckets()}}
 
 \item{MaxRetries}{Max number of retries call AWS API.}
 

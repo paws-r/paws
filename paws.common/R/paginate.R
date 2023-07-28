@@ -12,7 +12,7 @@
 #' at a time, and you must send subsequent requests with the appropriate Marker
 #' in order to retrieve the next page of results.
 #'
-#' @param operation The operation
+#' @param Operation The operation for example an s3 operation: \code{svc$list_buckets()}
 #' @param MaxRetries Max number of retries call AWS API.
 #' @param PageSize The size of each page.
 #' @param MaxItems Limits the maximum number of total returned items returned while paginating.
@@ -35,21 +35,21 @@
 #' }
 #' @name paginate
 #' @export
-paginate <- function(operation,
+paginate <- function(Operation,
                      MaxRetries = 5,
                      PageSize = NULL,
                      MaxItems = NULL,
                      StartingToken = NULL) {
-  fn <- substitute(operation)
+  fn <- substitute(Operation)
   # rebuild fn for do.call
-  if(identical(fn[[1]], .do_call)) {
+  if (identical(fn[[1]], .do_call)) {
     kwargs <- eval(fn[[3]])
     fn <- fn[2]
     for (key in names(kwargs)) {
       fn[key] <- kwargs[[key]]
     }
   }
-
+  # update fn with pagesize and starting token
   fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
   fn <- fn_update$fn
   paginator <- fn_update$paginator
@@ -75,7 +75,7 @@ paginate <- function(operation,
 
 #' @rdname paginate
 #' @export
-paginate_lapply <- function(operation,
+paginate_lapply <- function(Operation,
                             FUN,
                             ...,
                             MaxRetries = 5,
@@ -83,17 +83,17 @@ paginate_lapply <- function(operation,
                             MaxItems = NULL,
                             StartingToken = NULL) {
   FUN <- match.fun(FUN)
-  fn <- substitute(operation)
+  fn <- substitute(Operation)
 
   # rebuild fn for do.call
-  if(identical(fn[[1]], .do_call)) {
+  if (identical(fn[[1]], .do_call)) {
     kwargs <- eval(fn[[3]])
     fn <- fn[2]
     for (key in names(kwargs)) {
       fn[key] <- kwargs[[key]]
     }
   }
-
+  # update fn with pagesize and starting token
   fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
   result <- paginate_xapply(
     fn = fn_update$fn,
@@ -108,7 +108,7 @@ paginate_lapply <- function(operation,
 
 #' @rdname paginate
 #' @export
-paginate_sapply <- function(operation,
+paginate_sapply <- function(Operation,
                             FUN,
                             ...,
                             simplify = TRUE,
@@ -117,17 +117,17 @@ paginate_sapply <- function(operation,
                             MaxItems = NULL,
                             StartingToken = NULL) {
   FUN <- match.fun(FUN)
-  fn <- substitute(operation)
+  fn <- substitute(Operation)
 
   # rebuild fn for do.call
-  if(identical(fn[[1]], .do_call)) {
+  if (identical(fn[[1]], .do_call)) {
     kwargs <- eval(fn[[3]])
     fn <- fn[2]
     for (key in names(kwargs)) {
       fn[key] <- kwargs[[key]]
     }
   }
-
+  # update fn with pagesize and starting token
   fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
   result <- paginate_xapply(
     fn = fn_update$fn,
@@ -232,7 +232,7 @@ get_tokens <- function(resp, output_tokens) {
 # Path.To.Token
 get_token_path <- function(resp, token) {
   token_prts <- strsplit(token, "\\.")[[1]]
-  build_key <- c()
+  build_key <- character(length(token_prts))
   for (i in seq_along(token_prts)) {
     build_key[i] <- token_prts[[i]]
   }
@@ -249,7 +249,7 @@ get_token_len <- function(resp, token) {
   }
   token_prts <- strsplit(token, "\\.")[[1]]
 
-  build_key <- c()
+  build_key <- character(0)
   for (i in seq_along(token_prts)) {
     if (grepl("\\[-1\\]", token_prts[[i]])) {
       build_key[length(build_key) + 1] <- gsub("\\[-1\\]", "", token_prts[[i]])
