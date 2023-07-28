@@ -53,8 +53,6 @@ paginate <- function(Operation,
   fn_update <- paginate_update_fn(fn, PageSize, StartingToken)
   fn <- fn_update$fn
   paginator <- fn_update$paginator
-
-
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
   result <- list()
@@ -63,6 +61,12 @@ paginate <- function(Operation,
     new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
+    }
+    # exit if no more results
+    if (!is.null(paginator$more_results)) {
+      if (isFALSE(resp[[paginator$more_results]])) {
+        break
+      }
     }
     result[[length(result) + 1]] <- resp
     if (!is.null(MaxItems)) {
@@ -187,7 +191,7 @@ paginate_update_fn <- function(
 
   return(list(
     fn = fn,
-    paginator = paginator
+    paginator = eval(paginator)
   ))
 }
 
@@ -198,7 +202,6 @@ paginate_xapply <- function(
     ...,
     MaxRetries = 5,
     MaxItems = NULL) {
-
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
   result <- list()
@@ -208,6 +211,13 @@ paginate_xapply <- function(
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
+    # exit if no more results
+    if (!is.null(paginator$more_results)) {
+      if (isFALSE(resp[[paginator$more_results]])) {
+        break
+      }
+    }
+    # Need to double check this is correct
     result[[length(result) + 1]] <- FUN(resp, ...)
     if (!is.null(MaxItems)) {
       no_items <- no_items + length(resp[[primary_result_key]])
@@ -247,7 +257,9 @@ get_token_path <- function(resp, token) {
 # Get Token from the last element in a response path: i.e.
 # Path.To[-1].Token
 get_token_len <- function(resp, token) {
-  last_element <- function(x) x[[length(x)]]
+  last_element <- function(x) {
+    x[[length(x)]]
+  }
   build_part <- function(x) {
     paste0('last_element(resp[["', paste0(x, collapse = '"]][["'), '"]])')
   }
@@ -263,9 +275,24 @@ get_token_len <- function(resp, token) {
     }
   }
   location <- paste0(paste(build_key, collapse = '[["'), '"]]')
-  return(eval(parse(text = location), envir = environment()))
+  tryCatch(
+    {
+      return(eval(parse(text = location), envir = environment()))
+    },
+    error = function(e) {
+      # Return default character(0) for empty lists
+      if (grepl(
+        "attempt to select less than one element in integerOneIndex",
+        e$message,
+        perl = T
+      )) {
+        character(0)
+      } else {
+        stop(e)
+      }
+    }
+  )
 }
-
 
 # See https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html
 retry_api_call <- function(expr, retries) {
