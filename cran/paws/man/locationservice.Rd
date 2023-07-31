@@ -4,22 +4,47 @@
 \alias{locationservice}
 \title{Amazon Location Service}
 \usage{
-locationservice(config = list())
+locationservice(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -49,8 +74,20 @@ and Geofencing"
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -64,11 +101,11 @@ and Geofencing"
 \link[paws.application.integration:locationservice_batch_evaluate_geofences]{batch_evaluate_geofences} \tab Evaluates device positions against the geofence geometries from a given geofence collection\cr
 \link[paws.application.integration:locationservice_batch_get_device_position]{batch_get_device_position} \tab Lists the latest device positions for requested devices\cr
 \link[paws.application.integration:locationservice_batch_put_geofence]{batch_put_geofence} \tab A batch request for storing geofence geometries into a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request\cr
-\link[paws.application.integration:locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads position update data for one or more devices to a tracker resource\cr
+\link[paws.application.integration:locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads position update data for one or more devices to a tracker resource (up to 10 devices per batch)\cr
 \link[paws.application.integration:locationservice_calculate_route]{calculate_route} \tab Calculates a route given the following required parameters: DeparturePosition and DestinationPosition\cr
 \link[paws.application.integration:locationservice_calculate_route_matrix]{calculate_route_matrix} \tab Calculates a route matrix given the following required parameters: DeparturePositions and DestinationPositions\cr
 \link[paws.application.integration:locationservice_create_geofence_collection]{create_geofence_collection} \tab Creates a geofence collection, which manages and stores geofences\cr
-\link[paws.application.integration:locationservice_create_key]{create_key} \tab Creates an API key resource in your Amazon Web Services account, which lets you grant geo:GetMap* actions for Amazon Location Map resources to the API key bearer\cr
+\link[paws.application.integration:locationservice_create_key]{create_key} \tab Creates an API key resource in your Amazon Web Services account, which lets you grant actions for Amazon Location resources to the API key bearer\cr
 \link[paws.application.integration:locationservice_create_map]{create_map} \tab Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers\cr
 \link[paws.application.integration:locationservice_create_place_index]{create_place_index} \tab Creates a place index resource in your Amazon Web Services account\cr
 \link[paws.application.integration:locationservice_create_route_calculator]{create_route_calculator} \tab Creates a route calculator resource in your Amazon Web Services account\cr

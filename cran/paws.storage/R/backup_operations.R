@@ -1352,7 +1352,7 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
     name = "ListBackupJobs",
     http_method = "GET",
     http_path = "/backup-jobs/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupJobs")
   )
   input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore, ByParentJobId = ByParentJobId)
   output <- .backup$list_backup_jobs_output()
@@ -1386,7 +1386,7 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
     name = "ListBackupPlanTemplates",
     http_method = "GET",
     http_path = "/backup/template/plans",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanTemplatesList")
   )
   input <- .backup$list_backup_plan_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_plan_templates_output()
@@ -1422,7 +1422,7 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
     name = "ListBackupPlanVersions",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/versions/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanVersionsList")
   )
   input <- .backup$list_backup_plan_versions_input(BackupPlanId = BackupPlanId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_plan_versions_output()
@@ -1457,7 +1457,7 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
     name = "ListBackupPlans",
     http_method = "GET",
     http_path = "/backup/plans/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlansList")
   )
   input <- .backup$list_backup_plans_input(NextToken = NextToken, MaxResults = MaxResults, IncludeDeleted = IncludeDeleted)
   output <- .backup$list_backup_plans_output()
@@ -1492,7 +1492,7 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
     name = "ListBackupSelections",
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/selections/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupSelectionsList")
   )
   input <- .backup$list_backup_selections_input(BackupPlanId = BackupPlanId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_selections_output()
@@ -1526,7 +1526,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListBackupVaults",
     http_method = "GET",
     http_path = "/backup-vaults/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupVaultList")
   )
   input <- .backup$list_backup_vaults_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_vaults_output()
@@ -1599,7 +1599,7 @@ backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourc
     name = "ListCopyJobs",
     http_method = "GET",
     http_path = "/copy-jobs/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CopyJobs")
   )
   input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByParentJobId = ByParentJobId)
   output <- .backup$list_copy_jobs_output()
@@ -1633,7 +1633,7 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListFrameworks",
     http_method = "GET",
     http_path = "/audit/frameworks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_frameworks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_frameworks_output()
@@ -1666,7 +1666,7 @@ backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListLegalHolds",
     http_method = "GET",
     http_path = "/legal-holds/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LegalHolds")
   )
   input <- .backup$list_legal_holds_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_legal_holds_output()
@@ -1701,7 +1701,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
     name = "ListProtectedResources",
     http_method = "GET",
     http_path = "/resources/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
   )
   input <- .backup$list_protected_resources_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_protected_resources_output()
@@ -1752,7 +1752,7 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextTok
     name = "ListRecoveryPointsByBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByParentRecoveryPointArn = ByParentRecoveryPointArn)
   output <- .backup$list_recovery_points_by_backup_vault_output()
@@ -1787,7 +1787,7 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
     name = "ListRecoveryPointsByLegalHold",
     http_method = "GET",
     http_path = "/legal-holds/{legalHoldId}/recovery-points",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_legal_hold_input(LegalHoldId = LegalHoldId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_recovery_points_by_legal_hold_output()
@@ -1825,7 +1825,7 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
     name = "ListRecoveryPointsByResource",
     http_method = "GET",
     http_path = "/resources/{resourceArn}/recovery-points/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_recovery_points_by_resource_output()
@@ -1871,7 +1871,7 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
     name = "ListReportJobs",
     http_method = "GET",
     http_path = "/audit/report-jobs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_report_jobs_input(ByReportPlanName = ByReportPlanName, ByCreationBefore = ByCreationBefore, ByCreationAfter = ByCreationAfter, ByStatus = ByStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_report_jobs_output()
@@ -1904,7 +1904,7 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListReportPlans",
     http_method = "GET",
     http_path = "/audit/report-plans",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_report_plans_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_report_plans_output()
@@ -1947,7 +1947,7 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
     name = "ListRestoreJobs",
     http_method = "GET",
     http_path = "/restore-jobs/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
   )
   input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByAccountId = ByAccountId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByStatus = ByStatus, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter)
   output <- .backup$list_restore_jobs_output()
@@ -1985,7 +1985,7 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
     name = "ListTags",
     http_method = "GET",
     http_path = "/tags/{resourceArn}/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_tags_output()

@@ -485,7 +485,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'   UsePreviousTemplate, Parameters, Capabilities, ResourceTypes, RoleARN,
 #'   RollbackConfiguration, NotificationARNs, Tags, ChangeSetName,
 #'   ClientToken, Description, ChangeSetType, ResourcesToImport,
-#'   IncludeNestedStacks)
+#'   IncludeNestedStacks, OnStackFailure)
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a
 #' change set. CloudFormation generates the change set by comparing this
@@ -648,6 +648,31 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @param IncludeNestedStacks Creates a change set for the all nested stacks specified in the
 #' template. The default behavior of this action is set to `False`. To
 #' include nested sets in a change set, specify `True`.
+#' @param OnStackFailure Determines what action will be taken if stack creation fails. If this
+#' parameter is specified, the `DisableRollback` parameter to the
+#' [`execute_change_set`][cloudformation_execute_change_set] API operation
+#' must not be specified. This must be one of these values:
+#' 
+#' -   `DELETE` - Deletes the change set if the stack creation fails. This
+#'     is only valid when the `ChangeSetType` parameter is set to `CREATE`.
+#'     If the deletion of the stack fails, the status of the stack is
+#'     `DELETE_FAILED`.
+#' 
+#' -   `DO_NOTHING` - if the stack creation fails, do nothing. This is
+#'     equivalent to specifying `true` for the `DisableRollback` parameter
+#'     to the [`execute_change_set`][cloudformation_execute_change_set] API
+#'     operation.
+#' 
+#' -   `ROLLBACK` - if the stack creation fails, roll back the stack. This
+#'     is equivalent to specifying `false` for the `DisableRollback`
+#'     parameter to the
+#'     [`execute_change_set`][cloudformation_execute_change_set] API
+#'     operation.
+#' 
+#' For nested stacks, when the `OnStackFailure` parameter is set to
+#' `DELETE` for the change set for the parent stack, any failure in a child
+#' stack will cause the parent stack creation to fail and all stacks to be
+#' deleted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -711,7 +736,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'       )
 #'     )
 #'   ),
-#'   IncludeNestedStacks = TRUE|FALSE
+#'   IncludeNestedStacks = TRUE|FALSE,
+#'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE"
 #' )
 #' ```
 #'
@@ -720,14 +746,14 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @rdname cloudformation_create_change_set
 #'
 #' @aliases cloudformation_create_change_set
-cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL) {
+cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL, OnStackFailure = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks)
+  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -750,7 +776,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #'   Parameters, DisableRollback, RollbackConfiguration, TimeoutInMinutes,
 #'   NotificationARNs, Capabilities, ResourceTypes, RoleARN, OnFailure,
 #'   StackPolicyBody, StackPolicyURL, Tags, ClientRequestToken,
-#'   EnableTerminationProtection)
+#'   EnableTerminationProtection, RetainExceptOnCreate)
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack. The name must be unique in
 #' the Region in which you are creating the stack.
@@ -946,6 +972,13 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
 #' termination protection is set on the root stack and can't be changed
 #' directly on the nested stack.
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1000,7 +1033,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #'     )
 #'   ),
 #'   ClientRequestToken = "string",
-#'   EnableTerminationProtection = TRUE|FALSE
+#'   EnableTerminationProtection = TRUE|FALSE,
+#'   RetainExceptOnCreate = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1009,14 +1043,14 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @rdname cloudformation_create_stack
 #'
 #' @aliases cloudformation_create_stack
-cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL) {
+cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "CreateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection)
+  input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$create_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -1267,9 +1301,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     For more information, see Acknowledging IAM Resources in
+#'     CloudFormation Templates.
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -1278,18 +1311,15 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     directly from the processed template, without first reviewing the
 #'     resulting changes in a change set. To create the stack set directly,
 #'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Using CloudFormation Macros to Perform Custom Processing on
+#'     Templates.
 #' 
 #'     Stack sets with service-managed permissions don't currently support
-#'     the use of macros in templates. (This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.) Even if you
-#'     specify this capability for a stack set with service-managed
-#'     permissions, if you reference a macro in your template the stack set
-#'     operation will fail.
+#'     the use of macros in templates. (This includes the AWS::Include and
+#'     AWS::Serverless transforms, which are macros hosted by
+#'     CloudFormation.) Even if you specify this capability for a stack set
+#'     with service-managed permissions, if you reference a macro in your
+#'     template the stack set operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks
 #' created from it. CloudFormation also propagates these tags to supported
 #' resources that are created in the stacks. A maximum number of 50 tags
@@ -1306,10 +1336,9 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see
-#' [Prerequisites: Granting Permissions for Stack Set
-#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
-#' in the *CloudFormation User Guide*.
+#' the same administrator account. For more information, see Prerequisites:
+#' Granting Permissions for Stack Set Operations in the *CloudFormation
+#' User Guide*.
 #' @param ExecutionRoleName The name of the IAM execution role to use to create the stack set. If
 #' you do not specify an execution role, CloudFormation uses the
 #' `AWSCloudFormationStackSetExecutionRole` role for the stack set
@@ -1996,7 +2025,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
     name = "DescribeAccountLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountLimits")
   )
   input <- .cloudformation$describe_account_limits_input(NextToken = NextToken)
   output <- .cloudformation$describe_account_limits_output()
@@ -2110,7 +2139,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #'   NextToken = "string",
 #'   IncludeNestedStacks = TRUE|FALSE,
 #'   ParentChangeSetId = "string",
-#'   RootChangeSetId = "string"
+#'   RootChangeSetId = "string",
+#'   OnStackFailure = "DO_NOTHING"|"ROLLBACK"|"DELETE"
 #' )
 #' ```
 #'
@@ -2515,7 +2545,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
     name = "DescribeStackEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackEvents")
   )
   input <- .cloudformation$describe_stack_events_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stack_events_output()
@@ -2823,7 +2853,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
     name = "DescribeStackResourceDrifts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$describe_stack_resource_drifts_input(StackName = StackName, StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$describe_stack_resource_drifts_output()
@@ -2949,7 +2979,7 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
     name = "DescribeStackResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "StackResources")
   )
   input <- .cloudformation$describe_stack_resources_input(StackName = StackName, LogicalResourceId = LogicalResourceId, PhysicalResourceId = PhysicalResourceId)
   output <- .cloudformation$describe_stack_resources_output()
@@ -3303,7 +3333,8 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #'         LastCheckTimestamp = as.POSIXct(
 #'           "2015-01-01"
 #'         )
-#'       )
+#'       ),
+#'       RetainExceptOnCreate = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3328,7 +3359,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
     name = "DescribeStacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks")
   )
   input <- .cloudformation$describe_stacks_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stacks_output()
@@ -3937,7 +3968,7 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #'
 #' @usage
 #' cloudformation_execute_change_set(ChangeSetName, StackName,
-#'   ClientRequestToken, DisableRollback)
+#'   ClientRequestToken, DisableRollback, RetainExceptOnCreate)
 #'
 #' @param ChangeSetName &#91;required&#93; The name or Amazon Resource Name (ARN) of the change set that you want
 #' use to update the specified stack.
@@ -3952,9 +3983,30 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' [`execute_change_set`][cloudformation_execute_change_set] requests to
 #' ensure that CloudFormation successfully received them.
 #' @param DisableRollback Preserves the state of previously provisioned resources when an
-#' operation fails.
+#' operation fails. This parameter can't be specified when the
+#' `OnStackFailure` parameter to the
+#' [`create_change_set`][cloudformation_create_change_set] API operation
+#' was specified.
+#' 
+#' -   `True` - if the stack creation fails, do nothing. This is equivalent
+#'     to specifying `DO_NOTHING` for the `OnStackFailure` parameter to the
+#'     [`create_change_set`][cloudformation_create_change_set] API
+#'     operation.
+#' 
+#' -   `False` - if the stack creation fails, roll back the stack. This is
+#'     equivalent to specifying `ROLLBACK` for the `OnStackFailure`
+#'     parameter to the
+#'     [`create_change_set`][cloudformation_create_change_set] API
+#'     operation.
 #' 
 #' Default: `True`
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @return
 #' An empty list.
@@ -3965,7 +4017,8 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #'   ChangeSetName = "string",
 #'   StackName = "string",
 #'   ClientRequestToken = "string",
-#'   DisableRollback = TRUE|FALSE
+#'   DisableRollback = TRUE|FALSE,
+#'   RetainExceptOnCreate = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3974,14 +4027,14 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' @rdname cloudformation_execute_change_set
 #'
 #' @aliases cloudformation_execute_change_set
-cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, ClientRequestToken = NULL, DisableRollback = NULL) {
+cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, ClientRequestToken = NULL, DisableRollback = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "ExecuteChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback)
+  input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$execute_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -4138,7 +4191,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'
 #' @usage
 #' cloudformation_get_template_summary(TemplateBody, TemplateURL,
-#'   StackName, StackSetName, CallAs)
+#'   StackName, StackSetName, CallAs, TemplateSummaryConfig)
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. For more information about
@@ -4185,6 +4238,9 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'     [Register a delegated
 #'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
 #'     in the *CloudFormation User Guide*.
+#' @param TemplateSummaryConfig Specifies options for the
+#' [`get_template_summary`][cloudformation_get_template_summary] API
+#' action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4227,6 +4283,11 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   Warnings = list(
+#'     UnrecognizedResourceTypes = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4238,7 +4299,10 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'   TemplateURL = "string",
 #'   StackName = "string",
 #'   StackSetName = "string",
-#'   CallAs = "SELF"|"DELEGATED_ADMIN"
+#'   CallAs = "SELF"|"DELEGATED_ADMIN",
+#'   TemplateSummaryConfig = list(
+#'     TreatUnrecognizedResourceTypesAsWarnings = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -4247,14 +4311,14 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' @rdname cloudformation_get_template_summary
 #'
 #' @aliases cloudformation_get_template_summary
-cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL = NULL, StackName = NULL, StackSetName = NULL, CallAs = NULL) {
+cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL = NULL, StackName = NULL, StackSetName = NULL, CallAs = NULL, TemplateSummaryConfig = NULL) {
   op <- new_operation(
     name = "GetTemplateSummary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs)
+  input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs, TemplateSummaryConfig = TemplateSummaryConfig)
   output <- .cloudformation$get_template_summary_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -4418,7 +4482,7 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
     name = "ListChangeSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_change_sets_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_change_sets_output()
@@ -4482,7 +4546,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
     name = "ListExports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Exports")
   )
   input <- .cloudformation$list_exports_input(NextToken = NextToken)
   output <- .cloudformation$list_exports_output()
@@ -4544,7 +4608,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
     name = "ListImports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Imports")
   )
   input <- .cloudformation$list_imports_input(ExportName = ExportName, NextToken = NextToken)
   output <- .cloudformation$list_imports_output()
@@ -4555,6 +4619,138 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
   return(response)
 }
 .cloudformation$operations$list_imports <- cloudformation_list_imports
+
+#' Returns drift information for resources in a stack instance
+#'
+#' @description
+#' Returns drift information for resources in a stack instance.
+#' 
+#' [`list_stack_instance_resource_drifts`][cloudformation_list_stack_instance_resource_drifts]
+#' returns drift information for the most recent drift detection operation.
+#' If an operation is in progress, it may only return partial results.
+#'
+#' @usage
+#' cloudformation_list_stack_instance_resource_drifts(StackSetName,
+#'   NextToken, MaxResults, StackInstanceResourceDriftStatuses,
+#'   StackInstanceAccount, StackInstanceRegion, OperationId, CallAs)
+#'
+#' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to list drifted
+#' resources for.
+#' @param NextToken If the previous paginated request didn't return all of the remaining
+#' results, the response object's `NextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call this action again and
+#' assign that token to the request object's `NextToken` parameter. If
+#' there are no remaining results, the previous response object's
+#' `NextToken` parameter is set to `null`.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#' @param StackInstanceResourceDriftStatuses The resource drift status of the stack instance.
+#' 
+#' -   `DELETED`: The resource differs from its expected template
+#'     configuration in that the resource has been deleted.
+#' 
+#' -   `MODIFIED`: One or more resource properties differ from their
+#'     expected template values.
+#' 
+#' -   `IN_SYNC`: The resource's actual configuration matches its expected
+#'     template configuration.
+#' 
+#' -   `NOT_CHECKED`: CloudFormation doesn't currently return this value.
+#' @param StackInstanceAccount &#91;required&#93; The name of the Amazon Web Services account that you want to list
+#' resource drifts for.
+#' @param StackInstanceRegion &#91;required&#93; The name of the Region where you want to list resource drifts.
+#' @param OperationId &#91;required&#93; The unique ID of the drift operation.
+#' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
+#' account administrator in the organization's management account or as a
+#' delegated administrator in a member account.
+#' 
+#' By default, `SELF` is specified. Use `SELF` for stack sets with
+#' self-managed permissions.
+#' 
+#' -   If you are signed in to the management account, specify `SELF`.
+#' 
+#' -   If you are signed in to a delegated administrator account, specify
+#'     `DELEGATED_ADMIN`.
+#' 
+#'     Your Amazon Web Services account must be registered as a delegated
+#'     administrator in the management account. For more information, see
+#'     [Register a delegated
+#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'     in the *CloudFormation User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summaries = list(
+#'     list(
+#'       StackId = "string",
+#'       LogicalResourceId = "string",
+#'       PhysicalResourceId = "string",
+#'       PhysicalResourceIdContext = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ResourceType = "string",
+#'       PropertyDifferences = list(
+#'         list(
+#'           PropertyPath = "string",
+#'           ExpectedValue = "string",
+#'           ActualValue = "string",
+#'           DifferenceType = "ADD"|"REMOVE"|"NOT_EQUAL"
+#'         )
+#'       ),
+#'       StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_stack_instance_resource_drifts(
+#'   StackSetName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   StackInstanceResourceDriftStatuses = list(
+#'     "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
+#'   ),
+#'   StackInstanceAccount = "string",
+#'   StackInstanceRegion = "string",
+#'   OperationId = "string",
+#'   CallAs = "SELF"|"DELEGATED_ADMIN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_stack_instance_resource_drifts
+#'
+#' @aliases cloudformation_list_stack_instance_resource_drifts
+cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, NextToken = NULL, MaxResults = NULL, StackInstanceResourceDriftStatuses = NULL, StackInstanceAccount, StackInstanceRegion, OperationId, CallAs = NULL) {
+  op <- new_operation(
+    name = "ListStackInstanceResourceDrifts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$list_stack_instance_resource_drifts_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, StackInstanceResourceDriftStatuses = StackInstanceResourceDriftStatuses, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, OperationId = OperationId, CallAs = CallAs)
+  output <- .cloudformation$list_stack_instance_resource_drifts_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_stack_instance_resource_drifts <- cloudformation_list_stack_instance_resource_drifts
 
 #' Returns summary information about stack instances that are associated
 #' with the specified stack set
@@ -4639,7 +4835,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
-#'       Name = "DETAILED_STATUS"|"LAST_OPERATION_ID",
+#'       Name = "DETAILED_STATUS"|"LAST_OPERATION_ID"|"DRIFT_STATUS",
 #'       Values = "string"
 #'     )
 #'   ),
@@ -4659,7 +4855,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
     name = "ListStackInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$list_stack_instances_output()
@@ -4742,7 +4938,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
     name = "ListStackResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackResourceSummaries")
   )
   input <- .cloudformation$list_stack_resources_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_stack_resources_output()
@@ -4844,7 +5040,7 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
     name = "ListStackSetOperationResults",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
@@ -4951,7 +5147,7 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
     name = "ListStackSetOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_set_operations_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_operations_output()
@@ -5068,7 +5264,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListStackSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_sets_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, CallAs = CallAs)
   output <- .cloudformation$list_stack_sets_output()
@@ -5154,7 +5350,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
     name = "ListStacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackSummaries")
   )
   input <- .cloudformation$list_stacks_input(NextToken = NextToken, StackStatusFilter = StackStatusFilter)
   output <- .cloudformation$list_stacks_output()
@@ -5231,7 +5427,7 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
     name = "ListTypeRegistrations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_type_registrations_output()
@@ -5335,7 +5531,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
     name = "ListTypeVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus, PublisherId = PublisherId)
   output <- .cloudformation$list_type_versions_output()
@@ -5477,7 +5673,7 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
     name = "ListTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypeSummaries")
   )
   input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, Type = Type, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_types_output()
@@ -5889,13 +6085,21 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' -   `IMPORT_ROLLBACK_COMPLETE`
 #'
 #' @usage
-#' cloudformation_rollback_stack(StackName, RoleARN, ClientRequestToken)
+#' cloudformation_rollback_stack(StackName, RoleARN, ClientRequestToken,
+#'   RetainExceptOnCreate)
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack.
 #' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management role
 #' that CloudFormation assumes to rollback the stack.
 #' @param ClientRequestToken A unique identifier for this
 #' [`rollback_stack`][cloudformation_rollback_stack] request.
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5910,7 +6114,8 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' svc$rollback_stack(
 #'   StackName = "string",
 #'   RoleARN = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   RetainExceptOnCreate = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5919,14 +6124,14 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' @rdname cloudformation_rollback_stack
 #'
 #' @aliases cloudformation_rollback_stack
-cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL) {
+cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "RollbackStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$rollback_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -6417,7 +6622,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #'   UsePreviousTemplate, StackPolicyDuringUpdateBody,
 #'   StackPolicyDuringUpdateURL, Parameters, Capabilities, ResourceTypes,
 #'   RoleARN, RollbackConfiguration, StackPolicyBody, StackPolicyURL,
-#'   NotificationARNs, Tags, DisableRollback, ClientRequestToken)
+#'   NotificationARNs, Tags, DisableRollback, ClientRequestToken,
+#'   RetainExceptOnCreate)
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID of the stack to update.
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
@@ -6619,6 +6825,13 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' the console, each stack event would be assigned the same token in the
 #' following format:
 #' `Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002`.
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6673,7 +6886,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #'     )
 #'   ),
 #'   DisableRollback = TRUE|FALSE,
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   RetainExceptOnCreate = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -6682,14 +6896,14 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' @rdname cloudformation_update_stack
 #'
 #' @aliases cloudformation_update_stack
-cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL) {
+cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "UpdateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$update_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -6973,9 +7187,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     For more information, see Acknowledging IAM Resources in
+#'     CloudFormation Templates.
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -6984,18 +7197,15 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     directly from the processed template, without first reviewing the
 #'     resulting changes in a change set. To update the stack set directly,
 #'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Using CloudFormation Macros to Perform Custom Processing on
+#'     Templates.
 #' 
 #'     Stack sets with service-managed permissions do not currently support
-#'     the use of macros in templates. (This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.) Even if you
-#'     specify this capability for a stack set with service-managed
-#'     permissions, if you reference a macro in your template the stack set
-#'     operation will fail.
+#'     the use of macros in templates. (This includes the AWS::Include and
+#'     AWS::Serverless transforms, which are macros hosted by
+#'     CloudFormation.) Even if you specify this capability for a stack set
+#'     with service-managed permissions, if you reference a macro in your
+#'     template the stack set operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks
 #' created from it. CloudFormation also propagates these tags to supported
 #' resources that are created in the stacks. You can specify a maximum
@@ -7033,10 +7243,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see [Granting
-#' Permissions for Stack Set
-#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
-#' in the *CloudFormation User Guide*.
+#' the same administrator account. For more information, see Granting
+#' Permissions for Stack Set Operations in the *CloudFormation User Guide*.
 #' 
 #' If you specified a customized administrator role when you created the
 #' stack set, you must specify a customized administrator role, even if it

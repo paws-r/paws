@@ -609,7 +609,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Domains")
   )
   input <- .route53domains$list_domains_input(FilterConditions = FilterConditions, SortCondition = SortCondition, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_domains_output()
@@ -656,7 +656,7 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Operations")
   )
   input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems, Status = Status, Type = Type, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53domains$list_operations_output()
@@ -702,7 +702,7 @@ route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NUL
     name = "ListPrices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Prices")
   )
   input <- .route53domains$list_prices_input(Tld = Tld, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_prices_output()
@@ -777,7 +777,7 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' This operation registers a domain
 #'
 #' @description
-#' This operation registers a domain. Domains are registered either by Amazon Registrar (for .com, .net, and .org domains) or by our registrar associate, Gandi (for all other domains). For some top-level domains (TLDs), this operation requires extra parameters.
+#' This operation registers a domain. For some top-level domains (TLDs), this operation requires extra parameters.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53domains_register_domain/](https://www.paws-r-sdk.com/docs/route53domains_register_domain/) for full documentation.
 #'
@@ -1049,7 +1049,7 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' Transfers a domain from another registrar to Amazon Route 53
 #'
 #' @description
-#' Transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
+#' Transfers a domain from another registrar to Amazon Route 53.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53domains_transfer_domain/](https://www.paws-r-sdk.com/docs/route53domains_transfer_domain/) for full documentation.
 #'
@@ -1089,13 +1089,11 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @param TechContact &#91;required&#93; Provides detailed contact information.
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' admin contact.
+#' for the registrar, the phrase "REDACTED FOR PRIVACY", or "On behalf of
+#' \<domain name\> owner.".
 #' 
-#' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' While some domains may allow different privacy settings per contact, we
+#' recommend specifying the same privacy setting for all contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
@@ -1185,7 +1183,8 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @param AdminContact Provides detailed contact information.
 #' @param RegistrantContact Provides detailed contact information.
 #' @param TechContact Provides detailed contact information.
-#' @param Consent Customer's consent for the owner change request.
+#' @param Consent Customer's consent for the owner change request. Required if the domain
+#' is not free (consent price is more than $0.00).
 #'
 #' @keywords internal
 #'
@@ -1210,7 +1209,7 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' This operation updates the specified domain contact's privacy setting
 #'
 #' @description
-#' This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, contact information such as email address is replaced either with contact information for Amazon Registrar (for .com, .net, and .org domains) or with contact information for our registrar associate, Gandi.
+#' This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, your contact information is replaced with contact information for the registrar or with the phrase "REDACTED FOR PRIVACY", or "On behalf of \<domain name\> owner."
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact_privacy/](https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact_privacy/) for full documentation.
 #'
@@ -1363,7 +1362,7 @@ route53domains_view_billing <- function(Start = NULL, End = NULL, Marker = NULL,
     name = "ViewBilling",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "BillingRecords")
   )
   input <- .route53domains$view_billing_input(Start = Start, End = End, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$view_billing_output()

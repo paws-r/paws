@@ -8,7 +8,8 @@ kms_generate_data_key_pair_without_plaintext(
   EncryptionContext = NULL,
   KeyId,
   KeyPairSpec,
-  GrantTokens = NULL
+  GrantTokens = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -67,6 +68,11 @@ Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

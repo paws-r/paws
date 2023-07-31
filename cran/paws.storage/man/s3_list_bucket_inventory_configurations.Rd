@@ -15,7 +15,7 @@ s3_list_bucket_inventory_configurations(
 retrieve.}
 
 \item{ContinuationToken}{The marker used to continue an inventory configuration listing that has
-been truncated. Use the NextContinuationToken from a previously
+been truncated. Use the \code{NextContinuationToken} from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
 

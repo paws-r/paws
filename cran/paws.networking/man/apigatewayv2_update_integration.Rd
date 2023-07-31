@@ -147,8 +147,7 @@ requests before sending them to the backend. The key should follow the
 pattern \<action\>:\<header|querystring|path\>.\<location\> where action
 can be append, overwrite or remove. For values, you can provide static
 values, or map request data, stage variables, or context variables that
-are evaluated at runtime. To learn more, see Transforming API requests
-and responses.}
+are evaluated at runtime. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
 
 \item{RequestTemplates}{Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the

@@ -971,7 +971,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"Ec2SubnetMissingIpv6Assignment",
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -1480,7 +1480,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"Ec2SubnetMissingIpv6Assignment",
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -1915,7 +1915,7 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
     name = "DescribeAddonVersions",
     http_method = "GET",
     http_path = "/addons/supported-versions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons")
   )
   input <- .eks$describe_addon_versions_input(kubernetesVersion = kubernetesVersion, maxResults = maxResults, nextToken = nextToken, addonName = addonName, types = types, publishers = publishers, owners = owners)
   output <- .eks$describe_addon_versions_output()
@@ -2301,7 +2301,7 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
 #'     health = list(
 #'       issues = list(
 #'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"Ec2SubnetMissingIpv6Assignment",
+#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"Ec2SubnetMissingIpv6Assignment"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"AmiIdNotFound"|"AutoScalingGroupOptInRequired"|"AutoScalingGroupRateLimitExceeded"|"Ec2LaunchTemplateDeletionFailure"|"Ec2LaunchTemplateInvalidConfiguration"|"Ec2LaunchTemplateMaxLimitExceeded"|"Ec2SubnetListTooLong"|"IamThrottling"|"NodeTerminationFailure"|"PodEvictionFailure"|"SourceEc2LaunchTemplateNotFound"|"LimitExceeded"|"Unknown"|"AutoScalingGroupInstanceRefreshActive",
 #'           message = "string",
 #'           resourceIds = list(
 #'             "string"
@@ -2576,7 +2576,7 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
     name = "ListAddons",
     http_method = "GET",
     http_path = "/clusters/{name}/addons",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons")
   )
   input <- .eks$list_addons_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_addons_output()
@@ -2659,7 +2659,7 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
     name = "ListClusters",
     http_method = "GET",
     http_path = "/clusters",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusters")
   )
   input <- .eks$list_clusters_input(maxResults = maxResults, nextToken = nextToken, include = include)
   output <- .eks$list_clusters_output()
@@ -2730,7 +2730,7 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
     name = "ListFargateProfiles",
     http_method = "GET",
     http_path = "/clusters/{name}/fargate-profiles",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "fargateProfileNames")
   )
   input <- .eks$list_fargate_profiles_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_fargate_profiles_output()
@@ -2802,7 +2802,7 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
     name = "ListIdentityProviderConfigs",
     http_method = "GET",
     http_path = "/clusters/{name}/identity-provider-configs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "identityProviderConfigs")
   )
   input <- .eks$list_identity_provider_configs_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_identity_provider_configs_output()
@@ -2873,7 +2873,7 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
     name = "ListNodegroups",
     http_method = "GET",
     http_path = "/clusters/{name}/node-groups",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "nodegroups")
   )
   input <- .eks$list_nodegroups_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_nodegroups_output()
@@ -3004,7 +3004,7 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
     name = "ListUpdates",
     http_method = "GET",
     http_path = "/clusters/{name}/updates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "updateIds")
   )
   input <- .eks$list_updates_input(name = name, nodegroupName = nodegroupName, addonName = addonName, nextToken = nextToken, maxResults = maxResults)
   output <- .eks$list_updates_output()

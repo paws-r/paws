@@ -11,7 +11,9 @@ route53resolver_create_resolver_endpoint(
   Direction,
   IpAddresses,
   Tags = NULL,
-  ResolverEndpointType = NULL
+  ResolverEndpointType = NULL,
+  OutpostArn = NULL,
+  PreferredInstanceType = NULL
 )
 }
 \arguments{
@@ -45,9 +47,15 @@ endpoints). The subnet ID uniquely identifies a VPC.}
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
 
-\item{ResolverEndpointType}{For the endpoint type you can choose either IPv4, IPv6. or dual-stack. A
+\item{ResolverEndpointType}{For the endpoint type you can choose either IPv4, IPv6, or dual-stack. A
 dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
 This endpoint type is applied to all IP addresses.}
+
+\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
+must also specify a value for the \code{PreferredInstanceType}.}
+
+\item{PreferredInstanceType}{The instance type. If you specify this, you must also specify a value
+for the \code{OutpostArn}.}
 }
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:

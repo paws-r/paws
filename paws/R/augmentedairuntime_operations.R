@@ -176,7 +176,7 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
     name = "ListHumanLoops",
     http_method = "GET",
     http_path = "/human-loops",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanLoopSummaries")
   )
   input <- .augmentedairuntime$list_human_loops_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, FlowDefinitionArn = FlowDefinitionArn, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .augmentedairuntime$list_human_loops_output()

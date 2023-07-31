@@ -310,7 +310,7 @@ recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceT
     name = "ListRules",
     http_method = "POST",
     http_path = "/list-rules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules")
   )
   input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags, LockState = LockState)
   output <- .recyclebin$list_rules_output()

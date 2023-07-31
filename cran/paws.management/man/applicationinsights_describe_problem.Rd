@@ -4,10 +4,13 @@
 \alias{applicationinsights_describe_problem}
 \title{Describes an application problem}
 \usage{
-applicationinsights_describe_problem(ProblemId)
+applicationinsights_describe_problem(ProblemId, AccountId = NULL)
 }
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
+
+\item{AccountId}{The AWS account ID for the owner of the resource group affected by the
+problem.}
 }
 \description{
 Describes an application problem.

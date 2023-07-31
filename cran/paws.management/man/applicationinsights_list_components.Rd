@@ -8,7 +8,8 @@ application}
 applicationinsights_list_components(
   ResourceGroupName,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  AccountId = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ the remaining results, make another call with the returned \code{NextToken}
 value.}
 
 \item{NextToken}{The token to request the next page of results.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Lists the auto-grouped, standalone, and custom components of the application.

@@ -97,7 +97,7 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
     name = "DescribeAccelerators",
     http_method = "POST",
     http_path = "/describe-accelerators",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "acceleratorSet")
   )
   input <- .elasticinference$describe_accelerators_input(acceleratorIds = acceleratorIds, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .elasticinference$describe_accelerators_output()

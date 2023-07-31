@@ -209,9 +209,9 @@ s3_generate_presigned_url <- function(client_method,
 
   original_params <- formals(operation_fun)
   original_params <- if(!is.null(original_params)) original_params else list()
-  if(!is.null(original_params)) original_params else list()
   param_check <- setdiff(names(params), names(original_params))
-  if (!identical(param_check, character(0)) || is.null(param_check)) {
+
+  if (length(param_check) > 0) {
     stop(sprintf(
       "Invalid parameter(s) [`%s`] for client method %s",
       paste(param_check, collapse = "`, `"), client_method
@@ -251,9 +251,20 @@ s3_generate_presigned_url <- function(client_method,
   request <- do.call(
     "build", list(request = request), envir = getNamespace("paws.common")
   )
+
+  signer <- function(config, default) {
+    switch(config[["signature_version"]],
+      "v1" = "v1_sign_request_handler",
+      "s3" = "s3_sign_request_handler",
+      "s3v4" = "s3v4_sign_request_handler",
+      "v4" = "v4_sign_request_handler",
+      default
+    )
+  }
+
   # sign request
   request <- do.call(
-    "sign_v1_auth_query", list(request = request),
+    signer(config, "v1_sign_request_handler"), list(request = request),
     envir = getNamespace("paws.common")
   )
 

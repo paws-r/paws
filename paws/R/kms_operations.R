@@ -815,7 +815,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #'
 #' @usage
 #' kms_create_grant(KeyId, GranteePrincipal, RetiringPrincipal, Operations,
-#'   Constraints, GrantTokens, Name)
+#'   Constraints, GrantTokens, Name, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies the KMS key for the grant. The grant gives principals
 #' permission to use this KMS key.
@@ -930,6 +930,11 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' every [`create_grant`][kms_create_grant] request, even when a duplicate
 #' `GrantId` is returned. All grant tokens for the same grant ID can be
 #' used interchangeably.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -960,7 +965,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #'   GrantTokens = list(
 #'     "string"
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -983,14 +989,14 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' @rdname kms_create_grant
 #'
 #' @aliases kms_create_grant
-kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL) {
+kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name)
+  input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun)
   output <- .kms$create_grant_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -1764,7 +1770,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'
 #' @usage
 #' kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
-#'   EncryptionAlgorithm, Recipient)
+#'   EncryptionAlgorithm, Recipient, DryRun)
 #'
 #' @param CiphertextBlob &#91;required&#93; Ciphertext to be decrypted. The blob includes metadata.
 #' @param EncryptionContext Specifies the encryption context to use when decrypting the data. An
@@ -1859,6 +1865,11 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1886,7 +1897,8 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'   Recipient = list(
 #'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256",
 #'     AttestationDocument = raw
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1930,14 +1942,14 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' @rdname kms_decrypt
 #'
 #' @aliases kms_decrypt
-kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL) {
+kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "Decrypt",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient)
+  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$decrypt_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -2421,7 +2433,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     name = "DescribeCustomKeyStores",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "CustomKeyStores")
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
@@ -3298,7 +3310,7 @@ kms_enable_key_rotation <- function(KeyId) {
 #'
 #' @usage
 #' kms_encrypt(KeyId, Plaintext, EncryptionContext, GrantTokens,
-#'   EncryptionAlgorithm)
+#'   EncryptionAlgorithm, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies the KMS key to use in the encryption operation. The KMS key
 #' must have a `KeyUsage` of `ENCRYPT_DECRYPT`. To find the `KeyUsage` of a
@@ -3365,6 +3377,11 @@ kms_enable_key_rotation <- function(KeyId) {
 #' recommend RSAES_OAEP_SHA_256.
 #' 
 #' The SM2PKE algorithm is only available in China Regions.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3387,7 +3404,8 @@ kms_enable_key_rotation <- function(KeyId) {
 #'   GrantTokens = list(
 #'     "string"
 #'   ),
-#'   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"SM2PKE"
+#'   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"SM2PKE",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3415,14 +3433,14 @@ kms_enable_key_rotation <- function(KeyId) {
 #' @rdname kms_encrypt
 #'
 #' @aliases kms_encrypt
-kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens = NULL, EncryptionAlgorithm = NULL) {
+kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens = NULL, EncryptionAlgorithm = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "Encrypt",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm)
+  input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm, DryRun = DryRun)
   output <- .kms$encrypt_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -3505,7 +3523,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' encryption library, such as the [Amazon Web Services Encryption
 #' SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/),
 #' the [Amazon DynamoDB Encryption
-#' Client](https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/what-is-database-encryption-sdk.html),
+#' Client](https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/),
 #' or [Amazon S3 client-side
 #' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html)
 #' to do these tasks for you.
@@ -3552,7 +3570,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'
 #' @usage
 #' kms_generate_data_key(KeyId, EncryptionContext, NumberOfBytes, KeySpec,
-#'   GrantTokens, Recipient)
+#'   GrantTokens, Recipient, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key.
 #' You cannot specify an asymmetric KMS key or a KMS key in a custom key
@@ -3645,6 +3663,11 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3672,7 +3695,8 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'   Recipient = list(
 #'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256",
 #'     AttestationDocument = raw
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3709,14 +3733,14 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' @rdname kms_generate_data_key
 #'
 #' @aliases kms_generate_data_key
-kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL, Recipient = NULL) {
+kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL, Recipient = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient)
+  input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -3833,7 +3857,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #'
 #' @usage
 #' kms_generate_data_key_pair(EncryptionContext, KeyId, KeyPairSpec,
-#'   GrantTokens, Recipient)
+#'   GrantTokens, Recipient, DryRun)
 #'
 #' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
 #' private key in the data key pair.
@@ -3920,6 +3944,11 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3948,7 +3977,8 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #'   Recipient = list(
 #'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256",
 #'     AttestationDocument = raw
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3986,14 +4016,14 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' @rdname kms_generate_data_key_pair
 #'
 #' @aliases kms_generate_data_key_pair
-kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL, Recipient = NULL) {
+kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL, Recipient = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyPair",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient)
+  input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4077,7 +4107,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #'
 #' @usage
 #' kms_generate_data_key_pair_without_plaintext(EncryptionContext, KeyId,
-#'   KeyPairSpec, GrantTokens)
+#'   KeyPairSpec, GrantTokens, DryRun)
 #'
 #' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
 #' private key in the data key pair.
@@ -4137,6 +4167,11 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4159,7 +4194,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #'   KeyPairSpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SM2",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4180,14 +4216,14 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' @rdname kms_generate_data_key_pair_without_plaintext
 #'
 #' @aliases kms_generate_data_key_pair_without_plaintext
-kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL) {
+kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyPairWithoutPlaintext",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens)
+  input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_without_plaintext_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4282,7 +4318,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #'
 #' @usage
 #' kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
-#'   KeySpec, NumberOfBytes, GrantTokens)
+#'   KeySpec, NumberOfBytes, GrantTokens, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key.
 #' You cannot specify an asymmetric KMS key or a KMS key in a custom key
@@ -4341,6 +4377,11 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4362,7 +4403,8 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #'   NumberOfBytes = 123,
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4382,14 +4424,14 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' @rdname kms_generate_data_key_without_plaintext
 #'
 #' @aliases kms_generate_data_key_without_plaintext
-kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = NULL, KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL) {
+kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = NULL, KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyWithoutPlaintext",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens)
+  input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_without_plaintext_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4443,7 +4485,7 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' **Related operations**: [`verify_mac`][kms_verify_mac]
 #'
 #' @usage
-#' kms_generate_mac(Message, KeyId, MacAlgorithm, GrantTokens)
+#' kms_generate_mac(Message, KeyId, MacAlgorithm, GrantTokens, DryRun)
 #'
 #' @param Message &#91;required&#93; The message to be hashed. Specify a message of up to 4,096 bytes.
 #' 
@@ -4472,6 +4514,11 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4491,7 +4538,8 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #'   MacAlgorithm = "HMAC_SHA_224"|"HMAC_SHA_256"|"HMAC_SHA_384"|"HMAC_SHA_512",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4512,14 +4560,14 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' @rdname kms_generate_mac
 #'
 #' @aliases kms_generate_mac
-kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL) {
+kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateMac",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens)
+  input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_mac_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -5688,7 +5736,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
@@ -5835,7 +5883,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     name = "ListGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
   output <- .kms$list_grants_output()
@@ -5935,7 +5983,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListKeyPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "PolicyNames")
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
@@ -6023,7 +6071,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Keys")
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
@@ -6135,7 +6183,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListResourceTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Tags")
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
@@ -6271,7 +6319,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     name = "ListRetirableGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal)
   output <- .kms$list_retirable_grants_output()
@@ -6535,7 +6583,8 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' @usage
 #' kms_re_encrypt(CiphertextBlob, SourceEncryptionContext, SourceKeyId,
 #'   DestinationKeyId, DestinationEncryptionContext,
-#'   SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm, GrantTokens)
+#'   SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm, GrantTokens,
+#'   DryRun)
 #'
 #' @param CiphertextBlob &#91;required&#93; Ciphertext of the data to reencrypt.
 #' @param SourceEncryptionContext Specifies the encryption context to use to decrypt the ciphertext. Enter
@@ -6656,6 +6705,11 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6685,7 +6739,8 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #'   DestinationEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"SM2PKE",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -6703,14 +6758,14 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' @rdname kms_re_encrypt
 #'
 #' @aliases kms_re_encrypt
-kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL) {
+kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ReEncrypt",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens)
+  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$re_encrypt_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -7138,7 +7193,7 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' -   [`revoke_grant`][kms_revoke_grant]
 #'
 #' @usage
-#' kms_retire_grant(GrantToken, KeyId, GrantId)
+#' kms_retire_grant(GrantToken, KeyId, GrantId, DryRun)
 #'
 #' @param GrantToken Identifies the grant to be retired. You can use a grant token to
 #' identify a new grant even before it has achieved eventual consistency.
@@ -7160,6 +7215,11 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' 
 #' -   Grant ID Example -
 #'     0123456789012345678901234567890123456789012345678901234567890123
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' An empty list.
@@ -7169,7 +7229,8 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' svc$retire_grant(
 #'   GrantToken = "string",
 #'   KeyId = "string",
-#'   GrantId = "string"
+#'   GrantId = "string",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7187,14 +7248,14 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' @rdname kms_retire_grant
 #'
 #' @aliases kms_retire_grant
-kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
+kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RetireGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId)
+  input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$retire_grant_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -7246,7 +7307,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' -   [`retire_grant`][kms_retire_grant]
 #'
 #' @usage
-#' kms_revoke_grant(KeyId, GrantId)
+#' kms_revoke_grant(KeyId, GrantId, DryRun)
 #'
 #' @param KeyId &#91;required&#93; A unique identifier for the KMS key associated with the grant. To get
 #' the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys]
@@ -7267,6 +7328,11 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' @param GrantId &#91;required&#93; Identifies the grant to revoke. To get the grant ID, use
 #' [`create_grant`][kms_create_grant], [`list_grants`][kms_list_grants], or
 #' [`list_retirable_grants`][kms_list_retirable_grants].
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' An empty list.
@@ -7275,7 +7341,8 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' ```
 #' svc$revoke_grant(
 #'   KeyId = "string",
-#'   GrantId = "string"
+#'   GrantId = "string",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7293,14 +7360,14 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' @rdname kms_revoke_grant
 #'
 #' @aliases kms_revoke_grant
-kms_revoke_grant <- function(KeyId, GrantId) {
+kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
   op <- new_operation(
     name = "RevokeGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId)
+  input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$revoke_grant_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -7328,9 +7395,10 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' When a KMS key is deleted, all data that was encrypted under the KMS key
 #' is unrecoverable. (The only exception is a [multi-Region replica
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html),
-#' or an asymmetric or HMAC KMS key with imported key material\[BUGBUG-link
-#' to importing-keys-managing.html#import-delete-key.) To prevent the use
-#' of a KMS key without deleting it, use [`disable_key`][kms_disable_key].
+#' or an [asymmetric or HMAC KMS key with imported key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-managing.html#import-delete-key).)
+#' To prevent the use of a KMS key without deleting it, use
+#' [`disable_key`][kms_disable_key].
 #' 
 #' You can schedule the deletion of a multi-Region primary key and its
 #' replica keys at any time. However, KMS will not delete a multi-Region
@@ -7408,7 +7476,7 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' This value is optional. If you include a value, it must be between 7 and
 #' 30, inclusive. If you do not include a value, it defaults to 30. You can
 #' use the
-#' [`kms:ScheduleKeyDeletionPendingWindowInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-pending-deletion-window)
+#' [`kms:ScheduleKeyDeletionPendingWindowInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-schedule-key-deletion-pending-window-in-days)
 #' condition key to further constrain the values that principals can
 #' specify in the `PendingWindowInDays` parameter.
 #'
@@ -7532,7 +7600,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' **Related operations**: [`verify`][kms_verify]
 #'
 #' @usage
-#' kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm)
+#' kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm,
+#'   DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies an asymmetric KMS key. KMS uses the private key in the
 #' asymmetric KMS key to sign the message. The `KeyUsage` type of the KMS
@@ -7615,6 +7684,11 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' specified asymmetric KMS key. When signing with RSA key pairs,
 #' RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5
 #' algorithms for compatibility with existing applications.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7635,7 +7709,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #'   GrantTokens = list(
 #'     "string"
 #'   ),
-#'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"|"SM2DSA"
+#'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"|"SM2DSA",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7668,14 +7743,14 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' @rdname kms_sign
 #'
 #' @aliases kms_sign
-kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, SigningAlgorithm) {
+kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, SigningAlgorithm, DryRun = NULL) {
   op <- new_operation(
     name = "Sign",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm)
+  input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm, DryRun = DryRun)
   output <- .kms$sign_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -8710,7 +8785,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #'
 #' @usage
 #' kms_verify(KeyId, Message, MessageType, Signature, SigningAlgorithm,
-#'   GrantTokens)
+#'   GrantTokens, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies the asymmetric KMS key that will be used to verify the
 #' signature. This must be the same KMS key that was used to generate the
@@ -8792,6 +8867,11 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8813,7 +8893,8 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"|"SM2DSA",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -8848,14 +8929,14 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' @rdname kms_verify
 #'
 #' @aliases kms_verify
-kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlgorithm, GrantTokens = NULL) {
+kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlgorithm, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "Verify",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens)
+  input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -8903,7 +8984,7 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' **Related operations**: [`generate_mac`][kms_generate_mac]
 #'
 #' @usage
-#' kms_verify_mac(Message, KeyId, MacAlgorithm, Mac, GrantTokens)
+#' kms_verify_mac(Message, KeyId, MacAlgorithm, Mac, GrantTokens, DryRun)
 #'
 #' @param Message &#91;required&#93; The message that will be used in the verification. Enter the same
 #' message that was used to generate the HMAC.
@@ -8933,6 +9014,11 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8953,7 +9039,8 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #'   Mac = raw,
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -8975,14 +9062,14 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' @rdname kms_verify_mac
 #'
 #' @aliases kms_verify_mac
-kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL) {
+kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "VerifyMac",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens)
+  input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_mac_output()
   config <- get_config()
   svc <- .kms$service(config)

@@ -216,7 +216,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     name = "DescribeCases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "cases")
   )
   input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications)
   output <- .support$describe_cases_output()
@@ -254,7 +254,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     name = "DescribeCommunications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "communications")
   )
   input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults)
   output <- .support$describe_communications_output()
@@ -333,7 +333,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
     name = "DescribeServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "services")
   )
   input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language)
   output <- .support$describe_services_output()
@@ -438,7 +438,7 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
     name = "DescribeTrustedAdvisorCheckRefreshStatuses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "statuses")
   )
   input <- .support$describe_trusted_advisor_check_refresh_statuses_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_refresh_statuses_output()
@@ -525,7 +525,7 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
     name = "DescribeTrustedAdvisorCheckSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "summaries")
   )
   input <- .support$describe_trusted_advisor_check_summaries_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_summaries_output()

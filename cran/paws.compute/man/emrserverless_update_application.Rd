@@ -14,7 +14,8 @@ emrserverless_update_application(
   networkConfiguration = NULL,
   architecture = NULL,
   imageConfiguration = NULL,
-  workerTypeSpecifications = NULL
+  workerTypeSpecifications = NULL,
+  releaseLabel = NULL
 )
 }
 \arguments{
@@ -51,6 +52,9 @@ worker types for a Spark or Hive application. Valid worker types include
 \code{TezTask} for Hive applications. You can either set image details in
 this parameter for each worker type, or in \code{imageConfiguration} for all
 worker types.}
+
+\item{releaseLabel}{The Amazon EMR release label for the application. You can change the
+release label to use a different release of Amazon EMR.}
 }
 \description{
 Updates a specified application. An application has to be in a stopped or created state in order to be updated.

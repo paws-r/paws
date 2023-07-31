@@ -10,7 +10,7 @@ sqs_cancel_message_move_task(TaskHandle)
 \item{TaskHandle}{[required] An identifier associated with a message movement task.}
 }
 \description{
-Cancels a specified message movement task.
+Cancels a specified message movement task. A message movement can only be cancelled when the current status is RUNNING. Cancelling a message movement task does not revert the messages that have already been moved. It can only stop the messages that have not been moved yet.
 
 See \url{https://www.paws-r-sdk.com/docs/sqs_cancel_message_move_task/} for full documentation.
 }

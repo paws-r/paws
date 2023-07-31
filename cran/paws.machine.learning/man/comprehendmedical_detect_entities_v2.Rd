@@ -10,8 +10,7 @@ comprehendmedical_detect_entities_v2(Text)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 string containing the clinical content being examined for
-entities. Each string must contain fewer than 20,000 bytes of
-characters.}
+entities.}
 }
 \description{
 Inspects the clinical text for a variety of medical entities and returns specific information about them such as entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects medical entities in English language texts.

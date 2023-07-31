@@ -67,7 +67,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
@@ -159,7 +159,7 @@ This action is not supported by Amazon S3 on Outposts.}
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, \code{aws:kms}).}
+Amazon S3 (for example, \code{AES256}, \code{aws:kms}, \code{aws:kms:dsse}).}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
 created objects. The STANDARD storage class provides high durability and
@@ -199,15 +199,15 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} has a valid value of \code{aws:kms}, this
-header specifies the ID of the Amazon Web Services Key Management
-Service (Amazon Web Services KMS) symmetric encryption customer managed
-key that was used for the object. If you specify
-\code{x-amz-server-side-encryption:aws:kms}, but do not
+\item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} has a valid value of \code{aws:kms} or
+\code{aws:kms:dsse}, this header specifies the ID of the Key Management
+Service (KMS) symmetric encryption customer managed key that was used
+for the object. If you specify \code{x-amz-server-side-encryption:aws:kms} or
+\code{x-amz-server-side-encryption:aws:kms:dsse}, but do not
 provide\code{ x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3 uses
-the Amazon Web Services managed key to protect the data. If the KMS key
-does not exist in the same account issuing the command, you must use the
-full ARN and not just the ID.}
+the Amazon Web Services managed key (\code{aws/s3}) to protect the data. If
+the KMS key does not exist in the same account that's issuing the
+command, you must use the full ARN and not just the ID.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
 object encryption. The value of this header is a base64-encoded UTF-8
@@ -217,9 +217,9 @@ Amazon Web Services KMS for future \code{\link[=s3_get_object]{get_object}} or
 \code{\link[=s3_copy_object]{copy_object}} operations on this object.}
 
 \item{BucketKeyEnabled}{Specifies whether Amazon S3 should use an S3 Bucket Key for object
-encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
-object encryption with SSE-KMS.
+encryption with server-side encryption using Key Management Service
+(KMS) keys (SSE-KMS). Setting this header to \code{true} causes Amazon S3 to
+use an S3 Bucket Key for object encryption with SSE-KMS.
 
 Specifying this header with a PUT action doesn’t affect bucket-level
 settings for S3 Bucket Key.}

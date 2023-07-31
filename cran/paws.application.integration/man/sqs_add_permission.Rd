@@ -16,7 +16,7 @@ Queue URLs and names are case-sensitive.}
 alphanumeric characters, hyphens (\code{-}), and underscores (\verb{_}).}
 
 \item{AWSAccountIds}{[required] The Amazon Web Services account numbers of the
-\href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principals}
+\href{https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P}{principals}
 who are to receive permission. For information about locating the Amazon
 Web Services account identification, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html#sqs-api-request-authentication}{Your Amazon Web Services Identifiers}
 in the \emph{Amazon SQS Developer Guide}.}
@@ -37,7 +37,7 @@ versions of those actions:
 \code{\link[=sqs_change_message_visibility_batch]{change_message_visibility_batch}}.}
 }
 \description{
-Adds a permission to a queue for a specific \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principal}. This allows sharing access to the queue.
+Adds a permission to a queue for a specific \href{https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P}{principal}. This allows sharing access to the queue.
 
 See \url{https://www.paws-r-sdk.com/docs/sqs_add_permission/} for full documentation.
 }

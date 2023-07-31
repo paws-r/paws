@@ -13,7 +13,10 @@ sqs_start_message_move_task(
 }
 \arguments{
 \item{SourceArn}{[required] The ARN of the queue that contains the messages to be moved to another
-queue. Currently, only dead-letter queue (DLQ) ARNs are accepted.}
+queue. Currently, only ARNs of dead-letter queues (DLQs) whose sources
+are other Amazon SQS queues are accepted. DLQs whose sources are non-SQS
+queues, such as Lambda or Amazon SNS topics, are not currently
+supported.}
 
 \item{DestinationArn}{The ARN of the queue that receives the moved messages. You can use this
 field to specify the destination queue where you would like to redrive

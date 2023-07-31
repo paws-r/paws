@@ -297,10 +297,10 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'           )
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         ),
 #'         PermissionsWithGrantOption = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         )
 #'       ),
 #'       Error = list(
@@ -378,10 +378,10 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       )
 #'     )
 #'   )
@@ -492,10 +492,10 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'           )
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         ),
 #'         PermissionsWithGrantOption = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         )
 #'       ),
 #'       Error = list(
@@ -573,10 +573,10 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       )
 #'     )
 #'   )
@@ -1284,13 +1284,18 @@ lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, Ta
 #'         DataLakePrincipalIdentifier = "string"
 #'       )
 #'     ),
+#'     ReadOnlyAdmins = list(
+#'       list(
+#'         DataLakePrincipalIdentifier = "string"
+#'       )
+#'     ),
 #'     CreateDatabaseDefaultPermissions = list(
 #'       list(
 #'         Principal = list(
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         )
 #'       )
 #'     ),
@@ -1300,7 +1305,7 @@ lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, Ta
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         )
 #'       )
 #'     ),
@@ -1311,6 +1316,7 @@ lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, Ta
 #'       "string"
 #'     ),
 #'     AllowExternalDataFiltering = TRUE|FALSE,
+#'     AllowFullTableExternalDataAccess = TRUE|FALSE,
 #'     ExternalDataFilteringAllowList = list(
 #'       list(
 #'         DataLakePrincipalIdentifier = "string"
@@ -1440,10 +1446,10 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       ),
 #'       AdditionalDetails = list(
 #'         ResourceShare = list(
@@ -1476,7 +1482,7 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
     name = "GetEffectivePermissionsForPath",
     http_method = "POST",
     http_path = "/GetEffectivePermissionsForPath",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$get_effective_permissions_for_path_input(CatalogId = CatalogId, ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lakeformation$get_effective_permissions_for_path_output()
@@ -1882,7 +1888,7 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
     name = "GetTableObjects",
     http_method = "POST",
     http_path = "/GetTableObjects",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$get_table_objects_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, PartitionPredicate = PartitionPredicate, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$get_table_objects_output()
@@ -1917,7 +1923,7 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
 #' temporary credentials.
 #' @param AuditContext A structure representing context to access a resource (column names,
 #' query ID, etc).
-#' @param SupportedPermissionTypes &#91;required&#93; A list of supported permission types for the partition. Valid values are
+#' @param SupportedPermissionTypes A list of supported permission types for the partition. Valid values are
 #' `COLUMN_PERMISSION` and `CELL_FILTER_PERMISSION`.
 #'
 #' @return
@@ -1943,14 +1949,14 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'   ),
 #'   DurationSeconds = 123,
 #'   AuditContext = list(
 #'     AdditionalAuditContext = "string"
 #'   ),
 #'   SupportedPermissionTypes = list(
-#'     "COLUMN_PERMISSION"|"CELL_FILTER_PERMISSION"
+#'     "COLUMN_PERMISSION"|"CELL_FILTER_PERMISSION"|"NESTED_PERMISSION"|"NESTED_CELL_PERMISSION"
 #'   )
 #' )
 #' ```
@@ -1960,7 +1966,7 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
 #' @rdname lakeformation_get_temporary_glue_partition_credentials
 #'
 #' @aliases lakeformation_get_temporary_glue_partition_credentials
-lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Partition, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes) {
+lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Partition, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes = NULL) {
   op <- new_operation(
     name = "GetTemporaryGluePartitionCredentials",
     http_method = "POST",
@@ -1999,7 +2005,7 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' temporary credentials.
 #' @param AuditContext A structure representing context to access a resource (column names,
 #' query ID, etc).
-#' @param SupportedPermissionTypes &#91;required&#93; A list of supported permission types for the table. Valid values are
+#' @param SupportedPermissionTypes A list of supported permission types for the table. Valid values are
 #' `COLUMN_PERMISSION` and `CELL_FILTER_PERMISSION`.
 #'
 #' @return
@@ -2020,14 +2026,14 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' svc$get_temporary_glue_table_credentials(
 #'   TableArn = "string",
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'   ),
 #'   DurationSeconds = 123,
 #'   AuditContext = list(
 #'     AdditionalAuditContext = "string"
 #'   ),
 #'   SupportedPermissionTypes = list(
-#'     "COLUMN_PERMISSION"|"CELL_FILTER_PERMISSION"
+#'     "COLUMN_PERMISSION"|"CELL_FILTER_PERMISSION"|"NESTED_PERMISSION"|"NESTED_CELL_PERMISSION"
 #'   )
 #' )
 #' ```
@@ -2037,7 +2043,7 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' @rdname lakeformation_get_temporary_glue_table_credentials
 #'
 #' @aliases lakeformation_get_temporary_glue_table_credentials
-lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes) {
+lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes = NULL) {
   op <- new_operation(
     name = "GetTemporaryGlueTableCredentials",
     http_method = "POST",
@@ -2162,7 +2168,7 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
     name = "GetWorkUnits",
     http_method = "POST",
     http_path = "/GetWorkUnits",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken", result_key = "WorkUnitRanges")
   )
   input <- .lakeformation$get_work_units_input(NextToken = NextToken, PageSize = PageSize, QueryId = QueryId)
   output <- .lakeformation$get_work_units_output()
@@ -2277,10 +2283,10 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'   )
 #' )
 #' ```
@@ -2372,7 +2378,7 @@ lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL,
     name = "ListDataCellsFilter",
     http_method = "POST",
     http_path = "/ListDataCellsFilter",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCellsFilters")
   )
   input <- .lakeformation$list_data_cells_filter_input(Table = Table, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lakeformation$list_data_cells_filter_output()
@@ -2443,7 +2449,7 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
     name = "ListLFTags",
     http_method = "POST",
     http_path = "/ListLFTags",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LFTags")
   )
   input <- .lakeformation$list_lf_tags_input(CatalogId = CatalogId, ResourceShareType = ResourceShareType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_lf_tags_output()
@@ -2467,8 +2473,9 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #' This operation returns only those permissions that have been explicitly
 #' granted.
 #' 
-#' For information about permissions, see Security and Access Control to
-#' Metadata and Data.
+#' For information about permissions, see [Security and Access Control to
+#' Metadata and
+#' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/).
 #'
 #' @usage
 #' lakeformation_list_permissions(CatalogId, Principal, ResourceType,
@@ -2555,10 +2562,10 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'       ),
 #'       AdditionalDetails = list(
 #'         ResourceShare = list(
@@ -2650,7 +2657,7 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/ListPermissions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_permissions_input(CatalogId = CatalogId, Principal = Principal, ResourceType = ResourceType, Resource = Resource, NextToken = NextToken, MaxResults = MaxResults, IncludeRelated = IncludeRelated)
   output <- .lakeformation$list_permissions_output()
@@ -2721,7 +2728,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
     name = "ListResources",
     http_method = "POST",
     http_path = "/ListResources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_resources_input(FilterConditionList = FilterConditionList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_resources_output()
@@ -2793,7 +2800,7 @@ lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, Databa
     name = "ListTableStorageOptimizers",
     http_method = "POST",
     http_path = "/ListTableStorageOptimizers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_table_storage_optimizers_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, StorageOptimizerType = StorageOptimizerType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_table_storage_optimizers_output()
@@ -2867,7 +2874,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
     name = "ListTransactions",
     http_method = "POST",
     http_path = "/ListTransactions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .lakeformation$list_transactions_input(CatalogId = CatalogId, StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_transactions_output()
@@ -2915,13 +2922,18 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #'         DataLakePrincipalIdentifier = "string"
 #'       )
 #'     ),
+#'     ReadOnlyAdmins = list(
+#'       list(
+#'         DataLakePrincipalIdentifier = "string"
+#'       )
+#'     ),
 #'     CreateDatabaseDefaultPermissions = list(
 #'       list(
 #'         Principal = list(
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         )
 #'       )
 #'     ),
@@ -2931,7 +2943,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'         )
 #'       )
 #'     ),
@@ -2942,6 +2954,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #'       "string"
 #'     ),
 #'     AllowExternalDataFiltering = TRUE|FALSE,
+#'     AllowFullTableExternalDataAccess = TRUE|FALSE,
 #'     ExternalDataFilteringAllowList = list(
 #'       list(
 #'         DataLakePrincipalIdentifier = "string"
@@ -3273,10 +3286,10 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_TAG"|"ASSOCIATE"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
 #'   )
 #' )
 #' ```
@@ -3379,7 +3392,7 @@ lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResul
     name = "SearchDatabasesByLFTags",
     http_method = "POST",
     http_path = "/SearchDatabasesByLFTags",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
   )
   input <- .lakeformation$search_databases_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
   output <- .lakeformation$search_databases_by_lf_tags_output()
@@ -3492,7 +3505,7 @@ lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults 
     name = "SearchTablesByLFTags",
     http_method = "POST",
     http_path = "/SearchTablesByLFTags",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableList")
   )
   input <- .lakeformation$search_tables_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
   output <- .lakeformation$search_tables_by_lf_tags_output()

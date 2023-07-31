@@ -771,7 +771,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups")
   )
   input <- .opsworkscm$describe_backups_input(BackupId = BackupId, ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_backups_output()
@@ -851,7 +851,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents")
   )
   input <- .opsworkscm$describe_events_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_events_output()
@@ -1016,7 +1016,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
     name = "DescribeServers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers")
   )
   input <- .opsworkscm$describe_servers_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_servers_output()
@@ -1258,7 +1258,7 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .opsworkscm$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$list_tags_for_resource_output()

@@ -4,7 +4,12 @@
 \alias{kms_retire_grant}
 \title{Deletes a grant}
 \usage{
-kms_retire_grant(GrantToken = NULL, KeyId = NULL, GrantId = NULL)
+kms_retire_grant(
+  GrantToken = NULL,
+  KeyId = NULL,
+  GrantId = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{GrantToken}{Identifies the grant to be retired. You can use a grant token to
@@ -28,6 +33,11 @@ For example:
 \item Grant ID Example -
 0123456789012345678901234567890123456789012345678901234567890123
 }}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Deletes a grant. Typically, you retire a grant when you no longer need its permissions. To identify the grant to retire, use a \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{grant token}, or both the grant ID and a key identifier (key ID or key ARN) of the KMS key. The \code{\link[=kms_create_grant]{create_grant}} operation returns both values.

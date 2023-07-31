@@ -9,11 +9,18 @@ NULL
 #' Retrieves a batch of `Records` from a `FeatureGroup`.
 #'
 #' @usage
-#' sagemakerfeaturestoreruntime_batch_get_record(Identifiers)
+#' sagemakerfeaturestoreruntime_batch_get_record(Identifiers,
+#'   ExpirationTimeResponse)
 #'
-#' @param Identifiers &#91;required&#93; A list of `FeatureGroup` names, with their corresponding
-#' `RecordIdentifier` value, and Feature name that have been requested to
-#' be retrieved in batch.
+#' @param Identifiers &#91;required&#93; A list containing the name or Amazon Resource Name (ARN) of the
+#' `FeatureGroup`, the list of names of `Feature`s to be retrieved, and the
+#' corresponding `RecordIdentifier` values as strings.
+#' @param ExpirationTimeResponse Parameter to request `ExpiresAt` in response. If `Enabled`,
+#' [`batch_get_record`][sagemakerfeaturestoreruntime_batch_get_record] will
+#' return the value of `ExpiresAt`, if it is not null. If `Disabled` and
+#' null,
+#' [`batch_get_record`][sagemakerfeaturestoreruntime_batch_get_record] will
+#' return null.
 #'
 #' @return
 #' A list with the following syntax:
@@ -28,7 +35,8 @@ NULL
 #'           FeatureName = "string",
 #'           ValueAsString = "string"
 #'         )
-#'       )
+#'       ),
+#'       ExpiresAt = "string"
 #'     )
 #'   ),
 #'   Errors = list(
@@ -66,7 +74,8 @@ NULL
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   ExpirationTimeResponse = "Enabled"|"Disabled"
 #' )
 #' ```
 #'
@@ -75,14 +84,14 @@ NULL
 #' @rdname sagemakerfeaturestoreruntime_batch_get_record
 #'
 #' @aliases sagemakerfeaturestoreruntime_batch_get_record
-sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
+sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers, ExpirationTimeResponse = NULL) {
   op <- new_operation(
     name = "BatchGetRecord",
     http_method = "POST",
     http_path = "/BatchGetRecord",
     paginator = list()
   )
-  input <- .sagemakerfeaturestoreruntime$batch_get_record_input(Identifiers = Identifiers)
+  input <- .sagemakerfeaturestoreruntime$batch_get_record_input(Identifiers = Identifiers, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$batch_get_record_output()
   config <- get_config()
   svc <- .sagemakerfeaturestoreruntime$service(config)
@@ -96,11 +105,11 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 #'
 #' @description
 #' Deletes a `Record` from a `FeatureGroup` in the `OnlineStore`. Feature
-#' Store supports both `SOFT_DELETE` and `HARD_DELETE`. For `SOFT_DELETE`
+#' Store supports both `SoftDelete` and `HardDelete`. For `SoftDelete`
 #' (default), feature columns are set to `null` and the record is no longer
 #' retrievable by [`get_record`][sagemakerfeaturestoreruntime_get_record]
 #' or [`batch_get_record`][sagemakerfeaturestoreruntime_batch_get_record].
-#' For` HARD_DELETE`, the complete `Record` is removed from the
+#' For `HardDelete`, the complete `Record` is removed from the
 #' `OnlineStore`. In both cases, Feature Store appends the deleted record
 #' marker to the `OfflineStore` with feature values set to `null`,
 #' `is_deleted` value set to `True`, and `EventTime` set to the delete
@@ -112,11 +121,11 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 #' `OnlineStore` for that `RecordIdentifer`. If it is not, the deletion
 #' does not occur:
 #' 
-#' -   For `SOFT_DELETE`, the existing (undeleted) record remains in the
+#' -   For `SoftDelete`, the existing (undeleted) record remains in the
 #'     `OnlineStore`, though the delete record marker is still written to
 #'     the `OfflineStore`.
 #' 
-#' -   `HARD_DELETE` returns `EventTime`: `400 ValidationException` to
+#' -   `HardDelete` returns `EventTime`: `400 ValidationException` to
 #'     indicate that the delete operation failed. No delete record marker
 #'     is written to the `OfflineStore`.
 #'
@@ -124,7 +133,8 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 #' sagemakerfeaturestoreruntime_delete_record(FeatureGroupName,
 #'   RecordIdentifierValueAsString, EventTime, TargetStores, DeletionMode)
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group to delete the record from.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group to delete
+#' the record from.
 #' @param RecordIdentifierValueAsString &#91;required&#93; The value for the `RecordIdentifier` that uniquely identifies the
 #' record, in string format.
 #' @param EventTime &#91;required&#93; Timestamp indicating when the deletion event occurred. `EventTime` can
@@ -182,13 +192,19 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #'
 #' @usage
 #' sagemakerfeaturestoreruntime_get_record(FeatureGroupName,
-#'   RecordIdentifierValueAsString, FeatureNames)
+#'   RecordIdentifierValueAsString, FeatureNames, ExpirationTimeResponse)
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group from which you want to retrieve a record.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group from which
+#' you want to retrieve a record.
 #' @param RecordIdentifierValueAsString &#91;required&#93; The value that corresponds to `RecordIdentifier` type and uniquely
 #' identifies the record in the `FeatureGroup`.
 #' @param FeatureNames List of names of Features to be retrieved. If not specified, the latest
 #' value for all the Features are returned.
+#' @param ExpirationTimeResponse Parameter to request `ExpiresAt` in response. If `Enabled`,
+#' [`get_record`][sagemakerfeaturestoreruntime_get_record] will return the
+#' value of `ExpiresAt`, if it is not null. If `Disabled` and null,
+#' [`get_record`][sagemakerfeaturestoreruntime_get_record] will return
+#' null.
 #'
 #' @return
 #' A list with the following syntax:
@@ -199,7 +215,8 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #'       FeatureName = "string",
 #'       ValueAsString = "string"
 #'     )
-#'   )
+#'   ),
+#'   ExpiresAt = "string"
 #' )
 #' ```
 #'
@@ -210,7 +227,8 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #'   RecordIdentifierValueAsString = "string",
 #'   FeatureNames = list(
 #'     "string"
-#'   )
+#'   ),
+#'   ExpirationTimeResponse = "Enabled"|"Disabled"
 #' )
 #' ```
 #'
@@ -219,14 +237,14 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #' @rdname sagemakerfeaturestoreruntime_get_record
 #'
 #' @aliases sagemakerfeaturestoreruntime_get_record
-sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIdentifierValueAsString, FeatureNames = NULL) {
+sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIdentifierValueAsString, FeatureNames = NULL, ExpirationTimeResponse = NULL) {
   op <- new_operation(
     name = "GetRecord",
     http_method = "GET",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     paginator = list()
   )
-  input <- .sagemakerfeaturestoreruntime$get_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, FeatureNames = FeatureNames)
+  input <- .sagemakerfeaturestoreruntime$get_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, FeatureNames = FeatureNames, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$get_record_output()
   config <- get_config()
   svc <- .sagemakerfeaturestoreruntime$service(config)
@@ -236,21 +254,35 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 }
 .sagemakerfeaturestoreruntime$operations$get_record <- sagemakerfeaturestoreruntime_get_record
 
-#' Used for data ingestion into the FeatureStore
+#' The PutRecord API is used to ingest a list of Records into your feature
+#' group
 #'
 #' @description
-#' Used for data ingestion into the `FeatureStore`. The
-#' [`put_record`][sagemakerfeaturestoreruntime_put_record] API writes to
-#' both the `OnlineStore` and `OfflineStore`. If the record is the latest
-#' record for the `recordIdentifier`, the record is written to both the
-#' `OnlineStore` and `OfflineStore`. If the record is a historic record, it
-#' is written only to the `OfflineStore`.
+#' The [`put_record`][sagemakerfeaturestoreruntime_put_record] API is used
+#' to ingest a list of `Records` into your feature group.
+#' 
+#' If a new record’s `EventTime` is greater, the new record is written to
+#' both the `OnlineStore` and `OfflineStore`. Otherwise, the record is a
+#' historic record and it is written only to the `OfflineStore`.
+#' 
+#' You can specify the ingestion to be applied to the `OnlineStore`,
+#' `OfflineStore`, or both by using the `TargetStores` request parameter.
+#' 
+#' You can set the ingested record to expire at a given time to live (TTL)
+#' duration after the record’s event time, `ExpiresAt` = `EventTime` +
+#' `TtlDuration`, by specifying the `TtlDuration` parameter. A record level
+#' `TtlDuration` is set when specifying the `TtlDuration` parameter using
+#' the [`put_record`][sagemakerfeaturestoreruntime_put_record] API call. If
+#' the input `TtlDuration` is `null` or unspecified, `TtlDuration` is set
+#' to the default feature group level `TtlDuration`. A record level
+#' `TtlDuration` supersedes the group level `TtlDuration`.
 #'
 #' @usage
 #' sagemakerfeaturestoreruntime_put_record(FeatureGroupName, Record,
-#'   TargetStores)
+#'   TargetStores, TtlDuration)
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group that you want to insert the record into.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group that you
+#' want to insert the record into.
 #' @param Record &#91;required&#93; List of FeatureValues to be inserted. This will be a full over-write. If
 #' you only want to update few of the feature values, do the following:
 #' 
@@ -265,6 +297,11 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' @param TargetStores A list of stores to which you're adding the record. By default, Feature
 #' Store adds the record to all of the stores that you're using for the
 #' `FeatureGroup`.
+#' @param TtlDuration Time to live duration, where the record is hard deleted after the
+#' expiration time is reached; `ExpiresAt` = `EventTime` + `TtlDuration`.
+#' For information on HardDelete, see the
+#' [`delete_record`][sagemakerfeaturestoreruntime_delete_record] API in the
+#' Amazon SageMaker API Reference guide.
 #'
 #' @return
 #' An empty list.
@@ -281,6 +318,10 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #'   ),
 #'   TargetStores = list(
 #'     "OnlineStore"|"OfflineStore"
+#'   ),
+#'   TtlDuration = list(
+#'     Unit = "Seconds"|"Minutes"|"Hours"|"Days"|"Weeks",
+#'     Value = 123
 #'   )
 #' )
 #' ```
@@ -290,14 +331,14 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' @rdname sagemakerfeaturestoreruntime_put_record
 #'
 #' @aliases sagemakerfeaturestoreruntime_put_record
-sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record, TargetStores = NULL) {
+sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record, TargetStores = NULL, TtlDuration = NULL) {
   op <- new_operation(
     name = "PutRecord",
     http_method = "PUT",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     paginator = list()
   )
-  input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record, TargetStores = TargetStores)
+  input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record, TargetStores = TargetStores, TtlDuration = TtlDuration)
   output <- .sagemakerfeaturestoreruntime$put_record_output()
   config <- get_config()
   svc <- .sagemakerfeaturestoreruntime$service(config)

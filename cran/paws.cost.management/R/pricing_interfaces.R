@@ -5,7 +5,7 @@ NULL
 
 .pricing$describe_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -17,7 +17,7 @@ NULL
 
 .pricing$get_attribute_values_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), AttributeName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -41,7 +41,7 @@ NULL
 
 .pricing$get_products_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Field = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Field = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), FormatVersion = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .pricing$list_price_lists_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), EffectiveDate = structure(logical(0), tags = list(type = "timestamp")), RegionCode = structure(logical(0), tags = list(type = "string")), CurrencyCode = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceCode = structure(logical(0), tags = list(type = "string")), EffectiveDate = structure(logical(0), tags = list(type = "timestamp")), RegionCode = structure(logical(0), tags = list(type = "string")), CurrencyCode = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

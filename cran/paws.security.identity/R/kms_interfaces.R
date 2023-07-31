@@ -51,7 +51,7 @@ NULL
 
 .kms$create_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GranteePrincipal = structure(logical(0), tags = list(type = "string")), RetiringPrincipal = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EncryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GranteePrincipal = structure(logical(0), tags = list(type = "string")), RetiringPrincipal = structure(logical(0), tags = list(type = "string")), Operations = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Constraints = structure(list(EncryptionContextSubset = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), EncryptionContextEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Name = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,7 +75,7 @@ NULL
 
 .kms$decrypt_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyId = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KeyId = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -195,7 +195,7 @@ NULL
 
 .kms$encrypt_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Plaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Plaintext = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -207,7 +207,7 @@ NULL
 
 .kms$generate_data_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NumberOfBytes = structure(logical(0), tags = list(type = "integer")), KeySpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NumberOfBytes = structure(logical(0), tags = list(type = "integer")), KeySpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -219,7 +219,7 @@ NULL
 
 .kms$generate_data_key_pair_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Recipient = structure(list(KeyEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), AttestationDocument = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -231,7 +231,7 @@ NULL
 
 .kms$generate_data_key_pair_without_plaintext_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeyId = structure(logical(0), tags = list(type = "string")), KeyPairSpec = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,7 +243,7 @@ NULL
 
 .kms$generate_data_key_without_plaintext_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeySpec = structure(logical(0), tags = list(type = "string")), NumberOfBytes = structure(logical(0), tags = list(type = "integer")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), EncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KeySpec = structure(logical(0), tags = list(type = "string")), NumberOfBytes = structure(logical(0), tags = list(type = "integer")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -255,7 +255,7 @@ NULL
 
 .kms$generate_mac_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -421,7 +421,7 @@ NULL
 
 .kms$re_encrypt_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), SourceEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceKeyId = structure(logical(0), tags = list(type = "string")), DestinationKeyId = structure(logical(0), tags = list(type = "string")), DestinationEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), DestinationEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(CiphertextBlob = structure(logical(0), tags = list(type = "blob")), SourceEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceKeyId = structure(logical(0), tags = list(type = "string")), DestinationKeyId = structure(logical(0), tags = list(type = "string")), DestinationEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), SourceEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), DestinationEncryptionAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -445,7 +445,7 @@ NULL
 
 .kms$retire_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GrantToken = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GrantToken = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -455,7 +455,7 @@ NULL
 
 .kms$revoke_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -477,7 +477,7 @@ NULL
 
 .kms$sign_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -551,7 +551,7 @@ NULL
 
 .kms$verify_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -563,7 +563,7 @@ NULL
 
 .kms$verify_mac_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), Mac = structure(logical(0), tags = list(type = "blob")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), Mac = structure(logical(0), tags = list(type = "blob")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), DryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

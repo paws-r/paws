@@ -512,7 +512,7 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     name = "ListDevices",
     http_method = "POST",
     http_path = "/listDevices",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_devices_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_devices_output()
@@ -544,7 +544,7 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     name = "ListDomains",
     http_method = "POST",
     http_path = "/listDomains",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_domains_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_domains_output()
@@ -575,7 +575,7 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListFleets",
     http_method = "POST",
     http_path = "/listFleets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_fleets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_fleets_output()
@@ -637,7 +637,7 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
     name = "ListWebsiteAuthorizationProviders",
     http_method = "POST",
     http_path = "/listWebsiteAuthorizationProviders",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_website_authorization_providers_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_website_authorization_providers_output()
@@ -670,7 +670,7 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
     name = "ListWebsiteCertificateAuthorities",
     http_method = "POST",
     http_path = "/listWebsiteCertificateAuthorities",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_website_certificate_authorities_input(FleetArn = FleetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .worklink$list_website_certificate_authorities_output()

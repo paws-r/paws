@@ -9,7 +9,8 @@ mq_update_configuration(ConfigurationId, Data, Description = NULL)
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
-\item{Data}{[required] Required. The base64-encoded XML configuration.}
+\item{Data}{[required] Amazon MQ for Active MQ: The base64-encoded XML configuration. Amazon MQ
+for RabbitMQ: the base64-encoded Cuttlefish configuration.}
 
 \item{Description}{The description of the configuration.}
 }

@@ -9,7 +9,8 @@ billingconductor_update_billing_group(
   Name = NULL,
   Status = NULL,
   ComputationPreference = NULL,
-  Description = NULL
+  Description = NULL,
+  AccountGrouping = NULL
 )
 }
 \arguments{
@@ -25,6 +26,9 @@ used.}
 Services charges for a billing group.}
 
 \item{Description}{A description of the billing group.}
+
+\item{AccountGrouping}{Specifies if the billing group has automatic account association
+(\code{AutoAssociate}) enabled.}
 }
 \description{
 This updates an existing billing group.

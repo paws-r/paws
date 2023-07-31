@@ -13,8 +13,8 @@ sagemaker_update_feature_metadata(
 )
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the feature group containing the feature that you're
-updating.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the feature group containing
+the feature that you're updating.}
 
 \item{FeatureName}{[required] The name of the feature that you're updating.}
 

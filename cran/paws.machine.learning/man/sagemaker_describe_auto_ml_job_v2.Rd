@@ -2,15 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_auto_ml_job_v2}
 \alias{sagemaker_describe_auto_ml_job_v2}
-\title{Returns information about an Amazon SageMaker AutoML V2 job}
+\title{Returns information about an AutoML job created by calling
+CreateAutoMLJobV2 or CreateAutoMLJob}
 \usage{
 sagemaker_describe_auto_ml_job_v2(AutoMLJobName)
 }
 \arguments{
-\item{AutoMLJobName}{[required] Requests information about an AutoML V2 job using its unique name.}
+\item{AutoMLJobName}{[required] Requests information about an AutoML job V2 using its unique name.}
 }
 \description{
-Returns information about an Amazon SageMaker AutoML V2 job.
+Returns information about an AutoML job created by calling \code{\link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2}} or \code{\link[=sagemaker_create_auto_ml_job]{create_auto_ml_job}}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_auto_ml_job_v2/} for full documentation.
 }

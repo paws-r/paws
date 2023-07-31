@@ -355,7 +355,7 @@ ssmincidents_get_resource_policies <- function(maxResults = NULL, nextToken = NU
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/getResourcePolicies",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourcePolicies")
   )
   input <- .ssmincidents$get_resource_policies_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .ssmincidents$get_resource_policies_output()
@@ -467,7 +467,7 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
     name = "ListIncidentRecords",
     http_method = "POST",
     http_path = "/listIncidentRecords",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "incidentRecordSummaries")
   )
   input <- .ssmincidents$list_incident_records_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_incident_records_output()
@@ -499,7 +499,7 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
     name = "ListRelatedItems",
     http_method = "POST",
     http_path = "/listRelatedItems",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "relatedItems")
   )
   input <- .ssmincidents$list_related_items_input(incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_related_items_output()
@@ -529,7 +529,7 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
     name = "ListReplicationSets",
     http_method = "POST",
     http_path = "/listReplicationSets",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "replicationSetArns")
   )
   input <- .ssmincidents$list_replication_sets_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_replication_sets_output()
@@ -559,7 +559,7 @@ ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL
     name = "ListResponsePlans",
     http_method = "POST",
     http_path = "/listResponsePlans",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responsePlanSummaries")
   )
   input <- .ssmincidents$list_response_plans_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_response_plans_output()
@@ -640,7 +640,7 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
     name = "ListTimelineEvents",
     http_method = "POST",
     http_path = "/listTimelineEvents",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventSummaries")
   )
   input <- .ssmincidents$list_timeline_events_input(filters = filters, incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .ssmincidents$list_timeline_events_output()

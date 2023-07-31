@@ -429,7 +429,7 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
     name = "DescribeEnvironmentMemberships",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .cloud9$describe_environment_memberships_input(userArn = userArn, environmentId = environmentId, permissions = permissions, nextToken = nextToken, maxResults = maxResults)
   output <- .cloud9$describe_environment_memberships_output()
@@ -624,7 +624,7 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListEnvironments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .cloud9$list_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .cloud9$list_environments_output()

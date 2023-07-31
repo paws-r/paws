@@ -61,13 +61,11 @@ Default: true}
 
 \item{PrivacyProtectAdminContact}{Whether you want to conceal contact information from WHOIS queries. If
 you specify \code{true}, WHOIS ("who is") queries return contact information
-either for Amazon Registrar (for .com, .net, and .org domains) or for
-our registrar associate, Gandi (for all other TLDs). If you specify
-\code{false}, WHOIS queries return the information that you entered for the
-admin contact.
+for the registrar, the phrase "REDACTED FOR PRIVACY", or "On behalf of
+\<domain name\> owner.".
 
-You must specify the same privacy setting for the administrative,
-registrant, and technical contacts.
+While some domains may allow different privacy settings per contact, we
+recommend specifying the same privacy setting for all contacts.
 
 Default: \code{true}}
 
@@ -96,7 +94,7 @@ registrant, and technical contacts.
 Default: \code{true}}
 }
 \description{
-Transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
+Transfers a domain from another registrar to Amazon Route 53.
 
 See \url{https://www.paws-r-sdk.com/docs/route53domains_transfer_domain/} for full documentation.
 }

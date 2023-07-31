@@ -8,8 +8,10 @@ allow you to search for Places or points of interest}
 locationservice_search_place_index_for_text(
   BiasPosition = NULL,
   FilterBBox = NULL,
+  FilterCategories = NULL,
   FilterCountries = NULL,
   IndexName,
+  Key = NULL,
   Language = NULL,
   MaxResults = NULL,
   Text
@@ -47,6 +49,14 @@ and latitude \code{-36.9542}.
 \code{FilterBBox} and \code{BiasPosition} are mutually exclusive. Specifying both
 options results in an error.}
 
+\item{FilterCategories}{A list of one or more Amazon Location categories to filter the returned
+places. If you include more than one category, the results will include
+results that match \emph{any} of the categories listed.
+
+For more information about using categories, including a list of Amazon
+Location categories, see \href{https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html}{Categories and filtering},
+in the \emph{Amazon Location Service Developer Guide}.}
+
 \item{FilterCountries}{An optional parameter that limits the search results by returning only
 places that are in a specified list of countries.
 \itemize{
@@ -56,6 +66,9 @@ characters: \code{AUS}.
 }}
 
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}
+
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
 BCP 47 language tag, for example, \code{en} for English.

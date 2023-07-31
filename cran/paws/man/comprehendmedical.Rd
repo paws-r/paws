@@ -4,22 +4,47 @@
 \alias{comprehendmedical}
 \title{AWS Comprehend Medical}
 \usage{
-comprehendmedical(config = list())
+comprehendmedical(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -28,8 +53,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Comprehend Medical; extracts structured information from unstructured
-clinical text. Use these actions to gain insight in your documents.
+Amazon Comprehend Medical extracts structured information from
+unstructured clinical text. Use these actions to gain insight in your
+documents. Amazon Comprehend Medical only detects entities in English
+language texts. Amazon Comprehend Medical places limits on the sizes of
+files allowed for different API operations. To learn more, see
+\href{https://docs.aws.amazon.com/comprehend-medical/latest/dev/comprehendmedical-quotas.html}{Guidelines and quotas}
+in the \emph{Amazon Comprehend Medical Developer Guide}.
 }
 \section{Service syntax}{
 
@@ -49,8 +79,20 @@ clinical text. Use these actions to gain insight in your documents.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -71,7 +113,7 @@ clinical text. Use these actions to gain insight in your documents.
 \link[paws.machine.learning:comprehendmedical_infer_snomedct]{infer_snomedct} \tab InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology\cr
 \link[paws.machine.learning:comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted\cr
 \link[paws.machine.learning:comprehendmedical_list_icd10cm_inference_jobs]{list_icd10cm_inference_jobs} \tab Gets a list of InferICD10CM jobs that you have submitted\cr
-\link[paws.machine.learning:comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs you have submitted\cr
 \link[paws.machine.learning:comprehendmedical_list_rx_norm_inference_jobs]{list_rx_norm_inference_jobs} \tab Gets a list of InferRxNorm jobs that you have submitted\cr
 \link[paws.machine.learning:comprehendmedical_list_snomedct_inference_jobs]{list_snomedct_inference_jobs} \tab Gets a list of InferSNOMEDCT jobs a user has submitted\cr
 \link[paws.machine.learning:comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents\cr

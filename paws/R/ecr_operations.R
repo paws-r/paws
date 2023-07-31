@@ -1177,7 +1177,7 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
     name = "DescribeImageScanFindings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "registryId", "repositoryName", "imageId", "imageScanStatus", "imageScanFindings"), output_token = "nextToken", result_key = list( "imageScanFindings.findings", "imageScanFindings.enhancedFindings"))
   )
   input <- .ecr$describe_image_scan_findings_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_image_scan_findings_output()
@@ -1301,7 +1301,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageDetails")
   )
   input <- .ecr$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .ecr$describe_images_output()
@@ -1384,7 +1384,7 @@ ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrReposito
     name = "DescribePullThroughCacheRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "pullThroughCacheRules")
   )
   input <- .ecr$describe_pull_through_cache_rules_input(registryId = registryId, ecrRepositoryPrefixes = ecrRepositoryPrefixes, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_pull_through_cache_rules_output()
@@ -1554,7 +1554,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
     name = "DescribeRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "repositories")
   )
   input <- .ecr$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_repositories_output()
@@ -1857,7 +1857,7 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
     name = "GetLifecyclePolicyPreview",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "registryId", "repositoryName", "lifecyclePolicyText", "status", "summary"), output_token = "nextToken", result_key = "previewResults")
   )
   input <- .ecr$get_lifecycle_policy_preview_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .ecr$get_lifecycle_policy_preview_output()
@@ -2181,7 +2181,7 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
     name = "ListImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageIds")
   )
   input <- .ecr$list_images_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .ecr$list_images_output()

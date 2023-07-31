@@ -511,7 +511,7 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
     name = "ListCrls",
     http_method = "GET",
     http_path = "/crls",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "crls")
   )
   input <- .iamrolesanywhere$list_crls_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_crls_output()
@@ -544,7 +544,7 @@ iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
     name = "ListProfiles",
     http_method = "GET",
     http_path = "/profiles",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "profiles")
   )
   input <- .iamrolesanywhere$list_profiles_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_profiles_output()
@@ -577,7 +577,7 @@ iamrolesanywhere_list_subjects <- function(nextToken = NULL, pageSize = NULL) {
     name = "ListSubjects",
     http_method = "GET",
     http_path = "/subjects",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "subjects")
   )
   input <- .iamrolesanywhere$list_subjects_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_subjects_output()
@@ -639,7 +639,7 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
     name = "ListTrustAnchors",
     http_method = "GET",
     http_path = "/trustanchors",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "trustAnchors")
   )
   input <- .iamrolesanywhere$list_trust_anchors_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_trust_anchors_output()

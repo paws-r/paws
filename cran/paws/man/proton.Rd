@@ -4,22 +4,42 @@
 \alias{proton}
 \title{AWS Proton}
 \usage{
-proton(config = list())
+proton(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -194,8 +214,20 @@ Asynchronous idempotent delete APIs:
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -221,6 +253,7 @@ Asynchronous idempotent delete APIs:
 \link[paws.compute:proton_create_service_template_version]{create_service_template_version} \tab Create a new major or minor version of a service template\cr
 \link[paws.compute:proton_create_template_sync_config]{create_template_sync_config} \tab Set up a template to create new template versions automatically by tracking a linked repository\cr
 \link[paws.compute:proton_delete_component]{delete_component} \tab Delete an Proton component resource\cr
+\link[paws.compute:proton_delete_deployment]{delete_deployment} \tab Delete the deployment\cr
 \link[paws.compute:proton_delete_environment]{delete_environment} \tab Delete an environment\cr
 \link[paws.compute:proton_delete_environment_account_connection]{delete_environment_account_connection} \tab In an environment account, delete an environment account connection\cr
 \link[paws.compute:proton_delete_environment_template]{delete_environment_template} \tab If no other major or minor versions of an environment template exist, delete the environment template\cr
@@ -233,6 +266,7 @@ Asynchronous idempotent delete APIs:
 \link[paws.compute:proton_delete_template_sync_config]{delete_template_sync_config} \tab Delete a template sync configuration\cr
 \link[paws.compute:proton_get_account_settings]{get_account_settings} \tab Get detail data for Proton account-wide settings\cr
 \link[paws.compute:proton_get_component]{get_component} \tab Get detailed data for a component\cr
+\link[paws.compute:proton_get_deployment]{get_deployment} \tab Get detailed data for a deployment\cr
 \link[paws.compute:proton_get_environment]{get_environment} \tab Get detailed data for an environment\cr
 \link[paws.compute:proton_get_environment_account_connection]{get_environment_account_connection} \tab In an environment account, get the detailed data for an environment account connection\cr
 \link[paws.compute:proton_get_environment_template]{get_environment_template} \tab Get detailed data for an environment template\cr
@@ -252,6 +286,7 @@ Asynchronous idempotent delete APIs:
 \link[paws.compute:proton_list_component_outputs]{list_component_outputs} \tab Get a list of component Infrastructure as Code (IaC) outputs\cr
 \link[paws.compute:proton_list_component_provisioned_resources]{list_component_provisioned_resources} \tab List provisioned resources for a component with details\cr
 \link[paws.compute:proton_list_components]{list_components} \tab List components with summary data\cr
+\link[paws.compute:proton_list_deployments]{list_deployments} \tab List deployments\cr
 \link[paws.compute:proton_list_environment_account_connections]{list_environment_account_connections} \tab View a list of environment account connections\cr
 \link[paws.compute:proton_list_environment_outputs]{list_environment_outputs} \tab List the infrastructure as code outputs for your environment\cr
 \link[paws.compute:proton_list_environment_provisioned_resources]{list_environment_provisioned_resources} \tab List the provisioned resources for your environment\cr

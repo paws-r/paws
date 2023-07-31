@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_delegations}
 \alias{auditmanager_get_delegations}
-\title{Returns a list of delegations from an audit owner to a delegate}
+\title{Gets a list of delegations from an audit owner to a delegate}
 \usage{
 auditmanager_get_delegations(nextToken = NULL, maxResults = NULL)
 }
@@ -13,7 +13,7 @@ auditmanager_get_delegations(nextToken = NULL, maxResults = NULL)
 call.}
 }
 \description{
-Returns a list of delegations from an audit owner to a delegate.
+Gets a list of delegations from an audit owner to a delegate.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_delegations/} for full documentation.
 }

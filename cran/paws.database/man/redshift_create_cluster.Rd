@@ -95,8 +95,8 @@ Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{
 | \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge} |
 \code{ra3.16xlarge}}
 
-\item{MasterUsername}{[required] The user name associated with the admin user for the cluster that is
-being created.
+\item{MasterUsername}{[required] The user name associated with the admin user account for the cluster
+that is being created.
 
 Constraints:
 \itemize{
@@ -111,8 +111,8 @@ period (dot), at symbol (@), or hyphen.
 in the Amazon Redshift Database Developer Guide.
 }}
 
-\item{MasterUserPassword}{[required] The password associated with the admin user for the cluster that is
-being created.
+\item{MasterUserPassword}{[required] The password associated with the admin user account for the cluster that
+is being created.
 
 Constraints:
 \itemize{

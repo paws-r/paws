@@ -364,7 +364,7 @@ backupgateway_list_gateways <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Gateways")
   )
   input <- .backupgateway$list_gateways_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupgateway$list_gateways_output()
@@ -397,7 +397,7 @@ backupgateway_list_hypervisors <- function(MaxResults = NULL, NextToken = NULL) 
     name = "ListHypervisors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Hypervisors")
   )
   input <- .backupgateway$list_hypervisors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupgateway$list_hypervisors_output()
@@ -462,7 +462,7 @@ backupgateway_list_virtual_machines <- function(HypervisorArn = NULL, MaxResults
     name = "ListVirtualMachines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VirtualMachines")
   )
   input <- .backupgateway$list_virtual_machines_input(HypervisorArn = HypervisorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupgateway$list_virtual_machines_output()

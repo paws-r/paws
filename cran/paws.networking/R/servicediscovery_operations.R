@@ -444,7 +444,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
     name = "GetInstancesHealthStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$get_instances_health_status_input(ServiceId = ServiceId, Instances = Instances, MaxResults = MaxResults, NextToken = NextToken)
   output <- .servicediscovery$get_instances_health_status_output()
@@ -573,7 +573,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_instances_input(ServiceId = ServiceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicediscovery$list_instances_output()
@@ -624,7 +624,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
     name = "ListNamespaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_namespaces_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_namespaces_output()
@@ -675,7 +675,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_operations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_operations_output()
@@ -726,7 +726,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_services_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_services_output()

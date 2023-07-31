@@ -8,7 +8,7 @@ name, and the status of the job}
 healthlake_describe_fhir_export_job(DatastoreId, JobId)
 }
 \arguments{
-\item{DatastoreId}{[required] The AWS generated ID for the Data Store from which files are being
+\item{DatastoreId}{[required] The AWS generated ID for the data store from which files are being
 exported from for an export job.}
 
 \item{JobId}{[required] The AWS generated ID for an export job.}

@@ -2,13 +2,13 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_organization_admin_account}
 \alias{auditmanager_get_organization_admin_account}
-\title{Returns the name of the delegated Amazon Web Services administrator
-account for the organization}
+\title{Gets the name of the delegated Amazon Web Services administrator account
+for a specified organization}
 \usage{
 auditmanager_get_organization_admin_account()
 }
 \description{
-Returns the name of the delegated Amazon Web Services administrator account for the organization.
+Gets the name of the delegated Amazon Web Services administrator account for a specified organization.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_organization_admin_account/} for full documentation.
 }

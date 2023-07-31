@@ -9,7 +9,8 @@ glue_create_table(
   DatabaseName,
   TableInput,
   PartitionIndexes = NULL,
-  TransactionId = NULL
+  TransactionId = NULL,
+  OpenTableFormatInput = NULL
 )
 }
 \arguments{
@@ -26,6 +27,9 @@ catalog.}
 the table.}
 
 \item{TransactionId}{The ID of the transaction.}
+
+\item{OpenTableFormatInput}{Specifies an \code{OpenTableFormatInput} structure when creating an open
+format table.}
 }
 \description{
 Creates a new table definition in the Data Catalog.

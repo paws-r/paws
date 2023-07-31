@@ -59,7 +59,8 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
 #' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
 #' 
-#' Supported values are `8.4` and `9.4`.
+#' To get a list of supported version, use the
+#' [`list_versions`][managedgrafana_list_versions] operation.
 #' @param networkAccessControl Configuration for network access to your workspace.
 #' 
 #' When this is configured, only listed IP addresses and VPC endpoints will
@@ -96,6 +97,9 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' @param tags The list of tags associated with the workspace.
 #' @param vpcConfiguration The configuration settings for an Amazon VPC that contains data sources
 #' for your Grafana workspace to connect to.
+#' 
+#' Connecting to a private VPC is not yet available in the Asia Pacific
+#' (Seoul) Region (ap-northeast-2).
 #' @param workspaceDataSources This parameter is for internal use only, and should not be used.
 #' @param workspaceDescription A description for the workspace. This is used only to help you identify
 #' this workspace.
@@ -375,7 +379,7 @@ managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, n
     name = "ListPermissions",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/permissions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions")
   )
   input <- .managedgrafana$list_permissions_input(groupId = groupId, maxResults = maxResults, nextToken = nextToken, userId = userId, userType = userType, workspaceId = workspaceId)
   output <- .managedgrafana$list_permissions_output()
@@ -418,6 +422,41 @@ managedgrafana_list_tags_for_resource <- function(resourceArn) {
 }
 .managedgrafana$operations$list_tags_for_resource <- managedgrafana_list_tags_for_resource
 
+#' Lists available versions of Grafana
+#'
+#' @description
+#' Lists available versions of Grafana. These are available when calling [`create_workspace`][managedgrafana_create_workspace]. Optionally, include a workspace to list the versions to which it can be upgraded.
+#'
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_list_versions/](https://www.paws-r-sdk.com/docs/managedgrafana_list_versions/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to include in the response.
+#' @param nextToken The token to use when requesting the next set of results. You receive
+#' this token from a previous
+#' [`list_versions`][managedgrafana_list_versions] operation.
+#' @param workspaceId The ID of the workspace to list the available upgrade versions. If not
+#' included, lists all versions of Grafana that are supported for
+#' [`create_workspace`][managedgrafana_create_workspace].
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_list_versions
+managedgrafana_list_versions <- function(maxResults = NULL, nextToken = NULL, workspaceId = NULL) {
+  op <- new_operation(
+    name = "ListVersions",
+    http_method = "GET",
+    http_path = "/versions",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grafanaVersions")
+  )
+  input <- .managedgrafana$list_versions_input(maxResults = maxResults, nextToken = nextToken, workspaceId = workspaceId)
+  output <- .managedgrafana$list_versions_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$list_versions <- managedgrafana_list_versions
+
 #' Returns a list of Amazon Managed Grafana workspaces in the account, with
 #' some information about each workspace
 #'
@@ -439,7 +478,7 @@ managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) 
     name = "ListWorkspaces",
     http_method = "GET",
     http_path = "/workspaces",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
   )
   input <- .managedgrafana$list_workspaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .managedgrafana$list_workspaces_output()
@@ -700,19 +739,27 @@ managedgrafana_update_workspace_authentication <- function(authenticationProvide
 #' about the format and configuration options available, see [Working in
 #' your Grafana
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
+#' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
+#' 
+#' Can only be used to upgrade (for example, from 8.4 to 9.4), not
+#' downgrade (for example, from 9.4 to 8.4).
+#' 
+#' To know what versions are available to upgrade to for a specific
+#' workspace, see the [`list_versions`][managedgrafana_list_versions]
+#' operation.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to update.
 #'
 #' @keywords internal
 #'
 #' @rdname managedgrafana_update_workspace_configuration
-managedgrafana_update_workspace_configuration <- function(configuration, workspaceId) {
+managedgrafana_update_workspace_configuration <- function(configuration, grafanaVersion = NULL, workspaceId) {
   op <- new_operation(
     name = "UpdateWorkspaceConfiguration",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/configuration",
     paginator = list()
   )
-  input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, workspaceId = workspaceId)
+  input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, grafanaVersion = grafanaVersion, workspaceId = workspaceId)
   output <- .managedgrafana$update_workspace_configuration_output()
   config <- get_config()
   svc <- .managedgrafana$service(config)

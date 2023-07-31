@@ -1615,7 +1615,7 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
     name = "DescribeCachediSCSIVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "CachediSCSIVolumes")
   )
   input <- .storagegateway$describe_cachedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
   output <- .storagegateway$describe_cachedi_scsi_volumes_output()
@@ -1895,7 +1895,7 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
     name = "DescribeStorediSCSIVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "StorediSCSIVolumes")
   )
   input <- .storagegateway$describe_storedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
   output <- .storagegateway$describe_storedi_scsi_volumes_output()
@@ -1930,7 +1930,7 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
     name = "DescribeTapeArchives",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeArchives")
   )
   input <- .storagegateway$describe_tape_archives_input(TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tape_archives_output()
@@ -1964,7 +1964,7 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
     name = "DescribeTapeRecoveryPoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeRecoveryPointInfos")
   )
   input <- .storagegateway$describe_tape_recovery_points_input(GatewayARN = GatewayARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tape_recovery_points_output()
@@ -2007,7 +2007,7 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
     name = "DescribeTapes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Tapes")
   )
   input <- .storagegateway$describe_tapes_input(GatewayARN = GatewayARN, TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tapes_output()
@@ -2076,7 +2076,7 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
     name = "DescribeVTLDevices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "VTLDevices")
   )
   input <- .storagegateway$describe_vtl_devices_input(GatewayARN = GatewayARN, VTLDeviceARNs = VTLDeviceARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_vtl_devices_output()
@@ -2319,7 +2319,7 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
     name = "ListFileShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "Marker"), output_token = "NextMarker", result_key = "FileShareInfoList")
   )
   input <- .storagegateway$list_file_shares_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
   output <- .storagegateway$list_file_shares_output()
@@ -2357,7 +2357,7 @@ storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limi
     name = "ListFileSystemAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "Marker"), output_token = "NextMarker", result_key = "FileSystemAssociationSummaryList")
   )
   input <- .storagegateway$list_file_system_associations_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
   output <- .storagegateway$list_file_system_associations_output()
@@ -2390,7 +2390,7 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
     name = "ListGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Gateways")
   )
   input <- .storagegateway$list_gateways_input(Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_gateways_output()
@@ -2419,7 +2419,7 @@ storagegateway_list_local_disks <- function(GatewayARN) {
     name = "ListLocalDisks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Disks")
   )
   input <- .storagegateway$list_local_disks_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_local_disks_output()
@@ -2453,7 +2453,7 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "ResourceARN"), output_token = "Marker", result_key = "Tags")
   )
   input <- .storagegateway$list_tags_for_resource_input(ResourceARN = ResourceARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tags_for_resource_output()
@@ -2488,7 +2488,7 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
     name = "ListTapePools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "PoolInfos")
   )
   input <- .storagegateway$list_tape_pools_input(PoolARNs = PoolARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tape_pools_output()
@@ -2522,7 +2522,7 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
     name = "ListTapes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeInfos")
   )
   input <- .storagegateway$list_tapes_input(TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tapes_output()
@@ -2582,7 +2582,7 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
     name = "ListVolumeRecoveryPoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "VolumeRecoveryPointInfos")
   )
   input <- .storagegateway$list_volume_recovery_points_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_volume_recovery_points_output()
@@ -2616,7 +2616,7 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
     name = "ListVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "VolumeInfos")
   )
   input <- .storagegateway$list_volumes_input(GatewayARN = GatewayARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_volumes_output()

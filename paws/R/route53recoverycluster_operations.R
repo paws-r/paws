@@ -165,7 +165,7 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
     name = "ListRoutingControls",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls")
   )
   input <- .route53recoverycluster$list_routing_controls_input(ControlPanelArn = ControlPanelArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53recoverycluster$list_routing_controls_output()

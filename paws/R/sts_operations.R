@@ -126,7 +126,7 @@ NULL
 #' @usage
 #' sts_assume_role(RoleArn, RoleSessionName, PolicyArns, Policy,
 #'   DurationSeconds, Tags, TransitiveTagKeys, ExternalId, SerialNumber,
-#'   TokenCode, SourceIdentity)
+#'   TokenCode, SourceIdentity, ProvidedContexts)
 #'
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role to assume.
 #' @param RoleSessionName &#91;required&#93; An identifier for the assumed role session.
@@ -339,6 +339,7 @@ NULL
 #' spaces. You can also include underscores or any of the following
 #' characters: =,.@@-. You cannot use a value that begins with the text
 #' `aws:`. This prefix is reserved for Amazon Web Services internal use.
+#' @param ProvidedContexts Reserved for future use.
 #'
 #' @return
 #' A list with the following syntax:
@@ -385,7 +386,13 @@ NULL
 #'   ExternalId = "string",
 #'   SerialNumber = "string",
 #'   TokenCode = "string",
-#'   SourceIdentity = "string"
+#'   SourceIdentity = "string",
+#'   ProvidedContexts = list(
+#'     list(
+#'       ProviderArn = "string",
+#'       ContextAssertion = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -423,14 +430,14 @@ NULL
 #' @rdname sts_assume_role
 #'
 #' @aliases sts_assume_role
-sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL, SourceIdentity = NULL) {
+sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL, SourceIdentity = NULL, ProvidedContexts = NULL) {
   op <- new_operation(
     name = "AssumeRole",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity)
+  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts)
   output <- .sts$assume_role_output()
   config <- get_config()
   svc <- .sts$service(config)
@@ -967,7 +974,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' authenticating the user who is using your application with a web
 #' identity provider before the application makes an
 #' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
-#' call.
+#' call. Only tokens with RSA algorithms (RS256) are supported.
 #' @param ProviderId The fully qualified host component of the domain name of the OAuth 2.0
 #' identity provider. Do not specify this value for an OpenID Connect
 #' identity provider.

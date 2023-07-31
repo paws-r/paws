@@ -4,22 +4,47 @@
 \alias{auditmanager}
 \title{AWS Audit Manager}
 \usage{
-auditmanager(config = list())
+auditmanager(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -77,8 +102,20 @@ If you're new to Audit Manager, we recommend that you review the \href{https://d
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -91,7 +128,7 @@ If you're new to Audit Manager, we recommend that you review the \href{https://d
 \link[paws.management:auditmanager_batch_create_delegation_by_assessment]{batch_create_delegation_by_assessment} \tab Creates a batch of delegations for an assessment in Audit Manager\cr
 \link[paws.management:auditmanager_batch_delete_delegation_by_assessment]{batch_delete_delegation_by_assessment} \tab Deletes a batch of delegations for an assessment in Audit Manager\cr
 \link[paws.management:auditmanager_batch_disassociate_assessment_report_evidence]{batch_disassociate_assessment_report_evidence} \tab Disassociates a list of evidence from an assessment report in Audit Manager\cr
-\link[paws.management:auditmanager_batch_import_evidence_to_assessment_control]{batch_import_evidence_to_assessment_control} \tab Uploads one or more pieces of evidence to a control in an Audit Manager assessment\cr
+\link[paws.management:auditmanager_batch_import_evidence_to_assessment_control]{batch_import_evidence_to_assessment_control} \tab Adds one or more pieces of evidence to a control in an Audit Manager assessment\cr
 \link[paws.management:auditmanager_create_assessment]{create_assessment} \tab Creates an assessment in Audit Manager\cr
 \link[paws.management:auditmanager_create_assessment_framework]{create_assessment_framework} \tab Creates a custom framework in Audit Manager\cr
 \link[paws.management:auditmanager_create_assessment_report]{create_assessment_report} \tab Creates an assessment report for the specified assessment\cr
@@ -104,23 +141,24 @@ If you're new to Audit Manager, we recommend that you review the \href{https://d
 \link[paws.management:auditmanager_deregister_account]{deregister_account} \tab Deregisters an account in Audit Manager\cr
 \link[paws.management:auditmanager_deregister_organization_admin_account]{deregister_organization_admin_account} \tab Removes the specified Amazon Web Services account as a delegated administrator for Audit Manager\cr
 \link[paws.management:auditmanager_disassociate_assessment_report_evidence_folder]{disassociate_assessment_report_evidence_folder} \tab Disassociates an evidence folder from the specified assessment report in Audit Manager\cr
-\link[paws.management:auditmanager_get_account_status]{get_account_status} \tab Returns the registration status of an account in Audit Manager\cr
-\link[paws.management:auditmanager_get_assessment]{get_assessment} \tab Returns an assessment from Audit Manager\cr
-\link[paws.management:auditmanager_get_assessment_framework]{get_assessment_framework} \tab Returns a framework from Audit Manager\cr
-\link[paws.management:auditmanager_get_assessment_report_url]{get_assessment_report_url} \tab Returns the URL of an assessment report in Audit Manager\cr
-\link[paws.management:auditmanager_get_change_logs]{get_change_logs} \tab Returns a list of changelogs from Audit Manager\cr
-\link[paws.management:auditmanager_get_control]{get_control} \tab Returns a control from Audit Manager\cr
-\link[paws.management:auditmanager_get_delegations]{get_delegations} \tab Returns a list of delegations from an audit owner to a delegate\cr
-\link[paws.management:auditmanager_get_evidence]{get_evidence} \tab Returns evidence from Audit Manager\cr
-\link[paws.management:auditmanager_get_evidence_by_evidence_folder]{get_evidence_by_evidence_folder} \tab Returns all evidence from a specified evidence folder in Audit Manager\cr
-\link[paws.management:auditmanager_get_evidence_folder]{get_evidence_folder} \tab Returns an evidence folder from the specified assessment in Audit Manager\cr
-\link[paws.management:auditmanager_get_evidence_folders_by_assessment]{get_evidence_folders_by_assessment} \tab Returns the evidence folders from a specified assessment in Audit Manager\cr
-\link[paws.management:auditmanager_get_evidence_folders_by_assessment_control]{get_evidence_folders_by_assessment_control} \tab Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment\cr
+\link[paws.management:auditmanager_get_account_status]{get_account_status} \tab Gets the registration status of an account in Audit Manager\cr
+\link[paws.management:auditmanager_get_assessment]{get_assessment} \tab Gets information about a specified assessment\cr
+\link[paws.management:auditmanager_get_assessment_framework]{get_assessment_framework} \tab Gets information about a specified framework\cr
+\link[paws.management:auditmanager_get_assessment_report_url]{get_assessment_report_url} \tab Gets the URL of an assessment report in Audit Manager\cr
+\link[paws.management:auditmanager_get_change_logs]{get_change_logs} \tab Gets a list of changelogs from Audit Manager\cr
+\link[paws.management:auditmanager_get_control]{get_control} \tab Gets information about a specified control\cr
+\link[paws.management:auditmanager_get_delegations]{get_delegations} \tab Gets a list of delegations from an audit owner to a delegate\cr
+\link[paws.management:auditmanager_get_evidence]{get_evidence} \tab Gets information about a specified evidence item\cr
+\link[paws.management:auditmanager_get_evidence_by_evidence_folder]{get_evidence_by_evidence_folder} \tab Gets all evidence from a specified evidence folder in Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_file_upload_url]{get_evidence_file_upload_url} \tab Creates a presigned Amazon S3 URL that can be used to upload a file as manual evidence\cr
+\link[paws.management:auditmanager_get_evidence_folder]{get_evidence_folder} \tab Gets an evidence folder from a specified assessment in Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_folders_by_assessment]{get_evidence_folders_by_assessment} \tab Gets the evidence folders from a specified assessment in Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_folders_by_assessment_control]{get_evidence_folders_by_assessment_control} \tab Gets a list of evidence folders that are associated with a specified control in an Audit Manager assessment\cr
 \link[paws.management:auditmanager_get_insights]{get_insights} \tab Gets the latest analytics data for all your current active assessments\cr
 \link[paws.management:auditmanager_get_insights_by_assessment]{get_insights_by_assessment} \tab Gets the latest analytics data for a specific active assessment\cr
-\link[paws.management:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Returns the name of the delegated Amazon Web Services administrator account for the organization\cr
-\link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Returns a list of all of the Amazon Web Services that you can choose to include in your assessment\cr
-\link[paws.management:auditmanager_get_settings]{get_settings} \tab Returns the settings for the specified Amazon Web Services account\cr
+\link[paws.management:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Gets the name of the delegated Amazon Web Services administrator account for a specified organization\cr
+\link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Gets a list of all of the Amazon Web Services that you can choose to include in your assessment\cr
+\link[paws.management:auditmanager_get_settings]{get_settings} \tab Gets the settings for a specified Amazon Web Services account\cr
 \link[paws.management:auditmanager_list_assessment_control_insights_by_control_domain]{list_assessment_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain and a specific active assessment\cr
 \link[paws.management:auditmanager_list_assessment_frameworks]{list_assessment_frameworks} \tab Returns a list of the frameworks that are available in the Audit Manager framework library\cr
 \link[paws.management:auditmanager_list_assessment_framework_share_requests]{list_assessment_framework_share_requests} \tab Returns a list of sent or received share requests for custom frameworks in Audit Manager\cr

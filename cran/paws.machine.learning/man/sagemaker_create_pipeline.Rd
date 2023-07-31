@@ -21,7 +21,8 @@ sagemaker_create_pipeline(
 
 \item{PipelineDisplayName}{The display name of the pipeline.}
 
-\item{PipelineDefinition}{The JSON pipeline definition of the pipeline.}
+\item{PipelineDefinition}{The \href{https://aws-sagemaker-mlops.github.io/sagemaker-model-building-pipeline-definition-JSON-schema/}{JSON pipeline definition}
+of the pipeline.}
 
 \item{PipelineDefinitionS3Location}{The location of the pipeline definition stored in Amazon S3. If
 specified, SageMaker will retrieve the pipeline definition from this

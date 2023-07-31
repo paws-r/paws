@@ -31,6 +31,9 @@ NULL
 #'     assistantArn = "string",
 #'     assistantId = "string",
 #'     description = "string",
+#'     integrationConfiguration = list(
+#'       topicIntegrationArn = "string"
+#'     ),
 #'     name = "string",
 #'     serverSideEncryptionConfiguration = list(
 #'       kmsKeyId = "string"
@@ -427,6 +430,9 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
 #' list(
 #'   session = list(
 #'     description = "string",
+#'     integrationConfiguration = list(
+#'       topicIntegrationArn = "string"
+#'     ),
 #'     name = "string",
 #'     sessionArn = "string",
 #'     sessionId = "string",
@@ -681,6 +687,9 @@ connectwisdomservice_delete_knowledge_base <- function(knowledgeBaseId) {
 #'     assistantArn = "string",
 #'     assistantId = "string",
 #'     description = "string",
+#'     integrationConfiguration = list(
+#'       topicIntegrationArn = "string"
+#'     ),
 #'     name = "string",
 #'     serverSideEncryptionConfiguration = list(
 #'       kmsKeyId = "string"
@@ -1138,6 +1147,9 @@ connectwisdomservice_get_recommendations <- function(assistantId, maxResults = N
 #' list(
 #'   session = list(
 #'     description = "string",
+#'     integrationConfiguration = list(
+#'       topicIntegrationArn = "string"
+#'     ),
 #'     name = "string",
 #'     sessionArn = "string",
 #'     sessionId = "string",
@@ -1239,7 +1251,7 @@ connectwisdomservice_list_assistant_associations <- function(assistantId, maxRes
     name = "ListAssistantAssociations",
     http_method = "GET",
     http_path = "/assistants/{assistantId}/associations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assistantAssociationSummaries")
   )
   input <- .connectwisdomservice$list_assistant_associations_input(assistantId = assistantId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_assistant_associations_output()
@@ -1273,6 +1285,9 @@ connectwisdomservice_list_assistant_associations <- function(assistantId, maxRes
 #'       assistantArn = "string",
 #'       assistantId = "string",
 #'       description = "string",
+#'       integrationConfiguration = list(
+#'         topicIntegrationArn = "string"
+#'       ),
 #'       name = "string",
 #'       serverSideEncryptionConfiguration = list(
 #'         kmsKeyId = "string"
@@ -1306,7 +1321,7 @@ connectwisdomservice_list_assistants <- function(maxResults = NULL, nextToken = 
     name = "ListAssistants",
     http_method = "GET",
     http_path = "/assistants",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assistantSummaries")
   )
   input <- .connectwisdomservice$list_assistants_input(maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_assistants_output()
@@ -1380,7 +1395,7 @@ connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NUL
     name = "ListContents",
     http_method = "GET",
     http_path = "/knowledgeBases/{knowledgeBaseId}/contents",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "contentSummaries")
   )
   input <- .connectwisdomservice$list_contents_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_contents_output()
@@ -1458,7 +1473,7 @@ connectwisdomservice_list_knowledge_bases <- function(maxResults = NULL, nextTok
     name = "ListKnowledgeBases",
     http_method = "GET",
     http_path = "/knowledgeBases",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "knowledgeBaseSummaries")
   )
   input <- .connectwisdomservice$list_knowledge_bases_input(maxResults = maxResults, nextToken = nextToken)
   output <- .connectwisdomservice$list_knowledge_bases_output()
@@ -1668,7 +1683,7 @@ connectwisdomservice_query_assistant <- function(assistantId, maxResults = NULL,
     name = "QueryAssistant",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/query",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "results")
   )
   input <- .connectwisdomservice$query_assistant_input(assistantId = assistantId, maxResults = maxResults, nextToken = nextToken, queryText = queryText)
   output <- .connectwisdomservice$query_assistant_output()
@@ -1796,7 +1811,7 @@ connectwisdomservice_search_content <- function(knowledgeBaseId, maxResults = NU
     name = "SearchContent",
     http_method = "POST",
     http_path = "/knowledgeBases/{knowledgeBaseId}/search",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "contentSummaries")
   )
   input <- .connectwisdomservice$search_content_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken, searchExpression = searchExpression)
   output <- .connectwisdomservice$search_content_output()
@@ -1869,7 +1884,7 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
     name = "SearchSessions",
     http_method = "POST",
     http_path = "/assistants/{assistantId}/searchSessions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionSummaries")
   )
   input <- .connectwisdomservice$search_sessions_input(assistantId = assistantId, maxResults = maxResults, nextToken = nextToken, searchExpression = searchExpression)
   output <- .connectwisdomservice$search_sessions_output()

@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_assessment}
 \alias{auditmanager_get_assessment}
-\title{Returns an assessment from Audit Manager}
+\title{Gets information about a specified assessment}
 \usage{
 auditmanager_get_assessment(assessmentId)
 }
@@ -10,7 +10,7 @@ auditmanager_get_assessment(assessmentId)
 \item{assessmentId}{[required] The unique identifier for the assessment.}
 }
 \description{
-Returns an assessment from Audit Manager.
+Gets information about a specified assessment.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_assessment/} for full documentation.
 }

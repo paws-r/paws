@@ -4,13 +4,13 @@
 \alias{prometheusservice_delete_logging_configuration}
 \title{Delete logging configuration}
 \usage{
-prometheusservice_delete_logging_configuration(clientToken = NULL, workspaceId)
+prometheusservice_delete_logging_configuration(workspaceId, clientToken = NULL)
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
+
 \item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
-
-\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
 }
 \description{
 Delete logging configuration.

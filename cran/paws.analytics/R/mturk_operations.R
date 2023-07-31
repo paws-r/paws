@@ -827,7 +827,7 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
     name = "ListAssignmentsForHIT",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_assignments_for_hit_input(HITId = HITId, NextToken = NextToken, MaxResults = MaxResults, AssignmentStatuses = AssignmentStatuses)
   output <- .mturk$list_assignments_for_hit_output()
@@ -866,7 +866,7 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
     name = "ListBonusPayments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_bonus_payments_input(HITId = HITId, AssignmentId = AssignmentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_bonus_payments_output()
@@ -896,7 +896,7 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListHITs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_hi_ts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_hi_ts_output()
@@ -928,7 +928,7 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
     name = "ListHITsForQualificationType",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_hi_ts_for_qualification_type_input(QualificationTypeId = QualificationTypeId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_hi_ts_for_qualification_type_output()
@@ -960,7 +960,7 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
     name = "ListQualificationRequests",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_qualification_requests_input(QualificationTypeId = QualificationTypeId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_qualification_requests_output()
@@ -1001,7 +1001,7 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
     name = "ListQualificationTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_qualification_types_input(Query = Query, MustBeRequestable = MustBeRequestable, MustBeOwnedByCaller = MustBeOwnedByCaller, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_qualification_types_output()
@@ -1041,7 +1041,7 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
     name = "ListReviewPolicyResultsForHIT",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_review_policy_results_for_hit_input(HITId = HITId, PolicyLevels = PolicyLevels, RetrieveActions = RetrieveActions, RetrieveResults = RetrieveResults, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_review_policy_results_for_hit_output()
@@ -1077,7 +1077,7 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
     name = "ListReviewableHITs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_reviewable_hi_ts_input(HITTypeId = HITTypeId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_reviewable_hi_ts_output()
@@ -1108,7 +1108,7 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListWorkerBlocks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_worker_blocks_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_worker_blocks_output()
@@ -1141,7 +1141,7 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
     name = "ListWorkersWithQualificationType",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_workers_with_qualification_type_input(QualificationTypeId = QualificationTypeId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_workers_with_qualification_type_output()

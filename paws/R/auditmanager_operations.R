@@ -325,23 +325,21 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 }
 .auditmanager$operations$batch_disassociate_assessment_report_evidence <- auditmanager_batch_disassociate_assessment_report_evidence
 
-#' Uploads one or more pieces of evidence to a control in an Audit Manager
+#' Adds one or more pieces of evidence to a control in an Audit Manager
 #' assessment
 #'
 #' @description
-#' Uploads one or more pieces of evidence to a control in an Audit Manager
-#' assessment. You can upload manual evidence from any Amazon Simple
-#' Storage Service (Amazon S3) bucket by specifying the S3 URI of the
-#' evidence.
+#' Adds one or more pieces of evidence to a control in an Audit Manager
+#' assessment.
 #' 
-#' You must upload manual evidence to your S3 bucket before you can upload
-#' it to your assessment. For instructions, see
-#' [CreateBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
-#' and
-#' [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
-#' in the *Amazon Simple Storage Service API Reference.*
+#' You can import manual evidence from any S3 bucket by specifying the S3
+#' URI of the object. You can also upload a file from your browser, or
+#' enter plain text in response to a risk assessment question.
 #' 
 #' The following restrictions apply to this action:
+#' 
+#' -   `manualEvidence` can be only one of the following:
+#'     `evidenceFileName`, `s3ResourcePath`, or `textResponse`
 #' 
 #' -   Maximum size of an individual evidence file: 100 MB
 #' 
@@ -371,7 +369,9 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #'   errors = list(
 #'     list(
 #'       manualEvidence = list(
-#'         s3ResourcePath = "string"
+#'         s3ResourcePath = "string",
+#'         textResponse = "string",
+#'         evidenceFileName = "string"
 #'       ),
 #'       errorCode = "string",
 #'       errorMessage = "string"
@@ -388,7 +388,9 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #'   controlId = "string",
 #'   manualEvidence = list(
 #'     list(
-#'       s3ResourcePath = "string"
+#'       s3ResourcePath = "string",
+#'       textResponse = "string",
+#'       evidenceFileName = "string"
 #'     )
 #'   )
 #' )
@@ -686,7 +688,7 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'                 sourceKeyword = list(
-#'                   keywordInputType = "SELECT_FROM_LIST",
+#'                   keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'                   keywordValue = "string"
 #'                 ),
 #'                 sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -890,7 +892,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'         sourceKeyword = list(
-#'           keywordInputType = "SELECT_FROM_LIST",
+#'           keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'           keywordValue = "string"
 #'         ),
 #'         sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -927,7 +929,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'       sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'       sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'       sourceKeyword = list(
-#'         keywordInputType = "SELECT_FROM_LIST",
+#'         keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'         keywordValue = "string"
 #'       ),
 #'       sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -1167,6 +1169,12 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
 #'
 #' @description
 #' Deletes a custom control in Audit Manager.
+#' 
+#' When you invoke this operation, the custom control is deleted from any
+#' frameworks or assessments that it’s currently part of. As a result,
+#' Audit Manager will stop collecting evidence for that custom control in
+#' all of your assessments. This includes assessments that you previously
+#' created before you deleted the custom control.
 #'
 #' @usage
 #' auditmanager_delete_control(controlId)
@@ -1415,10 +1423,10 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 }
 .auditmanager$operations$disassociate_assessment_report_evidence_folder <- auditmanager_disassociate_assessment_report_evidence_folder
 
-#' Returns the registration status of an account in Audit Manager
+#' Gets the registration status of an account in Audit Manager
 #'
 #' @description
-#' Returns the registration status of an account in Audit Manager.
+#' Gets the registration status of an account in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_account_status()
@@ -1458,10 +1466,10 @@ auditmanager_get_account_status <- function() {
 }
 .auditmanager$operations$get_account_status <- auditmanager_get_account_status
 
-#' Returns an assessment from Audit Manager
+#' Gets information about a specified assessment
 #'
 #' @description
-#' Returns an assessment from Audit Manager.
+#' Gets information about a specified assessment.
 #'
 #' @usage
 #' auditmanager_get_assessment(assessmentId)
@@ -1642,10 +1650,10 @@ auditmanager_get_assessment <- function(assessmentId) {
 }
 .auditmanager$operations$get_assessment <- auditmanager_get_assessment
 
-#' Returns a framework from Audit Manager
+#' Gets information about a specified framework
 #'
 #' @description
-#' Returns a framework from Audit Manager.
+#' Gets information about a specified framework.
 #'
 #' @usage
 #' auditmanager_get_assessment_framework(frameworkId)
@@ -1688,7 +1696,7 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'                 sourceKeyword = list(
-#'                   keywordInputType = "SELECT_FROM_LIST",
+#'                   keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'                   keywordValue = "string"
 #'                 ),
 #'                 sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -1754,10 +1762,10 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
 }
 .auditmanager$operations$get_assessment_framework <- auditmanager_get_assessment_framework
 
-#' Returns the URL of an assessment report in Audit Manager
+#' Gets the URL of an assessment report in Audit Manager
 #'
 #' @description
-#' Returns the URL of an assessment report in Audit Manager.
+#' Gets the URL of an assessment report in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_assessment_report_url(assessmentReportId, assessmentId)
@@ -1806,10 +1814,10 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
 }
 .auditmanager$operations$get_assessment_report_url <- auditmanager_get_assessment_report_url
 
-#' Returns a list of changelogs from Audit Manager
+#' Gets a list of changelogs from Audit Manager
 #'
 #' @description
-#' Returns a list of changelogs from Audit Manager.
+#' Gets a list of changelogs from Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_change_logs(assessmentId, controlSetId, controlId,
@@ -1862,7 +1870,7 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
     name = "GetChangeLogs",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/changelogs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_change_logs_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_change_logs_output()
@@ -1874,10 +1882,10 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 }
 .auditmanager$operations$get_change_logs <- auditmanager_get_change_logs
 
-#' Returns a control from Audit Manager
+#' Gets information about a specified control
 #'
 #' @description
-#' Returns a control from Audit Manager.
+#' Gets information about a specified control.
 #'
 #' @usage
 #' auditmanager_get_control(controlId)
@@ -1906,7 +1914,7 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'         sourceKeyword = list(
-#'           keywordInputType = "SELECT_FROM_LIST",
+#'           keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'           keywordValue = "string"
 #'         ),
 #'         sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -1957,10 +1965,10 @@ auditmanager_get_control <- function(controlId) {
 }
 .auditmanager$operations$get_control <- auditmanager_get_control
 
-#' Returns a list of delegations from an audit owner to a delegate
+#' Gets a list of delegations from an audit owner to a delegate
 #'
 #' @description
-#' Returns a list of delegations from an audit owner to a delegate.
+#' Gets a list of delegations from an audit owner to a delegate.
 #'
 #' @usage
 #' auditmanager_get_delegations(nextToken, maxResults)
@@ -2008,7 +2016,7 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
     name = "GetDelegations",
     http_method = "GET",
     http_path = "/delegations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_delegations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_delegations_output()
@@ -2020,10 +2028,10 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 }
 .auditmanager$operations$get_delegations <- auditmanager_get_delegations
 
-#' Returns evidence from Audit Manager
+#' Gets information about a specified evidence item
 #'
 #' @description
-#' Returns evidence from Audit Manager.
+#' Gets information about a specified evidence item.
 #'
 #' @usage
 #' auditmanager_get_evidence(assessmentId, controlSetId, evidenceFolderId,
@@ -2100,10 +2108,10 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 }
 .auditmanager$operations$get_evidence <- auditmanager_get_evidence
 
-#' Returns all evidence from a specified evidence folder in Audit Manager
+#' Gets all evidence from a specified evidence folder in Audit Manager
 #'
 #' @description
-#' Returns all evidence from a specified evidence folder in Audit Manager.
+#' Gets all evidence from a specified evidence folder in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_by_evidence_folder(assessmentId, controlSetId,
@@ -2174,7 +2182,7 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
     name = "GetEvidenceByEvidenceFolder",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}/evidence",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_evidence_by_evidence_folder_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_by_evidence_folder_output()
@@ -2186,12 +2194,80 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
 }
 .auditmanager$operations$get_evidence_by_evidence_folder <- auditmanager_get_evidence_by_evidence_folder
 
-#' Returns an evidence folder from the specified assessment in Audit
-#' Manager
+#' Creates a presigned Amazon S3 URL that can be used to upload a file as
+#' manual evidence
 #'
 #' @description
-#' Returns an evidence folder from the specified assessment in Audit
-#' Manager.
+#' Creates a presigned Amazon S3 URL that can be used to upload a file as
+#' manual evidence. For instructions on how to use this operation, see
+#' [Upload a file from your
+#' browser](https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#how-to-upload-manual-evidence-files)
+#' in the *Audit Manager User Guide*.
+#' 
+#' The following restrictions apply to this operation:
+#' 
+#' -   Maximum size of an individual evidence file: 100 MB
+#' 
+#' -   Number of daily manual evidence uploads per control: 100
+#' 
+#' -   Supported file formats: See [Supported file types for manual
+#'     evidence](https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files)
+#'     in the *Audit Manager User Guide*
+#' 
+#' For more information about Audit Manager service restrictions, see
+#' [Quotas and restrictions for Audit
+#' Manager](https://docs.aws.amazon.com/audit-manager/latest/userguide/service-quotas.html).
+#'
+#' @usage
+#' auditmanager_get_evidence_file_upload_url(fileName)
+#'
+#' @param fileName &#91;required&#93; The file that you want to upload. For a list of supported file formats,
+#' see [Supported file types for manual
+#' evidence](https://docs.aws.amazon.com/audit-manager/latest/userguide/upload-evidence.html#supported-manual-evidence-files)
+#' in the *Audit Manager User Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   evidenceFileName = "string",
+#'   uploadUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_evidence_file_upload_url(
+#'   fileName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_get_evidence_file_upload_url
+#'
+#' @aliases auditmanager_get_evidence_file_upload_url
+auditmanager_get_evidence_file_upload_url <- function(fileName) {
+  op <- new_operation(
+    name = "GetEvidenceFileUploadUrl",
+    http_method = "GET",
+    http_path = "/evidenceFileUploadUrl",
+    paginator = list()
+  )
+  input <- .auditmanager$get_evidence_file_upload_url_input(fileName = fileName)
+  output <- .auditmanager$get_evidence_file_upload_url_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$get_evidence_file_upload_url <- auditmanager_get_evidence_file_upload_url
+
+#' Gets an evidence folder from a specified assessment in Audit Manager
+#'
+#' @description
+#' Gets an evidence folder from a specified assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_folder(assessmentId, controlSetId,
@@ -2261,12 +2337,10 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
 }
 .auditmanager$operations$get_evidence_folder <- auditmanager_get_evidence_folder
 
-#' Returns the evidence folders from a specified assessment in Audit
-#' Manager
+#' Gets the evidence folders from a specified assessment in Audit Manager
 #'
 #' @description
-#' Returns the evidence folders from a specified assessment in Audit
-#' Manager.
+#' Gets the evidence folders from a specified assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_folders_by_assessment(assessmentId, nextToken,
@@ -2328,7 +2402,7 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
     name = "GetEvidenceFoldersByAssessment",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/evidenceFolders",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_evidence_folders_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_folders_by_assessment_output()
@@ -2340,11 +2414,11 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 }
 .auditmanager$operations$get_evidence_folders_by_assessment <- auditmanager_get_evidence_folders_by_assessment
 
-#' Returns a list of evidence folders that are associated with a specified
+#' Gets a list of evidence folders that are associated with a specified
 #' control in an Audit Manager assessment
 #'
 #' @description
-#' Returns a list of evidence folders that are associated with a specified
+#' Gets a list of evidence folders that are associated with a specified
 #' control in an Audit Manager assessment.
 #'
 #' @usage
@@ -2411,7 +2485,7 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
     name = "GetEvidenceFoldersByAssessmentControl",
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/evidenceFolders-by-assessment-control/{controlSetId}/{controlId}",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$get_evidence_folders_by_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_folders_by_assessment_control_output()
@@ -2532,12 +2606,12 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
 }
 .auditmanager$operations$get_insights_by_assessment <- auditmanager_get_insights_by_assessment
 
-#' Returns the name of the delegated Amazon Web Services administrator
-#' account for the organization
+#' Gets the name of the delegated Amazon Web Services administrator account
+#' for a specified organization
 #'
 #' @description
-#' Returns the name of the delegated Amazon Web Services administrator
-#' account for the organization.
+#' Gets the name of the delegated Amazon Web Services administrator account
+#' for a specified organization.
 #'
 #' @usage
 #' auditmanager_get_organization_admin_account()
@@ -2578,11 +2652,11 @@ auditmanager_get_organization_admin_account <- function() {
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Returns a list of all of the Amazon Web Services that you can choose to
+#' Gets a list of all of the Amazon Web Services that you can choose to
 #' include in your assessment
 #'
 #' @description
-#' Returns a list of all of the Amazon Web Services that you can choose to
+#' Gets a list of all of the Amazon Web Services that you can choose to
 #' include in your assessment. When you [create an
 #' assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html),
 #' specify which of these services you want to include to narrow the
@@ -2634,10 +2708,10 @@ auditmanager_get_services_in_scope <- function() {
 }
 .auditmanager$operations$get_services_in_scope <- auditmanager_get_services_in_scope
 
-#' Returns the settings for the specified Amazon Web Services account
+#' Gets the settings for a specified Amazon Web Services account
 #'
 #' @description
-#' Returns the settings for the specified Amazon Web Services account.
+#' Gets the settings for a specified Amazon Web Services account.
 #'
 #' @usage
 #' auditmanager_get_settings(attribute)
@@ -2670,6 +2744,10 @@ auditmanager_get_services_in_scope <- function() {
 #'     ),
 #'     deregistrationPolicy = list(
 #'       deleteResources = "ALL"|"DEFAULT"
+#'     ),
+#'     defaultExportDestination = list(
+#'       destinationType = "S3",
+#'       destination = "string"
 #'     )
 #'   )
 #' )
@@ -2678,7 +2756,7 @@ auditmanager_get_services_in_scope <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$get_settings(
-#'   attribute = "ALL"|"IS_AWS_ORG_ENABLED"|"SNS_TOPIC"|"DEFAULT_ASSESSMENT_REPORTS_DESTINATION"|"DEFAULT_PROCESS_OWNERS"|"EVIDENCE_FINDER_ENABLEMENT"|"DEREGISTRATION_POLICY"
+#'   attribute = "ALL"|"IS_AWS_ORG_ENABLED"|"SNS_TOPIC"|"DEFAULT_ASSESSMENT_REPORTS_DESTINATION"|"DEFAULT_PROCESS_OWNERS"|"EVIDENCE_FINDER_ENABLEMENT"|"DEREGISTRATION_POLICY"|"DEFAULT_EXPORT_DESTINATION"
 #' )
 #' ```
 #'
@@ -2770,7 +2848,7 @@ auditmanager_list_assessment_control_insights_by_control_domain <- function(cont
     name = "ListAssessmentControlInsightsByControlDomain",
     http_method = "GET",
     http_path = "/insights/controls-by-assessment",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_control_insights_by_control_domain_input(controlDomainId = controlDomainId, assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_control_insights_by_control_domain_output()
@@ -2851,7 +2929,7 @@ auditmanager_list_assessment_framework_share_requests <- function(requestType, n
     name = "ListAssessmentFrameworkShareRequests",
     http_method = "GET",
     http_path = "/assessmentFrameworkShareRequests",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_framework_share_requests_input(requestType = requestType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_framework_share_requests_output()
@@ -2926,7 +3004,7 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
     name = "ListAssessmentFrameworks",
     http_method = "GET",
     http_path = "/assessmentFrameworks",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_frameworks_input(frameworkType = frameworkType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_frameworks_output()
@@ -2990,7 +3068,7 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
     name = "ListAssessmentReports",
     http_method = "GET",
     http_path = "/assessmentReports",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessment_reports_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_reports_output()
@@ -3081,7 +3159,7 @@ auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxRe
     name = "ListAssessments",
     http_method = "GET",
     http_path = "/assessments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_assessments_input(status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessments_output()
@@ -3154,7 +3232,7 @@ auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResul
     name = "ListControlDomainInsights",
     http_method = "GET",
     http_path = "/insights/control-domains",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_control_domain_insights_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_domain_insights_output()
@@ -3230,7 +3308,7 @@ auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId
     name = "ListControlDomainInsightsByAssessment",
     http_method = "GET",
     http_path = "/insights/control-domains-by-assessment",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_control_domain_insights_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_domain_insights_by_assessment_output()
@@ -3304,7 +3382,7 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
     name = "ListControlInsightsByControlDomain",
     http_method = "GET",
     http_path = "/insights/controls",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_control_insights_by_control_domain_input(controlDomainId = controlDomainId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_insights_by_control_domain_output()
@@ -3370,7 +3448,7 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
     name = "ListControls",
     http_method = "GET",
     http_path = "/controls",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_controls_input(controlType = controlType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_controls_output()
@@ -3428,7 +3506,7 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
     name = "ListKeywordsForDataSource",
     http_method = "GET",
     http_path = "/dataSourceKeywords",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_keywords_for_data_source_input(source = source, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_keywords_for_data_source_output()
@@ -3492,7 +3570,7 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
     name = "ListNotifications",
     http_method = "GET",
     http_path = "/notifications",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .auditmanager$list_notifications_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_notifications_output()
@@ -4312,7 +4390,7 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #'                 sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'                 sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'                 sourceKeyword = list(
-#'                   keywordInputType = "SELECT_FROM_LIST",
+#'                   keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'                   keywordValue = "string"
 #'                 ),
 #'                 sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -4689,7 +4767,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #'         sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'         sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'         sourceKeyword = list(
-#'           keywordInputType = "SELECT_FROM_LIST",
+#'           keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'           keywordValue = "string"
 #'         ),
 #'         sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -4728,7 +4806,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #'       sourceSetUpOption = "System_Controls_Mapping"|"Procedural_Controls_Mapping",
 #'       sourceType = "AWS_Cloudtrail"|"AWS_Config"|"AWS_Security_Hub"|"AWS_API_Call"|"MANUAL",
 #'       sourceKeyword = list(
-#'         keywordInputType = "SELECT_FROM_LIST",
+#'         keywordInputType = "SELECT_FROM_LIST"|"UPLOAD_FILE"|"INPUT_TEXT",
 #'         keywordValue = "string"
 #'       ),
 #'       sourceFrequency = "DAILY"|"WEEKLY"|"MONTHLY",
@@ -4768,11 +4846,11 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @usage
 #' auditmanager_update_settings(snsTopic,
 #'   defaultAssessmentReportsDestination, defaultProcessOwners, kmsKey,
-#'   evidenceFinderEnabled, deregistrationPolicy)
+#'   evidenceFinderEnabled, deregistrationPolicy, defaultExportDestination)
 #'
 #' @param snsTopic The Amazon Simple Notification Service (Amazon SNS) topic that Audit
 #' Manager sends notifications to.
-#' @param defaultAssessmentReportsDestination The default storage destination for assessment reports.
+#' @param defaultAssessmentReportsDestination The default S3 destination bucket for storing assessment reports.
 #' @param defaultProcessOwners A list of the default audit owners.
 #' @param kmsKey The KMS key details.
 #' @param evidenceFinderEnabled Specifies whether the evidence finder feature is enabled. Change this
@@ -4789,6 +4867,7 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @param deregistrationPolicy The deregistration policy for your Audit Manager data. You can use this
 #' attribute to determine how your data is handled when you deregister
 #' Audit Manager.
+#' @param defaultExportDestination The default S3 destination bucket for storing evidence finder exports.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4816,6 +4895,10 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #'     ),
 #'     deregistrationPolicy = list(
 #'       deleteResources = "ALL"|"DEFAULT"
+#'     ),
+#'     defaultExportDestination = list(
+#'       destinationType = "S3",
+#'       destination = "string"
 #'     )
 #'   )
 #' )
@@ -4839,6 +4922,10 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #'   evidenceFinderEnabled = TRUE|FALSE,
 #'   deregistrationPolicy = list(
 #'     deleteResources = "ALL"|"DEFAULT"
+#'   ),
+#'   defaultExportDestination = list(
+#'     destinationType = "S3",
+#'     destination = "string"
 #'   )
 #' )
 #' ```
@@ -4848,14 +4935,14 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @rdname auditmanager_update_settings
 #'
 #' @aliases auditmanager_update_settings
-auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL, evidenceFinderEnabled = NULL, deregistrationPolicy = NULL) {
+auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL, evidenceFinderEnabled = NULL, deregistrationPolicy = NULL, defaultExportDestination = NULL) {
   op <- new_operation(
     name = "UpdateSettings",
     http_method = "PUT",
     http_path = "/settings",
     paginator = list()
   )
-  input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey, evidenceFinderEnabled = evidenceFinderEnabled, deregistrationPolicy = deregistrationPolicy)
+  input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey, evidenceFinderEnabled = evidenceFinderEnabled, deregistrationPolicy = deregistrationPolicy, defaultExportDestination = defaultExportDestination)
   output <- .auditmanager$update_settings_output()
   config <- get_config()
   svc <- .auditmanager$service(config)

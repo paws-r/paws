@@ -368,7 +368,31 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               UUID = "string",
 #'               OntapVolumeType = "RW"|"DP"|"LS",
 #'               SnapshotPolicy = "string",
-#'               CopyTagsToBackups = TRUE|FALSE
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               SnaplockConfiguration = list(
+#'                 AuditLogVolume = TRUE|FALSE,
+#'                 AutocommitPeriod = list(
+#'                   Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                   Value = 123
+#'                 ),
+#'                 PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'                 RetentionPeriod = list(
+#'                   DefaultRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MinimumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MaximumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   )
+#'                 ),
+#'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'                 VolumeAppendModeEnabled = TRUE|FALSE
+#'               )
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -520,7 +544,31 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         UUID = "string",
 #'         OntapVolumeType = "RW"|"DP"|"LS",
 #'         SnapshotPolicy = "string",
-#'         CopyTagsToBackups = TRUE|FALSE
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         SnaplockConfiguration = list(
+#'           AuditLogVolume = TRUE|FALSE,
+#'           AutocommitPeriod = list(
+#'             Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'             Value = 123
+#'           ),
+#'           PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'           RetentionPeriod = list(
+#'             DefaultRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             ),
+#'             MinimumRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             ),
+#'             MaximumRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             )
+#'           ),
+#'           SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'           VolumeAppendModeEnabled = TRUE|FALSE
+#'         )
 #'       ),
 #'       ResourceARN = "string",
 #'       Tags = list(
@@ -1027,7 +1075,31 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               UUID = "string",
 #'               OntapVolumeType = "RW"|"DP"|"LS",
 #'               SnapshotPolicy = "string",
-#'               CopyTagsToBackups = TRUE|FALSE
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               SnaplockConfiguration = list(
+#'                 AuditLogVolume = TRUE|FALSE,
+#'                 AutocommitPeriod = list(
+#'                   Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                   Value = 123
+#'                 ),
+#'                 PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'                 RetentionPeriod = list(
+#'                   DefaultRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MinimumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MaximumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   )
+#'                 ),
+#'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'                 VolumeAppendModeEnabled = TRUE|FALSE
+#'               )
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -1179,7 +1251,31 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'         UUID = "string",
 #'         OntapVolumeType = "RW"|"DP"|"LS",
 #'         SnapshotPolicy = "string",
-#'         CopyTagsToBackups = TRUE|FALSE
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         SnaplockConfiguration = list(
+#'           AuditLogVolume = TRUE|FALSE,
+#'           AutocommitPeriod = list(
+#'             Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'             Value = 123
+#'           ),
+#'           PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'           RetentionPeriod = list(
+#'             DefaultRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             ),
+#'             MinimumRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             ),
+#'             MaximumRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             )
+#'           ),
+#'           SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'           VolumeAppendModeEnabled = TRUE|FALSE
+#'         )
 #'       ),
 #'       ResourceARN = "string",
 #'       Tags = list(
@@ -2273,7 +2369,31 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'             UUID = "string",
 #'             OntapVolumeType = "RW"|"DP"|"LS",
 #'             SnapshotPolicy = "string",
-#'             CopyTagsToBackups = TRUE|FALSE
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -2828,7 +2948,31 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'             UUID = "string",
 #'             OntapVolumeType = "RW"|"DP"|"LS",
 #'             SnapshotPolicy = "string",
-#'             CopyTagsToBackups = TRUE|FALSE
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -3352,7 +3496,31 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             UUID = "string",
 #'             OntapVolumeType = "RW"|"DP"|"LS",
 #'             SnapshotPolicy = "string",
-#'             CopyTagsToBackups = TRUE|FALSE
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -3647,7 +3815,31 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       UUID = "string",
 #'       OntapVolumeType = "RW"|"DP"|"LS",
 #'       SnapshotPolicy = "string",
-#'       CopyTagsToBackups = TRUE|FALSE
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       SnaplockConfiguration = list(
+#'         AuditLogVolume = TRUE|FALSE,
+#'         AutocommitPeriod = list(
+#'           Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'           Value = 123
+#'         ),
+#'         PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'         RetentionPeriod = list(
+#'           DefaultRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           ),
+#'           MinimumRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           ),
+#'           MaximumRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           )
+#'         ),
+#'         SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'         VolumeAppendModeEnabled = TRUE|FALSE
+#'       )
 #'     ),
 #'     ResourceARN = "string",
 #'     Tags = list(
@@ -3896,7 +4088,31 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     OntapVolumeType = "RW"|"DP",
 #'     SnapshotPolicy = "string",
-#'     CopyTagsToBackups = TRUE|FALSE
+#'     CopyTagsToBackups = TRUE|FALSE,
+#'     SnaplockConfiguration = list(
+#'       AuditLogVolume = TRUE|FALSE,
+#'       AutocommitPeriod = list(
+#'         Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'         Value = 123
+#'       ),
+#'       PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'       RetentionPeriod = list(
+#'         DefaultRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         ),
+#'         MinimumRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         ),
+#'         MaximumRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         )
+#'       ),
+#'       SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'       VolumeAppendModeEnabled = TRUE|FALSE
+#'     )
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -4004,7 +4220,31 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'       UUID = "string",
 #'       OntapVolumeType = "RW"|"DP"|"LS",
 #'       SnapshotPolicy = "string",
-#'       CopyTagsToBackups = TRUE|FALSE
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       SnaplockConfiguration = list(
+#'         AuditLogVolume = TRUE|FALSE,
+#'         AutocommitPeriod = list(
+#'           Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'           Value = 123
+#'         ),
+#'         PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'         RetentionPeriod = list(
+#'           DefaultRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           ),
+#'           MinimumRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           ),
+#'           MaximumRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           )
+#'         ),
+#'         SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'         VolumeAppendModeEnabled = TRUE|FALSE
+#'       )
 #'     ),
 #'     ResourceARN = "string",
 #'     Tags = list(
@@ -4253,7 +4493,31 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'     ),
 #'     OntapVolumeType = "RW"|"DP",
 #'     SnapshotPolicy = "string",
-#'     CopyTagsToBackups = TRUE|FALSE
+#'     CopyTagsToBackups = TRUE|FALSE,
+#'     SnaplockConfiguration = list(
+#'       AuditLogVolume = TRUE|FALSE,
+#'       AutocommitPeriod = list(
+#'         Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'         Value = 123
+#'       ),
+#'       PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'       RetentionPeriod = list(
+#'         DefaultRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         ),
+#'         MinimumRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         ),
+#'         MaximumRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         )
+#'       ),
+#'       SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'       VolumeAppendModeEnabled = TRUE|FALSE
+#'     )
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -4784,7 +5048,8 @@ fsx_delete_storage_virtual_machine <- function(ClientRequestToken = NULL, Storag
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     BypassSnaplockEnterpriseRetention = TRUE|FALSE
 #'   ),
 #'   OpenZFSConfiguration = list(
 #'     Options = list(
@@ -5017,7 +5282,31 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 UUID = "string",
 #'                 OntapVolumeType = "RW"|"DP"|"LS",
 #'                 SnapshotPolicy = "string",
-#'                 CopyTagsToBackups = TRUE|FALSE
+#'                 CopyTagsToBackups = TRUE|FALSE,
+#'                 SnaplockConfiguration = list(
+#'                   AuditLogVolume = TRUE|FALSE,
+#'                   AutocommitPeriod = list(
+#'                     Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                     Value = 123
+#'                   ),
+#'                   PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'                   RetentionPeriod = list(
+#'                     DefaultRetention = list(
+#'                       Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                       Value = 123
+#'                     ),
+#'                     MinimumRetention = list(
+#'                       Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                       Value = 123
+#'                     ),
+#'                     MaximumRetention = list(
+#'                       Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                       Value = 123
+#'                     )
+#'                   ),
+#'                   SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'                   VolumeAppendModeEnabled = TRUE|FALSE
+#'                 )
 #'               ),
 #'               ResourceARN = "string",
 #'               Tags = list(
@@ -5169,7 +5458,31 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           UUID = "string",
 #'           OntapVolumeType = "RW"|"DP"|"LS",
 #'           SnapshotPolicy = "string",
-#'           CopyTagsToBackups = TRUE|FALSE
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           SnaplockConfiguration = list(
+#'             AuditLogVolume = TRUE|FALSE,
+#'             AutocommitPeriod = list(
+#'               Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'               Value = 123
+#'             ),
+#'             PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'             RetentionPeriod = list(
+#'               DefaultRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               ),
+#'               MinimumRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               ),
+#'               MaximumRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               )
+#'             ),
+#'             SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'             VolumeAppendModeEnabled = TRUE|FALSE
+#'           )
 #'         ),
 #'         ResourceARN = "string",
 #'         Tags = list(
@@ -5438,7 +5751,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_backups_input(BackupIds = BackupIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_backups_output()
@@ -5580,7 +5893,7 @@ fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Fil
     name = "DescribeDataRepositoryAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_data_repository_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_data_repository_associations_output()
@@ -5710,7 +6023,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
     name = "DescribeDataRepositoryTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_data_repository_tasks_input(TaskIds = TaskIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_data_repository_tasks_output()
@@ -5833,7 +6146,7 @@ fsx_describe_file_caches <- function(FileCacheIds = NULL, MaxResults = NULL, Nex
     name = "DescribeFileCaches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_file_caches_input(FileCacheIds = FileCacheIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_file_caches_output()
@@ -5905,7 +6218,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
     name = "DescribeFileSystemAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_file_system_aliases_input(ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_file_system_aliases_output()
@@ -6099,7 +6412,31 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'               UUID = "string",
 #'               OntapVolumeType = "RW"|"DP"|"LS",
 #'               SnapshotPolicy = "string",
-#'               CopyTagsToBackups = TRUE|FALSE
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               SnaplockConfiguration = list(
+#'                 AuditLogVolume = TRUE|FALSE,
+#'                 AutocommitPeriod = list(
+#'                   Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                   Value = 123
+#'                 ),
+#'                 PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'                 RetentionPeriod = list(
+#'                   DefaultRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MinimumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MaximumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   )
+#'                 ),
+#'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'                 VolumeAppendModeEnabled = TRUE|FALSE
+#'               )
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -6253,7 +6590,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
     name = "DescribeFileSystems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_file_systems_input(FileSystemIds = FileSystemIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_file_systems_output()
@@ -6507,7 +6844,31 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'               UUID = "string",
 #'               OntapVolumeType = "RW"|"DP"|"LS",
 #'               SnapshotPolicy = "string",
-#'               CopyTagsToBackups = TRUE|FALSE
+#'               CopyTagsToBackups = TRUE|FALSE,
+#'               SnaplockConfiguration = list(
+#'                 AuditLogVolume = TRUE|FALSE,
+#'                 AutocommitPeriod = list(
+#'                   Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                   Value = 123
+#'                 ),
+#'                 PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'                 RetentionPeriod = list(
+#'                   DefaultRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MinimumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   ),
+#'                   MaximumRetention = list(
+#'                     Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                     Value = 123
+#'                   )
+#'                 ),
+#'                 SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'                 VolumeAppendModeEnabled = TRUE|FALSE
+#'               )
 #'             ),
 #'             ResourceARN = "string",
 #'             Tags = list(
@@ -6597,7 +6958,7 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_snapshots_output()
@@ -6724,7 +7085,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
     name = "DescribeStorageVirtualMachines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StorageVirtualMachines")
   )
   input <- .fsx$describe_storage_virtual_machines_input(StorageVirtualMachineIds = StorageVirtualMachineIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_storage_virtual_machines_output()
@@ -6778,7 +7139,31 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'         UUID = "string",
 #'         OntapVolumeType = "RW"|"DP"|"LS",
 #'         SnapshotPolicy = "string",
-#'         CopyTagsToBackups = TRUE|FALSE
+#'         CopyTagsToBackups = TRUE|FALSE,
+#'         SnaplockConfiguration = list(
+#'           AuditLogVolume = TRUE|FALSE,
+#'           AutocommitPeriod = list(
+#'             Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'             Value = 123
+#'           ),
+#'           PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'           RetentionPeriod = list(
+#'             DefaultRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             ),
+#'             MinimumRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             ),
+#'             MaximumRetention = list(
+#'               Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'               Value = 123
+#'             )
+#'           ),
+#'           SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'           VolumeAppendModeEnabled = TRUE|FALSE
+#'         )
 #'       ),
 #'       ResourceARN = "string",
 #'       Tags = list(
@@ -7040,7 +7425,7 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
     name = "DescribeVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Volumes")
   )
   input <- .fsx$describe_volumes_input(VolumeIds = VolumeIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_volumes_output()
@@ -7205,7 +7590,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$list_tags_for_resource_output()
@@ -7362,7 +7747,31 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'             UUID = "string",
 #'             OntapVolumeType = "RW"|"DP"|"LS",
 #'             SnapshotPolicy = "string",
-#'             CopyTagsToBackups = TRUE|FALSE
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -7727,7 +8136,31 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           UUID = "string",
 #'           OntapVolumeType = "RW"|"DP"|"LS",
 #'           SnapshotPolicy = "string",
-#'           CopyTagsToBackups = TRUE|FALSE
+#'           CopyTagsToBackups = TRUE|FALSE,
+#'           SnaplockConfiguration = list(
+#'             AuditLogVolume = TRUE|FALSE,
+#'             AutocommitPeriod = list(
+#'               Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'               Value = 123
+#'             ),
+#'             PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'             RetentionPeriod = list(
+#'               DefaultRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               ),
+#'               MinimumRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               ),
+#'               MaximumRetention = list(
+#'                 Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                 Value = 123
+#'               )
+#'             ),
+#'             SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'             VolumeAppendModeEnabled = TRUE|FALSE
+#'           )
 #'         ),
 #'         ResourceARN = "string",
 #'         Tags = list(
@@ -8220,6 +8653,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `DataCompressionType`
 #' 
+#' -   `LogConfiguration`
+#' 
 #' -   `LustreRootSquashConfiguration`
 #' 
 #' -   `StorageCapacity`
@@ -8459,7 +8894,31 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'             UUID = "string",
 #'             OntapVolumeType = "RW"|"DP"|"LS",
 #'             SnapshotPolicy = "string",
-#'             CopyTagsToBackups = TRUE|FALSE
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -8905,7 +9364,31 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'             UUID = "string",
 #'             OntapVolumeType = "RW"|"DP"|"LS",
 #'             SnapshotPolicy = "string",
-#'             CopyTagsToBackups = TRUE|FALSE
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
 #'           ),
 #'           ResourceARN = "string",
 #'           Tags = list(
@@ -9169,7 +9652,31 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       UUID = "string",
 #'       OntapVolumeType = "RW"|"DP"|"LS",
 #'       SnapshotPolicy = "string",
-#'       CopyTagsToBackups = TRUE|FALSE
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       SnaplockConfiguration = list(
+#'         AuditLogVolume = TRUE|FALSE,
+#'         AutocommitPeriod = list(
+#'           Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'           Value = 123
+#'         ),
+#'         PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'         RetentionPeriod = list(
+#'           DefaultRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           ),
+#'           MinimumRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           ),
+#'           MaximumRetention = list(
+#'             Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'             Value = 123
+#'           )
+#'         ),
+#'         SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'         VolumeAppendModeEnabled = TRUE|FALSE
+#'       )
 #'     ),
 #'     ResourceARN = "string",
 #'     Tags = list(
@@ -9415,7 +9922,30 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'       Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
 #'     ),
 #'     SnapshotPolicy = "string",
-#'     CopyTagsToBackups = TRUE|FALSE
+#'     CopyTagsToBackups = TRUE|FALSE,
+#'     SnaplockConfiguration = list(
+#'       AuditLogVolume = TRUE|FALSE,
+#'       AutocommitPeriod = list(
+#'         Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'         Value = 123
+#'       ),
+#'       PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'       RetentionPeriod = list(
+#'         DefaultRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         ),
+#'         MinimumRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         ),
+#'         MaximumRetention = list(
+#'           Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'           Value = 123
+#'         )
+#'       ),
+#'       VolumeAppendModeEnabled = TRUE|FALSE
+#'     )
 #'   ),
 #'   Name = "string",
 #'   OpenZFSConfiguration = list(

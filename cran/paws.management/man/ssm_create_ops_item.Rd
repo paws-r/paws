@@ -64,7 +64,7 @@ Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
 view Amazon Web Services CLI example commands that use these keys, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html}{Creating OpsItems manually}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Notifications}{The Amazon Resource Name (ARN) of an SNS topic where notifications are
@@ -86,10 +86,7 @@ and \code{amzn}.}
 \item{Title}{[required] A short heading that describes the nature of the OpsItem and the
 impacted resource.}
 
-\item{Tags}{Optional metadata that you assign to a resource. You can restrict access
-to OpsItems by using an inline IAM policy that specifies tags. For more
-information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-getting-started-user-permissions}{Getting started with OpsCenter}
-in the \emph{Amazon Web Services Systems Manager User Guide}.
+\item{Tags}{Optional metadata that you assign to a resource.
 
 Tags use a key-value pair. For example:
 
@@ -118,11 +115,11 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 
 \item{AccountId}{The target Amazon Web Services account where you want to create an
 OpsItem. To make this call, your account must be configured to work with
-OpsItems across accounts. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Setting up OpsCenter to work with OpsItems across accounts}
+OpsItems across accounts. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html}{Set up OpsCenter}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
-Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html}{Set up OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_create_ops_item/} for full documentation.
 }

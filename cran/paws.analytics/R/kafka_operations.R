@@ -389,6 +389,35 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 }
 .kafka$operations$describe_cluster_operation <- kafka_describe_cluster_operation
 
+#' Returns a description of the cluster operation specified by the ARN
+#'
+#' @description
+#' Returns a description of the cluster operation specified by the ARN.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_cluster_operation_v2/](https://www.paws-r-sdk.com/docs/kafka_describe_cluster_operation_v2/) for full documentation.
+#'
+#' @param ClusterOperationArn &#91;required&#93; ARN of the cluster operation to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_cluster_operation_v2
+kafka_describe_cluster_operation_v2 <- function(ClusterOperationArn) {
+  op <- new_operation(
+    name = "DescribeClusterOperationV2",
+    http_method = "GET",
+    http_path = "/api/v2/operations/{clusterOperationArn}",
+    paginator = list()
+  )
+  input <- .kafka$describe_cluster_operation_v2_input(ClusterOperationArn = ClusterOperationArn)
+  output <- .kafka$describe_cluster_operation_v2_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_cluster_operation_v2 <- kafka_describe_cluster_operation_v2
+
 #' Returns a description of this MSK configuration
 #'
 #' @description
@@ -621,7 +650,7 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
     name = "ListClusterOperations",
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/operations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterOperationInfoList")
   )
   input <- .kafka$list_cluster_operations_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_cluster_operations_output()
@@ -632,6 +661,38 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
   return(response)
 }
 .kafka$operations$list_cluster_operations <- kafka_list_cluster_operations
+
+#' Returns a list of all the operations that have been performed on the
+#' specified MSK cluster
+#'
+#' @description
+#' Returns a list of all the operations that have been performed on the specified MSK cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_cluster_operations_v2/](https://www.paws-r-sdk.com/docs/kafka_list_cluster_operations_v2/) for full documentation.
+#'
+#' @param ClusterArn &#91;required&#93; The arn of the cluster whose operations are being requested.
+#' @param MaxResults The maxResults of the query.
+#' @param NextToken The nextToken of the query.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_cluster_operations_v2
+kafka_list_cluster_operations_v2 <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListClusterOperationsV2",
+    http_method = "GET",
+    http_path = "/api/v2/clusters/{clusterArn}/operations",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterOperationInfoList")
+  )
+  input <- .kafka$list_cluster_operations_v2_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .kafka$list_cluster_operations_v2_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_cluster_operations_v2 <- kafka_list_cluster_operations_v2
 
 #' Returns a list of all the MSK clusters in the current Region
 #'
@@ -656,7 +717,7 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
     name = "ListClusters",
     http_method = "GET",
     http_path = "/v1/clusters",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList")
   )
   input <- .kafka$list_clusters_input(ClusterNameFilter = ClusterNameFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_clusters_output()
@@ -692,7 +753,7 @@ kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter =
     name = "ListClustersV2",
     http_method = "GET",
     http_path = "/api/v2/clusters",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList")
   )
   input <- .kafka$list_clusters_v2_input(ClusterNameFilter = ClusterNameFilter, ClusterTypeFilter = ClusterTypeFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_clusters_v2_output()
@@ -727,7 +788,7 @@ kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken
     name = "ListConfigurationRevisions",
     http_method = "GET",
     http_path = "/v1/configurations/{arn}/revisions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Revisions")
   )
   input <- .kafka$list_configuration_revisions_input(Arn = Arn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_configuration_revisions_output()
@@ -760,7 +821,7 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListConfigurations",
     http_method = "GET",
     http_path = "/v1/configurations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Configurations")
   )
   input <- .kafka$list_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_configurations_output()
@@ -793,7 +854,7 @@ kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListKafkaVersions",
     http_method = "GET",
     http_path = "/v1/kafka-versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "KafkaVersions")
   )
   input <- .kafka$list_kafka_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_kafka_versions_output()
@@ -827,7 +888,7 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
     name = "ListNodes",
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/nodes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NodeInfoList")
   )
   input <- .kafka$list_nodes_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_nodes_output()
@@ -859,7 +920,7 @@ kafka_list_scram_secrets <- function(ClusterArn, MaxResults = NULL, NextToken = 
     name = "ListScramSecrets",
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/scram-secrets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecretArnList")
   )
   input <- .kafka$list_scram_secrets_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_scram_secrets_output()
@@ -923,7 +984,7 @@ kafka_list_client_vpc_connections <- function(ClusterArn, MaxResults = NULL, Nex
     name = "ListClientVpcConnections",
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/client-vpc-connections",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClientVpcConnections")
   )
   input <- .kafka$list_client_vpc_connections_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_client_vpc_connections_output()
@@ -956,7 +1017,7 @@ kafka_list_vpc_connections <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListVpcConnections",
     http_method = "GET",
     http_path = "/v1/vpc-connections",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VpcConnections")
   )
   input <- .kafka$list_vpc_connections_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_vpc_connections_output()

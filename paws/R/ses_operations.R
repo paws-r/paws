@@ -2512,7 +2512,7 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
     name = "ListCustomVerificationEmailTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ses$list_custom_verification_email_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .ses$list_custom_verification_email_templates_output()
@@ -2586,7 +2586,7 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
     name = "ListIdentities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Identities")
   )
   input <- .ses$list_identities_input(IdentityType = IdentityType, NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_identities_output()
@@ -2925,7 +2925,7 @@ ses_list_verified_email_addresses <- function() {
     name = "ListVerifiedEmailAddresses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "VerifiedEmailAddresses")
   )
   input <- .ses$list_verified_email_addresses_input()
   output <- .ses$list_verified_email_addresses_output()

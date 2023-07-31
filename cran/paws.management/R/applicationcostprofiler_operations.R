@@ -111,7 +111,7 @@ applicationcostprofiler_list_report_definitions <- function(nextToken = NULL, ma
     name = "ListReportDefinitions",
     http_method = "GET",
     http_path = "/reportDefinition",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "reportDefinitions")
   )
   input <- .applicationcostprofiler$list_report_definitions_input(nextToken = nextToken, maxResults = maxResults)
   output <- .applicationcostprofiler$list_report_definitions_output()

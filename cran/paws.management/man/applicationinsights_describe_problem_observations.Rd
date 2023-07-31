@@ -4,10 +4,12 @@
 \alias{applicationinsights_describe_problem_observations}
 \title{Describes the anomalies or errors associated with the problem}
 \usage{
-applicationinsights_describe_problem_observations(ProblemId)
+applicationinsights_describe_problem_observations(ProblemId, AccountId = NULL)
 }
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes the anomalies or errors associated with the problem.

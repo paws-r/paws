@@ -52,6 +52,9 @@ Operations: Contains
 \item Key: AutomationId
 
 Operations: Equals
+\item Key: AccountId
+
+Operations: Equals
 }
 
 *The Equals operator for Title matches the first 100 characters. If you
@@ -70,7 +73,7 @@ next set of results.}
 results.}
 }
 \description{
-Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html}{Set up OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_describe_ops_items/} for full documentation.
 }

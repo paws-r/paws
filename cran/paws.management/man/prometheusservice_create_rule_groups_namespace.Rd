@@ -5,24 +5,24 @@
 \title{Create a rule group namespace}
 \usage{
 prometheusservice_create_rule_groups_namespace(
-  clientToken = NULL,
-  data,
+  workspaceId,
   name,
-  tags = NULL,
-  workspaceId
+  data,
+  clientToken = NULL,
+  tags = NULL
 )
 }
 \arguments{
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
-
-\item{data}{[required] The namespace data that define the rule groups.}
+\item{workspaceId}{[required] The ID of the workspace in which to create the rule group namespace.}
 
 \item{name}{[required] The rule groups namespace name.}
 
-\item{tags}{Optional, user-provided tags for this rule groups namespace.}
+\item{data}{[required] The namespace data that define the rule groups.}
 
-\item{workspaceId}{[required] The ID of the workspace in which to create the rule group namespace.}
+\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
+idempotency of the request.}
+
+\item{tags}{Optional, user-provided tags for this rule groups namespace.}
 }
 \description{
 Create a rule group namespace.

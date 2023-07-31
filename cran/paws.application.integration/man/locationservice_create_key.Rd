@@ -3,8 +3,8 @@
 \name{locationservice_create_key}
 \alias{locationservice_create_key}
 \title{Creates an API key resource in your Amazon Web Services account, which
-lets you grant geo:GetMap* actions for Amazon Location Map resources to
-the API key bearer}
+lets you grant actions for Amazon Location resources to the API key
+bearer}
 \usage{
 locationservice_create_key(
   Description = NULL,
@@ -55,7 +55,7 @@ characters: + - = . _ : / @.
 }}
 }
 \description{
-Creates an API key resource in your Amazon Web Services account, which lets you grant \verb{geo:GetMap*} actions for Amazon Location Map resources to the API key bearer.
+Creates an API key resource in your Amazon Web Services account, which lets you grant actions for Amazon Location resources to the API key bearer.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_create_key/} for full documentation.
 }

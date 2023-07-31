@@ -537,7 +537,7 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
     name = "DescribeStream",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards")
   )
   input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_output()
@@ -1508,7 +1508,7 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
     name = "ListStreamConsumers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .kinesis$list_stream_consumers_input(StreamARN = StreamARN, NextToken = NextToken, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp)
   output <- .kinesis$list_stream_consumers_output()
@@ -1596,7 +1596,7 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, 
     name = "ListStreams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", more_results = "HasMoreStreams", output_token = "NextToken", result_key = list("StreamNames", "StreamSummaries"))
   )
   input <- .kinesis$list_streams_input(Limit = Limit, ExclusiveStartStreamName = ExclusiveStartStreamName, NextToken = NextToken)
   output <- .kinesis$list_streams_output()

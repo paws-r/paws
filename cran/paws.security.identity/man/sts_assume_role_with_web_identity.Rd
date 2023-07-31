@@ -36,7 +36,7 @@ by the identity provider. Your application must get this token by
 authenticating the user who is using your application with a web
 identity provider before the application makes an
 \code{\link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity}}
-call.}
+call. Only tokens with RSA algorithms (RS256) are supported.}
 
 \item{ProviderId}{The fully qualified host component of the domain name of the OAuth 2.0
 identity provider. Do not specify this value for an OpenID Connect

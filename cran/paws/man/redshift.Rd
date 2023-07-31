@@ -4,22 +4,42 @@
 \alias{redshift}
 \title{Amazon Redshift}
 \usage{
-redshift(config = list())
+redshift(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -71,8 +91,20 @@ make up your data warehouse.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -97,6 +129,7 @@ make up your data warehouse.
 \link[paws.database:redshift_create_cluster_security_group]{create_cluster_security_group} \tab Creates a new Amazon Redshift security group\cr
 \link[paws.database:redshift_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a manual snapshot of the specified cluster\cr
 \link[paws.database:redshift_create_cluster_subnet_group]{create_cluster_subnet_group} \tab Creates a new Amazon Redshift subnet group\cr
+\link[paws.database:redshift_create_custom_domain_association]{create_custom_domain_association} \tab Used to create a custom domain name for a cluster\cr
 \link[paws.database:redshift_create_endpoint_access]{create_endpoint_access} \tab Creates a Redshift-managed VPC endpoint\cr
 \link[paws.database:redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
 \link[paws.database:redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
@@ -113,6 +146,7 @@ make up your data warehouse.
 \link[paws.database:redshift_delete_cluster_security_group]{delete_cluster_security_group} \tab Deletes an Amazon Redshift security group\cr
 \link[paws.database:redshift_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Deletes the specified manual snapshot\cr
 \link[paws.database:redshift_delete_cluster_subnet_group]{delete_cluster_subnet_group} \tab Deletes the specified cluster subnet group\cr
+\link[paws.database:redshift_delete_custom_domain_association]{delete_custom_domain_association} \tab Contains information about deleting a custom domain association for a cluster\cr
 \link[paws.database:redshift_delete_endpoint_access]{delete_endpoint_access} \tab Deletes a Redshift-managed VPC endpoint\cr
 \link[paws.database:redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription\cr
 \link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
@@ -134,6 +168,7 @@ make up your data warehouse.
 \link[paws.database:redshift_describe_cluster_subnet_groups]{describe_cluster_subnet_groups} \tab Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups\cr
 \link[paws.database:redshift_describe_cluster_tracks]{describe_cluster_tracks} \tab Returns a list of all the available maintenance tracks\cr
 \link[paws.database:redshift_describe_cluster_versions]{describe_cluster_versions} \tab Returns descriptions of the available Amazon Redshift cluster versions\cr
+\link[paws.database:redshift_describe_custom_domain_associations]{describe_custom_domain_associations} \tab Contains information for custom domain associations for a cluster\cr
 \link[paws.database:redshift_describe_data_shares]{describe_data_shares} \tab Shows the status of any inbound or outbound datashares available in the specified account\cr
 \link[paws.database:redshift_describe_data_shares_for_consumer]{describe_data_shares_for_consumer} \tab Returns a list of datashares where the account identifier being called is a consumer account identifier\cr
 \link[paws.database:redshift_describe_data_shares_for_producer]{describe_data_shares_for_producer} \tab Returns a list of datashares when the account identifier being called is a producer account identifier\cr
@@ -179,6 +214,7 @@ make up your data warehouse.
 \link[paws.database:redshift_modify_cluster_snapshot]{modify_cluster_snapshot} \tab Modifies the settings for a snapshot\cr
 \link[paws.database:redshift_modify_cluster_snapshot_schedule]{modify_cluster_snapshot_schedule} \tab Modifies a snapshot schedule for a cluster\cr
 \link[paws.database:redshift_modify_cluster_subnet_group]{modify_cluster_subnet_group} \tab Modifies a cluster subnet group to include the specified list of VPC subnets\cr
+\link[paws.database:redshift_modify_custom_domain_association]{modify_custom_domain_association} \tab Contains information for changing a custom domain association\cr
 \link[paws.database:redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
 \link[paws.database:redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
 \link[paws.database:redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr

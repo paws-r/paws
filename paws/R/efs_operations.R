@@ -18,13 +18,21 @@ NULL
 #' points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 #' 
 #' If multiple requests to create access points on the same file system are
-#' sent in quick succession, and the file system is near the limit of 1000
+#' sent in quick succession, and the file system is near the limit of 1,000
 #' access points, you may experience a throttling response for these
 #' requests. This is to ensure that the file system does not exceed the
 #' stated access point limit.
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:CreateAccessPoint` action.
+#' 
+#' Access points can be tagged on creation. If tags are specified in the
+#' creation action, IAM performs additional authorization on the
+#' `elasticfilesystem:TagResource` action to verify if users have
+#' permissions to create tags. Therefore, you must grant explicit
+#' permissions to use the `elasticfilesystem:TagResource` action. For more
+#' information, see [Granting permissions to tag resources during
+#' creation](https://docs.aws.amazon.com/efs/latest/ug/using-tags-efs.html#supported-iam-actions-tagging.html).
 #'
 #' @usage
 #' efs_create_access_point(ClientToken, Tags, FileSystemId, PosixUser,
@@ -203,6 +211,14 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:CreateFileSystem` action.
+#' 
+#' File systems can be tagged on creation. If tags are specified in the
+#' creation action, IAM performs additional authorization on the
+#' `elasticfilesystem:TagResource` action to verify if users have
+#' permissions to create tags. Therefore, you must grant explicit
+#' permissions to use the `elasticfilesystem:TagResource` action. For more
+#' information, see [Granting permissions to tag resources during
+#' creation](https://docs.aws.amazon.com/efs/latest/ug/using-tags-efs.html#supported-iam-actions-tagging.html).
 #'
 #' @usage
 #' efs_create_file_system(CreationToken, PerformanceMode, Encrypted,
@@ -1261,7 +1277,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
     name = "DescribeAccessPoints",
     http_method = "GET",
     http_path = "/2015-02-01/access-points",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$describe_access_points_input(MaxResults = MaxResults, NextToken = NextToken, AccessPointId = AccessPointId, FileSystemId = FileSystemId)
   output <- .efs$describe_access_points_output()
@@ -1556,7 +1572,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
     name = "DescribeFileSystems",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems")
   )
   input <- .efs$describe_file_systems_input(MaxItems = MaxItems, Marker = Marker, CreationToken = CreationToken, FileSystemId = FileSystemId)
   output <- .efs$describe_file_systems_output()
@@ -1963,7 +1979,7 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
     name = "DescribeTags",
     http_method = "GET",
     http_path = "/2015-02-01/tags/{FileSystemId}/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems")
   )
   input <- .efs$describe_tags_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId)
   output <- .efs$describe_tags_output()
@@ -2029,7 +2045,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .efs$list_tags_for_resource_output()

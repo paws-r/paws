@@ -22,7 +22,8 @@ cloudformation_create_change_set(
   Description = NULL,
   ChangeSetType = NULL,
   ResourcesToImport = NULL,
-  IncludeNestedStacks = NULL
+  IncludeNestedStacks = NULL,
+  OnStackFailure = NULL
 )
 }
 \arguments{
@@ -191,6 +192,31 @@ type to create a change set for an existing stack.}
 \item{IncludeNestedStacks}{Creates a change set for the all nested stacks specified in the
 template. The default behavior of this action is set to \code{False}. To
 include nested sets in a change set, specify \code{True}.}
+
+\item{OnStackFailure}{Determines what action will be taken if stack creation fails. If this
+parameter is specified, the \code{DisableRollback} parameter to the
+\code{\link[=cloudformation_execute_change_set]{execute_change_set}} API operation
+must not be specified. This must be one of these values:
+\itemize{
+\item \code{DELETE} - Deletes the change set if the stack creation fails. This
+is only valid when the \code{ChangeSetType} parameter is set to \code{CREATE}.
+If the deletion of the stack fails, the status of the stack is
+\code{DELETE_FAILED}.
+\item \code{DO_NOTHING} - if the stack creation fails, do nothing. This is
+equivalent to specifying \code{true} for the \code{DisableRollback} parameter
+to the \code{\link[=cloudformation_execute_change_set]{execute_change_set}} API
+operation.
+\item \code{ROLLBACK} - if the stack creation fails, roll back the stack. This
+is equivalent to specifying \code{false} for the \code{DisableRollback}
+parameter to the
+\code{\link[=cloudformation_execute_change_set]{execute_change_set}} API
+operation.
+}
+
+For nested stacks, when the \code{OnStackFailure} parameter is set to
+\code{DELETE} for the change set for the parent stack, any failure in a child
+stack will cause the parent stack creation to fail and all stacks to be
+deleted.}
 }
 \description{
 Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that CloudFormation will create. If you create a change set for an existing stack, CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack.

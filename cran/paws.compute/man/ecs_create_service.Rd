@@ -266,13 +266,18 @@ your tags per resource limit.
 
 \item{enableECSManagedTags}{Specifies whether to turn on Amazon ECS managed tags for the tasks
 within the service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html}{Tagging your Amazon ECS resources}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+When you use Amazon ECS managed tags, you need to set the
+\code{propagateTags} request parameter.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition to the
 task. If no value is specified, the tags aren't propagated. Tags can
 only be propagated to the task during task creation. To add tags to a
 task after task creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API
-action.}
+action.
+
+The default is \code{NONE}.}
 
 \item{enableExecuteCommand}{Determines whether the execute command functionality is turned on for
 the service. If \code{true}, this enables execute command functionality on

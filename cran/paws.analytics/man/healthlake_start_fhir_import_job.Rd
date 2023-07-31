@@ -21,9 +21,9 @@ request.}
 
 \item{JobOutputDataConfig}{[required]}
 
-\item{DatastoreId}{[required] The AWS-generated Data Store ID.}
+\item{DatastoreId}{[required] The AWS-generated data store ID.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that gives Amazon HealthLake access
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that gives AWS HealthLake access
 permission.}
 
 \item{ClientToken}{[required] Optional user provided token used for ensuring idempotency.}

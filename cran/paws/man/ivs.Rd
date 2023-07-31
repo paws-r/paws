@@ -4,22 +4,42 @@
 \alias{ivs}
 \title{Amazon Interactive Video Service}
 \usage{
-ivs(config = list())
+ivs(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -202,7 +222,7 @@ your data into a single PutMetadata call.) At most 155 requests per
 second per account are allowed.
 }
 
-\strong{PlaybackKeyPair Endpoints}
+\strong{Private Channel Endpoints}
 
 For more information, see \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Setting Up Private Channels}
 in the \emph{Amazon IVS User Guide}.
@@ -222,6 +242,15 @@ summary information about playback key pairs.
 \item \code{delete_playback_key_pair} — Deletes
 a specified authorization key pair. This invalidates future viewer
 tokens generated using the key pair’s \code{privateKey}.
+\item \code{start_viewer_session_revocation}
+— Starts the process of revoking the viewer session associated with
+a specified channel ARN and viewer ID. Optionally, you can provide a
+version to revoke viewer sessions less than and including that
+version.
+\item \code{batch_start_viewer_session_revocation}
+— Performs
+\code{start_viewer_session_revocation}
+on multiple channel ARN and viewer ID pairs simultaneously.
 }
 
 \strong{RecordingConfiguration Endpoints}
@@ -267,8 +296,20 @@ information about Amazon Web Services tags for the specified ARN.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -278,6 +319,7 @@ information about Amazon Web Services tags for the specified ARN.
 \tabular{ll}{
 \link[paws.analytics:ivs_batch_get_channel]{batch_get_channel} \tab Performs GetChannel on multiple ARNs simultaneously\cr
 \link[paws.analytics:ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously\cr
+\link[paws.analytics:ivs_batch_start_viewer_session_revocation]{batch_start_viewer_session_revocation} \tab Performs StartViewerSessionRevocation on multiple channel ARN and viewer ID pairs simultaneously\cr
 \link[paws.analytics:ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming\cr
 \link[paws.analytics:ivs_create_recording_configuration]{create_recording_configuration} \tab Creates a new recording configuration, used to enable recording to Amazon S3\cr
 \link[paws.analytics:ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for the specified channel ARN\cr
@@ -300,6 +342,7 @@ information about Amazon Web Services tags for the specified ARN.
 \link[paws.analytics:ivs_list_stream_sessions]{list_stream_sessions} \tab Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed\cr
 \link[paws.analytics:ivs_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about Amazon Web Services tags for the specified ARN\cr
 \link[paws.analytics:ivs_put_metadata]{put_metadata} \tab Inserts metadata into the active stream of the specified channel\cr
+\link[paws.analytics:ivs_start_viewer_session_revocation]{start_viewer_session_revocation} \tab Starts the process of revoking the viewer session associated with a specified channel ARN and viewer ID\cr
 \link[paws.analytics:ivs_stop_stream]{stop_stream} \tab Disconnects the incoming RTMPS stream for the specified channel\cr
 \link[paws.analytics:ivs_tag_resource]{tag_resource} \tab Adds or updates tags for the Amazon Web Services resource with the specified ARN\cr
 \link[paws.analytics:ivs_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr

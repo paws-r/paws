@@ -38,7 +38,7 @@ optimal recipe by running tests with different values for the
 hyperparameters. AutoML lengthens the training process as compared to
 selecting a specific recipe.}
 
-\item{recipeArn}{The ARN of the recipe to use for model training. Only specified when
+\item{recipeArn}{The ARN of the recipe to use for model training. This is required when
 \code{performAutoML} is false.}
 
 \item{datasetGroupArn}{[required] The Amazon Resource Name (ARN) of the dataset group that provides the

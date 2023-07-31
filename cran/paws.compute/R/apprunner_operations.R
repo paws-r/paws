@@ -576,7 +576,7 @@ apprunner_describe_custom_domains <- function(ServiceArn, NextToken = NULL, MaxR
     name = "DescribeCustomDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$describe_custom_domains_input(ServiceArn = ServiceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .apprunner$describe_custom_domains_output()
@@ -787,7 +787,7 @@ apprunner_list_auto_scaling_configurations <- function(AutoScalingConfigurationN
     name = "ListAutoScalingConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_auto_scaling_configurations_input(AutoScalingConfigurationName = AutoScalingConfigurationName, LatestOnly = LatestOnly, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_auto_scaling_configurations_output()
@@ -829,7 +829,7 @@ apprunner_list_connections <- function(ConnectionName = NULL, MaxResults = NULL,
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_connections_input(ConnectionName = ConnectionName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_connections_output()
@@ -880,7 +880,7 @@ apprunner_list_observability_configurations <- function(ObservabilityConfigurati
     name = "ListObservabilityConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_observability_configurations_input(ObservabilityConfigurationName = ObservabilityConfigurationName, LatestOnly = LatestOnly, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_observability_configurations_output()
@@ -921,7 +921,7 @@ apprunner_list_operations <- function(ServiceArn, NextToken = NULL, MaxResults =
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_operations_input(ServiceArn = ServiceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .apprunner$list_operations_output()
@@ -961,7 +961,7 @@ apprunner_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .apprunner$list_services_output()
@@ -1033,7 +1033,7 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListVpcConnectors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_vpc_connectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_vpc_connectors_output()
@@ -1075,7 +1075,7 @@ apprunner_list_vpc_ingress_connections <- function(Filter = NULL, MaxResults = N
     name = "ListVpcIngressConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .apprunner$list_vpc_ingress_connections_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .apprunner$list_vpc_ingress_connections_output()

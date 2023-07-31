@@ -303,6 +303,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           VoiceTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -555,6 +559,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       VoiceTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
 #'       )
 #'     ),
 #'     TreatmentDescription = "string",
@@ -785,6 +793,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             Version = "string"
 #'           ),
 #'           VoiceTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
 #'           )
@@ -1026,6 +1038,10 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -1757,7 +1773,12 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -1899,6 +1920,9 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )
@@ -2233,7 +2257,12 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -2372,6 +2401,9 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )
@@ -3838,6 +3870,10 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'           VoiceTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -4088,6 +4124,10 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -4445,8 +4485,10 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
 #'     ApplicationId = "string",
 #'     CreationDate = "string",
 #'     Credential = "string",
+#'     DefaultAuthenticationMethod = "string",
 #'     Enabled = TRUE|FALSE,
 #'     HasCredential = TRUE|FALSE,
+#'     HasFcmServiceCredentials = TRUE|FALSE,
 #'     Id = "string",
 #'     IsArchived = TRUE|FALSE,
 #'     LastModifiedBy = "string",
@@ -4907,7 +4949,12 @@ pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -5049,6 +5096,9 @@ pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )
@@ -6376,6 +6426,14 @@ pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NUL
 #'     QuietTime = list(
 #'       End = "string",
 #'       Start = "string"
+#'     ),
+#'     JourneyLimits = list(
+#'       DailyCap = 123,
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     )
 #'   )
 #' )
@@ -6779,6 +6837,10 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'           VoiceTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -7029,6 +7091,10 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -7507,6 +7573,10 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'           VoiceTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -7757,6 +7827,10 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -8048,6 +8122,10 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'               VoiceTemplate = list(
 #'                 Name = "string",
 #'                 Version = "string"
+#'               ),
+#'               InAppTemplate = list(
+#'                 Name = "string",
+#'                 Version = "string"
 #'               )
 #'             ),
 #'             TreatmentDescription = "string",
@@ -8298,6 +8376,10 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'             Version = "string"
 #'           ),
 #'           VoiceTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
 #'           )
@@ -8591,6 +8673,10 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'               VoiceTemplate = list(
 #'                 Name = "string",
 #'                 Version = "string"
+#'               ),
+#'               InAppTemplate = list(
+#'                 Name = "string",
+#'                 Version = "string"
 #'               )
 #'             ),
 #'             TreatmentDescription = "string",
@@ -8841,6 +8927,10 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'             Version = "string"
 #'           ),
 #'           VoiceTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
 #'           )
@@ -9438,8 +9528,10 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'     ApplicationId = "string",
 #'     CreationDate = "string",
 #'     Credential = "string",
+#'     DefaultAuthenticationMethod = "string",
 #'     Enabled = TRUE|FALSE,
 #'     HasCredential = TRUE|FALSE,
+#'     HasFcmServiceCredentials = TRUE|FALSE,
 #'     Id = "string",
 #'     IsArchived = TRUE|FALSE,
 #'     LastModifiedBy = "string",
@@ -10297,7 +10389,12 @@ pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -10439,6 +10536,9 @@ pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )
@@ -13240,7 +13340,12 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'           DailyCap = 123,
 #'           EndpointReentryCap = 123,
 #'           MessagesPerSecond = 123,
-#'           EndpointReentryInterval = "string"
+#'           EndpointReentryInterval = "string",
+#'           TimeframeCap = list(
+#'             Cap = 123,
+#'             Days = 123
+#'           ),
+#'           TotalCap = 123
 #'         ),
 #'         LocalTime = TRUE|FALSE,
 #'         Name = "string",
@@ -13382,6 +13487,9 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'               EndDateTime = "string"
 #'             )
 #'           )
+#'         ),
+#'         TimezoneEstimationMethods = list(
+#'           "PHONE_NUMBER"|"POSTAL_CODE"
 #'         )
 #'       )
 #'     ),
@@ -14191,6 +14299,7 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'         IconReference = "string",
 #'         ImageIconUrl = "string",
 #'         ImageUrl = "string",
+#'         PreferredAuthenticationMethod = "string",
 #'         Priority = "string",
 #'         RawContent = "string",
 #'         RestrictedPackageName = "string",
@@ -14247,6 +14356,10 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -14541,6 +14654,7 @@ pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParame
 #'         IconReference = "string",
 #'         ImageIconUrl = "string",
 #'         ImageUrl = "string",
+#'         PreferredAuthenticationMethod = "string",
 #'         Priority = "string",
 #'         RawContent = "string",
 #'         RestrictedPackageName = "string",
@@ -14597,6 +14711,10 @@ pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParame
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -15143,6 +15261,14 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #'     QuietTime = list(
 #'       End = "string",
 #'       Start = "string"
+#'     ),
+#'     JourneyLimits = list(
+#'       DailyCap = 123,
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     )
 #'   )
 #' )
@@ -15170,6 +15296,14 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #'     QuietTime = list(
 #'       End = "string",
 #'       Start = "string"
+#'     ),
+#'     JourneyLimits = list(
+#'       DailyCap = 123,
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     )
 #'   )
 #' )
@@ -15505,6 +15639,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           VoiceTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
 #'           )
 #'         ),
 #'         TreatmentDescription = "string",
@@ -15757,6 +15895,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       VoiceTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
 #'       )
 #'     ),
 #'     TreatmentDescription = "string",
@@ -15988,6 +16130,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             Version = "string"
 #'           ),
 #'           VoiceTemplate = list(
+#'             Name = "string",
+#'             Version = "string"
+#'           ),
+#'           InAppTemplate = list(
 #'             Name = "string",
 #'             Version = "string"
 #'           )
@@ -16229,6 +16375,10 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         Version = "string"
 #'       ),
 #'       VoiceTemplate = list(
+#'         Name = "string",
+#'         Version = "string"
+#'       ),
+#'       InAppTemplate = list(
 #'         Name = "string",
 #'         Version = "string"
 #'       )
@@ -16666,8 +16816,10 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 #'     ApplicationId = "string",
 #'     CreationDate = "string",
 #'     Credential = "string",
+#'     DefaultAuthenticationMethod = "string",
 #'     Enabled = TRUE|FALSE,
 #'     HasCredential = TRUE|FALSE,
+#'     HasFcmServiceCredentials = TRUE|FALSE,
 #'     Id = "string",
 #'     IsArchived = TRUE|FALSE,
 #'     LastModifiedBy = "string",
@@ -16684,7 +16836,9 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 #'   ApplicationId = "string",
 #'   GCMChannelRequest = list(
 #'     ApiKey = "string",
-#'     Enabled = TRUE|FALSE
+#'     DefaultAuthenticationMethod = "string",
+#'     Enabled = TRUE|FALSE,
+#'     ServiceJson = "string"
 #'   )
 #' )
 #' ```
@@ -17215,7 +17369,12 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -17357,6 +17516,9 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )
@@ -17692,7 +17854,12 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -17831,6 +17998,9 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )
@@ -18203,7 +18373,12 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
 #'       MessagesPerSecond = 123,
-#'       EndpointReentryInterval = "string"
+#'       EndpointReentryInterval = "string",
+#'       TimeframeCap = list(
+#'         Cap = 123,
+#'         Days = 123
+#'       ),
+#'       TotalCap = 123
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -18345,6 +18520,9 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'           EndDateTime = "string"
 #'         )
 #'       )
+#'     ),
+#'     TimezoneEstimationMethods = list(
+#'       "PHONE_NUMBER"|"POSTAL_CODE"
 #'     )
 #'   )
 #' )

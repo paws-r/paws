@@ -558,7 +558,7 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxNumberOfDomains", result_key = "DomainNames")
   )
   input <- .simpledb$list_domains_input(MaxNumberOfDomains = MaxNumberOfDomains, NextToken = NextToken)
   output <- .simpledb$list_domains_output()
@@ -745,7 +745,7 @@ simpledb_select <- function(SelectExpression, NextToken = NULL, ConsistentRead =
     name = "Select",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Items")
   )
   input <- .simpledb$select_input(SelectExpression = SelectExpression, NextToken = NextToken, ConsistentRead = ConsistentRead)
   output <- .simpledb$select_output()

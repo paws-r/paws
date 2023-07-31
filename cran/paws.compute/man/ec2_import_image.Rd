@@ -61,11 +61,7 @@ must also be set.
 The KMS key identifier may be provided in any of the following formats:
 \itemize{
 \item Key ID
-\item Key alias. The alias ARN contains the \code{arn:aws:kms} namespace,
-followed by the Region of the key, the Amazon Web Services account
-ID of the key owner, the \code{alias} namespace, and then the key alias.
-For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
+\item Key alias
 \item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
 followed by the Region of the key, the Amazon Web Services account
 ID of the key owner, the \code{key} namespace, and then the key ID. For
@@ -103,7 +99,9 @@ information, see
 \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image}{Prerequisites}
 in the VM Import/Export User Guide.}
 
-\item{Platform}{The operating system of the virtual machine.
+\item{Platform}{The operating system of the virtual machine. If you import a VM that is
+compatible with Unified Extensible Firmware Interface (UEFI) using an
+EBS snapshot, you must specify a value for the platform.
 
 Valid values: \code{Windows} | \code{Linux}}
 

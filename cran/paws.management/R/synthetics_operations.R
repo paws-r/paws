@@ -263,7 +263,7 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
     name = "DescribeCanaries",
     http_method = "POST",
     http_path = "/canaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$describe_canaries_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_output()
@@ -312,7 +312,7 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
     name = "DescribeCanariesLastRun",
     http_method = "POST",
     http_path = "/canaries/last-run",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_last_run_output()
@@ -348,7 +348,7 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
     name = "DescribeRuntimeVersions",
     http_method = "POST",
     http_path = "/runtime-versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$describe_runtime_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$describe_runtime_versions_output()
@@ -444,7 +444,7 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
     name = "GetCanaryRuns",
     http_method = "POST",
     http_path = "/canary/{name}/runs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$get_canary_runs_input(Name = Name, NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$get_canary_runs_output()
@@ -511,7 +511,7 @@ synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NUL
     name = "ListAssociatedGroups",
     http_method = "POST",
     http_path = "/resource/{resourceArn}/groups",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$list_associated_groups_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .synthetics$list_associated_groups_output()
@@ -549,7 +549,7 @@ synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListGroupResources",
     http_method = "POST",
     http_path = "/group/{groupIdentifier}/resources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$list_group_resources_input(NextToken = NextToken, MaxResults = MaxResults, GroupIdentifier = GroupIdentifier)
   output <- .synthetics$list_group_resources_output()
@@ -584,7 +584,7 @@ synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListGroups",
     http_method = "POST",
     http_path = "/groups",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .synthetics$list_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$list_groups_output()

@@ -9,7 +9,8 @@ ram_disassociate_resource_share(
   resourceShareArn,
   resourceArns = NULL,
   principals = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  sources = NULL
 )
 }
 \arguments{
@@ -55,6 +56,9 @@ random one for you.
 If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
+
+\item{sources}{Specifies from which source accounts the service principal no longer has
+access to the resources in this resource share.}
 }
 \description{
 Removes the specified principals or resources from participating in the specified resource share.

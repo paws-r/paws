@@ -531,7 +531,7 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
     name = "ListAWSDefaultServiceQuotas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
   input <- .servicequotas$list_aws_default_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_aws_default_service_quotas_output()
@@ -609,7 +609,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
     name = "ListRequestedServiceQuotaChangeHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
   input <- .servicequotas$list_requested_service_quota_change_history_input(ServiceCode = ServiceCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_requested_service_quota_change_history_output()
@@ -689,7 +689,7 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
     name = "ListRequestedServiceQuotaChangeHistoryByQuota",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
   input <- .servicequotas$list_requested_service_quota_change_history_by_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_requested_service_quota_change_history_by_quota_output()
@@ -759,7 +759,7 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
     name = "ListServiceQuotaIncreaseRequestsInTemplate",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceQuotaIncreaseRequestInTemplateList")
   )
   input <- .servicequotas$list_service_quota_increase_requests_in_template_input(ServiceCode = ServiceCode, AwsRegion = AwsRegion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_service_quota_increase_requests_in_template_output()
@@ -843,7 +843,7 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
     name = "ListServiceQuotas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
   input <- .servicequotas$list_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_service_quotas_output()
@@ -902,7 +902,7 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Services")
   )
   input <- .servicequotas$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_services_output()

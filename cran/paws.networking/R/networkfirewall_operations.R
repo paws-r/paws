@@ -892,7 +892,7 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
     name = "ListFirewallPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallPolicies")
   )
   input <- .networkfirewall$list_firewall_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewall_policies_output()
@@ -932,7 +932,7 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
     name = "ListFirewalls",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Firewalls")
   )
   input <- .networkfirewall$list_firewalls_input(NextToken = NextToken, VpcIds = VpcIds, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewalls_output()
@@ -977,7 +977,7 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
     name = "ListRuleGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleGroups")
   )
   input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, Type = Type)
   output <- .networkfirewall$list_rule_groups_output()
@@ -1015,7 +1015,7 @@ networkfirewall_list_tls_inspection_configurations <- function(NextToken = NULL,
     name = "ListTLSInspectionConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TLSInspectionConfigurations")
   )
   input <- .networkfirewall$list_tls_inspection_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_tls_inspection_configurations_output()
@@ -1053,7 +1053,7 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .networkfirewall$list_tags_for_resource_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .networkfirewall$list_tags_for_resource_output()

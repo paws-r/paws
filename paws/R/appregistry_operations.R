@@ -799,7 +799,7 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications")
   )
   input <- .appregistry$list_applications_input(nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_applications_output()
@@ -858,7 +858,7 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
     name = "ListAssociatedAttributeGroups",
     http_method = "GET",
     http_path = "/applications/{application}/attribute-groups",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroups")
   )
   input <- .appregistry$list_associated_attribute_groups_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_associated_attribute_groups_output()
@@ -929,7 +929,7 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
     name = "ListAssociatedResources",
     http_method = "GET",
     http_path = "/applications/{application}/resources",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources")
   )
   input <- .appregistry$list_associated_resources_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_associated_resources_output()
@@ -996,7 +996,7 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
     name = "ListAttributeGroups",
     http_method = "GET",
     http_path = "/attribute-groups",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroups")
   )
   input <- .appregistry$list_attribute_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_attribute_groups_output()
@@ -1060,7 +1060,7 @@ appregistry_list_attribute_groups_for_application <- function(application, nextT
     name = "ListAttributeGroupsForApplication",
     http_method = "GET",
     http_path = "/applications/{application}/attribute-group-details",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroupsDetails")
   )
   input <- .appregistry$list_attribute_groups_for_application_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_attribute_groups_for_application_output()

@@ -16,7 +16,7 @@ healthlake_list_fhir_import_jobs(
 }
 \arguments{
 \item{DatastoreId}{[required] This parameter limits the response to the import job with the specified
-Data Store ID.}
+data store ID.}
 
 \item{NextToken}{A pagination token used to identify the next page of results to return
 for a ListFHIRImportJobs query.}

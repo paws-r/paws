@@ -3,6 +3,69 @@
 #' @include applicationinsights_service.R
 NULL
 
+#' Adds a workload to a component
+#'
+#' @description
+#' Adds a workload to a component. Each component can have at most five
+#' workloads.
+#'
+#' @usage
+#' applicationinsights_add_workload(ResourceGroupName, ComponentName,
+#'   WorkloadConfiguration)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped
+#' JSON of the configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   WorkloadConfiguration = list(
+#'     WorkloadName = "string",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'     Configuration = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_workload(
+#'   ResourceGroupName = "string",
+#'   ComponentName = "string",
+#'   WorkloadConfiguration = list(
+#'     WorkloadName = "string",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'     Configuration = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_add_workload
+#'
+#' @aliases applicationinsights_add_workload
+applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, WorkloadConfiguration) {
+  op <- new_operation(
+    name = "AddWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$add_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadConfiguration = WorkloadConfiguration)
+  output <- .applicationinsights$add_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$add_workload <- applicationinsights_add_workload
+
 #' Adds an application that is created from a resource group
 #'
 #' @description
@@ -38,6 +101,7 @@ NULL
 #' ```
 #' list(
 #'   ApplicationInfo = list(
+#'     AccountId = "string",
 #'     ResourceGroupName = "string",
 #'     LifeCycle = "string",
 #'     OpsItemSNSTopicArn = "string",
@@ -357,15 +421,17 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' Describes the application.
 #'
 #' @usage
-#' applicationinsights_describe_application(ResourceGroupName)
+#' applicationinsights_describe_application(ResourceGroupName, AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ApplicationInfo = list(
+#'     AccountId = "string",
 #'     ResourceGroupName = "string",
 #'     LifeCycle = "string",
 #'     OpsItemSNSTopicArn = "string",
@@ -381,7 +447,8 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' @section Request syntax:
 #' ```
 #' svc$describe_application(
-#'   ResourceGroupName = "string"
+#'   ResourceGroupName = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -390,14 +457,14 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' @rdname applicationinsights_describe_application
 #'
 #' @aliases applicationinsights_describe_application
-applicationinsights_describe_application <- function(ResourceGroupName) {
+applicationinsights_describe_application <- function(ResourceGroupName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_application_input(ResourceGroupName = ResourceGroupName)
+  input <- .applicationinsights$describe_application_input(ResourceGroupName = ResourceGroupName, AccountId = AccountId)
   output <- .applicationinsights$describe_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -415,10 +482,12 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' in a component.
 #'
 #' @usage
-#' applicationinsights_describe_component(ResourceGroupName, ComponentName)
+#' applicationinsights_describe_component(ResourceGroupName, ComponentName,
+#'   AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -429,7 +498,7 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #'     ComponentRemarks = "string",
 #'     ResourceType = "string",
 #'     OsType = "WINDOWS"|"LINUX",
-#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
 #'     Monitor = TRUE|FALSE,
 #'     DetectedWorkload = list(
 #'       list(
@@ -447,7 +516,8 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' ```
 #' svc$describe_component(
 #'   ResourceGroupName = "string",
-#'   ComponentName = "string"
+#'   ComponentName = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -456,14 +526,14 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' @rdname applicationinsights_describe_component
 #'
 #' @aliases applicationinsights_describe_component
-applicationinsights_describe_component <- function(ResourceGroupName, ComponentName) {
+applicationinsights_describe_component <- function(ResourceGroupName, ComponentName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeComponent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName)
+  input <- .applicationinsights$describe_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, AccountId = AccountId)
   output <- .applicationinsights$describe_component_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -480,17 +550,18 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #'
 #' @usage
 #' applicationinsights_describe_component_configuration(ResourceGroupName,
-#'   ComponentName)
+#'   ComponentName, AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
 #'   ComponentConfiguration = "string"
 #' )
 #' ```
@@ -499,7 +570,8 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #' ```
 #' svc$describe_component_configuration(
 #'   ResourceGroupName = "string",
-#'   ComponentName = "string"
+#'   ComponentName = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -508,14 +580,14 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #' @rdname applicationinsights_describe_component_configuration
 #'
 #' @aliases applicationinsights_describe_component_configuration
-applicationinsights_describe_component_configuration <- function(ResourceGroupName, ComponentName) {
+applicationinsights_describe_component_configuration <- function(ResourceGroupName, ComponentName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeComponentConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName)
+  input <- .applicationinsights$describe_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, AccountId = AccountId)
   output <- .applicationinsights$describe_component_configuration_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -532,11 +604,12 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #'
 #' @usage
 #' applicationinsights_describe_component_configuration_recommendation(
-#'   ResourceGroupName, ComponentName, Tier)
+#'   ResourceGroupName, ComponentName, Tier, RecommendationType)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Tier &#91;required&#93; The tier of the application component.
+#' @param RecommendationType The recommended configuration type.
 #'
 #' @return
 #' A list with the following syntax:
@@ -551,7 +624,8 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' svc$describe_component_configuration_recommendation(
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'   RecommendationType = "INFRA_ONLY"|"WORKLOAD_ONLY"|"ALL"
 #' )
 #' ```
 #'
@@ -560,14 +634,14 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @rdname applicationinsights_descri_compon_config_recomm
 #'
 #' @aliases applicationinsights_describe_component_configuration_recommendation
-applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier) {
+applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier, RecommendationType = NULL) {
   op <- new_operation(
     name = "DescribeComponentConfigurationRecommendation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier)
+  input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier, RecommendationType = RecommendationType)
   output <- .applicationinsights$describe_component_configuration_recommendation_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -584,17 +658,19 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #'
 #' @usage
 #' applicationinsights_describe_log_pattern(ResourceGroupName,
-#'   PatternSetName, PatternName)
+#'   PatternSetName, PatternName, AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ResourceGroupName = "string",
+#'   AccountId = "string",
 #'   LogPattern = list(
 #'     PatternSetName = "string",
 #'     PatternName = "string",
@@ -609,7 +685,8 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' svc$describe_log_pattern(
 #'   ResourceGroupName = "string",
 #'   PatternSetName = "string",
-#'   PatternName = "string"
+#'   PatternName = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -618,14 +695,14 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' @rdname applicationinsights_describe_log_pattern
 #'
 #' @aliases applicationinsights_describe_log_pattern
-applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName) {
+applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeLogPattern",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName)
+  input <- .applicationinsights$describe_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, AccountId = AccountId)
   output <- .applicationinsights$describe_log_pattern_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -641,9 +718,10 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' Describes an anomaly or error with the application.
 #'
 #' @usage
-#' applicationinsights_describe_observation(ObservationId)
+#' applicationinsights_describe_observation(ObservationId, AccountId)
 #'
 #' @param ObservationId &#91;required&#93; The ID of the observation.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -708,7 +786,8 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' @section Request syntax:
 #' ```
 #' svc$describe_observation(
-#'   ObservationId = "string"
+#'   ObservationId = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -717,14 +796,14 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' @rdname applicationinsights_describe_observation
 #'
 #' @aliases applicationinsights_describe_observation
-applicationinsights_describe_observation <- function(ObservationId) {
+applicationinsights_describe_observation <- function(ObservationId, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeObservation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_observation_input(ObservationId = ObservationId)
+  input <- .applicationinsights$describe_observation_input(ObservationId = ObservationId, AccountId = AccountId)
   output <- .applicationinsights$describe_observation_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -740,9 +819,11 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #' Describes an application problem.
 #'
 #' @usage
-#' applicationinsights_describe_problem(ProblemId)
+#' applicationinsights_describe_problem(ProblemId, AccountId)
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
+#' @param AccountId The AWS account ID for the owner of the resource group affected by the
+#' problem.
 #'
 #' @return
 #' A list with the following syntax:
@@ -752,7 +833,7 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #'     Id = "string",
 #'     Title = "string",
 #'     Insights = "string",
-#'     Status = "IGNORE"|"RESOLVED"|"PENDING"|"RECURRING",
+#'     Status = "IGNORE"|"RESOLVED"|"PENDING"|"RECURRING"|"RECOVERING",
 #'     AffectedResource = "string",
 #'     StartTime = as.POSIXct(
 #'       "2015-01-01"
@@ -761,6 +842,7 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #'       "2015-01-01"
 #'     ),
 #'     SeverityLevel = "Informative"|"Low"|"Medium"|"High",
+#'     AccountId = "string",
 #'     ResourceGroupName = "string",
 #'     Feedback = list(
 #'       "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
@@ -768,7 +850,9 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #'     RecurringCount = 123,
 #'     LastRecurrenceTime = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     Visibility = "IGNORED"|"VISIBLE",
+#'     ResolutionMethod = "MANUAL"|"AUTOMATIC"|"UNRESOLVED"
 #'   )
 #' )
 #' ```
@@ -776,7 +860,8 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_problem(
-#'   ProblemId = "string"
+#'   ProblemId = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -785,14 +870,14 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #' @rdname applicationinsights_describe_problem
 #'
 #' @aliases applicationinsights_describe_problem
-applicationinsights_describe_problem <- function(ProblemId) {
+applicationinsights_describe_problem <- function(ProblemId, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeProblem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_problem_input(ProblemId = ProblemId)
+  input <- .applicationinsights$describe_problem_input(ProblemId = ProblemId, AccountId = AccountId)
   output <- .applicationinsights$describe_problem_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -808,9 +893,10 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' Describes the anomalies or errors associated with the problem.
 #'
 #' @usage
-#' applicationinsights_describe_problem_observations(ProblemId)
+#' applicationinsights_describe_problem_observations(ProblemId, AccountId)
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -879,7 +965,8 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_problem_observations(
-#'   ProblemId = "string"
+#'   ProblemId = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -888,14 +975,14 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' @rdname applicationinsights_describe_problem_observations
 #'
 #' @aliases applicationinsights_describe_problem_observations
-applicationinsights_describe_problem_observations <- function(ProblemId) {
+applicationinsights_describe_problem_observations <- function(ProblemId, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeProblemObservations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_problem_observations_input(ProblemId = ProblemId)
+  input <- .applicationinsights$describe_problem_observations_input(ProblemId = ProblemId, AccountId = AccountId)
   output <- .applicationinsights$describe_problem_observations_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -905,18 +992,79 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 }
 .applicationinsights$operations$describe_problem_observations <- applicationinsights_describe_problem_observations
 
+#' Describes a workload and its configuration
+#'
+#' @description
+#' Describes a workload and its configuration.
+#'
+#' @usage
+#' applicationinsights_describe_workload(ResourceGroupName, ComponentName,
+#'   WorkloadId, AccountId)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadId &#91;required&#93; The ID of the workload.
+#' @param AccountId The AWS account ID for the workload owner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   WorkloadRemarks = "string",
+#'   WorkloadConfiguration = list(
+#'     WorkloadName = "string",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'     Configuration = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workload(
+#'   ResourceGroupName = "string",
+#'   ComponentName = "string",
+#'   WorkloadId = "string",
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_describe_workload
+#'
+#' @aliases applicationinsights_describe_workload
+applicationinsights_describe_workload <- function(ResourceGroupName, ComponentName, WorkloadId, AccountId = NULL) {
+  op <- new_operation(
+    name = "DescribeWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$describe_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId, AccountId = AccountId)
+  output <- .applicationinsights$describe_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$describe_workload <- applicationinsights_describe_workload
+
 #' Lists the IDs of the applications that you are monitoring
 #'
 #' @description
 #' Lists the IDs of the applications that you are monitoring.
 #'
 #' @usage
-#' applicationinsights_list_applications(MaxResults, NextToken)
+#' applicationinsights_list_applications(MaxResults, NextToken, AccountId)
 #'
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -924,6 +1072,7 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #' list(
 #'   ApplicationInfoList = list(
 #'     list(
+#'       AccountId = "string",
 #'       ResourceGroupName = "string",
 #'       LifeCycle = "string",
 #'       OpsItemSNSTopicArn = "string",
@@ -942,7 +1091,8 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #' ```
 #' svc$list_applications(
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -951,14 +1101,14 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #' @rdname applicationinsights_list_applications
 #'
 #' @aliases applicationinsights_list_applications
-applicationinsights_list_applications <- function(MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_applications <- function(MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_applications_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -977,13 +1127,14 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #'
 #' @usage
 #' applicationinsights_list_components(ResourceGroupName, MaxResults,
-#'   NextToken)
+#'   NextToken, AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -995,7 +1146,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #'       ComponentRemarks = "string",
 #'       ResourceType = "string",
 #'       OsType = "WINDOWS"|"LINUX",
-#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
+#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
 #'       Monitor = TRUE|FALSE,
 #'       DetectedWorkload = list(
 #'         list(
@@ -1013,7 +1164,8 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' svc$list_components(
 #'   ResourceGroupName = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -1022,14 +1174,14 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' @rdname applicationinsights_list_components
 #'
 #' @aliases applicationinsights_list_components
-applicationinsights_list_components <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_components <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListComponents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_components_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1057,7 +1209,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #'
 #' @usage
 #' applicationinsights_list_configuration_history(ResourceGroupName,
-#'   StartTime, EndTime, EventStatus, MaxResults, NextToken)
+#'   StartTime, EndTime, EventStatus, MaxResults, NextToken, AccountId)
 #'
 #' @param ResourceGroupName Resource group to which the application belongs.
 #' @param StartTime The start time of the event.
@@ -1082,6 +1234,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `NextToken` value. This value is `null` when
 #' there are no more results to return.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1089,6 +1242,8 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' list(
 #'   EventList = list(
 #'     list(
+#'       ResourceGroupName = "string",
+#'       AccountId = "string",
 #'       MonitoredResourceARN = "string",
 #'       EventStatus = "INFO"|"WARN"|"ERROR",
 #'       EventResourceType = "CLOUDWATCH_ALARM"|"CLOUDWATCH_LOG"|"CLOUDFORMATION"|"SSM_ASSOCIATION",
@@ -1115,7 +1270,8 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #'   ),
 #'   EventStatus = "INFO"|"WARN"|"ERROR",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -1124,14 +1280,14 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' @rdname applicationinsights_list_configuration_history
 #'
 #' @aliases applicationinsights_list_configuration_history
-applicationinsights_list_configuration_history <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_configuration_history <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListConfigurationHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_configuration_history_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1148,19 +1304,21 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #'
 #' @usage
 #' applicationinsights_list_log_pattern_sets(ResourceGroupName, MaxResults,
-#'   NextToken)
+#'   NextToken, AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ResourceGroupName = "string",
+#'   AccountId = "string",
 #'   LogPatternSets = list(
 #'     "string"
 #'   ),
@@ -1173,7 +1331,8 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' svc$list_log_pattern_sets(
 #'   ResourceGroupName = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -1182,14 +1341,14 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' @rdname applicationinsights_list_log_pattern_sets
 #'
 #' @aliases applicationinsights_list_log_pattern_sets
-applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListLogPatternSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_log_pattern_sets_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1206,7 +1365,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #'
 #' @usage
 #' applicationinsights_list_log_patterns(ResourceGroupName, PatternSetName,
-#'   MaxResults, NextToken)
+#'   MaxResults, NextToken, AccountId)
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName The name of the log pattern set.
@@ -1214,12 +1373,14 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   ResourceGroupName = "string",
+#'   AccountId = "string",
 #'   LogPatterns = list(
 #'     list(
 #'       PatternSetName = "string",
@@ -1238,7 +1399,8 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #'   ResourceGroupName = "string",
 #'   PatternSetName = "string",
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
@@ -1247,14 +1409,14 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' @rdname applicationinsights_list_log_patterns
 #'
 #' @aliases applicationinsights_list_log_patterns
-applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetName = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetName = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListLogPatterns",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_log_patterns_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1270,9 +1432,10 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' Lists the problems with your application.
 #'
 #' @usage
-#' applicationinsights_list_problems(ResourceGroupName, StartTime, EndTime,
-#'   MaxResults, NextToken, ComponentName)
+#' applicationinsights_list_problems(AccountId, ResourceGroupName,
+#'   StartTime, EndTime, MaxResults, NextToken, ComponentName, Visibility)
 #'
+#' @param AccountId The AWS account ID for the resource group owner.
 #' @param ResourceGroupName The name of the resource group.
 #' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
 #' specify a time frame for the request, problems within the past seven
@@ -1284,6 +1447,8 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' value.
 #' @param NextToken The token to request the next page of results.
 #' @param ComponentName The name of the component.
+#' @param Visibility Specifies whether or not you can view the problem. If not specified,
+#' visible and ignored problems are returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1294,7 +1459,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'       Id = "string",
 #'       Title = "string",
 #'       Insights = "string",
-#'       Status = "IGNORE"|"RESOLVED"|"PENDING"|"RECURRING",
+#'       Status = "IGNORE"|"RESOLVED"|"PENDING"|"RECURRING"|"RECOVERING",
 #'       AffectedResource = "string",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1303,6 +1468,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'         "2015-01-01"
 #'       ),
 #'       SeverityLevel = "Informative"|"Low"|"Medium"|"High",
+#'       AccountId = "string",
 #'       ResourceGroupName = "string",
 #'       Feedback = list(
 #'         "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
@@ -1310,17 +1476,21 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'       RecurringCount = 123,
 #'       LastRecurrenceTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       Visibility = "IGNORED"|"VISIBLE",
+#'       ResolutionMethod = "MANUAL"|"AUTOMATIC"|"UNRESOLVED"
 #'     )
 #'   ),
 #'   NextToken = "string",
-#'   ResourceGroupName = "string"
+#'   ResourceGroupName = "string",
+#'   AccountId = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_problems(
+#'   AccountId = "string",
 #'   ResourceGroupName = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1330,7 +1500,8 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'   ),
 #'   MaxResults = 123,
 #'   NextToken = "string",
-#'   ComponentName = "string"
+#'   ComponentName = "string",
+#'   Visibility = "IGNORED"|"VISIBLE"
 #' )
 #' ```
 #'
@@ -1339,14 +1510,14 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' @rdname applicationinsights_list_problems
 #'
 #' @aliases applicationinsights_list_problems
-applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL) {
+applicationinsights_list_problems <- function(AccountId = NULL, ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL, Visibility = NULL) {
   op <- new_operation(
     name = "ListProblems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_problems_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName)
+  input <- .applicationinsights$list_problems_input(AccountId = AccountId, ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName, Visibility = Visibility)
   output <- .applicationinsights$list_problems_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1414,6 +1585,120 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
   return(response)
 }
 .applicationinsights$operations$list_tags_for_resource <- applicationinsights_list_tags_for_resource
+
+#' Lists the workloads that are configured on a given component
+#'
+#' @description
+#' Lists the workloads that are configured on a given component.
+#'
+#' @usage
+#' applicationinsights_list_workloads(ResourceGroupName, ComponentName,
+#'   MaxResults, NextToken, AccountId)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `NextToken`
+#' value.
+#' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID of the owner of the workload.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadList = list(
+#'     list(
+#'       WorkloadId = "string",
+#'       ComponentName = "string",
+#'       WorkloadName = "string",
+#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'       WorkloadRemarks = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workloads(
+#'   ResourceGroupName = "string",
+#'   ComponentName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_list_workloads
+#'
+#' @aliases applicationinsights_list_workloads
+applicationinsights_list_workloads <- function(ResourceGroupName, ComponentName, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
+  op <- new_operation(
+    name = "ListWorkloads",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .applicationinsights$list_workloads_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
+  output <- .applicationinsights$list_workloads_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$list_workloads <- applicationinsights_list_workloads
+
+#' Remove workload from a component
+#'
+#' @description
+#' Remove workload from a component.
+#'
+#' @usage
+#' applicationinsights_remove_workload(ResourceGroupName, ComponentName,
+#'   WorkloadId)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadId &#91;required&#93; The ID of the workload.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_workload(
+#'   ResourceGroupName = "string",
+#'   ComponentName = "string",
+#'   WorkloadId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_remove_workload
+#'
+#' @aliases applicationinsights_remove_workload
+applicationinsights_remove_workload <- function(ResourceGroupName, ComponentName, WorkloadId) {
+  op <- new_operation(
+    name = "RemoveWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$remove_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId)
+  output <- .applicationinsights$remove_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$remove_workload <- applicationinsights_remove_workload
 
 #' Add one or more tags (keys and values) to a specified application
 #'
@@ -1558,6 +1843,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' ```
 #' list(
 #'   ApplicationInfo = list(
+#'     AccountId = "string",
 #'     ResourceGroupName = "string",
 #'     LifeCycle = "string",
 #'     OpsItemSNSTopicArn = "string",
@@ -1694,7 +1980,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY",
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
 #'   ComponentConfiguration = "string",
 #'   AutoConfigEnabled = TRUE|FALSE
 #' )
@@ -1794,3 +2080,120 @@ applicationinsights_update_log_pattern <- function(ResourceGroupName, PatternSet
   return(response)
 }
 .applicationinsights$operations$update_log_pattern <- applicationinsights_update_log_pattern
+
+#' Updates the visibility of the problem or specifies the problem as
+#' RESOLVED
+#'
+#' @description
+#' Updates the visibility of the problem or specifies the problem as
+#' `RESOLVED`.
+#'
+#' @usage
+#' applicationinsights_update_problem(ProblemId, UpdateStatus, Visibility)
+#'
+#' @param ProblemId &#91;required&#93; The ID of the problem.
+#' @param UpdateStatus The status of the problem. Arguments can be passed for only problems
+#' that show a status of `RECOVERING`.
+#' @param Visibility The visibility of a problem. When you pass a value of `IGNORED`, the
+#' problem is removed from the default view, and all notifications for the
+#' problem are suspended. When `VISIBLE` is passed, the `IGNORED` action is
+#' reversed.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_problem(
+#'   ProblemId = "string",
+#'   UpdateStatus = "RESOLVED",
+#'   Visibility = "IGNORED"|"VISIBLE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_update_problem
+#'
+#' @aliases applicationinsights_update_problem
+applicationinsights_update_problem <- function(ProblemId, UpdateStatus = NULL, Visibility = NULL) {
+  op <- new_operation(
+    name = "UpdateProblem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$update_problem_input(ProblemId = ProblemId, UpdateStatus = UpdateStatus, Visibility = Visibility)
+  output <- .applicationinsights$update_problem_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$update_problem <- applicationinsights_update_problem
+
+#' Adds a workload to a component
+#'
+#' @description
+#' Adds a workload to a component. Each component can have at most five
+#' workloads.
+#'
+#' @usage
+#' applicationinsights_update_workload(ResourceGroupName, ComponentName,
+#'   WorkloadId, WorkloadConfiguration)
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadId The ID of the workload.
+#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped
+#' JSON of the configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   WorkloadId = "string",
+#'   WorkloadConfiguration = list(
+#'     WorkloadName = "string",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'     Configuration = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workload(
+#'   ResourceGroupName = "string",
+#'   ComponentName = "string",
+#'   WorkloadId = "string",
+#'   WorkloadConfiguration = list(
+#'     WorkloadName = "string",
+#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"|"SAP_HANA_MULTI_NODE"|"SAP_HANA_SINGLE_NODE"|"SAP_HANA_HIGH_AVAILABILITY"|"SQL_SERVER_FAILOVER_CLUSTER_INSTANCE"|"SHAREPOINT"|"ACTIVE_DIRECTORY"|"SAP_NETWEAVER_STANDARD"|"SAP_NETWEAVER_DISTRIBUTED"|"SAP_NETWEAVER_HIGH_AVAILABILITY",
+#'     Configuration = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_update_workload
+#'
+#' @aliases applicationinsights_update_workload
+applicationinsights_update_workload <- function(ResourceGroupName, ComponentName, WorkloadId = NULL, WorkloadConfiguration) {
+  op <- new_operation(
+    name = "UpdateWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$update_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId, WorkloadConfiguration = WorkloadConfiguration)
+  output <- .applicationinsights$update_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$update_workload <- applicationinsights_update_workload

@@ -1291,7 +1291,7 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
     name = "DescribeInstanceHealth",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "InstanceStates")
   )
   input <- .elb$describe_instance_health_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$describe_instance_health_output()
@@ -1451,7 +1451,7 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
     name = "DescribeLoadBalancerPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "PolicyDescriptions")
   )
   input <- .elb$describe_load_balancer_policies_input(LoadBalancerName = LoadBalancerName, PolicyNames = PolicyNames)
   output <- .elb$describe_load_balancer_policies_output()
@@ -1541,7 +1541,7 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
     name = "DescribeLoadBalancerPolicyTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "PolicyTypeDescriptions")
   )
   input <- .elb$describe_load_balancer_policy_types_input(PolicyTypeNames = PolicyTypeNames)
   output <- .elb$describe_load_balancer_policy_types_output()
@@ -1684,7 +1684,7 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
     name = "DescribeLoadBalancers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions")
   )
   input <- .elb$describe_load_balancers_input(LoadBalancerNames = LoadBalancerNames, Marker = Marker, PageSize = PageSize)
   output <- .elb$describe_load_balancers_output()

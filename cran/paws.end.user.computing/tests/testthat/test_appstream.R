@@ -1,5 +1,21 @@
 svc <- paws::appstream()
 
+test_that("describe_app_block_builder_app_block_associations", {
+  expect_error(svc$describe_app_block_builder_app_block_associations(), NA)
+})
+
+test_that("describe_app_block_builder_app_block_associations", {
+  expect_error(svc$describe_app_block_builder_app_block_associations(MaxResults = 20), NA)
+})
+
+test_that("describe_app_block_builders", {
+  expect_error(svc$describe_app_block_builders(), NA)
+})
+
+test_that("describe_app_block_builders", {
+  expect_error(svc$describe_app_block_builders(MaxResults = 20), NA)
+})
+
 test_that("describe_app_blocks", {
   expect_error(svc$describe_app_blocks(), NA)
 })

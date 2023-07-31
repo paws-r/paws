@@ -3318,7 +3318,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
     name = "DescribeConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "connections")
   )
   input <- .directconnect$describe_connections_input(connectionId = connectionId)
   output <- .directconnect$describe_connections_output()
@@ -3411,7 +3411,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
     name = "DescribeConnectionsOnInterconnect",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "connections")
   )
   input <- .directconnect$describe_connections_on_interconnect_input(interconnectId = interconnectId)
   output <- .directconnect$describe_connections_on_interconnect_output()
@@ -4042,7 +4042,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
     name = "DescribeInterconnects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "interconnects")
   )
   input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId)
   output <- .directconnect$describe_interconnects_output()
@@ -4289,7 +4289,7 @@ directconnect_describe_locations <- function() {
     name = "DescribeLocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "locations")
   )
   input <- .directconnect$describe_locations_input()
   output <- .directconnect$describe_locations_output()
@@ -4463,7 +4463,7 @@ directconnect_describe_virtual_gateways <- function() {
     name = "DescribeVirtualGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "virtualGateways")
   )
   input <- .directconnect$describe_virtual_gateways_input()
   output <- .directconnect$describe_virtual_gateways_output()
@@ -4572,7 +4572,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     name = "DescribeVirtualInterfaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "virtualInterfaces")
   )
   input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$describe_virtual_interfaces_output()

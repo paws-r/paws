@@ -23,7 +23,7 @@ currently supported, but will be implemented in a future update.}
 \item{Name}{[required] The billing group name. The names must be unique.}
 
 \item{AccountGrouping}{[required] The set of accounts that will be under the billing group. The set of
-accounts resemble the linked accounts in a consolidated family.}
+accounts resemble the linked accounts in a consolidated billing family.}
 
 \item{ComputationPreference}{[required] The preferences and settings that will be used to compute the Amazon Web
 Services charges for a billing group.}

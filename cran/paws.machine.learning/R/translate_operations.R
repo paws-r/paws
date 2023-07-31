@@ -265,7 +265,7 @@ translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NUL
     name = "ListLanguages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_languages_input(DisplayLanguageCode = DisplayLanguageCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_languages_output()
@@ -296,7 +296,7 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListParallelData",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_parallel_data_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_parallel_data_output()
@@ -357,7 +357,7 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListTerminologies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_terminologies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_terminologies_output()
@@ -391,7 +391,7 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
     name = "ListTextTranslationJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .translate$list_text_translation_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_text_translation_jobs_output()

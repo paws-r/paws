@@ -36,6 +36,10 @@ rds_create_db_instance_read_replica(
   DeletionProtection = NULL,
   Domain = NULL,
   DomainIAMRoleName = NULL,
+  DomainFqdn = NULL,
+  DomainOu = NULL,
+  DomainAuthSecretArn = NULL,
+  DomainDnsIps = NULL,
   ReplicaMode = NULL,
   MaxAllocatedStorage = NULL,
   CustomIamInstanceProfile = NULL,
@@ -413,6 +417,44 @@ This setting doesn't apply to RDS Custom.}
 Directory Service.
 
 This setting doesn't apply to RDS Custom.}
+
+\item{DomainFqdn}{The fully qualified domain name (FQDN) of an Active Directory domain.
+
+Constraints:
+\itemize{
+\item Can't be longer than 64 characters.
+}
+
+Example: \code{mymanagedADtest.mymanagedAD.mydomain}}
+
+\item{DomainOu}{The Active Directory organizational unit for your DB instance to join.
+
+Constraints:
+\itemize{
+\item Must be in the distinguished name format.
+\item Can't be longer than 64 characters.
+}
+
+Example:
+\verb{OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain}}
+
+\item{DomainAuthSecretArn}{The ARN for the Secrets Manager secret with the credentials for the user
+joining the domain.
+
+Example:
+\code{arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456}}
+
+\item{DomainDnsIps}{The IPv4 DNS IP addresses of your primary and secondary Active Directory
+domain controllers.
+
+Constraints:
+\itemize{
+\item Two IP addresses must be provided. If there isn't a secondary domain
+controller, use the IP address of the primary domain controller for
+both entries in the list.
+}
+
+Example: \verb{123.124.125.126,234.235.236.237}}
 
 \item{ReplicaMode}{The open mode of the replica database: mounted or read-only.
 

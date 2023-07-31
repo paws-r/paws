@@ -2,8 +2,8 @@
 % Please edit documentation in R/comprehendmedical_operations.R
 \name{comprehendmedical_list_phi_detection_jobs}
 \alias{comprehendmedical_list_phi_detection_jobs}
-\title{Gets a list of protected health information (PHI) detection jobs that
-you have submitted}
+\title{Gets a list of protected health information (PHI) detection jobs you
+have submitted}
 \usage{
 comprehendmedical_list_phi_detection_jobs(
   Filter = NULL,
@@ -22,7 +22,7 @@ only set one filter at a time.}
 100.}
 }
 \description{
-Gets a list of protected health information (PHI) detection jobs that you have submitted.
+Gets a list of protected health information (PHI) detection jobs you have submitted.
 
 See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_list_phi_detection_jobs/} for full documentation.
 }

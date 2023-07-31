@@ -30,9 +30,12 @@ letters, numbers, hyphens (-), and underscores (_).}
 \item{jobQueue}{[required] The job queue where the job is submitted. You can specify either the
 name or the Amazon Resource Name (ARN) of the queue.}
 
-\item{shareIdentifier}{The share identifier for the job. If the job queue doesn't have a
-scheduling policy, then this parameter must not be specified. If the job
-queue has a scheduling policy, then this parameter must be specified.}
+\item{shareIdentifier}{The share identifier for the job. Don't specify this parameter if the
+job queue doesn't have a scheduling policy. If the job queue has a
+scheduling policy, then this parameter must be specified.
+
+This string is limited to 255 alphanumeric characters, and can be
+followed by an asterisk (*).}
 
 \item{schedulingPriorityOverride}{The scheduling priority for the job. This only affects jobs in job
 queues with a fair share policy. Jobs with a higher scheduling priority

@@ -57,10 +57,9 @@ The JSON specified in \code{policyDocument} can be up to 30,720 characters.}
 \item{policyType}{[required] Currently the only valid value for this parameter is
 \code{DATA_PROTECTION_POLICY}.}
 
-\item{scope}{Currently the only valid value for this parameter is \code{GLOBAL}, which
+\item{scope}{Currently the only valid value for this parameter is \code{ALL}, which
 specifies that the data protection policy applies to all log groups in
-the account. If you omit this parameter, the default of \code{GLOBAL} is
-used.}
+the account. If you omit this parameter, the default of \code{ALL} is used.}
 }
 \description{
 Creates an account-level data protection policy that applies to all log groups in the account. A data protection policy can help safeguard sensitive data that's ingested by your log groups by auditing and masking the sensitive log data. Each account can have only one account-level policy.

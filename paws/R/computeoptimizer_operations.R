@@ -169,7 +169,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
     name = "DescribeRecommendationExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationExportJobs")
   )
   input <- .computeoptimizer$describe_recommendation_export_jobs_input(jobIds = jobIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$describe_recommendation_export_jobs_output()
@@ -1872,7 +1872,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
     name = "GetEnrollmentStatusesForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountEnrollmentStatuses")
   )
   input <- .computeoptimizer$get_enrollment_statuses_for_organization_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_enrollment_statuses_for_organization_output()
@@ -2018,7 +2018,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
     name = "GetLambdaFunctionRecommendations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lambdaFunctionRecommendations")
   )
   input <- .computeoptimizer$get_lambda_function_recommendations_input(functionArns = functionArns, accountIds = accountIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_lambda_function_recommendations_output()
@@ -2120,7 +2120,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
     name = "GetRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationPreferencesDetails")
   )
   input <- .computeoptimizer$get_recommendation_preferences_input(resourceType = resourceType, scope = scope, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_preferences_output()
@@ -2244,7 +2244,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
     name = "GetRecommendationSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries")
   )
   input <- .computeoptimizer$get_recommendation_summaries_input(accountIds = accountIds, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_summaries_output()

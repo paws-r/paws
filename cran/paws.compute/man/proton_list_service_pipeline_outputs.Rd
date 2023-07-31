@@ -4,9 +4,15 @@
 \alias{proton_list_service_pipeline_outputs}
 \title{Get a list of service pipeline Infrastructure as Code (IaC) outputs}
 \usage{
-proton_list_service_pipeline_outputs(nextToken = NULL, serviceName)
+proton_list_service_pipeline_outputs(
+  deploymentId = NULL,
+  nextToken = NULL,
+  serviceName
+)
 }
 \arguments{
+\item{deploymentId}{The ID of the deployment you want the outputs for.}
+
 \item{nextToken}{A token that indicates the location of the next output in the array of
 outputs, after the list of outputs that was previously requested.}
 

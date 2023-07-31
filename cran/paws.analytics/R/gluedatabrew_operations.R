@@ -734,7 +734,7 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDatasets",
     http_method = "GET",
     http_path = "/datasets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets")
   )
   input <- .gluedatabrew$list_datasets_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_datasets_output()
@@ -766,7 +766,7 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/jobs/{name}/jobRuns",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobRuns")
   )
   input <- .gluedatabrew$list_job_runs_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_job_runs_output()
@@ -803,7 +803,7 @@ gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextTo
     name = "ListJobs",
     http_method = "GET",
     http_path = "/jobs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Jobs")
   )
   input <- .gluedatabrew$list_jobs_input(DatasetName = DatasetName, MaxResults = MaxResults, NextToken = NextToken, ProjectName = ProjectName)
   output <- .gluedatabrew$list_jobs_output()
@@ -834,7 +834,7 @@ gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListProjects",
     http_method = "GET",
     http_path = "/projects",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Projects")
   )
   input <- .gluedatabrew$list_projects_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .gluedatabrew$list_projects_output()
@@ -867,7 +867,7 @@ gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NUL
     name = "ListRecipeVersions",
     http_method = "GET",
     http_path = "/recipeVersions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Recipes")
   )
   input <- .gluedatabrew$list_recipe_versions_input(MaxResults = MaxResults, NextToken = NextToken, Name = Name)
   output <- .gluedatabrew$list_recipe_versions_output()
@@ -904,7 +904,7 @@ gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, Recip
     name = "ListRecipes",
     http_method = "GET",
     http_path = "/recipes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Recipes")
   )
   input <- .gluedatabrew$list_recipes_input(MaxResults = MaxResults, NextToken = NextToken, RecipeVersion = RecipeVersion)
   output <- .gluedatabrew$list_recipes_output()
@@ -941,7 +941,7 @@ gluedatabrew_list_rulesets <- function(TargetArn = NULL, MaxResults = NULL, Next
     name = "ListRulesets",
     http_method = "GET",
     http_path = "/rulesets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Rulesets")
   )
   input <- .gluedatabrew$list_rulesets_input(TargetArn = TargetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_rulesets_output()
@@ -973,7 +973,7 @@ gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextT
     name = "ListSchedules",
     http_method = "GET",
     http_path = "/schedules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schedules")
   )
   input <- .gluedatabrew$list_schedules_input(JobName = JobName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .gluedatabrew$list_schedules_output()

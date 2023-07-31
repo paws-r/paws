@@ -13,7 +13,7 @@ ec2_describe_vpc_peering_connections(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{accepter-vpc-info.cidr-block} - The IPv4 CIDR block of the accepter
 VPC.
@@ -48,7 +48,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{VpcPeeringConnectionIds}{One or more VPC peering connection IDs.
+\item{VpcPeeringConnectionIds}{The IDs of the VPC peering connections.
 
 Default: Describes all your VPC peering connections.}
 

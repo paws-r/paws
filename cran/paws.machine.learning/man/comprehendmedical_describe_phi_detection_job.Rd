@@ -8,7 +8,7 @@ detection job}
 comprehendmedical_describe_phi_detection_job(JobId)
 }
 \arguments{
-\item{JobId}{[required] The identifier that Comprehend Medical; generated for the job. The
+\item{JobId}{[required] The identifier that Amazon Comprehend Medical generated for the job. The
 \code{\link[=comprehendmedical_start_phi_detection_job]{start_phi_detection_job}}
 operation returns this identifier in its response.}
 }

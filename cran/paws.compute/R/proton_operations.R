@@ -794,6 +794,35 @@ proton_delete_component <- function(name) {
 }
 .proton$operations$delete_component <- proton_delete_component
 
+#' Delete the deployment
+#'
+#' @description
+#' Delete the deployment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_deployment/](https://www.paws-r-sdk.com/docs/proton_delete_deployment/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the deployment to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_delete_deployment
+proton_delete_deployment <- function(id) {
+  op <- new_operation(
+    name = "DeleteDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$delete_deployment_input(id = id)
+  output <- .proton$delete_deployment_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$delete_deployment <- proton_delete_deployment
+
 #' Delete an environment
 #'
 #' @description
@@ -1151,6 +1180,40 @@ proton_get_component <- function(name) {
   return(response)
 }
 .proton$operations$get_component <- proton_get_component
+
+#' Get detailed data for a deployment
+#'
+#' @description
+#' Get detailed data for a deployment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/proton_get_deployment/](https://www.paws-r-sdk.com/docs/proton_get_deployment/) for full documentation.
+#'
+#' @param componentName The name of a component that you want to get the detailed data for.
+#' @param environmentName The name of a environment that you want to get the detailed data for.
+#' @param id &#91;required&#93; The ID of the deployment that you want to get the detailed data for.
+#' @param serviceInstanceName The name of the service instance associated with the given deployment
+#' ID. `serviceName` must be specified to identify the service instance.
+#' @param serviceName The name of the service associated with the given deployment ID.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_deployment
+proton_get_deployment <- function(componentName = NULL, environmentName = NULL, id, serviceInstanceName = NULL, serviceName = NULL) {
+  op <- new_operation(
+    name = "GetDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_deployment_input(componentName = componentName, environmentName = environmentName, id = id, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$get_deployment_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_deployment <- proton_get_deployment
 
 #' Get detailed data for an environment
 #'
@@ -1652,20 +1715,21 @@ proton_get_template_sync_status <- function(templateName, templateType, template
 #' See [https://www.paws-r-sdk.com/docs/proton_list_component_outputs/](https://www.paws-r-sdk.com/docs/proton_list_component_outputs/) for full documentation.
 #'
 #' @param componentName &#91;required&#93; The name of the component whose outputs you want.
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #'
 #' @keywords internal
 #'
 #' @rdname proton_list_component_outputs
-proton_list_component_outputs <- function(componentName, nextToken = NULL) {
+proton_list_component_outputs <- function(componentName, deploymentId = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponentOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_component_outputs_input(componentName = componentName, nextToken = nextToken)
+  input <- .proton$list_component_outputs_input(componentName = componentName, deploymentId = deploymentId, nextToken = nextToken)
   output <- .proton$list_component_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -1695,7 +1759,7 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
     name = "ListComponentProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_component_provisioned_resources_input(componentName = componentName, nextToken = nextToken)
   output <- .proton$list_component_provisioned_resources_output()
@@ -1734,7 +1798,7 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
     name = "ListComponents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "components")
   )
   input <- .proton$list_components_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_components_output()
@@ -1745,6 +1809,46 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
   return(response)
 }
 .proton$operations$list_components <- proton_list_components
+
+#' List deployments
+#'
+#' @description
+#' List deployments. You can filter the result list by environment, service, or a single service instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/proton_list_deployments/](https://www.paws-r-sdk.com/docs/proton_list_deployments/) for full documentation.
+#'
+#' @param componentName The name of a component for result list filtering. Proton returns
+#' deployments associated with that component.
+#' @param environmentName The name of an environment for result list filtering. Proton returns
+#' deployments associated with the environment.
+#' @param maxResults The maximum number of deployments to list.
+#' @param nextToken A token that indicates the location of the next deployment in the array
+#' of deployment, after the list of deployment that was previously
+#' requested.
+#' @param serviceInstanceName The name of a service instance for result list filtering. Proton returns
+#' the deployments associated with the service instance.
+#' @param serviceName The name of a service for result list filtering. Proton returns
+#' deployments associated with service instances of the service.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_list_deployments
+proton_list_deployments <- function(componentName = NULL, environmentName = NULL, maxResults = NULL, nextToken = NULL, serviceInstanceName = NULL, serviceName = NULL) {
+  op <- new_operation(
+    name = "ListDeployments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "deployments")
+  )
+  input <- .proton$list_deployments_input(componentName = componentName, environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$list_deployments_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$list_deployments <- proton_list_deployments
 
 #' View a list of environment account connections
 #'
@@ -1772,7 +1876,7 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
     name = "ListEnvironmentAccountConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environmentAccountConnections")
   )
   input <- .proton$list_environment_account_connections_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, requestedBy = requestedBy, statuses = statuses)
   output <- .proton$list_environment_account_connections_output()
@@ -1791,6 +1895,7 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/proton_list_environment_outputs/](https://www.paws-r-sdk.com/docs/proton_list_environment_outputs/) for full documentation.
 #'
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param environmentName &#91;required&#93; The environment name.
 #' @param nextToken A token that indicates the location of the next environment output in
 #' the array of environment outputs, after the list of environment outputs
@@ -1799,14 +1904,14 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_outputs
-proton_list_environment_outputs <- function(environmentName, nextToken = NULL) {
+proton_list_environment_outputs <- function(deploymentId = NULL, environmentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironmentOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_environment_outputs_input(environmentName = environmentName, nextToken = nextToken)
+  input <- .proton$list_environment_outputs_input(deploymentId = deploymentId, environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -1836,7 +1941,7 @@ proton_list_environment_provisioned_resources <- function(environmentName, nextT
     name = "ListEnvironmentProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_environment_provisioned_resources_input(environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_provisioned_resources_output()
@@ -1875,7 +1980,7 @@ proton_list_environment_template_versions <- function(majorVersion = NULL, maxRe
     name = "ListEnvironmentTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
   )
   input <- .proton$list_environment_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_environment_template_versions_output()
@@ -1907,7 +2012,7 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
     name = "ListEnvironmentTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .proton$list_environment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environment_templates_output()
@@ -1940,7 +2045,7 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
     name = "ListEnvironments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
   )
   input <- .proton$list_environments_input(environmentTemplates = environmentTemplates, maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environments_output()
@@ -1971,7 +2076,7 @@ proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .proton$list_repositories_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_repositories_output()
@@ -2005,7 +2110,7 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
     name = "ListRepositorySyncDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "syncDefinitions")
   )
   input <- .proton$list_repository_sync_definitions_input(nextToken = nextToken, repositoryName = repositoryName, repositoryProvider = repositoryProvider, syncType = syncType)
   output <- .proton$list_repository_sync_definitions_output()
@@ -2024,6 +2129,7 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #'
 #' See [https://www.paws-r-sdk.com/docs/proton_list_service_instance_outputs/](https://www.paws-r-sdk.com/docs/proton_list_service_instance_outputs/) for full documentation.
 #'
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #' @param serviceInstanceName &#91;required&#93; The name of the service instance whose outputs you want.
@@ -2032,14 +2138,14 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' @keywords internal
 #'
 #' @rdname proton_list_service_instance_outputs
-proton_list_service_instance_outputs <- function(nextToken = NULL, serviceInstanceName, serviceName) {
+proton_list_service_instance_outputs <- function(deploymentId = NULL, nextToken = NULL, serviceInstanceName, serviceName) {
   op <- new_operation(
     name = "ListServiceInstanceOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_service_instance_outputs_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  input <- .proton$list_service_instance_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2070,7 +2176,7 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
     name = "ListServiceInstanceProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_service_instance_provisioned_resources_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_provisioned_resources_output()
@@ -2115,7 +2221,7 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
     name = "ListServiceInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceInstances")
   )
   input <- .proton$list_service_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken, serviceName = serviceName, sortBy = sortBy, sortOrder = sortOrder)
   output <- .proton$list_service_instances_output()
@@ -2134,6 +2240,7 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #'
 #' See [https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_outputs/](https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_outputs/) for full documentation.
 #'
+#' @param deploymentId The ID of the deployment you want the outputs for.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #' @param serviceName &#91;required&#93; The name of the service whose pipeline's outputs you want.
@@ -2141,14 +2248,14 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #' @keywords internal
 #'
 #' @rdname proton_list_service_pipeline_outputs
-proton_list_service_pipeline_outputs <- function(nextToken = NULL, serviceName) {
+proton_list_service_pipeline_outputs <- function(deploymentId = NULL, nextToken = NULL, serviceName) {
   op <- new_operation(
     name = "ListServicePipelineOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_service_pipeline_outputs_input(nextToken = nextToken, serviceName = serviceName)
+  input <- .proton$list_service_pipeline_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2178,7 +2285,7 @@ proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL,
     name = "ListServicePipelineProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_service_pipeline_provisioned_resources_input(nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_provisioned_resources_output()
@@ -2217,7 +2324,7 @@ proton_list_service_template_versions <- function(majorVersion = NULL, maxResult
     name = "ListServiceTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
   )
   input <- .proton$list_service_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_service_template_versions_output()
@@ -2249,7 +2356,7 @@ proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServiceTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .proton$list_service_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_service_templates_output()
@@ -2280,7 +2387,7 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "services")
   )
   input <- .proton$list_services_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_services_output()
@@ -2313,7 +2420,7 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .proton$list_tags_for_resource_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .proton$list_tags_for_resource_output()

@@ -7,7 +7,7 @@ NULL
 #'
 #' @description
 #' Adds a permission to a queue for a specific
-#' [principal](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P).
+#' [principal](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P).
 #' This allows sharing access to the queue.
 #' 
 #' When you create a queue, you have full control access rights for the
@@ -51,7 +51,7 @@ NULL
 #' `AliceSendMessage`). Maximum 80 characters. Allowed characters include
 #' alphanumeric characters, hyphens (`-`), and underscores (`_`).
 #' @param AWSAccountIds &#91;required&#93; The Amazon Web Services account numbers of the
-#' [principals](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P)
+#' [principals](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P)
 #' who are to receive permission. For information about locating the Amazon
 #' Web Services account identification, see [Your Amazon Web Services
 #' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html#sqs-api-request-authentication)
@@ -115,14 +115,23 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' Cancels a specified message movement task
 #'
 #' @description
-#' Cancels a specified message movement task.
+#' Cancels a specified message movement task. A message movement can only
+#' be cancelled when the current status is RUNNING. Cancelling a message
+#' movement task does not revert the messages that have already been moved.
+#' It can only stop the messages that have not been moved yet.
 #' 
-#' -   A message movement can only be cancelled when the current status is
-#'     RUNNING.
+#' -   This action is currently limited to supporting message redrive from
+#'     [dead-letter queues
+#'     (DLQs)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'     only. In this context, the source queue is the dead-letter queue
+#'     (DLQ), while the destination queue can be the original source queue
+#'     (from which the messages were driven to the dead-letter-queue), or a
+#'     custom destination queue.
 #' 
-#' -   Cancelling a message movement task does not revert the messages that
-#'     have already been moved. It can only stop the messages that have not
-#'     been moved yet.
+#' -   Currently, only standard queues are supported.
+#' 
+#' -   Only one active message movement task is supported per queue at any
+#'     given time.
 #'
 #' @usage
 #' sqs_cancel_message_move_task(TaskHandle)
@@ -1263,7 +1272,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     name = "ListDeadLetterSourceQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "queueUrls")
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
@@ -1281,6 +1290,19 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
 #' @description
 #' Gets the most recent message movement tasks (up to 10) under a specific
 #' source queue.
+#' 
+#' -   This action is currently limited to supporting message redrive from
+#'     [dead-letter queues
+#'     (DLQs)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'     only. In this context, the source queue is the dead-letter queue
+#'     (DLQ), while the destination queue can be the original source queue
+#'     (from which the messages were driven to the dead-letter-queue), or a
+#'     custom destination queue.
+#' 
+#' -   Currently, only standard queues are supported.
+#' 
+#' -   Only one active message movement task is supported per queue at any
+#'     given time.
 #'
 #' @usage
 #' sqs_list_message_move_tasks(SourceArn, MaxResults)
@@ -1460,7 +1482,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     name = "ListQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueUrls")
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
@@ -1472,10 +1494,12 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 }
 .sqs$operations$list_queues <- sqs_list_queues
 
-#' Deletes the messages in a queue specified by the QueueURL parameter
+#' Deletes available messages in a queue (including in-flight messages)
+#' specified by the QueueURL parameter
 #'
 #' @description
-#' Deletes the messages in a queue specified by the `QueueURL` parameter.
+#' Deletes available messages in a queue (including in-flight messages)
+#' specified by the `QueueURL` parameter.
 #' 
 #' When you use the [`purge_queue`][sqs_purge_queue] action, you can't
 #' retrieve any messages deleted from a queue.
@@ -2477,12 +2501,20 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #' queue to a specified destination queue.
 #' 
 #' -   This action is currently limited to supporting message redrive from
-#'     dead-letter queues (DLQs) only. In this context, the source queue is
-#'     the dead-letter queue (DLQ), while the destination queue can be the
-#'     original source queue (from which the messages were driven to the
+#'     queues that are configured as [dead-letter queues
+#'     (DLQs)](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'     of other Amazon SQS queues only. Non-SQS queue sources of
+#'     dead-letter queues, such as Lambda or Amazon SNS topics, are
+#'     currently not supported.
+#' 
+#' -   In dead-letter queues redrive context, the
+#'     [`start_message_move_task`][sqs_start_message_move_task] the source
+#'     queue is the DLQ, while the destination queue can be the original
+#'     source queue (from which the messages were driven to the
 #'     dead-letter-queue), or a custom destination queue.
 #' 
-#' -   Currently, only standard queues are supported.
+#' -   Currently, only standard queues support redrive. FIFO queues don't
+#'     support redrive.
 #' 
 #' -   Only one active message movement task is supported per queue at any
 #'     given time.
@@ -2492,7 +2524,10 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #'   MaxNumberOfMessagesPerSecond)
 #'
 #' @param SourceArn &#91;required&#93; The ARN of the queue that contains the messages to be moved to another
-#' queue. Currently, only dead-letter queue (DLQ) ARNs are accepted.
+#' queue. Currently, only ARNs of dead-letter queues (DLQs) whose sources
+#' are other Amazon SQS queues are accepted. DLQs whose sources are non-SQS
+#' queues, such as Lambda or Amazon SNS topics, are not currently
+#' supported.
 #' @param DestinationArn The ARN of the queue that receives the moved messages. You can use this
 #' field to specify the destination queue where you would like to redrive
 #' messages. If this field is left blank, the messages will be redriven

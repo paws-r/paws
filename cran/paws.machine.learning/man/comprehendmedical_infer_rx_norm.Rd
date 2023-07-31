@@ -9,8 +9,7 @@ from the National Library of Medicine}
 comprehendmedical_infer_rx_norm(Text)
 }
 \arguments{
-\item{Text}{[required] The input text used for analysis. The input for InferRxNorm is a string
-from 1 to 10000 characters.}
+\item{Text}{[required] The input text used for analysis.}
 }
 \description{
 InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects medical entities in English language texts.

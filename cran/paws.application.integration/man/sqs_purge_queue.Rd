@@ -2,7 +2,8 @@
 % Please edit documentation in R/sqs_operations.R
 \name{sqs_purge_queue}
 \alias{sqs_purge_queue}
-\title{Deletes the messages in a queue specified by the QueueURL parameter}
+\title{Deletes available messages in a queue (including in-flight messages)
+specified by the QueueURL parameter}
 \usage{
 sqs_purge_queue(QueueUrl)
 }
@@ -13,7 +14,7 @@ action deletes messages.
 Queue URLs and names are case-sensitive.}
 }
 \description{
-Deletes the messages in a queue specified by the \code{QueueURL} parameter.
+Deletes available messages in a queue (including in-flight messages) specified by the \code{QueueURL} parameter.
 
 See \url{https://www.paws-r-sdk.com/docs/sqs_purge_queue/} for full documentation.
 }

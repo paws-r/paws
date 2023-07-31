@@ -577,7 +577,7 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
     name = "DescribeAggregateComplianceByConfigRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$describe_aggregate_compliance_by_config_rules_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_aggregate_compliance_by_config_rules_output()
@@ -615,7 +615,7 @@ configservice_describe_aggregate_compliance_by_conformance_packs <- function(Con
     name = "DescribeAggregateComplianceByConformancePacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateComplianceByConformancePacks")
   )
   input <- .configservice$describe_aggregate_compliance_by_conformance_packs_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_aggregate_compliance_by_conformance_packs_output()
@@ -648,7 +648,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
     name = "DescribeAggregationAuthorizations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregationAuthorizations")
   )
   input <- .configservice$describe_aggregation_authorizations_input(Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_aggregation_authorizations_output()
@@ -680,7 +680,7 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
     name = "DescribeComplianceByConfigRule",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ComplianceByConfigRules")
   )
   input <- .configservice$describe_compliance_by_config_rule_input(ConfigRuleNames = ConfigRuleNames, ComplianceTypes = ComplianceTypes, NextToken = NextToken)
   output <- .configservice$describe_compliance_by_config_rule_output()
@@ -722,7 +722,7 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
     name = "DescribeComplianceByResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ComplianceByResources")
   )
   input <- .configservice$describe_compliance_by_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, ComplianceTypes = ComplianceTypes, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_compliance_by_resource_output()
@@ -763,7 +763,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
     name = "DescribeConfigRuleEvaluationStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConfigRulesEvaluationStatus")
   )
   input <- .configservice$describe_config_rule_evaluation_status_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken, Limit = Limit)
   output <- .configservice$describe_config_rule_evaluation_status_output()
@@ -800,7 +800,7 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
     name = "DescribeConfigRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ConfigRules")
   )
   input <- .configservice$describe_config_rules_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken, Filters = Filters)
   output <- .configservice$describe_config_rules_output()
@@ -840,7 +840,7 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
     name = "DescribeConfigurationAggregatorSourcesStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregatedSourceStatusList")
   )
   input <- .configservice$describe_configuration_aggregator_sources_status_input(ConfigurationAggregatorName = ConfigurationAggregatorName, UpdateStatus = UpdateStatus, NextToken = NextToken, Limit = Limit)
   output <- .configservice$describe_configuration_aggregator_sources_status_output()
@@ -873,7 +873,7 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
     name = "DescribeConfigurationAggregators",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConfigurationAggregators")
   )
   input <- .configservice$describe_configuration_aggregators_input(ConfigurationAggregatorNames = ConfigurationAggregatorNames, NextToken = NextToken, Limit = Limit)
   output <- .configservice$describe_configuration_aggregators_output()
@@ -968,7 +968,7 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
     name = "DescribeConformancePackCompliance",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$describe_conformance_pack_compliance_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_conformance_pack_compliance_output()
@@ -1000,7 +1000,7 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
     name = "DescribeConformancePackStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackStatusDetails")
   )
   input <- .configservice$describe_conformance_pack_status_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_conformance_pack_status_output()
@@ -1034,7 +1034,7 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
     name = "DescribeConformancePacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackDetails")
   )
   input <- .configservice$describe_conformance_packs_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_conformance_packs_output()
@@ -1128,7 +1128,7 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
     name = "DescribeOrganizationConfigRuleStatuses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRuleStatuses")
   )
   input <- .configservice$describe_organization_config_rule_statuses_input(OrganizationConfigRuleNames = OrganizationConfigRuleNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_config_rule_statuses_output()
@@ -1164,7 +1164,7 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
     name = "DescribeOrganizationConfigRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRules")
   )
   input <- .configservice$describe_organization_config_rules_input(OrganizationConfigRuleNames = OrganizationConfigRuleNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_config_rules_output()
@@ -1201,7 +1201,7 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
     name = "DescribeOrganizationConformancePackStatuses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePackStatuses")
   )
   input <- .configservice$describe_organization_conformance_pack_statuses_input(OrganizationConformancePackNames = OrganizationConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_conformance_pack_statuses_output()
@@ -1235,7 +1235,7 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
     name = "DescribeOrganizationConformancePacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePacks")
   )
   input <- .configservice$describe_organization_conformance_packs_input(OrganizationConformancePackNames = OrganizationConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_organization_conformance_packs_output()
@@ -1267,7 +1267,7 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
     name = "DescribePendingAggregationRequests",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "PendingAggregationRequests")
   )
   input <- .configservice$describe_pending_aggregation_requests_input(Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_pending_aggregation_requests_output()
@@ -1333,7 +1333,7 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
     name = "DescribeRemediationExceptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$describe_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_remediation_exceptions_output()
@@ -1370,7 +1370,7 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
     name = "DescribeRemediationExecutionStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "RemediationExecutionStatuses")
   )
   input <- .configservice$describe_remediation_execution_status_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
   output <- .configservice$describe_remediation_execution_status_output()
@@ -1406,7 +1406,7 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
     name = "DescribeRetentionConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RetentionConfigurations")
   )
   input <- .configservice$describe_retention_configurations_input(RetentionConfigurationNames = RetentionConfigurationNames, NextToken = NextToken)
   output <- .configservice$describe_retention_configurations_output()
@@ -1449,7 +1449,7 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
     name = "GetAggregateComplianceDetailsByConfigRule",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "AggregateEvaluationResults")
   )
   input <- .configservice$get_aggregate_compliance_details_by_config_rule_input(ConfigurationAggregatorName = ConfigurationAggregatorName, ConfigRuleName = ConfigRuleName, AccountId = AccountId, AwsRegion = AwsRegion, ComplianceType = ComplianceType, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_compliance_details_by_config_rule_output()
@@ -1487,7 +1487,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
     name = "GetAggregateConfigRuleComplianceSummary",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$get_aggregate_config_rule_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_config_rule_compliance_summary_output()
@@ -1526,7 +1526,7 @@ configservice_get_aggregate_conformance_pack_compliance_summary <- function(Conf
     name = "GetAggregateConformancePackComplianceSummary",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$get_aggregate_conformance_pack_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_conformance_pack_compliance_summary_output()
@@ -1563,7 +1563,7 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
     name = "GetAggregateDiscoveredResourceCounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$get_aggregate_discovered_resource_counts_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_aggregate_discovered_resource_counts_output()
@@ -1633,7 +1633,7 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
     name = "GetComplianceDetailsByConfigRule",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "EvaluationResults")
   )
   input <- .configservice$get_compliance_details_by_config_rule_input(ConfigRuleName = ConfigRuleName, ComplianceTypes = ComplianceTypes, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_compliance_details_by_config_rule_output()
@@ -1678,7 +1678,7 @@ configservice_get_compliance_details_by_resource <- function(ResourceType = NULL
     name = "GetComplianceDetailsByResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "EvaluationResults")
   )
   input <- .configservice$get_compliance_details_by_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, ComplianceTypes = ComplianceTypes, NextToken = NextToken, ResourceEvaluationId = ResourceEvaluationId)
   output <- .configservice$get_compliance_details_by_resource_output()
@@ -1779,7 +1779,7 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
     name = "GetConformancePackComplianceDetails",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$get_conformance_pack_compliance_details_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_conformance_pack_compliance_details_output()
@@ -1812,7 +1812,7 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
     name = "GetConformancePackComplianceSummary",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ConformancePackComplianceSummaryList")
   )
   input <- .configservice$get_conformance_pack_compliance_summary_input(ConformancePackNames = ConformancePackNames, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_conformance_pack_compliance_summary_output()
@@ -1888,7 +1888,7 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
     name = "GetDiscoveredResourceCounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken")
   )
   input <- .configservice$get_discovered_resource_counts_input(resourceTypes = resourceTypes, limit = limit, nextToken = nextToken)
   output <- .configservice$get_discovered_resource_counts_output()
@@ -1925,7 +1925,7 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
     name = "GetOrganizationConfigRuleDetailedStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConfigRuleDetailedStatus")
   )
   input <- .configservice$get_organization_config_rule_detailed_status_input(OrganizationConfigRuleName = OrganizationConfigRuleName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_organization_config_rule_detailed_status_output()
@@ -1962,7 +1962,7 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
     name = "GetOrganizationConformancePackDetailedStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "OrganizationConformancePackDetailedStatuses")
   )
   input <- .configservice$get_organization_conformance_pack_detailed_status_input(OrganizationConformancePackName = OrganizationConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$get_organization_conformance_pack_detailed_status_output()
@@ -2034,7 +2034,7 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
     name = "GetResourceConfigHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "configurationItems")
   )
   input <- .configservice$get_resource_config_history_input(resourceType = resourceType, resourceId = resourceId, laterTime = laterTime, earlierTime = earlierTime, chronologicalOrder = chronologicalOrder, limit = limit, nextToken = nextToken)
   output <- .configservice$get_resource_config_history_output()
@@ -2131,7 +2131,7 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
     name = "ListAggregateDiscoveredResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ResourceIdentifiers")
   )
   input <- .configservice$list_aggregate_discovered_resources_input(ConfigurationAggregatorName = ConfigurationAggregatorName, ResourceType = ResourceType, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_aggregate_discovered_resources_output()
@@ -2186,7 +2186,7 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
     name = "ListConformancePackComplianceScores",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .configservice$list_conformance_pack_compliance_scores_input(Filters = Filters, SortOrder = SortOrder, SortBy = SortBy, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_conformance_pack_compliance_scores_output()
@@ -2230,7 +2230,7 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
     name = "ListDiscoveredResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "resourceIdentifiers")
   )
   input <- .configservice$list_discovered_resources_input(resourceType = resourceType, resourceIds = resourceIds, resourceName = resourceName, limit = limit, includeDeletedResources = includeDeletedResources, nextToken = nextToken)
   output <- .configservice$list_discovered_resources_output()
@@ -2264,7 +2264,7 @@ configservice_list_resource_evaluations <- function(Filters = NULL, Limit = NULL
     name = "ListResourceEvaluations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ResourceEvaluations")
   )
   input <- .configservice$list_resource_evaluations_input(Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_resource_evaluations_output()
@@ -2296,7 +2296,7 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
     name = "ListStoredQueries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .configservice$list_stored_queries_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .configservice$list_stored_queries_output()
@@ -2332,7 +2332,7 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags")
   )
   input <- .configservice$list_tags_for_resource_input(ResourceArn = ResourceArn, Limit = Limit, NextToken = NextToken)
   output <- .configservice$list_tags_for_resource_output()
@@ -2937,7 +2937,7 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
     name = "SelectAggregateResourceConfig",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", non_aggregate_keys = list( "QueryInfo"), output_token = "NextToken", result_key = "Results")
   )
   input <- .configservice$select_aggregate_resource_config_input(Expression = Expression, ConfigurationAggregatorName = ConfigurationAggregatorName, Limit = Limit, MaxResults = MaxResults, NextToken = NextToken)
   output <- .configservice$select_aggregate_resource_config_output()
@@ -2971,7 +2971,7 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
     name = "SelectResourceConfig",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", non_aggregate_keys = list( "QueryInfo"), output_token = "NextToken", result_key = "Results")
   )
   input <- .configservice$select_resource_config_input(Expression = Expression, Limit = Limit, NextToken = NextToken)
   output <- .configservice$select_resource_config_output()

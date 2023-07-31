@@ -4,12 +4,22 @@
 \alias{sagemakerfeaturestoreruntime_batch_get_record}
 \title{Retrieves a batch of Records from a FeatureGroup}
 \usage{
-sagemakerfeaturestoreruntime_batch_get_record(Identifiers)
+sagemakerfeaturestoreruntime_batch_get_record(
+  Identifiers,
+  ExpirationTimeResponse = NULL
+)
 }
 \arguments{
-\item{Identifiers}{[required] A list of \code{FeatureGroup} names, with their corresponding
-\code{RecordIdentifier} value, and Feature name that have been requested to
-be retrieved in batch.}
+\item{Identifiers}{[required] A list containing the name or Amazon Resource Name (ARN) of the
+\code{FeatureGroup}, the list of names of \code{Feature}s to be retrieved, and the
+corresponding \code{RecordIdentifier} values as strings.}
+
+\item{ExpirationTimeResponse}{Parameter to request \code{ExpiresAt} in response. If \code{Enabled},
+\code{\link[=sagemakerfeaturestoreruntime_batch_get_record]{batch_get_record}} will
+return the value of \code{ExpiresAt}, if it is not null. If \code{Disabled} and
+null,
+\code{\link[=sagemakerfeaturestoreruntime_batch_get_record]{batch_get_record}} will
+return null.}
 }
 \description{
 Retrieves a batch of \code{Records} from a \code{FeatureGroup}.

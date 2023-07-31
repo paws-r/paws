@@ -219,7 +219,8 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #'
 #' @usage
 #' customerprofiles_create_domain(DomainName, DefaultExpirationDays,
-#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, Tags)
+#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, RuleBasedMatching,
+#'   Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays &#91;required&#93; The default number of days until the data within the domain expires.
@@ -241,6 +242,15 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #' [`get_matches`][customerprofiles_get_matches] API to return and review
 #' the results. Or, if you have configured `ExportingConfig` in the
 #' `MatchingRequest`, you can download the results from S3.
+#' @param RuleBasedMatching The process of matching duplicate profiles using the Rule-Based
+#' matching. If `RuleBasedMatching` = true, Amazon Connect Customer
+#' Profiles will start to match and merge your profiles according to your
+#' configuration in the `RuleBasedMatchingRequest`. You can use the
+#' [`list_rule_based_matches`][customerprofiles_list_rule_based_matches]
+#' and [`get_similar_profiles`][customerprofiles_get_similar_profiles] API
+#' to return and review the results. Also, if you have configured
+#' `ExportingConfig` in the `RuleBasedMatchingRequest`, you can download
+#' the results from S3.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -271,6 +281,41 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #'         SourceName = "string"
 #'       ),
 #'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
+#'   RuleBasedMatching = list(
+#'     Enabled = TRUE|FALSE,
+#'     MatchingRules = list(
+#'       list(
+#'         Rule = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Status = "PENDING"|"IN_PROGRESS"|"ACTIVE",
+#'     MaxAllowedRuleLevelForMerging = 123,
+#'     MaxAllowedRuleLevelForMatching = 123,
+#'     AttributeTypesSelector = list(
+#'       AttributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       Address = list(
+#'         "string"
+#'       ),
+#'       PhoneNumber = list(
+#'         "string"
+#'       ),
+#'       EmailAddress = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ConflictResolution = list(
+#'       ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'       SourceName = "string"
 #'     ),
 #'     ExportingConfig = list(
 #'       S3Exporting = list(
@@ -326,6 +371,40 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #'       )
 #'     )
 #'   ),
+#'   RuleBasedMatching = list(
+#'     Enabled = TRUE|FALSE,
+#'     MatchingRules = list(
+#'       list(
+#'         Rule = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     MaxAllowedRuleLevelForMerging = 123,
+#'     MaxAllowedRuleLevelForMatching = 123,
+#'     AttributeTypesSelector = list(
+#'       AttributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       Address = list(
+#'         "string"
+#'       ),
+#'       PhoneNumber = list(
+#'         "string"
+#'       ),
+#'       EmailAddress = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ConflictResolution = list(
+#'       ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'       SourceName = "string"
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -337,14 +416,14 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
 #' @rdname customerprofiles_create_domain
 #'
 #' @aliases customerprofiles_create_domain
-customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
+customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
+  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1449,6 +1528,41 @@ customerprofiles_get_calculated_attribute_for_profile <- function(DomainName, Pr
 #'       )
 #'     )
 #'   ),
+#'   RuleBasedMatching = list(
+#'     Enabled = TRUE|FALSE,
+#'     MatchingRules = list(
+#'       list(
+#'         Rule = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Status = "PENDING"|"IN_PROGRESS"|"ACTIVE",
+#'     MaxAllowedRuleLevelForMerging = 123,
+#'     MaxAllowedRuleLevelForMatching = 123,
+#'     AttributeTypesSelector = list(
+#'       AttributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       Address = list(
+#'         "string"
+#'       ),
+#'       PhoneNumber = list(
+#'         "string"
+#'       ),
+#'       EmailAddress = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ConflictResolution = list(
+#'       ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'       SourceName = "string"
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1991,6 +2105,77 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 }
 .customerprofiles$operations$get_profile_object_type_template <- customerprofiles_get_profile_object_type_template
 
+#' Returns a set of profiles that belong to the same matching group using
+#' the matchId or profileId
+#'
+#' @description
+#' Returns a set of profiles that belong to the same matching group using
+#' the `matchId` or `profileId`. You can also specify the type of matching
+#' that you want for finding similar profiles using either
+#' `RULE_BASED_MATCHING` or `ML_BASED_MATCHING`.
+#'
+#' @usage
+#' customerprofiles_get_similar_profiles(NextToken, MaxResults, DomainName,
+#'   MatchType, SearchKey, SearchValue)
+#'
+#' @param NextToken The pagination token from the previous
+#' [`get_similar_profiles`][customerprofiles_get_similar_profiles] API
+#' call.
+#' @param MaxResults The maximum number of objects returned per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MatchType &#91;required&#93; Specify the type of matching to get similar profiles for.
+#' @param SearchKey &#91;required&#93; The string indicating the search key to be used.
+#' @param SearchValue &#91;required&#93; The string based on `SearchKey` to be searched for similar profiles.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileIds = list(
+#'     "string"
+#'   ),
+#'   MatchId = "string",
+#'   MatchType = "RULE_BASED_MATCHING"|"ML_BASED_MATCHING",
+#'   RuleLevel = 123,
+#'   ConfidenceScore = 123.0,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_similar_profiles(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string",
+#'   MatchType = "RULE_BASED_MATCHING"|"ML_BASED_MATCHING",
+#'   SearchKey = "string",
+#'   SearchValue = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_similar_profiles
+#'
+#' @aliases customerprofiles_get_similar_profiles
+customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults = NULL, DomainName, MatchType, SearchKey, SearchValue) {
+  op <- new_operation(
+    name = "GetSimilarProfiles",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/matches",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_similar_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, MatchType = MatchType, SearchKey = SearchKey, SearchValue = SearchValue)
+  output <- .customerprofiles$get_similar_profiles_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_similar_profiles <- customerprofiles_get_similar_profiles
+
 #' Get details of specified workflow
 #'
 #' @description
@@ -2475,7 +2660,7 @@ customerprofiles_list_event_streams <- function(DomainName, NextToken = NULL, Ma
     name = "ListEventStreams",
     http_method = "GET",
     http_path = "/domains/{DomainName}/event-streams",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items")
   )
   input <- .customerprofiles$list_event_streams_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_event_streams_output()
@@ -2839,6 +3024,63 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
   return(response)
 }
 .customerprofiles$operations$list_profile_objects <- customerprofiles_list_profile_objects
+
+#' Returns a set of MatchIds that belong to the given domain
+#'
+#' @description
+#' Returns a set of `MatchIds` that belong to the given domain.
+#'
+#' @usage
+#' customerprofiles_list_rule_based_matches(NextToken, MaxResults,
+#'   DomainName)
+#'
+#' @param NextToken The pagination token from the previous
+#' [`list_rule_based_matches`][customerprofiles_list_rule_based_matches]
+#' API call.
+#' @param MaxResults The maximum number of `MatchIds` returned per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MatchIds = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rule_based_matches(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_rule_based_matches
+#'
+#' @aliases customerprofiles_list_rule_based_matches
+customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResults = NULL, DomainName) {
+  op <- new_operation(
+    name = "ListRuleBasedMatches",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profiles/ruleBasedMatches",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_rule_based_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
+  output <- .customerprofiles$list_rule_based_matches_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_rule_based_matches <- customerprofiles_list_rule_based_matches
 
 #' Displays the tags associated with an Amazon Connect Customer Profiles
 #' resource
@@ -3878,7 +4120,8 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #'
 #' @usage
 #' customerprofiles_update_domain(DomainName, DefaultExpirationDays,
-#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, Tags)
+#'   DefaultEncryptionKey, DeadLetterQueueUrl, Matching, RuleBasedMatching,
+#'   Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays The default number of days until the data within the domain expires.
@@ -3902,6 +4145,15 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #' [`get_matches`][customerprofiles_get_matches] API to return and review
 #' the results. Or, if you have configured `ExportingConfig` in the
 #' `MatchingRequest`, you can download the results from S3.
+#' @param RuleBasedMatching The process of matching duplicate profiles using the rule-Based
+#' matching. If `RuleBasedMatching` = true, Amazon Connect Customer
+#' Profiles will start to match and merge your profiles according to your
+#' configuration in the `RuleBasedMatchingRequest`. You can use the
+#' [`list_rule_based_matches`][customerprofiles_list_rule_based_matches]
+#' and [`get_similar_profiles`][customerprofiles_get_similar_profiles] API
+#' to return and review the results. Also, if you have configured
+#' `ExportingConfig` in the `RuleBasedMatchingRequest`, you can download
+#' the results from S3.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -3932,6 +4184,41 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #'         SourceName = "string"
 #'       ),
 #'       MinAllowedConfidenceScoreForMerging = 123.0
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
+#'   RuleBasedMatching = list(
+#'     Enabled = TRUE|FALSE,
+#'     MatchingRules = list(
+#'       list(
+#'         Rule = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Status = "PENDING"|"IN_PROGRESS"|"ACTIVE",
+#'     MaxAllowedRuleLevelForMerging = 123,
+#'     MaxAllowedRuleLevelForMatching = 123,
+#'     AttributeTypesSelector = list(
+#'       AttributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       Address = list(
+#'         "string"
+#'       ),
+#'       PhoneNumber = list(
+#'         "string"
+#'       ),
+#'       EmailAddress = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ConflictResolution = list(
+#'       ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'       SourceName = "string"
 #'     ),
 #'     ExportingConfig = list(
 #'       S3Exporting = list(
@@ -3987,6 +4274,40 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #'       )
 #'     )
 #'   ),
+#'   RuleBasedMatching = list(
+#'     Enabled = TRUE|FALSE,
+#'     MatchingRules = list(
+#'       list(
+#'         Rule = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     MaxAllowedRuleLevelForMerging = 123,
+#'     MaxAllowedRuleLevelForMatching = 123,
+#'     AttributeTypesSelector = list(
+#'       AttributeMatchingModel = "ONE_TO_ONE"|"MANY_TO_MANY",
+#'       Address = list(
+#'         "string"
+#'       ),
+#'       PhoneNumber = list(
+#'         "string"
+#'       ),
+#'       EmailAddress = list(
+#'         "string"
+#'       )
+#'     ),
+#'     ConflictResolution = list(
+#'       ConflictResolvingModel = "RECENCY"|"SOURCE",
+#'       SourceName = "string"
+#'     ),
+#'     ExportingConfig = list(
+#'       S3Exporting = list(
+#'         S3BucketName = "string",
+#'         S3KeyName = "string"
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -3998,14 +4319,14 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
 #' @rdname customerprofiles_update_domain
 #'
 #' @aliases customerprofiles_update_domain
-customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
+customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
+  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)

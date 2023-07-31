@@ -578,7 +578,7 @@ inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken
     name = "GetExclusionsPreview",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$get_exclusions_preview_input(assessmentTemplateArn = assessmentTemplateArn, previewToken = previewToken, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .inspector$get_exclusions_preview_output()
@@ -653,7 +653,7 @@ inspector_list_assessment_run_agents <- function(assessmentRunArn, filter = NULL
     name = "ListAssessmentRunAgents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_run_agents_input(assessmentRunArn = assessmentRunArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_run_agents_output()
@@ -698,7 +698,7 @@ inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter
     name = "ListAssessmentRuns",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_runs_input(assessmentTemplateArns = assessmentTemplateArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_runs_output()
@@ -739,7 +739,7 @@ inspector_list_assessment_targets <- function(filter = NULL, nextToken = NULL, m
     name = "ListAssessmentTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_targets_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_targets_output()
@@ -783,7 +783,7 @@ inspector_list_assessment_templates <- function(assessmentTargetArns = NULL, fil
     name = "ListAssessmentTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_assessment_templates_input(assessmentTargetArns = assessmentTargetArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_templates_output()
@@ -821,7 +821,7 @@ inspector_list_event_subscriptions <- function(resourceArn = NULL, nextToken = N
     name = "ListEventSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_event_subscriptions_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_event_subscriptions_output()
@@ -859,7 +859,7 @@ inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxRes
     name = "ListExclusions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_exclusions_input(assessmentRunArn = assessmentRunArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_exclusions_output()
@@ -903,7 +903,7 @@ inspector_list_findings <- function(assessmentRunArns = NULL, filter = NULL, nex
     name = "ListFindings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_findings_input(assessmentRunArns = assessmentRunArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_findings_output()
@@ -938,7 +938,7 @@ inspector_list_rules_packages <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListRulesPackages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$list_rules_packages_input(nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_rules_packages_output()
@@ -1005,7 +1005,7 @@ inspector_preview_agents <- function(previewAgentsArn, nextToken = NULL, maxResu
     name = "PreviewAgents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .inspector$preview_agents_input(previewAgentsArn = previewAgentsArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$preview_agents_output()

@@ -817,7 +817,7 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(
     name = "ListAssociatedRoute53HealthChecks",
     http_method = "GET",
     http_path = "/routingcontrol/{RoutingControlArn}/associatedRoute53HealthChecks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HealthCheckIds")
   )
   input <- .route53recoverycontrolconfig$list_associated_route_53_health_checks_input(MaxResults = MaxResults, NextToken = NextToken, RoutingControlArn = RoutingControlArn)
   output <- .route53recoverycontrolconfig$list_associated_route_53_health_checks_output()
@@ -879,7 +879,7 @@ route53recoverycontrolconfig_list_clusters <- function(MaxResults = NULL, NextTo
     name = "ListClusters",
     http_method = "GET",
     http_path = "/cluster",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Clusters")
   )
   input <- .route53recoverycontrolconfig$list_clusters_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_clusters_output()
@@ -941,7 +941,7 @@ route53recoverycontrolconfig_list_control_panels <- function(ClusterArn = NULL, 
     name = "ListControlPanels",
     http_method = "GET",
     http_path = "/controlpanels",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ControlPanels")
   )
   input <- .route53recoverycontrolconfig$list_control_panels_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_control_panels_output()
@@ -1005,7 +1005,7 @@ route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, 
     name = "ListRoutingControls",
     http_method = "GET",
     http_path = "/controlpanel/{ControlPanelArn}/routingcontrols",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls")
   )
   input <- .route53recoverycontrolconfig$list_routing_controls_input(ControlPanelArn = ControlPanelArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_routing_controls_output()
@@ -1096,7 +1096,7 @@ route53recoverycontrolconfig_list_safety_rules <- function(ControlPanelArn, MaxR
     name = "ListSafetyRules",
     http_method = "GET",
     http_path = "/controlpanel/{ControlPanelArn}/safetyrules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SafetyRules")
   )
   input <- .route53recoverycontrolconfig$list_safety_rules_input(ControlPanelArn = ControlPanelArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoverycontrolconfig$list_safety_rules_output()

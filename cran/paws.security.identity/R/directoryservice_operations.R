@@ -846,7 +846,7 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
     name = "DescribeClientAuthenticationSettings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ClientAuthenticationSettingsInfo")
   )
   input <- .directoryservice$describe_client_authentication_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_client_authentication_settings_output()
@@ -918,7 +918,7 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
     name = "DescribeDirectories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "DirectoryDescriptions")
   )
   input <- .directoryservice$describe_directories_input(DirectoryIds = DirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_directories_output()
@@ -954,7 +954,7 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
     name = "DescribeDomainControllers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .directoryservice$describe_domain_controllers_input(DirectoryId = DirectoryId, DomainControllerIds = DomainControllerIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_domain_controllers_output()
@@ -1024,7 +1024,7 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
     name = "DescribeLDAPSSettings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LDAPSSettingsInfo")
   )
   input <- .directoryservice$describe_ldaps_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_ldaps_settings_output()
@@ -1058,7 +1058,7 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
     name = "DescribeRegions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RegionsDescription")
   )
   input <- .directoryservice$describe_regions_input(DirectoryId = DirectoryId, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_regions_output()
@@ -1127,7 +1127,7 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
     name = "DescribeSharedDirectories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SharedDirectories")
   )
   input <- .directoryservice$describe_shared_directories_input(OwnerDirectoryId = OwnerDirectoryId, SharedDirectoryIds = SharedDirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_shared_directories_output()
@@ -1165,7 +1165,7 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Snapshots")
   )
   input <- .directoryservice$describe_snapshots_input(DirectoryId = DirectoryId, SnapshotIds = SnapshotIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_snapshots_output()
@@ -1204,7 +1204,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
     name = "DescribeTrusts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Trusts")
   )
   input <- .directoryservice$describe_trusts_input(DirectoryId = DirectoryId, TrustIds = TrustIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_trusts_output()
@@ -1239,7 +1239,7 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
     name = "DescribeUpdateDirectory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "UpdateActivities")
   )
   input <- .directoryservice$describe_update_directory_input(DirectoryId = DirectoryId, UpdateType = UpdateType, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_update_directory_output()
@@ -1605,7 +1605,7 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
     name = "ListCertificates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "CertificatesInfo")
   )
   input <- .directoryservice$list_certificates_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_certificates_output()
@@ -1640,7 +1640,7 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
     name = "ListIpRoutes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "IpRoutesInfo")
   )
   input <- .directoryservice$list_ip_routes_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_ip_routes_output()
@@ -1675,7 +1675,7 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
     name = "ListLogSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LogSubscriptions")
   )
   input <- .directoryservice$list_log_subscriptions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_log_subscriptions_output()
@@ -1709,7 +1709,7 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
     name = "ListSchemaExtensions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SchemaExtensionsInfo")
   )
   input <- .directoryservice$list_schema_extensions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_schema_extensions_output()
@@ -1740,7 +1740,7 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags")
   )
   input <- .directoryservice$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_tags_for_resource_output()

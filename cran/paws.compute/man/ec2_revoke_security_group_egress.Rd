@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_revoke_security_group_egress}
 \alias{ec2_revoke_security_group_egress}
-\title{[VPC only] Removes the specified outbound (egress) rules from a
-security group for EC2-VPC}
+\title{Removes the specified outbound (egress) rules from the specified
+security group}
 \usage{
 ec2_revoke_security_group_egress(
   DryRun = NULL,
@@ -47,7 +47,7 @@ security group.}
 security group.}
 }
 \description{
-[VPC only] Removes the specified outbound (egress) rules from a security group for EC2-VPC. This action does not apply to security groups for use in EC2-Classic.
+Removes the specified outbound (egress) rules from the specified security group.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_revoke_security_group_egress/} for full documentation.
 }

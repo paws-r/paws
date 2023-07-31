@@ -11,7 +11,8 @@ applicationinsights_list_configuration_history(
   EndTime = NULL,
   EventStatus = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  AccountId = NULL
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ request where \code{MaxResults} was used and the results exceeded the value
 of that parameter. Pagination continues from the end of the previous
 results that returned the \code{NextToken} value. This value is \code{null} when
 there are no more results to return.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights. Examples of events represented are:

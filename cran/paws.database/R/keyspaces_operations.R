@@ -326,7 +326,7 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListKeyspaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces")
   )
   input <- .keyspaces$list_keyspaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_keyspaces_output()
@@ -361,7 +361,7 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables")
   )
   input <- .keyspaces$list_tables_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_tables_output()
@@ -397,7 +397,7 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .keyspaces$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_tags_for_resource_output()

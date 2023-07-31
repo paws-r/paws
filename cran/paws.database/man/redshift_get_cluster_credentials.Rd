@@ -8,10 +8,11 @@ authorization to log on to an Amazon Redshift database}
 redshift_get_cluster_credentials(
   DbUser,
   DbName = NULL,
-  ClusterIdentifier,
+  ClusterIdentifier = NULL,
   DurationSeconds = NULL,
   AutoCreate = NULL,
-  DbGroups = NULL
+  DbGroups = NULL,
+  CustomDomainName = NULL
 )
 }
 \arguments{
@@ -55,7 +56,7 @@ plus sign, period (dot), at symbol (@), or hyphen.
 in the Amazon Redshift Database Developer Guide.
 }}
 
-\item{ClusterIdentifier}{[required] The unique identifier of the cluster that contains the database for
+\item{ClusterIdentifier}{The unique identifier of the cluster that contains the database for
 which you are requesting credentials. This parameter is case sensitive.}
 
 \item{DurationSeconds}{The number of seconds until the returned temporary password expires.
@@ -83,6 +84,8 @@ period (dot), at symbol (@), or hyphen.
 \href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
+
+\item{CustomDomainName}{The custom domain name for the cluster credentials.}
 }
 \description{
 Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database. The action returns the database user name prefixed with \verb{IAM:} if \code{AutoCreate} is \code{False} or \verb{IAMA:} if \code{AutoCreate} is \code{True}. You can optionally specify one or more database user groups that the user will join at log on. By default, the temporary credentials expire in 900 seconds. You can optionally specify a duration between 900 seconds (15 minutes) and 3600 seconds (60 minutes). For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials} in the Amazon Redshift Cluster Management Guide.

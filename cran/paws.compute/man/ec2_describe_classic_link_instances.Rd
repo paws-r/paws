@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_classic_link_instances}
 \alias{ec2_describe_classic_link_instances}
-\title{Describes one or more of your linked EC2-Classic instances}
+\title{This action is deprecated}
 \usage{
 ec2_describe_classic_link_instances(
   Filters = NULL,
@@ -13,7 +13,7 @@ ec2_describe_classic_link_instances(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{group-id} - The ID of a VPC security group that's associated with
 the instance.
@@ -27,8 +27,6 @@ the filter name and \code{TeamA} for the filter value.
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC to which the instance is linked.
-
-\code{vpc-id} - The ID of the VPC that the instance is linked to.
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -36,8 +34,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InstanceIds}{One or more instance IDs. Must be instances linked to a VPC through
-ClassicLink.}
+\item{InstanceIds}{The instance IDs. Must be instances linked to a VPC through ClassicLink.}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
@@ -51,7 +48,7 @@ items.}
 continues from the end of the items returned by the previous request.}
 }
 \description{
-Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this request to return information about other instances.
+This action is deprecated.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_classic_link_instances/} for full documentation.
 }

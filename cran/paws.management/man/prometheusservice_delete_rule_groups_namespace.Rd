@@ -5,18 +5,18 @@
 \title{Delete a rule groups namespace}
 \usage{
 prometheusservice_delete_rule_groups_namespace(
-  clientToken = NULL,
+  workspaceId,
   name,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{workspaceId}{[required] The ID of the workspace to delete rule group definition.}
 
 \item{name}{[required] The rule groups namespace name.}
 
-\item{workspaceId}{[required] The ID of the workspace to delete rule group definition.}
+\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
+idempotency of the request.}
 }
 \description{
 Delete a rule groups namespace.
