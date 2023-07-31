@@ -18,6 +18,20 @@ test_that("check token is correctly retrieved", {
   expect_equal(actual, expected)
 })
 
+test_that("check empty token is returned", {
+  output_tokens <- list(
+    "NextToken",
+    "Contents[-1].Id"
+  )
+  resp <- list(
+    NextToken = character(0),
+    Contents = list()
+  )
+  expected <- setNames(list(character(0), character(0)), output_tokens)
+  actual <- get_tokens(resp, output_tokens)
+  expect_equal(actual, expected)
+})
+
 ########################################################################
 # retry_api_call
 ########################################################################
