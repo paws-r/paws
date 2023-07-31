@@ -4,13 +4,13 @@
 \alias{prometheusservice_delete_workspace}
 \title{Deletes an AMP workspace}
 \usage{
-prometheusservice_delete_workspace(clientToken = NULL, workspaceId)
+prometheusservice_delete_workspace(workspaceId, clientToken = NULL)
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace to delete.}
+
 \item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
-
-\item{workspaceId}{[required] The ID of the workspace to delete.}
 }
 \description{
 Deletes an AMP workspace.

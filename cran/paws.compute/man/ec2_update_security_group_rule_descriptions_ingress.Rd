@@ -22,16 +22,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 ID or the security group name in the request. For security groups in a
 nondefault VPC, you must specify the security group ID.}
 
-\item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must
-specify either the security group ID or the security group name in the
-request. For security groups in a nondefault VPC, you must specify the
-security group ID.}
+\item{GroupName}{[Default VPC] The name of the security group. You must specify either
+the security group ID or the security group name. For security groups in
+a nondefault VPC, you must specify the security group ID.}
 
 \item{IpPermissions}{The IP permissions for the security group rule. You must specify either
 IP permissions or a description.}
 
-\item{SecurityGroupRuleDescriptions}{[VPC only] The description for the ingress security group rules. You
-must specify either a description or IP permissions.}
+\item{SecurityGroupRuleDescriptions}{The description for the ingress security group rules. You must specify
+either a description or IP permissions.}
 }
 \description{
 Updates the description of an ingress (inbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.

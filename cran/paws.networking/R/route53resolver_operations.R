@@ -312,6 +312,48 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 }
 .route53resolver$operations$create_firewall_rule_group <- route53resolver_create_firewall_rule_group
 
+#' Creates an Route 53 Resolver on an Outpost
+#'
+#' @description
+#' Creates an Route 53 Resolver on an Outpost.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_create_outpost_resolver/](https://www.paws-r-sdk.com/docs/route53resolver_create_outpost_resolver/) for full documentation.
+#'
+#' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
+#' requests to be retried without the risk of running the operation twice.
+#' 
+#' `CreatorRequestId` can be any unique string, for example, a date/time
+#' stamp.
+#' @param Name &#91;required&#93; A friendly name that lets you easily find a configuration in the
+#' Resolver dashboard in the Route 53 console.
+#' @param InstanceCount Number of Amazon EC2 instances for the Resolver on Outpost. The default
+#' and minimal value is 4.
+#' @param PreferredInstanceType &#91;required&#93; The Amazon EC2 instance type. If you specify this, you must also specify
+#' a value for the `OutpostArn`.
+#' @param OutpostArn &#91;required&#93; The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
+#' must also specify a value for the `PreferredInstanceType`.
+#' @param Tags A string that helps identify the Route 53 Resolvers on Outpost.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_create_outpost_resolver
+route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, InstanceCount = NULL, PreferredInstanceType, OutpostArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateOutpostResolver",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$create_outpost_resolver_input(CreatorRequestId = CreatorRequestId, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType, OutpostArn = OutpostArn, Tags = Tags)
+  output <- .route53resolver$create_outpost_resolver_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$create_outpost_resolver <- route53resolver_create_outpost_resolver
+
 #' Creates a Resolver endpoint
 #'
 #' @description
@@ -343,21 +385,25 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #' endpoints). The subnet ID uniquely identifies a VPC.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
-#' @param ResolverEndpointType For the endpoint type you can choose either IPv4, IPv6. or dual-stack. A
+#' @param ResolverEndpointType For the endpoint type you can choose either IPv4, IPv6, or dual-stack. A
 #' dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
 #' This endpoint type is applied to all IP addresses.
+#' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost. If you specify this, you
+#' must also specify a value for the `PreferredInstanceType`.
+#' @param PreferredInstanceType The instance type. If you specify this, you must also specify a value
+#' for the `OutpostArn`.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_endpoint
-route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL, ResolverEndpointType = NULL) {
+route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL, ResolverEndpointType = NULL, OutpostArn = NULL, PreferredInstanceType = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags, ResolverEndpointType = ResolverEndpointType)
+  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags, ResolverEndpointType = ResolverEndpointType, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType)
   output <- .route53resolver$create_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -459,7 +505,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' the Resolver rule that contains the most specific domain name
 #' (www.example.com).
 #' @param TargetIps The IPs that you want Resolver to forward DNS queries to. You can
-#' specify only IPv4 addresses. Separate IP addresses with a space.
+#' specify either Ipv4 or Ipv6 addresses but not both in the same rule.
+#' Separate IP addresses with a space.
 #' 
 #' `TargetIps` is available only when the value of `Rule type` is
 #' `FORWARD`.
@@ -577,6 +624,35 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
   return(response)
 }
 .route53resolver$operations$delete_firewall_rule_group <- route53resolver_delete_firewall_rule_group
+
+#' Deletes a Resolver on the Outpost
+#'
+#' @description
+#' Deletes a Resolver on the Outpost.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_delete_outpost_resolver/](https://www.paws-r-sdk.com/docs/route53resolver_delete_outpost_resolver/) for full documentation.
+#'
+#' @param Id &#91;required&#93; A unique string that identifies the Resolver on the Outpost.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_delete_outpost_resolver
+route53resolver_delete_outpost_resolver <- function(Id) {
+  op <- new_operation(
+    name = "DeleteOutpostResolver",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$delete_outpost_resolver_input(Id = Id)
+  output <- .route53resolver$delete_outpost_resolver_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$delete_outpost_resolver <- route53resolver_delete_outpost_resolver
 
 #' Deletes a Resolver endpoint
 #'
@@ -938,6 +1014,36 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
 }
 .route53resolver$operations$get_firewall_rule_group_policy <- route53resolver_get_firewall_rule_group_policy
 
+#' Gets information about a specified Resolver on the Outpost, such as its
+#' instance count and type, name, and the current status of the Resolver
+#'
+#' @description
+#' Gets information about a specified Resolver on the Outpost, such as its instance count and type, name, and the current status of the Resolver.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_get_outpost_resolver/](https://www.paws-r-sdk.com/docs/route53resolver_get_outpost_resolver/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the Resolver on the Outpost.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_get_outpost_resolver
+route53resolver_get_outpost_resolver <- function(Id) {
+  op <- new_operation(
+    name = "GetOutpostResolver",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$get_outpost_resolver_input(Id = Id)
+  output <- .route53resolver$get_outpost_resolver_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$get_outpost_resolver <- route53resolver_get_outpost_resolver
+
 #' Retrieves the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud
 #'
@@ -1284,7 +1390,7 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
     name = "ListFirewallConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallConfigs")
   )
   input <- .route53resolver$list_firewall_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_configs_output()
@@ -1326,7 +1432,7 @@ route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextTo
     name = "ListFirewallDomainLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallDomainLists")
   )
   input <- .route53resolver$list_firewall_domain_lists_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domain_lists_output()
@@ -1370,7 +1476,7 @@ route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResul
     name = "ListFirewallDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains")
   )
   input <- .route53resolver$list_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domains_output()
@@ -1424,7 +1530,7 @@ route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGr
     name = "ListFirewallRuleGroupAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroupAssociations")
   )
   input <- .route53resolver$list_firewall_rule_group_associations_input(FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_group_associations_output()
@@ -1467,7 +1573,7 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
     name = "ListFirewallRuleGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroups")
   )
   input <- .route53resolver$list_firewall_rule_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_groups_output()
@@ -1529,7 +1635,7 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
     name = "ListFirewallRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRules")
   )
   input <- .route53resolver$list_firewall_rules_input(FirewallRuleGroupId = FirewallRuleGroupId, Priority = Priority, Action = Action, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rules_output()
@@ -1540,6 +1646,40 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
   return(response)
 }
 .route53resolver$operations$list_firewall_rules <- route53resolver_list_firewall_rules
+
+#' Lists all the Resolvers on Outposts that were created using the current
+#' Amazon Web Services account
+#'
+#' @description
+#' Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_list_outpost_resolvers/](https://www.paws-r-sdk.com/docs/route53resolver_list_outpost_resolvers/) for full documentation.
+#'
+#' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost.
+#' @param MaxResults The maximum number of Resolvers on the Outpost that you want to return
+#' in the response to a `ListOutpostResolver` request. If you don't specify
+#' a value for `MaxResults`, the request returns up to 100 Resolvers.
+#' @param NextToken For the first `ListOutpostResolver` request, omit this value.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_list_outpost_resolvers
+route53resolver_list_outpost_resolvers <- function(OutpostArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOutpostResolvers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OutpostResolvers")
+  )
+  input <- .route53resolver$list_outpost_resolvers_input(OutpostArn = OutpostArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .route53resolver$list_outpost_resolvers_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$list_outpost_resolvers <- route53resolver_list_outpost_resolvers
 
 #' Retrieves the Resolver configurations that you have defined
 #'
@@ -1573,7 +1713,7 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
     name = "ListResolverConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverConfigs")
   )
   input <- .route53resolver$list_resolver_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_configs_output()
@@ -1618,7 +1758,7 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
     name = "ListResolverDnssecConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverDnssecConfigs")
   )
   input <- .route53resolver$list_resolver_dnssec_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_dnssec_configs_output()
@@ -1661,7 +1801,7 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
     name = "ListResolverEndpointIpAddresses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpAddresses")
   )
   input <- .route53resolver$list_resolver_endpoint_ip_addresses_input(ResolverEndpointId = ResolverEndpointId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_endpoint_ip_addresses_output()
@@ -1711,7 +1851,7 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
     name = "ListResolverEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverEndpoints")
   )
   input <- .route53resolver$list_resolver_endpoints_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_endpoints_output()
@@ -1818,7 +1958,7 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
     name = "ListResolverQueryLogConfigAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigAssociations")
   )
   input <- .route53resolver$list_resolver_query_log_config_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_config_associations_output()
@@ -1929,7 +2069,7 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
     name = "ListResolverQueryLogConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigs")
   )
   input <- .route53resolver$list_resolver_query_log_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_configs_output()
@@ -1976,7 +2116,7 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
     name = "ListResolverRuleAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRuleAssociations")
   )
   input <- .route53resolver$list_resolver_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rule_associations_output()
@@ -2025,7 +2165,7 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
     name = "ListResolverRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRules")
   )
   input <- .route53resolver$list_resolver_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rules_output()
@@ -2067,7 +2207,7 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .route53resolver$list_tags_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_tags_for_resource_output()
@@ -2133,8 +2273,6 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
 #' -   `route53resolver:AssociateResolverQueryLogConfig`
 #' 
 #' -   `route53resolver:DisassociateResolverQueryLogConfig`
-#' 
-#' -   `route53resolver:ListResolverQueryLogConfigAssociations`
 #' 
 #' -   `route53resolver:ListResolverQueryLogConfigs`
 #' 
@@ -2511,6 +2649,39 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 }
 .route53resolver$operations$update_firewall_rule_group_association <- route53resolver_update_firewall_rule_group_association
 
+#' You can use UpdateOutpostResolver to update the instance count, type, or
+#' name of a Resolver on an Outpost
+#'
+#' @description
+#' You can use [`update_outpost_resolver`][route53resolver_update_outpost_resolver] to update the instance count, type, or name of a Resolver on an Outpost.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53resolver_update_outpost_resolver/](https://www.paws-r-sdk.com/docs/route53resolver_update_outpost_resolver/) for full documentation.
+#'
+#' @param Id &#91;required&#93; A unique string that identifies Resolver on an Outpost.
+#' @param Name Name of the Resolver on the Outpost.
+#' @param InstanceCount The Amazon EC2 instance count for a Resolver on the Outpost.
+#' @param PreferredInstanceType Amazon EC2 instance type.
+#'
+#' @keywords internal
+#'
+#' @rdname route53resolver_update_outpost_resolver
+route53resolver_update_outpost_resolver <- function(Id, Name = NULL, InstanceCount = NULL, PreferredInstanceType = NULL) {
+  op <- new_operation(
+    name = "UpdateOutpostResolver",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .route53resolver$update_outpost_resolver_input(Id = Id, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType)
+  output <- .route53resolver$update_outpost_resolver_output()
+  config <- get_config()
+  svc <- .route53resolver$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53resolver$operations$update_outpost_resolver <- route53resolver_update_outpost_resolver
+
 #' Updates the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud
 #'
@@ -2603,7 +2774,11 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @param Name The name of the Resolver endpoint that you want to update.
 #' @param ResolverEndpointType Specifies the endpoint type for what type of IP address the endpoint
 #' uses to forward DNS queries.
-#' @param UpdateIpAddresses Updates the Resolver endpoint type to IpV4, Ipv6, or dual-stack.
+#' 
+#' Updating to `IPV6` type isn't currently supported.
+#' @param UpdateIpAddresses Specifies the IPv6 address when you update the Resolver endpoint from
+#' IPv4 to dual-stack. If you don't specify an IPv6 address, one will be
+#' automatically chosen from your subnet.
 #'
 #' @keywords internal
 #'

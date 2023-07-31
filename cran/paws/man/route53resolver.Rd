@@ -4,22 +4,47 @@
 \alias{route53resolver}
 \title{Amazon Route 53 Resolver}
 \usage{
-route53resolver(config = list())
+route53resolver(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -85,8 +110,20 @@ queries), or both.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -101,12 +138,14 @@ queries), or both.
 \link[paws.networking:route53resolver_create_firewall_domain_list]{create_firewall_domain_list} \tab Creates an empty firewall domain list for use in DNS Firewall rules\cr
 \link[paws.networking:route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group, using the specified domain list\cr
 \link[paws.networking:route53resolver_create_firewall_rule_group]{create_firewall_rule_group} \tab Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC\cr
+\link[paws.networking:route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates an Route 53 Resolver on an Outpost\cr
 \link[paws.networking:route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a Resolver endpoint\cr
 \link[paws.networking:route53resolver_create_resolver_query_log_config]{create_resolver_query_log_config} \tab Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs\cr
 \link[paws.networking:route53resolver_create_resolver_rule]{create_resolver_rule} \tab For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network\cr
 \link[paws.networking:route53resolver_delete_firewall_domain_list]{delete_firewall_domain_list} \tab Deletes the specified domain list\cr
 \link[paws.networking:route53resolver_delete_firewall_rule]{delete_firewall_rule} \tab Deletes the specified firewall rule\cr
 \link[paws.networking:route53resolver_delete_firewall_rule_group]{delete_firewall_rule_group} \tab Deletes the specified firewall rule group\cr
+\link[paws.networking:route53resolver_delete_outpost_resolver]{delete_outpost_resolver} \tab Deletes a Resolver on the Outpost\cr
 \link[paws.networking:route53resolver_delete_resolver_endpoint]{delete_resolver_endpoint} \tab Deletes a Resolver endpoint\cr
 \link[paws.networking:route53resolver_delete_resolver_query_log_config]{delete_resolver_query_log_config} \tab Deletes a query logging configuration\cr
 \link[paws.networking:route53resolver_delete_resolver_rule]{delete_resolver_rule} \tab Deletes a Resolver rule\cr
@@ -119,6 +158,7 @@ queries), or both.
 \link[paws.networking:route53resolver_get_firewall_rule_group]{get_firewall_rule_group} \tab Retrieves the specified firewall rule group\cr
 \link[paws.networking:route53resolver_get_firewall_rule_group_association]{get_firewall_rule_group_association} \tab Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule group\cr
 \link[paws.networking:route53resolver_get_firewall_rule_group_policy]{get_firewall_rule_group_policy} \tab Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group\cr
+\link[paws.networking:route53resolver_get_outpost_resolver]{get_outpost_resolver} \tab Gets information about a specified Resolver on the Outpost, such as its instance count and type, name, and the current status of the Resolver\cr
 \link[paws.networking:route53resolver_get_resolver_config]{get_resolver_config} \tab Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 \link[paws.networking:route53resolver_get_resolver_dnssec_config]{get_resolver_dnssec_config} \tab Gets DNSSEC validation information for a specified resource\cr
 \link[paws.networking:route53resolver_get_resolver_endpoint]{get_resolver_endpoint} \tab Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint\cr
@@ -135,6 +175,7 @@ queries), or both.
 \link[paws.networking:route53resolver_list_firewall_rule_group_associations]{list_firewall_rule_group_associations} \tab Retrieves the firewall rule group associations that you have defined\cr
 \link[paws.networking:route53resolver_list_firewall_rule_groups]{list_firewall_rule_groups} \tab Retrieves the minimal high-level information for the rule groups that you have defined\cr
 \link[paws.networking:route53resolver_list_firewall_rules]{list_firewall_rules} \tab Retrieves the firewall rules that you have defined for the specified firewall rule group\cr
+\link[paws.networking:route53resolver_list_outpost_resolvers]{list_outpost_resolvers} \tab Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account\cr
 \link[paws.networking:route53resolver_list_resolver_configs]{list_resolver_configs} \tab Retrieves the Resolver configurations that you have defined\cr
 \link[paws.networking:route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs} \tab Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account\cr
 \link[paws.networking:route53resolver_list_resolver_endpoint_ip_addresses]{list_resolver_endpoint_ip_addresses} \tab Gets the IP addresses for a specified Resolver endpoint\cr
@@ -153,6 +194,7 @@ queries), or both.
 \link[paws.networking:route53resolver_update_firewall_domains]{update_firewall_domains} \tab Updates the firewall domain list from an array of domain specifications\cr
 \link[paws.networking:route53resolver_update_firewall_rule]{update_firewall_rule} \tab Updates the specified firewall rule\cr
 \link[paws.networking:route53resolver_update_firewall_rule_group_association]{update_firewall_rule_group_association} \tab Changes the association of a FirewallRuleGroup with a VPC\cr
+\link[paws.networking:route53resolver_update_outpost_resolver]{update_outpost_resolver} \tab You can use UpdateOutpostResolver to update the instance count, type, or name of a Resolver on an Outpost\cr
 \link[paws.networking:route53resolver_update_resolver_config]{update_resolver_config} \tab Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 \link[paws.networking:route53resolver_update_resolver_dnssec_config]{update_resolver_dnssec_config} \tab Updates an existing DNSSEC validation configuration\cr
 \link[paws.networking:route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint\cr

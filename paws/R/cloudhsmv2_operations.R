@@ -591,7 +591,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$describe_backups_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, SortAscending = SortAscending)
   output <- .cloudhsmv2$describe_backups_output()
@@ -715,7 +715,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$describe_clusters_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$describe_clusters_output()
@@ -849,7 +849,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$list_tags_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$list_tags_output()

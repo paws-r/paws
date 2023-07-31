@@ -548,7 +548,7 @@ panorama_list_application_instance_dependencies <- function(ApplicationInstanceI
     name = "ListApplicationInstanceDependencies",
     http_method = "GET",
     http_path = "/application-instances/{ApplicationInstanceId}/package-dependencies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_application_instance_dependencies_input(ApplicationInstanceId = ApplicationInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_application_instance_dependencies_output()
@@ -580,7 +580,7 @@ panorama_list_application_instance_node_instances <- function(ApplicationInstanc
     name = "ListApplicationInstanceNodeInstances",
     http_method = "GET",
     http_path = "/application-instances/{ApplicationInstanceId}/node-instances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_application_instance_node_instances_input(ApplicationInstanceId = ApplicationInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_application_instance_node_instances_output()
@@ -614,7 +614,7 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
     name = "ListApplicationInstances",
     http_method = "GET",
     http_path = "/application-instances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_application_instances_input(DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken, StatusFilter = StatusFilter)
   output <- .panorama$list_application_instances_output()
@@ -650,7 +650,7 @@ panorama_list_devices <- function(DeviceAggregatedStatusFilter = NULL, MaxResult
     name = "ListDevices",
     http_method = "GET",
     http_path = "/devices",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_devices_input(DeviceAggregatedStatusFilter = DeviceAggregatedStatusFilter, MaxResults = MaxResults, NameFilter = NameFilter, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .panorama$list_devices_output()
@@ -682,7 +682,7 @@ panorama_list_devices_jobs <- function(DeviceId = NULL, MaxResults = NULL, NextT
     name = "ListDevicesJobs",
     http_method = "GET",
     http_path = "/jobs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_devices_jobs_input(DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_devices_jobs_output()
@@ -714,7 +714,7 @@ panorama_list_node_from_template_jobs <- function(MaxResults = NULL, NextToken =
     name = "ListNodeFromTemplateJobs",
     http_method = "GET",
     http_path = "/packages/template-job",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_node_from_template_jobs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_node_from_template_jobs_output()
@@ -750,7 +750,7 @@ panorama_list_nodes <- function(Category = NULL, MaxResults = NULL, NextToken = 
     name = "ListNodes",
     http_method = "GET",
     http_path = "/nodes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_nodes_input(Category = Category, MaxResults = MaxResults, NextToken = NextToken, OwnerAccount = OwnerAccount, PackageName = PackageName, PackageVersion = PackageVersion, PatchVersion = PatchVersion)
   output <- .panorama$list_nodes_output()
@@ -782,7 +782,7 @@ panorama_list_package_import_jobs <- function(MaxResults = NULL, NextToken = NUL
     name = "ListPackageImportJobs",
     http_method = "GET",
     http_path = "/packages/import-jobs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_package_import_jobs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_package_import_jobs_output()
@@ -813,7 +813,7 @@ panorama_list_packages <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListPackages",
     http_method = "GET",
     http_path = "/packages",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .panorama$list_packages_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .panorama$list_packages_output()

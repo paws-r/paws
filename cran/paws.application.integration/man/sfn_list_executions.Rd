@@ -17,7 +17,14 @@ sfn_list_executions(
 listed.
 
 You can specify either a \code{mapRunArn} or a \code{stateMachineArn}, but not
-both.}
+both.
+
+You can also return a list of executions associated with a specific
+\href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html}{alias}
+or
+\href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html}{version},
+by specifying an alias ARN or a version ARN in the \code{stateMachineArn}
+parameter.}
 
 \item{statusFilter}{If specified, only list the executions whose current execution status
 matches the given filter.}

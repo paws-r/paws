@@ -103,7 +103,7 @@ registrant, and technical contacts.
 Default: \code{true}}
 }
 \description{
-This operation registers a domain. Domains are registered either by Amazon Registrar (for .com, .net, and .org domains) or by our registrar associate, Gandi (for all other domains). For some top-level domains (TLDs), this operation requires extra parameters.
+This operation registers a domain. For some top-level domains (TLDs), this operation requires extra parameters.
 
 See \url{https://www.paws-r-sdk.com/docs/route53domains_register_domain/} for full documentation.
 }

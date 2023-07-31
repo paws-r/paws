@@ -3929,7 +3929,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
     name = "DescribeCacheClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters")
   )
   input <- .elasticache$describe_cache_clusters_input(CacheClusterId = CacheClusterId, MaxRecords = MaxRecords, Marker = Marker, ShowCacheNodeInfo = ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups = ShowCacheClustersNotInReplicationGroups)
   output <- .elasticache$describe_cache_clusters_output()
@@ -4021,7 +4021,7 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
     name = "DescribeCacheEngineVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions")
   )
   input <- .elasticache$describe_cache_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly)
   output <- .elasticache$describe_cache_engine_versions_output()
@@ -4093,7 +4093,7 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
     name = "DescribeCacheParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups")
   )
   input <- .elasticache$describe_cache_parameter_groups_input(CacheParameterGroupName = CacheParameterGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameter_groups_output()
@@ -4191,7 +4191,7 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
     name = "DescribeCacheParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .elasticache$describe_cache_parameters_input(CacheParameterGroupName = CacheParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameters_output()
@@ -4269,7 +4269,7 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
     name = "DescribeCacheSecurityGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups")
   )
   input <- .elasticache$describe_cache_security_groups_input(CacheSecurityGroupName = CacheSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_security_groups_output()
@@ -4358,7 +4358,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
     name = "DescribeCacheSubnetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups")
   )
   input <- .elasticache$describe_cache_subnet_groups_input(CacheSubnetGroupName = CacheSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_subnet_groups_output()
@@ -4459,7 +4459,7 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
     name = "DescribeEngineDefaultParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
   )
   input <- .elasticache$describe_engine_default_parameters_input(CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_engine_default_parameters_output()
@@ -4557,7 +4557,7 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .elasticache$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_events_output()
@@ -4648,7 +4648,7 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
     name = "DescribeGlobalReplicationGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups")
   )
   input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
   output <- .elasticache$describe_global_replication_groups_output()
@@ -4847,7 +4847,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
     name = "DescribeReplicationGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups")
   )
   input <- .elasticache$describe_replication_groups_input(ReplicationGroupId = ReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_replication_groups_output()
@@ -5057,7 +5057,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
     name = "DescribeReservedCacheNodes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes")
   )
   input <- .elasticache$describe_reserved_cache_nodes_input(ReservedCacheNodeId = ReservedCacheNodeId, ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_output()
@@ -5258,7 +5258,7 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
     name = "DescribeReservedCacheNodesOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings")
   )
   input <- .elasticache$describe_reserved_cache_nodes_offerings_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_offerings_output()
@@ -5339,7 +5339,7 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
     name = "DescribeServiceUpdates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates")
   )
   input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_service_updates_output()
@@ -5481,7 +5481,7 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
   )
   input <- .elasticache$describe_snapshots_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, SnapshotSource = SnapshotSource, Marker = Marker, MaxRecords = MaxRecords, ShowNodeGroupConfig = ShowNodeGroupConfig)
   output <- .elasticache$describe_snapshots_output()
@@ -5646,7 +5646,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
     name = "DescribeUpdateActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions")
   )
   input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, Engine = Engine, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_update_actions_output()
@@ -5725,7 +5725,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
     name = "DescribeUserGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups")
   )
   input <- .elasticache$describe_user_groups_input(UserGroupId = UserGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_user_groups_output()
@@ -5810,7 +5810,7 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
     name = "DescribeUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users")
   )
   input <- .elasticache$describe_users_input(Engine = Engine, UserId = UserId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_users_output()

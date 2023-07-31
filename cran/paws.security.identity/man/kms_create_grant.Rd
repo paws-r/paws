@@ -11,7 +11,8 @@ kms_create_grant(
   Operations,
   Constraints = NULL,
   GrantTokens = NULL,
-  Name = NULL
+  Name = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -124,6 +125,11 @@ creating a new grant. Note that the returned grant token is unique with
 every \code{\link[=kms_create_grant]{create_grant}} request, even when a duplicate
 \code{GrantId} is returned. All grant tokens for the same grant ID can be
 used interchangeably.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Adds a grant to a KMS key.

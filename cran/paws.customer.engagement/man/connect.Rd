@@ -4,22 +4,42 @@
 \alias{connect}
 \title{Amazon Connect Service}
 \usage{
-connect(config = list())
+connect(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -62,8 +82,20 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -112,7 +144,9 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Amazon Connect instance\cr
 \link[=connect_delete_prompt]{delete_prompt} \tab Deletes a prompt\cr
+\link[=connect_delete_queue]{delete_queue} \tab Deletes a queue\cr
 \link[=connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
+\link[=connect_delete_routing_profile]{delete_routing_profile} \tab Deletes a routing profile\cr
 \link[=connect_delete_rule]{delete_rule} \tab Deletes a rule for the specified Amazon Connect instance\cr
 \link[=connect_delete_security_profile]{delete_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
@@ -201,14 +235,15 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_put_user_status]{put_user_status} \tab Changes the current status of a user or agent in Amazon Connect\cr
 \link[=connect_release_phone_number]{release_phone_number} \tab Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group\cr
 \link[=connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region\cr
-\link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call\cr
+\link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call or screen\cr
 \link[=connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
 \link[=connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
-\link[=connect_search_queues]{search_queues} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_search_queues]{search_queues} \tab Searches queues in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_quick_connects]{search_quick_connects} \tab Searches quick connects in an Amazon Connect instance, with optional filtering\cr
-\link[=connect_search_routing_profiles]{search_routing_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_search_security_profiles]{search_security_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_search_resource_tags]{search_resource_tags} \tab Searches tags used in an Amazon Connect instance using optional search criteria\cr
+\link[=connect_search_routing_profiles]{search_routing_profiles} \tab Searches routing profiles in an Amazon Connect instance, with optional filtering\cr
+\link[=connect_search_security_profiles]{search_security_profiles} \tab Searches security profiles in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
 \link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a flow to start a new chat for the customer\cr
@@ -221,7 +256,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 \link[=connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
 \link[=connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
-\link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call\cr
+\link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call or screen\cr
 \link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
 \link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr

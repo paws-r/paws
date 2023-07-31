@@ -9,6 +9,7 @@ ivs_create_recording_configuration(
   destinationConfiguration,
   name = NULL,
   recordingReconnectWindowSeconds = NULL,
+  renditionConfiguration = NULL,
   tags = NULL,
   thumbnailConfiguration = NULL
 )
@@ -22,6 +23,8 @@ recorded video will be stored.}
 \item{recordingReconnectWindowSeconds}{If a broadcast disconnects and then reconnects within the specified
 interval, the multiple streams will be considered a single broadcast and
 merged together. Default: 0.}
+
+\item{renditionConfiguration}{Object that describes which renditions should be recorded for a stream.}
 
 \item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See
 \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}

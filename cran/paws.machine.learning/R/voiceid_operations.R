@@ -500,7 +500,7 @@ voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DomainSummaries")
   )
   input <- .voiceid$list_domains_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_domains_output()
@@ -539,7 +539,7 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
     name = "ListFraudsterRegistrationJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries")
   )
   input <- .voiceid$list_fraudster_registration_jobs_input(DomainId = DomainId, JobStatus = JobStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_fraudster_registration_jobs_output()
@@ -578,7 +578,7 @@ voiceid_list_fraudsters <- function(DomainId, MaxResults = NULL, NextToken = NUL
     name = "ListFraudsters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FraudsterSummaries")
   )
   input <- .voiceid$list_fraudsters_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken, WatchlistId = WatchlistId)
   output <- .voiceid$list_fraudsters_output()
@@ -616,7 +616,7 @@ voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, Max
     name = "ListSpeakerEnrollmentJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries")
   )
   input <- .voiceid$list_speaker_enrollment_jobs_input(DomainId = DomainId, JobStatus = JobStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_speaker_enrollment_jobs_output()
@@ -652,7 +652,7 @@ voiceid_list_speakers <- function(DomainId, MaxResults = NULL, NextToken = NULL)
     name = "ListSpeakers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SpeakerSummaries")
   )
   input <- .voiceid$list_speakers_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_speakers_output()
@@ -718,7 +718,7 @@ voiceid_list_watchlists <- function(DomainId, MaxResults = NULL, NextToken = NUL
     name = "ListWatchlists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "WatchlistSummaries")
   )
   input <- .voiceid$list_watchlists_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_watchlists_output()

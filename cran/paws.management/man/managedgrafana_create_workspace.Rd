@@ -45,7 +45,8 @@ information about the format and configuration options available, see
 
 \item{grafanaVersion}{Specifies the version of Grafana to support in the new workspace.
 
-Supported values are \code{8.4} and \code{9.4}.}
+To get a list of supported version, use the
+\code{\link[=managedgrafana_list_versions]{list_versions}} operation.}
 
 \item{networkAccessControl}{Configuration for network access to your workspace.
 
@@ -85,7 +86,10 @@ be used for this workspace.}
 \item{tags}{The list of tags associated with the workspace.}
 
 \item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources
-for your Grafana workspace to connect to.}
+for your Grafana workspace to connect to.
+
+Connecting to a private VPC is not yet available in the Asia Pacific
+(Seoul) Region (ap-northeast-2).}
 
 \item{workspaceDataSources}{This parameter is for internal use only, and should not be used.}
 

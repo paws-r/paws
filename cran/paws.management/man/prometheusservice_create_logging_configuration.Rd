@@ -5,19 +5,19 @@
 \title{Create logging configuration}
 \usage{
 prometheusservice_create_logging_configuration(
-  clientToken = NULL,
+  workspaceId,
   logGroupArn,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
 
 \item{logGroupArn}{[required] The ARN of the CW log group to which the vended log data will be
 published.}
 
-\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
+\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
+idempotency of the request.}
 }
 \description{
 Create logging configuration.

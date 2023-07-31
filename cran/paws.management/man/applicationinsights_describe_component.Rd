@@ -5,12 +5,18 @@
 \title{Describes a component and lists the resources that are grouped together
 in a component}
 \usage{
-applicationinsights_describe_component(ResourceGroupName, ComponentName)
+applicationinsights_describe_component(
+  ResourceGroupName,
+  ComponentName,
+  AccountId = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{ComponentName}{[required] The name of the component.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes a component and lists the resources that are grouped together in a component.

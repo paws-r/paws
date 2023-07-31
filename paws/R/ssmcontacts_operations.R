@@ -1225,7 +1225,7 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
     name = "ListContactChannels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ContactChannels")
   )
   input <- .ssmcontacts$list_contact_channels_input(ContactId = ContactId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_contact_channels_output()
@@ -1288,7 +1288,7 @@ ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, Alias
     name = "ListContacts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Contacts")
   )
   input <- .ssmcontacts$list_contacts_input(NextToken = NextToken, MaxResults = MaxResults, AliasPrefix = AliasPrefix, Type = Type)
   output <- .ssmcontacts$list_contacts_output()
@@ -1364,7 +1364,7 @@ ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, In
     name = "ListEngagements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Engagements")
   )
   input <- .ssmcontacts$list_engagements_input(NextToken = NextToken, MaxResults = MaxResults, IncidentId = IncidentId, TimeRangeValue = TimeRangeValue)
   output <- .ssmcontacts$list_engagements_output()
@@ -1428,7 +1428,7 @@ ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults 
     name = "ListPageReceipts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Receipts")
   )
   input <- .ssmcontacts$list_page_receipts_input(PageId = PageId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_page_receipts_output()
@@ -1489,7 +1489,7 @@ ssmcontacts_list_page_resolutions <- function(NextToken = NULL, PageId) {
     name = "ListPageResolutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PageResolutions")
   )
   input <- .ssmcontacts$list_page_resolutions_input(NextToken = NextToken, PageId = PageId)
   output <- .ssmcontacts$list_page_resolutions_output()
@@ -1560,7 +1560,7 @@ ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxRe
     name = "ListPagesByContact",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Pages")
   )
   input <- .ssmcontacts$list_pages_by_contact_input(ContactId = ContactId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_pages_by_contact_output()
@@ -1633,7 +1633,7 @@ ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL,
     name = "ListPagesByEngagement",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Pages")
   )
   input <- .ssmcontacts$list_pages_by_engagement_input(EngagementId = EngagementId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_pages_by_engagement_output()
@@ -1789,7 +1789,7 @@ ssmcontacts_list_preview_rotation_shifts <- function(RotationStartTime = NULL, S
     name = "ListPreviewRotationShifts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RotationShifts")
   )
   input <- .ssmcontacts$list_preview_rotation_shifts_input(RotationStartTime = RotationStartTime, StartTime = StartTime, EndTime = EndTime, Members = Members, TimeZoneId = TimeZoneId, Recurrence = Recurrence, Overrides = Overrides, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_preview_rotation_shifts_output()
@@ -1873,7 +1873,7 @@ ssmcontacts_list_rotation_overrides <- function(RotationId, StartTime, EndTime, 
     name = "ListRotationOverrides",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RotationOverrides")
   )
   input <- .ssmcontacts$list_rotation_overrides_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_rotation_overrides_output()
@@ -1958,7 +1958,7 @@ ssmcontacts_list_rotation_shifts <- function(RotationId, StartTime = NULL, EndTi
     name = "ListRotationShifts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RotationShifts")
   )
   input <- .ssmcontacts$list_rotation_shifts_input(RotationId = RotationId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_rotation_shifts_output()
@@ -2069,7 +2069,7 @@ ssmcontacts_list_rotations <- function(RotationNamePrefix = NULL, NextToken = NU
     name = "ListRotations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Rotations")
   )
   input <- .ssmcontacts$list_rotations_input(RotationNamePrefix = RotationNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmcontacts$list_rotations_output()

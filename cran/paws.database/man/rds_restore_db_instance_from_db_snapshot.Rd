@@ -25,6 +25,10 @@ rds_restore_db_instance_from_db_snapshot(
   TdeCredentialPassword = NULL,
   VpcSecurityGroupIds = NULL,
   Domain = NULL,
+  DomainFqdn = NULL,
+  DomainOu = NULL,
+  DomainAuthSecretArn = NULL,
+  DomainDnsIps = NULL,
   CopyTagsToSnapshot = NULL,
   DomainIAMRoleName = NULL,
   EnableIAMDatabaseAuthentication = NULL,
@@ -222,6 +226,46 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to RDS Custom.}
 
+\item{DomainFqdn}{The fully qualified domain name (FQDN) of an Active Directory domain.
+
+Constraints:
+\itemize{
+\item Can't be longer than 64 characters.
+}
+
+Example: \code{mymanagedADtest.mymanagedAD.mydomain}}
+
+\item{DomainOu}{The Active Directory organizational unit for your DB instance to join.
+
+Constraints:
+\itemize{
+\item Must be in the distinguished name format.
+\item Can't be longer than 64 characters.
+}
+
+Example:
+\verb{OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain}}
+
+\item{DomainAuthSecretArn}{The ARN for the Secrets Manager secret with the credentials for the user
+joining the domain.
+
+Constraints:
+
+Example:
+\code{arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456}}
+
+\item{DomainDnsIps}{The IPv4 DNS IP addresses of your primary and secondary Active Directory
+domain controllers.
+
+Constraints:
+\itemize{
+\item Two IP addresses must be provided. If there isn't a secondary domain
+controller, use the IP address of the primary domain controller for
+both entries in the list.
+}
+
+Example: \verb{123.124.125.126,234.235.236.237}}
+
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 instance to snapshots of the DB instance.
 
@@ -235,10 +279,10 @@ DB instance.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html#USER_Tagging.CopyTags}{Copying tags to DB instance snapshots}
 in the \emph{Amazon RDS User Guide}.}
 
-\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
-Directory Service.
+\item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory
+Service.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
 Identity and Access Management (IAM) accounts to database accounts. By

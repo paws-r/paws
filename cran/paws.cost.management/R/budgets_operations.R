@@ -359,7 +359,7 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
     name = "DescribeBudgetActionHistories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActionHistories")
   )
   input <- .budgets$describe_budget_action_histories_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_action_histories_output()
@@ -390,7 +390,7 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
     name = "DescribeBudgetActionsForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
   )
   input <- .budgets$describe_budget_actions_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_account_output()
@@ -422,7 +422,7 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
     name = "DescribeBudgetActionsForBudget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
   )
   input <- .budgets$describe_budget_actions_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_budget_output()
@@ -455,7 +455,7 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
     name = "DescribeBudgetNotificationsForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetNotificationsForAccount")
   )
   input <- .budgets$describe_budget_notifications_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_notifications_for_account_output()
@@ -489,7 +489,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
     name = "DescribeBudgetPerformanceHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetPerformanceHistory")
   )
   input <- .budgets$describe_budget_performance_history_input(AccountId = AccountId, BudgetName = BudgetName, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_performance_history_output()
@@ -523,7 +523,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
     name = "DescribeBudgets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets")
   )
   input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budgets_output()
@@ -558,7 +558,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
     name = "DescribeNotificationsForBudget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Notifications")
   )
   input <- .budgets$describe_notifications_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_notifications_for_budget_output()
@@ -594,7 +594,7 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
     name = "DescribeSubscribersForNotification",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscribers")
   )
   input <- .budgets$describe_subscribers_for_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_subscribers_for_notification_output()

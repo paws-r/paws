@@ -2045,7 +2045,7 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
     name = "DescribeProjectVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectVersionDescriptions")
   )
   input <- .rekognition$describe_project_versions_input(ProjectArn = ProjectArn, VersionNames = VersionNames, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$describe_project_versions_output()
@@ -2129,7 +2129,7 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
     name = "DescribeProjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectDescriptions")
   )
   input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames)
   output <- .rekognition$describe_projects_output()
@@ -3764,7 +3764,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
     name = "GetCelebrityRecognition",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_celebrity_recognition_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_celebrity_recognition_output()
@@ -3919,7 +3919,7 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
     name = "GetContentModeration",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_content_moderation_output()
@@ -4103,7 +4103,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
     name = "GetFaceDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_face_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_face_detection_output()
@@ -4418,7 +4418,7 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
     name = "GetFaceSearch",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_face_search_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_face_search_output()
@@ -4638,7 +4638,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
     name = "GetLabelDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_label_detection_output()
@@ -4852,7 +4852,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
     name = "GetPersonTracking",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_person_tracking_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_person_tracking_output()
@@ -5008,7 +5008,7 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
     name = "GetSegmentDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_segment_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_segment_detection_output()
@@ -5145,7 +5145,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
     name = "GetTextDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_text_detection_output()
@@ -5631,7 +5631,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListCollections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CollectionIds")
   )
   input <- .rekognition$list_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_collections_output()
@@ -5729,7 +5729,7 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
     name = "ListDatasetEntries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetEntries")
   )
   input <- .rekognition$list_dataset_entries_input(DatasetArn = DatasetArn, ContainsLabels = ContainsLabels, Labeled = Labeled, SourceRefContains = SourceRefContains, HasErrors = HasErrors, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_entries_output()
@@ -5800,7 +5800,7 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
     name = "ListDatasetLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetLabelDescriptions")
   )
   input <- .rekognition$list_dataset_labels_input(DatasetArn = DatasetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_labels_output()
@@ -5894,7 +5894,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
     name = "ListFaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces")
   )
   input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults, UserId = UserId, FaceIds = FaceIds)
   output <- .rekognition$list_faces_output()
@@ -5983,7 +5983,7 @@ rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxR
     name = "ListProjectPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectPolicies")
   )
   input <- .rekognition$list_project_policies_input(ProjectArn = ProjectArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_project_policies_output()
@@ -6044,7 +6044,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
     name = "ListStreamProcessors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$list_stream_processors_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_stream_processors_output()
@@ -6169,7 +6169,7 @@ rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = 
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users")
   )
   input <- .rekognition$list_users_input(CollectionId = CollectionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$list_users_output()

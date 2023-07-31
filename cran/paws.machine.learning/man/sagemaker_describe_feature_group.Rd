@@ -7,7 +7,8 @@
 sagemaker_describe_feature_group(FeatureGroupName, NextToken = NULL)
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the \code{FeatureGroup} you want described.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the \code{FeatureGroup} you want
+described.}
 
 \item{NextToken}{A token to resume pagination of the list of \code{Features}
 (\code{FeatureDefinitions}). 2,500 \code{Features} are returned by default.}

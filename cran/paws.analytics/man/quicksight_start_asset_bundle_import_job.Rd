@@ -19,7 +19,7 @@ quicksight_start_asset_bundle_import_job(
 job is completed, you can reuse this ID for another job.}
 
 \item{AssetBundleImportSource}{[required] The source of the asset bundle zip file that contains the data that you
-want to import.}
+want to import. The file must be in \code{QUICKSIGHT_JSON} format.}
 
 \item{OverrideParameters}{Optional overrides to be applied to the resource configuration before
 import.}

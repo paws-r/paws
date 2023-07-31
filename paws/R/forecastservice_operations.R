@@ -4344,7 +4344,7 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
     name = "ListDatasetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetGroups")
   )
   input <- .forecastservice$list_dataset_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_dataset_groups_output()
@@ -4454,7 +4454,7 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
     name = "ListDatasetImportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetImportJobs")
   )
   input <- .forecastservice$list_dataset_import_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_dataset_import_jobs_output()
@@ -4524,7 +4524,7 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListDatasets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets")
   )
   input <- .forecastservice$list_datasets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_datasets_output()
@@ -4624,7 +4624,7 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
     name = "ListExplainabilities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Explainabilities")
   )
   input <- .forecastservice$list_explainabilities_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainabilities_output()
@@ -4727,7 +4727,7 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
     name = "ListExplainabilityExports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExplainabilityExports")
   )
   input <- .forecastservice$list_explainability_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainability_exports_output()
@@ -4836,7 +4836,7 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
     name = "ListForecastExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ForecastExportJobs")
   )
   input <- .forecastservice$list_forecast_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecast_export_jobs_output()
@@ -4938,7 +4938,7 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListForecasts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Forecasts")
   )
   input <- .forecastservice$list_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecasts_output()
@@ -5061,7 +5061,7 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
     name = "ListMonitorEvaluations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorMonitorEvaluations")
   )
   input <- .forecastservice$list_monitor_evaluations_input(NextToken = NextToken, MaxResults = MaxResults, MonitorArn = MonitorArn, Filters = Filters)
   output <- .forecastservice$list_monitor_evaluations_output()
@@ -5160,7 +5160,7 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
     name = "ListMonitors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Monitors")
   )
   input <- .forecastservice$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_monitors_output()
@@ -5266,7 +5266,7 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
     name = "ListPredictorBacktestExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorBacktestExportJobs")
   )
   input <- .forecastservice$list_predictor_backtest_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictor_backtest_export_jobs_output()
@@ -5375,7 +5375,7 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListPredictors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Predictors")
   )
   input <- .forecastservice$list_predictors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictors_output()
@@ -5531,7 +5531,7 @@ forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults =
     name = "ListWhatIfAnalyses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfAnalyses")
   )
   input <- .forecastservice$list_what_if_analyses_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_analyses_output()
@@ -5644,7 +5644,7 @@ forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxR
     name = "ListWhatIfForecastExports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecastExports")
   )
   input <- .forecastservice$list_what_if_forecast_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecast_exports_output()
@@ -5747,7 +5747,7 @@ forecastservice_list_what_if_forecasts <- function(NextToken = NULL, MaxResults 
     name = "ListWhatIfForecasts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecasts")
   )
   input <- .forecastservice$list_what_if_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecasts_output()

@@ -187,7 +187,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
     name = "ListChangeSets",
     http_method = "POST",
     http_path = "/ListChangeSets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ChangeSetSummaryList")
   )
   input <- .marketplacecatalog$list_change_sets_input(Catalog = Catalog, FilterList = FilterList, Sort = Sort, MaxResults = MaxResults, NextToken = NextToken)
   output <- .marketplacecatalog$list_change_sets_output()
@@ -225,7 +225,7 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
     name = "ListEntities",
     http_method = "POST",
     http_path = "/ListEntities",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EntitySummaryList")
   )
   input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType)
   output <- .marketplacecatalog$list_entities_output()

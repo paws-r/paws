@@ -289,7 +289,7 @@ connectcampaignservice_list_campaigns <- function(filters = NULL, maxResults = N
     name = "ListCampaigns",
     http_method = "POST",
     http_path = "/campaigns-summary",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "campaignSummaryList")
   )
   input <- .connectcampaignservice$list_campaigns_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcampaignservice$list_campaigns_output()

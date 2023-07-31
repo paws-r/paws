@@ -18,7 +18,7 @@ healthlake_start_fhir_export_job(
 \item{OutputDataConfig}{[required] The output data configuration that was supplied when the export job was
 created.}
 
-\item{DatastoreId}{[required] The AWS generated ID for the Data Store from which files are being
+\item{DatastoreId}{[required] The AWS generated ID for the data store from which files are being
 exported for an export job.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name used during the initiation of the job.}

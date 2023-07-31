@@ -2411,7 +2411,7 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
     name = "DescribeGlobalNetworks",
     http_method = "GET",
     http_path = "/global-networks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GlobalNetworks")
   )
   input <- .networkmanager$describe_global_networks_input(GlobalNetworkIds = GlobalNetworkIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$describe_global_networks_output()
@@ -2910,7 +2910,7 @@ networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, Connec
     name = "GetConnectPeerAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/connect-peer-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConnectPeerAssociations")
   )
   input <- .networkmanager$get_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerIds = ConnectPeerIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_connect_peer_associations_output()
@@ -2992,7 +2992,7 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
     name = "GetConnections",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/connections",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Connections")
   )
   input <- .networkmanager$get_connections_input(GlobalNetworkId = GlobalNetworkId, ConnectionIds = ConnectionIds, DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_connections_output()
@@ -3145,7 +3145,7 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
     name = "GetCoreNetworkChangeEvents",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-events/{policyVersionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkChangeEvents")
   )
   input <- .networkmanager$get_core_network_change_events_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_core_network_change_events_output()
@@ -3239,7 +3239,7 @@ networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVers
     name = "GetCoreNetworkChangeSet",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-sets/{policyVersionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkChanges")
   )
   input <- .networkmanager$get_core_network_change_set_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_core_network_change_set_output()
@@ -3377,7 +3377,7 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
     name = "GetCustomerGatewayAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/customer-gateway-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomerGatewayAssociations")
   )
   input <- .networkmanager$get_customer_gateway_associations_input(GlobalNetworkId = GlobalNetworkId, CustomerGatewayArns = CustomerGatewayArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_customer_gateway_associations_output()
@@ -3467,7 +3467,7 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
     name = "GetDevices",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/devices",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Devices")
   )
   input <- .networkmanager$get_devices_input(GlobalNetworkId = GlobalNetworkId, DeviceIds = DeviceIds, SiteId = SiteId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_devices_output()
@@ -3532,7 +3532,7 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
     name = "GetLinkAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/link-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LinkAssociations")
   )
   input <- .networkmanager$get_link_associations_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, LinkId = LinkId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_link_associations_output()
@@ -3623,7 +3623,7 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
     name = "GetLinks",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/links",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Links")
   )
   input <- .networkmanager$get_links_input(GlobalNetworkId = GlobalNetworkId, LinkIds = LinkIds, SiteId = SiteId, Type = Type, Provider = Provider, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_links_output()
@@ -3717,7 +3717,7 @@ networkmanager_get_network_resource_counts <- function(GlobalNetworkId, Resource
     name = "GetNetworkResourceCounts",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resource-count",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkResourceCounts")
   )
   input <- .networkmanager$get_network_resource_counts_input(GlobalNetworkId = GlobalNetworkId, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resource_counts_output()
@@ -3821,7 +3821,7 @@ networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, C
     name = "GetNetworkResourceRelationships",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resource-relationships",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Relationships")
   )
   input <- .networkmanager$get_network_resource_relationships_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resource_relationships_output()
@@ -3958,7 +3958,7 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
     name = "GetNetworkResources",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkResources")
   )
   input <- .networkmanager$get_network_resources_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resources_output()
@@ -4195,7 +4195,7 @@ networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId 
     name = "GetNetworkTelemetry",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-telemetry",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkTelemetry")
   )
   input <- .networkmanager$get_network_telemetry_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_telemetry_output()
@@ -4519,7 +4519,7 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
     name = "GetSites",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/sites",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Sites")
   )
   input <- .networkmanager$get_sites_input(GlobalNetworkId = GlobalNetworkId, SiteIds = SiteIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_sites_output()
@@ -4586,7 +4586,7 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
     name = "GetTransitGatewayConnectPeerAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransitGatewayConnectPeerAssociations")
   )
   input <- .networkmanager$get_transit_gateway_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArns = TransitGatewayConnectPeerArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_transit_gateway_connect_peer_associations_output()
@@ -4724,7 +4724,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
     name = "GetTransitGatewayRegistrations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-registrations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransitGatewayRegistrations")
   )
   input <- .networkmanager$get_transit_gateway_registrations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayArns = TransitGatewayArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_transit_gateway_registrations_output()
@@ -4991,7 +4991,7 @@ networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType
     name = "ListAttachments",
     http_method = "GET",
     http_path = "/attachments",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Attachments")
   )
   input <- .networkmanager$list_attachments_input(CoreNetworkId = CoreNetworkId, AttachmentType = AttachmentType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_attachments_output()
@@ -5063,7 +5063,7 @@ networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttac
     name = "ListConnectPeers",
     http_method = "GET",
     http_path = "/connect-peers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConnectPeers")
   )
   input <- .networkmanager$list_connect_peers_input(CoreNetworkId = CoreNetworkId, ConnectAttachmentId = ConnectAttachmentId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_connect_peers_output()
@@ -5127,7 +5127,7 @@ networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxR
     name = "ListCoreNetworkPolicyVersions",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkPolicyVersions")
   )
   input <- .networkmanager$list_core_network_policy_versions_input(CoreNetworkId = CoreNetworkId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_core_network_policy_versions_output()
@@ -5192,7 +5192,7 @@ networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NUL
     name = "ListCoreNetworks",
     http_method = "GET",
     http_path = "/core-networks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworks")
   )
   input <- .networkmanager$list_core_networks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_core_networks_output()
@@ -5334,7 +5334,7 @@ networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NUL
     name = "ListPeerings",
     http_method = "GET",
     http_path = "/peerings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Peerings")
   )
   input <- .networkmanager$list_peerings_input(CoreNetworkId = CoreNetworkId, PeeringType = PeeringType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_peerings_output()

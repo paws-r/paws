@@ -8,7 +8,7 @@ name, and the status of the job}
 healthlake_describe_fhir_import_job(DatastoreId, JobId)
 }
 \arguments{
-\item{DatastoreId}{[required] The AWS-generated ID of the Data Store.}
+\item{DatastoreId}{[required] The AWS-generated ID of the data store.}
 
 \item{JobId}{[required] The AWS-generated job ID.}
 }

@@ -177,7 +177,7 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
     name = "ListEventTypes",
     http_method = "POST",
     http_path = "/listEventTypes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EventTypes")
   )
   input <- .codestarnotifications$list_event_types_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_event_types_output()
@@ -216,7 +216,7 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
     name = "ListNotificationRules",
     http_method = "POST",
     http_path = "/listNotificationRules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NotificationRules")
   )
   input <- .codestarnotifications$list_notification_rules_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_notification_rules_output()
@@ -284,7 +284,7 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
     name = "ListTargets",
     http_method = "POST",
     http_path = "/listTargets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets")
   )
   input <- .codestarnotifications$list_targets_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_targets_output()

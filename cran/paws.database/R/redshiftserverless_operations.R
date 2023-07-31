@@ -731,7 +731,7 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
     name = "ListEndpointAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
   input <- .redshiftserverless$list_endpoint_access_input(maxResults = maxResults, nextToken = nextToken, vpcId = vpcId, workgroupName = workgroupName)
   output <- .redshiftserverless$list_endpoint_access_output()
@@ -766,7 +766,7 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
     name = "ListNamespaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "namespaces")
   )
   input <- .redshiftserverless$list_namespaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .redshiftserverless$list_namespaces_output()
@@ -807,7 +807,7 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
     name = "ListRecoveryPoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recoveryPoints")
   )
   input <- .redshiftserverless$list_recovery_points_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, startTime = startTime)
   output <- .redshiftserverless$list_recovery_points_output()
@@ -846,7 +846,7 @@ redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL,
     name = "ListSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots")
   )
   input <- .redshiftserverless$list_snapshots_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, ownerAccount = ownerAccount, startTime = startTime)
   output <- .redshiftserverless$list_snapshots_output()
@@ -888,7 +888,7 @@ redshiftserverless_list_table_restore_status <- function(maxResults = NULL, name
     name = "ListTableRestoreStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tableRestoreStatuses")
   )
   input <- .redshiftserverless$list_table_restore_status_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken, workgroupName = workgroupName)
   output <- .redshiftserverless$list_table_restore_status_output()
@@ -956,7 +956,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
     name = "ListUsageLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "usageLimits")
   )
   input <- .redshiftserverless$list_usage_limits_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn, usageType = usageType)
   output <- .redshiftserverless$list_usage_limits_output()
@@ -989,7 +989,7 @@ redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NU
     name = "ListWorkgroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workgroups")
   )
   input <- .redshiftserverless$list_workgroups_input(maxResults = maxResults, nextToken = nextToken)
   output <- .redshiftserverless$list_workgroups_output()

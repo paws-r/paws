@@ -95,7 +95,7 @@ NULL
 
 .managedgrafana$describe_workspace_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), grafanaVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -132,6 +132,18 @@ NULL
 .managedgrafana$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$list_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), workspaceId = structure(logical(0), tags = list(location = "querystring", locationName = "workspace-id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.managedgrafana$list_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(grafanaVersions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -209,7 +221,7 @@ NULL
 
 .managedgrafana$update_workspace_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(configuration = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(configuration = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), grafanaVersion = structure(logical(0), tags = list(type = "string")), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -4,22 +4,47 @@
 \alias{sagemaker}
 \title{Amazon SageMaker Service}
 \usage{
-sagemaker(config = list())
+sagemaker(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -54,8 +79,20 @@ Other Resources:
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -72,8 +109,8 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
 \link[paws.machine.learning:sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
 \link[paws.machine.learning:sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
-\link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job\cr
-\link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Amazon SageMaker AutoML job that uses non-tabular data such as images or text for Computer Vision or Natural Language Processing problems\cr
+\link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
+\link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
 \link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
 \link[paws.machine.learning:sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
 \link[paws.machine.learning:sagemaker_create_context]{create_context} \tab Creates a context\cr
@@ -172,8 +209,8 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_app]{describe_app} \tab Describes the app\cr
 \link[paws.machine.learning:sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
 \link[paws.machine.learning:sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
-\link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker AutoML job\cr
-\link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an Amazon SageMaker AutoML V2 job\cr
+\link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an AutoML job created by calling CreateAutoMLJob\cr
+\link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
 \link[paws.machine.learning:sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 \link[paws.machine.learning:sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 \link[paws.machine.learning:sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -292,6 +329,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_list_pipelines]{list_pipelines} \tab Gets a list of pipelines\cr
 \link[paws.machine.learning:sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters\cr
 \link[paws.machine.learning:sagemaker_list_projects]{list_projects} \tab Gets a list of the projects in an Amazon Web Services account\cr
+\link[paws.machine.learning:sagemaker_list_resource_catalogs]{list_resource_catalogs} \tab Lists Amazon SageMaker Catalogs based on given filters and orders\cr
 \link[paws.machine.learning:sagemaker_list_spaces]{list_spaces} \tab Lists spaces\cr
 \link[paws.machine.learning:sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
 \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Studio Lifecycle Configurations in your Amazon Web Services Account\cr
@@ -343,7 +381,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
 \link[paws.machine.learning:sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint\cr
 \link[paws.machine.learning:sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment\cr
-\link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group\cr
+\link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group by either adding features or updating the online store configuration\cr
 \link[paws.machine.learning:sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
 \link[paws.machine.learning:sagemaker_update_hub]{update_hub} \tab Update a hub\cr
 \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr

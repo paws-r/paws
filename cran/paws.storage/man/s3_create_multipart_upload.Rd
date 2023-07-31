@@ -58,7 +58,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
@@ -97,7 +97,7 @@ This action is not supported by Amazon S3 on Outposts.}
 \item{Metadata}{A map of metadata to store with the object in S3.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
-Amazon S3 (for example, AES256, \code{aws:kms}).}
+Amazon S3 (for example, \code{AES256}, \code{aws:kms}).}
 
 \item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
 created objects. The STANDARD storage class provides high durability and
@@ -125,9 +125,9 @@ that the encryption key was transmitted without error.}
 
 \item{SSEKMSKeyId}{Specifies the ID of the symmetric encryption customer managed key to use
 for object encryption. All GET and PUT requests for an object protected
-by Amazon Web Services KMS will fail if not made via SSL or using SigV4.
-For information about configuring using any of the officially supported
-Amazon Web Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+by KMS will fail if they're not made via SSL or using SigV4. For
+information about configuring any of the officially supported Amazon Web
+Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
@@ -135,9 +135,9 @@ object encryption. The value of this header is a base64-encoded UTF-8
 string holding JSON with the encryption context key-value pairs.}
 
 \item{BucketKeyEnabled}{Specifies whether Amazon S3 should use an S3 Bucket Key for object
-encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
-object encryption with SSE-KMS.
+encryption with server-side encryption using Key Management Service
+(KMS) keys (SSE-KMS). Setting this header to \code{true} causes Amazon S3 to
+use an S3 Bucket Key for object encryption with SSE-KMS.
 
 Specifying this header with an object action doesn’t affect bucket-level
 settings for S3 Bucket Key.}

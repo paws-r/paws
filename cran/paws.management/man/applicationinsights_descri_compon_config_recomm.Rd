@@ -7,7 +7,8 @@
 applicationinsights_describe_component_configuration_recommendation(
   ResourceGroupName,
   ComponentName,
-  Tier
+  Tier,
+  RecommendationType = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ applicationinsights_describe_component_configuration_recommendation(
 \item{ComponentName}{[required] The name of the component.}
 
 \item{Tier}{[required] The tier of the application component.}
+
+\item{RecommendationType}{The recommended configuration type.}
 }
 \description{
 Describes the recommended monitoring configuration of the component.

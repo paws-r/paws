@@ -4,10 +4,16 @@
 \alias{proton_list_component_outputs}
 \title{Get a list of component Infrastructure as Code (IaC) outputs}
 \usage{
-proton_list_component_outputs(componentName, nextToken = NULL)
+proton_list_component_outputs(
+  componentName,
+  deploymentId = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{componentName}{[required] The name of the component whose outputs you want.}
+
+\item{deploymentId}{The ID of the deployment whose outputs you want.}
 
 \item{nextToken}{A token that indicates the location of the next output in the array of
 outputs, after the list of outputs that was previously requested.}

@@ -36,6 +36,10 @@ test_that("describe_clusters", {
   expect_error(svc$describe_clusters(), NA)
 })
 
+test_that("describe_custom_domain_associations", {
+  expect_error(svc$describe_custom_domain_associations(), NA)
+})
+
 test_that("describe_data_shares", {
   expect_error(svc$describe_data_shares(), NA)
 })

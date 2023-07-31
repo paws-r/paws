@@ -10,7 +10,8 @@ kms_generate_data_key(
   NumberOfBytes = NULL,
   KeySpec = NULL,
   GrantTokens = NULL,
-  Recipient = NULL
+  Recipient = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -99,6 +100,11 @@ the response is null or empty.
 
 For information about the interaction between KMS and Amazon Web
 Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
+in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

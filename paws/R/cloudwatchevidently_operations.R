@@ -1928,7 +1928,7 @@ cloudwatchevidently_list_experiments <- function(maxResults = NULL, nextToken = 
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/projects/{project}/experiments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experiments")
   )
   input <- .cloudwatchevidently$list_experiments_input(maxResults = maxResults, nextToken = nextToken, project = project, status = status)
   output <- .cloudwatchevidently$list_experiments_output()
@@ -2008,7 +2008,7 @@ cloudwatchevidently_list_features <- function(maxResults = NULL, nextToken = NUL
     name = "ListFeatures",
     http_method = "GET",
     http_path = "/projects/{project}/features",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "features")
   )
   input <- .cloudwatchevidently$list_features_input(maxResults = maxResults, nextToken = nextToken, project = project)
   output <- .cloudwatchevidently$list_features_output()
@@ -2137,7 +2137,7 @@ cloudwatchevidently_list_launches <- function(maxResults = NULL, nextToken = NUL
     name = "ListLaunches",
     http_method = "GET",
     http_path = "/projects/{project}/launches",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "launches")
   )
   input <- .cloudwatchevidently$list_launches_input(maxResults = maxResults, nextToken = nextToken, project = project, status = status)
   output <- .cloudwatchevidently$list_launches_output()
@@ -2212,7 +2212,7 @@ cloudwatchevidently_list_projects <- function(maxResults = NULL, nextToken = NUL
     name = "ListProjects",
     http_method = "GET",
     http_path = "/projects",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "projects")
   )
   input <- .cloudwatchevidently$list_projects_input(maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchevidently$list_projects_output()
@@ -2284,7 +2284,7 @@ cloudwatchevidently_list_segment_references <- function(maxResults = NULL, nextT
     name = "ListSegmentReferences",
     http_method = "GET",
     http_path = "/segments/{segment}/references",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "referencedBy")
   )
   input <- .cloudwatchevidently$list_segment_references_input(maxResults = maxResults, nextToken = nextToken, segment = segment, type = type)
   output <- .cloudwatchevidently$list_segment_references_output()
@@ -2357,7 +2357,7 @@ cloudwatchevidently_list_segments <- function(maxResults = NULL, nextToken = NUL
     name = "ListSegments",
     http_method = "GET",
     http_path = "/segments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "segments")
   )
   input <- .cloudwatchevidently$list_segments_input(maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchevidently$list_segments_output()

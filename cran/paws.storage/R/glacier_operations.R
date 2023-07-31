@@ -799,7 +799,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
     name = "ListJobs",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "JobList")
   )
   input <- .glacier$list_jobs_input(accountId = accountId, vaultName = vaultName, limit = limit, marker = marker, statuscode = statuscode, completed = completed)
   output <- .glacier$list_jobs_output()
@@ -842,7 +842,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
     name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "UploadsList")
   )
   input <- .glacier$list_multipart_uploads_input(accountId = accountId, vaultName = vaultName, marker = marker, limit = limit)
   output <- .glacier$list_multipart_uploads_output()
@@ -886,7 +886,7 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
     name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "Parts")
   )
   input <- .glacier$list_parts_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, marker = marker, limit = limit)
   output <- .glacier$list_parts_output()
@@ -993,7 +993,7 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
     name = "ListVaults",
     http_method = "GET",
     http_path = "/{accountId}/vaults",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "VaultList")
   )
   input <- .glacier$list_vaults_input(accountId = accountId, marker = marker, limit = limit)
   output <- .glacier$list_vaults_output()

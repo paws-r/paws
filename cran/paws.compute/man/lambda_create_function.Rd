@@ -114,7 +114,7 @@ its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
 
-\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/#configuration-images-settings}{configuration values}
+\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#configuration-images-settings}{configuration values}
 that override the values in the container image Dockerfile.}
 
 \item{CodeSigningConfigArn}{To enable code signing for this function, specify the ARN of a

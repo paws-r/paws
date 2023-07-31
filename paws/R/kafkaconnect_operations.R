@@ -759,7 +759,7 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
     name = "ListConnectors",
     http_method = "GET",
     http_path = "/v1/connectors",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "connectors")
   )
   input <- .kafkaconnect$list_connectors_input(connectorNamePrefix = connectorNamePrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .kafkaconnect$list_connectors_output()
@@ -840,7 +840,7 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL
     name = "ListCustomPlugins",
     http_method = "GET",
     http_path = "/v1/custom-plugins",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "customPlugins")
   )
   input <- .kafkaconnect$list_custom_plugins_input(maxResults = maxResults, nextToken = nextToken)
   output <- .kafkaconnect$list_custom_plugins_output()
@@ -910,7 +910,7 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken
     name = "ListWorkerConfigurations",
     http_method = "GET",
     http_path = "/v1/worker-configurations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workerConfigurations")
   )
   input <- .kafkaconnect$list_worker_configurations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .kafkaconnect$list_worker_configurations_output()

@@ -29,7 +29,7 @@ NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
 #' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
@@ -84,7 +84,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MultipartUpload The container for the multipart upload request information.
@@ -183,7 +183,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ChecksumAlgorithm Indicates the algorithm you want Amazon S3 to use to create the checksum
@@ -262,7 +262,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param TaggingDirective Specifies whether the object tag-set are copied from the source object
 #' or replaced with tag-set provided in the request.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, `aws:kms`).
+#' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -286,21 +286,20 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the Amazon Web Services KMS key ID to use for object
-#' encryption. All GET and PUT requests for an object protected by Amazon
-#' Web Services KMS will fail if not made via SSL or using SigV4. For
-#' information about configuring using any of the officially supported
-#' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
-#' the Signature Version in Request
+#' @param SSEKMSKeyId Specifies the KMS key ID to use for object encryption. All GET and PUT
+#' requests for an object protected by KMS will fail if they're not made
+#' via SSL or using SigV4. For information about configuring any of the
+#' officially supported Amazon Web Services SDKs and Amazon Web Services
+#' CLI, see [Specifying the Signature Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
-#' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-#' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
-#' object encryption with SSE-KMS.
+#' encryption with server-side encryption using Key Management Service
+#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
+#' use an S3 Bucket Key for object encryption with SSE-KMS.
 #' 
 #' Specifying this header with a COPY action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
@@ -419,7 +418,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ContentDisposition Specifies presentational information for the object.
@@ -445,7 +444,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param Key &#91;required&#93; Object key for which the multipart upload is to be initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, `aws:kms`).
+#' Amazon S3 (for example, `AES256`, `aws:kms`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -468,19 +467,19 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' that the encryption key was transmitted without error.
 #' @param SSEKMSKeyId Specifies the ID of the symmetric encryption customer managed key to use
 #' for object encryption. All GET and PUT requests for an object protected
-#' by Amazon Web Services KMS will fail if not made via SSL or using SigV4.
-#' For information about configuring using any of the officially supported
-#' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
-#' the Signature Version in Request
+#' by KMS will fail if they're not made via SSL or using SigV4. For
+#' information about configuring any of the officially supported Amazon Web
+#' Services SDKs and Amazon Web Services CLI, see [Specifying the Signature
+#' Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
-#' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-#' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
-#' object encryption with SSE-KMS.
+#' encryption with server-side encryption using Key Management Service
+#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
+#' use an S3 Bucket Key for object encryption with SSE-KMS.
 #' 
 #' Specifying this header with an object action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
@@ -974,7 +973,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -1036,7 +1035,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
 #' all tags.
@@ -1092,7 +1091,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -1189,18 +1188,19 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param RequestPayer 
 #'
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_accelerate_configuration
-s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner = NULL, RequestPayer = NULL) {
   op <- new_operation(
     name = "GetBucketAccelerateConfiguration",
     http_method = "GET",
     http_path = "/{Bucket}?accelerate",
     paginator = list()
   )
-  input <- .s3$get_bucket_accelerate_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$get_bucket_accelerate_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer)
   output <- .s3$get_bucket_accelerate_configuration_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -1990,7 +1990,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
@@ -2125,7 +2125,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
 #' @param VersionId The version ID used to reference a specific version of the object.
@@ -2146,9 +2146,8 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
-#' @param ObjectAttributes &#91;required&#93; An XML header that specifies the fields at the root level that you want
-#' returned in the response. Fields that you do not specify are not
-#' returned.
+#' @param ObjectAttributes &#91;required&#93; Specifies the fields at the root level that you want returned in the
+#' response. Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
@@ -2332,7 +2331,7 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
 #' @param VersionId The versionId of the object for which to get the tagging information.
@@ -2463,7 +2462,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
@@ -2493,7 +2492,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' object itself
 #'
 #' @description
-#' The HEAD action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
+#' The `HEAD` action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use `HEAD`, you must have READ access to the object.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_head_object/](https://www.paws-r-sdk.com/docs/s3_head_object/) for full documentation.
 #'
@@ -2516,7 +2515,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
@@ -2586,7 +2585,7 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which analytics configurations are
 #' retrieved.
-#' @param ContinuationToken The ContinuationToken that represents a placeholder from where this
+#' @param ContinuationToken The `ContinuationToken` that represents a placeholder from where this
 #' request should begin.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
@@ -2654,7 +2653,7 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configurations to
 #' retrieve.
 #' @param ContinuationToken The marker used to continue an inventory configuration listing that has
-#' been truncated. Use the NextContinuationToken from a previously
+#' been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
 #' is an opaque value that Amazon S3 understands.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -2691,7 +2690,7 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configurations to
 #' retrieve.
 #' @param ContinuationToken The marker that is used to continue a metrics configuration listing that
-#' has been truncated. Use the NextContinuationToken from a previously
+#' has been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
 #' is an opaque value that Amazon S3 understands.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -2736,7 +2735,7 @@ s3_list_buckets <- function() {
     name = "ListBuckets",
     http_method = "GET",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Buckets")
   )
   input <- .s3$list_buckets_input()
   output <- .s3$list_buckets_output()
@@ -2774,7 +2773,7 @@ s3_list_buckets <- function() {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
 #' 
@@ -2785,7 +2784,7 @@ s3_list_buckets <- function() {
 #' key. The keys that are grouped under `CommonPrefixes` result element are
 #' not returned elsewhere in the response.
 #' @param EncodingType 
-#' @param KeyMarker Together with upload-id-marker, this parameter specifies the multipart
+#' @param KeyMarker Together with `upload-id-marker`, this parameter specifies the multipart
 #' upload after which listing should begin.
 #' 
 #' If `upload-id-marker` is not specified, only the keys lexicographically
@@ -2800,8 +2799,8 @@ s3_list_buckets <- function() {
 #' returned in a response.
 #' @param Prefix Lists in-progress uploads only for those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
-#' different grouping of keys. (You can think of using prefix to make
-#' groups in the same way you'd use a folder in a file system.)
+#' different grouping of keys. (You can think of using `prefix` to make
+#' groups in the same way that you'd use a folder in a file system.)
 #' @param UploadIdMarker Together with key-marker, specifies the multipart upload after which
 #' listing should begin. If key-marker is not specified, the
 #' upload-id-marker parameter is ignored. Otherwise, any multipart uploads
@@ -2811,18 +2810,19 @@ s3_list_buckets <- function() {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param RequestPayer 
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_multipart_uploads
-s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL) {
+s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL, RequestPayer = NULL) {
   op <- new_operation(
     name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{Bucket}?uploads",
-    paginator = list()
+    paginator = list(input_token = list("KeyMarker", "UploadIdMarker"), limit_key = "MaxUploads", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextUploadIdMarker"), result_key = list("Uploads", "CommonPrefixes"))
   )
-  input <- .s3$list_multipart_uploads_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxUploads = MaxUploads, Prefix = Prefix, UploadIdMarker = UploadIdMarker, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_multipart_uploads_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxUploads = MaxUploads, Prefix = Prefix, UploadIdMarker = UploadIdMarker, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer)
   output <- .s3$list_multipart_uploads_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -2843,39 +2843,42 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' @param Delimiter A delimiter is a character that you specify to group keys. All keys that
 #' contain the same string between the `prefix` and the first occurrence of
 #' the delimiter are grouped under a single result element in
-#' CommonPrefixes. These groups are counted as one result against the
-#' max-keys limitation. These keys are not returned elsewhere in the
+#' `CommonPrefixes`. These groups are counted as one result against the
+#' `max-keys` limitation. These keys are not returned elsewhere in the
 #' response.
 #' @param EncodingType 
 #' @param KeyMarker Specifies the key to start with when listing objects in a bucket.
-#' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
-#' action returns up to 1,000 key names. The response might contain fewer
-#' keys but will never contain more. If additional keys satisfy the search
-#' criteria, but were not returned because max-keys was exceeded, the
-#' response contains \<isTruncated\>true\</isTruncated\>. To return the
-#' additional keys, see key-marker and version-id-marker.
+#' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
+#' the action returns up to 1,000 key names. The response might contain
+#' fewer keys but will never contain more. If additional keys satisfy the
+#' search criteria, but were not returned because `max-keys` was exceeded,
+#' the response contains `<isTruncated>true</isTruncated>`. To return the
+#' additional keys, see `key-marker` and `version-id-marker`.
 #' @param Prefix Use this parameter to select only those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
-#' different groupings of keys. (You can think of using prefix to make
-#' groups in the same way you'd use a folder in a file system.) You can use
-#' prefix with delimiter to roll up numerous objects into a single result
-#' under CommonPrefixes.
+#' different groupings of keys. (You can think of using `prefix` to make
+#' groups in the same way that you'd use a folder in a file system.) You
+#' can use `prefix` with `delimiter` to roll up numerous objects into a
+#' single result under `CommonPrefixes`.
 #' @param VersionIdMarker Specifies the object version you want to start listing from.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param RequestPayer 
+#' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
+#' Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_object_versions
-s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxKeys = NULL, Prefix = NULL, VersionIdMarker = NULL, ExpectedBucketOwner = NULL) {
+s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxKeys = NULL, Prefix = NULL, VersionIdMarker = NULL, ExpectedBucketOwner = NULL, RequestPayer = NULL, OptionalObjectAttributes = NULL) {
   op <- new_operation(
     name = "ListObjectVersions",
     http_method = "GET",
     http_path = "/{Bucket}?versions",
-    paginator = list()
+    paginator = list(input_token = list("KeyMarker", "VersionIdMarker"), limit_key = "MaxKeys", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextVersionIdMarker"), result_key = list("Versions", "DeleteMarkers", "CommonPrefixes"))
   )
-  input <- .s3$list_object_versions_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxKeys = MaxKeys, Prefix = Prefix, VersionIdMarker = VersionIdMarker, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_object_versions_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxKeys = MaxKeys, Prefix = Prefix, VersionIdMarker = VersionIdMarker, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer, OptionalObjectAttributes = OptionalObjectAttributes)
   output <- .s3$list_object_versions_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -2911,16 +2914,16 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param Delimiter A delimiter is a character you use to group keys.
+#' @param Delimiter A delimiter is a character that you use to group keys.
 #' @param EncodingType 
 #' @param Marker Marker is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. Marker can be any key in the
 #' bucket.
-#' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
-#' action returns up to 1,000 key names. The response might contain fewer
-#' keys but will never contain more.
+#' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
+#' the action returns up to 1,000 key names. The response might contain
+#' fewer keys but will never contain more.
 #' @param Prefix Limits the response to keys that begin with the specified prefix.
 #' @param RequestPayer Confirms that the requester knows that she or he will be charged for the
 #' list objects request. Bucket owners need not specify this parameter in
@@ -2928,18 +2931,20 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
+#' Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_objects
-s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marker = NULL, MaxKeys = NULL, Prefix = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marker = NULL, MaxKeys = NULL, Prefix = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, OptionalObjectAttributes = NULL) {
   op <- new_operation(
     name = "ListObjects",
     http_method = "GET",
     http_path = "/{Bucket}",
-    paginator = list()
+    paginator = list(input_token = c("Marker", "Marker"), limit_key = "MaxKeys", more_results = "IsTruncated", output_token = c("NextMarker", "Contents[-1].Key"), result_key = list("Contents", "CommonPrefixes"))
   )
-  input <- .s3$list_objects_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, Marker = Marker, MaxKeys = MaxKeys, Prefix = Prefix, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_objects_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, Marker = Marker, MaxKeys = MaxKeys, Prefix = Prefix, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, OptionalObjectAttributes = OptionalObjectAttributes)
   output <- .s3$list_objects_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -2953,7 +2958,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' request
 #'
 #' @description
-#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html)
+#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_list_objects_v2/](https://www.paws-r-sdk.com/docs/s3_list_objects_v2/) for full documentation.
 #'
@@ -2976,20 +2981,21 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param Delimiter A delimiter is a character you use to group keys.
+#' @param Delimiter A delimiter is a character that you use to group keys.
 #' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
-#' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
-#' action returns up to 1,000 key names. The response might contain fewer
-#' keys but will never contain more.
+#' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
+#' the action returns up to 1,000 key names. The response might contain
+#' fewer keys but will never contain more.
 #' @param Prefix Limits the response to keys that begin with the specified prefix.
-#' @param ContinuationToken ContinuationToken indicates Amazon S3 that the list is being continued
-#' on this bucket with a token. ContinuationToken is obfuscated and is not
-#' a real key.
-#' @param FetchOwner The owner field is not present in listV2 by default, if you want to
-#' return owner field with each key in the result then set the fetch owner
-#' field to true.
+#' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
+#' continued on this bucket with a token. `ContinuationToken` is obfuscated
+#' and is not a real key.
+#' @param FetchOwner The owner field is not present in
+#' [`list_objects_v2`][s3_list_objects_v2] by default. If you want to
+#' return the owner field with each key in the result, then set the
+#' `FetchOwner` field to `true`.
 #' @param StartAfter StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. StartAfter can be any key in
 #' the bucket.
@@ -2999,18 +3005,20 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
+#' Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_objects_v2
-s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, MaxKeys = NULL, Prefix = NULL, ContinuationToken = NULL, FetchOwner = NULL, StartAfter = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, MaxKeys = NULL, Prefix = NULL, ContinuationToken = NULL, FetchOwner = NULL, StartAfter = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, OptionalObjectAttributes = NULL) {
   op <- new_operation(
     name = "ListObjectsV2",
     http_method = "GET",
     http_path = "/{Bucket}?list-type=2",
-    paginator = list()
+    paginator = list(input_token = "ContinuationToken", limit_key = "MaxKeys", output_token = "NextContinuationToken", result_key = list( "Contents", "CommonPrefixes"))
   )
-  input <- .s3$list_objects_v2_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, MaxKeys = MaxKeys, Prefix = Prefix, ContinuationToken = ContinuationToken, FetchOwner = FetchOwner, StartAfter = StartAfter, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_objects_v2_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, MaxKeys = MaxKeys, Prefix = Prefix, ContinuationToken = ContinuationToken, FetchOwner = FetchOwner, StartAfter = StartAfter, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, OptionalObjectAttributes = OptionalObjectAttributes)
   output <- .s3$list_objects_v2_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -3046,7 +3054,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MaxParts Sets the maximum number of parts to return.
@@ -3082,7 +3090,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
     name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{Bucket}/{Key+}",
-    paginator = list()
+    paginator = list(input_token = "PartNumberMarker", limit_key = "MaxParts", more_results = "IsTruncated", output_token = "NextPartNumberMarker", result_key = "Parts")
   )
   input <- .s3$list_parts_input(Bucket = Bucket, Key = Key, MaxParts = MaxParts, PartNumberMarker = PartNumberMarker, UploadId = UploadId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$list_parts_output()
@@ -4070,7 +4078,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
 #' For more information, see
@@ -4148,7 +4156,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param Key &#91;required&#93; Object key for which the PUT action was initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, `aws:kms`).
+#' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -4187,15 +4195,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms`, this
-#' header specifies the ID of the Amazon Web Services Key Management
-#' Service (Amazon Web Services KMS) symmetric encryption customer managed
-#' key that was used for the object. If you specify
-#' `x-amz-server-side-encryption:aws:kms`, but do not
+#' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms` or
+#' `aws:kms:dsse`, this header specifies the ID of the Key Management
+#' Service (KMS) symmetric encryption customer managed key that was used
+#' for the object. If you specify `x-amz-server-side-encryption:aws:kms` or
+#' `x-amz-server-side-encryption:aws:kms:dsse`, but do not
 #' provide` x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses
-#' the Amazon Web Services managed key to protect the data. If the KMS key
-#' does not exist in the same account issuing the command, you must use the
-#' full ARN and not just the ID.
+#' the Amazon Web Services managed key (`aws/s3`) to protect the data. If
+#' the KMS key does not exist in the same account that's issuing the
+#' command, you must use the full ARN and not just the ID.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs. This
@@ -4203,9 +4211,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Amazon Web Services KMS for future [`get_object`][s3_get_object] or
 #' [`copy_object`][s3_copy_object] operations on this object.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
-#' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-#' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
-#' object encryption with SSE-KMS.
+#' encryption with server-side encryption using Key Management Service
+#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
+#' use an S3 Bucket Key for object encryption with SSE-KMS.
 #' 
 #' Specifying this header with a PUT action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
@@ -4320,7 +4328,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
 #' @param VersionId VersionId used to reference a specific version of the object.
@@ -4556,7 +4564,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
 #' @param VersionId The versionId of the object that the tag-set will be added to.
@@ -4685,7 +4693,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
 #' @param VersionId VersionId used to reference a specific version of the object.
@@ -4826,7 +4834,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
@@ -4939,7 +4947,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
 #' value in one of two formats, depending on whether you want to access the

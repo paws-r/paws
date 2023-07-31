@@ -61,7 +61,7 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
     name = "BatchGetTraces",
     http_method = "POST",
     http_path = "/Traces",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("UnprocessedTraceIds"), output_token = "NextToken", result_key = "Traces")
   )
   input <- .xray$batch_get_traces_input(TraceIds = TraceIds, NextToken = NextToken)
   output <- .xray$batch_get_traces_output()
@@ -610,7 +610,7 @@ xray_get_groups <- function(NextToken = NULL) {
     name = "GetGroups",
     http_method = "POST",
     http_path = "/Groups",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Groups")
   )
   input <- .xray$get_groups_input(NextToken = NextToken)
   output <- .xray$get_groups_output()
@@ -792,7 +792,7 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
     name = "GetInsightEvents",
     http_method = "POST",
     http_path = "/InsightEvents",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .xray$get_insight_events_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .xray$get_insight_events_output()
@@ -1008,7 +1008,7 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
     name = "GetInsightSummaries",
     http_method = "POST",
     http_path = "/InsightSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .xray$get_insight_summaries_input(States = States, GroupARN = GroupARN, GroupName = GroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .xray$get_insight_summaries_output()
@@ -1082,7 +1082,7 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
     name = "GetSamplingRules",
     http_method = "POST",
     http_path = "/GetSamplingRules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingRuleRecords")
   )
   input <- .xray$get_sampling_rules_input(NextToken = NextToken)
   output <- .xray$get_sampling_rules_output()
@@ -1142,7 +1142,7 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
     name = "GetSamplingStatisticSummaries",
     http_method = "POST",
     http_path = "/SamplingStatisticSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingStatisticSummaries")
   )
   input <- .xray$get_sampling_statistic_summaries_input(NextToken = NextToken)
   output <- .xray$get_sampling_statistic_summaries_output()
@@ -1389,7 +1389,7 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
     name = "GetServiceGraph",
     http_method = "POST",
     http_path = "/ServiceGraph",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("StartTime", "EndTime", "ContainsOldGroupVersions"), output_token = "NextToken", result_key = "Services")
   )
   input <- .xray$get_service_graph_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, NextToken = NextToken)
   output <- .xray$get_service_graph_output()
@@ -1508,7 +1508,7 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
     name = "GetTimeSeriesServiceStatistics",
     http_method = "POST",
     http_path = "/TimeSeriesServiceStatistics",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ContainsOldGroupVersions"), output_token = "NextToken", result_key = "TimeSeriesServiceStatistics")
   )
   input <- .xray$get_time_series_service_statistics_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, EntitySelectorExpression = EntitySelectorExpression, Period = Period, ForecastStatistics = ForecastStatistics, NextToken = NextToken)
   output <- .xray$get_time_series_service_statistics_output()
@@ -1651,7 +1651,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
     name = "GetTraceGraph",
     http_method = "POST",
     http_path = "/TraceGraph",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Services")
   )
   input <- .xray$get_trace_graph_input(TraceIds = TraceIds, NextToken = NextToken)
   output <- .xray$get_trace_graph_output()
@@ -1916,7 +1916,7 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
     name = "GetTraceSummaries",
     http_method = "POST",
     http_path = "/TraceSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("TracesProcessedCount", "ApproximateTime"), output_token = "NextToken", result_key = "TraceSummaries")
   )
   input <- .xray$get_trace_summaries_input(StartTime = StartTime, EndTime = EndTime, TimeRangeType = TimeRangeType, Sampling = Sampling, SamplingStrategy = SamplingStrategy, FilterExpression = FilterExpression, NextToken = NextToken)
   output <- .xray$get_trace_summaries_output()
@@ -1975,7 +1975,7 @@ xray_list_resource_policies <- function(NextToken = NULL) {
     name = "ListResourcePolicies",
     http_method = "POST",
     http_path = "/ListResourcePolicies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourcePolicies")
   )
   input <- .xray$list_resource_policies_input(NextToken = NextToken)
   output <- .xray$list_resource_policies_output()
@@ -2034,7 +2034,7 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/ListTagsForResource",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .xray$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken)
   output <- .xray$list_tags_for_resource_output()

@@ -2188,7 +2188,7 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
     name = "ListBrowserSettings",
     http_method = "GET",
     http_path = "/browserSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_browser_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_browser_settings_output()
@@ -2247,7 +2247,7 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
     name = "ListIdentityProviders",
     http_method = "GET",
     http_path = "/portals/{portalArn+}/identityProviders",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_identity_providers_input(maxResults = maxResults, nextToken = nextToken, portalArn = portalArn)
   output <- .workspacesweb$list_identity_providers_output()
@@ -2307,7 +2307,7 @@ workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken =
     name = "ListIpAccessSettings",
     http_method = "GET",
     http_path = "/ipAccessSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_ip_access_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_ip_access_settings_output()
@@ -2363,7 +2363,7 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
     name = "ListNetworkSettings",
     http_method = "GET",
     http_path = "/networkSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_network_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_network_settings_output()
@@ -2433,7 +2433,7 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListPortals",
     http_method = "GET",
     http_path = "/portals",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_portals_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_portals_output()
@@ -2552,7 +2552,7 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
     name = "ListTrustStoreCertificates",
     http_method = "GET",
     http_path = "/trustStores/{trustStoreArn+}/certificates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_trust_store_certificates_input(maxResults = maxResults, nextToken = nextToken, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$list_trust_store_certificates_output()
@@ -2607,7 +2607,7 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
     name = "ListTrustStores",
     http_method = "GET",
     http_path = "/trustStores",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_trust_stores_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_trust_stores_output()
@@ -2663,7 +2663,7 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
     name = "ListUserAccessLoggingSettings",
     http_method = "GET",
     http_path = "/userAccessLoggingSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_user_access_logging_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_user_access_logging_settings_output()
@@ -2725,7 +2725,7 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
     name = "ListUserSettings",
     http_method = "GET",
     http_path = "/userSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_user_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_user_settings_output()

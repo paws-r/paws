@@ -77,7 +77,21 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #' 
 #' Cloud Control API currently supports JSON as a structured data format.
 #' 
-#'      <p>Specify the desired state as one of the following:</p> <ul> <li> <p>A JSON blob</p> </li> <li> <p>A local path containing the desired state in JSON data format</p> </li> </ul> <p>For more information, see <a href="https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html#resource-operations-create-desiredstate">Composing the desired state of the resource</a> in the <i>Amazon Web Services Cloud Control API User Guide</i>.</p> <p>For more information about the properties of a specific resource, refer to the related topic for the resource in the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">Resource and property types reference</a> in the <i>CloudFormation Users Guide</i>.</p> 
+#' Specify the desired state as one of the following:
+#' 
+#' -   A JSON blob
+#' 
+#' -   A local path containing the desired state in JSON data format
+#' 
+#' For more information, see [Composing the desired state of the
+#' resource](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html#resource-operations-create-desiredstate)
+#' in the *Amazon Web Services Cloud Control API User Guide*.
+#' 
+#' For more information about the properties of a specific resource, refer
+#' to the related topic for the resource in the [Resource and property
+#' types
+#' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+#' in the *CloudFormation Users Guide*.
 #'
 #' @keywords internal
 #'
@@ -296,7 +310,7 @@ cloudcontrolapi_list_resource_requests <- function(MaxResults = NULL, NextToken 
     name = "ListResourceRequests",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceRequestStatusSummaries")
   )
   input <- .cloudcontrolapi$list_resource_requests_input(MaxResults = MaxResults, NextToken = NextToken, ResourceRequestStatusFilter = ResourceRequestStatusFilter)
   output <- .cloudcontrolapi$list_resource_requests_output()
@@ -349,7 +363,7 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceDescriptions")
   )
   input <- .cloudcontrolapi$list_resources_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, NextToken = NextToken, MaxResults = MaxResults, ResourceModel = ResourceModel)
   output <- .cloudcontrolapi$list_resources_output()

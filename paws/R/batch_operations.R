@@ -11,6 +11,14 @@ NULL
 #' it reaches the head of the job queue. Then the job status is updated to
 #' `FAILED`.
 #' 
+#' A `PENDING` job is canceled after all dependency jobs are completed.
+#' Therefore, it may take longer than expected to cancel a job in `PENDING`
+#' status.
+#' 
+#' When you try to cancel an array parent job in `PENDING`, Batch attempts
+#' to cancel all child jobs. The array parent job is canceled when all
+#' child jobs are completed.
+#' 
 #' Jobs that progressed to the `STARTING` or `RUNNING` state aren't
 #' canceled. However, the API operation still succeeds, even if no job is
 #' canceled. These jobs must be terminated with the
@@ -138,7 +146,10 @@ batch_cancel_job <- function(jobId, reason) {
 #'     `BEST_FIT_PROGRESSIVE` or `SPOT_CAPACITY_OPTIMIZED`.
 #' 
 #' -   Set the update to latest image version
-#'     (`updateToLatestImageVersion`) parameter to `true`.
+#'     (`updateToLatestImageVersion`) parameter to `true`. The
+#'     `updateToLatestImageVersion` parameter is used when you update a
+#'     compute environment. This parameter is ignored when you create a
+#'     compute environment.
 #' 
 #' -   Don't specify an AMI ID in `imageId`, `imageIdOverride` (in
 #'     [`ec2Configuration`](https://docs.aws.amazon.com/batch/latest/APIReference/API_Ec2Configuration.html)
@@ -980,7 +991,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
     name = "DescribeComputeEnvironments",
     http_method = "POST",
     http_path = "/v1/describecomputeenvironments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "computeEnvironments")
   )
   input <- .batch$describe_compute_environments_input(computeEnvironments = computeEnvironments, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_compute_environments_output()
@@ -1163,6 +1174,10 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'         ),
 #'         ephemeralStorage = list(
 #'           sizeInGiB = 123
+#'         ),
+#'         runtimePlatform = list(
+#'           operatingSystemFamily = "string",
+#'           cpuArchitecture = "string"
 #'         )
 #'       ),
 #'       timeout = list(
@@ -1281,6 +1296,10 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'               ),
 #'               ephemeralStorage = list(
 #'                 sizeInGiB = 123
+#'               ),
+#'               runtimePlatform = list(
+#'                 operatingSystemFamily = "string",
+#'                 cpuArchitecture = "string"
 #'               )
 #'             )
 #'           )
@@ -1400,7 +1419,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
     name = "DescribeJobDefinitions",
     http_method = "POST",
     http_path = "/v1/describejobdefinitions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobDefinitions")
   )
   input <- .batch$describe_job_definitions_input(jobDefinitions = jobDefinitions, maxResults = maxResults, jobDefinitionName = jobDefinitionName, status = status, nextToken = nextToken)
   output <- .batch$describe_job_definitions_output()
@@ -1502,7 +1521,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
     name = "DescribeJobQueues",
     http_method = "POST",
     http_path = "/v1/describejobqueues",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobQueues")
   )
   input <- .batch$describe_job_queues_input(jobQueues = jobQueues, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_job_queues_output()
@@ -1702,6 +1721,10 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'         ),
 #'         ephemeralStorage = list(
 #'           sizeInGiB = 123
+#'         ),
+#'         runtimePlatform = list(
+#'           operatingSystemFamily = "string",
+#'           cpuArchitecture = "string"
 #'         )
 #'       ),
 #'       nodeDetails = list(
@@ -1821,6 +1844,10 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'               ),
 #'               ephemeralStorage = list(
 #'                 sizeInGiB = 123
+#'               ),
+#'               runtimePlatform = list(
+#'                 operatingSystemFamily = "string",
+#'                 cpuArchitecture = "string"
 #'               )
 #'             )
 #'           )
@@ -2219,7 +2246,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
     name = "ListJobs",
     http_method = "POST",
     http_path = "/v1/listjobs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaryList")
   )
   input <- .batch$list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .batch$list_jobs_output()
@@ -2292,7 +2319,7 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
     name = "ListSchedulingPolicies",
     http_method = "POST",
     http_path = "/v1/listschedulingpolicies",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schedulingPolicies")
   )
   input <- .batch$list_scheduling_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .batch$list_scheduling_policies_output()
@@ -2582,6 +2609,10 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'     ),
 #'     ephemeralStorage = list(
 #'       sizeInGiB = 123
+#'     ),
+#'     runtimePlatform = list(
+#'       operatingSystemFamily = "string",
+#'       cpuArchitecture = "string"
 #'     )
 #'   ),
 #'   nodeProperties = list(
@@ -2697,6 +2728,10 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'           ),
 #'           ephemeralStorage = list(
 #'             sizeInGiB = 123
+#'           ),
+#'           runtimePlatform = list(
+#'             operatingSystemFamily = "string",
+#'             cpuArchitecture = "string"
 #'           )
 #'         )
 #'       )
@@ -2901,9 +2936,12 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' letters, numbers, hyphens (-), and underscores (_).
 #' @param jobQueue &#91;required&#93; The job queue where the job is submitted. You can specify either the
 #' name or the Amazon Resource Name (ARN) of the queue.
-#' @param shareIdentifier The share identifier for the job. If the job queue doesn't have a
-#' scheduling policy, then this parameter must not be specified. If the job
-#' queue has a scheduling policy, then this parameter must be specified.
+#' @param shareIdentifier The share identifier for the job. Don't specify this parameter if the
+#' job queue doesn't have a scheduling policy. If the job queue has a
+#' scheduling policy, then this parameter must be specified.
+#' 
+#' This string is limited to 255 alphanumeric characters, and can be
+#' followed by an asterisk (*).
 #' @param schedulingPriorityOverride The scheduling priority for the job. This only affects jobs in job
 #' queues with a fair share policy. Jobs with a higher scheduling priority
 #' are scheduled before jobs with a lower scheduling priority. This

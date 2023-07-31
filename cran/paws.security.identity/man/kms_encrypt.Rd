@@ -9,7 +9,8 @@ kms_encrypt(
   Plaintext,
   EncryptionContext = NULL,
   GrantTokens = NULL,
-  EncryptionAlgorithm = NULL
+  EncryptionAlgorithm = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -76,6 +77,11 @@ encryption KMS keys. If you are using an asymmetric KMS key, we
 recommend RSAES_OAEP_SHA_256.
 
 The SM2PKE algorithm is only available in China Regions.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Encrypts plaintext of up to 4,096 bytes using a KMS key. You can use a symmetric or asymmetric KMS key with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}.

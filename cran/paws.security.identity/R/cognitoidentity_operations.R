@@ -463,7 +463,7 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
     name = "ListIdentityPools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IdentityPools")
   )
   input <- .cognitoidentity$list_identity_pools_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentity$list_identity_pools_output()

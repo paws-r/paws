@@ -222,7 +222,7 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
 #' @param SnapshotIdentifier The identifier of the snapshot the account is authorized to restore.
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot to authorize access to.
 #' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user or role has a policy containing a
+#' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account authorized to restore
@@ -365,7 +365,7 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #' -   Must be the identifier for a valid automated snapshot whose state is
 #'     `available`.
 #' @param SourceSnapshotClusterIdentifier The identifier of the cluster the source snapshot was created from. This
-#' parameter is required if your IAM user or role has a policy containing a
+#' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' 
@@ -507,8 +507,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`
 #' | `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge` |
 #' `ra3.16xlarge`
-#' @param MasterUsername &#91;required&#93; The user name associated with the admin user for the cluster that is
-#' being created.
+#' @param MasterUsername &#91;required&#93; The user name associated with the admin user account for the cluster
+#' that is being created.
 #' 
 #' Constraints:
 #' 
@@ -526,8 +526,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'     [Reserved
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
-#' @param MasterUserPassword &#91;required&#93; The password associated with the admin user for the cluster that is
-#' being created.
+#' @param MasterUserPassword &#91;required&#93; The password associated with the admin user account for the cluster that
+#' is being created.
 #' 
 #' Constraints:
 #' 
@@ -914,6 +914,38 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
   return(response)
 }
 .redshift$operations$create_cluster_subnet_group <- redshift_create_cluster_subnet_group
+
+#' Used to create a custom domain name for a cluster
+#'
+#' @description
+#' Used to create a custom domain name for a cluster. Properties include the custom domain name, the cluster the custom domain is associated with, and the certificate Amazon Resource Name (ARN).
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshift_create_custom_domain_association/) for full documentation.
+#'
+#' @param CustomDomainName &#91;required&#93; The custom domain name for a custom domain association.
+#' @param CustomDomainCertificateArn &#91;required&#93; The certificate Amazon Resource Name (ARN) for the custom domain name
+#' association.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier that the custom domain is associated with.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_custom_domain_association
+redshift_create_custom_domain_association <- function(CustomDomainName, CustomDomainCertificateArn, ClusterIdentifier) {
+  op <- new_operation(
+    name = "CreateCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$create_custom_domain_association_input(CustomDomainName = CustomDomainName, CustomDomainCertificateArn = CustomDomainCertificateArn, ClusterIdentifier = ClusterIdentifier)
+  output <- .redshift$create_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_custom_domain_association <- redshift_create_custom_domain_association
 
 #' Creates a Redshift-managed VPC endpoint
 #'
@@ -1519,7 +1551,7 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
 #' Constraints: Must be the name of an existing snapshot that is in the
 #' `available`, `failed`, or `cancelled` state.
 #' @param SnapshotClusterIdentifier The unique identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user or role has a policy containing a
+#' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' 
@@ -1573,6 +1605,36 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
   return(response)
 }
 .redshift$operations$delete_cluster_subnet_group <- redshift_delete_cluster_subnet_group
+
+#' Contains information about deleting a custom domain association for a
+#' cluster
+#'
+#' @description
+#' Contains information about deleting a custom domain association for a cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshift_delete_custom_domain_association/) for full documentation.
+#'
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to delete a custom domain association for.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_custom_domain_association
+redshift_delete_custom_domain_association <- function(ClusterIdentifier) {
+  op <- new_operation(
+    name = "DeleteCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_custom_domain_association_input(ClusterIdentifier = ClusterIdentifier)
+  output <- .redshift$delete_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_custom_domain_association <- redshift_delete_custom_domain_association
 
 #' Deletes a Redshift-managed VPC endpoint
 #'
@@ -1968,7 +2030,7 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
     name = "DescribeClusterDbRevisions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterDbRevisions")
   )
   input <- .redshift$describe_cluster_db_revisions_input(ClusterIdentifier = ClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_db_revisions_output()
@@ -2030,7 +2092,7 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
     name = "DescribeClusterParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ParameterGroups")
   )
   input <- .redshift$describe_cluster_parameter_groups_input(ParameterGroupName = ParameterGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_cluster_parameter_groups_output()
@@ -2083,7 +2145,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
     name = "DescribeClusterParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .redshift$describe_cluster_parameters_input(ParameterGroupName = ParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_parameters_output()
@@ -2148,7 +2210,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
     name = "DescribeClusterSecurityGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterSecurityGroups")
   )
   input <- .redshift$describe_cluster_security_groups_input(ClusterSecurityGroupName = ClusterSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_cluster_security_groups_output()
@@ -2197,7 +2259,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' 
 #' Default: `100`
 #' 
-#' Constraints: minimum 20, maximum 500.
+#' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_snapshots`][redshift_describe_cluster_snapshots]
@@ -2249,7 +2311,7 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
     name = "DescribeClusterSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
   )
   input <- .redshift$describe_cluster_snapshots_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotType = SnapshotType, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, Marker = Marker, OwnerAccount = OwnerAccount, TagKeys = TagKeys, TagValues = TagValues, ClusterExists = ClusterExists, SortingEntities = SortingEntities)
   output <- .redshift$describe_cluster_snapshots_output()
@@ -2308,7 +2370,7 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
     name = "DescribeClusterSubnetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterSubnetGroups")
   )
   input <- .redshift$describe_cluster_subnet_groups_input(ClusterSubnetGroupName = ClusterSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_cluster_subnet_groups_output()
@@ -2345,7 +2407,7 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
     name = "DescribeClusterTracks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "MaintenanceTracks")
   )
   input <- .redshift$describe_cluster_tracks_input(MaintenanceTrackName = MaintenanceTrackName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_tracks_output()
@@ -2402,7 +2464,7 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
     name = "DescribeClusterVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterVersions")
   )
   input <- .redshift$describe_cluster_versions_input(ClusterVersion = ClusterVersion, ClusterParameterGroupFamily = ClusterParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_cluster_versions_output()
@@ -2467,7 +2529,7 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Clusters")
   )
   input <- .redshift$describe_clusters_input(ClusterIdentifier = ClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_clusters_output()
@@ -2478,6 +2540,39 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
   return(response)
 }
 .redshift$operations$describe_clusters <- redshift_describe_clusters
+
+#' Contains information for custom domain associations for a cluster
+#'
+#' @description
+#' Contains information for custom domain associations for a cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_custom_domain_associations/](https://www.paws-r-sdk.com/docs/redshift_describe_custom_domain_associations/) for full documentation.
+#'
+#' @param CustomDomainName The custom domain name for the custom domain association.
+#' @param CustomDomainCertificateArn The certificate Amazon Resource Name (ARN) for the custom domain
+#' association.
+#' @param MaxRecords The maximum records setting for the associated custom domain.
+#' @param Marker The marker for the custom domain association.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_custom_domain_associations
+redshift_describe_custom_domain_associations <- function(CustomDomainName = NULL, CustomDomainCertificateArn = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeCustomDomainAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Associations")
+  )
+  input <- .redshift$describe_custom_domain_associations_input(CustomDomainName = CustomDomainName, CustomDomainCertificateArn = CustomDomainCertificateArn, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_custom_domain_associations_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_custom_domain_associations <- redshift_describe_custom_domain_associations
 
 #' Shows the status of any inbound or outbound datashares available in the
 #' specified account
@@ -2509,7 +2604,7 @@ redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL
     name = "DescribeDataShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DataShares")
   )
   input <- .redshift$describe_data_shares_input(DataShareArn = DataShareArn, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_data_shares_output()
@@ -2555,7 +2650,7 @@ redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Statu
     name = "DescribeDataSharesForConsumer",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DataShares")
   )
   input <- .redshift$describe_data_shares_for_consumer_input(ConsumerArn = ConsumerArn, Status = Status, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_data_shares_for_consumer_output()
@@ -2601,7 +2696,7 @@ redshift_describe_data_shares_for_producer <- function(ProducerArn = NULL, Statu
     name = "DescribeDataSharesForProducer",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DataShares")
   )
   input <- .redshift$describe_data_shares_for_producer_input(ProducerArn = ProducerArn, Status = Status, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_data_shares_for_producer_output()
@@ -2647,7 +2742,7 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
     name = "DescribeDefaultClusterParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "DefaultClusterParameters.Marker", result_key = "DefaultClusterParameters.Parameters")
   )
   input <- .redshift$describe_default_cluster_parameters_input(ParameterGroupFamily = ParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_default_cluster_parameters_output()
@@ -2688,7 +2783,7 @@ redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, Resource
     name = "DescribeEndpointAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EndpointAccessList")
   )
   input <- .redshift$describe_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, VpcId = VpcId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_endpoint_access_output()
@@ -2733,7 +2828,7 @@ redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, A
     name = "DescribeEndpointAuthorization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EndpointAuthorizationList")
   )
   input <- .redshift$describe_endpoint_authorization_input(ClusterIdentifier = ClusterIdentifier, Account = Account, Grantee = Grantee, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_endpoint_authorization_output()
@@ -2827,7 +2922,7 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
     name = "DescribeEventSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
   )
   input <- .redshift$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_event_subscriptions_output()
@@ -2923,7 +3018,7 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .redshift$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_events_output()
@@ -2984,7 +3079,7 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
     name = "DescribeHsmClientCertificates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "HsmClientCertificates")
   )
   input <- .redshift$describe_hsm_client_certificates_input(HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_hsm_client_certificates_output()
@@ -3046,7 +3141,7 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
     name = "DescribeHsmConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "HsmConfigurations")
   )
   input <- .redshift$describe_hsm_configurations_input(HsmConfigurationIdentifier = HsmConfigurationIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_hsm_configurations_output()
@@ -3139,7 +3234,7 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
     name = "DescribeNodeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "NodeConfigurationOptionList")
   )
   input <- .redshift$describe_node_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, OwnerAccount = OwnerAccount, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_node_configuration_options_output()
@@ -3192,7 +3287,7 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
     name = "DescribeOrderableClusterOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableClusterOptions")
   )
   input <- .redshift$describe_orderable_cluster_options_input(ClusterVersion = ClusterVersion, NodeType = NodeType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_orderable_cluster_options_output()
@@ -3272,7 +3367,7 @@ redshift_describe_reserved_node_exchange_status <- function(ReservedNodeId = NUL
     name = "DescribeReservedNodeExchangeStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeExchangeStatusDetails")
   )
   input <- .redshift$describe_reserved_node_exchange_status_input(ReservedNodeId = ReservedNodeId, ReservedNodeExchangeRequestId = ReservedNodeExchangeRequestId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_reserved_node_exchange_status_output()
@@ -3320,7 +3415,7 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
     name = "DescribeReservedNodeOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeOfferings")
   )
   input <- .redshift$describe_reserved_node_offerings_input(ReservedNodeOfferingId = ReservedNodeOfferingId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_reserved_node_offerings_output()
@@ -3365,7 +3460,7 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
     name = "DescribeReservedNodes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodes")
   )
   input <- .redshift$describe_reserved_nodes_input(ReservedNodeId = ReservedNodeId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_reserved_nodes_output()
@@ -3452,7 +3547,7 @@ redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, Targ
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ScheduledActions")
   )
   input <- .redshift$describe_scheduled_actions_input(ScheduledActionName = ScheduledActionName, TargetActionType = TargetActionType, StartTime = StartTime, EndTime = EndTime, Active = Active, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_scheduled_actions_output()
@@ -3512,7 +3607,7 @@ redshift_describe_snapshot_copy_grants <- function(SnapshotCopyGrantName = NULL,
     name = "DescribeSnapshotCopyGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "SnapshotCopyGrants")
   )
   input <- .redshift$describe_snapshot_copy_grants_input(SnapshotCopyGrantName = SnapshotCopyGrantName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_snapshot_copy_grants_output()
@@ -3556,7 +3651,7 @@ redshift_describe_snapshot_schedules <- function(ClusterIdentifier = NULL, Sched
     name = "DescribeSnapshotSchedules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "SnapshotSchedules")
   )
   input <- .redshift$describe_snapshot_schedules_input(ClusterIdentifier = ClusterIdentifier, ScheduleIdentifier = ScheduleIdentifier, TagKeys = TagKeys, TagValues = TagValues, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_snapshot_schedules_output()
@@ -3628,7 +3723,7 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
     name = "DescribeTableRestoreStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "TableRestoreStatusDetails")
   )
   input <- .redshift$describe_table_restore_status_input(ClusterIdentifier = ClusterIdentifier, TableRestoreRequestId = TableRestoreRequestId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$describe_table_restore_status_output()
@@ -3709,7 +3804,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "TaggedResources")
   )
   input <- .redshift$describe_tags_input(ResourceName = ResourceName, ResourceType = ResourceType, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_tags_output()
@@ -3770,7 +3865,7 @@ redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifie
     name = "DescribeUsageLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UsageLimits")
   )
   input <- .redshift$describe_usage_limits_input(UsageLimitId = UsageLimitId, ClusterIdentifier = ClusterIdentifier, FeatureType = FeatureType, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
   output <- .redshift$describe_usage_limits_output()
@@ -4057,7 +4152,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #'     [Reserved
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
-#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster that contains the database for
+#' @param ClusterIdentifier The unique identifier of the cluster that contains the database for
 #' which you are requesting credentials. This parameter is case sensitive.
 #' @param DurationSeconds The number of seconds until the returned temporary password expires.
 #' 
@@ -4086,18 +4181,19 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #'     [Reserved
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
+#' @param CustomDomainName The custom domain name for the cluster credentials.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_get_cluster_credentials
-redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdentifier, DurationSeconds = NULL, AutoCreate = NULL, DbGroups = NULL) {
+redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdentifier = NULL, DurationSeconds = NULL, AutoCreate = NULL, DbGroups = NULL, CustomDomainName = NULL) {
   op <- new_operation(
     name = "GetClusterCredentials",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$get_cluster_credentials_input(DbUser = DbUser, DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds, AutoCreate = AutoCreate, DbGroups = DbGroups)
+  input <- .redshift$get_cluster_credentials_input(DbUser = DbUser, DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds, AutoCreate = AutoCreate, DbGroups = DbGroups, CustomDomainName = CustomDomainName)
   output <- .redshift$get_cluster_credentials_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -4119,23 +4215,24 @@ redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdent
 #' the database name is specified, the IAM policy must allow access to the
 #' resource `dbname` for the specified database name. If the database name
 #' is not specified, access to all databases is allowed.
-#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster that contains the database for
+#' @param ClusterIdentifier The unique identifier of the cluster that contains the database for
 #' which you are requesting credentials.
 #' @param DurationSeconds The number of seconds until the returned temporary password expires.
 #' 
 #' Range: 900-3600. Default: 900.
+#' @param CustomDomainName The custom domain name for the IAM message cluster credentials.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_get_cluster_credentials_with_iam
-redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIdentifier, DurationSeconds = NULL) {
+redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIdentifier = NULL, DurationSeconds = NULL, CustomDomainName = NULL) {
   op <- new_operation(
     name = "GetClusterCredentialsWithIAM",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$get_cluster_credentials_with_iam_input(DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds)
+  input <- .redshift$get_cluster_credentials_with_iam_input(DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds, CustomDomainName = CustomDomainName)
   output <- .redshift$get_cluster_credentials_with_iam_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -4179,7 +4276,7 @@ redshift_get_reserved_node_exchange_configuration_options <- function(ActionType
     name = "GetReservedNodeExchangeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeConfigurationOptionList")
   )
   input <- .redshift$get_reserved_node_exchange_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$get_reserved_node_exchange_configuration_options_output()
@@ -4214,7 +4311,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
     name = "GetReservedNodeExchangeOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeOfferings")
   )
   input <- .redshift$get_reserved_node_exchange_offerings_input(ReservedNodeId = ReservedNodeId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .redshift$get_reserved_node_exchange_offerings_output()
@@ -4352,8 +4449,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' response.
 #' 
 #' Operations never return the password, so this operation provides a way
-#' to regain access to the admin user for a cluster if the password is
-#' lost.
+#' to regain access to the admin user account for a cluster if the password
+#' is lost.
 #' 
 #' Default: Uses existing setting.
 #' 
@@ -4764,6 +4861,38 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
   return(response)
 }
 .redshift$operations$modify_cluster_subnet_group <- redshift_modify_cluster_subnet_group
+
+#' Contains information for changing a custom domain association
+#'
+#' @description
+#' Contains information for changing a custom domain association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshift_modify_custom_domain_association/) for full documentation.
+#'
+#' @param CustomDomainName The custom domain name for a changed custom domain association.
+#' @param CustomDomainCertificateArn The certificate Amazon Resource Name (ARN) for the changed custom domain
+#' association.
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to change a custom domain association for.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_custom_domain_association
+redshift_modify_custom_domain_association <- function(CustomDomainName = NULL, CustomDomainCertificateArn = NULL, ClusterIdentifier) {
+  op <- new_operation(
+    name = "ModifyCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_custom_domain_association_input(CustomDomainName = CustomDomainName, CustomDomainCertificateArn = CustomDomainCertificateArn, ClusterIdentifier = ClusterIdentifier)
+  output <- .redshift$modify_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_custom_domain_association <- redshift_modify_custom_domain_association
 
 #' Modifies a Redshift-managed VPC endpoint
 #'
@@ -5254,7 +5383,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' message to restore from a cluster. You must specify this parameter or
 #' `snapshotIdentifier`, but not both.
 #' @param SnapshotClusterIdentifier The name of the cluster the source snapshot was created from. This
-#' parameter is required if your IAM user or role has a policy containing a
+#' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' @param Port The port number on which the cluster accepts connections.
@@ -5587,7 +5716,7 @@ redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = 
 #' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
 #' message to revoke access.
 #' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
-#' parameter is required if your IAM user or role has a policy containing a
+#' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
 #' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account that can no longer

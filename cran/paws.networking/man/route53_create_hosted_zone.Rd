@@ -58,7 +58,12 @@ If you don't specify a comment or the \code{PrivateZone} element, omit
 zone, the ID that Amazon Route 53 assigned to the reusable delegation
 set when you created it. For more information about reusable delegation
 sets, see
-\code{\link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set}}.}
+\code{\link[=route53_create_reusable_delegation_set]{create_reusable_delegation_set}}.
+
+If you are using a reusable delegation set to create a public hosted
+zone for a subdomain, make sure that the parent hosted zone doesn't use
+one or more of the same name servers. If you have overlapping
+nameservers, the operation will cause a \code{ConflictingDomainsExist} error.}
 }
 \description{
 Creates a new public or private hosted zone. You create records in a public hosted zone to define how you want to route traffic on the internet for a domain, such as example.com, and its subdomains (apex.example.com, acme.example.com). You create records in a private hosted zone to define how you want to route traffic for a domain and its subdomains within one or more Amazon Virtual Private Clouds (Amazon VPCs).

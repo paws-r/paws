@@ -1006,7 +1006,7 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
     name = "ListAccelerators",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators")
   )
   input <- .globalaccelerator$list_accelerators_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_accelerators_output()
@@ -1040,7 +1040,7 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
     name = "ListByoipCidrs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ByoipCidrs")
   )
   input <- .globalaccelerator$list_byoip_cidrs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_byoip_cidrs_output()
@@ -1072,7 +1072,7 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
     name = "ListCustomRoutingAccelerators",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators")
   )
   input <- .globalaccelerator$list_custom_routing_accelerators_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_accelerators_output()
@@ -1107,7 +1107,7 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
     name = "ListCustomRoutingEndpointGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .globalaccelerator$list_custom_routing_endpoint_groups_input(ListenerArn = ListenerArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_endpoint_groups_output()
@@ -1140,7 +1140,7 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
     name = "ListCustomRoutingListeners",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners")
   )
   input <- .globalaccelerator$list_custom_routing_listeners_input(AcceleratorArn = AcceleratorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_listeners_output()
@@ -1178,7 +1178,7 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
     name = "ListCustomRoutingPortMappings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PortMappings")
   )
   input <- .globalaccelerator$list_custom_routing_port_mappings_input(AcceleratorArn = AcceleratorArn, EndpointGroupArn = EndpointGroupArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_port_mappings_output()
@@ -1214,7 +1214,7 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
     name = "ListCustomRoutingPortMappingsByDestination",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DestinationPortMappings")
   )
   input <- .globalaccelerator$list_custom_routing_port_mappings_by_destination_input(EndpointId = EndpointId, DestinationAddress = DestinationAddress, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_port_mappings_by_destination_output()
@@ -1247,7 +1247,7 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
     name = "ListEndpointGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups")
   )
   input <- .globalaccelerator$list_endpoint_groups_input(ListenerArn = ListenerArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_endpoint_groups_output()
@@ -1281,7 +1281,7 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
     name = "ListListeners",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners")
   )
   input <- .globalaccelerator$list_listeners_input(AcceleratorArn = AcceleratorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_listeners_output()

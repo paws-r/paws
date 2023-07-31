@@ -226,7 +226,7 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
     name = "ListConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codestarconnections$list_connections_input(ProviderTypeFilter = ProviderTypeFilter, HostArnFilter = HostArnFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_connections_output()
@@ -260,7 +260,7 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
     name = "ListHosts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codestarconnections$list_hosts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_hosts_output()

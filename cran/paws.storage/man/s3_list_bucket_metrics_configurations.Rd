@@ -15,7 +15,7 @@ s3_list_bucket_metrics_configurations(
 retrieve.}
 
 \item{ContinuationToken}{The marker that is used to continue a metrics configuration listing that
-has been truncated. Use the NextContinuationToken from a previously
+has been truncated. Use the \code{NextContinuationToken} from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
 

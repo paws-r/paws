@@ -142,6 +142,69 @@ ivs_batch_get_stream_key <- function(arns) {
 }
 .ivs$operations$batch_get_stream_key <- ivs_batch_get_stream_key
 
+#' Performs StartViewerSessionRevocation on multiple channel ARN and viewer
+#' ID pairs simultaneously
+#'
+#' @description
+#' Performs
+#' [`start_viewer_session_revocation`][ivs_start_viewer_session_revocation]
+#' on multiple channel ARN and viewer ID pairs simultaneously.
+#'
+#' @usage
+#' ivs_batch_start_viewer_session_revocation(viewerSessions)
+#'
+#' @param viewerSessions &#91;required&#93; Array of viewer sessions, one per channel-ARN and viewer-ID pair.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       channelArn = "string",
+#'       code = "string",
+#'       message = "string",
+#'       viewerId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_start_viewer_session_revocation(
+#'   viewerSessions = list(
+#'     list(
+#'       channelArn = "string",
+#'       viewerId = "string",
+#'       viewerSessionVersionsLessThanOrEqualTo = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_batch_start_viewer_session_revocation
+#'
+#' @aliases ivs_batch_start_viewer_session_revocation
+ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
+  op <- new_operation(
+    name = "BatchStartViewerSessionRevocation",
+    http_method = "POST",
+    http_path = "/BatchStartViewerSessionRevocation",
+    paginator = list()
+  )
+  input <- .ivs$batch_start_viewer_session_revocation_input(viewerSessions = viewerSessions)
+  output <- .ivs$batch_start_viewer_session_revocation_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$batch_start_viewer_session_revocation <- ivs_batch_start_viewer_session_revocation
+
 #' Creates a new channel and an associated stream key to start streaming
 #'
 #' @description
@@ -312,7 +375,8 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #'
 #' @usage
 #' ivs_create_recording_configuration(destinationConfiguration, name,
-#'   recordingReconnectWindowSeconds, tags, thumbnailConfiguration)
+#'   recordingReconnectWindowSeconds, renditionConfiguration, tags,
+#'   thumbnailConfiguration)
 #'
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where
 #' recorded video will be stored.
@@ -320,6 +384,7 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #' @param recordingReconnectWindowSeconds If a broadcast disconnects and then reconnects within the specified
 #' interval, the multiple streams will be considered a single broadcast and
 #' merged together. Default: 0.
+#' @param renditionConfiguration Object that describes which renditions should be recorded for a stream.
 #' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
 #' [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
@@ -343,12 +408,22 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #'     ),
 #'     name = "string",
 #'     recordingReconnectWindowSeconds = 123,
+#'     renditionConfiguration = list(
+#'       renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'       renditions = list(
+#'         "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
+#'       )
+#'     ),
 #'     state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
 #'     tags = list(
 #'       "string"
 #'     ),
 #'     thumbnailConfiguration = list(
 #'       recordingMode = "DISABLED"|"INTERVAL",
+#'       resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'       storage = list(
+#'         "SEQUENTIAL"|"LATEST"
+#'       ),
 #'       targetIntervalSeconds = 123
 #'     )
 #'   )
@@ -365,11 +440,21 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #'   ),
 #'   name = "string",
 #'   recordingReconnectWindowSeconds = 123,
+#'   renditionConfiguration = list(
+#'     renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'     renditions = list(
+#'       "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
+#'     )
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   ),
 #'   thumbnailConfiguration = list(
 #'     recordingMode = "DISABLED"|"INTERVAL",
+#'     resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'     storage = list(
+#'       "SEQUENTIAL"|"LATEST"
+#'     ),
 #'     targetIntervalSeconds = 123
 #'   )
 #' )
@@ -380,14 +465,14 @@ ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latency
 #' @rdname ivs_create_recording_configuration
 #'
 #' @aliases ivs_create_recording_configuration
-ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, recordingReconnectWindowSeconds = NULL, tags = NULL, thumbnailConfiguration = NULL) {
+ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, recordingReconnectWindowSeconds = NULL, renditionConfiguration = NULL, tags = NULL, thumbnailConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRecordingConfiguration",
     http_method = "POST",
     http_path = "/CreateRecordingConfiguration",
     paginator = list()
   )
-  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
+  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
   output <- .ivs$create_recording_configuration_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -801,12 +886,22 @@ ivs_get_playback_key_pair <- function(arn) {
 #'     ),
 #'     name = "string",
 #'     recordingReconnectWindowSeconds = 123,
+#'     renditionConfiguration = list(
+#'       renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'       renditions = list(
+#'         "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
+#'       )
+#'     ),
 #'     state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
 #'     tags = list(
 #'       "string"
 #'     ),
 #'     thumbnailConfiguration = list(
 #'       recordingMode = "DISABLED"|"INTERVAL",
+#'       resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'       storage = list(
+#'         "SEQUENTIAL"|"LATEST"
+#'       ),
 #'       targetIntervalSeconds = 123
 #'     )
 #'   )
@@ -1016,12 +1111,22 @@ ivs_get_stream_key <- function(arn) {
 #'       ),
 #'       name = "string",
 #'       recordingReconnectWindowSeconds = 123,
+#'       renditionConfiguration = list(
+#'         renditionSelection = "ALL"|"NONE"|"CUSTOM",
+#'         renditions = list(
+#'           "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION"
+#'         )
+#'       ),
 #'       state = "CREATING"|"CREATE_FAILED"|"ACTIVE",
 #'       tags = list(
 #'         "string"
 #'       ),
 #'       thumbnailConfiguration = list(
 #'         recordingMode = "DISABLED"|"INTERVAL",
+#'         resolution = "FULL_HD"|"HD"|"SD"|"LOWEST_RESOLUTION",
+#'         storage = list(
+#'           "SEQUENTIAL"|"LATEST"
+#'         ),
 #'         targetIntervalSeconds = 123
 #'       )
 #'     ),
@@ -1207,7 +1312,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfiguratio
     name = "ListChannels",
     http_method = "POST",
     http_path = "/ListChannels",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_channels_input(filterByName = filterByName, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_channels_output()
@@ -1270,7 +1375,7 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListPlaybackKeyPairs",
     http_method = "POST",
     http_path = "/ListPlaybackKeyPairs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_playback_key_pairs_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_playback_key_pairs_output()
@@ -1340,7 +1445,7 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
     name = "ListRecordingConfigurations",
     http_method = "POST",
     http_path = "/ListRecordingConfigurations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_recording_configurations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_recording_configurations_output()
@@ -1401,7 +1506,7 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
     name = "ListStreamKeys",
     http_method = "POST",
     http_path = "/ListStreamKeys",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_stream_keys_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_stream_keys_output()
@@ -1467,7 +1572,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
     name = "ListStreamSessions",
     http_method = "POST",
     http_path = "/ListStreamSessions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_stream_sessions_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_stream_sessions_output()
@@ -1535,7 +1640,7 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
     name = "ListStreams",
     http_method = "POST",
     http_path = "/ListStreams",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_streams_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken)
   output <- .ivs$list_streams_output()
@@ -1647,6 +1752,63 @@ ivs_put_metadata <- function(channelArn, metadata) {
   return(response)
 }
 .ivs$operations$put_metadata <- ivs_put_metadata
+
+#' Starts the process of revoking the viewer session associated with a
+#' specified channel ARN and viewer ID
+#'
+#' @description
+#' Starts the process of revoking the viewer session associated with a
+#' specified channel ARN and viewer ID. Optionally, you can provide a
+#' version to revoke viewer sessions less than and including that version.
+#' For instructions on associating a viewer ID with a viewer session, see
+#' [Setting Up Private
+#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html).
+#'
+#' @usage
+#' ivs_start_viewer_session_revocation(channelArn, viewerId,
+#'   viewerSessionVersionsLessThanOrEqualTo)
+#'
+#' @param channelArn &#91;required&#93; The ARN of the channel associated with the viewer session to revoke.
+#' @param viewerId &#91;required&#93; The ID of the viewer associated with the viewer session to revoke. Do
+#' not use this field for personally identifying, confidential, or
+#' sensitive information.
+#' @param viewerSessionVersionsLessThanOrEqualTo An optional filter on which versions of the viewer session to revoke.
+#' All versions less than or equal to the specified version will be
+#' revoked. Default: 0.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_viewer_session_revocation(
+#'   channelArn = "string",
+#'   viewerId = "string",
+#'   viewerSessionVersionsLessThanOrEqualTo = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivs_start_viewer_session_revocation
+#'
+#' @aliases ivs_start_viewer_session_revocation
+ivs_start_viewer_session_revocation <- function(channelArn, viewerId, viewerSessionVersionsLessThanOrEqualTo = NULL) {
+  op <- new_operation(
+    name = "StartViewerSessionRevocation",
+    http_method = "POST",
+    http_path = "/StartViewerSessionRevocation",
+    paginator = list()
+  )
+  input <- .ivs$start_viewer_session_revocation_input(channelArn = channelArn, viewerId = viewerId, viewerSessionVersionsLessThanOrEqualTo = viewerSessionVersionsLessThanOrEqualTo)
+  output <- .ivs$start_viewer_session_revocation_output()
+  config <- get_config()
+  svc <- .ivs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivs$operations$start_viewer_session_revocation <- ivs_start_viewer_session_revocation
 
 #' Disconnects the incoming RTMPS stream for the specified channel
 #'

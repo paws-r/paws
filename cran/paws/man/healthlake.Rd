@@ -4,22 +4,47 @@
 \alias{healthlake}
 \title{Amazon HealthLake}
 \usage{
-healthlake(config = list())
+healthlake(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -28,7 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon HealthLake is a HIPAA eligibile service that allows customers to
+AWS HealthLake is a HIPAA eligibile service that allows customers to
 store, transform, query, and analyze their FHIR-formatted data in a
 consistent fashion in the cloud.
 }
@@ -50,8 +75,20 @@ consistent fashion in the cloud.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -59,19 +96,19 @@ consistent fashion in the cloud.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a Data Store that can ingest and export FHIR formatted data\cr
-\link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a Data Store\cr
-\link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR Data Store, including the Data Store ID, Data Store ARN, Data Store name, Data Store status, created at, Data Store type version, and Data Store endpoint\cr
+\link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a data store that can ingest and export FHIR formatted data\cr
+\link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a data store\cr
+\link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR data store, including the data store ID, data store ARN, data store name, data store status, when the data store was created, data store type version, and the data store's endpoint\cr
 \link[paws.analytics:healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job\cr
 \link[paws.analytics:healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job\cr
-\link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status\cr
+\link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR data stores that are in the user’s account, regardless of data store status\cr
 \link[paws.analytics:healthlake_list_fhir_export_jobs]{list_fhir_export_jobs} \tab Lists all FHIR export jobs associated with an account and their statuses\cr
 \link[paws.analytics:healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab Lists all FHIR import jobs associated with an account and their statuses\cr
-\link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a Data Store\cr
+\link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a data store\cr
 \link[paws.analytics:healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Begins a FHIR export job\cr
 \link[paws.analytics:healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job\cr
-\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specified key and value tag to a Data Store\cr
-\link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a Data Store
+\link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specified key and value tag to a data store\cr
+\link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a data store
 }
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_control}
 \alias{auditmanager_get_control}
-\title{Returns a control from Audit Manager}
+\title{Gets information about a specified control}
 \usage{
 auditmanager_get_control(controlId)
 }
@@ -10,7 +10,7 @@ auditmanager_get_control(controlId)
 \item{controlId}{[required] The identifier for the control.}
 }
 \description{
-Returns a control from Audit Manager.
+Gets information about a specified control.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_control/} for full documentation.
 }

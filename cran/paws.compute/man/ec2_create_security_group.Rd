@@ -17,21 +17,17 @@ ec2_create_security_group(
 
 Constraints: Up to 255 characters in length
 
-Constraints for EC2-Classic: ASCII characters
-
-Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
+Valid characters: a-z, A-Z, 0-9, spaces, and
 ._-:/()#,@[]+=&;\{\}!$*}
 
 \item{GroupName}{[required] The name of the security group.
 
 Constraints: Up to 255 characters in length. Cannot start with \verb{sg-}.
 
-Constraints for EC2-Classic: ASCII characters
-
-Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
+Valid characters: a-z, A-Z, 0-9, spaces, and
 ._-:/()#,@[]+=&;\{\}!$*}
 
-\item{VpcId}{[EC2-VPC] The ID of the VPC. Required for EC2-VPC.}
+\item{VpcId}{The ID of the VPC. Required for a nondefault VPC.}
 
 \item{TagSpecifications}{The tags to assign to the security group.}
 

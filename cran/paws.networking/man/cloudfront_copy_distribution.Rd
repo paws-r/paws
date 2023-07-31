@@ -9,7 +9,8 @@ cloudfront_copy_distribution(
   PrimaryDistributionId,
   Staging = NULL,
   IfMatch = NULL,
-  CallerReference
+  CallerReference,
+  Enabled = NULL
 )
 }
 \arguments{
@@ -29,6 +30,13 @@ you are copying. This is the \code{ETag} value returned in the response to
 \item{CallerReference}{[required] A value that uniquely identifies a request to create a resource. This
 helps to prevent CloudFront from creating a duplicate resource if you
 accidentally resubmit an identical request.}
+
+\item{Enabled}{A Boolean flag to specify the state of the staging distribution when
+it's created. When you set this value to \code{True}, the staging
+distribution is enabled. When you set this value to \code{False}, the staging
+distribution is disabled.
+
+If you omit this field, the default value is \code{True}.}
 }
 \description{
 Creates a staging distribution using the configuration of the provided primary distribution. A staging distribution is a copy of an existing distribution (called the primary distribution) that you can use in a continuous deployment workflow.

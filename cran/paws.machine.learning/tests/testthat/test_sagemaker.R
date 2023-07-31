@@ -368,6 +368,14 @@ test_that("list_projects", {
   expect_error(svc$list_projects(MaxResults = 20), NA)
 })
 
+test_that("list_resource_catalogs", {
+  expect_error(svc$list_resource_catalogs(), NA)
+})
+
+test_that("list_resource_catalogs", {
+  expect_error(svc$list_resource_catalogs(MaxResults = 20), NA)
+})
+
 test_that("list_spaces", {
   expect_error(svc$list_spaces(), NA)
 })

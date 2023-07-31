@@ -206,7 +206,7 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListActions",
     http_method = "GET",
     http_path = "/actions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_actions_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_actions_output()
@@ -238,7 +238,7 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListExperimentTemplates",
     http_method = "GET",
     http_path = "/experimentTemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_experiment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_experiment_templates_output()
@@ -270,7 +270,7 @@ fis_list_experiments <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/experiments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_experiments_output()
@@ -331,7 +331,7 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
     name = "ListTargetResourceTypes",
     http_method = "GET",
     http_path = "/targetResourceTypes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .fis$list_target_resource_types_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_target_resource_types_output()

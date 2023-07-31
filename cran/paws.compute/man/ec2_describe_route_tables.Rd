@@ -13,7 +13,7 @@ ec2_describe_route_tables(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{association.route-table-association-id} - The ID of an association
 ID for the route table.
@@ -71,7 +71,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{RouteTableIds}{One or more route table IDs.
+\item{RouteTableIds}{The IDs of the route tables.
 
 Default: Describes all your route tables.}
 

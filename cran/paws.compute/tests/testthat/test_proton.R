@@ -4,6 +4,10 @@ test_that("list_components", {
   expect_error(svc$list_components(), NA)
 })
 
+test_that("list_deployments", {
+  expect_error(svc$list_deployments(), NA)
+})
+
 test_that("list_environment_templates", {
   expect_error(svc$list_environment_templates(), NA)
 })

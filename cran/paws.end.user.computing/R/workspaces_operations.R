@@ -980,7 +980,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
     name = "DescribeWorkspaceBundles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Bundles")
   )
   input <- .workspaces$describe_workspace_bundles_input(BundleIds = BundleIds, Owner = Owner, NextToken = NextToken)
   output <- .workspaces$describe_workspace_bundles_output()
@@ -1014,7 +1014,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
     name = "DescribeWorkspaceDirectories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Directories")
   )
   input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspace_directories_output()
@@ -1157,7 +1157,7 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
     name = "DescribeWorkspaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces")
   )
   input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspaces_output()

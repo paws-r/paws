@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_enable_vpc_classic_link_dns_support}
 \alias{ec2_enable_vpc_classic_link_dns_support}
-\title{We are retiring EC2-Classic}
+\title{This action is deprecated}
 \usage{
 ec2_enable_vpc_classic_link_dns_support(VpcId = NULL)
 }
@@ -10,7 +10,7 @@ ec2_enable_vpc_classic_link_dns_support(VpcId = NULL)
 \item{VpcId}{The ID of the VPC.}
 }
 \description{
-We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+This action is deprecated.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_enable_vpc_classic_link_dns_support/} for full documentation.
 }

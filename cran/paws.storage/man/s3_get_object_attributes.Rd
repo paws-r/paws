@@ -36,7 +36,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The object key.}
@@ -67,9 +67,8 @@ that the encryption key was transmitted without error.}
 different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 
-\item{ObjectAttributes}{[required] An XML header that specifies the fields at the root level that you want
-returned in the response. Fields that you do not specify are not
-returned.}
+\item{ObjectAttributes}{[required] Specifies the fields at the root level that you want returned in the
+response. Fields that you do not specify are not returned.}
 }
 \description{
 Retrieves all the metadata from an object without returning the object itself. This action is useful if you're interested only in an object's metadata. To use \code{\link[=s3_get_object_attributes]{get_object_attributes}}, you must have READ access to the object.

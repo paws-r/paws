@@ -585,7 +585,7 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
     name = "ListActionExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actionExecutionDetails")
   )
   input <- .codepipeline$list_action_executions_input(pipelineName = pipelineName, filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .codepipeline$list_action_executions_output()
@@ -619,7 +619,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
     name = "ListActionTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "actionTypes")
   )
   input <- .codepipeline$list_action_types_input(actionOwnerFilter = actionOwnerFilter, nextToken = nextToken, regionFilter = regionFilter)
   output <- .codepipeline$list_action_types_output()
@@ -657,7 +657,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
     name = "ListPipelineExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries")
   )
   input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, nextToken = nextToken)
   output <- .codepipeline$list_pipeline_executions_output()
@@ -691,7 +691,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelines")
   )
   input <- .codepipeline$list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codepipeline$list_pipelines_output()
@@ -725,7 +725,7 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .codepipeline$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .codepipeline$list_tags_for_resource_output()
@@ -759,7 +759,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListWebhooks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "webhooks")
   )
   input <- .codepipeline$list_webhooks_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .codepipeline$list_webhooks_output()

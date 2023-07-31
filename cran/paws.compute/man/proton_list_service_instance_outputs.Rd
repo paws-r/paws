@@ -5,12 +5,15 @@
 \title{Get a list service of instance Infrastructure as Code (IaC) outputs}
 \usage{
 proton_list_service_instance_outputs(
+  deploymentId = NULL,
   nextToken = NULL,
   serviceInstanceName,
   serviceName
 )
 }
 \arguments{
+\item{deploymentId}{The ID of the deployment whose outputs you want.}
+
 \item{nextToken}{A token that indicates the location of the next output in the array of
 outputs, after the list of outputs that was previously requested.}
 

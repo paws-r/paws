@@ -278,7 +278,7 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
     name = "ListCodeReviews",
     http_method = "GET",
     http_path = "/codereviews",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codegurureviewer$list_code_reviews_input(ProviderTypes = ProviderTypes, States = States, RepositoryNames = RepositoryNames, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codegurureviewer$list_code_reviews_output()
@@ -326,7 +326,7 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
     name = "ListRecommendationFeedback",
     http_method = "GET",
     http_path = "/feedback/{CodeReviewArn}/RecommendationFeedback",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codegurureviewer$list_recommendation_feedback_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn, UserIds = UserIds, RecommendationIds = RecommendationIds)
   output <- .codegurureviewer$list_recommendation_feedback_output()
@@ -360,7 +360,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
     name = "ListRecommendations",
     http_method = "GET",
     http_path = "/codereviews/{CodeReviewArn}/Recommendations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .codegurureviewer$list_recommendations_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn)
   output <- .codegurureviewer$list_recommendations_output()
@@ -449,7 +449,7 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
     name = "ListRepositoryAssociations",
     http_method = "GET",
     http_path = "/associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RepositoryAssociationSummaries")
   )
   input <- .codegurureviewer$list_repository_associations_input(ProviderTypes = ProviderTypes, States = States, Names = Names, Owners = Owners, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codegurureviewer$list_repository_associations_output()

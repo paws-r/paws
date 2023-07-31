@@ -728,7 +728,7 @@ finspacedata_list_changesets <- function(datasetId, maxResults = NULL, nextToken
     name = "ListChangesets",
     http_method = "GET",
     http_path = "/datasets/{datasetId}/changesetsv2",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "changesets")
   )
   input <- .finspacedata$list_changesets_input(datasetId = datasetId, maxResults = maxResults, nextToken = nextToken)
   output <- .finspacedata$list_changesets_output()
@@ -759,7 +759,7 @@ finspacedata_list_data_views <- function(datasetId, nextToken = NULL, maxResults
     name = "ListDataViews",
     http_method = "GET",
     http_path = "/datasets/{datasetId}/dataviewsv2",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataViews")
   )
   input <- .finspacedata$list_data_views_input(datasetId = datasetId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_data_views_output()
@@ -789,7 +789,7 @@ finspacedata_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListDatasets",
     http_method = "GET",
     http_path = "/datasetsv2",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "datasets")
   )
   input <- .finspacedata$list_datasets_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_datasets_output()
@@ -819,7 +819,7 @@ finspacedata_list_permission_groups <- function(nextToken = NULL, maxResults) {
     name = "ListPermissionGroups",
     http_method = "GET",
     http_path = "/permission-group",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissionGroups")
   )
   input <- .finspacedata$list_permission_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_permission_groups_output()
@@ -881,7 +881,7 @@ finspacedata_list_users <- function(nextToken = NULL, maxResults) {
     name = "ListUsers",
     http_method = "GET",
     http_path = "/user",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "users")
   )
   input <- .finspacedata$list_users_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_users_output()

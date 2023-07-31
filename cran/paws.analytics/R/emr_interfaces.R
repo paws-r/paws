@@ -405,6 +405,18 @@ NULL
   return(populate(args, shape))
 }
 
+.emr$list_supported_instance_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReleaseLabel = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.emr$list_supported_instance_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SupportedInstanceTypes = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), MemoryGB = structure(logical(0), tags = list(type = "float")), StorageGB = structure(logical(0), tags = list(type = "integer")), VCPU = structure(logical(0), tags = list(type = "integer")), Is64BitsOnly = structure(logical(0), tags = list(type = "boolean")), InstanceFamilyId = structure(logical(0), tags = list(type = "string")), EbsOptimizedAvailable = structure(logical(0), tags = list(type = "boolean")), EbsOptimizedByDefault = structure(logical(0), tags = list(type = "boolean")), NumberOfDisks = structure(logical(0), tags = list(type = "integer")), EbsStorageOnly = structure(logical(0), tags = list(type = "boolean")), Architecture = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .emr$modify_cluster_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ClusterId = structure(logical(0), tags = list(type = "string")), StepConcurrencyLevel = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))

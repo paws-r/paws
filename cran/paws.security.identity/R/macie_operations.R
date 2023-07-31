@@ -155,7 +155,7 @@ macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListMemberAccounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .macie$list_member_accounts_input(nextToken = nextToken, maxResults = maxResults)
   output <- .macie$list_member_accounts_output()
@@ -193,7 +193,7 @@ macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, ma
     name = "ListS3Resources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .macie$list_s3_resources_input(memberAccountId = memberAccountId, nextToken = nextToken, maxResults = maxResults)
   output <- .macie$list_s3_resources_output()

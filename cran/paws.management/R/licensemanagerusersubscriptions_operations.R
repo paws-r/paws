@@ -118,7 +118,7 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
     name = "ListIdentityProviders",
     http_method = "POST",
     http_path = "/identity-provider/ListIdentityProviders",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_identity_providers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_identity_providers_output()
@@ -150,7 +150,7 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
     name = "ListInstances",
     http_method = "POST",
     http_path = "/instance/ListInstances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_instances_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_instances_output()
@@ -185,7 +185,7 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
     name = "ListProductSubscriptions",
     http_method = "POST",
     http_path = "/user/ListProductSubscriptions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductUserSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_product_subscriptions_input(Filters = Filters, IdentityProvider = IdentityProvider, MaxResults = MaxResults, NextToken = NextToken, Product = Product)
   output <- .licensemanagerusersubscriptions$list_product_subscriptions_output()
@@ -219,7 +219,7 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
     name = "ListUserAssociations",
     http_method = "POST",
     http_path = "/user/ListUserAssociations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceUserSummaries")
   )
   input <- .licensemanagerusersubscriptions$list_user_associations_input(Filters = Filters, IdentityProvider = IdentityProvider, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_user_associations_output()

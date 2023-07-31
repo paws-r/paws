@@ -7,7 +7,8 @@
 applicationinsights_describe_log_pattern(
   ResourceGroupName,
   PatternSetName,
-  PatternName
+  PatternName,
+  AccountId = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ applicationinsights_describe_log_pattern(
 \item{PatternSetName}{[required] The name of the log pattern set.}
 
 \item{PatternName}{[required] The name of the log pattern.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describe a specific log pattern from a \code{LogPatternSet}.

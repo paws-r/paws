@@ -1332,7 +1332,7 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
     name = "DescribeApps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Apps")
   )
   input <- .opsworks$describe_apps_input(StackId = StackId, AppIds = AppIds)
   output <- .opsworks$describe_apps_output()
@@ -1370,7 +1370,7 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
     name = "DescribeCommands",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Commands")
   )
   input <- .opsworks$describe_commands_input(DeploymentId = DeploymentId, InstanceId = InstanceId, CommandIds = CommandIds)
   output <- .opsworks$describe_commands_output()
@@ -1405,7 +1405,7 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
     name = "DescribeDeployments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Deployments")
   )
   input <- .opsworks$describe_deployments_input(StackId = StackId, AppId = AppId, DeploymentIds = DeploymentIds)
   output <- .opsworks$describe_deployments_output()
@@ -1448,7 +1448,7 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
     name = "DescribeEcsClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EcsClusters")
   )
   input <- .opsworks$describe_ecs_clusters_input(EcsClusterArns = EcsClusterArns, StackId = StackId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworks$describe_ecs_clusters_output()
@@ -1488,7 +1488,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
     name = "DescribeElasticIps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ElasticIps")
   )
   input <- .opsworks$describe_elastic_ips_input(InstanceId = InstanceId, StackId = StackId, Ips = Ips)
   output <- .opsworks$describe_elastic_ips_output()
@@ -1520,7 +1520,7 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
     name = "DescribeElasticLoadBalancers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ElasticLoadBalancers")
   )
   input <- .opsworks$describe_elastic_load_balancers_input(StackId = StackId, LayerIds = LayerIds)
   output <- .opsworks$describe_elastic_load_balancers_output()
@@ -1558,7 +1558,7 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
     name = "DescribeInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Instances")
   )
   input <- .opsworks$describe_instances_input(StackId = StackId, LayerId = LayerId, InstanceIds = InstanceIds)
   output <- .opsworks$describe_instances_output()
@@ -1590,7 +1590,7 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
     name = "DescribeLayers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Layers")
   )
   input <- .opsworks$describe_layers_input(StackId = StackId, LayerIds = LayerIds)
   output <- .opsworks$describe_layers_output()
@@ -1619,7 +1619,7 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
     name = "DescribeLoadBasedAutoScaling",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "LoadBasedAutoScalingConfigurations")
   )
   input <- .opsworks$describe_load_based_auto_scaling_input(LayerIds = LayerIds)
   output <- .opsworks$describe_load_based_auto_scaling_output()
@@ -1710,7 +1710,7 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
     name = "DescribePermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Permissions")
   )
   input <- .opsworks$describe_permissions_input(IamUserArn = IamUserArn, StackId = StackId)
   output <- .opsworks$describe_permissions_output()
@@ -1746,7 +1746,7 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
     name = "DescribeRaidArrays",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "RaidArrays")
   )
   input <- .opsworks$describe_raid_arrays_input(InstanceId = InstanceId, StackId = StackId, RaidArrayIds = RaidArrayIds)
   output <- .opsworks$describe_raid_arrays_output()
@@ -1815,7 +1815,7 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
     name = "DescribeServiceErrors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ServiceErrors")
   )
   input <- .opsworks$describe_service_errors_input(StackId = StackId, InstanceId = InstanceId, ServiceErrorIds = ServiceErrorIds)
   output <- .opsworks$describe_service_errors_output()
@@ -1905,7 +1905,7 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
     name = "DescribeStacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Stacks")
   )
   input <- .opsworks$describe_stacks_input(StackIds = StackIds)
   output <- .opsworks$describe_stacks_output()
@@ -1934,7 +1934,7 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
     name = "DescribeTimeBasedAutoScaling",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "TimeBasedAutoScalingConfigurations")
   )
   input <- .opsworks$describe_time_based_auto_scaling_input(InstanceIds = InstanceIds)
   output <- .opsworks$describe_time_based_auto_scaling_output()
@@ -1964,7 +1964,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
     name = "DescribeUserProfiles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "UserProfiles")
   )
   input <- .opsworks$describe_user_profiles_input(IamUserArns = IamUserArns)
   output <- .opsworks$describe_user_profiles_output()
@@ -2004,7 +2004,7 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
     name = "DescribeVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Volumes")
   )
   input <- .opsworks$describe_volumes_input(InstanceId = InstanceId, StackId = StackId, RaidArrayId = RaidArrayId, VolumeIds = VolumeIds)
   output <- .opsworks$describe_volumes_output()
@@ -2949,7 +2949,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' name, which is used internally by AWS OpsWorks Stacks and by Chef. The
 #' short name is also used as the name for the directory where your app
 #' files are installed. It can have a maximum of 200 characters and must be
-#' in the following format: /\\A\[a-z0-9\\-_\\.\]+\\Z/.
+#' in the following format: /\\A\[a-z0-9\\-\_\\.\]+\\Z/.
 #' 
 #' The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 #' more information, see the [Layer

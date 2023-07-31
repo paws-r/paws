@@ -2,8 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_evidence_folders_by_assessment}
 \alias{auditmanager_get_evidence_folders_by_assessment}
-\title{Returns the evidence folders from a specified assessment in Audit
-Manager}
+\title{Gets the evidence folders from a specified assessment in Audit Manager}
 \usage{
 auditmanager_get_evidence_folders_by_assessment(
   assessmentId,
@@ -20,7 +19,7 @@ auditmanager_get_evidence_folders_by_assessment(
 call.}
 }
 \description{
-Returns the evidence folders from a specified assessment in Audit Manager.
+Gets the evidence folders from a specified assessment in Audit Manager.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment/} for full documentation.
 }

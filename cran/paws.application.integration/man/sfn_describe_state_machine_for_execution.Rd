@@ -12,7 +12,7 @@ sfn_describe_state_machine_for_execution(executionArn)
 information for.}
 }
 \description{
-Provides information about a state machine's definition, its execution role ARN, and configuration. If an execution was dispatched by a Map Run, the Map Run is returned in the response. Additionally, the state machine returned will be the state machine associated with the Map Run.
+Provides information about a state machine's definition, its execution role ARN, and configuration. If a Map Run dispatched the execution, this action returns the Map Run Amazon Resource Name (ARN) in the response. The state machine returned is the state machine associated with the Map Run.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_describe_state_machine_for_execution/} for full documentation.
 }

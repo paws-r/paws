@@ -1576,7 +1576,7 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
     name = "GetWorkflowExecutionHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events")
   )
   input <- .swf$get_workflow_execution_history_input(domain = domain, execution = execution, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$get_workflow_execution_history_output()
@@ -1688,7 +1688,7 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
     name = "ListActivityTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos")
   )
   input <- .swf$list_activity_types_input(domain = domain, name = name, registrationStatus = registrationStatus, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_activity_types_output()
@@ -1883,7 +1883,7 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
     name = "ListClosedWorkflowExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos")
   )
   input <- .swf$list_closed_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, closeTimeFilter = closeTimeFilter, executionFilter = executionFilter, closeStatusFilter = closeStatusFilter, typeFilter = typeFilter, tagFilter = tagFilter, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_closed_workflow_executions_output()
@@ -1984,7 +1984,7 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "domainInfos")
   )
   input <- .swf$list_domains_input(nextPageToken = nextPageToken, registrationStatus = registrationStatus, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_domains_output()
@@ -2150,7 +2150,7 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
     name = "ListOpenWorkflowExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos")
   )
   input <- .swf$list_open_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, typeFilter = typeFilter, tagFilter = tagFilter, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, executionFilter = executionFilter)
   output <- .swf$list_open_workflow_executions_output()
@@ -2310,7 +2310,7 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
     name = "ListWorkflowTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos")
   )
   input <- .swf$list_workflow_types_input(domain = domain, name = name, registrationStatus = registrationStatus, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_workflow_types_output()
@@ -2990,7 +2990,7 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
     name = "PollForDecisionTask",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events")
   )
   input <- .swf$poll_for_decision_task_input(domain = domain, taskList = taskList, identity = identity, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, startAtPreviousStartedEvent = startAtPreviousStartedEvent)
   output <- .swf$poll_for_decision_task_output()

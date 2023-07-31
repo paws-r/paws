@@ -14,6 +14,7 @@ locationservice_calculate_route(
   DestinationPosition,
   DistanceUnit = NULL,
   IncludeLegGeometry = NULL,
+  Key = NULL,
   TravelMode = NULL,
   TruckModeOptions = NULL,
   WaypointPositions = NULL
@@ -83,6 +84,9 @@ a pair of positions.
 Default Value: \code{false}
 
 Valid Values: \code{false} | \code{true}}
+
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 
 \item{TravelMode}{Specifies the mode of transport when calculating a route. Used in
 estimating the speed of travel and road compatibility. You can choose

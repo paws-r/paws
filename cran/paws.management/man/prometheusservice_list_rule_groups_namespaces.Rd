@@ -5,14 +5,14 @@
 \title{Lists rule groups namespaces}
 \usage{
 prometheusservice_list_rule_groups_namespaces(
-  maxResults = NULL,
+  workspaceId,
   name = NULL,
   nextToken = NULL,
-  workspaceId
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{Maximum results to return in response (default=100, maximum=1000).}
+\item{workspaceId}{[required] The ID of the workspace.}
 
 \item{name}{Optional filter for rule groups namespace name. Only the rule groups
 namespace that begin with this value will be returned.}
@@ -21,7 +21,7 @@ namespace that begin with this value will be returned.}
 token is obtained from the output of the previous
 ListRuleGroupsNamespaces request.}
 
-\item{workspaceId}{[required] The ID of the workspace.}
+\item{maxResults}{Maximum results to return in response (default=100, maximum=1000).}
 }
 \description{
 Lists rule groups namespaces.

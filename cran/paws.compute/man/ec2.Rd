@@ -4,22 +4,42 @@
 \alias{ec2}
 \title{Amazon Elastic Compute Cloud}
 \usage{
-ec2(config = list())
+ec2(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -68,8 +88,20 @@ To learn more, see the following resources:
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -107,14 +139,14 @@ To learn more, see the following resources:
 \link[=ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table} \tab Associates the specified attachment with the specified transit gateway route table\cr
 \link[=ec2_associate_trunk_interface]{associate_trunk_interface} \tab This API action is currently in limited preview only\cr
 \link[=ec2_associate_vpc_cidr_block]{associate_vpc_cidr_block} \tab Associates a CIDR block with your VPC\cr
-\link[=ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab We are retiring EC2-Classic\cr
+\link[=ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab This action is deprecated\cr
 \link[=ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC\cr
 \link[=ec2_attach_network_interface]{attach_network_interface} \tab Attaches a network interface to an instance\cr
 \link[=ec2_attach_verified_access_trust_provider]{attach_verified_access_trust_provider} \tab Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon Web Services Verified Access instance\cr
 \link[=ec2_attach_volume]{attach_volume} \tab Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name\cr
 \link[=ec2_attach_vpn_gateway]{attach_vpn_gateway} \tab Attaches a virtual private gateway to a VPC\cr
 \link[=ec2_authorize_client_vpn_ingress]{authorize_client_vpn_ingress} \tab Adds an ingress authorization rule to a Client VPN endpoint\cr
-\link[=ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab [VPC only] Adds the specified outbound (egress) rules to a security group for use with a VPC\cr
+\link[=ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab Adds the specified outbound (egress) rules to a security group for use with a VPC\cr
 \link[=ec2_authorize_security_group_ingress]{authorize_security_group_ingress} \tab Adds the specified inbound (ingress) rules to a security group\cr
 \link[=ec2_bundle_instance]{bundle_instance} \tab Bundles an Amazon instance store-backed Windows instance\cr
 \link[=ec2_cancel_bundle_task]{cancel_bundle_task} \tab Cancels a bundling operation for an instance store-backed Windows instance\cr
@@ -143,7 +175,7 @@ To learn more, see the following resources:
 \link[=ec2_create_default_vpc]{create_default_vpc} \tab Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone\cr
 \link[=ec2_create_dhcp_options]{create_dhcp_options} \tab Creates a set of DHCP options for your VPC\cr
 \link[=ec2_create_egress_only_internet_gateway]{create_egress_only_internet_gateway} \tab [IPv6 only] Creates an egress-only internet gateway for your VPC\cr
-\link[=ec2_create_fleet]{create_fleet} \tab Launches an EC2 Fleet\cr
+\link[=ec2_create_fleet]{create_fleet} \tab Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances\cr
 \link[=ec2_create_flow_logs]{create_flow_logs} \tab Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC\cr
 \link[=ec2_create_fpga_image]{create_fpga_image} \tab Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP)\cr
 \link[=ec2_create_image]{create_image} \tab Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped\cr
@@ -206,7 +238,7 @@ To learn more, see the following resources:
 \link[=ec2_create_verified_access_trust_provider]{create_verified_access_trust_provider} \tab A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices\cr
 \link[=ec2_create_volume]{create_volume} \tab Creates an EBS volume that can be attached to an instance in the same Availability Zone\cr
 \link[=ec2_create_vpc]{create_vpc} \tab Creates a VPC with the specified CIDR blocks\cr
-\link[=ec2_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates a VPC endpoint for a specified service\cr
+\link[=ec2_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates a VPC endpoint\cr
 \link[=ec2_create_vpc_endpoint_connection_notification]{create_vpc_endpoint_connection_notification} \tab Creates a connection notification for a specified VPC endpoint or VPC endpoint service\cr
 \link[=ec2_create_vpc_endpoint_service_configuration]{create_vpc_endpoint_service_configuration} \tab Creates a VPC endpoint service to which service consumers (Amazon Web Services accounts, users, and IAM roles) can connect\cr
 \link[=ec2_create_vpc_peering_connection]{create_vpc_peering_connection} \tab Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection\cr
@@ -306,7 +338,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 \link[=ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 \link[=ec2_describe_carrier_gateways]{describe_carrier_gateways} \tab Describes one or more of your carrier gateways\cr
-\link[=ec2_describe_classic_link_instances]{describe_classic_link_instances} \tab Describes one or more of your linked EC2-Classic instances\cr
+\link[=ec2_describe_classic_link_instances]{describe_classic_link_instances} \tab This action is deprecated\cr
 \link[=ec2_describe_client_vpn_authorization_rules]{describe_client_vpn_authorization_rules} \tab Describes the authorization rules for a specified Client VPN endpoint\cr
 \link[=ec2_describe_client_vpn_connections]{describe_client_vpn_connections} \tab Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint\cr
 \link[=ec2_describe_client_vpn_endpoints]{describe_client_vpn_endpoints} \tab Describes one or more Client VPN endpoints in the account\cr
@@ -387,7 +419,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_route_tables]{describe_route_tables} \tab Describes one or more of your route tables\cr
 \link[=ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 \link[=ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
-\link[=ec2_describe_security_group_references]{describe_security_group_references} \tab [VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
+\link[=ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
 \link[=ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 \link[=ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
 \link[=ec2_describe_snapshot_attribute]{describe_snapshot_attribute} \tab Describes the specified attribute of the specified snapshot\cr
@@ -399,7 +431,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_spot_fleet_requests]{describe_spot_fleet_requests} \tab Describes your Spot Fleet requests\cr
 \link[=ec2_describe_spot_instance_requests]{describe_spot_instance_requests} \tab Describes the specified Spot Instance requests\cr
 \link[=ec2_describe_spot_price_history]{describe_spot_price_history} \tab Describes the Spot price history\cr
-\link[=ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab [VPC only] Describes the stale security group rules for security groups in a specified VPC\cr
+\link[=ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab Describes the stale security group rules for security groups in a specified VPC\cr
 \link[=ec2_describe_store_image_tasks]{describe_store_image_tasks} \tab Describes the progress of the AMI store tasks\cr
 \link[=ec2_describe_subnets]{describe_subnets} \tab Describes one or more of your subnets\cr
 \link[=ec2_describe_tags]{describe_tags} \tab Describes the specified tags for your EC2 resources\cr
@@ -427,8 +459,8 @@ To learn more, see the following resources:
 \link[=ec2_describe_volumes_modifications]{describe_volumes_modifications} \tab Describes the most recent volume modification request for the specified EBS volumes\cr
 \link[=ec2_describe_volume_status]{describe_volume_status} \tab Describes the status of the specified volumes\cr
 \link[=ec2_describe_vpc_attribute]{describe_vpc_attribute} \tab Describes the specified attribute of the specified VPC\cr
-\link[=ec2_describe_vpc_classic_link]{describe_vpc_classic_link} \tab Describes the ClassicLink status of one or more VPCs\cr
-\link[=ec2_describe_vpc_classic_link_dns_support]{describe_vpc_classic_link_dns_support} \tab We are retiring EC2-Classic\cr
+\link[=ec2_describe_vpc_classic_link]{describe_vpc_classic_link} \tab This action is deprecated\cr
+\link[=ec2_describe_vpc_classic_link_dns_support]{describe_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 \link[=ec2_describe_vpc_endpoint_connection_notifications]{describe_vpc_endpoint_connection_notifications} \tab Describes the connection notifications for VPC endpoints and VPC endpoint services\cr
 \link[=ec2_describe_vpc_endpoint_connections]{describe_vpc_endpoint_connections} \tab Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance\cr
 \link[=ec2_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes your VPC endpoints\cr
@@ -439,7 +471,7 @@ To learn more, see the following resources:
 \link[=ec2_describe_vpcs]{describe_vpcs} \tab Describes one or more of your VPCs\cr
 \link[=ec2_describe_vpn_connections]{describe_vpn_connections} \tab Describes one or more of your VPN connections\cr
 \link[=ec2_describe_vpn_gateways]{describe_vpn_gateways} \tab Describes one or more of your virtual private gateways\cr
-\link[=ec2_detach_classic_link_vpc]{detach_classic_link_vpc} \tab We are retiring EC2-Classic\cr
+\link[=ec2_detach_classic_link_vpc]{detach_classic_link_vpc} \tab This action is deprecated\cr
 \link[=ec2_detach_internet_gateway]{detach_internet_gateway} \tab Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC\cr
 \link[=ec2_detach_network_interface]{detach_network_interface} \tab Detaches a network interface from an instance\cr
 \link[=ec2_detach_verified_access_trust_provider]{detach_verified_access_trust_provider} \tab Detaches the specified Amazon Web Services Verified Access trust provider from the specified Amazon Web Services Verified Access instance\cr
@@ -455,8 +487,8 @@ To learn more, see the following resources:
 \link[=ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
 \link[=ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table\cr
 \link[=ec2_disable_vgw_route_propagation]{disable_vgw_route_propagation} \tab Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC\cr
-\link[=ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab Disables ClassicLink for a VPC\cr
-\link[=ec2_disable_vpc_classic_link_dns_support]{disable_vpc_classic_link_dns_support} \tab Disables ClassicLink DNS support for a VPC\cr
+\link[=ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab This action is deprecated\cr
+\link[=ec2_disable_vpc_classic_link_dns_support]{disable_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 \link[=ec2_disassociate_address]{disassociate_address} \tab Disassociates an Elastic IP address from the instance or network interface it's associated with\cr
 \link[=ec2_disassociate_client_vpn_target_network]{disassociate_client_vpn_target_network} \tab Disassociates a target network from the specified Client VPN endpoint\cr
 \link[=ec2_disassociate_enclave_certificate_iam_role]{disassociate_enclave_certificate_iam_role} \tab Disassociates an IAM role from an Certificate Manager (ACM) certificate\cr
@@ -483,8 +515,8 @@ To learn more, see the following resources:
 \link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table\cr
 \link[=ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation} \tab Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC\cr
 \link[=ec2_enable_volume_io]{enable_volume_io} \tab Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent\cr
-\link[=ec2_enable_vpc_classic_link]{enable_vpc_classic_link} \tab We are retiring EC2-Classic\cr
-\link[=ec2_enable_vpc_classic_link_dns_support]{enable_vpc_classic_link_dns_support} \tab We are retiring EC2-Classic\cr
+\link[=ec2_enable_vpc_classic_link]{enable_vpc_classic_link} \tab This action is deprecated\cr
+\link[=ec2_enable_vpc_classic_link_dns_support]{enable_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 \link[=ec2_export_client_vpn_client_certificate_revocation_list]{export_client_vpn_client_certificate_revocation_list} \tab Downloads the client certificate revocation list for the specified Client VPN endpoint\cr
 \link[=ec2_export_client_vpn_client_configuration]{export_client_vpn_client_configuration} \tab Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint\cr
 \link[=ec2_export_image]{export_image} \tab Exports an Amazon Machine Image (AMI) to a VM file\cr
@@ -534,7 +566,7 @@ To learn more, see the following resources:
 \link[=ec2_get_vpn_tunnel_replacement_status]{get_vpn_tunnel_replacement_status} \tab Get details of available tunnel endpoint maintenance\cr
 \link[=ec2_import_client_vpn_client_certificate_revocation_list]{import_client_vpn_client_certificate_revocation_list} \tab Uploads a client certificate revocation list to the specified Client VPN endpoint\cr
 \link[=ec2_import_image]{import_image} \tab To import your virtual machines (VMs) with a console-based experience, you can use the Import virtual machine images to Amazon Web Services template in the Migration Hub Orchestrator console\cr
-\link[=ec2_import_instance]{import_instance} \tab Creates an import instance task using metadata from the specified disk image\cr
+\link[=ec2_import_instance]{import_instance} \tab We recommend that you use the ImportImage API\cr
 \link[=ec2_import_key_pair]{import_key_pair} \tab Imports the public key from an RSA or ED25519 key pair that you created with a third-party tool\cr
 \link[=ec2_import_snapshot]{import_snapshot} \tab Imports a disk into an EBS snapshot\cr
 \link[=ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image\cr
@@ -598,7 +630,7 @@ To learn more, see the following resources:
 \link[=ec2_modify_vpc_endpoint_service_configuration]{modify_vpc_endpoint_service_configuration} \tab Modifies the attributes of your VPC endpoint service configuration\cr
 \link[=ec2_modify_vpc_endpoint_service_payer_responsibility]{modify_vpc_endpoint_service_payer_responsibility} \tab Modifies the payer responsibility for your VPC endpoint service\cr
 \link[=ec2_modify_vpc_endpoint_service_permissions]{modify_vpc_endpoint_service_permissions} \tab Modifies the permissions for your VPC endpoint service\cr
-\link[=ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab We are retiring EC2-Classic\cr
+\link[=ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab Modifies the VPC peering connection options on one side of a VPC peering connection\cr
 \link[=ec2_modify_vpc_tenancy]{modify_vpc_tenancy} \tab Modifies the instance tenancy attribute of the specified VPC\cr
 \link[=ec2_modify_vpn_connection]{modify_vpn_connection} \tab Modifies the customer gateway or the target gateway of an Amazon Web Services Site-to-Site VPN connection\cr
 \link[=ec2_modify_vpn_connection_options]{modify_vpn_connection_options} \tab Modifies the connection options for your Site-to-Site VPN connection\cr
@@ -649,7 +681,7 @@ To learn more, see the following resources:
 \link[=ec2_restore_snapshot_from_recycle_bin]{restore_snapshot_from_recycle_bin} \tab Restores a snapshot from the Recycle Bin\cr
 \link[=ec2_restore_snapshot_tier]{restore_snapshot_tier} \tab Restores an archived Amazon EBS snapshot for use temporarily or permanently, or modifies the restore period or restore type for a snapshot that was previously temporarily restored\cr
 \link[=ec2_revoke_client_vpn_ingress]{revoke_client_vpn_ingress} \tab Removes an ingress authorization rule from a Client VPN endpoint\cr
-\link[=ec2_revoke_security_group_egress]{revoke_security_group_egress} \tab [VPC only] Removes the specified outbound (egress) rules from a security group for EC2-VPC\cr
+\link[=ec2_revoke_security_group_egress]{revoke_security_group_egress} \tab Removes the specified outbound (egress) rules from the specified security group\cr
 \link[=ec2_revoke_security_group_ingress]{revoke_security_group_ingress} \tab Removes the specified inbound (ingress) rules from a security group\cr
 \link[=ec2_run_instances]{run_instances} \tab Launches the specified number of instances using an AMI for which you have permissions\cr
 \link[=ec2_run_scheduled_instances]{run_scheduled_instances} \tab Launches the specified Scheduled Instances\cr
@@ -668,7 +700,7 @@ To learn more, see the following resources:
 \link[=ec2_unassign_private_ip_addresses]{unassign_private_ip_addresses} \tab Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface\cr
 \link[=ec2_unassign_private_nat_gateway_address]{unassign_private_nat_gateway_address} \tab Unassigns secondary private IPv4 addresses from a private NAT gateway\cr
 \link[=ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance\cr
-\link[=ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab [VPC only] Updates the description of an egress (outbound) security group rule\cr
+\link[=ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab Updates the description of an egress (outbound) security group rule\cr
 \link[=ec2_update_security_group_rule_descriptions_ingress]{update_security_group_rule_descriptions_ingress} \tab Updates the description of an ingress (inbound) security group rule\cr
 \link[=ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 }
@@ -677,11 +709,8 @@ To learn more, see the following resources:
 \examples{
 \dontrun{
 svc <- ec2()
-# This example allocates an Elastic IP address to use with an instance in
-# a VPC.
-svc$allocate_address(
-  Domain = "vpc"
-)
+# This example allocates an Elastic IP address.
+svc$allocate_address()
 }
 
 }

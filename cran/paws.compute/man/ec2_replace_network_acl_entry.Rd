@@ -55,7 +55,7 @@ type and code.}
 \item{RuleNumber}{[required] The rule number of the entry to replace.}
 }
 \description{
-Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html}{Network ACLs} in the \emph{Amazon VPC User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_entry/} for full documentation.
 }

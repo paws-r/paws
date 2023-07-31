@@ -714,7 +714,7 @@ finspace_list_kx_changesets <- function(environmentId, databaseName, nextToken =
     name = "ListKxChangesets",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_changesets_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_changesets_output()
@@ -746,7 +746,7 @@ finspace_list_kx_cluster_nodes <- function(environmentId, clusterName, nextToken
     name = "ListKxClusterNodes",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_cluster_nodes_input(environmentId = environmentId, clusterName = clusterName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_cluster_nodes_output()
@@ -827,7 +827,7 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
     name = "ListKxDatabases",
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .finspace$list_kx_databases_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_databases_output()
@@ -857,7 +857,7 @@ finspace_list_kx_environments <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListKxEnvironments",
     http_method = "GET",
     http_path = "/kx/environments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
   )
   input <- .finspace$list_kx_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_environments_output()

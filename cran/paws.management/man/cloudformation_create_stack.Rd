@@ -21,7 +21,8 @@ cloudformation_create_stack(
   StackPolicyURL = NULL,
   Tags = NULL,
   ClientRequestToken = NULL,
-  EnableTerminationProtection = NULL
+  EnableTerminationProtection = NULL,
+  RetainExceptOnCreate = NULL
 )
 }
 \arguments{
@@ -218,6 +219,14 @@ deactivated on stacks by default.
 For \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html}{nested stacks},
 termination protection is set on the root stack and can't be changed
 directly on the nested stack.}
+
+\item{RetainExceptOnCreate}{This deletion policy deletes newly created resources, but retains
+existing resources, when a stack operation is rolled back. This ensures
+new, empty, and unused resources are deleted, while critical resources
+and their data are retained. \code{RetainExceptOnCreate} can be specified for
+any resource that supports the
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html}{DeletionPolicy}
+attribute.}
 }
 \description{
 Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation.

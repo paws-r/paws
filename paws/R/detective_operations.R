@@ -912,7 +912,7 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
     name = "ListDatasourcePackages",
     http_method = "POST",
     http_path = "/graph/datasources/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_datasource_packages_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_datasource_packages_output()
@@ -980,7 +980,7 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListGraphs",
     http_method = "POST",
     http_path = "/graphs/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_graphs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_graphs_output()
@@ -1080,7 +1080,7 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListInvitations",
     http_method = "POST",
     http_path = "/invitations/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_invitations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_invitations_output()
@@ -1180,7 +1180,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
     name = "ListMembers",
     http_method = "POST",
     http_path = "/graph/members/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_members_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_members_output()
@@ -1242,7 +1242,7 @@ detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResu
     name = "ListOrganizationAdminAccounts",
     http_method = "POST",
     http_path = "/orgs/adminAccountslist",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_organization_admin_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_organization_admin_accounts_output()

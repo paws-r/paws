@@ -1305,7 +1305,7 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
     name = "DescribeActivities",
     http_method = "GET",
     http_path = "/api/v1/activities",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "UserActivities")
   )
   input <- .workdocs$describe_activities_input(AuthenticationToken = AuthenticationToken, StartTime = StartTime, EndTime = EndTime, OrganizationId = OrganizationId, ActivityTypes = ActivityTypes, ResourceId = ResourceId, UserId = UserId, IncludeIndirectActivities = IncludeIndirectActivities, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_activities_output()
@@ -1404,7 +1404,7 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
     name = "DescribeComments",
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Comments")
   )
   input <- .workdocs$describe_comments_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_comments_output()
@@ -1497,7 +1497,7 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
     name = "DescribeDocumentVersions",
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}/versions",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "DocumentVersions")
   )
   input <- .workdocs$describe_document_versions_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, Marker = Marker, Limit = Limit, Include = Include, Fields = Fields)
   output <- .workdocs$describe_document_versions_output()
@@ -1634,7 +1634,7 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
     name = "DescribeFolderContents",
     http_method = "GET",
     http_path = "/api/v1/folders/{FolderId}/contents",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = list("Folders", "Documents"))
   )
   input <- .workdocs$describe_folder_contents_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId, Sort = Sort, Order = Order, Limit = Limit, Marker = Marker, Type = Type, Include = Include)
   output <- .workdocs$describe_folder_contents_output()
@@ -1699,7 +1699,7 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
     name = "DescribeGroups",
     http_method = "GET",
     http_path = "/api/v1/groups",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Groups")
   )
   input <- .workdocs$describe_groups_input(AuthenticationToken = AuthenticationToken, SearchQuery = SearchQuery, OrganizationId = OrganizationId, Marker = Marker, Limit = Limit)
   output <- .workdocs$describe_groups_output()
@@ -1759,7 +1759,7 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
     name = "DescribeNotificationSubscriptions",
     http_method = "GET",
     http_path = "/api/v1/organizations/{OrganizationId}/subscriptions",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Subscriptions")
   )
   input <- .workdocs$describe_notification_subscriptions_input(OrganizationId = OrganizationId, Marker = Marker, Limit = Limit)
   output <- .workdocs$describe_notification_subscriptions_output()
@@ -1829,7 +1829,7 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
     name = "DescribeResourcePermissions",
     http_method = "GET",
     http_path = "/api/v1/resources/{ResourceId}/permissions",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Principals")
   )
   input <- .workdocs$describe_resource_permissions_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId, PrincipalId = PrincipalId, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_resource_permissions_output()
@@ -1912,7 +1912,7 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
     name = "DescribeRootFolders",
     http_method = "GET",
     http_path = "/api/v1/me/root",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Folders")
   )
   input <- .workdocs$describe_root_folders_input(AuthenticationToken = AuthenticationToken, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_root_folders_output()
@@ -2033,7 +2033,7 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
     name = "DescribeUsers",
     http_method = "GET",
     http_path = "/api/v1/users",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Users")
   )
   input <- .workdocs$describe_users_input(AuthenticationToken = AuthenticationToken, OrganizationId = OrganizationId, UserIds = UserIds, Query = Query, Include = Include, Order = Order, Sort = Sort, Marker = Marker, Limit = Limit, Fields = Fields)
   output <- .workdocs$describe_users_output()
@@ -3169,7 +3169,7 @@ workdocs_search_resources <- function(AuthenticationToken = NULL, QueryText = NU
     name = "SearchResources",
     http_method = "POST",
     http_path = "/api/v1/search",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Items")
   )
   input <- .workdocs$search_resources_input(AuthenticationToken = AuthenticationToken, QueryText = QueryText, QueryScopes = QueryScopes, OrganizationId = OrganizationId, AdditionalResponseFields = AdditionalResponseFields, Filters = Filters, OrderBy = OrderBy, Limit = Limit, Marker = Marker)
   output <- .workdocs$search_resources_output()

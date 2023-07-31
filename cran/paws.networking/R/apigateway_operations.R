@@ -1463,7 +1463,7 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
     name = "GetApiKeys",
     http_method = "GET",
     http_path = "/apikeys",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_api_keys_input(position = position, limit = limit, nameQuery = nameQuery, customerId = customerId, includeValues = includeValues)
   output <- .apigateway$get_api_keys_output()
@@ -1590,7 +1590,7 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
     name = "GetBasePathMappings",
     http_method = "GET",
     http_path = "/domainnames/{domain_name}/basepathmappings",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_base_path_mappings_input(domainName = domainName, position = position, limit = limit)
   output <- .apigateway$get_base_path_mappings_output()
@@ -1650,7 +1650,7 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
     name = "GetClientCertificates",
     http_method = "GET",
     http_path = "/clientcertificates",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_client_certificates_input(position = position, limit = limit)
   output <- .apigateway$get_client_certificates_output()
@@ -1722,7 +1722,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
     name = "GetDeployments",
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/deployments",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_deployments_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_deployments_output()
@@ -1913,7 +1913,7 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
     name = "GetDomainNames",
     http_method = "GET",
     http_path = "/domainnames",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_domain_names_input(position = position, limit = limit)
   output <- .apigateway$get_domain_names_output()
@@ -2244,7 +2244,7 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
     name = "GetModels",
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/models",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_models_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_models_output()
@@ -2382,7 +2382,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
     name = "GetResources",
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_resources_input(restApiId = restApiId, position = position, limit = limit, embed = embed)
   output <- .apigateway$get_resources_output()
@@ -2442,7 +2442,7 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
     name = "GetRestApis",
     http_method = "GET",
     http_path = "/restapis",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_rest_apis_input(position = position, limit = limit)
   output <- .apigateway$get_rest_apis_output()
@@ -2669,7 +2669,7 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
     name = "GetUsage",
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/usage",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", non_aggregate_keys = list( "usagePlanId", "startDate", "endDate"), output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_usage_input(usagePlanId = usagePlanId, keyId = keyId, startDate = startDate, endDate = endDate, position = position, limit = limit)
   output <- .apigateway$get_usage_output()
@@ -2766,7 +2766,7 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
     name = "GetUsagePlanKeys",
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/keys",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_usage_plan_keys_input(usagePlanId = usagePlanId, position = position, limit = limit, nameQuery = nameQuery)
   output <- .apigateway$get_usage_plan_keys_output()
@@ -2798,7 +2798,7 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
     name = "GetUsagePlans",
     http_method = "GET",
     http_path = "/usageplans",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_usage_plans_input(position = position, keyId = keyId, limit = limit)
   output <- .apigateway$get_usage_plans_output()
@@ -2860,7 +2860,7 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
     name = "GetVpcLinks",
     http_method = "GET",
     http_path = "/vpclinks",
-    paginator = list()
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_vpc_links_input(position = position, limit = limit)
   output <- .apigateway$get_vpc_links_output()

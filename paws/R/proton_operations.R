@@ -103,6 +103,7 @@ proton_accept_environment_account_connection <- function(id) {
 #'     deploymentStatusMessage = "string",
 #'     description = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -113,6 +114,7 @@ proton_accept_environment_account_connection <- function(id) {
 #'     lastModifiedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceInstanceName = "string",
 #'     serviceName = "string",
@@ -194,12 +196,14 @@ proton_cancel_component_deployment <- function(componentName) {
 #'     description = "string",
 #'     environmentAccountConnectionId = "string",
 #'     environmentAccountId = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     protonServiceRoleArn = "string",
 #'     provisioning = "CUSTOMER_MANAGED",
@@ -290,6 +294,7 @@ proton_cancel_environment_deployment <- function(environmentName) {
 #'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'     deploymentStatusMessage = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -297,6 +302,7 @@ proton_cancel_environment_deployment <- function(environmentName) {
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceName = "string",
 #'     spec = "string",
@@ -378,12 +384,14 @@ proton_cancel_service_instance_deployment <- function(serviceInstanceName, servi
 #'     ),
 #'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'     deploymentStatusMessage = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     spec = "string",
 #'     templateMajorVersion = "string",
 #'     templateMinorVersion = "string",
@@ -481,6 +489,7 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #'     deploymentStatusMessage = "string",
 #'     description = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -491,6 +500,7 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #'     lastModifiedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceInstanceName = "string",
 #'     serviceName = "string",
@@ -647,12 +657,14 @@ proton_create_component <- function(clientToken = NULL, description = NULL, envi
 #'     description = "string",
 #'     environmentAccountConnectionId = "string",
 #'     environmentAccountId = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     protonServiceRoleArn = "string",
 #'     provisioning = "CUSTOMER_MANAGED",
@@ -1198,12 +1210,14 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
 #'       ),
 #'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'       deploymentStatusMessage = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastDeploymentSucceededAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       spec = "string",
 #'       templateMajorVersion = "string",
 #'       templateMinorVersion = "string",
@@ -1298,6 +1312,7 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
 #'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'     deploymentStatusMessage = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -1305,6 +1320,7 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceName = "string",
 #'     spec = "string",
@@ -1747,6 +1763,7 @@ proton_create_template_sync_config <- function(branch, repositoryName, repositor
 #'     deploymentStatusMessage = "string",
 #'     description = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -1757,6 +1774,7 @@ proton_create_template_sync_config <- function(branch, repositoryName, repositor
 #'     lastModifiedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceInstanceName = "string",
 #'     serviceName = "string",
@@ -1794,6 +1812,140 @@ proton_delete_component <- function(name) {
 }
 .proton$operations$delete_component <- proton_delete_component
 
+#' Delete the deployment
+#'
+#' @description
+#' Delete the deployment.
+#'
+#' @usage
+#' proton_delete_deployment(id)
+#'
+#' @param id &#91;required&#93; The ID of the deployment to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deployment = list(
+#'     arn = "string",
+#'     completedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     componentName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
+#'     deploymentStatusMessage = "string",
+#'     environmentName = "string",
+#'     id = "string",
+#'     initialState = list(
+#'       component = list(
+#'         serviceInstanceName = "string",
+#'         serviceName = "string",
+#'         serviceSpec = "string",
+#'         templateFile = "string"
+#'       ),
+#'       environment = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       serviceInstance = list(
+#'         lastSuccessfulComponentDeploymentIds = list(
+#'           "string"
+#'         ),
+#'         lastSuccessfulEnvironmentDeploymentId = "string",
+#'         lastSuccessfulServicePipelineDeploymentId = "string",
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       servicePipeline = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       )
+#'     ),
+#'     lastAttemptedDeploymentId = "string",
+#'     lastModifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastSucceededDeploymentId = "string",
+#'     serviceInstanceName = "string",
+#'     serviceName = "string",
+#'     targetArn = "string",
+#'     targetResourceCreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     targetResourceType = "ENVIRONMENT"|"SERVICE_PIPELINE"|"SERVICE_INSTANCE"|"COMPONENT",
+#'     targetState = list(
+#'       component = list(
+#'         serviceInstanceName = "string",
+#'         serviceName = "string",
+#'         serviceSpec = "string",
+#'         templateFile = "string"
+#'       ),
+#'       environment = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       serviceInstance = list(
+#'         lastSuccessfulComponentDeploymentIds = list(
+#'           "string"
+#'         ),
+#'         lastSuccessfulEnvironmentDeploymentId = "string",
+#'         lastSuccessfulServicePipelineDeploymentId = "string",
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       servicePipeline = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_deployment(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname proton_delete_deployment
+#'
+#' @aliases proton_delete_deployment
+proton_delete_deployment <- function(id) {
+  op <- new_operation(
+    name = "DeleteDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$delete_deployment_input(id = id)
+  output <- .proton$delete_deployment_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$delete_deployment <- proton_delete_deployment
+
 #' Delete an environment
 #'
 #' @description
@@ -1820,12 +1972,14 @@ proton_delete_component <- function(name) {
 #'     description = "string",
 #'     environmentAccountConnectionId = "string",
 #'     environmentAccountId = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     protonServiceRoleArn = "string",
 #'     provisioning = "CUSTOMER_MANAGED",
@@ -2184,12 +2338,14 @@ proton_delete_repository <- function(name, provider) {
 #'       ),
 #'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'       deploymentStatusMessage = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastDeploymentSucceededAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       spec = "string",
 #'       templateMajorVersion = "string",
 #'       templateMinorVersion = "string",
@@ -2575,6 +2731,7 @@ proton_get_account_settings <- function() {
 #'     deploymentStatusMessage = "string",
 #'     description = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -2585,6 +2742,7 @@ proton_get_account_settings <- function() {
 #'     lastModifiedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceInstanceName = "string",
 #'     serviceName = "string",
@@ -2622,6 +2780,150 @@ proton_get_component <- function(name) {
 }
 .proton$operations$get_component <- proton_get_component
 
+#' Get detailed data for a deployment
+#'
+#' @description
+#' Get detailed data for a deployment.
+#'
+#' @usage
+#' proton_get_deployment(componentName, environmentName, id,
+#'   serviceInstanceName, serviceName)
+#'
+#' @param componentName The name of a component that you want to get the detailed data for.
+#' @param environmentName The name of a environment that you want to get the detailed data for.
+#' @param id &#91;required&#93; The ID of the deployment that you want to get the detailed data for.
+#' @param serviceInstanceName The name of the service instance associated with the given deployment
+#' ID. `serviceName` must be specified to identify the service instance.
+#' @param serviceName The name of the service associated with the given deployment ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deployment = list(
+#'     arn = "string",
+#'     completedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     componentName = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
+#'     deploymentStatusMessage = "string",
+#'     environmentName = "string",
+#'     id = "string",
+#'     initialState = list(
+#'       component = list(
+#'         serviceInstanceName = "string",
+#'         serviceName = "string",
+#'         serviceSpec = "string",
+#'         templateFile = "string"
+#'       ),
+#'       environment = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       serviceInstance = list(
+#'         lastSuccessfulComponentDeploymentIds = list(
+#'           "string"
+#'         ),
+#'         lastSuccessfulEnvironmentDeploymentId = "string",
+#'         lastSuccessfulServicePipelineDeploymentId = "string",
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       servicePipeline = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       )
+#'     ),
+#'     lastAttemptedDeploymentId = "string",
+#'     lastModifiedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastSucceededDeploymentId = "string",
+#'     serviceInstanceName = "string",
+#'     serviceName = "string",
+#'     targetArn = "string",
+#'     targetResourceCreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     targetResourceType = "ENVIRONMENT"|"SERVICE_PIPELINE"|"SERVICE_INSTANCE"|"COMPONENT",
+#'     targetState = list(
+#'       component = list(
+#'         serviceInstanceName = "string",
+#'         serviceName = "string",
+#'         serviceSpec = "string",
+#'         templateFile = "string"
+#'       ),
+#'       environment = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       serviceInstance = list(
+#'         lastSuccessfulComponentDeploymentIds = list(
+#'           "string"
+#'         ),
+#'         lastSuccessfulEnvironmentDeploymentId = "string",
+#'         lastSuccessfulServicePipelineDeploymentId = "string",
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       ),
+#'       servicePipeline = list(
+#'         spec = "string",
+#'         templateMajorVersion = "string",
+#'         templateMinorVersion = "string",
+#'         templateName = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_deployment(
+#'   componentName = "string",
+#'   environmentName = "string",
+#'   id = "string",
+#'   serviceInstanceName = "string",
+#'   serviceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_deployment
+#'
+#' @aliases proton_get_deployment
+proton_get_deployment <- function(componentName = NULL, environmentName = NULL, id, serviceInstanceName = NULL, serviceName = NULL) {
+  op <- new_operation(
+    name = "GetDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_deployment_input(componentName = componentName, environmentName = environmentName, id = id, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$get_deployment_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_deployment <- proton_get_deployment
+
 #' Get detailed data for an environment
 #'
 #' @description
@@ -2648,12 +2950,14 @@ proton_get_component <- function(name) {
 #'     description = "string",
 #'     environmentAccountConnectionId = "string",
 #'     environmentAccountId = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     protonServiceRoleArn = "string",
 #'     provisioning = "CUSTOMER_MANAGED",
@@ -3184,12 +3488,14 @@ proton_get_resources_summary <- function() {
 #'       ),
 #'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'       deploymentStatusMessage = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastDeploymentSucceededAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       spec = "string",
 #'       templateMajorVersion = "string",
 #'       templateMinorVersion = "string",
@@ -3259,6 +3565,7 @@ proton_get_service <- function(name) {
 #'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'     deploymentStatusMessage = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -3266,6 +3573,7 @@ proton_get_service <- function(name) {
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceName = "string",
 #'     spec = "string",
@@ -3883,9 +4191,10 @@ proton_get_template_sync_status <- function(templateName, templateType, template
 #' in the *Proton User Guide*.
 #'
 #' @usage
-#' proton_list_component_outputs(componentName, nextToken)
+#' proton_list_component_outputs(componentName, deploymentId, nextToken)
 #'
 #' @param componentName &#91;required&#93; The name of the component whose outputs you want.
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #'
@@ -3907,6 +4216,7 @@ proton_get_template_sync_status <- function(templateName, templateType, template
 #' ```
 #' svc$list_component_outputs(
 #'   componentName = "string",
+#'   deploymentId = "string",
 #'   nextToken = "string"
 #' )
 #' ```
@@ -3916,14 +4226,14 @@ proton_get_template_sync_status <- function(templateName, templateType, template
 #' @rdname proton_list_component_outputs
 #'
 #' @aliases proton_list_component_outputs
-proton_list_component_outputs <- function(componentName, nextToken = NULL) {
+proton_list_component_outputs <- function(componentName, deploymentId = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponentOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_component_outputs_input(componentName = componentName, nextToken = nextToken)
+  input <- .proton$list_component_outputs_input(componentName = componentName, deploymentId = deploymentId, nextToken = nextToken)
   output <- .proton$list_component_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -3983,7 +4293,7 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
     name = "ListComponentProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_component_provisioned_resources_input(componentName = componentName, nextToken = nextToken)
   output <- .proton$list_component_provisioned_resources_output()
@@ -4034,6 +4344,7 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
 #'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'       deploymentStatusMessage = "string",
 #'       environmentName = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -4043,6 +4354,7 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
 #'       lastModifiedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       name = "string",
 #'       serviceInstanceName = "string",
 #'       serviceName = "string"
@@ -4073,7 +4385,7 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
     name = "ListComponents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "components")
   )
   input <- .proton$list_components_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_components_output()
@@ -4084,6 +4396,98 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
   return(response)
 }
 .proton$operations$list_components <- proton_list_components
+
+#' List deployments
+#'
+#' @description
+#' List deployments. You can filter the result list by environment,
+#' service, or a single service instance.
+#'
+#' @usage
+#' proton_list_deployments(componentName, environmentName, maxResults,
+#'   nextToken, serviceInstanceName, serviceName)
+#'
+#' @param componentName The name of a component for result list filtering. Proton returns
+#' deployments associated with that component.
+#' @param environmentName The name of an environment for result list filtering. Proton returns
+#' deployments associated with the environment.
+#' @param maxResults The maximum number of deployments to list.
+#' @param nextToken A token that indicates the location of the next deployment in the array
+#' of deployment, after the list of deployment that was previously
+#' requested.
+#' @param serviceInstanceName The name of a service instance for result list filtering. Proton returns
+#' the deployments associated with the service instance.
+#' @param serviceName The name of a service for result list filtering. Proton returns
+#' deployments associated with service instances of the service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   deployments = list(
+#'     list(
+#'       arn = "string",
+#'       completedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       componentName = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
+#'       environmentName = "string",
+#'       id = "string",
+#'       lastAttemptedDeploymentId = "string",
+#'       lastModifiedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastSucceededDeploymentId = "string",
+#'       serviceInstanceName = "string",
+#'       serviceName = "string",
+#'       targetArn = "string",
+#'       targetResourceCreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       targetResourceType = "ENVIRONMENT"|"SERVICE_PIPELINE"|"SERVICE_INSTANCE"|"COMPONENT"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_deployments(
+#'   componentName = "string",
+#'   environmentName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   serviceInstanceName = "string",
+#'   serviceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname proton_list_deployments
+#'
+#' @aliases proton_list_deployments
+proton_list_deployments <- function(componentName = NULL, environmentName = NULL, maxResults = NULL, nextToken = NULL, serviceInstanceName = NULL, serviceName = NULL) {
+  op <- new_operation(
+    name = "ListDeployments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "deployments")
+  )
+  input <- .proton$list_deployments_input(componentName = componentName, environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$list_deployments_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$list_deployments <- proton_list_deployments
 
 #' View a list of environment account connections
 #'
@@ -4158,7 +4562,7 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
     name = "ListEnvironmentAccountConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environmentAccountConnections")
   )
   input <- .proton$list_environment_account_connections_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, requestedBy = requestedBy, statuses = statuses)
   output <- .proton$list_environment_account_connections_output()
@@ -4176,8 +4580,10 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' List the infrastructure as code outputs for your environment.
 #'
 #' @usage
-#' proton_list_environment_outputs(environmentName, nextToken)
+#' proton_list_environment_outputs(deploymentId, environmentName,
+#'   nextToken)
 #'
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param environmentName &#91;required&#93; The environment name.
 #' @param nextToken A token that indicates the location of the next environment output in
 #' the array of environment outputs, after the list of environment outputs
@@ -4200,6 +4606,7 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$list_environment_outputs(
+#'   deploymentId = "string",
 #'   environmentName = "string",
 #'   nextToken = "string"
 #' )
@@ -4210,14 +4617,14 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' @rdname proton_list_environment_outputs
 #'
 #' @aliases proton_list_environment_outputs
-proton_list_environment_outputs <- function(environmentName, nextToken = NULL) {
+proton_list_environment_outputs <- function(deploymentId = NULL, environmentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironmentOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_environment_outputs_input(environmentName = environmentName, nextToken = nextToken)
+  input <- .proton$list_environment_outputs_input(deploymentId = deploymentId, environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -4274,7 +4681,7 @@ proton_list_environment_provisioned_resources <- function(environmentName, nextT
     name = "ListEnvironmentProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_environment_provisioned_resources_input(environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_provisioned_resources_output()
@@ -4354,7 +4761,7 @@ proton_list_environment_template_versions <- function(majorVersion = NULL, maxRe
     name = "ListEnvironmentTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
   )
   input <- .proton$list_environment_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_environment_template_versions_output()
@@ -4421,7 +4828,7 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
     name = "ListEnvironmentTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .proton$list_environment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environment_templates_output()
@@ -4463,12 +4870,14 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
 #'       description = "string",
 #'       environmentAccountConnectionId = "string",
 #'       environmentAccountId = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastDeploymentSucceededAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       name = "string",
 #'       protonServiceRoleArn = "string",
 #'       provisioning = "CUSTOMER_MANAGED",
@@ -4505,7 +4914,7 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
     name = "ListEnvironments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
   )
   input <- .proton$list_environments_input(environmentTemplates = environmentTemplates, maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environments_output()
@@ -4563,7 +4972,7 @@ proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .proton$list_repositories_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_repositories_output()
@@ -4627,7 +5036,7 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
     name = "ListRepositorySyncDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "syncDefinitions")
   )
   input <- .proton$list_repository_sync_definitions_input(nextToken = nextToken, repositoryName = repositoryName, repositoryProvider = repositoryProvider, syncType = syncType)
   output <- .proton$list_repository_sync_definitions_output()
@@ -4645,9 +5054,10 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' Get a list service of instance Infrastructure as Code (IaC) outputs.
 #'
 #' @usage
-#' proton_list_service_instance_outputs(nextToken, serviceInstanceName,
-#'   serviceName)
+#' proton_list_service_instance_outputs(deploymentId, nextToken,
+#'   serviceInstanceName, serviceName)
 #'
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #' @param serviceInstanceName &#91;required&#93; The name of the service instance whose outputs you want.
@@ -4670,6 +5080,7 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' @section Request syntax:
 #' ```
 #' svc$list_service_instance_outputs(
+#'   deploymentId = "string",
 #'   nextToken = "string",
 #'   serviceInstanceName = "string",
 #'   serviceName = "string"
@@ -4681,14 +5092,14 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' @rdname proton_list_service_instance_outputs
 #'
 #' @aliases proton_list_service_instance_outputs
-proton_list_service_instance_outputs <- function(nextToken = NULL, serviceInstanceName, serviceName) {
+proton_list_service_instance_outputs <- function(deploymentId = NULL, nextToken = NULL, serviceInstanceName, serviceName) {
   op <- new_operation(
     name = "ListServiceInstanceOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_service_instance_outputs_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  input <- .proton$list_service_instance_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -4747,7 +5158,7 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
     name = "ListServiceInstanceProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_service_instance_provisioned_resources_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_provisioned_resources_output()
@@ -4801,12 +5212,14 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
 #'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'       deploymentStatusMessage = "string",
 #'       environmentName = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastDeploymentSucceededAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       name = "string",
 #'       serviceName = "string",
 #'       templateMajorVersion = "string",
@@ -4844,7 +5257,7 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
     name = "ListServiceInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceInstances")
   )
   input <- .proton$list_service_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken, serviceName = serviceName, sortBy = sortBy, sortOrder = sortOrder)
   output <- .proton$list_service_instances_output()
@@ -4862,8 +5275,10 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #' Get a list of service pipeline Infrastructure as Code (IaC) outputs.
 #'
 #' @usage
-#' proton_list_service_pipeline_outputs(nextToken, serviceName)
+#' proton_list_service_pipeline_outputs(deploymentId, nextToken,
+#'   serviceName)
 #'
+#' @param deploymentId The ID of the deployment you want the outputs for.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #' @param serviceName &#91;required&#93; The name of the service whose pipeline's outputs you want.
@@ -4885,6 +5300,7 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #' @section Request syntax:
 #' ```
 #' svc$list_service_pipeline_outputs(
+#'   deploymentId = "string",
 #'   nextToken = "string",
 #'   serviceName = "string"
 #' )
@@ -4895,14 +5311,14 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #' @rdname proton_list_service_pipeline_outputs
 #'
 #' @aliases proton_list_service_pipeline_outputs
-proton_list_service_pipeline_outputs <- function(nextToken = NULL, serviceName) {
+proton_list_service_pipeline_outputs <- function(deploymentId = NULL, nextToken = NULL, serviceName) {
   op <- new_operation(
     name = "ListServicePipelineOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_service_pipeline_outputs_input(nextToken = nextToken, serviceName = serviceName)
+  input <- .proton$list_service_pipeline_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -4959,7 +5375,7 @@ proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL,
     name = "ListServicePipelineProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_service_pipeline_provisioned_resources_input(nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_provisioned_resources_output()
@@ -5038,7 +5454,7 @@ proton_list_service_template_versions <- function(majorVersion = NULL, maxResult
     name = "ListServiceTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
   )
   input <- .proton$list_service_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_service_template_versions_output()
@@ -5105,7 +5521,7 @@ proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServiceTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .proton$list_service_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_service_templates_output()
@@ -5171,7 +5587,7 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "services")
   )
   input <- .proton$list_services_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_services_output()
@@ -5233,7 +5649,7 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .proton$list_tags_for_resource_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .proton$list_tags_for_resource_output()
@@ -5650,6 +6066,7 @@ proton_update_account_settings <- function(deletePipelineProvisioningRepository 
 #'     deploymentStatusMessage = "string",
 #'     description = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -5660,6 +6077,7 @@ proton_update_account_settings <- function(deletePipelineProvisioningRepository 
 #'     lastModifiedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceInstanceName = "string",
 #'     serviceName = "string",
@@ -5866,12 +6284,14 @@ proton_update_component <- function(clientToken = NULL, deploymentType, descript
 #'     description = "string",
 #'     environmentAccountConnectionId = "string",
 #'     environmentAccountId = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     protonServiceRoleArn = "string",
 #'     provisioning = "CUSTOMER_MANAGED",
@@ -6218,12 +6638,14 @@ proton_update_environment_template_version <- function(description = NULL, major
 #'       ),
 #'       deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'       deploymentStatusMessage = "string",
+#'       lastAttemptedDeploymentId = "string",
 #'       lastDeploymentAttemptedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       lastDeploymentSucceededAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       lastSucceededDeploymentId = "string",
 #'       spec = "string",
 #'       templateMajorVersion = "string",
 #'       templateMinorVersion = "string",
@@ -6344,6 +6766,7 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'     deploymentStatusMessage = "string",
 #'     environmentName = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastClientRequestToken = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -6351,6 +6774,7 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     name = "string",
 #'     serviceName = "string",
 #'     spec = "string",
@@ -6498,12 +6922,14 @@ proton_update_service_instance <- function(clientToken = NULL, deploymentType, n
 #'     ),
 #'     deploymentStatus = "IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"CANCELLING"|"CANCELLED",
 #'     deploymentStatusMessage = "string",
+#'     lastAttemptedDeploymentId = "string",
 #'     lastDeploymentAttemptedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     lastDeploymentSucceededAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
+#'     lastSucceededDeploymentId = "string",
 #'     spec = "string",
 #'     templateMajorVersion = "string",
 #'     templateMinorVersion = "string",

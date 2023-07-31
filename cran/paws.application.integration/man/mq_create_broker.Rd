@@ -23,7 +23,9 @@ mq_create_broker(
   StorageType = NULL,
   SubnetIds = NULL,
   Tags = NULL,
-  Users
+  Users,
+  DataReplicationMode = NULL,
+  DataReplicationPrimaryBrokerArn = NULL
 )
 }
 \arguments{
@@ -35,22 +37,29 @@ versions are released and supported by Amazon MQ. Automatic upgrades
 occur during the scheduled maintenance window of the broker or after a
 manual broker reboot. Set to true by default, if no value is specified.}
 
-\item{BrokerName}{[required] Required. The broker's name. This value must be unique in your AWS
-account, 1-50 characters long, must contain only letters, numbers,
-dashes, and underscores, and must not contain white spaces, brackets,
-wildcard characters, or special characters.}
+\item{BrokerName}{[required] Required. The broker's name. This value must be unique in your Amazon
+Web Services account, 1-50 characters long, must contain only letters,
+numbers, dashes, and underscores, and must not contain white spaces,
+brackets, wildcard characters, or special characters.
+
+Do not add personally identifiable information (PII) or other
+confidential or sensitive information in broker names. Broker names are
+accessible to other Amazon Web Services services, including CloudWatch
+Logs. Broker names are not intended to be used for private or sensitive
+data.}
 
 \item{Configuration}{A list of information about the configuration.}
 
 \item{CreatorRequestId}{The unique ID that the requester receives for the created broker. Amazon
-MQ passes your ID with the API action. Note: We recommend using a
-Universally Unique Identifier (UUID) for the creatorRequestId. You may
-omit the creatorRequestId if your application doesn't require
-idempotency.}
+MQ passes your ID with the API action.
+
+We recommend using a Universally Unique Identifier (UUID) for the
+creatorRequestId. You may omit the creatorRequestId if your application
+doesn't require idempotency.}
 
 \item{DeploymentMode}{[required] Required. The broker's deployment mode.}
 
-\item{EncryptionOptions}{Encryption options for the broker. Does not apply to RabbitMQ brokers.}
+\item{EncryptionOptions}{Encryption options for the broker.}
 
 \item{EngineType}{[required] Required. The type of broker engine. Currently, Amazon MQ supports
 ACTIVEMQ and RABBITMQ.}
@@ -88,22 +97,23 @@ without public accessibility requires at least one subnet.
 
 If you specify subnets in a \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html}{shared VPC}
 for a RabbitMQ broker, the associated VPC to which the specified subnets
-belong must be owned by your AWS account. Amazon MQ will not be able to
-create VPC endpoints in VPCs that are not owned by your AWS account.}
+belong must be owned by your Amazon Web Services account. Amazon MQ will
+not be able to create VPC endpoints in VPCs that are not owned by your
+Amazon Web Services account.}
 
 \item{Tags}{Create tags when creating the broker.}
 
-\item{Users}{[required] Required. The list of broker users (persons or applications) who can
-access queues and topics. This value can contain only alphanumeric
-characters, dashes, periods, underscores, and tildes (- . _ ~). This
-value must be 2-100 characters long.
-
-Amazon MQ for RabbitMQ
-
-When you create an Amazon MQ for RabbitMQ broker, one and only one
+\item{Users}{[required] The list of broker users (persons or applications) who can access queues
+and topics. For Amazon MQ for RabbitMQ brokers, one and only one
 administrative user is accepted and created when a broker is first
 provisioned. All subsequent broker users are created by making RabbitMQ
 API calls directly to brokers or via the RabbitMQ web console.}
+
+\item{DataReplicationMode}{Defines whether this broker is a part of a data replication pair.}
+
+\item{DataReplicationPrimaryBrokerArn}{The Amazon Resource Name (ARN) of the primary broker that is used to
+replicate data from in a data replication pair, and is applied to the
+replica broker. Must be set when dataReplicationMode is set to CRDR.}
 }
 \description{
 Creates a broker. Note: This API is asynchronous.

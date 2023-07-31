@@ -6,13 +6,16 @@
 \usage{
 applicationinsights_describe_component_configuration(
   ResourceGroupName,
-  ComponentName
+  ComponentName,
+  AccountId = NULL
 )
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{ComponentName}{[required] The name of the component.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes the monitoring configuration of the component.

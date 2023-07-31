@@ -118,6 +118,9 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
 #' in the Step Functions User Guide.
 #' 
+#' If you set the `publish` parameter of this API action to `true`, it
+#' publishes version `1` as the first revision of the state machine.
+#' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
@@ -125,7 +128,8 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Subsequent requests won’t create a duplicate resource if it was already
 #' created. [`create_state_machine`][sfn_create_state_machine]'s
 #' idempotency check is based on the state machine `name`, `definition`,
-#' `type`, `LoggingConfiguration` and `TracingConfiguration`. If a
+#' `type`, `LoggingConfiguration`, and `TracingConfiguration`. The check is
+#' also based on the `publish` and `versionDescription` parameters. If a
 #' following request has a different `roleArn` or `tags`, Step Functions
 #' will ignore these differences and treat it as an idempotent request of
 #' the previous. In this case, `roleArn` and `tags` will not be updated,
@@ -133,7 +137,8 @@ sfn_create_activity <- function(name, tags = NULL) {
 #'
 #' @usage
 #' sfn_create_state_machine(name, definition, roleArn, type,
-#'   loggingConfiguration, tags, tracingConfiguration)
+#'   loggingConfiguration, tags, tracingConfiguration, publish,
+#'   versionDescription)
 #'
 #' @param name &#91;required&#93; The name of the state machine.
 #' 
@@ -177,6 +182,12 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
 #' @param tracingConfiguration Selects whether X-Ray tracing is enabled.
+#' @param publish Set to `true` to publish the first version of the state machine during
+#' creation. The default is `false`.
+#' @param versionDescription Sets description about the state machine version. You can only set the
+#' description if the `publish` parameter is set to `true`. Otherwise, if
+#' you set `versionDescription`, but `publish` to `false`, this API action
+#' throws `ValidationException`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -185,7 +196,8 @@ sfn_create_activity <- function(name, tags = NULL) {
 #'   stateMachineArn = "string",
 #'   creationDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   stateMachineVersionArn = "string"
 #' )
 #' ```
 #'
@@ -215,7 +227,9 @@ sfn_create_activity <- function(name, tags = NULL) {
 #'   ),
 #'   tracingConfiguration = list(
 #'     enabled = TRUE|FALSE
-#'   )
+#'   ),
+#'   publish = TRUE|FALSE,
+#'   versionDescription = "string"
 #' )
 #' ```
 #'
@@ -224,14 +238,14 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' @rdname sfn_create_state_machine
 #'
 #' @aliases sfn_create_state_machine
-sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, loggingConfiguration = NULL, tags = NULL, tracingConfiguration = NULL) {
+sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, loggingConfiguration = NULL, tags = NULL, tracingConfiguration = NULL, publish = NULL, versionDescription = NULL) {
   op <- new_operation(
     name = "CreateStateMachine",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, type = type, loggingConfiguration = loggingConfiguration, tags = tags, tracingConfiguration = tracingConfiguration)
+  input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, type = type, loggingConfiguration = loggingConfiguration, tags = tags, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription)
   output <- .sfn$create_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config)
@@ -240,6 +254,113 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
   return(response)
 }
 .sfn$operations$create_state_machine <- sfn_create_state_machine
+
+#' Creates an alias for a state machine that points to one or two versions
+#' of the same state machine
+#'
+#' @description
+#' Creates an
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' for a state machine that points to one or two
+#' [versions](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html)
+#' of the same state machine. You can set your application to call
+#' [`start_execution`][sfn_start_execution] with an alias and update the
+#' version the alias uses without changing the client's code.
+#' 
+#' You can also map an alias to split
+#' [`start_execution`][sfn_start_execution] requests between two versions
+#' of a state machine. To do this, add a second `RoutingConfig` object in
+#' the `routingConfiguration` parameter. You must also specify the
+#' percentage of execution run requests each version should receive in both
+#' `RoutingConfig` objects. Step Functions randomly chooses which version
+#' runs a given execution based on the percentage you specify.
+#' 
+#' To create an alias that points to a single version, specify a single
+#' `RoutingConfig` object with a `weight` set to 100.
+#' 
+#' You can create up to 100 aliases for each state machine. You must delete
+#' unused aliases using the
+#' [`delete_state_machine_alias`][sfn_delete_state_machine_alias] API
+#' action.
+#' 
+#' [`create_state_machine_alias`][sfn_create_state_machine_alias] is an
+#' idempotent API. Step Functions bases the idempotency check on the
+#' `stateMachineArn`, `description`, `name`, and `routingConfiguration`
+#' parameters. Requests that contain the same values for these parameters
+#' return a successful idempotent response without creating a duplicate
+#' resource.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' 
+#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' 
+#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' 
+#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#'
+#' @usage
+#' sfn_create_state_machine_alias(description, name, routingConfiguration)
+#'
+#' @param description A description for the state machine alias.
+#' @param name &#91;required&#93; The name of the state machine alias.
+#' 
+#' To avoid conflict with version ARNs, don't use an integer in the name of
+#' the alias.
+#' @param routingConfiguration &#91;required&#93; The routing configuration of a state machine alias. The routing
+#' configuration shifts execution traffic between two state machine
+#' versions. `routingConfiguration` contains an array of `RoutingConfig`
+#' objects that specify up to two state machine versions. Step Functions
+#' then randomly choses which version to run an execution with based on the
+#' weight assigned to each `RoutingConfig`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineAliasArn = "string",
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_state_machine_alias(
+#'   description = "string",
+#'   name = "string",
+#'   routingConfiguration = list(
+#'     list(
+#'       stateMachineVersionArn = "string",
+#'       weight = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_create_state_machine_alias
+#'
+#' @aliases sfn_create_state_machine_alias
+sfn_create_state_machine_alias <- function(description = NULL, name, routingConfiguration) {
+  op <- new_operation(
+    name = "CreateStateMachineAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$create_state_machine_alias_input(description = description, name = name, routingConfiguration = routingConfiguration)
+  output <- .sfn$create_state_machine_alias_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$create_state_machine_alias <- sfn_create_state_machine_alias
 
 #' Deletes an activity
 #'
@@ -289,18 +410,35 @@ sfn_delete_activity <- function(activityArn) {
 #' Deletes a state machine. This is an asynchronous operation: It sets the
 #' state machine's status to `DELETING` and begins the deletion process.
 #' 
-#' If the given state machine Amazon Resource Name (ARN) is a qualified
-#' state machine ARN, it will fail with ValidationException.
+#' A qualified state machine ARN can either refer to a *Distributed Map
+#' state* defined within a state machine, a version ARN, or an alias ARN.
 #' 
-#' A qualified state machine ARN refers to a *Distributed Map state*
-#' defined within a state machine. For example, the qualified state machine
-#' ARN
-#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
-#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
-#' state machine named `stateMachineName`.
+#' The following are some examples of qualified and unqualified state
+#' machine ARNs:
 #' 
-#' For `EXPRESS` state machines, the deletion will happen eventually
-#' (usually less than a minute). Running executions may emit logs after
+#' -   The following qualified state machine ARN refers to a *Distributed
+#'     Map state* with a label `mapStateLabel` in a state machine named
+#'     `myStateMachine`.
+#' 
+#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     *Distributed Map state*, the request fails with
+#'     `ValidationException`.
+#' 
+#' -   The following unqualified state machine ARN refers to a state
+#'     machine named `myStateMachine`.
+#' 
+#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine`
+#' 
+#' This API action also deletes all
+#' [versions](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html)
+#' and
+#' [aliases](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' associated with a state machine.
+#' 
+#' For `EXPRESS` state machines, the deletion happens eventually (usually
+#' in less than a minute). Running executions may emit logs after
 #' [`delete_state_machine`][sfn_delete_state_machine] API is called.
 #'
 #' @usage
@@ -339,6 +477,123 @@ sfn_delete_state_machine <- function(stateMachineArn) {
   return(response)
 }
 .sfn$operations$delete_state_machine <- sfn_delete_state_machine
+
+#' Deletes a state machine alias
+#'
+#' @description
+#' Deletes a state machine
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html).
+#' 
+#' After you delete a state machine alias, you can't use it to start
+#' executions. When you delete a state machine alias, Step Functions
+#' doesn't delete the state machine versions that alias references.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' 
+#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' 
+#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' 
+#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#'
+#' @usage
+#' sfn_delete_state_machine_alias(stateMachineAliasArn)
+#'
+#' @param stateMachineAliasArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine alias to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_state_machine_alias(
+#'   stateMachineAliasArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_delete_state_machine_alias
+#'
+#' @aliases sfn_delete_state_machine_alias
+sfn_delete_state_machine_alias <- function(stateMachineAliasArn) {
+  op <- new_operation(
+    name = "DeleteStateMachineAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$delete_state_machine_alias_input(stateMachineAliasArn = stateMachineAliasArn)
+  output <- .sfn$delete_state_machine_alias_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$delete_state_machine_alias <- sfn_delete_state_machine_alias
+
+#' Deletes a state machine version
+#'
+#' @description
+#' Deletes a state machine
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html).
+#' After you delete a version, you can't call
+#' [`start_execution`][sfn_start_execution] using that version's ARN or use
+#' the version with a state machine
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html).
+#' 
+#' Deleting a state machine version won't terminate its in-progress
+#' executions.
+#' 
+#' You can't delete a state machine version currently referenced by one or
+#' more aliases. Before you delete a version, you must either delete the
+#' aliases or update them to point to another state machine version.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`publish_state_machine_version`][sfn_publish_state_machine_version]
+#' 
+#' -   [`list_state_machine_versions`][sfn_list_state_machine_versions]
+#'
+#' @usage
+#' sfn_delete_state_machine_version(stateMachineVersionArn)
+#'
+#' @param stateMachineVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine version to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_state_machine_version(
+#'   stateMachineVersionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_delete_state_machine_version
+#'
+#' @aliases sfn_delete_state_machine_version
+sfn_delete_state_machine_version <- function(stateMachineVersionArn) {
+  op <- new_operation(
+    name = "DeleteStateMachineVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$delete_state_machine_version_input(stateMachineVersionArn = stateMachineVersionArn)
+  output <- .sfn$delete_state_machine_version_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$delete_state_machine_version <- sfn_delete_state_machine_version
 
 #' Describes an activity
 #'
@@ -394,21 +649,27 @@ sfn_describe_activity <- function(activityArn) {
 }
 .sfn$operations$describe_activity <- sfn_describe_activity
 
-#' Provides all information about a state machine execution, such as the
-#' state machine associated with the execution, the execution input and
-#' output, and relevant execution metadata
+#' Provides information about a state machine execution, such as the state
+#' machine associated with the execution, the execution input and output,
+#' and relevant execution metadata
 #'
 #' @description
-#' Provides all information about a state machine execution, such as the
-#' state machine associated with the execution, the execution input and
-#' output, and relevant execution metadata. Use this API action to return
-#' the Map Run ARN if the execution was dispatched by a Map Run.
+#' Provides information about a state machine execution, such as the state
+#' machine associated with the execution, the execution input and output,
+#' and relevant execution metadata. Use this API action to return the Map
+#' Run Amazon Resource Name (ARN) if the execution was dispatched by a Map
+#' Run.
+#' 
+#' If you specify a version or alias ARN when you call the
+#' [`start_execution`][sfn_start_execution] API action,
+#' [`describe_execution`][sfn_describe_execution] returns that ARN.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
 #' 
-#' This API action is not supported by `EXPRESS` state machine executions
-#' unless they were dispatched by a Map Run.
+#' Executions of an `EXPRESS` state machinearen't supported by
+#' [`describe_execution`][sfn_describe_execution] unless a Map Run
+#' dispatched them.
 #'
 #' @usage
 #' sfn_describe_execution(executionArn)
@@ -440,7 +701,9 @@ sfn_describe_activity <- function(activityArn) {
 #'   traceHeader = "string",
 #'   mapRunArn = "string",
 #'   error = "string",
-#'   cause = "string"
+#'   cause = "string",
+#'   stateMachineVersionArn = "string",
+#'   stateMachineAliasArn = "string"
 #' )
 #' ```
 #'
@@ -560,16 +823,40 @@ sfn_describe_map_run <- function(mapRunArn) {
 #'
 #' @description
 #' Provides information about a state machine's definition, its IAM role
-#' Amazon Resource Name (ARN), and configuration. If the state machine ARN
-#' is a qualified state machine ARN, the response returned includes the
-#' `Map` state's label.
+#' Amazon Resource Name (ARN), and configuration.
 #' 
-#' A qualified state machine ARN refers to a *Distributed Map state*
-#' defined within a state machine. For example, the qualified state machine
-#' ARN
-#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
-#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
-#' state machine named `stateMachineName`.
+#' A qualified state machine ARN can either refer to a *Distributed Map
+#' state* defined within a state machine, a version ARN, or an alias ARN.
+#' 
+#' The following are some examples of qualified and unqualified state
+#' machine ARNs:
+#' 
+#' -   The following qualified state machine ARN refers to a *Distributed
+#'     Map state* with a label `mapStateLabel` in a state machine named
+#'     `myStateMachine`.
+#' 
+#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     *Distributed Map state*, the request fails with
+#'     `ValidationException`.
+#' 
+#' -   The following qualified state machine ARN refers to an alias named
+#'     `PROD`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     version ARN or an alias ARN, the request starts execution for that
+#'     version or alias.
+#' 
+#' -   The following unqualified state machine ARN refers to a state
+#'     machine named `myStateMachine`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#' 
+#' This API action returns the details for a state machine version if the
+#' `stateMachineArn` you specify is a state machine version ARN.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
@@ -577,7 +864,13 @@ sfn_describe_map_run <- function(mapRunArn) {
 #' @usage
 #' sfn_describe_state_machine(stateMachineArn)
 #'
-#' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to describe.
+#' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine for which you want
+#' the information.
+#' 
+#' If you specify a state machine version ARN, this API returns details
+#' about that version. The version ARN is a combination of state machine
+#' ARN and the version number separated by a colon (:). For example,
+#' `stateMachineARN:1`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -606,7 +899,9 @@ sfn_describe_map_run <- function(mapRunArn) {
 #'   tracingConfiguration = list(
 #'     enabled = TRUE|FALSE
 #'   ),
-#'   label = "string"
+#'   label = "string",
+#'   revisionId = "string",
+#'   description = "string"
 #' )
 #' ```
 #'
@@ -639,14 +934,87 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 }
 .sfn$operations$describe_state_machine <- sfn_describe_state_machine
 
+#' Returns details about a state machine alias
+#'
+#' @description
+#' Returns details about a state machine
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html).
+#' 
+#' **Related operations:**
+#' 
+#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' 
+#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' 
+#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' 
+#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#'
+#' @usage
+#' sfn_describe_state_machine_alias(stateMachineAliasArn)
+#'
+#' @param stateMachineAliasArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine alias.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineAliasArn = "string",
+#'   name = "string",
+#'   description = "string",
+#'   routingConfiguration = list(
+#'     list(
+#'       stateMachineVersionArn = "string",
+#'       weight = 123
+#'     )
+#'   ),
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_state_machine_alias(
+#'   stateMachineAliasArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_describe_state_machine_alias
+#'
+#' @aliases sfn_describe_state_machine_alias
+sfn_describe_state_machine_alias <- function(stateMachineAliasArn) {
+  op <- new_operation(
+    name = "DescribeStateMachineAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$describe_state_machine_alias_input(stateMachineAliasArn = stateMachineAliasArn)
+  output <- .sfn$describe_state_machine_alias_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$describe_state_machine_alias <- sfn_describe_state_machine_alias
+
 #' Provides information about a state machine's definition, its execution
 #' role ARN, and configuration
 #'
 #' @description
 #' Provides information about a state machine's definition, its execution
-#' role ARN, and configuration. If an execution was dispatched by a Map
-#' Run, the Map Run is returned in the response. Additionally, the state
-#' machine returned will be the state machine associated with the Map Run.
+#' role ARN, and configuration. If a Map Run dispatched the execution, this
+#' action returns the Map Run Amazon Resource Name (ARN) in the response.
+#' The state machine returned is the state machine associated with the Map
+#' Run.
 #' 
 #' This operation is eventually consistent. The results are best effort and
 #' may not reflect very recent updates and changes.
@@ -685,7 +1053,8 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #'     enabled = TRUE|FALSE
 #'   ),
 #'   mapRunArn = "string",
-#'   label = "string"
+#'   label = "string",
+#'   revisionId = "string"
 #' )
 #' ```
 #'
@@ -935,7 +1304,9 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'         inputDetails = list(
 #'           truncated = TRUE|FALSE
 #'         ),
-#'         roleArn = "string"
+#'         roleArn = "string",
+#'         stateMachineAliasArn = "string",
+#'         stateMachineVersionArn = "string"
 #'       ),
 #'       executionSucceededEventDetails = list(
 #'         output = "string",
@@ -1051,7 +1422,7 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
     name = "GetExecutionHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
   )
   input <- .sfn$get_execution_history_input(executionArn = executionArn, maxResults = maxResults, reverseOrder = reverseOrder, nextToken = nextToken, includeExecutionData = includeExecutionData)
   output <- .sfn$get_execution_history_output()
@@ -1129,7 +1500,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListActivities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "activities")
   )
   input <- .sfn$list_activities_input(maxResults = maxResults, nextToken = nextToken)
   output <- .sfn$list_activities_output()
@@ -1148,6 +1519,12 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' executions related to a state machine by specifying a state machine
 #' Amazon Resource Name (ARN), or those related to a Map Run by specifying
 #' a Map Run ARN.
+#' 
+#' You can also provide a state machine
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' ARN or
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html)
+#' ARN to list the executions associated with a specific alias or version.
 #' 
 #' Results are sorted by time, with the most recent execution first.
 #' 
@@ -1172,6 +1549,13 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' 
 #' You can specify either a `mapRunArn` or a `stateMachineArn`, but not
 #' both.
+#' 
+#' You can also return a list of executions associated with a specific
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' or
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html),
+#' by specifying an alias ARN or a version ARN in the `stateMachineArn`
+#' parameter.
 #' @param statusFilter If specified, only list the executions whose current execution status
 #' matches the given filter.
 #' @param maxResults The maximum number of results that are returned per call. You can use
@@ -1213,7 +1597,9 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #'         "2015-01-01"
 #'       ),
 #'       mapRunArn = "string",
-#'       itemCount = 123
+#'       itemCount = 123,
+#'       stateMachineVersionArn = "string",
+#'       stateMachineAliasArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1241,7 +1627,7 @@ sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, max
     name = "ListExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions")
   )
   input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn)
   output <- .sfn$list_executions_output()
@@ -1319,7 +1705,7 @@ sfn_list_map_runs <- function(executionArn, maxResults = NULL, nextToken = NULL)
     name = "ListMapRuns",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "mapRuns")
   )
   input <- .sfn$list_map_runs_input(executionArn = executionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .sfn$list_map_runs_output()
@@ -1330,6 +1716,190 @@ sfn_list_map_runs <- function(executionArn, maxResults = NULL, nextToken = NULL)
   return(response)
 }
 .sfn$operations$list_map_runs <- sfn_list_map_runs
+
+#' Lists aliases for a specified state machine ARN
+#'
+#' @description
+#' Lists
+#' [aliases](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' for a specified state machine ARN. Results are sorted by time, with the
+#' most recently created aliases listed first.
+#' 
+#' To list aliases that reference a state machine
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html),
+#' you can specify the version ARN in the `stateMachineArn` parameter.
+#' 
+#' If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an *HTTP 400 InvalidToken*
+#' error.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' 
+#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' 
+#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' 
+#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#'
+#' @usage
+#' sfn_list_state_machine_aliases(stateMachineArn, nextToken, maxResults)
+#'
+#' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine for which you want
+#' to list aliases.
+#' 
+#' If you specify a state machine version ARN, this API returns a list of
+#' aliases for that version.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an *HTTP 400 InvalidToken*
+#' error.
+#' @param maxResults The maximum number of results that are returned per call. You can use
+#' `nextToken` to obtain further pages of results. The default is 100 and
+#' the maximum allowed page size is 1000. A value of 0 uses the default.
+#' 
+#' This is only an upper limit. The actual number of results returned per
+#' call might be fewer than the specified maximum.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineAliases = list(
+#'     list(
+#'       stateMachineAliasArn = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_state_machine_aliases(
+#'   stateMachineArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_list_state_machine_aliases
+#'
+#' @aliases sfn_list_state_machine_aliases
+sfn_list_state_machine_aliases <- function(stateMachineArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListStateMachineAliases",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$list_state_machine_aliases_input(stateMachineArn = stateMachineArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .sfn$list_state_machine_aliases_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$list_state_machine_aliases <- sfn_list_state_machine_aliases
+
+#' Lists versions for the specified state machine Amazon Resource Name
+#' (ARN)
+#'
+#' @description
+#' Lists
+#' [versions](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html)
+#' for the specified state machine Amazon Resource Name (ARN).
+#' 
+#' The results are sorted in descending order of the version creation time.
+#' 
+#' If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an *HTTP 400 InvalidToken*
+#' error.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`publish_state_machine_version`][sfn_publish_state_machine_version]
+#' 
+#' -   [`delete_state_machine_version`][sfn_delete_state_machine_version]
+#'
+#' @usage
+#' sfn_list_state_machine_versions(stateMachineArn, nextToken, maxResults)
+#'
+#' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
+#' @param nextToken If `nextToken` is returned, there are more results available. The value
+#' of `nextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an *HTTP 400 InvalidToken*
+#' error.
+#' @param maxResults The maximum number of results that are returned per call. You can use
+#' `nextToken` to obtain further pages of results. The default is 100 and
+#' the maximum allowed page size is 1000. A value of 0 uses the default.
+#' 
+#' This is only an upper limit. The actual number of results returned per
+#' call might be fewer than the specified maximum.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   stateMachineVersions = list(
+#'     list(
+#'       stateMachineVersionArn = "string",
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_state_machine_versions(
+#'   stateMachineArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_list_state_machine_versions
+#'
+#' @aliases sfn_list_state_machine_versions
+sfn_list_state_machine_versions <- function(stateMachineArn, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListStateMachineVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$list_state_machine_versions_input(stateMachineArn = stateMachineArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .sfn$list_state_machine_versions_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$list_state_machine_versions <- sfn_list_state_machine_versions
 
 #' Lists the existing state machines
 #'
@@ -1398,7 +1968,7 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListStateMachines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "stateMachines")
   )
   input <- .sfn$list_state_machines_input(maxResults = maxResults, nextToken = nextToken)
   output <- .sfn$list_state_machines_output()
@@ -1465,6 +2035,99 @@ sfn_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .sfn$operations$list_tags_for_resource <- sfn_list_tags_for_resource
+
+#' Creates a version from the current revision of a state machine
+#'
+#' @description
+#' Creates a
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html)
+#' from the current revision of a state machine. Use versions to create
+#' immutable snapshots of your state machine. You can start executions from
+#' versions either directly or with an alias. To create an alias, use
+#' [`create_state_machine_alias`][sfn_create_state_machine_alias].
+#' 
+#' You can publish up to 1000 versions for each state machine. You must
+#' manually delete unused versions using the
+#' [`delete_state_machine_version`][sfn_delete_state_machine_version] API
+#' action.
+#' 
+#' [`publish_state_machine_version`][sfn_publish_state_machine_version] is
+#' an idempotent API. It doesn't create a duplicate state machine version
+#' if it already exists for the current revision. Step Functions bases
+#' [`publish_state_machine_version`][sfn_publish_state_machine_version]'s
+#' idempotency check on the `stateMachineArn`, `name`, and `revisionId`
+#' parameters. Requests with the same parameters return a successful
+#' idempotent response. If you don't specify a `revisionId`, Step Functions
+#' checks for a previously published version of the state machine's current
+#' revision.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`delete_state_machine_version`][sfn_delete_state_machine_version]
+#' 
+#' -   [`list_state_machine_versions`][sfn_list_state_machine_versions]
+#'
+#' @usage
+#' sfn_publish_state_machine_version(stateMachineArn, revisionId,
+#'   description)
+#'
+#' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
+#' @param revisionId Only publish the state machine version if the current state machine's
+#' revision ID matches the specified ID.
+#' 
+#' Use this option to avoid publishing a version if the state machine
+#' changed since you last updated it. If the specified revision ID doesn't
+#' match the state machine's current revision ID, the API returns
+#' `ConflictException`.
+#' 
+#' To specify an initial revision ID for a state machine with no revision
+#' ID assigned, specify the string `INITIAL` for the `revisionId`
+#' parameter. For example, you can specify a `revisionID` of `INITIAL` when
+#' you create a state machine using the
+#' [`create_state_machine`][sfn_create_state_machine] API action.
+#' @param description An optional description of the state machine version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   creationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   stateMachineVersionArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$publish_state_machine_version(
+#'   stateMachineArn = "string",
+#'   revisionId = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_publish_state_machine_version
+#'
+#' @aliases sfn_publish_state_machine_version
+sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL, description = NULL) {
+  op <- new_operation(
+    name = "PublishStateMachineVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$publish_state_machine_version_input(stateMachineArn = stateMachineArn, revisionId = revisionId, description = description)
+  output <- .sfn$publish_state_machine_version_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$publish_state_machine_version <- sfn_publish_state_machine_version
 
 #' Used by activity workers and task states using the callback pattern to
 #' report that the task identified by the taskToken failed
@@ -1642,34 +2305,99 @@ sfn_send_task_success <- function(taskToken, output) {
 #' Starts a state machine execution
 #'
 #' @description
-#' Starts a state machine execution. If the given state machine Amazon
-#' Resource Name (ARN) is a qualified state machine ARN, it will fail with
-#' ValidationException.
+#' Starts a state machine execution.
 #' 
-#' A qualified state machine ARN refers to a *Distributed Map state*
-#' defined within a state machine. For example, the qualified state machine
-#' ARN
-#' `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel`
-#' refers to a *Distributed Map state* with a label `mapStateLabel` in the
-#' state machine named `stateMachineName`.
+#' A qualified state machine ARN can either refer to a *Distributed Map
+#' state* defined within a state machine, a version ARN, or an alias ARN.
+#' 
+#' The following are some examples of qualified and unqualified state
+#' machine ARNs:
+#' 
+#' -   The following qualified state machine ARN refers to a *Distributed
+#'     Map state* with a label `mapStateLabel` in a state machine named
+#'     `myStateMachine`.
+#' 
+#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     *Distributed Map state*, the request fails with
+#'     `ValidationException`.
+#' 
+#' -   The following qualified state machine ARN refers to an alias named
+#'     `PROD`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     version ARN or an alias ARN, the request starts execution for that
+#'     version or alias.
+#' 
+#' -   The following unqualified state machine ARN refers to a state
+#'     machine named `myStateMachine`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#' 
+#' If you start an execution with an unqualified state machine ARN, Step
+#' Functions uses the latest revision of the state machine for the
+#' execution.
+#' 
+#' To start executions of a state machine
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html),
+#' call [`start_execution`][sfn_start_execution] and provide the version
+#' ARN or the ARN of an
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' that points to the version.
 #' 
 #' [`start_execution`][sfn_start_execution] is idempotent for `STANDARD`
-#' workflows. For a `STANDARD` workflow, if
-#' [`start_execution`][sfn_start_execution] is called with the same name
-#' and input as a running execution, the call will succeed and return the
-#' same response as the original request. If the execution is closed or if
-#' the input is different, it will return a `400 ExecutionAlreadyExists`
-#' error. Names can be reused after 90 days.
+#' workflows. For a `STANDARD` workflow, if you call
+#' [`start_execution`][sfn_start_execution] with the same name and input as
+#' a running execution, the call succeeds and return the same response as
+#' the original request. If the execution is closed or if the input is
+#' different, it returns a `400 ExecutionAlreadyExists` error. You can
+#' reuse names after 90 days.
 #' 
-#' [`start_execution`][sfn_start_execution] is not idempotent for `EXPRESS`
+#' [`start_execution`][sfn_start_execution] isn't idempotent for `EXPRESS`
 #' workflows.
 #'
 #' @usage
 #' sfn_start_execution(stateMachineArn, name, input, traceHeader)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
-#' @param name The name of the execution. This name must be unique for your Amazon Web
-#' Services account, region, and state machine for 90 days. For more
+#' 
+#' The `stateMachineArn` parameter accepts one of the following inputs:
+#' 
+#' -   **An unqualified state machine ARN** – Refers to a state machine ARN
+#'     that isn't qualified with a version or alias ARN. The following is
+#'     an example of an unqualified state machine ARN.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#' 
+#'     Step Functions doesn't associate state machine executions that you
+#'     start with an unqualified ARN with a version. This is true even if
+#'     that version uses the same revision that the execution used.
+#' 
+#' -   **A state machine version ARN** – Refers to a version ARN, which is
+#'     a combination of state machine ARN and the version number separated
+#'     by a colon (:). The following is an example of the ARN for version
+#'     10.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>:10`
+#' 
+#'     Step Functions doesn't associate executions that you start with a
+#'     version ARN with any aliases that point to that version.
+#' 
+#' -   **A state machine alias ARN** – Refers to an alias ARN, which is a
+#'     combination of state machine ARN and the alias name separated by a
+#'     colon (:). The following is an example of the ARN for an alias named
+#'     `PROD`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#' 
+#'     Step Functions associates executions that you start with an alias
+#'     ARN with that alias and the state machine version used for that
+#'     execution.
+#' @param name Optional name of the execution. This name must be unique for your Amazon
+#' Web Services account, Region, and state machine for 90 days. For more
 #' information, see [Limits Related to State Machine
 #' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
@@ -2069,9 +2797,6 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' least one of `definition` or `roleArn` or you will receive a
 #' `MissingRequiredParameter` error.
 #' 
-#' If the given state machine Amazon Resource Name (ARN) is a qualified
-#' state machine ARN, it will fail with ValidationException.
-#' 
 #' A qualified state machine ARN refers to a *Distributed Map state*
 #' defined within a state machine. For example, the qualified state machine
 #' ARN
@@ -2079,24 +2804,68 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' refers to a *Distributed Map state* with a label `mapStateLabel` in the
 #' state machine named `stateMachineName`.
 #' 
+#' A qualified state machine ARN can either refer to a *Distributed Map
+#' state* defined within a state machine, a version ARN, or an alias ARN.
+#' 
+#' The following are some examples of qualified and unqualified state
+#' machine ARNs:
+#' 
+#' -   The following qualified state machine ARN refers to a *Distributed
+#'     Map state* with a label `mapStateLabel` in a state machine named
+#'     `myStateMachine`.
+#' 
+#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     *Distributed Map state*, the request fails with
+#'     `ValidationException`.
+#' 
+#' -   The following qualified state machine ARN refers to an alias named
+#'     `PROD`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#' 
+#'     If you provide a qualified state machine ARN that refers to a
+#'     version ARN or an alias ARN, the request starts execution for that
+#'     version or alias.
+#' 
+#' -   The following unqualified state machine ARN refers to a state
+#'     machine named `myStateMachine`.
+#' 
+#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#' 
+#' After you update your state machine, you can set the `publish` parameter
+#' to `true` in the same action to publish a new
+#' [version](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html).
+#' This way, you can opt-in to strict versioning of your state machine.
+#' 
+#' Step Functions assigns monotonically increasing integers for state
+#' machine versions, starting at version number 1.
+#' 
 #' All [`start_execution`][sfn_start_execution] calls within a few seconds
-#' will use the updated `definition` and `roleArn`. Executions started
-#' immediately after calling
+#' use the updated `definition` and `roleArn`. Executions started
+#' immediately after you call
 #' [`update_state_machine`][sfn_update_state_machine] may use the previous
 #' state machine `definition` and `roleArn`.
 #'
 #' @usage
 #' sfn_update_state_machine(stateMachineArn, definition, roleArn,
-#'   loggingConfiguration, tracingConfiguration)
+#'   loggingConfiguration, tracingConfiguration, publish, versionDescription)
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
 #' @param definition The Amazon States Language definition of the state machine. See [Amazon
 #' States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html).
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role of the state machine.
-#' @param loggingConfiguration The `LoggingConfiguration` data type is used to set CloudWatch Logs
-#' options.
+#' @param loggingConfiguration Use the `LoggingConfiguration` data type to set CloudWatch Logs options.
 #' @param tracingConfiguration Selects whether X-Ray tracing is enabled.
+#' @param publish Specifies whether the state machine version is published. The default is
+#' `false`. To publish a version after updating the state machine, set
+#' `publish` to `true`.
+#' @param versionDescription An optional description of the state machine version to publish.
+#' 
+#' You can only specify the `versionDescription` parameter if you've set
+#' `publish` to `true`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2104,7 +2873,9 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' list(
 #'   updateDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   revisionId = "string",
+#'   stateMachineVersionArn = "string"
 #' )
 #' ```
 #'
@@ -2127,7 +2898,9 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #'   ),
 #'   tracingConfiguration = list(
 #'     enabled = TRUE|FALSE
-#'   )
+#'   ),
+#'   publish = TRUE|FALSE,
+#'   versionDescription = "string"
 #' )
 #' ```
 #'
@@ -2136,14 +2909,14 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' @rdname sfn_update_state_machine
 #'
 #' @aliases sfn_update_state_machine
-sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL, loggingConfiguration = NULL, tracingConfiguration = NULL) {
+sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL, loggingConfiguration = NULL, tracingConfiguration = NULL, publish = NULL, versionDescription = NULL) {
   op <- new_operation(
     name = "UpdateStateMachine",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn, loggingConfiguration = loggingConfiguration, tracingConfiguration = tracingConfiguration)
+  input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn, loggingConfiguration = loggingConfiguration, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription)
   output <- .sfn$update_state_machine_output()
   config <- get_config()
   svc <- .sfn$service(config)
@@ -2152,3 +2925,94 @@ sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn
   return(response)
 }
 .sfn$operations$update_state_machine <- sfn_update_state_machine
+
+#' Updates the configuration of an existing state machine alias by
+#' modifying its description or routingConfiguration
+#'
+#' @description
+#' Updates the configuration of an existing state machine
+#' [alias](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html)
+#' by modifying its `description` or `routingConfiguration`.
+#' 
+#' You must specify at least one of the `description` or
+#' `routingConfiguration` parameters to update a state machine alias.
+#' 
+#' [`update_state_machine_alias`][sfn_update_state_machine_alias] is an
+#' idempotent API. Step Functions bases the idempotency check on the
+#' `stateMachineAliasArn`, `description`, and `routingConfiguration`
+#' parameters. Requests with the same parameters return an idempotent
+#' response.
+#' 
+#' This operation is eventually consistent. All
+#' [`start_execution`][sfn_start_execution] requests made within a few
+#' seconds use the latest alias configuration. Executions started
+#' immediately after calling
+#' [`update_state_machine_alias`][sfn_update_state_machine_alias] may use
+#' the previous routing configuration.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' 
+#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' 
+#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' 
+#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#'
+#' @usage
+#' sfn_update_state_machine_alias(stateMachineAliasArn, description,
+#'   routingConfiguration)
+#'
+#' @param stateMachineAliasArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine alias.
+#' @param description A description of the state machine alias.
+#' @param routingConfiguration The routing configuration of the state machine alias.
+#' 
+#' An array of `RoutingConfig` objects that specifies up to two state
+#' machine versions that the alias starts executions for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   updateDate = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_state_machine_alias(
+#'   stateMachineAliasArn = "string",
+#'   description = "string",
+#'   routingConfiguration = list(
+#'     list(
+#'       stateMachineVersionArn = "string",
+#'       weight = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sfn_update_state_machine_alias
+#'
+#' @aliases sfn_update_state_machine_alias
+sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = NULL, routingConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateStateMachineAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sfn$update_state_machine_alias_input(stateMachineAliasArn = stateMachineAliasArn, description = description, routingConfiguration = routingConfiguration)
+  output <- .sfn$update_state_machine_alias_output()
+  config <- get_config()
+  svc <- .sfn$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sfn$operations$update_state_machine_alias <- sfn_update_state_machine_alias

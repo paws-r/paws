@@ -2,8 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_evidence_folder}
 \alias{auditmanager_get_evidence_folder}
-\title{Returns an evidence folder from the specified assessment in Audit
-Manager}
+\title{Gets an evidence folder from a specified assessment in Audit Manager}
 \usage{
 auditmanager_get_evidence_folder(assessmentId, controlSetId, evidenceFolderId)
 }
@@ -15,7 +14,7 @@ auditmanager_get_evidence_folder(assessmentId, controlSetId, evidenceFolderId)
 \item{evidenceFolderId}{[required] The unique identifier for the folder that the evidence is stored in.}
 }
 \description{
-Returns an evidence folder from the specified assessment in Audit Manager.
+Gets an evidence folder from a specified assessment in Audit Manager.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folder/} for full documentation.
 }

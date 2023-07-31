@@ -994,7 +994,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_backups_input(BackupIds = BackupIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_backups_output()
@@ -1030,7 +1030,7 @@ fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Fil
     name = "DescribeDataRepositoryAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_data_repository_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_data_repository_associations_output()
@@ -1068,7 +1068,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
     name = "DescribeDataRepositoryTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_data_repository_tasks_input(TaskIds = TaskIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_data_repository_tasks_output()
@@ -1100,7 +1100,7 @@ fsx_describe_file_caches <- function(FileCacheIds = NULL, MaxResults = NULL, Nex
     name = "DescribeFileCaches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_file_caches_input(FileCacheIds = FileCacheIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_file_caches_output()
@@ -1140,7 +1140,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
     name = "DescribeFileSystemAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_file_system_aliases_input(ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_file_system_aliases_output()
@@ -1179,7 +1179,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
     name = "DescribeFileSystems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_file_systems_input(FileSystemIds = FileSystemIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_file_systems_output()
@@ -1215,7 +1215,7 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_snapshots_output()
@@ -1248,7 +1248,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
     name = "DescribeStorageVirtualMachines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StorageVirtualMachines")
   )
   input <- .fsx$describe_storage_virtual_machines_input(StorageVirtualMachineIds = StorageVirtualMachineIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_storage_virtual_machines_output()
@@ -1281,7 +1281,7 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
     name = "DescribeVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Volumes")
   )
   input <- .fsx$describe_volumes_input(VolumeIds = VolumeIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$describe_volumes_output()
@@ -1352,7 +1352,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .fsx$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fsx$list_tags_for_resource_output()

@@ -317,7 +317,7 @@ NULL
 
 .personalize$describe_dataset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dataset = structure(list(name = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), datasetType = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(dataset = structure(list(name = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), datasetType = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), latestDatasetUpdate = structure(list(schemaArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -748,6 +748,18 @@ NULL
 .personalize$update_campaign_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$update_dataset_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), schemaArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$update_dataset_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

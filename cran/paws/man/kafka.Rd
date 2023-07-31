@@ -4,22 +4,42 @@
 \alias{kafka}
 \title{Managed Streaming for Kafka}
 \usage{
-kafka(config = list())
+kafka(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -48,8 +68,20 @@ The operations for managing an Amazon MSK cluster.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -69,6 +101,7 @@ The operations for managing an Amazon MSK cluster.
 \link[paws.analytics:kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
 \link[paws.analytics:kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 \link[paws.analytics:kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
+\link[paws.analytics:kafka_describe_cluster_operation_v2]{describe_cluster_operation_v2} \tab Returns a description of the cluster operation specified by the ARN\cr
 \link[paws.analytics:kafka_describe_cluster_v2]{describe_cluster_v2} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 \link[paws.analytics:kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
 \link[paws.analytics:kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
@@ -78,6 +111,7 @@ The operations for managing an Amazon MSK cluster.
 \link[paws.analytics:kafka_get_compatible_kafka_versions]{get_compatible_kafka_versions} \tab Gets the Apache Kafka versions to which you can update the MSK cluster\cr
 \link[paws.analytics:kafka_list_client_vpc_connections]{list_client_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
 \link[paws.analytics:kafka_list_cluster_operations]{list_cluster_operations} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
+\link[paws.analytics:kafka_list_cluster_operations_v2]{list_cluster_operations_v2} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
 \link[paws.analytics:kafka_list_clusters]{list_clusters} \tab Returns a list of all the MSK clusters in the current Region\cr
 \link[paws.analytics:kafka_list_clusters_v2]{list_clusters_v2} \tab Returns a list of all the MSK clusters in the current Region\cr
 \link[paws.analytics:kafka_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all the MSK configurations in this Region\cr

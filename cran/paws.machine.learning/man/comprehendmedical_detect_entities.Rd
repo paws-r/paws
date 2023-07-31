@@ -8,8 +8,7 @@ comprehendmedical_detect_entities(Text)
 }
 \arguments{
 \item{Text}{[required] A UTF-8 text string containing the clinical content being examined for
-entities. Each string must contain fewer than 20,000 bytes of
-characters.}
+entities.}
 }
 \description{
 The \code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation is deprecated. You should use the \code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}} operation instead.

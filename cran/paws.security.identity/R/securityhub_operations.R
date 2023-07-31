@@ -471,10 +471,11 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'
 #' @param Tags User-defined tags that help you label the purpose of a rule.
 #' @param RuleStatus Whether the rule is active after it is created. If this parameter is
-#' equal to `Enabled`, Security Hub will apply the rule to findings and
-#' finding updates after the rule is created. To change the value of this
-#' parameter after creating a rule, use
-#' [`batch_update_automation_rules`][securityhub_batch_update_automation_rules].
+#' equal to `ENABLED`, Security Hub starts applying the rule to findings
+#' and finding updates after the rule is created. To change the value of
+#' this parameter after creating a rule, use
+#' [`batch_update_automation_rules`](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_BatchUpdateAutomationRules.html)
+#' .
 #' @param RuleOrder &#91;required&#93; An integer ranging from 1 to 1000 that represents the order in which the
 #' rule action is applied to findings. Security Hub applies rules with
 #' lower values for this parameter first.
@@ -483,14 +484,13 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #' @param IsTerminal Specifies whether a rule is the last to be applied with respect to a
 #' finding that matches the rule criteria. This is useful when a finding
 #' matches the criteria for multiple rules, and each rule has different
-#' actions. If the value of this field is set to `true` for a rule,
-#' Security Hub applies the rule action to a finding that matches the rule
-#' criteria and won't evaluate other rules for the finding. The default
-#' value of this field is `false`.
+#' actions. If a rule is terminal, Security Hub applies the rule action to
+#' a finding that matches the rule criteria and doesn't evaluate other
+#' rules for the finding. By default, a rule isn't terminal.
 #' @param Criteria &#91;required&#93; A set of ASFF finding field attributes and corresponding expected values
-#' that Security Hub uses to filter findings. If a finding matches the
-#' conditions specified in this parameter, Security Hub applies the rule
-#' action to the finding.
+#' that Security Hub uses to filter findings. If a rule is enabled and a
+#' finding matches the conditions specified in this parameter, Security Hub
+#' applies the rule action to the finding.
 #' @param Actions &#91;required&#93; One or more actions to update finding fields if a finding matches the
 #' conditions specified in `Criteria`.
 #'
@@ -847,7 +847,7 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
     name = "DescribeActionTargets",
     http_method = "POST",
     http_path = "/actionTargets/get",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActionTargets")
   )
   input <- .securityhub$describe_action_targets_input(ActionTargetArns = ActionTargetArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_action_targets_output()
@@ -942,7 +942,7 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
     name = "DescribeProducts",
     http_method = "GET",
     http_path = "/products",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Products")
   )
   input <- .securityhub$describe_products_input(NextToken = NextToken, MaxResults = MaxResults, ProductArn = ProductArn)
   output <- .securityhub$describe_products_output()
@@ -978,7 +978,7 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
     name = "DescribeStandards",
     http_method = "GET",
     http_path = "/standards",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Standards")
   )
   input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_standards_output()
@@ -1018,7 +1018,7 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
     name = "DescribeStandardsControls",
     http_method = "GET",
     http_path = "/standards/controls/{StandardsSubscriptionArn+}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Controls")
   )
   input <- .securityhub$describe_standards_controls_input(StandardsSubscriptionArn = StandardsSubscriptionArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_standards_controls_output()
@@ -1364,7 +1364,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     name = "GetEnabledStandards",
     http_method = "POST",
     http_path = "/standards/get",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsSubscriptions")
   )
   input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_enabled_standards_output()
@@ -1469,7 +1469,7 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
     name = "GetFindingHistory",
     http_method = "POST",
     http_path = "/findingHistory/get",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Records")
   )
   input <- .securityhub$get_finding_history_input(FindingIdentifier = FindingIdentifier, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_finding_history_output()
@@ -1515,7 +1515,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
     name = "GetFindings",
     http_method = "POST",
     http_path = "/findings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings")
   )
   input <- .securityhub$get_findings_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_findings_output()
@@ -1584,7 +1584,7 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
     name = "GetInsights",
     http_method = "POST",
     http_path = "/insights/get",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Insights")
   )
   input <- .securityhub$get_insights_input(InsightArns = InsightArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_insights_output()
@@ -1773,7 +1773,7 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
     name = "ListEnabledProductsForImport",
     http_method = "GET",
     http_path = "/productSubscriptions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductSubscriptions")
   )
   input <- .securityhub$list_enabled_products_for_import_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_enabled_products_for_import_output()
@@ -1806,7 +1806,7 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
     name = "ListFindingAggregators",
     http_method = "GET",
     http_path = "/findingAggregator/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FindingAggregators")
   )
   input <- .securityhub$list_finding_aggregators_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_finding_aggregators_output()
@@ -1843,7 +1843,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations")
   )
   input <- .securityhub$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_invitations_output()
@@ -1890,7 +1890,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
     name = "ListMembers",
     http_method = "GET",
     http_path = "/members",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members")
   )
   input <- .securityhub$list_members_input(OnlyAssociated = OnlyAssociated, MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_members_output()
@@ -1924,7 +1924,7 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/organization/admin",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts")
   )
   input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_organization_admin_accounts_output()
@@ -1961,7 +1961,7 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
     name = "ListSecurityControlDefinitions",
     http_method = "GET",
     http_path = "/securityControls/definitions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecurityControlDefinitions")
   )
   input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_security_control_definitions_output()
@@ -2002,7 +2002,7 @@ securityhub_list_standards_control_associations <- function(SecurityControlId, N
     name = "ListStandardsControlAssociations",
     http_method = "GET",
     http_path = "/associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsControlAssociationSummaries")
   )
   input <- .securityhub$list_standards_control_associations_input(SecurityControlId = SecurityControlId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_standards_control_associations_output()

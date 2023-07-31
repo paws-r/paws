@@ -1,6 +1,6 @@
 Package: paws.application.integration
 Title: 'Amazon Web Services' Application Integration Services
-Version: 0.3.1
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -15,7 +15,7 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.common (>= 0.5.4)
+    paws.common (>= 0.5.9)
 Suggests: 
     testthat
 Encoding: UTF-8
@@ -34,6 +34,7 @@ Collate:
     'mwaa_service.R'
     'mwaa_interfaces.R'
     'mwaa_operations.R'
+    'reexports_paws.common.R'
     'schemas_service.R'
     'schemas_interfaces.R'
     'schemas_operations.R'

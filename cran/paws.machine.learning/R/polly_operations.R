@@ -189,7 +189,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
     name = "ListSpeechSynthesisTasks",
     http_method = "GET",
     http_path = "/v1/synthesisTasks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .polly$list_speech_synthesis_tasks_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
   output <- .polly$list_speech_synthesis_tasks_output()

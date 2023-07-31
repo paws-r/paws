@@ -12,7 +12,9 @@ s3_list_object_versions(
   MaxKeys = NULL,
   Prefix = NULL,
   VersionIdMarker = NULL,
-  ExpectedBucketOwner = NULL
+  ExpectedBucketOwner = NULL,
+  RequestPayer = NULL,
+  OptionalObjectAttributes = NULL
 )
 }
 \arguments{
@@ -21,33 +23,38 @@ s3_list_object_versions(
 \item{Delimiter}{A delimiter is a character that you specify to group keys. All keys that
 contain the same string between the \code{prefix} and the first occurrence of
 the delimiter are grouped under a single result element in
-CommonPrefixes. These groups are counted as one result against the
-max-keys limitation. These keys are not returned elsewhere in the
+\code{CommonPrefixes}. These groups are counted as one result against the
+\code{max-keys} limitation. These keys are not returned elsewhere in the
 response.}
 
 \item{EncodingType}{}
 
 \item{KeyMarker}{Specifies the key to start with when listing objects in a bucket.}
 
-\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-action returns up to 1,000 key names. The response might contain fewer
-keys but will never contain more. If additional keys satisfy the search
-criteria, but were not returned because max-keys was exceeded, the
-response contains \<isTruncated\>true\</isTruncated\>. To return the
-additional keys, see key-marker and version-id-marker.}
+\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default,
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more. If additional keys satisfy the
+search criteria, but were not returned because \code{max-keys} was exceeded,
+the response contains \verb{<isTruncated>true</isTruncated>}. To return the
+additional keys, see \code{key-marker} and \code{version-id-marker}.}
 
 \item{Prefix}{Use this parameter to select only those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
-different groupings of keys. (You can think of using prefix to make
-groups in the same way you'd use a folder in a file system.) You can use
-prefix with delimiter to roll up numerous objects into a single result
-under CommonPrefixes.}
+different groupings of keys. (You can think of using \code{prefix} to make
+groups in the same way that you'd use a folder in a file system.) You
+can use \code{prefix} with \code{delimiter} to roll up numerous objects into a
+single result under \code{CommonPrefixes}.}
 
 \item{VersionIdMarker}{Specifies the object version you want to start listing from.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
+
+\item{RequestPayer}{}
+
+\item{OptionalObjectAttributes}{Specifies the optional fields that you want returned in the response.
+Fields that you do not specify are not returned.}
 }
 \description{
 Returns metadata about all versions of the objects in a bucket. You can also use request parameters as selection criteria to return metadata about a subset of all the object versions.

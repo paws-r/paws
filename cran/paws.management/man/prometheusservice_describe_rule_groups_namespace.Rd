@@ -4,12 +4,12 @@
 \alias{prometheusservice_describe_rule_groups_namespace}
 \title{Describe a rule groups namespace}
 \usage{
-prometheusservice_describe_rule_groups_namespace(name, workspaceId)
+prometheusservice_describe_rule_groups_namespace(workspaceId, name)
 }
 \arguments{
-\item{name}{[required] The rule groups namespace.}
-
 \item{workspaceId}{[required] The ID of the workspace to describe.}
+
+\item{name}{[required] The rule groups namespace.}
 }
 \description{
 Describe a rule groups namespace.

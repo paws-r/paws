@@ -260,7 +260,7 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
     name = "DescribeImageTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageTagDetails")
   )
   input <- .ecrpublic$describe_image_tags_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_image_tags_output()
@@ -313,7 +313,7 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageDetails")
   )
   input <- .ecrpublic$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_images_output()
@@ -362,7 +362,7 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
     name = "DescribeRegistries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "registries")
   )
   input <- .ecrpublic$describe_registries_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_registries_output()
@@ -419,7 +419,7 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
     name = "DescribeRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "repositories")
   )
   input <- .ecrpublic$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_repositories_output()

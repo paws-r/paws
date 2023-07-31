@@ -36,7 +36,7 @@ You cannot specify this parameter if the association type is
 \item{principal}{Specifies the ID of the principal whose resource shares you want to
 retrieve. This can be an Amazon Web Services account ID, an organization
 ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of an individual IAM user or role.
+of an individual IAM role or user.
 
 You cannot specify this parameter if the association type is \code{RESOURCE}.}
 

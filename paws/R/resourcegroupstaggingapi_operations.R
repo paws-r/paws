@@ -175,7 +175,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
     name = "GetComplianceSummary",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList")
   )
   input <- .resourcegroupstaggingapi$get_compliance_summary_input(TargetIdFilters = TargetIdFilters, RegionFilters = RegionFilters, ResourceTypeFilters = ResourceTypeFilters, TagKeyFilters = TagKeyFilters, GroupBy = GroupBy, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_compliance_summary_output()
@@ -393,7 +393,7 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
     name = "GetResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList")
   )
   input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters, IncludeComplianceDetails = IncludeComplianceDetails, ExcludeCompliantResources = ExcludeCompliantResources, ResourceARNList = ResourceARNList)
   output <- .resourcegroupstaggingapi$get_resources_output()
@@ -455,7 +455,7 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
     name = "GetTagKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys")
   )
   input <- .resourcegroupstaggingapi$get_tag_keys_input(PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_tag_keys_output()
@@ -521,7 +521,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
     name = "GetTagValues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues")
   )
   input <- .resourcegroupstaggingapi$get_tag_values_input(PaginationToken = PaginationToken, Key = Key)
   output <- .resourcegroupstaggingapi$get_tag_values_output()

@@ -1849,7 +1849,7 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
     name = "DescribeModelVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$describe_model_versions_input(modelId = modelId, modelVersionNumber = modelVersionNumber, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$describe_model_versions_output()
@@ -1923,7 +1923,7 @@ frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL,
     name = "GetBatchImportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_batch_import_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_import_jobs_output()
@@ -1999,7 +1999,7 @@ frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = N
     name = "GetBatchPredictionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_batch_prediction_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_prediction_jobs_output()
@@ -2190,7 +2190,7 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
     name = "GetDetectors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_detectors_input(detectorId = detectorId, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_detectors_output()
@@ -2256,7 +2256,7 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
     name = "GetEntityTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_entity_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_entity_types_output()
@@ -2683,7 +2683,7 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
     name = "GetEventTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_event_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_event_types_output()
@@ -2768,7 +2768,7 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
     name = "GetExternalModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_external_models_input(modelEndpoint = modelEndpoint, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_external_models_output()
@@ -2879,7 +2879,7 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
     name = "GetLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_labels_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_labels_output()
@@ -2933,7 +2933,7 @@ frauddetector_get_list_elements <- function(name, nextToken = NULL, maxResults =
     name = "GetListElements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_list_elements_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_list_elements_output()
@@ -2996,7 +2996,7 @@ frauddetector_get_lists_metadata <- function(name = NULL, nextToken = NULL, maxR
     name = "GetListsMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_lists_metadata_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_lists_metadata_output()
@@ -3149,7 +3149,7 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
     name = "GetModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_models_input(modelId = modelId, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_models_output()
@@ -3214,7 +3214,7 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
     name = "GetOutcomes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_outcomes_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_outcomes_output()
@@ -3296,7 +3296,7 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
     name = "GetRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_rules_input(ruleId = ruleId, detectorId = detectorId, ruleVersion = ruleVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_rules_output()
@@ -3365,7 +3365,7 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
     name = "GetVariables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_variables_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_variables_output()
@@ -3460,7 +3460,7 @@ frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NUL
     name = "ListEventPredictions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$list_event_predictions_input(eventId = eventId, eventType = eventType, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimeRange = predictionTimeRange, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_event_predictions_output()
@@ -3520,7 +3520,7 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$list_tags_for_resource_input(resourceARN = resourceARN, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_tags_for_resource_output()

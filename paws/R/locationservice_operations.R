@@ -421,6 +421,9 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 #'   Entries = list(
 #'     list(
 #'       GeofenceId = "string",
+#'       GeofenceProperties = list(
+#'         "string"
+#'       ),
 #'       Geometry = list(
 #'         Circle = list(
 #'           Center = list(
@@ -464,13 +467,13 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 .locationservice$operations$batch_put_geofence <- locationservice_batch_put_geofence
 
 #' Uploads position update data for one or more devices to a tracker
-#' resource
+#' resource (up to 10 devices per batch)
 #'
 #' @description
 #' Uploads position update data for one or more devices to a tracker
-#' resource. Amazon Location uses the data when it reports the last known
-#' device position and position history. Amazon Location retains location
-#' data for 30 days.
+#' resource (up to 10 devices per batch). Amazon Location uses the data
+#' when it reports the last known device position and position history.
+#' Amazon Location retains location data for 30 days.
 #' 
 #' Position updates are handled based on the `PositionFiltering` property
 #' of the tracker. When `PositionFiltering` is set to `TimeBased`, updates
@@ -497,7 +500,7 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 #' locationservice_batch_update_device_position(TrackerName, Updates)
 #'
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to update.
-#' @param Updates &#91;required&#93; Contains the position update details for each device.
+#' @param Updates &#91;required&#93; Contains the position update details for each device, up to 10 devices.
 #'
 #' @return
 #' A list with the following syntax:
@@ -602,7 +605,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @usage
 #' locationservice_calculate_route(CalculatorName, CarModeOptions,
 #'   DepartNow, DeparturePosition, DepartureTime, DestinationPosition,
-#'   DistanceUnit, IncludeLegGeometry, TravelMode, TruckModeOptions,
+#'   DistanceUnit, IncludeLegGeometry, Key, TravelMode, TruckModeOptions,
 #'   WaypointPositions)
 #'
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
@@ -663,6 +666,9 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' Default Value: `false`
 #' 
 #' Valid Values: `false` | `true`
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param TravelMode Specifies the mode of transport when calculating a route. Used in
 #' estimating the speed of travel and road compatibility. You can choose
 #' `Car`, `Truck`, `Walking`, `Bicycle` or `Motorcycle` as options for the
@@ -779,6 +785,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'   ),
 #'   DistanceUnit = "Kilometers"|"Miles",
 #'   IncludeLegGeometry = TRUE|FALSE,
+#'   Key = "string",
 #'   TravelMode = "Car"|"Truck"|"Walking"|"Bicycle"|"Motorcycle",
 #'   TruckModeOptions = list(
 #'     AvoidFerries = TRUE|FALSE,
@@ -807,14 +814,14 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @rdname locationservice_calculate_route
 #'
 #' @aliases locationservice_calculate_route
-locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePosition, DepartureTime = NULL, DestinationPosition, DistanceUnit = NULL, IncludeLegGeometry = NULL, TravelMode = NULL, TruckModeOptions = NULL, WaypointPositions = NULL) {
+locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePosition, DepartureTime = NULL, DestinationPosition, DistanceUnit = NULL, IncludeLegGeometry = NULL, Key = NULL, TravelMode = NULL, TruckModeOptions = NULL, WaypointPositions = NULL) {
   op <- new_operation(
     name = "CalculateRoute",
     http_method = "POST",
     http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route",
     paginator = list()
   )
-  input <- .locationservice$calculate_route_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePosition = DeparturePosition, DepartureTime = DepartureTime, DestinationPosition = DestinationPosition, DistanceUnit = DistanceUnit, IncludeLegGeometry = IncludeLegGeometry, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions, WaypointPositions = WaypointPositions)
+  input <- .locationservice$calculate_route_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePosition = DeparturePosition, DepartureTime = DepartureTime, DestinationPosition = DestinationPosition, DistanceUnit = DistanceUnit, IncludeLegGeometry = IncludeLegGeometry, Key = Key, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions, WaypointPositions = WaypointPositions)
   output <- .locationservice$calculate_route_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -873,7 +880,7 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' @usage
 #' locationservice_calculate_route_matrix(CalculatorName, CarModeOptions,
 #'   DepartNow, DeparturePositions, DepartureTime, DestinationPositions,
-#'   DistanceUnit, TravelMode, TruckModeOptions)
+#'   DistanceUnit, Key, TravelMode, TruckModeOptions)
 #'
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route matrix.
@@ -942,6 +949,9 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' @param DistanceUnit Set the unit system to specify the distance.
 #' 
 #' Default Value: `Kilometers`
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param TravelMode Specifies the mode of transport when calculating a route. Used in
 #' estimating the speed of travel and road compatibility.
 #' 
@@ -1026,6 +1036,7 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #'     )
 #'   ),
 #'   DistanceUnit = "Kilometers"|"Miles",
+#'   Key = "string",
 #'   TravelMode = "Car"|"Truck"|"Walking"|"Bicycle"|"Motorcycle",
 #'   TruckModeOptions = list(
 #'     AvoidFerries = TRUE|FALSE,
@@ -1049,14 +1060,14 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' @rdname locationservice_calculate_route_matrix
 #'
 #' @aliases locationservice_calculate_route_matrix
-locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePositions, DepartureTime = NULL, DestinationPositions, DistanceUnit = NULL, TravelMode = NULL, TruckModeOptions = NULL) {
+locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePositions, DepartureTime = NULL, DestinationPositions, DistanceUnit = NULL, Key = NULL, TravelMode = NULL, TruckModeOptions = NULL) {
   op <- new_operation(
     name = "CalculateRouteMatrix",
     http_method = "POST",
     http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route-matrix",
     paginator = list()
   )
-  input <- .locationservice$calculate_route_matrix_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePositions = DeparturePositions, DepartureTime = DepartureTime, DestinationPositions = DestinationPositions, DistanceUnit = DistanceUnit, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions)
+  input <- .locationservice$calculate_route_matrix_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePositions = DeparturePositions, DepartureTime = DepartureTime, DestinationPositions = DestinationPositions, DistanceUnit = DistanceUnit, Key = Key, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions)
   output <- .locationservice$calculate_route_matrix_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1162,17 +1173,15 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 .locationservice$operations$create_geofence_collection <- locationservice_create_geofence_collection
 
 #' Creates an API key resource in your Amazon Web Services account, which
-#' lets you grant geo:GetMap* actions for Amazon Location Map resources to
-#' the API key bearer
+#' lets you grant actions for Amazon Location resources to the API key
+#' bearer
 #'
 #' @description
 #' Creates an API key resource in your Amazon Web Services account, which
-#' lets you grant `geo:GetMap*` actions for Amazon Location Map resources
-#' to the API key bearer.
+#' lets you grant actions for Amazon Location resources to the API key
+#' bearer.
 #' 
-#' The API keys feature is in preview. We may add, change, or remove
-#' features before announcing general availability. For more information,
-#' see [Using API
+#' For more information, see [Using API
 #' keys](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html).
 #'
 #' @usage
@@ -1664,10 +1673,17 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' lets you retrieve current and historical location of devices.
 #'
 #' @usage
-#' locationservice_create_tracker(Description, KmsKeyId, PositionFiltering,
-#'   PricingPlan, PricingPlanDataSource, Tags, TrackerName)
+#' locationservice_create_tracker(Description, EventBridgeEnabled,
+#'   KmsKeyId, PositionFiltering, PricingPlan, PricingPlanDataSource, Tags,
+#'   TrackerName)
 #'
 #' @param Description An optional description for the tracker resource.
+#' @param EventBridgeEnabled Whether to enable position `UPDATE` events from this tracker to be sent
+#' to EventBridge.
+#' 
+#' You do not need enable this feature to get `ENTER` and `EXIT` events for
+#' geofences with this tracker. Those events are always sent to
+#' EventBridge.
 #' @param KmsKeyId A key identifier for an [Amazon Web Services KMS customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 #' Enter a key ID, key ARN, alias name, or alias ARN.
@@ -1750,6 +1766,7 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' ```
 #' svc$create_tracker(
 #'   Description = "string",
+#'   EventBridgeEnabled = TRUE|FALSE,
 #'   KmsKeyId = "string",
 #'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
@@ -1766,14 +1783,14 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' @rdname locationservice_create_tracker
 #'
 #' @aliases locationservice_create_tracker
-locationservice_create_tracker <- function(Description = NULL, KmsKeyId = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL, TrackerName) {
+locationservice_create_tracker <- function(Description = NULL, EventBridgeEnabled = NULL, KmsKeyId = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL, TrackerName) {
   op <- new_operation(
     name = "CreateTracker",
     http_method = "POST",
     http_path = "/tracking/v0/trackers",
     paginator = list()
   )
-  input <- .locationservice$create_tracker_input(Description = Description, KmsKeyId = KmsKeyId, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Tags = Tags, TrackerName = TrackerName)
+  input <- .locationservice$create_tracker_input(Description = Description, EventBridgeEnabled = EventBridgeEnabled, KmsKeyId = KmsKeyId, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Tags = Tags, TrackerName = TrackerName)
   output <- .locationservice$create_tracker_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -2118,11 +2135,6 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
 #'
 #' @description
 #' Retrieves the API key resource details.
-#' 
-#' The API keys feature is in preview. We may add, change, or remove
-#' features before announcing general availability. For more information,
-#' see [Using API
-#' keys](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html).
 #'
 #' @usage
 #' locationservice_describe_key(KeyName)
@@ -2397,6 +2409,7 @@ locationservice_describe_route_calculator <- function(CalculatorName) {
 #'     "2015-01-01"
 #'   ),
 #'   Description = "string",
+#'   EventBridgeEnabled = TRUE|FALSE,
 #'   KmsKeyId = "string",
 #'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
@@ -2659,7 +2672,7 @@ locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusi
     name = "GetDevicePositionHistory",
     http_method = "POST",
     http_path = "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/list-positions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DevicePositions")
   )
   input <- .locationservice$get_device_position_history_input(DeviceId = DeviceId, EndTimeExclusive = EndTimeExclusive, MaxResults = MaxResults, NextToken = NextToken, StartTimeInclusive = StartTimeInclusive, TrackerName = TrackerName)
   output <- .locationservice$get_device_position_history_output()
@@ -2690,6 +2703,9 @@ locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusi
 #'     "2015-01-01"
 #'   ),
 #'   GeofenceId = "string",
+#'   GeofenceProperties = list(
+#'     "string"
+#'   ),
 #'   Geometry = list(
 #'     Circle = list(
 #'       Center = list(
@@ -3074,10 +3090,13 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #' -   Data provider specified in the place index resource
 #'
 #' @usage
-#' locationservice_get_place(IndexName, Language, PlaceId)
+#' locationservice_get_place(IndexName, Key, Language, PlaceId)
 #'
 #' @param IndexName &#91;required&#93; The name of the place index resource that you want to use for the
 #' search.
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param Language The preferred language used to return results. The value must be a valid
 #' BCP 47 language tag, for example, `en` for English.
 #' 
@@ -3103,6 +3122,9 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #' list(
 #'   Place = list(
 #'     AddressNumber = "string",
+#'     Categories = list(
+#'       "string"
+#'     ),
 #'     Country = "string",
 #'     Geometry = list(
 #'       Point = list(
@@ -3117,6 +3139,9 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #'     Region = "string",
 #'     Street = "string",
 #'     SubRegion = "string",
+#'     SupplementalCategories = list(
+#'       "string"
+#'     ),
 #'     TimeZone = list(
 #'       Name = "string",
 #'       Offset = 123
@@ -3131,6 +3156,7 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #' ```
 #' svc$get_place(
 #'   IndexName = "string",
+#'   Key = "string",
 #'   Language = "string",
 #'   PlaceId = "string"
 #' )
@@ -3141,14 +3167,14 @@ locationservice_get_map_tile <- function(Key = NULL, MapName, X, Y, Z) {
 #' @rdname locationservice_get_place
 #'
 #' @aliases locationservice_get_place
-locationservice_get_place <- function(IndexName, Language = NULL, PlaceId) {
+locationservice_get_place <- function(IndexName, Key = NULL, Language = NULL, PlaceId) {
   op <- new_operation(
     name = "GetPlace",
     http_method = "GET",
     http_path = "/places/v0/indexes/{IndexName}/places/{PlaceId}",
     paginator = list()
   )
-  input <- .locationservice$get_place_input(IndexName = IndexName, Language = Language, PlaceId = PlaceId)
+  input <- .locationservice$get_place_input(IndexName = IndexName, Key = Key, Language = Language, PlaceId = PlaceId)
   output <- .locationservice$get_place_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -3220,7 +3246,7 @@ locationservice_list_device_positions <- function(MaxResults = NULL, NextToken =
     name = "ListDevicePositions",
     http_method = "POST",
     http_path = "/tracking/v0/trackers/{TrackerName}/list-positions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_device_positions_input(MaxResults = MaxResults, NextToken = NextToken, TrackerName = TrackerName)
   output <- .locationservice$list_device_positions_output()
@@ -3288,7 +3314,7 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
     name = "ListGeofenceCollections",
     http_method = "POST",
     http_path = "/geofencing/v0/list-collections",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_geofence_collections_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_geofence_collections_output()
@@ -3327,6 +3353,9 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #'         "2015-01-01"
 #'       ),
 #'       GeofenceId = "string",
+#'       GeofenceProperties = list(
+#'         "string"
+#'       ),
 #'       Geometry = list(
 #'         Circle = list(
 #'           Center = list(
@@ -3371,7 +3400,7 @@ locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, Ne
     name = "ListGeofences",
     http_method = "POST",
     http_path = "/geofencing/v0/collections/{CollectionName}/list-geofences",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_geofences_input(CollectionName = CollectionName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_geofences_output()
@@ -3387,11 +3416,6 @@ locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, Ne
 #'
 #' @description
 #' Lists API key resources in your Amazon Web Services account.
-#' 
-#' The API keys feature is in preview. We may add, change, or remove
-#' features before announcing general availability. For more information,
-#' see [Using API
-#' keys](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html).
 #'
 #' @usage
 #' locationservice_list_keys(Filter, MaxResults, NextToken)
@@ -3460,7 +3484,7 @@ locationservice_list_keys <- function(Filter = NULL, MaxResults = NULL, NextToke
     name = "ListKeys",
     http_method = "POST",
     http_path = "/metadata/v0/list-keys",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_keys_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_keys_output()
@@ -3528,7 +3552,7 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListMaps",
     http_method = "POST",
     http_path = "/maps/v0/list-maps",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_maps_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_maps_output()
@@ -3597,7 +3621,7 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
     name = "ListPlaceIndexes",
     http_method = "POST",
     http_path = "/places/v0/list-indexes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_place_indexes_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_place_indexes_output()
@@ -3665,7 +3689,7 @@ locationservice_list_route_calculators <- function(MaxResults = NULL, NextToken 
     name = "ListRouteCalculators",
     http_method = "POST",
     http_path = "/routes/v0/list-calculators",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_route_calculators_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_route_calculators_output()
@@ -3783,7 +3807,7 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
     name = "ListTrackerConsumers",
     http_method = "POST",
     http_path = "/tracking/v0/trackers/{TrackerName}/list-consumers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConsumerArns")
   )
   input <- .locationservice$list_tracker_consumers_input(MaxResults = MaxResults, NextToken = NextToken, TrackerName = TrackerName)
   output <- .locationservice$list_tracker_consumers_output()
@@ -3851,7 +3875,7 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListTrackers",
     http_method = "POST",
     http_path = "/tracking/v0/list-trackers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
   input <- .locationservice$list_trackers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_trackers_output()
@@ -3873,10 +3897,16 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' request.
 #'
 #' @usage
-#' locationservice_put_geofence(CollectionName, GeofenceId, Geometry)
+#' locationservice_put_geofence(CollectionName, GeofenceId,
+#'   GeofenceProperties, Geometry)
 #'
 #' @param CollectionName &#91;required&#93; The geofence collection to store the geofence in.
 #' @param GeofenceId &#91;required&#93; An identifier for the geofence. For example, `ExampleGeofence-1`.
+#' @param GeofenceProperties Associates one of more properties with the geofence. A property is a
+#' key-value pair stored with the geofence and added to any geofence event
+#' triggered with that geofence.
+#' 
+#' Format: `"key" : "value"`
 #' @param Geometry &#91;required&#93; Contains the details to specify the position of the geofence. Can be
 #' either a polygon or a circle. Including both will return a validation
 #' error.
@@ -3904,6 +3934,9 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' svc$put_geofence(
 #'   CollectionName = "string",
 #'   GeofenceId = "string",
+#'   GeofenceProperties = list(
+#'     "string"
+#'   ),
 #'   Geometry = list(
 #'     Circle = list(
 #'       Center = list(
@@ -3927,14 +3960,14 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @rdname locationservice_put_geofence
 #'
 #' @aliases locationservice_put_geofence
-locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
+locationservice_put_geofence <- function(CollectionName, GeofenceId, GeofenceProperties = NULL, Geometry) {
   op <- new_operation(
     name = "PutGeofence",
     http_method = "PUT",
     http_path = "/geofencing/v0/collections/{CollectionName}/geofences/{GeofenceId}",
     paginator = list()
   )
-  input <- .locationservice$put_geofence_input(CollectionName = CollectionName, GeofenceId = GeofenceId, Geometry = Geometry)
+  input <- .locationservice$put_geofence_input(CollectionName = CollectionName, GeofenceId = GeofenceId, GeofenceProperties = GeofenceProperties, Geometry = Geometry)
   output <- .locationservice$put_geofence_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -3952,10 +3985,13 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' position.
 #'
 #' @usage
-#' locationservice_search_place_index_for_position(IndexName, Language,
-#'   MaxResults, Position)
+#' locationservice_search_place_index_for_position(IndexName, Key,
+#'   Language, MaxResults, Position)
 #'
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param Language The preferred language used to return results. The value must be a valid
 #' BCP 47 language tag, for example, `en` for English.
 #' 
@@ -3995,6 +4031,9 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #'       Distance = 123.0,
 #'       Place = list(
 #'         AddressNumber = "string",
+#'         Categories = list(
+#'           "string"
+#'         ),
 #'         Country = "string",
 #'         Geometry = list(
 #'           Point = list(
@@ -4009,6 +4048,9 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #'         Region = "string",
 #'         Street = "string",
 #'         SubRegion = "string",
+#'         SupplementalCategories = list(
+#'           "string"
+#'         ),
 #'         TimeZone = list(
 #'           Name = "string",
 #'           Offset = 123
@@ -4034,6 +4076,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' ```
 #' svc$search_place_index_for_position(
 #'   IndexName = "string",
+#'   Key = "string",
 #'   Language = "string",
 #'   MaxResults = 123,
 #'   Position = list(
@@ -4047,14 +4090,14 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' @rdname locationservice_search_place_index_for_position
 #'
 #' @aliases locationservice_search_place_index_for_position
-locationservice_search_place_index_for_position <- function(IndexName, Language = NULL, MaxResults = NULL, Position) {
+locationservice_search_place_index_for_position <- function(IndexName, Key = NULL, Language = NULL, MaxResults = NULL, Position) {
   op <- new_operation(
     name = "SearchPlaceIndexForPosition",
     http_method = "POST",
     http_path = "/places/v0/indexes/{IndexName}/search/position",
     paginator = list()
   )
-  input <- .locationservice$search_place_index_for_position_input(IndexName = IndexName, Language = Language, MaxResults = MaxResults, Position = Position)
+  input <- .locationservice$search_place_index_for_position_input(IndexName = IndexName, Key = Key, Language = Language, MaxResults = MaxResults, Position = Position)
   output <- .locationservice$search_place_index_for_position_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -4082,7 +4125,8 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'
 #' @usage
 #' locationservice_search_place_index_for_suggestions(BiasPosition,
-#'   FilterBBox, FilterCountries, IndexName, Language, MaxResults, Text)
+#'   FilterBBox, FilterCategories, FilterCountries, IndexName, Key, Language,
+#'   MaxResults, Text)
 #'
 #' @param BiasPosition An optional parameter that indicates a preference for place suggestions
 #' that are closer to a specified position.
@@ -4113,6 +4157,14 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #' 
 #' `FilterBBox` and `BiasPosition` are mutually exclusive. Specifying both
 #' options results in an error.
+#' @param FilterCategories A list of one or more Amazon Location categories to filter the returned
+#' places. If you include more than one category, the results will include
+#' results that match *any* of the categories listed.
+#' 
+#' For more information about using categories, including a list of Amazon
+#' Location categories, see [Categories and
+#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html),
+#' in the *Amazon Location Service Developer Guide*.
 #' @param FilterCountries An optional parameter that limits the search results by returning only
 #' suggestions within the provided list of countries.
 #' 
@@ -4120,6 +4172,9 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'     3-digit country code. For example, Australia uses three upper-case
 #'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param Language The preferred language used to return results. The value must be a valid
 #' BCP 47 language tag, for example, `en` for English.
 #' 
@@ -4150,7 +4205,13 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #' list(
 #'   Results = list(
 #'     list(
+#'       Categories = list(
+#'         "string"
+#'       ),
 #'       PlaceId = "string",
+#'       SupplementalCategories = list(
+#'         "string"
+#'       ),
 #'       Text = "string"
 #'     )
 #'   ),
@@ -4161,6 +4222,9 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'     DataSource = "string",
 #'     FilterBBox = list(
 #'       123.0
+#'     ),
+#'     FilterCategories = list(
+#'       "string"
 #'     ),
 #'     FilterCountries = list(
 #'       "string"
@@ -4181,10 +4245,14 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'   FilterBBox = list(
 #'     123.0
 #'   ),
+#'   FilterCategories = list(
+#'     "string"
+#'   ),
 #'   FilterCountries = list(
 #'     "string"
 #'   ),
 #'   IndexName = "string",
+#'   Key = "string",
 #'   Language = "string",
 #'   MaxResults = 123,
 #'   Text = "string"
@@ -4196,14 +4264,14 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #' @rdname locationservice_search_place_index_for_suggestions
 #'
 #' @aliases locationservice_search_place_index_for_suggestions
-locationservice_search_place_index_for_suggestions <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, Language = NULL, MaxResults = NULL, Text) {
+locationservice_search_place_index_for_suggestions <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCategories = NULL, FilterCountries = NULL, IndexName, Key = NULL, Language = NULL, MaxResults = NULL, Text) {
   op <- new_operation(
     name = "SearchPlaceIndexForSuggestions",
     http_method = "POST",
     http_path = "/places/v0/indexes/{IndexName}/search/suggestions",
     paginator = list()
   )
-  input <- .locationservice$search_place_index_for_suggestions_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, IndexName = IndexName, Language = Language, MaxResults = MaxResults, Text = Text)
+  input <- .locationservice$search_place_index_for_suggestions_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCategories = FilterCategories, FilterCountries = FilterCountries, IndexName = IndexName, Key = Key, Language = Language, MaxResults = MaxResults, Text = Text)
   output <- .locationservice$search_place_index_for_suggestions_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -4231,7 +4299,8 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'
 #' @usage
 #' locationservice_search_place_index_for_text(BiasPosition, FilterBBox,
-#'   FilterCountries, IndexName, Language, MaxResults, Text)
+#'   FilterCategories, FilterCountries, IndexName, Key, Language, MaxResults,
+#'   Text)
 #'
 #' @param BiasPosition An optional parameter that indicates a preference for places that are
 #' closer to a specified position.
@@ -4262,6 +4331,14 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #' 
 #' `FilterBBox` and `BiasPosition` are mutually exclusive. Specifying both
 #' options results in an error.
+#' @param FilterCategories A list of one or more Amazon Location categories to filter the returned
+#' places. If you include more than one category, the results will include
+#' results that match *any* of the categories listed.
+#' 
+#' For more information about using categories, including a list of Amazon
+#' Location categories, see [Categories and
+#' filtering](https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html),
+#' in the *Amazon Location Service Developer Guide*.
 #' @param FilterCountries An optional parameter that limits the search results by returning only
 #' places that are in a specified list of countries.
 #' 
@@ -4270,6 +4347,9 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'     country codes. For example, Australia uses three upper-case
 #'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
+#' @param Key The optional [API
+#' key](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html)
+#' to authorize the request.
 #' @param Language The preferred language used to return results. The value must be a valid
 #' BCP 47 language tag, for example, `en` for English.
 #' 
@@ -4303,6 +4383,9 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'       Distance = 123.0,
 #'       Place = list(
 #'         AddressNumber = "string",
+#'         Categories = list(
+#'           "string"
+#'         ),
 #'         Country = "string",
 #'         Geometry = list(
 #'           Point = list(
@@ -4317,6 +4400,9 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'         Region = "string",
 #'         Street = "string",
 #'         SubRegion = "string",
+#'         SupplementalCategories = list(
+#'           "string"
+#'         ),
 #'         TimeZone = list(
 #'           Name = "string",
 #'           Offset = 123
@@ -4335,6 +4421,9 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'     DataSource = "string",
 #'     FilterBBox = list(
 #'       123.0
+#'     ),
+#'     FilterCategories = list(
+#'       "string"
 #'     ),
 #'     FilterCountries = list(
 #'       "string"
@@ -4358,10 +4447,14 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'   FilterBBox = list(
 #'     123.0
 #'   ),
+#'   FilterCategories = list(
+#'     "string"
+#'   ),
 #'   FilterCountries = list(
 #'     "string"
 #'   ),
 #'   IndexName = "string",
+#'   Key = "string",
 #'   Language = "string",
 #'   MaxResults = 123,
 #'   Text = "string"
@@ -4373,14 +4466,14 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #' @rdname locationservice_search_place_index_for_text
 #'
 #' @aliases locationservice_search_place_index_for_text
-locationservice_search_place_index_for_text <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, Language = NULL, MaxResults = NULL, Text) {
+locationservice_search_place_index_for_text <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCategories = NULL, FilterCountries = NULL, IndexName, Key = NULL, Language = NULL, MaxResults = NULL, Text) {
   op <- new_operation(
     name = "SearchPlaceIndexForText",
     http_method = "POST",
     http_path = "/places/v0/indexes/{IndexName}/search/text",
     paginator = list()
   )
-  input <- .locationservice$search_place_index_for_text_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, IndexName = IndexName, Language = Language, MaxResults = MaxResults, Text = Text)
+  input <- .locationservice$search_place_index_for_text_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCategories = FilterCategories, FilterCountries = FilterCountries, IndexName = IndexName, Key = Key, Language = Language, MaxResults = MaxResults, Text = Text)
   output <- .locationservice$search_place_index_for_text_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -4587,11 +4680,6 @@ locationservice_update_geofence_collection <- function(CollectionName, Descripti
 #'
 #' @description
 #' Updates the specified properties of a given API key resource.
-#' 
-#' The API keys feature is in preview. We may add, change, or remove
-#' features before announcing general availability. For more information,
-#' see [Using API
-#' keys](https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html).
 #'
 #' @usage
 #' locationservice_update_key(Description, ExpireTime, ForceUpdate,
@@ -4859,10 +4947,16 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' Updates the specified properties of a given tracker resource.
 #'
 #' @usage
-#' locationservice_update_tracker(Description, PositionFiltering,
-#'   PricingPlan, PricingPlanDataSource, TrackerName)
+#' locationservice_update_tracker(Description, EventBridgeEnabled,
+#'   PositionFiltering, PricingPlan, PricingPlanDataSource, TrackerName)
 #'
 #' @param Description Updates the description for the tracker resource.
+#' @param EventBridgeEnabled Whether to enable position `UPDATE` events from this tracker to be sent
+#' to EventBridge.
+#' 
+#' You do not need enable this feature to get `ENTER` and `EXIT` events for
+#' geofences with this tracker. Those events are always sent to
+#' EventBridge.
 #' @param PositionFiltering Updates the position filtering for the tracker resource.
 #' 
 #' Valid values:
@@ -4910,6 +5004,7 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' ```
 #' svc$update_tracker(
 #'   Description = "string",
+#'   EventBridgeEnabled = TRUE|FALSE,
 #'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'   PricingPlanDataSource = "string",
@@ -4922,14 +5017,14 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' @rdname locationservice_update_tracker
 #'
 #' @aliases locationservice_update_tracker
-locationservice_update_tracker <- function(Description = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, TrackerName) {
+locationservice_update_tracker <- function(Description = NULL, EventBridgeEnabled = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, TrackerName) {
   op <- new_operation(
     name = "UpdateTracker",
     http_method = "PATCH",
     http_path = "/tracking/v0/trackers/{TrackerName}",
     paginator = list()
   )
-  input <- .locationservice$update_tracker_input(Description = Description, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, TrackerName = TrackerName)
+  input <- .locationservice$update_tracker_input(Description = Description, EventBridgeEnabled = EventBridgeEnabled, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, TrackerName = TrackerName)
   output <- .locationservice$update_tracker_output()
   config <- get_config()
   svc <- .locationservice$service(config)

@@ -605,6 +605,14 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               IP = list(),
 #'               LabelNamespace = list(
 #'                 Namespace = "string"
+#'               ),
+#'               UriPath = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -1845,6 +1853,14 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               IP = list(),
 #'               LabelNamespace = list(
 #'                 Namespace = "string"
+#'               ),
+#'               UriPath = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -2855,6 +2871,14 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               IP = list(),
 #'               LabelNamespace = list(
 #'                 Namespace = "string"
+#'               ),
+#'               UriPath = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -5363,6 +5387,14 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 IP = list(),
 #'                 LabelNamespace = list(
 #'                   Namespace = "string"
+#'                 ),
+#'                 UriPath = list(
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -6470,6 +6502,14 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 IP = list(),
 #'                 LabelNamespace = list(
 #'                   Namespace = "string"
+#'                 ),
+#'                 UriPath = list(
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -7318,6 +7358,14 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     IP = list(),
 #'                     LabelNamespace = list(
 #'                       Namespace = "string"
+#'                     ),
+#'                     UriPath = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -8150,6 +8198,14 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     IP = list(),
 #'                     LabelNamespace = list(
 #'                       Namespace = "string"
+#'                     ),
+#'                     UriPath = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -9101,6 +9157,14 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 IP = list(),
 #'                 LabelNamespace = list(
 #'                   Namespace = "string"
+#'                 ),
+#'                 UriPath = list(
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -9949,6 +10013,14 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     IP = list(),
 #'                     LabelNamespace = list(
 #'                       Namespace = "string"
+#'                     ),
+#'                     UriPath = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -10781,6 +10853,14 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     IP = list(),
 #'                     LabelNamespace = list(
 #'                       Namespace = "string"
+#'                     ),
+#'                     UriPath = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
 #'                     )
 #'                   )
 #'                 )
@@ -13733,6 +13813,14 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               IP = list(),
 #'               LabelNamespace = list(
 #'                 Namespace = "string"
+#'               ),
+#'               UriPath = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -14771,6 +14859,14 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               IP = list(),
 #'               LabelNamespace = list(
 #'                 Namespace = "string"
+#'               ),
+#'               UriPath = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )

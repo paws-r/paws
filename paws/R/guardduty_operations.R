@@ -566,14 +566,25 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' prerequisite for managing the associated member accounts either by
 #' invitation or through an organization.
 #' 
-#' When using `Create Members` as an organizations delegated administrator
-#' this action will enable GuardDuty in the added member accounts, with the
-#' exception of the organization delegated administrator account, which
-#' must enable GuardDuty prior to being added as a member.
+#' As a delegated administrator, using
+#' [`create_members`][guardduty_create_members] will enable GuardDuty in
+#' the added member accounts, with the exception of the organization
+#' delegated administrator account. A delegated administrator must enable
+#' GuardDuty prior to being added as a member.
 #' 
-#' If you are adding accounts by invitation, use this action after
-#' GuardDuty has bee enabled in potential member accounts and before using
-#' [`invite_members`][guardduty_invite_members].
+#' If you are adding accounts by invitation, before using
+#' [`invite_members`][guardduty_invite_members], use
+#' [`create_members`][guardduty_create_members] after GuardDuty has been
+#' enabled in potential member accounts.
+#' 
+#' If you disassociate a member from a GuardDuty delegated administrator,
+#' the member account details obtained from this API, including the
+#' associated email addresses, will be retained. This is done so that the
+#' delegated administrator can invoke the
+#' [`invite_members`][guardduty_invite_members] API without the need to
+#' invoke the CreateMembers API again. To remove the details associated
+#' with a member account, the delegated administrator must invoke the
+#' [`delete_members`][guardduty_delete_members] API.
 #'
 #' @usage
 #' guardduty_create_members(DetectorId, AccountDetails)
@@ -1325,7 +1336,7 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
     name = "DescribeMalwareScans",
     http_method = "POST",
     http_path = "/detector/{detectorId}/malware-scans",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scans")
   )
   input <- .guardduty$describe_malware_scans_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$describe_malware_scans_output()
@@ -1422,7 +1433,7 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
     name = "DescribeOrganizationConfiguration",
     http_method = "GET",
     http_path = "/detector/{detectorId}/admin",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$describe_organization_configuration_output()
@@ -1545,6 +1556,16 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' Disassociates the current GuardDuty member account from its
 #' administrator account.
 #' 
+#' When you disassociate an invited member from a GuardDuty delegated
+#' administrator, the member account details obtained from the
+#' [`create_members`][guardduty_create_members] API, including the
+#' associated email addresses, are retained. This is done so that the
+#' delegated administrator can invoke the
+#' [`invite_members`][guardduty_invite_members] API without the need to
+#' invoke the CreateMembers API again. To remove the details associated
+#' with a member account, the delegated administrator must invoke the
+#' [`delete_members`][guardduty_delete_members] API.
+#' 
 #' With `autoEnableOrganizationMembers` configuration for your organization
 #' set to `ALL`, you'll receive an error if you attempt to disable
 #' GuardDuty in a member account.
@@ -1592,6 +1613,16 @@ guardduty_disassociate_from_administrator_account <- function(DetectorId) {
 #' @description
 #' Disassociates the current GuardDuty member account from its
 #' administrator account.
+#' 
+#' When you disassociate an invited member from a GuardDuty delegated
+#' administrator, the member account details obtained from the
+#' [`create_members`][guardduty_create_members] API, including the
+#' associated email addresses, are retained. This is done so that the
+#' delegated administrator can invoke the
+#' [`invite_members`][guardduty_invite_members] API without the need to
+#' invoke the CreateMembers API again. To remove the details associated
+#' with a member account, the delegated administrator must invoke the
+#' [`delete_members`][guardduty_delete_members] API.
 #'
 #' @usage
 #' guardduty_disassociate_from_master_account(DetectorId)
@@ -1630,12 +1661,22 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 }
 .guardduty$operations$disassociate_from_master_account <- guardduty_disassociate_from_master_account
 
-#' Disassociates GuardDuty member accounts (to the current administrator
+#' Disassociates GuardDuty member accounts (from the current administrator
 #' account) specified by the account IDs
 #'
 #' @description
-#' Disassociates GuardDuty member accounts (to the current administrator
+#' Disassociates GuardDuty member accounts (from the current administrator
 #' account) specified by the account IDs.
+#' 
+#' When you disassociate an invited member from a GuardDuty delegated
+#' administrator, the member account details obtained from the
+#' [`create_members`][guardduty_create_members] API, including the
+#' associated email addresses, are retained. This is done so that the
+#' delegated administrator can invoke the
+#' [`invite_members`][guardduty_invite_members] API without the need to
+#' invoke the CreateMembers API again. To remove the details associated
+#' with a member account, the delegated administrator must invoke the
+#' [`delete_members`][guardduty_delete_members] API.
 #' 
 #' With `autoEnableOrganizationMembers` configuration for your organization
 #' set to `ALL`, you'll receive an error if you attempt to disassociate a
@@ -2219,6 +2260,9 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             Username = "string",
 #'             Uid = "string",
 #'             Groups = list(
+#'               "string"
+#'             ),
+#'             SessionName = list(
 #'               "string"
 #'             )
 #'           ),
@@ -3588,7 +3632,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/detector/{detectorId}/usage/statistics",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$get_usage_statistics_input(DetectorId = DetectorId, UsageStatisticType = UsageStatisticType, UsageCriteria = UsageCriteria, Unit = Unit, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$get_usage_statistics_output()
@@ -3600,18 +3644,37 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 }
 .guardduty$operations$get_usage_statistics <- guardduty_get_usage_statistics
 
-#' Invites other Amazon Web Services accounts (created as members of the
-#' current Amazon Web Services account by CreateMembers) to enable
-#' GuardDuty, and allow the current Amazon Web Services account to view and
-#' manage these accounts' findings on their behalf as the GuardDuty
-#' administrator account
+#' Invites Amazon Web Services accounts to become members of an
+#' organization administered by the Amazon Web Services account that
+#' invokes this API
 #'
 #' @description
-#' Invites other Amazon Web Services accounts (created as members of the
-#' current Amazon Web Services account by CreateMembers) to enable
-#' GuardDuty, and allow the current Amazon Web Services account to view and
-#' manage these accounts' findings on their behalf as the GuardDuty
-#' administrator account.
+#' Invites Amazon Web Services accounts to become members of an
+#' organization administered by the Amazon Web Services account that
+#' invokes this API. If you are using Amazon Web Services Organizations to
+#' manager your GuardDuty environment, this step is not needed. For more
+#' information, see [Managing accounts with Amazon Web Services
+#' Organizations](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
+#' 
+#' To invite Amazon Web Services accounts, the first step is to ensure that
+#' GuardDuty has been enabled in the potential member accounts. You can now
+#' invoke this API to add accounts by invitation. The invited accounts can
+#' either accept or decline the invitation from their GuardDuty accounts.
+#' Each invited Amazon Web Services account can choose to accept the
+#' invitation from only one Amazon Web Services account. For more
+#' information, see [Managing GuardDuty accounts by
+#' invitation](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_invitations.html).
+#' 
+#' After the invite has been accepted and you choose to disassociate a
+#' member account (by using
+#' [`disassociate_members`][guardduty_disassociate_members]) from your
+#' account, the details of the member account obtained by invoking
+#' [`create_members`][guardduty_create_members], including the associated
+#' email addresses, will be retained. This is done so that you can invoke
+#' InviteMembers without the need to invoke
+#' [`create_members`][guardduty_create_members] again. To remove the
+#' details associated with a member account, you must also invoke
+#' [`delete_members`][guardduty_delete_members].
 #'
 #' @usage
 #' guardduty_invite_members(DetectorId, AccountIds,
@@ -3768,7 +3831,7 @@ guardduty_list_coverage <- function(DetectorId, NextToken = NULL, MaxResults = N
     name = "ListCoverage",
     http_method = "POST",
     http_path = "/detector/{detectorId}/coverage",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources")
   )
   input <- .guardduty$list_coverage_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .guardduty$list_coverage_output()
@@ -3827,7 +3890,7 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListDetectors",
     http_method = "GET",
     http_path = "/detector",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DetectorIds")
   )
   input <- .guardduty$list_detectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_detectors_output()
@@ -3886,7 +3949,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListFilters",
     http_method = "GET",
     http_path = "/detector/{detectorId}/filter",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FilterNames")
   )
   input <- .guardduty$list_filters_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_filters_output()
@@ -4082,7 +4145,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
     name = "ListFindings",
     http_method = "POST",
     http_path = "/detector/{detectorId}/findings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FindingIds")
   )
   input <- .guardduty$list_findings_input(DetectorId = DetectorId, FindingCriteria = FindingCriteria, SortCriteria = SortCriteria, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_findings_output()
@@ -4142,7 +4205,7 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListIPSets",
     http_method = "GET",
     http_path = "/detector/{detectorId}/ipset",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpSetIds")
   )
   input <- .guardduty$list_ip_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_ip_sets_output()
@@ -4206,7 +4269,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitation",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations")
   )
   input <- .guardduty$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_invitations_output()
@@ -4283,7 +4346,7 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
     name = "ListMembers",
     http_method = "GET",
     http_path = "/detector/{detectorId}/member",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members")
   )
   input <- .guardduty$list_members_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken, OnlyAssociated = OnlyAssociated)
   output <- .guardduty$list_members_output()
@@ -4341,7 +4404,7 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/admin",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts")
   )
   input <- .guardduty$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_organization_admin_accounts_output()
@@ -4405,7 +4468,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
     name = "ListPublishingDestinations",
     http_method = "GET",
     http_path = "/detector/{detectorId}/publishingDestination",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .guardduty$list_publishing_destinations_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_publishing_destinations_output()
@@ -4421,9 +4484,9 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #'
 #' @description
 #' Lists tags for a resource. Tagging is currently supported for detectors,
-#' finding filters, IP sets, and threat intel sets, with a limit of 50 tags
-#' per resource. When invoked, this operation returns all assigned tags for
-#' a given resource.
+#' finding filters, IP sets, threat intel sets, publishing destination,
+#' with a limit of 50 tags per resource. When invoked, this operation
+#' returns all assigned tags for a given resource.
 #'
 #' @usage
 #' guardduty_list_tags_for_resource(ResourceArn)
@@ -4521,7 +4584,7 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
     name = "ListThreatIntelSets",
     http_method = "GET",
     http_path = "/detector/{detectorId}/threatintelset",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ThreatIntelSetIds")
   )
   input <- .guardduty$list_threat_intel_sets_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .guardduty$list_threat_intel_sets_output()

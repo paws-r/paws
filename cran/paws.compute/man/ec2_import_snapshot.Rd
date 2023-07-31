@@ -44,11 +44,7 @@ must also be set.
 The KMS key identifier may be provided in any of the following formats:
 \itemize{
 \item Key ID
-\item Key alias. The alias ARN contains the \code{arn:aws:kms} namespace,
-followed by the Region of the key, the Amazon Web Services account
-ID of the key owner, the \code{alias} namespace, and then the key alias.
-For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
+\item Key alias
 \item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
 followed by the Region of the key, the Amazon Web Services account
 ID of the key owner, the \code{key} namespace, and then the key ID. For

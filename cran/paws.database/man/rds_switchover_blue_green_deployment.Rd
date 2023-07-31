@@ -10,15 +10,16 @@ rds_switchover_blue_green_deployment(
 )
 }
 \arguments{
-\item{BlueGreenDeploymentIdentifier}{[required] The blue/green deployment identifier.
+\item{BlueGreenDeploymentIdentifier}{[required] The unique identifier of the blue/green deployment.
 
 Constraints:
 \itemize{
 \item Must match an existing blue/green deployment identifier.
 }}
 
-\item{SwitchoverTimeout}{The amount of time, in seconds, for the switchover to complete. The
-default is 300.
+\item{SwitchoverTimeout}{The amount of time, in seconds, for the switchover to complete.
+
+Default: 300
 
 If the switchover takes longer than the specified duration, then any
 changes are rolled back, and no changes are made to the environments.}

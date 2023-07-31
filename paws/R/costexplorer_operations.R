@@ -3129,6 +3129,95 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 }
 .costexplorer$operations$get_rightsizing_recommendation <- costexplorer_get_rightsizing_recommendation
 
+#' Retrieves the details for a Savings Plan recommendation
+#'
+#' @description
+#' Retrieves the details for a Savings Plan recommendation. These details
+#' include the hourly data-points that construct the new cost, coverage,
+#' and utilization charts.
+#'
+#' @usage
+#' costexplorer_get_savings_plan_purchase_recommendation_details(
+#'   RecommendationDetailId)
+#'
+#' @param RecommendationDetailId &#91;required&#93; The ID that is associated with the Savings Plan recommendation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecommendationDetailId = "string",
+#'   RecommendationDetailData = list(
+#'     AccountScope = "PAYER"|"LINKED",
+#'     LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
+#'     SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'     TermInYears = "ONE_YEAR"|"THREE_YEARS",
+#'     PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+#'     AccountId = "string",
+#'     CurrencyCode = "string",
+#'     InstanceFamily = "string",
+#'     Region = "string",
+#'     OfferingId = "string",
+#'     GenerationTimestamp = "string",
+#'     LatestUsageTimestamp = "string",
+#'     CurrentAverageHourlyOnDemandSpend = "string",
+#'     CurrentMaximumHourlyOnDemandSpend = "string",
+#'     CurrentMinimumHourlyOnDemandSpend = "string",
+#'     EstimatedAverageUtilization = "string",
+#'     EstimatedMonthlySavingsAmount = "string",
+#'     EstimatedOnDemandCost = "string",
+#'     EstimatedOnDemandCostWithCurrentCommitment = "string",
+#'     EstimatedROI = "string",
+#'     EstimatedSPCost = "string",
+#'     EstimatedSavingsAmount = "string",
+#'     EstimatedSavingsPercentage = "string",
+#'     ExistingHourlyCommitment = "string",
+#'     HourlyCommitmentToPurchase = "string",
+#'     UpfrontCost = "string",
+#'     CurrentAverageCoverage = "string",
+#'     EstimatedAverageCoverage = "string",
+#'     MetricsOverLookbackPeriod = list(
+#'       list(
+#'         StartTime = "string",
+#'         EstimatedOnDemandCost = "string",
+#'         CurrentCoverage = "string",
+#'         EstimatedCoverage = "string",
+#'         EstimatedNewCommitmentUtilization = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_savings_plan_purchase_recommendation_details(
+#'   RecommendationDetailId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_saving_plan_purcha_recomm_detail
+#'
+#' @aliases costexplorer_get_savings_plan_purchase_recommendation_details
+costexplorer_get_savings_plan_purchase_recommendation_details <- function(RecommendationDetailId) {
+  op <- new_operation(
+    name = "GetSavingsPlanPurchaseRecommendationDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$get_savings_plan_purchase_recommendation_details_input(RecommendationDetailId = RecommendationDetailId)
+  output <- .costexplorer$get_savings_plan_purchase_recommendation_details_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_savings_plan_purchase_recommendation_details <- costexplorer_get_savings_plan_purchase_recommendation_details
+
 #' Retrieves the Savings Plans covered for your account
 #'
 #' @description
@@ -3309,7 +3398,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
     name = "GetSavingsPlansCoverage",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$get_savings_plans_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_coverage_output()
@@ -3399,7 +3488,8 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #'         EstimatedMonthlySavingsAmount = "string",
 #'         CurrentMinimumHourlyOnDemandSpend = "string",
 #'         CurrentMaximumHourlyOnDemandSpend = "string",
-#'         CurrentAverageHourlyOnDemandSpend = "string"
+#'         CurrentAverageHourlyOnDemandSpend = "string",
+#'         RecommendationDetailId = "string"
 #'       )
 #'     ),
 #'     SavingsPlansPurchaseRecommendationSummary = list(
@@ -3859,7 +3949,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
     name = "GetSavingsPlansUtilizationDetails",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$get_savings_plans_utilization_details_input(TimePeriod = TimePeriod, Filter = Filter, DataType = DataType, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_details_output()
@@ -4259,7 +4349,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
     name = "ListCostAllocationTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_allocation_tags_input(Status = Status, TagKeys = TagKeys, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tags_output()
@@ -4342,7 +4432,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     name = "ListCostCategoryDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_category_definitions_output()
@@ -4767,10 +4857,16 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 }
 .costexplorer$operations$update_anomaly_monitor <- costexplorer_update_anomaly_monitor
 
-#' Updates an existing cost anomaly monitor subscription
+#' Updates an existing cost anomaly subscription
 #'
 #' @description
-#' Updates an existing cost anomaly monitor subscription.
+#' Updates an existing cost anomaly subscription. Specify the fields that
+#' you want to update. Omitted fields are unchanged.
+#' 
+#' The JSON below describes the generic construct for each type. See
+#' [Request
+#' Parameters](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_UpdateAnomalySubscription.html#API_UpdateAnomalySubscription_RequestParameters)
+#' for possible values as they apply to `AnomalySubscription`.
 #'
 #' @usage
 #' costexplorer_update_anomaly_subscription(SubscriptionArn, Threshold,
@@ -4785,6 +4881,8 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' This field has been deprecated. To update a threshold, use
 #' ThresholdExpression. Continued use of Threshold will be treated as
 #' shorthand syntax for a ThresholdExpression.
+#' 
+#' You can specify either Threshold or ThresholdExpression, but not both.
 #' @param Frequency The update to the frequency value that subscribers receive
 #' notifications.
 #' @param MonitorArnList A list of cost anomaly monitor ARNs.
@@ -4795,9 +4893,14 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' object used to specify the anomalies that you want to generate alerts
 #' for. This supports dimensions and nested expressions. The supported
 #' dimensions are `ANOMALY_TOTAL_IMPACT_ABSOLUTE` and
-#' `ANOMALY_TOTAL_IMPACT_PERCENTAGE`. The supported nested expression types
-#' are `AND` and `OR`. The match option `GREATER_THAN_OR_EQUAL` is
-#' required. Values must be numbers between 0 and 10,000,000,000.
+#' `ANOMALY_TOTAL_IMPACT_PERCENTAGE`, corresponding to an anomaly’s
+#' TotalImpact and TotalImpactPercentage, respectively (see
+#' [Impact](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Impact.html)
+#' for more details). The supported nested expression types are `AND` and
+#' `OR`. The match option `GREATER_THAN_OR_EQUAL` is required. Values must
+#' be numbers between 0 and 10,000,000,000 in string format.
+#' 
+#' You can specify either Threshold or ThresholdExpression, but not both.
 #' 
 #' The following are examples of valid ThresholdExpressions:
 #' 

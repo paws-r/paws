@@ -8,7 +8,8 @@ applicationinsights_list_log_patterns(
   ResourceGroupName,
   PatternSetName = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  AccountId = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ the remaining results, make another call with the returned \code{NextToken}
 value.}
 
 \item{NextToken}{The token to request the next page of results.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Lists the log patterns in the specific log \code{LogPatternSet}.

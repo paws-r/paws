@@ -328,6 +328,11 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' set when you created it. For more information about reusable delegation
 #' sets, see
 #' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
+#' 
+#' If you are using a reusable delegation set to create a public hosted
+#' zone for a subdomain, make sure that the parent hosted zone doesn't use
+#' one or more of the same name servers. If you have overlapping
+#' nameservers, the operation will cause a `ConflictingDomainsExist` error.
 #'
 #' @keywords internal
 #'
@@ -1675,7 +1680,7 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
     name = "ListCidrBlocks",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks")
   )
   input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_blocks_output()
@@ -1710,7 +1715,7 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListCidrCollections",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections")
   )
   input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_collections_output()
@@ -1747,7 +1752,7 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
     name = "ListCidrLocations",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations")
   )
   input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_locations_output()
@@ -1846,7 +1851,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListHealthChecks",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks")
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_health_checks_output()
@@ -1893,7 +1898,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     name = "ListHostedZones",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones")
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId)
   output <- .route53$list_hosted_zones_output()
@@ -2052,7 +2057,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
     name = "ListQueryLoggingConfigs",
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs")
   )
   input <- .route53$list_query_logging_configs_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_query_logging_configs_output()
@@ -2125,7 +2130,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     name = "ListResourceRecordSets",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
-    paginator = list()
+    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets")
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
   output <- .route53$list_resource_record_sets_output()
@@ -3010,11 +3015,12 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 }
 .route53$operations$update_traffic_policy_comment <- route53_update_traffic_policy_comment
 
-#' Updates the resource record sets in a specified hosted zone that were
-#' created based on the settings in a specified traffic policy version
+#' After you submit a UpdateTrafficPolicyInstance request, there's a brief
+#' delay while Route 53 creates the resource record sets that are specified
+#' in the traffic policy definition
 #'
 #' @description
-#' Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
+#' After you submit a [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition. Use [`get_traffic_policy_instance`][route53_get_traffic_policy_instance] with the `id` of updated traffic policy instance confirm that the [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request completed successfully. For more information, see the `State` response element.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/) for full documentation.
 #'

@@ -1926,7 +1926,7 @@ fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResult
     name = "ListAdminAccountsForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts")
   )
   input <- .fms$list_admin_accounts_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admin_accounts_for_organization_output()
@@ -1990,7 +1990,7 @@ fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL
     name = "ListAdminsManagingAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts")
   )
   input <- .fms$list_admins_managing_account_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admins_managing_account_output()
@@ -2066,7 +2066,7 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
     name = "ListAppsLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AppsLists")
   )
   input <- .fms$list_apps_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_apps_lists_output()
@@ -2151,7 +2151,7 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
     name = "ListComplianceStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyComplianceStatusList")
   )
   input <- .fms$list_compliance_status_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_compliance_status_output()
@@ -2292,7 +2292,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListMemberAccounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MemberAccounts")
   )
   input <- .fms$list_member_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_member_accounts_output()
@@ -2364,7 +2364,7 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyList")
   )
   input <- .fms$list_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_policies_output()
@@ -2436,7 +2436,7 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
     name = "ListProtocolsLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProtocolsLists")
   )
   input <- .fms$list_protocols_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_protocols_lists_output()
@@ -2698,7 +2698,7 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
     name = "ListThirdPartyFirewallFirewallPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ThirdPartyFirewallFirewallPolicies")
   )
   input <- .fms$list_third_party_firewall_firewall_policies_input(ThirdPartyFirewall = ThirdPartyFirewall, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_third_party_firewall_firewall_policies_output()

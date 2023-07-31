@@ -13,6 +13,7 @@ locationservice_calculate_route_matrix(
   DepartureTime = NULL,
   DestinationPositions,
   DistanceUnit = NULL,
+  Key = NULL,
   TravelMode = NULL,
   TruckModeOptions = NULL
 )
@@ -83,6 +84,9 @@ Valid Values: \verb{[-180 to 180,-90 to 90]}}
 \item{DistanceUnit}{Set the unit system to specify the distance.
 
 Default Value: \code{Kilometers}}
+
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 
 \item{TravelMode}{Specifies the mode of transport when calculating a route. Used in
 estimating the speed of travel and road compatibility.

@@ -14,7 +14,7 @@ s3_list_bucket_analytics_configurations(
 \item{Bucket}{[required] The name of the bucket from which analytics configurations are
 retrieved.}
 
-\item{ContinuationToken}{The ContinuationToken that represents a placeholder from where this
+\item{ContinuationToken}{The \code{ContinuationToken} that represents a placeholder from where this
 request should begin.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a

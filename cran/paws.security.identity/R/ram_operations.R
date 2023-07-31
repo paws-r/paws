@@ -106,18 +106,20 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
+#' @param sources Specifies from which source accounts the service principal has access to
+#' the resources in this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_associate_resource_share
-ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL) {
+ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL, sources = NULL) {
   op <- new_operation(
     name = "AssociateResourceShare",
     http_method = "POST",
     http_path = "/associateresourceshare",
     paginator = list()
   )
-  input <- .ram$associate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken)
+  input <- .ram$associate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$associate_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -414,18 +416,20 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #' default version of the permission for each resource type. You can
 #' associate only one permission with each resource type included in the
 #' resource share.
+#' @param sources Specifies from which source accounts the service principal has access to
+#' the resources in this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_create_resource_share
-ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL) {
+ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL, sources = NULL) {
   op <- new_operation(
     name = "CreateResourceShare",
     http_method = "POST",
     http_path = "/createresourceshare",
     paginator = list()
   )
-  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns)
+  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns, sources = sources)
   output <- .ram$create_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -641,18 +645,20 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
+#' @param sources Specifies from which source accounts the service principal no longer has
+#' access to the resources in this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_disassociate_resource_share
-ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL) {
+ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL, sources = NULL) {
   op <- new_operation(
     name = "DisassociateResourceShare",
     http_method = "POST",
     http_path = "/disassociateresourceshare",
     paginator = list()
   )
-  input <- .ram$disassociate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken)
+  input <- .ram$disassociate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$disassociate_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -816,7 +822,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/getresourcepolicies",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_policies_input(resourceArns = resourceArns, principal = principal, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_policies_output()
@@ -856,7 +862,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' retrieve. This can be an Amazon Web Services account ID, an organization
 #' ID, an organizational unit ID, or the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' of an individual IAM user or role.
+#' of an individual IAM role or user.
 #' 
 #' You cannot specify this parameter if the association type is `RESOURCE`.
 #' @param associationStatus Specifies that you want to retrieve only associations that have this
@@ -885,7 +891,7 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
     name = "GetResourceShareAssociations",
     http_method = "POST",
     http_path = "/getresourceshareassociations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_share_associations_input(associationType = associationType, resourceShareArns = resourceShareArns, resourceArn = resourceArn, principal = principal, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_associations_output()
@@ -935,7 +941,7 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
     name = "GetResourceShareInvitations",
     http_method = "POST",
     http_path = "/getresourceshareinvitations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_share_invitations_input(resourceShareInvitationArns = resourceShareInvitationArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_invitations_output()
@@ -1001,7 +1007,7 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
     name = "GetResourceShares",
     http_method = "POST",
     http_path = "/getresourceshares",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_resource_shares_output()
@@ -1063,7 +1069,7 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
     name = "ListPendingInvitationResources",
     http_method = "POST",
     http_path = "/listpendinginvitationresources",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_pending_invitation_resources_input(resourceShareInvitationArn = resourceShareInvitationArn, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_pending_invitation_resources_output()
@@ -1127,7 +1133,7 @@ ram_list_permission_associations <- function(permissionArn = NULL, permissionVer
     name = "ListPermissionAssociations",
     http_method = "POST",
     http_path = "/listpermissionassociations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_permission_associations_input(permissionArn = permissionArn, permissionVersion = permissionVersion, associationStatus = associationStatus, resourceType = resourceType, featureSet = featureSet, defaultVersion = defaultVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_associations_output()
@@ -1176,7 +1182,7 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
     name = "ListPermissionVersions",
     http_method = "POST",
     http_path = "/listpermissionversions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_permission_versions_input(permissionArn = permissionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_versions_output()
@@ -1237,7 +1243,7 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/listpermissions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults, permissionType = permissionType)
   output <- .ram$list_permissions_output()
@@ -1325,7 +1331,7 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
     name = "ListPrincipals",
     http_method = "POST",
     http_path = "/listprincipals",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_principals_input(resourceOwner = resourceOwner, resourceArn = resourceArn, principals = principals, resourceType = resourceType, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_principals_output()
@@ -1375,7 +1381,7 @@ ram_list_replace_permission_associations_work <- function(workIds = NULL, status
     name = "ListReplacePermissionAssociationsWork",
     http_method = "POST",
     http_path = "/listreplacepermissionassociationswork",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_replace_permission_associations_work_input(workIds = workIds, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_replace_permission_associations_work_output()
@@ -1422,7 +1428,7 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
     name = "ListResourceSharePermissions",
     http_method = "POST",
     http_path = "/listresourcesharepermissions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_resource_share_permissions_input(resourceShareArn = resourceShareArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_resource_share_permissions_output()
@@ -1478,7 +1484,7 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
     name = "ListResourceTypes",
     http_method = "POST",
     http_path = "/listresourcetypes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_resource_types_input(nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resource_types_output()
@@ -1555,7 +1561,7 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
     name = "ListResources",
     http_method = "POST",
     http_path = "/listresources",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_resources_input(resourceOwner = resourceOwner, principal = principal, resourceType = resourceType, resourceArns = resourceArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resources_output()

@@ -155,7 +155,7 @@ NULL
 
 .devopsguru$describe_service_integration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceIntegration = structure(list(OpsCenter = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LogsAnomalyDetection = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceIntegration = structure(list(OpsCenter = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LogsAnomalyDetection = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KMSServerSideEncryption = structure(list(KMSKeyId = structure(logical(0), tags = list(type = "string")), OptInStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -365,7 +365,7 @@ NULL
 
 .devopsguru$update_service_integration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServiceIntegration = structure(list(OpsCenter = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LogsAnomalyDetection = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ServiceIntegration = structure(list(OpsCenter = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LogsAnomalyDetection = structure(list(OptInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KMSServerSideEncryption = structure(list(KMSKeyId = structure(logical(0), tags = list(type = "string")), OptInStatus = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

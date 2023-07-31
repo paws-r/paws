@@ -21,7 +21,8 @@ route53domains_update_domain_contact(
 
 \item{TechContact}{Provides detailed contact information.}
 
-\item{Consent}{Customer's consent for the owner change request.}
+\item{Consent}{Customer's consent for the owner change request. Required if the domain
+is not free (consent price is more than $0.00).}
 }
 \description{
 This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
