@@ -13,7 +13,7 @@ parse_operations <- function(text) {
   ids <- rep(NA, length(text))
   id <- 1
   for (i in seq_along(text)) {
-    if (i > 1 && startsWith(text[i], "#'") && !startsWith(text[i-1], "#'")) {
+    if (i > 1 && startsWith(text[i], "#'") && !startsWith(text[i - 1], "#'")) {
       id <- id + 1
     }
     ids[i] <- id
@@ -35,9 +35,11 @@ parse_operation <- function(text) {
   comment_lines <- startsWith(text, "#'")
   comment <- text[comment_lines]
   code <- text[!comment_lines]
-  if (length(code) == 0 || all(code == "") || code[1] == "NULL") return(NULL)
+  if (length(code) == 0 || all(code == "") || code[1] == "NULL") {
+    return(NULL)
+  }
   func <- strsplit(code[1], " ")[[1]][1]
-  name <- substring(func, regexpr("_", func)+1)
+  name <- substring(func, regexpr("_", func) + 1)
   operation <- list(
     name = name,
     http = list(),
@@ -65,14 +67,18 @@ system_file <- function(..., package = "base") {
     pkg_path <- find.package(package)
     subfolder <- list(...)
     if (length(subfolder) > 0) {
-      if (subfolder[[1]] == "src")
+      if (subfolder[[1]] == "src") {
         subfolder[[1]] <- "R"
-      else
+      } else {
         subfolder <- c("inst", subfolder)
+      }
     }
     path <- do.call(file.path, c(pkg_path, subfolder))
-    if (file.exists(path)) return(path)
-    else return("")
+    if (file.exists(path)) {
+      return(path)
+    } else {
+      return("")
+    }
   }
 }
 
@@ -125,3 +131,6 @@ get_url <- function(url, tries = 3) {
     return(NULL)
   })
 }
+
+# helper function to make it easy to replace NULLs with default value
+`%||%` <- function(x, y) if (is.null(x)) y else x

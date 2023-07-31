@@ -1,9 +1,13 @@
+#' @include util.R
+
 # Sometimes the locationName is different from the interface name
-check_location_name <- function(name, interface){
+check_location_name <- function(name, interface) {
   location_names <- sapply(interface, function(x) tag_get(x, "locationName"))
 
   in_location_names <- name %in% location_names
-  if (!in_location_names) return(in_location_names)
+  if (!in_location_names) {
+    return(in_location_names)
+  }
 
   location_index <- which(name == location_names)
 
@@ -16,15 +20,20 @@ populate_structure <- function(input, interface) {
   # If interface is empty (input shape is incomplete), return the input data.
   # Only needed because input shapes have fixed depth, and some services,
   # e.g. DynamoDB, can accept data of arbitrary depth.
-  if (length(interface) == 0) return(input)
+  if (length(interface) == 0) {
+    return(input)
+  }
   for (name in names(input)) {
     if (!(name) %in% names(interface)) {
       check_location <- check_location_name(name, interface)
-      if (!check_location)
-        stop(sprintf("invalid name: %s", name))
+      if (!check_location) {
+        stopf("invalid name: %s", name)
+      }
 
-      interface[[check_location]] <- populate(input[[name]],
-                                              interface[[check_location]])
+      interface[[check_location]] <- populate(
+        input[[name]],
+        interface[[check_location]]
+      )
     } else {
       interface[[name]] <- populate(input[[name]], interface[[name]])
     }
@@ -36,7 +45,9 @@ populate_list <- function(input, interface) {
   # If interface is empty (input shape is incomplete), return the input data.
   # Only needed because input shapes have fixed depth, and some services,
   # e.g. DynamoDB, can accept data of arbitrary depth.
-  if (length(interface) == 0) return(input)
+  if (length(interface) == 0) {
+    return(input)
+  }
   attrs <- attributes(interface)
   interface <- lapply(input, function(x) populate(x, interface[[1]]))
   attributes(interface) <- attrs
@@ -47,7 +58,9 @@ populate_map <- function(input, interface) {
   # If interface is empty (input shape is incomplete), return the input data.
   # Only needed because input shapes have fixed depth, and some services,
   # e.g. DynamoDB, can accept data of arbitrary depth.
-  if (length(interface) == 0) return(input)
+  if (length(interface) == 0) {
+    return(input)
+  }
   result <- list()
   for (name in names(input)) {
     result[[name]] <- populate(input[[name]], interface[[1]])
@@ -82,8 +95,7 @@ populate_scalar <- function(input, interface) {
 #' @export
 populate <- function(input, interface) {
   t <- tag_get(interface, "type")
-  populate_fn <- switch(
-    t,
+  populate_fn <- switch(t,
     structure = populate_structure,
     list = populate_list,
     map = populate_map,

@@ -7,15 +7,19 @@ NULL
 
 convert_file_to_raw <- function(request) {
   operation_name <- request$operation$name
-  if (operation_name != "PutObject") return(request)
+  if (operation_name != "PutObject") {
+    return(request)
+  }
 
   request_params <- request$params
   content_body <- request_params["Body"][[1]]
-  if (!is.character(content_body)) return(request)
+  if (!is.character(content_body)) {
+    return(request)
+  }
 
   file_name <- content_body[[1]]
   if (!file.exists(file_name)) {
-    stop(sprintf("Unable to find file: %s", file_name))
+    stopf("Unable to find file: %s", file_name)
   }
   file_connection <- file(file_name, "rb")
   raw_body <- readBin(file_connection, "raw", n = file.size(file_name))
@@ -32,7 +36,9 @@ bucket_name_from_req_params <- function(request) {
   request_params <- request$params
   bucket <- request_params["Bucket"]
 
-  if (is.null(bucket)) return(NULL)
+  if (is.null(bucket)) {
+    return(NULL)
+  }
 
   bucket_name <- bucket[[1]]
 
@@ -40,7 +46,9 @@ bucket_name_from_req_params <- function(request) {
 }
 
 host_compatible_bucket_name <- function(bucket) {
-  if (grepl(".", bucket, fixed = TRUE)) return(FALSE)
+  if (grepl(".", bucket, fixed = TRUE)) {
+    return(FALSE)
+  }
   domain <- "^[a-z0-9][a-z0-9\\.\\-]{1,61}[a-z0-9]$"
   ip_address <- "^(\\d+\\.){3}\\d+$"
   return(grepl(domain, bucket) && !grepl(ip_address, bucket))
@@ -51,7 +59,7 @@ move_bucket_to_host <- function(url, bucket) {
   url$path <- gsub("/\\{Bucket\\}", "", url$path)
 
   if (url$path == "") {
-    url$path = "/"
+    url$path <- "/"
   }
 
   return(url)
@@ -89,7 +97,9 @@ remove_bucket_from_url <- function(url) {
 update_endpoint_for_s3_config <- function(request) {
   bucket_name <- bucket_name_from_req_params(request)
 
-  if (is.null(bucket_name)) return(request)
+  if (is.null(bucket_name)) {
+    return(request)
+  }
 
   if (is_access_point(bucket_name)) {
     request$http_request$url$host <- get_access_point_endpoint(bucket_name)
@@ -97,9 +107,13 @@ update_endpoint_for_s3_config <- function(request) {
     return(request)
   }
 
-  if (!host_compatible_bucket_name(bucket_name)) return(request)
+  if (!host_compatible_bucket_name(bucket_name)) {
+    return(request)
+  }
 
-  if (request$operation$name %in% c("GetBucketLocation")) return(request)
+  if (request$operation$name %in% c("GetBucketLocation")) {
+    return(request)
+  }
 
   use_virtual_host_style <- TRUE
   if (request$config$s3_force_path_style) use_virtual_host_style <- FALSE
@@ -116,10 +130,11 @@ update_endpoint_for_s3_config <- function(request) {
 ################################################################################
 
 populate_location_constraint <- function(request) {
-
   operation_name <- request$operation$name
 
-  if (operation_name != "CreateBucket") return(request)
+  if (operation_name != "CreateBucket") {
+    return(request)
+  }
 
   request_params <- request$params
   location <- request_params$CreateBucketConfiguration$LocationConstraint
@@ -135,12 +150,16 @@ populate_location_constraint <- function(request) {
 
 content_md5 <- function(request) {
   operation_name <- request$operation$name
-  if (!(operation_name %in% c("PutBucketCors", "PutBucketLifecycle",
-                              "PutBucketPolicy", "PutBucketTagging",
-                              "DeleteObjects",
-                              "PutBucketLifecycleConfiguration",
-                              "PutBucketReplication", "PutObject",
-                              "UploadPart"))) {return(request)}
+  if (!(operation_name %in% c(
+    "PutBucketCors", "PutBucketLifecycle",
+    "PutBucketPolicy", "PutBucketTagging",
+    "DeleteObjects",
+    "PutBucketLifecycleConfiguration",
+    "PutBucketReplication", "PutObject",
+    "UploadPart"
+  ))) {
+    return(request)
+  }
   # Create Content-MD5 header if missing.
   # https://github.com/aws/aws-sdk-go/blob/e2d6cb448883e4f4fcc5246650f89bde349041ec/private/checksum/content_md5.go#L18
   if (is.null(request$http_request$header[["Content-MD5"]])) {
@@ -156,7 +175,9 @@ content_md5 <- function(request) {
 ################################################################################
 
 s3_unmarshal_select_object_content <- function(request) {
-  if (request$operation$name != "SelectObjectContent") return(request)
+  if (request$operation$name != "SelectObjectContent") {
+    return(request)
+  }
   payload <- stream_decode(request$http_response$body)
   request$data <- populate(list(Payload = payload), request$data)
   request$http_response$body <- raw()
@@ -166,12 +187,17 @@ s3_unmarshal_select_object_content <- function(request) {
 ################################################################################
 
 s3_unmarshal_get_bucket_location <- function(request) {
-  if (request$operation$name != "GetBucketLocation") return(request)
+  if (request$operation$name != "GetBucketLocation") {
+    return(request)
+  }
   response <- decode_xml(request$http_response$body)
   data <- request$data
   location <- response$LocationConstraint
-  if (length(location) == 0) location <- "us-east-1"
-  else location <- location[[1]]
+  if (length(location) == 0) {
+    location <- "us-east-1"
+  } else {
+    location <- location[[1]]
+  }
   if (location == "EU") location <- "eu-west-1"
   data$LocationConstraint <- location
   request$data <- data
@@ -181,7 +207,6 @@ s3_unmarshal_get_bucket_location <- function(request) {
 ################################################################################
 
 s3_unmarshal_error <- function(request) {
-
   data <- tryCatch(
     decode_xml(request$http_response$body),
     error = function(e) NULL
@@ -221,9 +246,11 @@ s3_unmarshal_error <- function(request) {
   message <- error_response$Message
 
   if (is.null(message) && is.null(code)) {
-    request$error <- Error("SerializationError",
-                           "failed to decode query XML error response",
-                           request$http_response$status_code)
+    request$error <- Error(
+      "SerializationError",
+      "failed to decode query XML error response",
+      request$http_response$status_code
+    )
     return(request)
   }
 
@@ -258,13 +285,13 @@ s3_endpoints <- list(
 # contains the endpoint the request should be sent to. This handler
 # will add the redirect information to the signing context and then
 # redirect the request.
-s3_redirect_from_error <- function(request){
+s3_redirect_from_error <- function(request) {
   if (is.null(request$http_response)) {
-      return(request)
+    return(request)
   }
   if (isTRUE(request$context$s3_redirect)) {
     log_debug(
-      'S3 request was previously redirected, not redirecting.'
+      "S3 request was previously redirected, not redirecting."
     )
     return(request)
   }
@@ -273,7 +300,7 @@ s3_redirect_from_error <- function(request){
   # Exit s3_redirect_from_error function if initial request is successful
   # https://docs.aws.amazon.com/waf/latest/developerguide/customizing-the-response-status-codes.html
   http_success_code <- c(200, 201, 202, 204, 206)
-  if(error_code %in% http_success_code){
+  if (error_code %in% http_success_code) {
     return(request)
   }
   error <- decode_xml(request$http_response$body)$Error
@@ -283,18 +310,22 @@ s3_redirect_from_error <- function(request){
   bucket_name <- bucket_name_from_req_params(request)
   new_region <- s3_get_bucket_region(request$http_response, error)
   if (is.null(new_region)) {
-    log_debug(paste(
-      "S3 client configured for region %s but the bucket %s is not",
-      "in that region and the proper region could not be",
-      "automatically determined."),
+    log_debug(
+      paste(
+        "S3 client configured for region %s but the bucket %s is not",
+        "in that region and the proper region could not be",
+        "automatically determined."
+      ),
       request$client_info$signing_region, bucket_name
     )
     return(request)
   }
-  log_debug(paste(
-    "S3 client configured for region %s but the bucket %s is in region",
-    "%s; Please configure the proper region to avoid multiple",
-    "unnecessary redirects and signing attempts."),
+  log_debug(
+    paste(
+      "S3 client configured for region %s but the bucket %s is in region",
+      "%s; Please configure the proper region to avoid multiple",
+      "unnecessary redirects and signing attempts."
+    ),
     request$client_info$signing_region, bucket_name, new_region
   )
   # Update client_info for redirect
@@ -322,24 +353,24 @@ s3_redirect_from_error <- function(request){
   return(request)
 }
 
-can_be_redirected <- function(request, error_code, error){
+can_be_redirected <- function(request, error_code, error) {
   # We have to account for 400 responses because
   # if we sign a Head* request with the wrong region,
   # we'll get a 400 Bad Request but we won't get a
   # body saying it's an "AuthorizationHeaderMalformed".
   is_special_head_object <- (
-    error_code %in% c('301', '400') & request$operation$name == 'HeadObject'
+    error_code %in% c("301", "400") & request$operation$name == "HeadObject"
   )
   is_special_head_bucket <- (
-    error_code %in% c('301', '400')
-    & request$operation$name == 'HeadBucket'
-    & 'x-amz-bucket-region' %in% names(request$http_response$header)
+    error_code %in% c("301", "400") &
+      request$operation$name == "HeadBucket" &
+      "x-amz-bucket-region" %in% names(request$http_response$header)
   )
   is_wrong_signing_region <- (
-    error$Code == 'AuthorizationHeaderMalformed' & 'Region' %in% names(error)
+    error$Code == "AuthorizationHeaderMalformed" & "Region" %in% names(error)
   )
   is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
-  is_permanent_redirect <- error$Code == 'PermanentRedirect'
+  is_permanent_redirect <- error$Code == "PermanentRedirect"
 
   return(any(
     c(
@@ -348,9 +379,8 @@ can_be_redirected <- function(request, error_code, error){
       is_permanent_redirect,
       is_special_head_bucket,
       is_redirect_status
-      )
     )
-  )
+  ))
 }
 
 # There are multiple potential sources for the new region to redirect to,
@@ -359,11 +389,11 @@ can_be_redirected <- function(request, error_code, error){
 # HEAD on the bucket if all else fails.
 # param response: HttpResponse
 # param error: Error
-s3_get_bucket_region <- function(response, error){
+s3_get_bucket_region <- function(response, error) {
   # First try to source the region from the headers.
   response_headers <- response$header
-  if ('x-amz-bucket-region' %in% names(response_headers)){
-      return(response_headers[['x-amz-bucket-region']])
+  if ("x-amz-bucket-region" %in% names(response_headers)) {
+    return(response_headers[["x-amz-bucket-region"]])
   }
   # Next, check the error body
   region <- error$Region
@@ -375,7 +405,7 @@ s3_get_bucket_region <- function(response, error){
 # discarded by this function.
 set_request_url <- function(original_endpoint,
                             new_endpoint,
-                            use_new_scheme = TRUE){
+                            use_new_scheme = TRUE) {
   new_endpoint_components <- httr::parse_url(new_endpoint)
   original_endpoint_components <- httr::parse_url(original_endpoint)
   scheme <- original_endpoint_components$scheme
@@ -383,14 +413,14 @@ set_request_url <- function(original_endpoint,
     scheme <- new_endpoint_components$scheme
   }
   final_endpoint_components <- structure(list(
-      scheme = scheme,
-      hostname = new_endpoint_components$hostname %||% "",
-      path = original_endpoint_components$path %||% "",
-      query = original_endpoint_components$query %||% "",
-      fragment = "",
-      raw_path = "",
-      raw_query = ""), class = "url"
-  )
+    scheme = scheme,
+    hostname = new_endpoint_components$hostname %||% "",
+    path = original_endpoint_components$path %||% "",
+    query = original_endpoint_components$query %||% "",
+    fragment = "",
+    raw_path = "",
+    raw_query = ""
+  ), class = "url")
   final_endpoint <- build_url(final_endpoint_components)
   return(final_endpoint)
 }
@@ -398,19 +428,31 @@ set_request_url <- function(original_endpoint,
 ################################################################################
 
 customizations$s3 <- function(handlers) {
-  handlers$build <- handlers_add_front(handlers$build,
-                                       update_endpoint_for_s3_config)
-  handlers$build <- handlers_add_front(handlers$build,
-                                       populate_location_constraint)
-  handlers$build <- handlers_add_front(handlers$build,
-                                       convert_file_to_raw)
-  handlers$build <- handlers_add_back(handlers$build,
-                                      content_md5)
+  handlers$build <- handlers_add_front(
+    handlers$build,
+    update_endpoint_for_s3_config
+  )
+  handlers$build <- handlers_add_front(
+    handlers$build,
+    populate_location_constraint
+  )
+  handlers$build <- handlers_add_front(
+    handlers$build,
+    convert_file_to_raw
+  )
+  handlers$build <- handlers_add_back(
+    handlers$build,
+    content_md5
+  )
   handlers$send <- handlers_add_back(handlers$send, s3_redirect_from_error)
-  handlers$unmarshal <- handlers_add_front(handlers$unmarshal,
-                                           s3_unmarshal_select_object_content)
-  handlers$unmarshal <- handlers_add_back(handlers$unmarshal,
-                                          s3_unmarshal_get_bucket_location)
+  handlers$unmarshal <- handlers_add_front(
+    handlers$unmarshal,
+    s3_unmarshal_select_object_content
+  )
+  handlers$unmarshal <- handlers_add_back(
+    handlers$unmarshal,
+    s3_unmarshal_get_bucket_location
+  )
   handlers$unmarshal_error <- handlers_set(s3_unmarshal_error)
   handlers
 }

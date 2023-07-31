@@ -1,3 +1,5 @@
+#' @include util.R
+
 # Create a constructor function for a named list data structure, where the
 # values of its elements be changed but none can be added or deleted.
 # `MyList <- struct(a = 1, b = 2)` will create a function to construct a
@@ -20,7 +22,7 @@ struct <- function(...) {
 #' @export
 `[.struct` <- function(x, key) {
   if (!(key %in% names(x))) {
-    stop(sprintf("invalid element: %s", key))
+    stopf("invalid element: %s", key)
   }
   value <- x[[key]]
   return(value)
@@ -35,7 +37,7 @@ struct <- function(...) {
 #' @export
 `[<-.struct` <- function(x, key, value) {
   if (!(key %in% names(x))) {
-    stop(sprintf("invalid element: %s", key))
+    stopf("invalid element: %s", key)
   }
   cl <- oldClass(x)
   class(x) <- NULL

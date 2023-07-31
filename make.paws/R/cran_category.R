@@ -1,6 +1,8 @@
 #' @include package.R service.R
 NULL
 
+.paws.common.import.version <- "paws.common (>= 0.5.9)"
+
 # Make all category-level packages.
 make_categories <- function(sdk_dir, out_dir, categories, service_names) {
   for (category in categories) {
@@ -14,7 +16,7 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
   services <- category$services
   title <- category$title
   description <- category$description
-  imports <- "paws.common (>= 0.5.4)"
+  imports <- .paws.common.import.version
   version <- get_version(sdk_dir)
 
   if (is.null(name) || is.null(title) || is.null(description)) {
@@ -34,6 +36,7 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
   for (service in services) {
     copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
   }
+  copy_files("reexports", from = sdk_dir, to = package_dir)
   write_documentation(package_dir)
 }
 

@@ -38,6 +38,7 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.2.3
 Collate:
     'RcppExports.R'
+    'util.R'
     'struct.R'
     'handlers.R'
     'logging.R'
@@ -55,7 +56,6 @@ Collate:
     'service.R'
     'custom_dynamodb.R'
     'custom_rds.R'
-    'util.R'
     'xmlutil.R'
     'stream.R'
     'custom_s3.R'
@@ -70,6 +70,7 @@ Collate:
     'idempotency.R'
     'jsonutil.R'
     'onLoad.R'
+    'paginate.R'
     'populate.R'
     'populateutil.R'
     'tags.R'
