@@ -122,7 +122,7 @@ issue <- function(http_request) {
   # utilize httr to write to disk
   dest <- NULL
   if (!is.null(http_request$dest)) {
-    dest <- httr::write_disk(http_request$dest)
+    dest <- httr::write_disk(http_request$dest, TRUE)
   }
   r <- with_paws_verbose(
     httr::VERB(

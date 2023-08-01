@@ -2,6 +2,7 @@
 * add expiration parameter to creds
 * add signature_version to config
 * add the ability to paginate paws methods (#30)
+* overwrite file destination when writing to disk. This mimics python's boto3 sdk behaviour.
 
 # paws.common 0.5.8
 * fix mismatch apparent method as.list.struct (#634)
