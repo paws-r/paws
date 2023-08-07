@@ -568,3 +568,27 @@ test_that("check paginate_sapply do.call modified operation", {
 
   expect_equal(actual_fn, substitute(dummy_op(x = "hi")))
 })
+
+########################################################################
+# list_paginators
+########################################################################
+
+test_that("check list_paginator", {
+  dummy_fn <- function(paginator) {
+    return(paginator)
+  }
+
+  svc <- list(
+    fun1 = function() {
+      op <- dummy_fn(
+        paginator = list(input_token = "hi", output_token = "bob")
+      )
+    },
+    fun2 = function() {
+      op <- dummy_fn()
+    },
+    .internal = list()
+  )
+
+  expect_equal(list_paginators(svc), "fun1")
+})

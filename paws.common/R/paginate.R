@@ -196,6 +196,32 @@ paginate_update_fn <- function(
   ))
 }
 
+#' @title List of paginators from paws client.
+#' @param svc paws client to check
+#' @return character vector of functions that can be paginated.
+#' @examples
+#' \dontrun{
+#' # Note: where svc is a paws client.
+#' list_paginators(svc)
+#' }
+#' @export
+list_paginators <- function(svc) {
+  resp <- lapply(svc, function(fn) {
+    if (is.function(fn)) {
+      is_paginators(fn)
+    } else {
+      FALSE
+    }
+  })
+  return(names(Filter(isTRUE, resp)))
+}
+
+is_paginators <- function(fn) {
+  fn_body <- body(fn)
+  paginator <- fn_body[[2]][[3]]$paginator
+  return(all(c("input_token", "output_token") %in% names(paginator)))
+}
+
 paginate_xapply <- function(
     fn,
     paginator,
