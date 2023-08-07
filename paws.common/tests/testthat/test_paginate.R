@@ -592,3 +592,15 @@ test_that("check list_paginator", {
 
   expect_equal(list_paginators(svc), "fun1")
 })
+
+test_that("check list_paginator for non paws functions", {
+  svc <- list(
+    alarm = utils::alarm,
+    names = base::names
+  )
+  expect_equal(list_paginators(svc), character())
+})
+
+test_that("check list_paginator empty list", {
+  expect_equal(list_paginators(list()), character())
+})

@@ -213,12 +213,23 @@ list_paginators <- function(svc) {
       FALSE
     }
   })
-  return(names(Filter(isTRUE, resp)))
+  return(names(Filter(isTRUE, resp)) %||% character(0))
 }
 
 is_paginators <- function(fn) {
   fn_body <- body(fn)
-  paginator <- fn_body[[2]][[3]]$paginator
+  paginator <- tryCatch(
+    {
+      fn_body[[2]][[3]]$paginator
+    },
+    error = function(err) {
+      if (grepl("subscript out of bounds", err, perl = T)) {
+        character()
+      } else {
+        stop(err)
+      }
+    }
+  )
   return(all(c("input_token", "output_token") %in% names(paginator)))
 }
 
@@ -306,16 +317,16 @@ get_token_len <- function(resp, token) {
     {
       return(eval(parse(text = location), envir = environment()))
     },
-    error = function(e) {
+    error = function(err) {
       # Return default character(0) for empty lists
       if (grepl(
         "attempt to select less than one element in integerOneIndex",
-        e$message,
+        err$message,
         perl = T
       )) {
         character(0)
       } else {
-        stop(e)
+        stop(err)
       }
     }
   )
