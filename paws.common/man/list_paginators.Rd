@@ -2,18 +2,18 @@
 % Please edit documentation in R/paginate.R
 \name{list_paginators}
 \alias{list_paginators}
-\title{List of paginators from paws client.}
+\title{List methods that can be paginated from a paws client.}
 \usage{
 list_paginators(svc)
 }
 \arguments{
-\item{svc}{paws client to check}
+\item{svc}{paws client (for example \code{paws::s3()}).}
 }
 \value{
 character vector of functions that can be paginated.
 }
 \description{
-List of paginators from paws client.
+List methods that can be paginated from a paws client.
 }
 \examples{
 \dontrun{

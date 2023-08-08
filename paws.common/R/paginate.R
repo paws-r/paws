@@ -196,8 +196,8 @@ paginate_update_fn <- function(
   ))
 }
 
-#' @title List of paginators from paws client.
-#' @param svc paws client to check
+#' @title List methods that can be paginated from a paws client.
+#' @param svc paws client (for example \code{paws::s3()}).
 #' @return character vector of functions that can be paginated.
 #' @examples
 #' \dontrun{
