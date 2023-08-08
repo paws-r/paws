@@ -25,6 +25,7 @@ Imports:
     jsonlite,
     methods,
     utils,
+    stats,
     Rcpp,
     xml2
 Suggests:

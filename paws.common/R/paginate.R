@@ -1,3 +1,5 @@
+#' @importFrom stats runif
+
 #' @include logging.R
 #' @include util.R
 
