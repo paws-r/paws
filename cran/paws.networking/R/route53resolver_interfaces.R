@@ -23,7 +23,7 @@ NULL
 
 .route53resolver$associate_resolver_endpoint_ip_address_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -87,15 +87,27 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$create_outpost_resolver_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_outpost_resolver_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostResolver = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$create_resolver_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), Ip = structure(logical(0), tags = list(box = TRUE, type = "string")), Ipv6 = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list")), ResolverEndpointType = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(box = TRUE, type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddresses = structure(list(structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), Ip = structure(logical(0), tags = list(box = TRUE, type = "string")), Ipv6 = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list")), ResolverEndpointType = structure(logical(0), tags = list(box = TRUE, type = "string")), OutpostArn = structure(logical(0), tags = list(box = TRUE, type = "string")), PreferredInstanceType = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .route53resolver$create_resolver_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -159,6 +171,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$delete_outpost_resolver_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_outpost_resolver_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostResolver = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$delete_resolver_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -167,7 +191,7 @@ NULL
 
 .route53resolver$delete_resolver_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +239,7 @@ NULL
 
 .route53resolver$disassociate_resolver_endpoint_ip_address_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -303,6 +327,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$get_outpost_resolver_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_outpost_resolver_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostResolver = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$get_resolver_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -335,7 +371,7 @@ NULL
 
 .route53resolver$get_resolver_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -495,6 +531,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$list_outpost_resolvers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostArn = structure(logical(0), tags = list(box = TRUE, type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_outpost_resolvers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostResolvers = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$list_resolver_configs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
@@ -539,7 +587,7 @@ NULL
 
 .route53resolver$list_resolver_endpoints_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResolverEndpoints = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResolverEndpoints = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -711,6 +759,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$update_outpost_resolver_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(box = TRUE, type = "string")), InstanceCount = structure(logical(0), tags = list(box = TRUE, type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_outpost_resolver_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OutpostResolver = structure(list(Arn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), PreferredInstanceType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$update_resolver_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), AutodefinedReverseFlag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -743,7 +803,7 @@ NULL
 
 .route53resolver$update_resolver_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverEndpoint = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Direction = structure(logical(0), tags = list(type = "string")), IpAddressCount = structure(logical(0), tags = list(type = "integer")), HostVPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string")), ResolverEndpointType = structure(logical(0), tags = list(type = "string")), OutpostArn = structure(logical(0), tags = list(type = "string")), PreferredInstanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

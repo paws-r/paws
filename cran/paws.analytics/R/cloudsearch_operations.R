@@ -355,7 +355,7 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
     name = "DescribeAnalysisSchemes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "AnalysisSchemes")
   )
   input <- .cloudsearch$describe_analysis_schemes_input(DomainName = DomainName, AnalysisSchemeNames = AnalysisSchemeNames, Deployed = Deployed)
   output <- .cloudsearch$describe_analysis_schemes_output()
@@ -448,7 +448,7 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
     name = "DescribeDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "DomainStatusList")
   )
   input <- .cloudsearch$describe_domains_input(DomainNames = DomainNames)
   output <- .cloudsearch$describe_domains_output()
@@ -482,7 +482,7 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
     name = "DescribeExpressions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Expressions")
   )
   input <- .cloudsearch$describe_expressions_input(DomainName = DomainName, ExpressionNames = ExpressionNames, Deployed = Deployed)
   output <- .cloudsearch$describe_expressions_output()
@@ -515,7 +515,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
     name = "DescribeIndexFields",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "IndexFields")
   )
   input <- .cloudsearch$describe_index_fields_input(DomainName = DomainName, FieldNames = FieldNames, Deployed = Deployed)
   output <- .cloudsearch$describe_index_fields_output()
@@ -608,7 +608,7 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
     name = "DescribeSuggesters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Suggesters")
   )
   input <- .cloudsearch$describe_suggesters_input(DomainName = DomainName, SuggesterNames = SuggesterNames, Deployed = Deployed)
   output <- .cloudsearch$describe_suggesters_output()

@@ -3,6 +3,36 @@
 #' @include appstream_service.R
 NULL
 
+#' Associates the specified app block builder with the specified app block
+#'
+#' @description
+#' Associates the specified app block builder with the specified app block.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_associate_app_block_builder_app_block/](https://www.paws-r-sdk.com/docs/appstream_associate_app_block_builder_app_block/) for full documentation.
+#'
+#' @param AppBlockArn &#91;required&#93; The ARN of the app block.
+#' @param AppBlockBuilderName &#91;required&#93; The name of the app block builder.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_associate_app_block_builder_app_block
+appstream_associate_app_block_builder_app_block <- function(AppBlockArn, AppBlockBuilderName) {
+  op <- new_operation(
+    name = "AssociateAppBlockBuilderAppBlock",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$associate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
+  output <- .appstream$associate_app_block_builder_app_block_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$associate_app_block_builder_app_block <- appstream_associate_app_block_builder_app_block
+
 #' Associates the specified application with the specified fleet
 #'
 #' @description
@@ -198,20 +228,24 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' @param Description The description of the app block.
 #' @param DisplayName The display name of the app block. This is not displayed to the user.
 #' @param SourceS3Location &#91;required&#93; The source S3 location of the app block.
-#' @param SetupScriptDetails &#91;required&#93; The setup script details of the app block.
+#' @param SetupScriptDetails The setup script details of the app block. This must be provided for the
+#' `CUSTOM` PackagingType.
 #' @param Tags The tags assigned to the app block.
+#' @param PostSetupScriptDetails The post setup script details of the app block. This can only be
+#' provided for the `APPSTREAM2` PackagingType.
+#' @param PackagingType The packaging type of the app block.
 #'
 #' @keywords internal
 #'
 #' @rdname appstream_create_app_block
-appstream_create_app_block <- function(Name, Description = NULL, DisplayName = NULL, SourceS3Location, SetupScriptDetails, Tags = NULL) {
+appstream_create_app_block <- function(Name, Description = NULL, DisplayName = NULL, SourceS3Location, SetupScriptDetails = NULL, Tags = NULL, PostSetupScriptDetails = NULL, PackagingType = NULL) {
   op <- new_operation(
     name = "CreateAppBlock",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_app_block_input(Name = Name, Description = Description, DisplayName = DisplayName, SourceS3Location = SourceS3Location, SetupScriptDetails = SetupScriptDetails, Tags = Tags)
+  input <- .appstream$create_app_block_input(Name = Name, Description = Description, DisplayName = DisplayName, SourceS3Location = SourceS3Location, SetupScriptDetails = SetupScriptDetails, Tags = Tags, PostSetupScriptDetails = PostSetupScriptDetails, PackagingType = PackagingType)
   output <- .appstream$create_app_block_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -220,6 +254,117 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
   return(response)
 }
 .appstream$operations$create_app_block <- appstream_create_app_block
+
+#' Creates an app block builder
+#'
+#' @description
+#' Creates an app block builder.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_app_block_builder/](https://www.paws-r-sdk.com/docs/appstream_create_app_block_builder/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The unique name for the app block builder.
+#' @param Description The description of the app block builder.
+#' @param DisplayName The display name of the app block builder.
+#' @param Tags The tags to associate with the app block builder. A tag is a key-value
+#' pair, and the value is optional. For example, Environment=Test. If you
+#' do not specify a value, Environment=.
+#' 
+#' If you do not specify a value, the value is set to an empty string.
+#' 
+#' Generally allowed characters are: letters, numbers, and spaces
+#' representable in UTF-8, and the following special characters:
+#' 
+#' _ . : / = + \\ - @@
+#' 
+#' For more information, see [Tagging Your
+#' Resources](https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param Platform &#91;required&#93; The platform of the app block builder.
+#' 
+#' `WINDOWS_SERVER_2019` is the only valid value.
+#' @param InstanceType &#91;required&#93; The instance type to use when launching the app block builder. The
+#' following instance types are available:
+#' 
+#' -   stream.standard.small
+#' 
+#' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
+#' @param VpcConfig &#91;required&#93; The VPC configuration for the app block builder.
+#' 
+#' App block builders require that you specify at least two subnets in
+#' different availability zones.
+#' @param EnableDefaultInternetAccess Enables or disables default internet access for the app block builder.
+#' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role to apply to the app block
+#' builder. To assume a role, the app block builder calls the AWS Security
+#' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
+#' role to use. The operation creates a new session with temporary
+#' credentials. AppStream 2.0 retrieves the temporary credentials and
+#' creates the **appstream_machine_role** credential profile on the
+#' instance.
+#' 
+#' For more information, see [Using an IAM Role to Grant Permissions to
+#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
+#' Administrators can connect to the app block builder only through the
+#' specified endpoints.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_app_block_builder
+appstream_create_app_block_builder <- function(Name, Description = NULL, DisplayName = NULL, Tags = NULL, Platform, InstanceType, VpcConfig, EnableDefaultInternetAccess = NULL, IamRoleArn = NULL, AccessEndpoints = NULL) {
+  op <- new_operation(
+    name = "CreateAppBlockBuilder",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Tags = Tags, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints)
+  output <- .appstream$create_app_block_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_app_block_builder <- appstream_create_app_block_builder
+
+#' Creates a URL to start a create app block builder streaming session
+#'
+#' @description
+#' Creates a URL to start a create app block builder streaming session.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_create_app_block_builder_streaming_url/](https://www.paws-r-sdk.com/docs/appstream_create_app_block_builder_streaming_url/) for full documentation.
+#'
+#' @param AppBlockBuilderName &#91;required&#93; The name of the app block builder.
+#' @param Validity The time that the streaming URL will be valid, in seconds. Specify a
+#' value between 1 and 604800 seconds. The default is 3600 seconds.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_create_app_block_builder_streaming_url
+appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName, Validity = NULL) {
+  op <- new_operation(
+    name = "CreateAppBlockBuilderStreamingURL",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$create_app_block_builder_streaming_url_input(AppBlockBuilderName = AppBlockBuilderName, Validity = Validity)
+  output <- .appstream$create_app_block_builder_streaming_url_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$create_app_block_builder_streaming_url <- appstream_create_app_block_builder_streaming_url
 
 #' Creates an application
 #'
@@ -986,6 +1131,35 @@ appstream_delete_app_block <- function(Name) {
 }
 .appstream$operations$delete_app_block <- appstream_delete_app_block
 
+#' Deletes an app block builder
+#'
+#' @description
+#' Deletes an app block builder.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_delete_app_block_builder/](https://www.paws-r-sdk.com/docs/appstream_delete_app_block_builder/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app block builder.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_delete_app_block_builder
+appstream_delete_app_block_builder <- function(Name) {
+  op <- new_operation(
+    name = "DeleteAppBlockBuilder",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$delete_app_block_builder_input(Name = Name)
+  output <- .appstream$delete_app_block_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$delete_app_block_builder <- appstream_delete_app_block_builder
+
 #' Deletes an application
 #'
 #' @description
@@ -1280,6 +1454,72 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 }
 .appstream$operations$delete_user <- appstream_delete_user
 
+#' Retrieves a list that describes one or more app block builder
+#' associations
+#'
+#' @description
+#' Retrieves a list that describes one or more app block builder associations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_app_block_builder_app_block_associations/](https://www.paws-r-sdk.com/docs/appstream_describe_app_block_builder_app_block_associations/) for full documentation.
+#'
+#' @param AppBlockArn The ARN of the app block.
+#' @param AppBlockBuilderName The name of the app block builder.
+#' @param MaxResults The maximum size of each page of results.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_app_block_builder_app_block_associations
+appstream_describe_app_block_builder_app_block_associations <- function(AppBlockArn = NULL, AppBlockBuilderName = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeAppBlockBuilderAppBlockAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .appstream$describe_app_block_builder_app_block_associations_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .appstream$describe_app_block_builder_app_block_associations_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_app_block_builder_app_block_associations <- appstream_describe_app_block_builder_app_block_associations
+
+#' Retrieves a list that describes one or more app block builders
+#'
+#' @description
+#' Retrieves a list that describes one or more app block builders.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_describe_app_block_builders/](https://www.paws-r-sdk.com/docs/appstream_describe_app_block_builders/) for full documentation.
+#'
+#' @param Names The names of the app block builders.
+#' @param NextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#' @param MaxResults The maximum size of each page of results. The maximum value is 25.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_describe_app_block_builders
+appstream_describe_app_block_builders <- function(Names = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeAppBlockBuilders",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .appstream$describe_app_block_builders_input(Names = Names, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .appstream$describe_app_block_builders_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$describe_app_block_builders <- appstream_describe_app_block_builders
+
 #' Retrieves a list that describes one or more app blocks
 #'
 #' @description
@@ -1533,7 +1773,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
     name = "DescribeImagePermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_image_permissions_input(Name = Name, MaxResults = MaxResults, SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
   output <- .appstream$describe_image_permissions_output()
@@ -1568,7 +1808,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_images_input(Names = Names, Arns = Arns, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_images_output()
@@ -1785,6 +2025,36 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
   return(response)
 }
 .appstream$operations$disable_user <- appstream_disable_user
+
+#' Disassociates a specified app block builder from a specified app block
+#'
+#' @description
+#' Disassociates a specified app block builder from a specified app block.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_disassociate_app_block_builder_app_block/](https://www.paws-r-sdk.com/docs/appstream_disassociate_app_block_builder_app_block/) for full documentation.
+#'
+#' @param AppBlockArn &#91;required&#93; The ARN of the app block.
+#' @param AppBlockBuilderName &#91;required&#93; The name of the app block builder.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_disassociate_app_block_builder_app_block
+appstream_disassociate_app_block_builder_app_block <- function(AppBlockArn, AppBlockBuilderName) {
+  op <- new_operation(
+    name = "DisassociateAppBlockBuilderAppBlock",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$disassociate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
+  output <- .appstream$disassociate_app_block_builder_app_block_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$disassociate_app_block_builder_app_block <- appstream_disassociate_app_block_builder_app_block
 
 #' Disassociates the specified application from the fleet
 #'
@@ -2067,6 +2337,35 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 }
 .appstream$operations$list_tags_for_resource <- appstream_list_tags_for_resource
 
+#' Starts an app block builder
+#'
+#' @description
+#' Starts an app block builder.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_start_app_block_builder/](https://www.paws-r-sdk.com/docs/appstream_start_app_block_builder/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app block builder.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_start_app_block_builder
+appstream_start_app_block_builder <- function(Name) {
+  op <- new_operation(
+    name = "StartAppBlockBuilder",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$start_app_block_builder_input(Name = Name)
+  output <- .appstream$start_app_block_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$start_app_block_builder <- appstream_start_app_block_builder
+
 #' Starts the specified fleet
 #'
 #' @description
@@ -2126,6 +2425,35 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
   return(response)
 }
 .appstream$operations$start_image_builder <- appstream_start_image_builder
+
+#' Stops an app block builder
+#'
+#' @description
+#' Stops an app block builder.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_stop_app_block_builder/](https://www.paws-r-sdk.com/docs/appstream_stop_app_block_builder/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app block builder.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_stop_app_block_builder
+appstream_stop_app_block_builder <- function(Name) {
+  op <- new_operation(
+    name = "StopAppBlockBuilder",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$stop_app_block_builder_input(Name = Name)
+  output <- .appstream$stop_app_block_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$stop_app_block_builder <- appstream_stop_app_block_builder
 
 #' Stops the specified fleet
 #'
@@ -2253,6 +2581,73 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .appstream$operations$untag_resource <- appstream_untag_resource
+
+#' Updates an app block builder
+#'
+#' @description
+#' Updates an app block builder.
+#'
+#' See [https://www.paws-r-sdk.com/docs/appstream_update_app_block_builder/](https://www.paws-r-sdk.com/docs/appstream_update_app_block_builder/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The unique name for the app block builder.
+#' @param Description The description of the app block builder.
+#' @param DisplayName The display name of the app block builder.
+#' @param Platform The platform of the app block builder.
+#' 
+#' `WINDOWS_SERVER_2019` is the only valid value.
+#' @param InstanceType The instance type to use when launching the app block builder. The
+#' following instance types are available:
+#' 
+#' -   stream.standard.small
+#' 
+#' -   stream.standard.medium
+#' 
+#' -   stream.standard.large
+#' 
+#' -   stream.standard.xlarge
+#' 
+#' -   stream.standard.2xlarge
+#' @param VpcConfig The VPC configuration for the app block builder.
+#' 
+#' App block builders require that you specify at least two subnets in
+#' different availability zones.
+#' @param EnableDefaultInternetAccess Enables or disables default internet access for the app block builder.
+#' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role to apply to the app block
+#' builder. To assume a role, the app block builder calls the AWS Security
+#' Token Service (STS) `AssumeRole` API operation and passes the ARN of the
+#' role to use. The operation creates a new session with temporary
+#' credentials. AppStream 2.0 retrieves the temporary credentials and
+#' creates the **appstream_machine_role** credential profile on the
+#' instance.
+#' 
+#' For more information, see [Using an IAM Role to Grant Permissions to
+#' Applications and Scripts Running on AppStream 2.0 Streaming
+#' Instances](https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+#' in the *Amazon AppStream 2.0 Administration Guide*.
+#' @param AccessEndpoints The list of interface VPC endpoint (interface endpoint) objects.
+#' Administrators can connect to the app block builder only through the
+#' specified endpoints.
+#' @param AttributesToDelete The attributes to delete from the app block builder.
+#'
+#' @keywords internal
+#'
+#' @rdname appstream_update_app_block_builder
+appstream_update_app_block_builder <- function(Name, Description = NULL, DisplayName = NULL, Platform = NULL, InstanceType = NULL, VpcConfig = NULL, EnableDefaultInternetAccess = NULL, IamRoleArn = NULL, AccessEndpoints = NULL, AttributesToDelete = NULL) {
+  op <- new_operation(
+    name = "UpdateAppBlockBuilder",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .appstream$update_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, AttributesToDelete = AttributesToDelete)
+  output <- .appstream$update_app_block_builder_output()
+  config <- get_config()
+  svc <- .appstream$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appstream$operations$update_app_block_builder <- appstream_update_app_block_builder
 
 #' Updates the specified application
 #'
@@ -2474,7 +2869,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' documents before being disconnected. After this time elapses, the
 #' instance is terminated and replaced by a new instance.
 #' 
-#' Specify a value between 600 and 360000.
+#' Specify a value between 600 and 432000.
 #' @param DisconnectTimeoutInSeconds The amount of time that a streaming session remains active after users
 #' disconnect. If users try to reconnect to the streaming session after a
 #' disconnection or network interruption within this time interval, they

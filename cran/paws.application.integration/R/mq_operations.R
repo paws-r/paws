@@ -16,18 +16,25 @@ NULL
 #' versions are released and supported by Amazon MQ. Automatic upgrades
 #' occur during the scheduled maintenance window of the broker or after a
 #' manual broker reboot. Set to true by default, if no value is specified.
-#' @param BrokerName &#91;required&#93; Required. The broker's name. This value must be unique in your AWS
-#' account, 1-50 characters long, must contain only letters, numbers,
-#' dashes, and underscores, and must not contain white spaces, brackets,
-#' wildcard characters, or special characters.
+#' @param BrokerName &#91;required&#93; Required. The broker's name. This value must be unique in your Amazon
+#' Web Services account, 1-50 characters long, must contain only letters,
+#' numbers, dashes, and underscores, and must not contain white spaces,
+#' brackets, wildcard characters, or special characters.
+#' 
+#' Do not add personally identifiable information (PII) or other
+#' confidential or sensitive information in broker names. Broker names are
+#' accessible to other Amazon Web Services services, including CloudWatch
+#' Logs. Broker names are not intended to be used for private or sensitive
+#' data.
 #' @param Configuration A list of information about the configuration.
 #' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon
-#' MQ passes your ID with the API action. Note: We recommend using a
-#' Universally Unique Identifier (UUID) for the creatorRequestId. You may
-#' omit the creatorRequestId if your application doesn't require
-#' idempotency.
+#' MQ passes your ID with the API action.
+#' 
+#' We recommend using a Universally Unique Identifier (UUID) for the
+#' creatorRequestId. You may omit the creatorRequestId if your application
+#' doesn't require idempotency.
 #' @param DeploymentMode &#91;required&#93; Required. The broker's deployment mode.
-#' @param EncryptionOptions Encryption options for the broker. Does not apply to RabbitMQ brokers.
+#' @param EncryptionOptions Encryption options for the broker.
 #' @param EngineType &#91;required&#93; Required. The type of broker engine. Currently, Amazon MQ supports
 #' ACTIVEMQ and RABBITMQ.
 #' @param EngineVersion &#91;required&#93; Required. The broker engine's version. For a list of supported engine
@@ -57,32 +64,31 @@ NULL
 #' If you specify subnets in a [shared
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html)
 #' for a RabbitMQ broker, the associated VPC to which the specified subnets
-#' belong must be owned by your AWS account. Amazon MQ will not be able to
-#' create VPC endpoints in VPCs that are not owned by your AWS account.
+#' belong must be owned by your Amazon Web Services account. Amazon MQ will
+#' not be able to create VPC endpoints in VPCs that are not owned by your
+#' Amazon Web Services account.
 #' @param Tags Create tags when creating the broker.
-#' @param Users &#91;required&#93; Required. The list of broker users (persons or applications) who can
-#' access queues and topics. This value can contain only alphanumeric
-#' characters, dashes, periods, underscores, and tildes (- . _ ~). This
-#' value must be 2-100 characters long.
-#' 
-#' Amazon MQ for RabbitMQ
-#' 
-#' When you create an Amazon MQ for RabbitMQ broker, one and only one
+#' @param Users &#91;required&#93; The list of broker users (persons or applications) who can access queues
+#' and topics. For Amazon MQ for RabbitMQ brokers, one and only one
 #' administrative user is accepted and created when a broker is first
 #' provisioned. All subsequent broker users are created by making RabbitMQ
 #' API calls directly to brokers or via the RabbitMQ web console.
+#' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
+#' @param DataReplicationPrimaryBrokerArn The Amazon Resource Name (ARN) of the primary broker that is used to
+#' replicate data from in a data replication pair, and is applied to the
+#' replica broker. Must be set when dataReplicationMode is set to CRDR.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
     http_path = "/v1/brokers",
     paginator = list()
   )
-  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
+  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users, DataReplicationMode = DataReplicationMode, DataReplicationPrimaryBrokerArn = DataReplicationPrimaryBrokerArn)
   output <- .mq$create_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -180,18 +186,19 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 2-100 characters long.
+#' @param ReplicationUser Defines if this user is intended for CRDR replication purposes.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_create_user
-mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password, Username) {
+mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password, Username, ReplicationUser = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     paginator = list()
   )
-  input <- .mq$create_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username)
+  input <- .mq$create_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$create_user_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -501,7 +508,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListBrokers",
     http_method = "GET",
     http_path = "/v1/brokers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BrokerSummaries")
   )
   input <- .mq$list_brokers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_brokers_output()
@@ -640,6 +647,37 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 }
 .mq$operations$list_users <- mq_list_users
 
+#' Promotes a data replication replica broker to the primary broker role
+#'
+#' @description
+#' Promotes a data replication replica broker to the primary broker role.
+#'
+#' See [https://www.paws-r-sdk.com/docs/mq_promote/](https://www.paws-r-sdk.com/docs/mq_promote/) for full documentation.
+#'
+#' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
+#' @param Mode &#91;required&#93; The Promote mode requested. Note: Valid values for the parameter are
+#' SWITCHOVER, FAILOVER.
+#'
+#' @keywords internal
+#'
+#' @rdname mq_promote
+mq_promote <- function(BrokerId, Mode) {
+  op <- new_operation(
+    name = "Promote",
+    http_method = "POST",
+    http_path = "/v1/brokers/{broker-id}/promote",
+    paginator = list()
+  )
+  input <- .mq$promote_input(BrokerId = BrokerId, Mode = Mode)
+  output <- .mq$promote_output()
+  config <- get_config()
+  svc <- .mq$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mq$operations$promote <- mq_promote
+
 #' Reboots a broker
 #'
 #' @description
@@ -696,18 +734,19 @@ mq_reboot_broker <- function(BrokerId) {
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes
 #' connections to brokers.
+#' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_update_broker
-mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL) {
+mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL, DataReplicationMode = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
     paginator = list()
   )
-  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups)
+  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups, DataReplicationMode = DataReplicationMode)
   output <- .mq$update_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -725,7 +764,8 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' See [https://www.paws-r-sdk.com/docs/mq_update_configuration/](https://www.paws-r-sdk.com/docs/mq_update_configuration/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
-#' @param Data &#91;required&#93; Required. The base64-encoded XML configuration.
+#' @param Data &#91;required&#93; Amazon MQ for Active MQ: The base64-encoded XML configuration. Amazon MQ
+#' for RabbitMQ: the base64-encoded Cuttlefish configuration.
 #' @param Description The description of the configuration.
 #'
 #' @keywords internal
@@ -767,18 +807,19 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 2-100 characters long.
+#' @param ReplicationUser Defines whether the user is intended for data replication.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_update_user
-mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password = NULL, Username) {
+mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password = NULL, Username, ReplicationUser = NULL) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     paginator = list()
   )
-  input <- .mq$update_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username)
+  input <- .mq$update_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$update_user_output()
   config <- get_config()
   svc <- .mq$service(config)

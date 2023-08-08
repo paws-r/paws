@@ -689,7 +689,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
     name = "ListEndpointsByPlatformApplication",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .sns$list_endpoints_by_platform_application_input(PlatformApplicationArn = PlatformApplicationArn, NextToken = NextToken)
   output <- .sns$list_endpoints_by_platform_application_output()
@@ -722,7 +722,7 @@ sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListOriginationNumbers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
   )
   input <- .sns$list_origination_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_origination_numbers_output()
@@ -755,7 +755,7 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
     name = "ListPhoneNumbersOptedOut",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "phoneNumbers")
   )
   input <- .sns$list_phone_numbers_opted_out_input(nextToken = nextToken)
   output <- .sns$list_phone_numbers_opted_out_output()
@@ -787,7 +787,7 @@ sns_list_platform_applications <- function(NextToken = NULL) {
     name = "ListPlatformApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PlatformApplications")
   )
   input <- .sns$list_platform_applications_input(NextToken = NextToken)
   output <- .sns$list_platform_applications_output()
@@ -819,7 +819,7 @@ sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NU
     name = "ListSMSSandboxPhoneNumbers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
   )
   input <- .sns$list_sms_sandbox_phone_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_sms_sandbox_phone_numbers_output()
@@ -849,7 +849,7 @@ sns_list_subscriptions <- function(NextToken = NULL) {
     name = "ListSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .sns$list_subscriptions_input(NextToken = NextToken)
   output <- .sns$list_subscriptions_output()
@@ -881,7 +881,7 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
     name = "ListSubscriptionsByTopic",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .sns$list_subscriptions_by_topic_input(TopicArn = TopicArn, NextToken = NextToken)
   output <- .sns$list_subscriptions_by_topic_output()
@@ -939,7 +939,7 @@ sns_list_topics <- function(NextToken = NULL) {
     name = "ListTopics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Topics")
   )
   input <- .sns$list_topics_input(NextToken = NextToken)
   output <- .sns$list_topics_output()

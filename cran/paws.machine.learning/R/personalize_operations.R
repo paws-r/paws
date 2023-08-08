@@ -524,7 +524,7 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' optimal recipe by running tests with different values for the
 #' hyperparameters. AutoML lengthens the training process as compared to
 #' selecting a specific recipe.
-#' @param recipeArn The ARN of the recipe to use for model training. Only specified when
+#' @param recipeArn The ARN of the recipe to use for model training. This is required when
 #' `performAutoML` is false.
 #' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset group that provides the
 #' training data.
@@ -1425,7 +1425,7 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
     name = "ListBatchInferenceJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchInferenceJobs")
   )
   input <- .personalize$list_batch_inference_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_inference_jobs_output()
@@ -1459,7 +1459,7 @@ personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextT
     name = "ListBatchSegmentJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchSegmentJobs")
   )
   input <- .personalize$list_batch_segment_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_segment_jobs_output()
@@ -1494,7 +1494,7 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
     name = "ListCampaigns",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "campaigns")
   )
   input <- .personalize$list_campaigns_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_campaigns_output()
@@ -1528,7 +1528,7 @@ personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = 
     name = "ListDatasetExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetExportJobs")
   )
   input <- .personalize$list_dataset_export_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_export_jobs_output()
@@ -1560,7 +1560,7 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
     name = "ListDatasetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetGroups")
   )
   input <- .personalize$list_dataset_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_groups_output()
@@ -1594,7 +1594,7 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
     name = "ListDatasetImportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetImportJobs")
   )
   input <- .personalize$list_dataset_import_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_import_jobs_output()
@@ -1628,7 +1628,7 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
     name = "ListDatasets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasets")
   )
   input <- .personalize$list_datasets_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_datasets_output()
@@ -1661,7 +1661,7 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
     name = "ListEventTrackers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTrackers")
   )
   input <- .personalize$list_event_trackers_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_event_trackers_output()
@@ -1694,7 +1694,7 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
     name = "ListFilters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "Filters")
   )
   input <- .personalize$list_filters_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_filters_output()
@@ -1727,7 +1727,7 @@ personalize_list_metric_attribution_metrics <- function(metricAttributionArn = N
     name = "ListMetricAttributionMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metrics")
   )
   input <- .personalize$list_metric_attribution_metrics_input(metricAttributionArn = metricAttributionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attribution_metrics_output()
@@ -1760,7 +1760,7 @@ personalize_list_metric_attributions <- function(datasetGroupArn = NULL, nextTok
     name = "ListMetricAttributions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metricAttributions")
   )
   input <- .personalize$list_metric_attributions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attributions_output()
@@ -1796,7 +1796,7 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
     name = "ListRecipes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recipes")
   )
   input <- .personalize$list_recipes_input(recipeProvider = recipeProvider, nextToken = nextToken, maxResults = maxResults, domain = domain)
   output <- .personalize$list_recipes_output()
@@ -1831,7 +1831,7 @@ personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NU
     name = "ListRecommenders",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recommenders")
   )
   input <- .personalize$list_recommenders_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_recommenders_output()
@@ -1863,7 +1863,7 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListSchemas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "schemas")
   )
   input <- .personalize$list_schemas_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_schemas_output()
@@ -1896,7 +1896,7 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
     name = "ListSolutionVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutionVersions")
   )
   input <- .personalize$list_solution_versions_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solution_versions_output()
@@ -1929,7 +1929,7 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
     name = "ListSolutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutions")
   )
   input <- .personalize$list_solutions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solutions_output()
@@ -2158,6 +2158,36 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
   return(response)
 }
 .personalize$operations$update_campaign <- personalize_update_campaign
+
+#' Update a dataset to replace its schema with a new or existing one
+#'
+#' @description
+#' Update a dataset to replace its schema with a new or existing one. For more information, see [Replacing a dataset's schema](https://docs.aws.amazon.com/personalize/latest/dg/updating-dataset-schema.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/personalize_update_dataset/](https://www.paws-r-sdk.com/docs/personalize_update_dataset/) for full documentation.
+#'
+#' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to update.
+#' @param schemaArn &#91;required&#93; The Amazon Resource Name (ARN) of the new schema you want use.
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_update_dataset
+personalize_update_dataset <- function(datasetArn, schemaArn) {
+  op <- new_operation(
+    name = "UpdateDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$update_dataset_input(datasetArn = datasetArn, schemaArn = schemaArn)
+  output <- .personalize$update_dataset_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$update_dataset <- personalize_update_dataset
 
 #' Updates a metric attribution
 #'

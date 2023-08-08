@@ -4,22 +4,42 @@
 \alias{sfn}
 \title{AWS Step Functions}
 \usage{
-sfn(config = list())
+sfn(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -68,8 +88,20 @@ information about Step Functions, see the \emph{\href{https://docs.aws.amazon.co
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -79,20 +111,27 @@ information about Step Functions, see the \emph{\href{https://docs.aws.amazon.co
 \tabular{ll}{
 \link[paws.application.integration:sfn_create_activity]{create_activity} \tab Creates an activity\cr
 \link[paws.application.integration:sfn_create_state_machine]{create_state_machine} \tab Creates a state machine\cr
+\link[paws.application.integration:sfn_create_state_machine_alias]{create_state_machine_alias} \tab Creates an alias for a state machine that points to one or two versions of the same state machine\cr
 \link[paws.application.integration:sfn_delete_activity]{delete_activity} \tab Deletes an activity\cr
 \link[paws.application.integration:sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine\cr
+\link[paws.application.integration:sfn_delete_state_machine_alias]{delete_state_machine_alias} \tab Deletes a state machine alias\cr
+\link[paws.application.integration:sfn_delete_state_machine_version]{delete_state_machine_version} \tab Deletes a state machine version\cr
 \link[paws.application.integration:sfn_describe_activity]{describe_activity} \tab Describes an activity\cr
-\link[paws.application.integration:sfn_describe_execution]{describe_execution} \tab Provides all information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata\cr
+\link[paws.application.integration:sfn_describe_execution]{describe_execution} \tab Provides information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata\cr
 \link[paws.application.integration:sfn_describe_map_run]{describe_map_run} \tab Provides information about a Map Run's configuration, progress, and results\cr
 \link[paws.application.integration:sfn_describe_state_machine]{describe_state_machine} \tab Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration\cr
+\link[paws.application.integration:sfn_describe_state_machine_alias]{describe_state_machine_alias} \tab Returns details about a state machine alias\cr
 \link[paws.application.integration:sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Provides information about a state machine's definition, its execution role ARN, and configuration\cr
 \link[paws.application.integration:sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
 \link[paws.application.integration:sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events\cr
 \link[paws.application.integration:sfn_list_activities]{list_activities} \tab Lists the existing activities\cr
 \link[paws.application.integration:sfn_list_executions]{list_executions} \tab Lists all executions of a state machine or a Map Run\cr
 \link[paws.application.integration:sfn_list_map_runs]{list_map_runs} \tab Lists all Map Runs that were started by a given state machine execution\cr
+\link[paws.application.integration:sfn_list_state_machine_aliases]{list_state_machine_aliases} \tab Lists aliases for a specified state machine ARN\cr
 \link[paws.application.integration:sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines\cr
+\link[paws.application.integration:sfn_list_state_machine_versions]{list_state_machine_versions} \tab Lists versions for the specified state machine Amazon Resource Name (ARN)\cr
 \link[paws.application.integration:sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
+\link[paws.application.integration:sfn_publish_state_machine_version]{publish_state_machine_version} \tab Creates a version from the current revision of a state machine\cr
 \link[paws.application.integration:sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
 \link[paws.application.integration:sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
 \link[paws.application.integration:sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
@@ -102,7 +141,8 @@ information about Step Functions, see the \emph{\href{https://docs.aws.amazon.co
 \link[paws.application.integration:sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
 \link[paws.application.integration:sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 \link[paws.application.integration:sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
-\link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
+\link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr
+\link[paws.application.integration:sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration
 }
 }
 

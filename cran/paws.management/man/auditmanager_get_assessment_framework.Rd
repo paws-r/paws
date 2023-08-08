@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_assessment_framework}
 \alias{auditmanager_get_assessment_framework}
-\title{Returns a framework from Audit Manager}
+\title{Gets information about a specified framework}
 \usage{
 auditmanager_get_assessment_framework(frameworkId)
 }
@@ -10,7 +10,7 @@ auditmanager_get_assessment_framework(frameworkId)
 \item{frameworkId}{[required] The identifier for the framework.}
 }
 \description{
-Returns a framework from Audit Manager.
+Gets information about a specified framework.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_framework/} for full documentation.
 }

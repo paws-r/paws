@@ -1398,7 +1398,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
     name = "ListAWSServiceAccessForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_aws_service_access_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_aws_service_access_for_organization_output()
@@ -1441,7 +1441,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListAccounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_output()
@@ -1487,7 +1487,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
     name = "ListAccountsForParent",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_accounts_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_for_parent_output()
@@ -1545,7 +1545,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
     name = "ListChildren",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_children_input(ParentId = ParentId, ChildType = ChildType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_children_output()
@@ -1591,7 +1591,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
     name = "ListCreateAccountStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_create_account_status_input(States = States, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_create_account_status_output()
@@ -1640,7 +1640,7 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
     name = "ListDelegatedAdministrators",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedAdministrators")
   )
   input <- .organizations$list_delegated_administrators_input(ServicePrincipal = ServicePrincipal, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_administrators_output()
@@ -1686,7 +1686,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
     name = "ListDelegatedServicesForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedServices")
   )
   input <- .organizations$list_delegated_services_for_account_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_services_for_account_output()
@@ -1737,7 +1737,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
     name = "ListHandshakesForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_handshakes_for_account_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_account_output()
@@ -1788,7 +1788,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
     name = "ListHandshakesForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_handshakes_for_organization_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_organization_output()
@@ -1845,7 +1845,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
     name = "ListOrganizationalUnitsForParent",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_organizational_units_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_organizational_units_for_parent_output()
@@ -1901,7 +1901,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
     name = "ListParents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_parents_input(ChildId = ChildId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_parents_output()
@@ -1955,7 +1955,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_policies_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_output()
@@ -2024,7 +2024,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
     name = "ListPoliciesForTarget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_policies_for_target_input(TargetId = TargetId, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_for_target_output()
@@ -2067,7 +2067,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListRoots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_roots_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_roots_output()
@@ -2114,7 +2114,7 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .organizations$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken)
   output <- .organizations$list_tags_for_resource_output()
@@ -2164,7 +2164,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
     name = "ListTargetsForPolicy",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .organizations$list_targets_for_policy_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_targets_for_policy_output()

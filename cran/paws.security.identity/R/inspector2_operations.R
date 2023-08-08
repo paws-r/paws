@@ -65,6 +65,37 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
 }
 .inspector2$operations$batch_get_account_status <- inspector2_batch_get_account_status
 
+#' Retrieves code snippets from findings that Amazon Inspector detected
+#' code vulnerabilities in
+#'
+#' @description
+#' Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_get_code_snippet/](https://www.paws-r-sdk.com/docs/inspector2_batch_get_code_snippet/) for full documentation.
+#'
+#' @param findingArns &#91;required&#93; An array of finding ARNs for the findings you want to retrieve code
+#' snippets from.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_get_code_snippet
+inspector2_batch_get_code_snippet <- function(findingArns) {
+  op <- new_operation(
+    name = "BatchGetCodeSnippet",
+    http_method = "POST",
+    http_path = "/codesnippet/batchget",
+    paginator = list()
+  )
+  input <- .inspector2$batch_get_code_snippet_input(findingArns = findingArns)
+  output <- .inspector2$batch_get_code_snippet_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_get_code_snippet <- inspector2_batch_get_code_snippet
+
 #' Gets free trial status for multiple Amazon Web Services accounts
 #'
 #' @description
@@ -187,6 +218,35 @@ inspector2_cancel_findings_report <- function(reportId) {
 }
 .inspector2$operations$cancel_findings_report <- inspector2_cancel_findings_report
 
+#' Cancels a software bill of materials (SBOM) report
+#'
+#' @description
+#' Cancels a software bill of materials (SBOM) report.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_cancel_sbom_export/](https://www.paws-r-sdk.com/docs/inspector2_cancel_sbom_export/) for full documentation.
+#'
+#' @param reportId &#91;required&#93; The report ID of the SBOM export to cancel.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_cancel_sbom_export
+inspector2_cancel_sbom_export <- function(reportId) {
+  op <- new_operation(
+    name = "CancelSbomExport",
+    http_method = "POST",
+    http_path = "/sbomexport/cancel",
+    paginator = list()
+  )
+  input <- .inspector2$cancel_sbom_export_input(reportId = reportId)
+  output <- .inspector2$cancel_sbom_export_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$cancel_sbom_export <- inspector2_cancel_sbom_export
+
 #' Creates a filter resource using specified filter criteria
 #'
 #' @description
@@ -254,6 +314,38 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
   return(response)
 }
 .inspector2$operations$create_findings_report <- inspector2_create_findings_report
+
+#' Creates a software bill of materials (SBOM) report
+#'
+#' @description
+#' Creates a software bill of materials (SBOM) report.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_create_sbom_export/](https://www.paws-r-sdk.com/docs/inspector2_create_sbom_export/) for full documentation.
+#'
+#' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
+#' @param resourceFilterCriteria The resource filter criteria for the software bill of materials (SBOM)
+#' report.
+#' @param s3Destination &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_create_sbom_export
+inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria = NULL, s3Destination) {
+  op <- new_operation(
+    name = "CreateSbomExport",
+    http_method = "POST",
+    http_path = "/sbomexport/create",
+    paginator = list()
+  )
+  input <- .inspector2$create_sbom_export_input(reportFormat = reportFormat, resourceFilterCriteria = resourceFilterCriteria, s3Destination = s3Destination)
+  output <- .inspector2$create_sbom_export_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$create_sbom_export <- inspector2_create_sbom_export
 
 #' Deletes a filter resource
 #'
@@ -552,6 +644,36 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
 }
 .inspector2$operations$get_ec_2_deep_inspection_configuration <- inspector2_get_ec_2_deep_inspection_configuration
 
+#' Gets an encryption key
+#'
+#' @description
+#' Gets an encryption key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_get_encryption_key/) for full documentation.
+#'
+#' @param resourceType &#91;required&#93; The resource type the key encrypts.
+#' @param scanType &#91;required&#93; The scan type the key encrypts.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_encryption_key
+inspector2_get_encryption_key <- function(resourceType, scanType) {
+  op <- new_operation(
+    name = "GetEncryptionKey",
+    http_method = "GET",
+    http_path = "/encryptionkey/get",
+    paginator = list()
+  )
+  input <- .inspector2$get_encryption_key_input(resourceType = resourceType, scanType = scanType)
+  output <- .inspector2$get_encryption_key_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_encryption_key <- inspector2_get_encryption_key
+
 #' Gets the status of a findings report
 #'
 #' @description
@@ -611,6 +733,35 @@ inspector2_get_member <- function(accountId) {
 }
 .inspector2$operations$get_member <- inspector2_get_member
 
+#' Gets details of a software bill of materials (SBOM) report
+#'
+#' @description
+#' Gets details of a software bill of materials (SBOM) report.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_get_sbom_export/](https://www.paws-r-sdk.com/docs/inspector2_get_sbom_export/) for full documentation.
+#'
+#' @param reportId &#91;required&#93; The report ID of the SBOM export to get details for.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_get_sbom_export
+inspector2_get_sbom_export <- function(reportId) {
+  op <- new_operation(
+    name = "GetSbomExport",
+    http_method = "POST",
+    http_path = "/sbomexport/get",
+    paginator = list()
+  )
+  input <- .inspector2$get_sbom_export_input(reportId = reportId)
+  output <- .inspector2$get_sbom_export_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$get_sbom_export <- inspector2_get_sbom_export
+
 #' Lists the permissions an account has to configure Amazon Inspector
 #'
 #' @description
@@ -633,7 +784,7 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
     name = "ListAccountPermissions",
     http_method = "POST",
     http_path = "/accountpermissions/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions")
   )
   input <- .inspector2$list_account_permissions_input(maxResults = maxResults, nextToken = nextToken, service = service)
   output <- .inspector2$list_account_permissions_output()
@@ -668,7 +819,7 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
     name = "ListCoverage",
     http_method = "POST",
     http_path = "/coverage/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "coveredResources")
   )
   input <- .inspector2$list_coverage_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_coverage_output()
@@ -703,7 +854,7 @@ inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy =
     name = "ListCoverageStatistics",
     http_method = "POST",
     http_path = "/coverage/statistics/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "countsByGroup")
   )
   input <- .inspector2$list_coverage_statistics_input(filterCriteria = filterCriteria, groupBy = groupBy, nextToken = nextToken)
   output <- .inspector2$list_coverage_statistics_output()
@@ -737,7 +888,7 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
     name = "ListDelegatedAdminAccounts",
     http_method = "POST",
     http_path = "/delegatedadminaccounts/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "delegatedAdminAccounts")
   )
   input <- .inspector2$list_delegated_admin_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_delegated_admin_accounts_output()
@@ -772,7 +923,7 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
     name = "ListFilters",
     http_method = "POST",
     http_path = "/filters/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "filters")
   )
   input <- .inspector2$list_filters_input(action = action, arns = arns, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_filters_output()
@@ -811,7 +962,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
     name = "ListFindingAggregations",
     http_method = "POST",
     http_path = "/findings/aggregation/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responses")
   )
   input <- .inspector2$list_finding_aggregations_input(accountIds = accountIds, aggregationRequest = aggregationRequest, aggregationType = aggregationType, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_finding_aggregations_output()
@@ -846,7 +997,7 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
     name = "ListFindings",
     http_method = "POST",
     http_path = "/findings/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .inspector2$list_findings_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .inspector2$list_findings_output()
@@ -882,7 +1033,7 @@ inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAss
     name = "ListMembers",
     http_method = "POST",
     http_path = "/members/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .inspector2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
   output <- .inspector2$list_members_output()
@@ -945,7 +1096,7 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
     name = "ListUsageTotals",
     http_method = "POST",
     http_path = "/usage/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "totals")
   )
   input <- .inspector2$list_usage_totals_input(accountIds = accountIds, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_usage_totals_output()
@@ -956,6 +1107,36 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
   return(response)
 }
 .inspector2$operations$list_usage_totals <- inspector2_list_usage_totals
+
+#' Resets an encryption key
+#'
+#' @description
+#' Resets an encryption key. After the key is reset your resources will be encrypted by an Amazon Web Services owned key.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_reset_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_reset_encryption_key/) for full documentation.
+#'
+#' @param resourceType &#91;required&#93; The resource type the key encrypts.
+#' @param scanType &#91;required&#93; The scan type the key encrypts.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_reset_encryption_key
+inspector2_reset_encryption_key <- function(resourceType, scanType) {
+  op <- new_operation(
+    name = "ResetEncryptionKey",
+    http_method = "PUT",
+    http_path = "/encryptionkey/reset",
+    paginator = list()
+  )
+  input <- .inspector2$reset_encryption_key_input(resourceType = resourceType, scanType = scanType)
+  output <- .inspector2$reset_encryption_key_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$reset_encryption_key <- inspector2_reset_encryption_key
 
 #' Lists Amazon Inspector coverage details for a specific vulnerability
 #'
@@ -978,7 +1159,7 @@ inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) 
     name = "SearchVulnerabilities",
     http_method = "POST",
     http_path = "/vulnerabilities/search",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "vulnerabilities")
   )
   input <- .inspector2$search_vulnerabilities_input(filterCriteria = filterCriteria, nextToken = nextToken)
   output <- .inspector2$search_vulnerabilities_output()
@@ -1115,6 +1296,37 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
   return(response)
 }
 .inspector2$operations$update_ec_2_deep_inspection_configuration <- inspector2_update_ec_2_deep_inspection_configuration
+
+#' Updates an encryption key
+#'
+#' @description
+#' Updates an encryption key. A `ResourceNotFoundException` means that an AWS owned key is being used for encryption.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/](https://www.paws-r-sdk.com/docs/inspector2_update_encryption_key/) for full documentation.
+#'
+#' @param kmsKeyId &#91;required&#93; A KMS key ID for the encryption key.
+#' @param resourceType &#91;required&#93; The resource type for the encryption key.
+#' @param scanType &#91;required&#93; The scan type for the encryption key.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_update_encryption_key
+inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
+  op <- new_operation(
+    name = "UpdateEncryptionKey",
+    http_method = "PUT",
+    http_path = "/encryptionkey/update",
+    paginator = list()
+  )
+  input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, resourceType = resourceType, scanType = scanType)
+  output <- .inspector2$update_encryption_key_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$update_encryption_key <- inspector2_update_encryption_key
 
 #' Specifies the action that is to be applied to the findings that match
 #' the filter

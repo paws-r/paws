@@ -421,11 +421,16 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' within the service. For more information, see [Tagging your Amazon ECS
 #' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' When you use Amazon ECS managed tags, you need to set the
+#' `propagateTags` request parameter.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
 #' only be propagated to the task during task creation. To add tags to a
 #' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
 #' action.
+#' 
+#' The default is `NONE`.
 #' @param enableExecuteCommand Determines whether the execute command functionality is turned on for
 #' the service. If `true`, this enables execute command functionality on
 #' all containers in the service tasks.
@@ -1345,7 +1350,7 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
     name = "ListAccountSettings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings")
   )
   input <- .ecs$list_account_settings_input(name = name, value = value, principalArn = principalArn, effectiveSettings = effectiveSettings, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_account_settings_output()
@@ -1400,7 +1405,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
     name = "ListAttributes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes")
   )
   input <- .ecs$list_attributes_input(cluster = cluster, targetType = targetType, attributeName = attributeName, attributeValue = attributeValue, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_attributes_output()
@@ -1447,7 +1452,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns")
   )
   input <- .ecs$list_clusters_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_clusters_output()
@@ -1511,7 +1516,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
     name = "ListContainerInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns")
   )
   input <- .ecs$list_container_instances_input(cluster = cluster, filter = filter, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .ecs$list_container_instances_output()
@@ -1565,7 +1570,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
   )
   input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
   output <- .ecs$list_services_output()
@@ -1622,7 +1627,7 @@ ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResul
     name = "ListServicesByNamespace",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
   )
   input <- .ecs$list_services_by_namespace_input(namespace = namespace, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_services_by_namespace_output()
@@ -1716,7 +1721,7 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
     name = "ListTaskDefinitionFamilies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families")
   )
   input <- .ecs$list_task_definition_families_input(familyPrefix = familyPrefix, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definition_families_output()
@@ -1781,7 +1786,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
     name = "ListTaskDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns")
   )
   input <- .ecs$list_task_definitions_input(familyPrefix = familyPrefix, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definitions_output()
@@ -1859,7 +1864,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     name = "ListTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns")
   )
   input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
   output <- .ecs$list_tasks_output()

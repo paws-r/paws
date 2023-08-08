@@ -17,7 +17,7 @@ ec2_describe_dhcp_options(
 
 Default: Describes all your DHCP options sets.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{dhcp-options-id} - The ID of a DHCP options set.
 \item \code{key} - The key for one of the options (for example, \code{domain-name}).

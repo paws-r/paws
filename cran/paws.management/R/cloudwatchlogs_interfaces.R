@@ -5,7 +5,7 @@ NULL
 
 .cloudwatchlogs$associate_kms_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -279,7 +279,7 @@ NULL
 
 .cloudwatchlogs$disassociate_kms_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -355,7 +355,7 @@ NULL
 
 .cloudwatchlogs$get_query_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(results = structure(list(structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), statistics = structure(list(recordsMatched = structure(logical(0), tags = list(type = "double")), recordsScanned = structure(logical(0), tags = list(type = "double")), bytesScanned = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(results = structure(list(structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), statistics = structure(list(recordsMatched = structure(logical(0), tags = list(type = "double")), recordsScanned = structure(logical(0), tags = list(type = "double")), bytesScanned = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

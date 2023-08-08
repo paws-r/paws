@@ -5,15 +5,19 @@
 \title{Lists the problems with your application}
 \usage{
 applicationinsights_list_problems(
+  AccountId = NULL,
   ResourceGroupName = NULL,
   StartTime = NULL,
   EndTime = NULL,
   MaxResults = NULL,
   NextToken = NULL,
-  ComponentName = NULL
+  ComponentName = NULL,
+  Visibility = NULL
 )
 }
 \arguments{
+\item{AccountId}{The AWS account ID for the resource group owner.}
+
 \item{ResourceGroupName}{The name of the resource group.}
 
 \item{StartTime}{The time when the problem was detected, in epoch seconds. If you don't
@@ -30,6 +34,9 @@ value.}
 \item{NextToken}{The token to request the next page of results.}
 
 \item{ComponentName}{The name of the component.}
+
+\item{Visibility}{Specifies whether or not you can view the problem. If not specified,
+visible and ignored problems are returned.}
 }
 \description{
 Lists the problems with your application.

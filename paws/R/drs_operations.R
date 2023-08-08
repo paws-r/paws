@@ -832,7 +832,7 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
     name = "DescribeJobLogItems",
     http_method = "POST",
     http_path = "/DescribeJobLogItems",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_job_log_items_input(jobID = jobID, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_job_log_items_output()
@@ -924,7 +924,7 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
     name = "DescribeJobs",
     http_method = "POST",
     http_path = "/DescribeJobs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_jobs_output()
@@ -998,7 +998,7 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
     name = "DescribeLaunchConfigurationTemplates",
     http_method = "POST",
     http_path = "/DescribeLaunchConfigurationTemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_launch_configuration_templates_input(launchConfigurationTemplateIDs = launchConfigurationTemplateIDs, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_launch_configuration_templates_output()
@@ -1148,7 +1148,7 @@ drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, n
     name = "DescribeRecoveryInstances",
     http_method = "POST",
     http_path = "/DescribeRecoveryInstances",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_recovery_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_recovery_instances_output()
@@ -1218,7 +1218,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
     name = "DescribeRecoverySnapshots",
     http_method = "POST",
     http_path = "/DescribeRecoverySnapshots",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_recovery_snapshots_input(filters = filters, maxResults = maxResults, nextToken = nextToken, order = order, sourceServerID = sourceServerID)
   output <- .drs$describe_recovery_snapshots_output()
@@ -1310,7 +1310,7 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
     name = "DescribeReplicationConfigurationTemplates",
     http_method = "POST",
     http_path = "/DescribeReplicationConfigurationTemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_replication_configuration_templates_input(maxResults = maxResults, nextToken = nextToken, replicationConfigurationTemplateIDs = replicationConfigurationTemplateIDs)
   output <- .drs$describe_replication_configuration_templates_output()
@@ -1390,7 +1390,7 @@ drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, next
     name = "DescribeSourceNetworks",
     http_method = "POST",
     http_path = "/DescribeSourceNetworks",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_source_networks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_source_networks_output()
@@ -1553,7 +1553,7 @@ drs_describe_source_servers <- function(filters = NULL, maxResults = NULL, nextT
     name = "DescribeSourceServers",
     http_method = "POST",
     http_path = "/DescribeSourceServers",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_source_servers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_source_servers_output()
@@ -2112,7 +2112,7 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
     name = "ListExtensibleSourceServers",
     http_method = "POST",
     http_path = "/ListExtensibleSourceServers",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$list_extensible_source_servers_input(maxResults = maxResults, nextToken = nextToken, stagingAccountID = stagingAccountID)
   output <- .drs$list_extensible_source_servers_output()
@@ -2168,7 +2168,7 @@ drs_list_staging_accounts <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListStagingAccounts",
     http_method = "GET",
     http_path = "/ListStagingAccounts",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accounts")
   )
   input <- .drs$list_staging_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .drs$list_staging_accounts_output()

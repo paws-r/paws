@@ -1719,6 +1719,13 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'         VocabularyFilterName = "string",
 #'         LanguageModelName = "string"
 #'       )
+#'     ),
+#'     ToxicityDetection = list(
+#'       list(
+#'         ToxicityCategories = list(
+#'           "ALL"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2009,7 +2016,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
     name = "ListCallAnalyticsCategories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_categories_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_categories_output()
@@ -2098,7 +2105,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
     name = "ListCallAnalyticsJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_jobs_output()
@@ -2190,7 +2197,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
     name = "ListLanguageModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_language_models_input(StatusEquals = StatusEquals, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_language_models_output()
@@ -2284,7 +2291,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
     name = "ListMedicalTranscriptionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_medical_transcription_jobs_output()
@@ -2368,7 +2375,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
     name = "ListMedicalVocabularies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_medical_vocabularies_output()
@@ -2517,6 +2524,13 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #'           LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'           DurationInSeconds = 123.0
 #'         )
+#'       ),
+#'       ToxicityDetection = list(
+#'         list(
+#'           ToxicityCategories = list(
+#'             "ALL"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -2543,7 +2557,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
     name = "ListTranscriptionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_transcription_jobs_output()
@@ -2625,7 +2639,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
     name = "ListVocabularies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_vocabularies_output()
@@ -2702,7 +2716,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
     name = "ListVocabularyFilters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabulary_filters_input(NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains)
   output <- .transcribeservice$list_vocabulary_filters_output()
@@ -3330,7 +3344,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   OutputBucketName, OutputKey, OutputEncryptionKMSKeyId,
 #'   KMSEncryptionContext, Settings, ModelSettings, JobExecutionSettings,
 #'   ContentRedaction, IdentifyLanguage, IdentifyMultipleLanguages,
-#'   LanguageOptions, Subtitles, Tags, LanguageIdSettings)
+#'   LanguageOptions, Subtitles, Tags, LanguageIdSettings, ToxicityDetection)
 #'
 #' @param TranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your transcription job. The name that
 #' you specify is also used as the default name of your transcription
@@ -3585,6 +3599,13 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' with your request but **do not** want to use automatic language
 #' identification, use instead the `` parameter with the `VocabularyName`
 #' or `VocabularyFilterName` (or both) sub-parameter.
+#' @param ToxicityDetection Enables toxic speech detection in your transcript. If you include
+#' `ToxicityDetection` in your request, you must also include
+#' `ToxicityCategories`.
+#' 
+#' For information on the types of toxic speech Amazon Transcribe can
+#' detect, see [Detecting toxic
+#' speech](https://docs.aws.amazon.com/transcribe/latest/dg/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -3671,6 +3692,13 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'         VocabularyFilterName = "string",
 #'         LanguageModelName = "string"
 #'       )
+#'     ),
+#'     ToxicityDetection = list(
+#'       list(
+#'         ToxicityCategories = list(
+#'           "ALL"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3740,6 +3768,13 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'       VocabularyFilterName = "string",
 #'       LanguageModelName = "string"
 #'     )
+#'   ),
+#'   ToxicityDetection = list(
+#'     list(
+#'       ToxicityCategories = list(
+#'         "ALL"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3749,14 +3784,14 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' @rdname transcribeservice_start_transcription_job
 #'
 #' @aliases transcribeservice_start_transcription_job
-transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, IdentifyMultipleLanguages = NULL, LanguageOptions = NULL, Subtitles = NULL, Tags = NULL, LanguageIdSettings = NULL) {
+transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, IdentifyMultipleLanguages = NULL, LanguageOptions = NULL, Subtitles = NULL, Tags = NULL, LanguageIdSettings = NULL, ToxicityDetection = NULL) {
   op <- new_operation(
     name = "StartTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings)
+  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings, ToxicityDetection = ToxicityDetection)
   output <- .transcribeservice$start_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)

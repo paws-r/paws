@@ -12,7 +12,7 @@ ec2_unassign_private_nat_gateway_address(
 )
 }
 \arguments{
-\item{NatGatewayId}{[required] The NAT gateway ID.}
+\item{NatGatewayId}{[required] The ID of the NAT gateway.}
 
 \item{PrivateIpAddresses}{[required] The private IPv4 addresses you want to unassign.}
 
@@ -26,7 +26,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Unassigns secondary private IPv4 addresses from a private NAT gateway. You cannot unassign your primary private IP. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary}{Edit secondary IP address associations} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Unassigns secondary private IPv4 addresses from a private NAT gateway. You cannot unassign your primary private IP. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary}{Edit secondary IP address associations} in the \emph{Amazon VPC User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_unassign_private_nat_gateway_address/} for full documentation.
 }

@@ -4,22 +4,42 @@
 \alias{iam}
 \title{AWS Identity and Access Management}
 \usage{
-iam(config = list())
+iam(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -55,8 +75,20 @@ applications can access. For more information about IAM, see \href{https://aws.a
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -127,6 +159,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[paws.security.identity:iam_get_group_policy]{get_group_policy} \tab Retrieves the specified inline policy document that is embedded in the specified IAM group\cr
 \link[paws.security.identity:iam_get_instance_profile]{get_instance_profile} \tab Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role\cr
 \link[paws.security.identity:iam_get_login_profile]{get_login_profile} \tab Retrieves the user name for the specified IAM user\cr
+\link[paws.security.identity:iam_get_mfa_device]{get_mfa_device} \tab Retrieves information about an MFA device for a specified user\cr
 \link[paws.security.identity:iam_get_open_id_connect_provider]{get_open_id_connect_provider} \tab Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM\cr
 \link[paws.security.identity:iam_get_organizations_access_report]{get_organizations_access_report} \tab Retrieves the service last accessed data report for Organizations that was previously generated using the GenerateOrganizationsAccessReport operation\cr
 \link[paws.security.identity:iam_get_policy]{get_policy} \tab Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached\cr

@@ -77,10 +77,18 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #' staging distribution's configuration. Then you can use
 #' [`create_continuous_deployment_policy`][cloudfront_create_continuous_deployment_policy]
 #' to incrementally move traffic to the staging distribution.
+#' 
+#' This API operation requires the following IAM permissions:
+#' 
+#' -   [`get_distribution`][cloudfront_get_distribution]
+#' 
+#' -   [`create_distribution`][cloudfront_create_distribution]
+#' 
+#' -   [`copy_distribution`][cloudfront_copy_distribution]
 #'
 #' @usage
 #' cloudfront_copy_distribution(PrimaryDistributionId, Staging, IfMatch,
-#'   CallerReference)
+#'   CallerReference, Enabled)
 #'
 #' @param PrimaryDistributionId &#91;required&#93; The identifier of the primary distribution whose configuration you are
 #' copying. To get a distribution ID, use
@@ -95,6 +103,12 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #' @param CallerReference &#91;required&#93; A value that uniquely identifies a request to create a resource. This
 #' helps to prevent CloudFront from creating a duplicate resource if you
 #' accidentally resubmit an identical request.
+#' @param Enabled A Boolean flag to specify the state of the staging distribution when
+#' it's created. When you set this value to `True`, the staging
+#' distribution is enabled. When you set this value to `False`, the staging
+#' distribution is disabled.
+#' 
+#' If you omit this field, the default value is `True`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -448,7 +462,8 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'   PrimaryDistributionId = "string",
 #'   Staging = TRUE|FALSE,
 #'   IfMatch = "string",
-#'   CallerReference = "string"
+#'   CallerReference = "string",
+#'   Enabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -457,14 +472,14 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #' @rdname cloudfront_copy_distribution
 #'
 #' @aliases cloudfront_copy_distribution
-cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, IfMatch = NULL, CallerReference) {
+cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, IfMatch = NULL, CallerReference, Enabled = NULL) {
   op <- new_operation(
     name = "CopyDistribution",
     http_method = "POST",
     http_path = "/2020-05-31/distribution/{PrimaryDistributionId}/copy",
     paginator = list()
   )
-  input <- .cloudfront$copy_distribution_input(PrimaryDistributionId = PrimaryDistributionId, Staging = Staging, IfMatch = IfMatch, CallerReference = CallerReference)
+  input <- .cloudfront$copy_distribution_input(PrimaryDistributionId = PrimaryDistributionId, Staging = Staging, IfMatch = IfMatch, CallerReference = CallerReference, Enabled = Enabled)
   output <- .cloudfront$copy_distribution_output()
   config <- get_config()
   svc <- .cloudfront$service(config)
@@ -1484,7 +1499,12 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #' Create a new distribution with tags
 #'
 #' @description
-#' Create a new distribution with tags.
+#' Create a new distribution with tags. This API operation requires the
+#' following IAM permissions:
+#' 
+#' -   [`create_distribution`][cloudfront_create_distribution]
+#' 
+#' -   [`tag_resource`][cloudfront_tag_resource]
 #'
 #' @usage
 #' cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
@@ -2412,7 +2432,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -2436,7 +2456,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'   Name = "string",
 #'   FunctionConfig = list(
 #'     Comment = "string",
-#'     Runtime = "cloudfront-js-1.0"
+#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'   ),
 #'   FunctionCode = raw
 #' )
@@ -4407,7 +4427,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -7401,7 +7421,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
     name = "ListCloudFrontOriginAccessIdentities",
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-identity/cloudfront",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", result_key = "CloudFrontOriginAccessIdentityList.Items")
   )
   input <- .cloudfront$list_cloud_front_origin_access_identities_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_cloud_front_origin_access_identities_output()
@@ -7960,7 +7980,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListDistributions",
     http_method = "GET",
     http_path = "/2020-05-31/distribution",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", output_token = "DistributionList.NextMarker", result_key = "DistributionList.Items")
   )
   input <- .cloudfront$list_distributions_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_distributions_output()
@@ -9233,7 +9253,7 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #'         Status = "string",
 #'         FunctionConfig = list(
 #'           Comment = "string",
-#'           Runtime = "cloudfront-js-1.0"
+#'           Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'         ),
 #'         FunctionMetadata = list(
 #'           FunctionARN = "string",
@@ -9343,7 +9363,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
     name = "ListInvalidations",
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{DistributionId}/invalidation",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", output_token = "InvalidationList.NextMarker", result_key = "InvalidationList.Items")
   )
   input <- .cloudfront$list_invalidations_input(DistributionId = DistributionId, Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_invalidations_output()
@@ -10036,7 +10056,7 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
     name = "ListStreamingDistributions",
     http_method = "GET",
     http_path = "/2020-05-31/streaming-distribution",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", output_token = "StreamingDistributionList.NextMarker", result_key = "StreamingDistributionList.Items")
   )
   input <- .cloudfront$list_streaming_distributions_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_streaming_distributions_output()
@@ -10137,7 +10157,7 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -10278,7 +10298,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #'       Status = "string",
 #'       FunctionConfig = list(
 #'         Comment = "string",
-#'         Runtime = "cloudfront-js-1.0"
+#'         Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'       ),
 #'       FunctionMetadata = list(
 #'         FunctionARN = "string",
@@ -11448,6 +11468,12 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #' distribution's configuration to the primary distribution. This action
 #' will disable the continuous deployment policy and move your domain's
 #' traffic back to the primary distribution.
+#' 
+#' This API operation requires the following IAM permissions:
+#' 
+#' -   [`get_distribution`][cloudfront_get_distribution]
+#' 
+#' -   [`update_distribution`][cloudfront_update_distribution]
 #'
 #' @usage
 #' cloudfront_update_distribution_with_staging_config(Id,
@@ -12087,7 +12113,7 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'     Status = "string",
 #'     FunctionConfig = list(
 #'       Comment = "string",
-#'       Runtime = "cloudfront-js-1.0"
+#'       Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'     ),
 #'     FunctionMetadata = list(
 #'       FunctionARN = "string",
@@ -12111,7 +12137,7 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #'   IfMatch = "string",
 #'   FunctionConfig = list(
 #'     Comment = "string",
-#'     Runtime = "cloudfront-js-1.0"
+#'     Runtime = "cloudfront-js-1.0"|"cloudfront-js-2.0"
 #'   ),
 #'   FunctionCode = raw
 #' )

@@ -21,7 +21,8 @@ cloudformation_update_stack(
   NotificationARNs = NULL,
   Tags = NULL,
   DisableRollback = NULL,
-  ClientRequestToken = NULL
+  ClientRequestToken = NULL,
+  RetainExceptOnCreate = NULL
 )
 }
 \arguments{
@@ -227,6 +228,14 @@ identify the stack operation . For example, if you create a stack using
 the console, each stack event would be assigned the same token in the
 following format:
 \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
+
+\item{RetainExceptOnCreate}{This deletion policy deletes newly created resources, but retains
+existing resources, when a stack operation is rolled back. This ensures
+new, empty, and unused resources are deleted, while critical resources
+and their data are retained. \code{RetainExceptOnCreate} can be specified for
+any resource that supports the
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html}{DeletionPolicy}
+attribute.}
 }
 \description{
 Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action.

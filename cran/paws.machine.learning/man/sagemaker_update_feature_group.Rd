@@ -2,20 +2,28 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_update_feature_group}
 \alias{sagemaker_update_feature_group}
-\title{Updates the feature group}
+\title{Updates the feature group by either adding features or updating the
+online store configuration}
 \usage{
-sagemaker_update_feature_group(FeatureGroupName, FeatureAdditions = NULL)
+sagemaker_update_feature_group(
+  FeatureGroupName,
+  FeatureAdditions = NULL,
+  OnlineStoreConfig = NULL
+)
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the feature group that you're updating.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the feature group that you're
+updating.}
 
 \item{FeatureAdditions}{Updates the feature group. Updating a feature group is an asynchronous
 operation. When you get an HTTP 200 response, you've made a valid
 request. It takes some time after you've made a valid request for
 Feature Store to update the feature group.}
+
+\item{OnlineStoreConfig}{Updates the feature group online store configuration.}
 }
 \description{
-Updates the feature group.
+Updates the feature group by either adding features or updating the online store configuration. Use one of the following request parameters at a time while using the \code{\link[=sagemaker_update_feature_group]{update_feature_group}} API.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_feature_group/} for full documentation.
 }

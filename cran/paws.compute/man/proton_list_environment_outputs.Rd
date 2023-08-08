@@ -4,9 +4,15 @@
 \alias{proton_list_environment_outputs}
 \title{List the infrastructure as code outputs for your environment}
 \usage{
-proton_list_environment_outputs(environmentName, nextToken = NULL)
+proton_list_environment_outputs(
+  deploymentId = NULL,
+  environmentName,
+  nextToken = NULL
+)
 }
 \arguments{
+\item{deploymentId}{The ID of the deployment whose outputs you want.}
+
 \item{environmentName}{[required] The environment name.}
 
 \item{nextToken}{A token that indicates the location of the next environment output in

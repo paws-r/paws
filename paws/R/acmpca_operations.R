@@ -1782,7 +1782,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
     name = "ListCertificateAuthorities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities")
   )
   input <- .acmpca$list_certificate_authorities_input(NextToken = NextToken, MaxResults = MaxResults, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
@@ -1888,7 +1888,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions")
   )
   input <- .acmpca$list_permissions_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_permissions_output()
@@ -1963,7 +1963,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .acmpca$list_tags_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_tags_output()

@@ -4,22 +4,47 @@
 \alias{appstream}
 \title{Amazon AppStream}
 \usage{
-appstream(config = list())
+appstream(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -66,8 +91,20 @@ To learn more about AppStream 2.0, see the following resources:
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -75,6 +112,7 @@ To learn more about AppStream 2.0, see the following resources:
 \section{Operations}{
 
 \tabular{ll}{
+\link[=appstream_associate_app_block_builder_app_block]{associate_app_block_builder_app_block} \tab Associates the specified app block builder with the specified app block\cr
 \link[=appstream_associate_application_fleet]{associate_application_fleet} \tab Associates the specified application with the specified fleet\cr
 \link[=appstream_associate_application_to_entitlement]{associate_application_to_entitlement} \tab Associates an application to entitle\cr
 \link[=appstream_associate_fleet]{associate_fleet} \tab Associates the specified fleet with the specified stack\cr
@@ -82,6 +120,8 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_batch_disassociate_user_stack]{batch_disassociate_user_stack} \tab Disassociates the specified users from the specified stacks\cr
 \link[=appstream_copy_image]{copy_image} \tab Copies the image within the same region or to a new region within the same AWS account\cr
 \link[=appstream_create_app_block]{create_app_block} \tab Creates an app block\cr
+\link[=appstream_create_app_block_builder]{create_app_block_builder} \tab Creates an app block builder\cr
+\link[=appstream_create_app_block_builder_streaming_url]{create_app_block_builder_streaming_url} \tab Creates a URL to start a create app block builder streaming session\cr
 \link[=appstream_create_application]{create_application} \tab Creates an application\cr
 \link[=appstream_create_directory_config]{create_directory_config} \tab Creates a Directory Config object in AppStream 2\cr
 \link[=appstream_create_entitlement]{create_entitlement} \tab Creates a new entitlement\cr
@@ -94,6 +134,7 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_create_usage_report_subscription]{create_usage_report_subscription} \tab Creates a usage report subscription\cr
 \link[=appstream_create_user]{create_user} \tab Creates a new user in the user pool\cr
 \link[=appstream_delete_app_block]{delete_app_block} \tab Deletes an app block\cr
+\link[=appstream_delete_app_block_builder]{delete_app_block_builder} \tab Deletes an app block builder\cr
 \link[=appstream_delete_application]{delete_application} \tab Deletes an application\cr
 \link[=appstream_delete_directory_config]{delete_directory_config} \tab Deletes the specified Directory Config object from AppStream 2\cr
 \link[=appstream_delete_entitlement]{delete_entitlement} \tab Deletes the specified entitlement\cr
@@ -104,6 +145,8 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_delete_stack]{delete_stack} \tab Deletes the specified stack\cr
 \link[=appstream_delete_usage_report_subscription]{delete_usage_report_subscription} \tab Disables usage report generation\cr
 \link[=appstream_delete_user]{delete_user} \tab Deletes a user from the user pool\cr
+\link[=appstream_describe_app_block_builder_app_block_associations]{describe_app_block_builder_app_block_associations} \tab Retrieves a list that describes one or more app block builder associations\cr
+\link[=appstream_describe_app_block_builders]{describe_app_block_builders} \tab Retrieves a list that describes one or more app block builders\cr
 \link[=appstream_describe_app_blocks]{describe_app_blocks} \tab Retrieves a list that describes one or more app blocks\cr
 \link[=appstream_describe_application_fleet_associations]{describe_application_fleet_associations} \tab Retrieves a list that describes one or more application fleet associations\cr
 \link[=appstream_describe_applications]{describe_applications} \tab Retrieves a list that describes one or more applications\cr
@@ -119,6 +162,7 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool\cr
 \link[=appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects\cr
 \link[=appstream_disable_user]{disable_user} \tab Disables the specified user in the user pool\cr
+\link[=appstream_disassociate_app_block_builder_app_block]{disassociate_app_block_builder_app_block} \tab Disassociates a specified app block builder from a specified app block\cr
 \link[=appstream_disassociate_application_fleet]{disassociate_application_fleet} \tab Disassociates the specified application from the fleet\cr
 \link[=appstream_disassociate_application_from_entitlement]{disassociate_application_from_entitlement} \tab Deletes the specified application from the specified entitlement\cr
 \link[=appstream_disassociate_fleet]{disassociate_fleet} \tab Disassociates the specified fleet from the specified stack\cr
@@ -128,12 +172,15 @@ To learn more about AppStream 2.0, see the following resources:
 \link[=appstream_list_associated_stacks]{list_associated_stacks} \tab Retrieves the name of the stack with which the specified fleet is associated\cr
 \link[=appstream_list_entitled_applications]{list_entitled_applications} \tab Retrieves a list of entitled applications\cr
 \link[=appstream_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of all tags for the specified AppStream 2\cr
+\link[=appstream_start_app_block_builder]{start_app_block_builder} \tab Starts an app block builder\cr
 \link[=appstream_start_fleet]{start_fleet} \tab Starts the specified fleet\cr
 \link[=appstream_start_image_builder]{start_image_builder} \tab Starts the specified image builder\cr
+\link[=appstream_stop_app_block_builder]{stop_app_block_builder} \tab Stops an app block builder\cr
 \link[=appstream_stop_fleet]{stop_fleet} \tab Stops the specified fleet\cr
 \link[=appstream_stop_image_builder]{stop_image_builder} \tab Stops the specified image builder\cr
 \link[=appstream_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified AppStream 2\cr
 \link[=appstream_untag_resource]{untag_resource} \tab Disassociates one or more specified tags from the specified AppStream 2\cr
+\link[=appstream_update_app_block_builder]{update_app_block_builder} \tab Updates an app block builder\cr
 \link[=appstream_update_application]{update_application} \tab Updates the specified application\cr
 \link[=appstream_update_directory_config]{update_directory_config} \tab Updates the specified Directory Config object in AppStream 2\cr
 \link[=appstream_update_entitlement]{update_entitlement} \tab Updates the specified entitlement\cr
@@ -146,7 +193,7 @@ To learn more about AppStream 2.0, see the following resources:
 \examples{
 \dontrun{
 svc <- appstream()
-svc$associate_application_fleet(
+svc$associate_app_block_builder_app_block(
   Foo = 123
 )
 }

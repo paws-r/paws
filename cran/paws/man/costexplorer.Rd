@@ -4,22 +4,47 @@
 \alias{costexplorer}
 \title{AWS Cost Explorer Service}
 \usage{
-costexplorer(config = list())
+costexplorer(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -62,8 +87,20 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -90,6 +127,7 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
 \link[paws.cost.management:costexplorer_get_reservation_purchase_recommendation]{get_reservation_purchase_recommendation} \tab Gets recommendations for reservation purchases\cr
 \link[paws.cost.management:costexplorer_get_reservation_utilization]{get_reservation_utilization} \tab Retrieves the reservation utilization for your account\cr
 \link[paws.cost.management:costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation} \tab Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances\cr
+\link[paws.cost.management:costexplorer_get_savings_plan_purchase_recommendation_details]{get_savings_plan_purchase_recommendation_details} \tab Retrieves the details for a Savings Plan recommendation\cr
 \link[paws.cost.management:costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage} \tab Retrieves the Savings Plans covered for your account\cr
 \link[paws.cost.management:costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation} \tab Retrieves the Savings Plans recommendations for your account\cr
 \link[paws.cost.management:costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization} \tab Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity\cr
@@ -105,7 +143,7 @@ Explorer API, see \href{https://aws.amazon.com/aws-cost-management/}{Amazon Web 
 \link[paws.cost.management:costexplorer_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
 \link[paws.cost.management:costexplorer_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 \link[paws.cost.management:costexplorer_update_anomaly_monitor]{update_anomaly_monitor} \tab Updates an existing cost anomaly monitor\cr
-\link[paws.cost.management:costexplorer_update_anomaly_subscription]{update_anomaly_subscription} \tab Updates an existing cost anomaly monitor subscription\cr
+\link[paws.cost.management:costexplorer_update_anomaly_subscription]{update_anomaly_subscription} \tab Updates an existing cost anomaly subscription\cr
 \link[paws.cost.management:costexplorer_update_cost_allocation_tags_status]{update_cost_allocation_tags_status} \tab Updates status for cost allocation tags in bulk, with maximum batch size of 20\cr
 \link[paws.cost.management:costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category
 }

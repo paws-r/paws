@@ -2741,7 +2741,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
     name = "ListComponentBuildVersions",
     http_method = "POST",
     http_path = "/ListComponentBuildVersions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentSummaryList")
   )
   input <- .imagebuilder$list_component_build_versions_input(componentVersionArn = componentVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_component_build_versions_output()
@@ -2850,7 +2850,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
     name = "ListComponents",
     http_method = "POST",
     http_path = "/ListComponents",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentVersionList")
   )
   input <- .imagebuilder$list_components_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_components_output()
@@ -2937,7 +2937,7 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
     name = "ListContainerRecipes",
     http_method = "POST",
     http_path = "/ListContainerRecipes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerRecipeSummaryList")
   )
   input <- .imagebuilder$list_container_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_container_recipes_output()
@@ -3013,7 +3013,7 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
     name = "ListDistributionConfigurations",
     http_method = "POST",
     http_path = "/ListDistributionConfigurations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "distributionConfigurationSummaryList")
   )
   input <- .imagebuilder$list_distribution_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_distribution_configurations_output()
@@ -3131,7 +3131,7 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
     name = "ListImageBuildVersions",
     http_method = "POST",
     http_path = "/ListImageBuildVersions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList")
   )
   input <- .imagebuilder$list_image_build_versions_input(imageVersionArn = imageVersionArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_build_versions_output()
@@ -3196,7 +3196,7 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
     name = "ListImagePackages",
     http_method = "POST",
     http_path = "/ListImagePackages",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePackageList")
   )
   input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_packages_output()
@@ -3308,7 +3308,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
     name = "ListImagePipelineImages",
     http_method = "POST",
     http_path = "/ListImagePipelineImages",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList")
   )
   input <- .imagebuilder$list_image_pipeline_images_input(imagePipelineArn = imagePipelineArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipeline_images_output()
@@ -3419,7 +3419,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
     name = "ListImagePipelines",
     http_method = "POST",
     http_path = "/ListImagePipelines",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePipelineList")
   )
   input <- .imagebuilder$list_image_pipelines_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipelines_output()
@@ -3504,7 +3504,7 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
     name = "ListImageRecipes",
     http_method = "POST",
     http_path = "/ListImageRecipes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageRecipeSummaryList")
   )
   input <- .imagebuilder$list_image_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_recipes_output()
@@ -3617,7 +3617,7 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
     name = "ListImageScanFindingAggregations",
     http_method = "POST",
     http_path = "/ListImageScanFindingAggregations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "responses")
   )
   input <- .imagebuilder$list_image_scan_finding_aggregations_input(filter = filter, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_finding_aggregations_output()
@@ -3769,7 +3769,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
     name = "ListImageScanFindings",
     http_method = "POST",
     http_path = "/ListImageScanFindings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
   )
   input <- .imagebuilder$list_image_scan_findings_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_findings_output()
@@ -3865,7 +3865,7 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
     name = "ListImages",
     http_method = "POST",
     http_path = "/ListImages",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageVersionList")
   )
   input <- .imagebuilder$list_images_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken, includeDeprecated = includeDeprecated)
   output <- .imagebuilder$list_images_output()
@@ -3945,7 +3945,7 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
     name = "ListInfrastructureConfigurations",
     http_method = "POST",
     http_path = "/ListInfrastructureConfigurations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "infrastructureConfigurationSummaryList")
   )
   input <- .imagebuilder$list_infrastructure_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_infrastructure_configurations_output()
@@ -4069,7 +4069,7 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
     name = "ListWorkflowExecutions",
     http_method = "POST",
     http_path = "/ListWorkflowExecutions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowExecutions")
   )
   input <- .imagebuilder$list_workflow_executions_input(maxResults = maxResults, nextToken = nextToken, imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$list_workflow_executions_output()
@@ -4145,7 +4145,7 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
     name = "ListWorkflowStepExecutions",
     http_method = "POST",
     http_path = "/ListWorkflowStepExecutions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps")
   )
   input <- .imagebuilder$list_workflow_step_executions_input(maxResults = maxResults, nextToken = nextToken, workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$list_workflow_step_executions_output()

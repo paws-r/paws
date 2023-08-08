@@ -9,7 +9,8 @@ mq_update_user(
   ConsoleAccess = NULL,
   Groups = NULL,
   Password = NULL,
-  Username
+  Username,
+  ReplicationUser = NULL
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ commas, colons, or equal signs (,:=).}
 \item{Username}{[required] The username of the ActiveMQ user. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
+
+\item{ReplicationUser}{Defines whether the user is intended for data replication.}
 }
 \description{
 Updates the information for an ActiveMQ user.

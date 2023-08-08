@@ -1814,7 +1814,7 @@ lexmodelsv2_list_aggregated_utterances <- function(botId, botAliasId = NULL, bot
     name = "ListAggregatedUtterances",
     http_method = "POST",
     http_path = "/bots/{botId}/aggregatedutterances/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_aggregated_utterances_input(botId = botId, botAliasId = botAliasId, botVersion = botVersion, localeId = localeId, aggregationDuration = aggregationDuration, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_aggregated_utterances_output()
@@ -1851,7 +1851,7 @@ lexmodelsv2_list_bot_aliases <- function(botId, maxResults = NULL, nextToken = N
     name = "ListBotAliases",
     http_method = "POST",
     http_path = "/bots/{botId}/botaliases/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_aliases_input(botId = botId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_aliases_output()
@@ -1894,7 +1894,7 @@ lexmodelsv2_list_bot_locales <- function(botId, botVersion, sortBy = NULL, filte
     name = "ListBotLocales",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_locales_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_locales_output()
@@ -1934,7 +1934,7 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
     name = "ListBotRecommendations",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_recommendations_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_recommendations_output()
@@ -1973,7 +1973,7 @@ lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NUL
     name = "ListBotVersions",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bot_versions_input(botId = botId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bot_versions_output()
@@ -2018,7 +2018,7 @@ lexmodelsv2_list_bots <- function(sortBy = NULL, filters = NULL, maxResults = NU
     name = "ListBots",
     http_method = "POST",
     http_path = "/bots/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_bots_input(sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_bots_output()
@@ -2062,7 +2062,7 @@ lexmodelsv2_list_built_in_intents <- function(localeId, sortBy = NULL, maxResult
     name = "ListBuiltInIntents",
     http_method = "POST",
     http_path = "/builtins/locales/{localeId}/intents/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_built_in_intents_input(localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_built_in_intents_output()
@@ -2106,7 +2106,7 @@ lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxRes
     name = "ListBuiltInSlotTypes",
     http_method = "POST",
     http_path = "/builtins/locales/{localeId}/slottypes/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_built_in_slot_types_input(localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_built_in_slot_types_output()
@@ -2144,7 +2144,7 @@ lexmodelsv2_list_custom_vocabulary_items <- function(botId, botVersion, localeId
     name = "ListCustomVocabularyItems",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_custom_vocabulary_items_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_custom_vocabulary_items_output()
@@ -2194,7 +2194,7 @@ lexmodelsv2_list_exports <- function(botId = NULL, botVersion = NULL, sortBy = N
     name = "ListExports",
     http_method = "POST",
     http_path = "/exports/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_exports_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken, localeId = localeId)
   output <- .lexmodelsv2$list_exports_output()
@@ -2244,7 +2244,7 @@ lexmodelsv2_list_imports <- function(botId = NULL, botVersion = NULL, sortBy = N
     name = "ListImports",
     http_method = "POST",
     http_path = "/imports/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_imports_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken, localeId = localeId)
   output <- .lexmodelsv2$list_imports_output()
@@ -2255,6 +2255,169 @@ lexmodelsv2_list_imports <- function(botId = NULL, botVersion = NULL, sortBy = N
   return(response)
 }
 .lexmodelsv2$operations$list_imports <- lexmodelsv2_list_imports
+
+#' Retrieves summary metrics for the intents in your bot
+#'
+#' @description
+#' Retrieves summary metrics for the intents in your bot. The following fields are required:
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intent_metrics/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intent_metrics/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve intent
+#' metrics.
+#' @param startDateTime &#91;required&#93; The timestamp that marks the beginning of the range of time for which
+#' you want to see intent metrics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see intent metrics.
+#' @param metrics &#91;required&#93; A list of objects, each of which contains a metric you want to list, the
+#' statistic for the metric you want to return, and the order by which to
+#' organize the results.
+#' @param binBy A list of objects, each of which contains specifications for organizing
+#' the results by time.
+#' @param groupBy A list of objects, each of which specifies how to group the results. You
+#' can group by the following criteria:
+#' 
+#' -   `IntentName` – The name of the intent.
+#' 
+#' -   `IntentEndState` – The final state of the intent. The possible end
+#'     states are detailed in Key definitions in the user guide.
+#' @param filters A list of objects, each of which describes a condition by which you want
+#' to filter the results.
+#' @param maxResults The maximum number of results to return in each page of results. If
+#' there are fewer results than the maximum page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the ListIntentMetrics operation contains more
+#' results than specified in the maxResults parameter, a token is returned
+#' in the response.
+#' 
+#' Use the returned token in the nextToken parameter of a ListIntentMetrics
+#' request to return the next page of results. For a complete set of
+#' results, call the ListIntentMetrics operation until the nextToken
+#' returned in the response is null.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_intent_metrics
+lexmodelsv2_list_intent_metrics <- function(botId, startDateTime, endDateTime, metrics, binBy = NULL, groupBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIntentMetrics",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/intentmetrics",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_intent_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_intent_metrics_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_intent_metrics <- lexmodelsv2_list_intent_metrics
+
+#' Retrieves summary statistics for a path of intents that users take over
+#' sessions with your bot
+#'
+#' @description
+#' Retrieves summary statistics for a path of intents that users take over sessions with your bot. The following fields are required:
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intent_paths/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intent_paths/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve intent path
+#' metrics.
+#' @param startDateTime &#91;required&#93; The date and time that marks the beginning of the range of time for
+#' which you want to see intent path metrics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see intent path metrics.
+#' @param intentPath &#91;required&#93; The intent path for which you want to retrieve metrics. Use a forward
+#' slash to separate intents in the path. For example:
+#' 
+#' -   /BookCar
+#' 
+#' -   /BookCar/BookHotel
+#' 
+#' -   /BookHotel/BookCar
+#' @param filters A list of objects, each describes a condition by which you want to
+#' filter the results.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_intent_paths
+lexmodelsv2_list_intent_paths <- function(botId, startDateTime, endDateTime, intentPath, filters = NULL) {
+  op <- new_operation(
+    name = "ListIntentPaths",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/intentpaths",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_intent_paths_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, intentPath = intentPath, filters = filters)
+  output <- .lexmodelsv2$list_intent_paths_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_intent_paths <- lexmodelsv2_list_intent_paths
+
+#' Retrieves summary metrics for the stages within intents in your bot
+#'
+#' @description
+#' Retrieves summary metrics for the stages within intents in your bot. The following fields are required:
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intent_stage_metrics/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_intent_stage_metrics/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve intent stage
+#' metrics.
+#' @param startDateTime &#91;required&#93; The date and time that marks the beginning of the range of time for
+#' which you want to see intent stage metrics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see intent stage metrics.
+#' @param metrics &#91;required&#93; A list of objects, each of which contains a metric you want to list, the
+#' statistic for the metric you want to return, and the method by which to
+#' organize the results.
+#' @param binBy A list of objects, each of which contains specifications for organizing
+#' the results by time.
+#' @param groupBy A list of objects, each of which specifies how to group the results. You
+#' can group by the following criteria:
+#' 
+#' -   `IntentStageName` – The name of the intent stage.
+#' 
+#' -   `SwitchedToIntent` – The intent to which the conversation was
+#'     switched (if any).
+#' @param filters A list of objects, each of which describes a condition by which you want
+#' to filter the results.
+#' @param maxResults The maximum number of results to return in each page of results. If
+#' there are fewer results than the maximum page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the ListIntentStageMetrics operation contains more
+#' results than specified in the maxResults parameter, a token is returned
+#' in the response.
+#' 
+#' Use the returned token in the nextToken parameter of a
+#' ListIntentStageMetrics request to return the next page of results. For a
+#' complete set of results, call the ListIntentStageMetrics operation until
+#' the nextToken returned in the response is null.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_intent_stage_metrics
+lexmodelsv2_list_intent_stage_metrics <- function(botId, startDateTime, endDateTime, metrics, binBy = NULL, groupBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIntentStageMetrics",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/intentstagemetrics",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_intent_stage_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_intent_stage_metrics_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_intent_stage_metrics <- lexmodelsv2_list_intent_stage_metrics
 
 #' Get a list of intents that meet the specified criteria
 #'
@@ -2297,7 +2460,7 @@ lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL,
     name = "ListIntents",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_intents_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_intents_output()
@@ -2339,7 +2502,7 @@ lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, bo
     name = "ListRecommendedIntents",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/intents",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_recommended_intents_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelsv2$list_recommended_intents_output()
@@ -2350,6 +2513,115 @@ lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, bo
   return(response)
 }
 .lexmodelsv2$operations$list_recommended_intents <- lexmodelsv2_list_recommended_intents
+
+#' Retrieves a list of metadata for individual user sessions with your bot
+#'
+#' @description
+#' Retrieves a list of metadata for individual user sessions with your bot. The `startDateTime` and `endDateTime` fields are required. These fields define a time range for which you want to retrieve results. Of the optional fields, you can organize the results in the following ways:
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_session_analytics_data/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_session_analytics_data/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve session
+#' analytics.
+#' @param startDateTime &#91;required&#93; The date and time that marks the beginning of the range of time for
+#' which you want to see session analytics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see session analytics.
+#' @param sortBy An object specifying the measure and method by which to sort the session
+#' analytics data.
+#' @param filters A list of objects, each of which describes a condition by which you want
+#' to filter the results.
+#' @param maxResults The maximum number of results to return in each page of results. If
+#' there are fewer results than the maximum page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the ListSessionAnalyticsData operation contains
+#' more results than specified in the maxResults parameter, a token is
+#' returned in the response.
+#' 
+#' Use the returned token in the nextToken parameter of a
+#' ListSessionAnalyticsData request to return the next page of results. For
+#' a complete set of results, call the ListSessionAnalyticsData operation
+#' until the nextToken returned in the response is null.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_session_analytics_data
+lexmodelsv2_list_session_analytics_data <- function(botId, startDateTime, endDateTime, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSessionAnalyticsData",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/sessions",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_session_analytics_data_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_session_analytics_data_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_session_analytics_data <- lexmodelsv2_list_session_analytics_data
+
+#' Retrieves summary metrics for the user sessions with your bot
+#'
+#' @description
+#' Retrieves summary metrics for the user sessions with your bot. The following fields are required:
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_session_metrics/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_session_metrics/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve session
+#' metrics.
+#' @param startDateTime &#91;required&#93; The date and time that marks the beginning of the range of time for
+#' which you want to see session metrics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see session metrics.
+#' @param metrics &#91;required&#93; A list of objects, each of which contains a metric you want to list, the
+#' statistic for the metric you want to return, and the method by which to
+#' organize the results.
+#' @param binBy A list of objects, each of which contains specifications for organizing
+#' the results by time.
+#' @param groupBy A list of objects, each of which specifies how to group the results. You
+#' can group by the following criteria:
+#' 
+#' -   `ConversationEndState` – The final state of the conversation. The
+#'     possible end states are detailed in Key definitions in the user
+#'     guide.
+#' 
+#' -   `LocaleId` – The unique identifier of the bot locale.
+#' @param filters A list of objects, each of which describes a condition by which you want
+#' to filter the results.
+#' @param maxResults The maximum number of results to return in each page of results. If
+#' there are fewer results than the maximum page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the ListSessionMetrics operation contains more
+#' results than specified in the maxResults parameter, a token is returned
+#' in the response.
+#' 
+#' Use the returned token in the nextToken parameter of a
+#' ListSessionMetrics request to return the next page of results. For a
+#' complete set of results, call the ListSessionMetrics operation until the
+#' nextToken returned in the response is null.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_session_metrics
+lexmodelsv2_list_session_metrics <- function(botId, startDateTime, endDateTime, metrics, binBy = NULL, groupBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSessionMetrics",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/sessionmetrics",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_session_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_session_metrics_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_session_metrics <- lexmodelsv2_list_session_metrics
 
 #' Gets a list of slot types that match the specified criteria
 #'
@@ -2388,7 +2660,7 @@ lexmodelsv2_list_slot_types <- function(botId, botVersion, localeId, sortBy = NU
     name = "ListSlotTypes",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_slot_types_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_slot_types_output()
@@ -2437,7 +2709,7 @@ lexmodelsv2_list_slots <- function(botId, botVersion, localeId, intentId, sortBy
     name = "ListSlots",
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_slots_input(botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_slots_output()
@@ -2505,7 +2777,7 @@ lexmodelsv2_list_test_execution_result_items <- function(testExecutionId, result
     name = "ListTestExecutionResultItems",
     http_method = "POST",
     http_path = "/testexecutions/{testExecutionId}/results",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_execution_result_items_input(testExecutionId = testExecutionId, resultFilterBy = resultFilterBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_execution_result_items_output()
@@ -2541,7 +2813,7 @@ lexmodelsv2_list_test_executions <- function(sortBy = NULL, maxResults = NULL, n
     name = "ListTestExecutions",
     http_method = "POST",
     http_path = "/testexecutions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_executions_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_executions_output()
@@ -2577,7 +2849,7 @@ lexmodelsv2_list_test_set_records <- function(testSetId, maxResults = NULL, next
     name = "ListTestSetRecords",
     http_method = "POST",
     http_path = "/testsets/{testSetId}/records",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_set_records_input(testSetId = testSetId, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_set_records_output()
@@ -2613,7 +2885,7 @@ lexmodelsv2_list_test_sets <- function(sortBy = NULL, maxResults = NULL, nextTok
     name = "ListTestSets",
     http_method = "POST",
     http_path = "/testsets",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelsv2$list_test_sets_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelsv2$list_test_sets_output()
@@ -2624,6 +2896,123 @@ lexmodelsv2_list_test_sets <- function(sortBy = NULL, maxResults = NULL, nextTok
   return(response)
 }
 .lexmodelsv2$operations$list_test_sets <- lexmodelsv2_list_test_sets
+
+#' To use this API operation, your IAM role must have permissions to
+#' perform the ListAggregatedUtterances operation, which provides access to
+#' utterance-related analytics
+#'
+#' @description
+#' To use this API operation, your IAM role must have permissions to perform the [`list_aggregated_utterances`][lexmodelsv2_list_aggregated_utterances] operation, which provides access to utterance-related analytics. See [Viewing utterance statistics](https://docs.aws.amazon.com/lexv2/latest/dg/) for the IAM policy to apply to the IAM role.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_utterance_analytics_data/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_utterance_analytics_data/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve utterance
+#' analytics.
+#' @param startDateTime &#91;required&#93; The date and time that marks the beginning of the range of time for
+#' which you want to see utterance analytics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see utterance analytics.
+#' @param sortBy An object specifying the measure and method by which to sort the
+#' utterance analytics data.
+#' @param filters A list of objects, each of which describes a condition by which you want
+#' to filter the results.
+#' @param maxResults The maximum number of results to return in each page of results. If
+#' there are fewer results than the maximum page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the ListUtteranceAnalyticsData operation contains
+#' more results than specified in the maxResults parameter, a token is
+#' returned in the response.
+#' 
+#' Use the returned token in the nextToken parameter of a
+#' ListUtteranceAnalyticsData request to return the next page of results.
+#' For a complete set of results, call the ListUtteranceAnalyticsData
+#' operation until the nextToken returned in the response is null.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_utterance_analytics_data
+lexmodelsv2_list_utterance_analytics_data <- function(botId, startDateTime, endDateTime, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListUtteranceAnalyticsData",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/utterances",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_utterance_analytics_data_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_utterance_analytics_data_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_utterance_analytics_data <- lexmodelsv2_list_utterance_analytics_data
+
+#' To use this API operation, your IAM role must have permissions to
+#' perform the ListAggregatedUtterances operation, which provides access to
+#' utterance-related analytics
+#'
+#' @description
+#' To use this API operation, your IAM role must have permissions to perform the [`list_aggregated_utterances`][lexmodelsv2_list_aggregated_utterances] operation, which provides access to utterance-related analytics. See [Viewing utterance statistics](https://docs.aws.amazon.com/lexv2/latest/dg/) for the IAM policy to apply to the IAM role.
+#'
+#' See [https://www.paws-r-sdk.com/docs/lexmodelsv2_list_utterance_metrics/](https://www.paws-r-sdk.com/docs/lexmodelsv2_list_utterance_metrics/) for full documentation.
+#'
+#' @param botId &#91;required&#93; The identifier for the bot for which you want to retrieve utterance
+#' metrics.
+#' @param startDateTime &#91;required&#93; The date and time that marks the beginning of the range of time for
+#' which you want to see utterance metrics.
+#' @param endDateTime &#91;required&#93; The date and time that marks the end of the range of time for which you
+#' want to see utterance metrics.
+#' @param metrics &#91;required&#93; A list of objects, each of which contains a metric you want to list, the
+#' statistic for the metric you want to return, and the method by which to
+#' organize the results.
+#' @param binBy A list of objects, each of which contains specifications for organizing
+#' the results by time.
+#' @param groupBy A list of objects, each of which specifies how to group the results. You
+#' can group by the following criteria:
+#' 
+#' -   `UtteranceText` – The transcription of the utterance.
+#' 
+#' -   `UtteranceState` – The state of the utterance. The possible states
+#'     are detailed in Key definitions in the user guide.
+#' @param attributes A list containing attributes related to the utterance that you want the
+#' response to return. The following attributes are possible:
+#' 
+#' -   `LastUsedIntent` – The last used intent at the time of the
+#'     utterance.
+#' @param filters A list of objects, each of which describes a condition by which you want
+#' to filter the results.
+#' @param maxResults The maximum number of results to return in each page of results. If
+#' there are fewer results than the maximum page size, only the actual
+#' number of results are returned.
+#' @param nextToken If the response from the ListUtteranceMetrics operation contains more
+#' results than specified in the maxResults parameter, a token is returned
+#' in the response.
+#' 
+#' Use the returned token in the nextToken parameter of a
+#' ListUtteranceMetrics request to return the next page of results. For a
+#' complete set of results, call the ListUtteranceMetrics operation until
+#' the nextToken returned in the response is null.
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_utterance_metrics
+lexmodelsv2_list_utterance_metrics <- function(botId, startDateTime, endDateTime, metrics, binBy = NULL, groupBy = NULL, attributes = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListUtteranceMetrics",
+    http_method = "POST",
+    http_path = "/bots/{botId}/analytics/utterancemetrics",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .lexmodelsv2$list_utterance_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, attributes = attributes, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_utterance_metrics_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_utterance_metrics <- lexmodelsv2_list_utterance_metrics
 
 #' Search for associated transcripts that meet the specified criteria
 #'

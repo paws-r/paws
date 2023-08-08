@@ -2,20 +2,51 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_associate_kms_key}
 \alias{cloudwatchlogs_associate_kms_key}
-\title{Associates the specified KMS key with the specified log group}
+\title{Associates the specified KMS key with either one log group in the
+account, or with all stored CloudWatch Logs query insights results in
+the account}
 \usage{
-cloudwatchlogs_associate_kms_key(logGroupName, kmsKeyId)
+cloudwatchlogs_associate_kms_key(
+  logGroupName = NULL,
+  kmsKeyId,
+  resourceIdentifier = NULL
+)
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group.}
+\item{logGroupName}{The name of the log group.
+
+In your \code{\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key}}
+operation, you must specify either the \code{resourceIdentifier} parameter or
+the \code{logGroup} parameter, but you can't specify both.}
 
 \item{kmsKeyId}{[required] The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
 data. This must be a symmetric KMS key. For more information, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.}
+
+\item{resourceIdentifier}{Specifies the target for this operation. You must specify one of the
+following:
+\itemize{
+\item Specify the following ARN to have future
+\code{\link[=cloudwatchlogs_get_query_results]{get_query_results}} operations
+in this account encrypt the results with the specified KMS key.
+Replace \emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
+
+\verb{arn:aws:logs:REGION:ACCOUNT_ID:query-result:*}
+\item Specify the ARN of a log group to have CloudWatch Logs use the KMS
+key to encrypt log events that are ingested and stored by that log
+group. The log group ARN must be in the following format. Replace
+\emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
+
+\code{arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME }
+}
+
+In your \code{\link[=cloudwatchlogs_associate_kms_key]{associate_kms_key}}
+operation, you must specify either the \code{resourceIdentifier} parameter or
+the \code{logGroup} parameter, but you can't specify both.}
 }
 \description{
-Associates the specified KMS key with the specified log group.
+Associates the specified KMS key with either one log group in the account, or with all stored CloudWatch Logs query insights results in the account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_associate_kms_key/} for full documentation.
 }

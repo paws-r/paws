@@ -737,7 +737,7 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
     name = "ListGroupResources",
     http_method = "POST",
     http_path = "/list-group-resources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = list("ResourceIdentifiers", "Resources"))
   )
   input <- .resourcegroups$list_group_resources_input(GroupName = GroupName, Group = Group, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_group_resources_output()
@@ -841,7 +841,7 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
     name = "ListGroups",
     http_method = "POST",
     http_path = "/groups-list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupIdentifiers")
   )
   input <- .resourcegroups$list_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_groups_output()
@@ -1015,7 +1015,7 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
     name = "SearchResources",
     http_method = "POST",
     http_path = "/resources/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceIdentifiers")
   )
   input <- .resourcegroups$search_resources_input(ResourceQuery = ResourceQuery, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$search_resources_output()

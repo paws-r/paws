@@ -277,7 +277,7 @@ mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListEnvironments",
     http_method = "GET",
     http_path = "/environments",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Environments")
   )
   input <- .mwaa$list_environments_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mwaa$list_environments_output()

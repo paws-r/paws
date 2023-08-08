@@ -1064,7 +1064,7 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
     name = "ListApplicationRevisions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "revisions")
   )
   input <- .codedeploy$list_application_revisions_input(applicationName = applicationName, sortBy = sortBy, sortOrder = sortOrder, s3Bucket = s3Bucket, s3KeyPrefix = s3KeyPrefix, deployed = deployed, nextToken = nextToken)
   output <- .codedeploy$list_application_revisions_output()
@@ -1095,7 +1095,7 @@ codedeploy_list_applications <- function(nextToken = NULL) {
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "applications")
   )
   input <- .codedeploy$list_applications_input(nextToken = nextToken)
   output <- .codedeploy$list_applications_output()
@@ -1128,7 +1128,7 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
     name = "ListDeploymentConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentConfigsList")
   )
   input <- .codedeploy$list_deployment_configs_input(nextToken = nextToken)
   output <- .codedeploy$list_deployment_configs_output()
@@ -1161,7 +1161,7 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
     name = "ListDeploymentGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentGroups")
   )
   input <- .codedeploy$list_deployment_groups_input(applicationName = applicationName, nextToken = nextToken)
   output <- .codedeploy$list_deployment_groups_output()
@@ -1212,7 +1212,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
     name = "ListDeploymentInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instancesList")
   )
   input <- .codedeploy$list_deployment_instances_input(deploymentId = deploymentId, nextToken = nextToken, instanceStatusFilter = instanceStatusFilter, instanceTypeFilter = instanceTypeFilter)
   output <- .codedeploy$list_deployment_instances_output()
@@ -1312,7 +1312,7 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
     name = "ListDeployments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deployments")
   )
   input <- .codedeploy$list_deployments_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, externalId = externalId, includeOnlyStatuses = includeOnlyStatuses, createTimeRange = createTimeRange, nextToken = nextToken)
   output <- .codedeploy$list_deployments_output()

@@ -318,9 +318,9 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' [AWS::IAM:Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
 #' [AWS::ApplicationAutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html),
 #' [AWS::S3::BucketPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html),
-#' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html),
+#' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/),
 #' and
-#' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
+#' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topicpolicy.html).
 #' 
 #' Applications that contain one or more nested applications require you to
 #' specify CAPABILITY_AUTO_EXPAND.
@@ -801,7 +801,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     name = "ListApplicationDependencies",
     http_method = "GET",
     http_path = "/applications/{applicationId}/dependencies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$list_application_dependencies_output()
@@ -861,7 +861,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     name = "ListApplicationVersions",
     http_method = "GET",
     http_path = "/applications/{applicationId}/versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_application_versions_output()
@@ -924,7 +924,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_applications_output()

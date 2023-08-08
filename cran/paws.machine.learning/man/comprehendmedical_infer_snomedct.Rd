@@ -9,8 +9,7 @@ Terms (SNOMED-CT) ontology}
 comprehendmedical_infer_snomedct(Text)
 }
 \arguments{
-\item{Text}{[required] The input text to be analyzed using InferSNOMEDCT. The text should be a
-string with 1 to 10000 characters.}
+\item{Text}{[required] The input text to be analyzed using InferSNOMEDCT.}
 }
 \description{
 InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology

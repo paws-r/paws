@@ -1389,7 +1389,7 @@ memorydb_describe_ac_ls <- function(ACLName = NULL, MaxResults = NULL, NextToken
     name = "DescribeACLs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ACLs")
   )
   input <- .memorydb$describe_ac_ls_input(ACLName = ACLName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_ac_ls_output()
@@ -1528,7 +1528,7 @@ memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, Ne
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Clusters")
   )
   input <- .memorydb$describe_clusters_input(ClusterName = ClusterName, MaxResults = MaxResults, NextToken = NextToken, ShowShardDetails = ShowShardDetails)
   output <- .memorydb$describe_clusters_output()
@@ -1598,7 +1598,7 @@ memorydb_describe_engine_versions <- function(EngineVersion = NULL, ParameterGro
     name = "DescribeEngineVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EngineVersions")
   )
   input <- .memorydb$describe_engine_versions_input(EngineVersion = EngineVersion, ParameterGroupFamily = ParameterGroupFamily, MaxResults = MaxResults, NextToken = NextToken, DefaultOnly = DefaultOnly)
   output <- .memorydb$describe_engine_versions_output()
@@ -1687,7 +1687,7 @@ memorydb_describe_events <- function(SourceName = NULL, SourceType = NULL, Start
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .memorydb$describe_events_input(SourceName = SourceName, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_events_output()
@@ -1755,7 +1755,7 @@ memorydb_describe_parameter_groups <- function(ParameterGroupName = NULL, MaxRes
     name = "DescribeParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ParameterGroups")
   )
   input <- .memorydb$describe_parameter_groups_input(ParameterGroupName = ParameterGroupName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_parameter_groups_output()
@@ -1822,7 +1822,7 @@ memorydb_describe_parameters <- function(ParameterGroupName, MaxResults = NULL, 
     name = "DescribeParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters")
   )
   input <- .memorydb$describe_parameters_input(ParameterGroupName = ParameterGroupName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_parameters_output()
@@ -1919,7 +1919,7 @@ memorydb_describe_reserved_nodes <- function(ReservationId = NULL, ReservedNodes
     name = "DescribeReservedNodes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedNodes")
   )
   input <- .memorydb$describe_reserved_nodes_input(ReservationId = ReservationId, ReservedNodesOfferingId = ReservedNodesOfferingId, NodeType = NodeType, Duration = Duration, OfferingType = OfferingType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_reserved_nodes_output()
@@ -2004,7 +2004,7 @@ memorydb_describe_reserved_nodes_offerings <- function(ReservedNodesOfferingId =
     name = "DescribeReservedNodesOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedNodesOfferings")
   )
   input <- .memorydb$describe_reserved_nodes_offerings_input(ReservedNodesOfferingId = ReservedNodesOfferingId, NodeType = NodeType, Duration = Duration, OfferingType = OfferingType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_reserved_nodes_offerings_output()
@@ -2086,7 +2086,7 @@ memorydb_describe_service_updates <- function(ServiceUpdateName = NULL, ClusterN
     name = "DescribeServiceUpdates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceUpdates")
   )
   input <- .memorydb$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ClusterNames = ClusterNames, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_service_updates_output()
@@ -2197,7 +2197,7 @@ memorydb_describe_snapshots <- function(ClusterName = NULL, SnapshotName = NULL,
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
   )
   input <- .memorydb$describe_snapshots_input(ClusterName = ClusterName, SnapshotName = SnapshotName, Source = Source, NextToken = NextToken, MaxResults = MaxResults, ShowDetail = ShowDetail)
   output <- .memorydb$describe_snapshots_output()
@@ -2271,7 +2271,7 @@ memorydb_describe_subnet_groups <- function(SubnetGroupName = NULL, MaxResults =
     name = "DescribeSubnetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SubnetGroups")
   )
   input <- .memorydb$describe_subnet_groups_input(SubnetGroupName = SubnetGroupName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_subnet_groups_output()
@@ -2353,7 +2353,7 @@ memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults 
     name = "DescribeUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users")
   )
   input <- .memorydb$describe_users_input(UserName = UserName, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_users_output()

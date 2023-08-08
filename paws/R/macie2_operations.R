@@ -241,13 +241,12 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #' @param managedDataIdentifierSelector The selection type to apply when determining which managed data
 #' identifiers the job uses to analyze data. Valid values are:
 #' 
-#' -   ALL - Use all the managed data identifiers that Amazon Macie
-#'     provides. If you specify this value, don't specify any values for
-#'     the managedDataIdentifierIds property.
-#' 
-#' -   EXCLUDE - Use all the managed data identifiers that Macie provides
-#'     except the managed data identifiers specified by the
+#' -   ALL (default) - Use all managed data identifiers. If you specify
+#'     this value, don't specify any values for the
 #'     managedDataIdentifierIds property.
+#' 
+#' -   EXCLUDE - Use all managed data identifiers except the ones specified
+#'     by the managedDataIdentifierIds property.
 #' 
 #' -   INCLUDE - Use only the managed data identifiers specified by the
 #'     managedDataIdentifierIds property.
@@ -257,10 +256,26 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #'     (customDataIdentifierIds) and don't specify any values for the
 #'     managedDataIdentifierIds property.
 #' 
+#' -   RECOMMENDED - Use only the set of managed data identifiers that
+#'     Amazon Web Services recommends for jobs. If you specify this value,
+#'     don't specify any values for the managedDataIdentifierIds property.
+#' 
 #' If you don't specify a value for this property, the job uses all managed
-#' data identifiers. If you don't specify a value for this property or you
-#' specify ALL or EXCLUDE for a recurring job, the job also uses new
-#' managed data identifiers as they are released.
+#' data identifiers.
+#' 
+#' If the job is a recurring job and you don't specify a value for this
+#' property or you specify ALL or EXCLUDE, each job run automatically uses
+#' new managed data identifiers that are released. If you specify
+#' RECOMMENDED for a recurring job, each job run automatically uses all the
+#' managed data identifiers that are in the recommended set when the job
+#' starts to run.
+#' 
+#' For information about individual managed data identifiers or to
+#' determine which ones are in the recommended set, see [Using managed data
+#' identifiers](https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html)
+#' and [Recommended managed data
+#' identifiers](https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html)
+#' in the *Amazon Macie User Guide*.
 #' @param name &#91;required&#93; A custom name for the job. The name can contain as many as 500
 #' characters.
 #' @param s3JobDefinition &#91;required&#93; The S3 buckets that contain the objects to analyze, and the scope of
@@ -305,7 +320,7 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #'   managedDataIdentifierIds = list(
 #'     "string"
 #'   ),
-#'   managedDataIdentifierSelector = "ALL"|"EXCLUDE"|"INCLUDE"|"NONE",
+#'   managedDataIdentifierSelector = "ALL"|"EXCLUDE"|"INCLUDE"|"NONE"|"RECOMMENDED",
 #'   name = "string",
 #'   s3JobDefinition = list(
 #'     bucketCriteria = list(
@@ -498,7 +513,7 @@ macie2_create_classification_job <- function(allowListIds = NULL, clientToken, c
 #' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The
 #' expression can contain as many as 512 characters.
 #' @param severityLevels The severity to assign to findings that the custom data identifier
-#' produces, based on the number of occurrences of text that matches the
+#' produces, based on the number of occurrences of text that match the
 #' custom data identifier's detection criteria. You can specify as many as
 #' three SeverityLevel objects in this array, one for each severity: LOW,
 #' MEDIUM, or HIGH. If you specify more than one, the occurrences
@@ -1313,7 +1328,7 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
     name = "DescribeBuckets",
     http_method = "POST",
     http_path = "/datasources/s3",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "buckets")
   )
   input <- .macie2$describe_buckets_input(criteria = criteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$describe_buckets_output()
@@ -1364,7 +1379,7 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'   managedDataIdentifierIds = list(
 #'     "string"
 #'   ),
-#'   managedDataIdentifierSelector = "ALL"|"EXCLUDE"|"INCLUDE"|"NONE",
+#'   managedDataIdentifierSelector = "ALL"|"EXCLUDE"|"INCLUDE"|"NONE"|"RECOMMENDED",
 #'   name = "string",
 #'   s3JobDefinition = list(
 #'     bucketCriteria = list(
@@ -3555,7 +3570,7 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/usage/statistics",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "records")
   )
   input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, timeRange = timeRange)
   output <- .macie2$get_usage_statistics_output()
@@ -3680,7 +3695,7 @@ macie2_list_allow_lists <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListAllowLists",
     http_method = "GET",
     http_path = "/allow-lists",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowLists")
   )
   input <- .macie2$list_allow_lists_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_allow_lists_output()
@@ -3834,7 +3849,7 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
     name = "ListClassificationJobs",
     http_method = "POST",
     http_path = "/jobs/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_classification_jobs_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$list_classification_jobs_output()
@@ -3893,7 +3908,7 @@ macie2_list_classification_scopes <- function(name = NULL, nextToken = NULL) {
     name = "ListClassificationScopes",
     http_method = "GET",
     http_path = "/classification-scopes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "classificationScopes")
   )
   input <- .macie2$list_classification_scopes_input(name = name, nextToken = nextToken)
   output <- .macie2$list_classification_scopes_output()
@@ -3956,7 +3971,7 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
     name = "ListCustomDataIdentifiers",
     http_method = "POST",
     http_path = "/custom-data-identifiers/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_custom_data_identifiers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_custom_data_identifiers_output()
@@ -4035,7 +4050,7 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
     name = "ListFindings",
     http_method = "POST",
     http_path = "/findings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingIds")
   )
   input <- .macie2$list_findings_input(findingCriteria = findingCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$list_findings_output()
@@ -4099,7 +4114,7 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListFindingsFilters",
     http_method = "GET",
     http_path = "/findingsfilters",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsFilterListItems")
   )
   input <- .macie2$list_findings_filters_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_findings_filters_output()
@@ -4162,7 +4177,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListInvitations",
     http_method = "GET",
     http_path = "/invitations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invitations")
   )
   input <- .macie2$list_invitations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_invitations_output()
@@ -4218,7 +4233,7 @@ macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
     name = "ListManagedDataIdentifiers",
     http_method = "POST",
     http_path = "/managed-data-identifiers/list",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "items")
   )
   input <- .macie2$list_managed_data_identifiers_input(nextToken = nextToken)
   output <- .macie2$list_managed_data_identifiers_output()
@@ -4295,7 +4310,7 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
     name = "ListMembers",
     http_method = "GET",
     http_path = "/members",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .macie2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
   output <- .macie2$list_members_output()
@@ -4354,7 +4369,7 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
     name = "ListOrganizationAdminAccounts",
     http_method = "GET",
     http_path = "/admin",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "adminAccounts")
   )
   input <- .macie2$list_organization_admin_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_organization_admin_accounts_output()
@@ -4414,7 +4429,7 @@ macie2_list_resource_profile_artifacts <- function(nextToken = NULL, resourceArn
     name = "ListResourceProfileArtifacts",
     http_method = "GET",
     http_path = "/resource-profiles/artifacts",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "artifacts")
   )
   input <- .macie2$list_resource_profile_artifacts_input(nextToken = nextToken, resourceArn = resourceArn)
   output <- .macie2$list_resource_profile_artifacts_output()
@@ -4481,7 +4496,7 @@ macie2_list_resource_profile_detections <- function(maxResults = NULL, nextToken
     name = "ListResourceProfileDetections",
     http_method = "GET",
     http_path = "/resource-profiles/detections",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "detections")
   )
   input <- .macie2$list_resource_profile_detections_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .macie2$list_resource_profile_detections_output()
@@ -4540,7 +4555,7 @@ macie2_list_sensitivity_inspection_templates <- function(maxResults = NULL, next
     name = "ListSensitivityInspectionTemplates",
     http_method = "GET",
     http_path = "/templates/sensitivity-inspections",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sensitivityInspectionTemplates")
   )
   input <- .macie2$list_sensitivity_inspection_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_sensitivity_inspection_templates_output()
@@ -4856,7 +4871,7 @@ macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, ne
     name = "SearchResources",
     http_method = "POST",
     http_path = "/datasources/search-resources",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "matchingResources")
   )
   input <- .macie2$search_resources_input(bucketCriteria = bucketCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$search_resources_output()

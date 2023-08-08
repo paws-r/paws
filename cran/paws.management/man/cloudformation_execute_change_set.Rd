@@ -9,7 +9,8 @@ cloudformation_execute_change_set(
   ChangeSetName,
   StackName = NULL,
   ClientRequestToken = NULL,
-  DisableRollback = NULL
+  DisableRollback = NULL,
+  RetainExceptOnCreate = NULL
 )
 }
 \arguments{
@@ -29,9 +30,31 @@ stack with the same name. You might retry
 ensure that CloudFormation successfully received them.}
 
 \item{DisableRollback}{Preserves the state of previously provisioned resources when an
-operation fails.
+operation fails. This parameter can't be specified when the
+\code{OnStackFailure} parameter to the
+\code{\link[=cloudformation_create_change_set]{create_change_set}} API operation
+was specified.
+\itemize{
+\item \code{True} - if the stack creation fails, do nothing. This is equivalent
+to specifying \code{DO_NOTHING} for the \code{OnStackFailure} parameter to the
+\code{\link[=cloudformation_create_change_set]{create_change_set}} API
+operation.
+\item \code{False} - if the stack creation fails, roll back the stack. This is
+equivalent to specifying \code{ROLLBACK} for the \code{OnStackFailure}
+parameter to the
+\code{\link[=cloudformation_create_change_set]{create_change_set}} API
+operation.
+}
 
 Default: \code{True}}
+
+\item{RetainExceptOnCreate}{This deletion policy deletes newly created resources, but retains
+existing resources, when a stack operation is rolled back. This ensures
+new, empty, and unused resources are deleted, while critical resources
+and their data are retained. \code{RetainExceptOnCreate} can be specified for
+any resource that supports the
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html}{DeletionPolicy}
+attribute.}
 }
 \description{
 Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, CloudFormation starts updating the stack. Use the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action to view the status of the update.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_instances}
 \alias{rds_describe_db_instances}
-\title{Returns information about provisioned RDS instances}
+\title{Describes provisioned RDS instances}
 \usage{
 rds_describe_db_instances(
   DBInstanceIdentifier = NULL,
@@ -19,12 +19,12 @@ case-sensitive.
 
 Constraints:
 \itemize{
-\item If supplied, must match the identifier of an existing DBInstance.
+\item If supplied, must match the identifier of an existing DB instance.
 }}
 
 \item{Filters}{A filter that specifies one or more DB instances to describe.
 
-Supported filters:
+Supported Filters:
 \itemize{
 \item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
 Amazon Resource Names (ARNs). The results list only includes
@@ -34,7 +34,7 @@ identified by these ARNs.
 Amazon Resource Names (ARNs). The results list only includes
 information about the DB instances identified by these ARNs.
 \item \code{dbi-resource-id} - Accepts DB instance resource identifiers. The
-results list will only include information about the DB instances
+results list only includes information about the DB instances
 identified by these DB instance resource identifiers.
 \item \code{domain} - Accepts Active Directory directory IDs. The results list
 only includes information about the DB instances associated with
@@ -58,7 +58,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns information about provisioned RDS instances. This API supports pagination.
+Describes provisioned RDS instances. This API supports pagination.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_instances/} for full documentation.
 }

@@ -32,6 +32,8 @@ has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or
 \verb{/aws/ssm/MyGroup/appmanager}.
 
 For the \code{Document} and \code{Parameter} values, use the name of the resource.
+If you're tagging a shared document, you must use the full ARN of the
+document.
 
 \code{ManagedInstance}: \verb{mi-012345abcde}
 

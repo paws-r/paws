@@ -53,8 +53,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{HttpProtocolIpv6}{Enables or disables the IPv6 endpoint for the instance metadata service.
-This setting applies only if you have enabled the HTTP metadata
-endpoint.}
+Applies only if you enabled the HTTP metadata endpoint.}
 
 \item{InstanceMetadataTags}{Set to \code{enabled} to allow access to instance tags from the instance
 metadata. Set to \code{disabled} to turn off access to instance tags from the

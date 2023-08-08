@@ -4,22 +4,47 @@
 \alias{quicksight}
 \title{Amazon QuickSight}
 \usage{
-quicksight(config = list())
+quicksight(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -54,8 +79,20 @@ manage Amazon QuickSight.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -119,6 +156,8 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_describe_dashboard]{describe_dashboard} \tab Provides a summary for a dashboard\cr
 \link[paws.analytics:quicksight_describe_dashboard_definition]{describe_dashboard_definition} \tab Provides a detailed description of the definition of a dashboard\cr
 \link[paws.analytics:quicksight_describe_dashboard_permissions]{describe_dashboard_permissions} \tab Describes read and write permissions for a dashboard\cr
+\link[paws.analytics:quicksight_describe_dashboard_snapshot_job]{describe_dashboard_snapshot_job} \tab Describes an existing snapshot job\cr
+\link[paws.analytics:quicksight_describe_dashboard_snapshot_job_result]{describe_dashboard_snapshot_job_result} \tab Describes the result of an existing snapshot job that has finished running\cr
 \link[paws.analytics:quicksight_describe_data_set]{describe_data_set} \tab Describes a dataset\cr
 \link[paws.analytics:quicksight_describe_data_set_permissions]{describe_data_set_permissions} \tab Describes the permissions on a dataset\cr
 \link[paws.analytics:quicksight_describe_data_set_refresh_properties]{describe_data_set_refresh_properties} \tab Describes the refresh properties of a dataset\cr
@@ -190,6 +229,7 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_search_groups]{search_groups} \tab Use the SearchGroups operation to search groups in a specified Amazon QuickSight namespace using the supplied filters\cr
 \link[paws.analytics:quicksight_start_asset_bundle_export_job]{start_asset_bundle_export_job} \tab Starts an Asset Bundle export job\cr
 \link[paws.analytics:quicksight_start_asset_bundle_import_job]{start_asset_bundle_import_job} \tab Starts an Asset Bundle import job\cr
+\link[paws.analytics:quicksight_start_dashboard_snapshot_job]{start_dashboard_snapshot_job} \tab Starts an asynchronous job that generates a dashboard snapshot\cr
 \link[paws.analytics:quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource\cr
 \link[paws.analytics:quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource\cr
 \link[paws.analytics:quicksight_update_account_customization]{update_account_customization} \tab Updates Amazon QuickSight customizations for the current Amazon Web Services Region\cr

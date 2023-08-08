@@ -68,6 +68,8 @@ NULL
 #' `/aws/ssm/MyGroup/appmanager`.
 #' 
 #' For the `Document` and `Parameter` values, use the name of the resource.
+#' If you're tagging a shared document, you must use the full ARN of the
+#' document.
 #' 
 #' `ManagedInstance`: `mi-012345abcde`
 #' 
@@ -1469,9 +1471,9 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'
 #' @description
 #' Creates a new OpsItem. You must have permission in Identity and Access
-#' Management (IAM) to create a new OpsItem. For more information, see
-#' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' Management (IAM) to create a new OpsItem. For more information, see [Set
+#' up
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -1528,7 +1530,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
 #' [Creating OpsItems
-#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems)
+#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
@@ -1544,11 +1546,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' and `amzn`.
 #' @param Title &#91;required&#93; A short heading that describes the nature of the OpsItem and the
 #' impacted resource.
-#' @param Tags Optional metadata that you assign to a resource. You can restrict access
-#' to OpsItems by using an inline IAM policy that specifies tags. For more
-#' information, see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-getting-started-user-permissions)
-#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param Tags Optional metadata that you assign to a resource.
 #' 
 #' Tags use a key-value pair. For example:
 #' 
@@ -1570,9 +1568,8 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
 #' @param AccountId The target Amazon Web Services account where you want to create an
 #' OpsItem. To make this call, your account must be configured to work with
-#' OpsItems across accounts. For more information, see [Setting up
-#' OpsCenter to work with OpsItems across
-#' accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' OpsItems across accounts. For more information, see [Set up
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @return
@@ -2877,7 +2874,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
     name = "DescribeActivations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActivationList")
   )
   input <- .ssm$describe_activations_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_activations_output()
@@ -3135,7 +3132,7 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
     name = "DescribeAssociationExecutionTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutionTargets")
   )
   input <- .ssm$describe_association_execution_targets_input(AssociationId = AssociationId, ExecutionId = ExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_association_execution_targets_output()
@@ -3235,7 +3232,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
     name = "DescribeAssociationExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutions")
   )
   input <- .ssm$describe_association_executions_input(AssociationId = AssociationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_association_executions_output()
@@ -3419,7 +3416,7 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
     name = "DescribeAutomationExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AutomationExecutionMetadataList")
   )
   input <- .ssm$describe_automation_executions_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_automation_executions_output()
@@ -3571,7 +3568,7 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
     name = "DescribeAutomationStepExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StepExecutions")
   )
   input <- .ssm$describe_automation_step_executions_input(AutomationExecutionId = AutomationExecutionId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, ReverseOrder = ReverseOrder)
   output <- .ssm$describe_automation_step_executions_output()
@@ -3754,7 +3751,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
     name = "DescribeAvailablePatches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches")
   )
   input <- .ssm$describe_available_patches_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_available_patches_output()
@@ -4014,7 +4011,7 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
     name = "DescribeEffectiveInstanceAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
   )
   input <- .ssm$describe_effective_instance_associations_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_effective_instance_associations_output()
@@ -4114,7 +4111,7 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
     name = "DescribeEffectivePatchesForPatchBaseline",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EffectivePatches")
   )
   input <- .ssm$describe_effective_patches_for_patch_baseline_input(BaselineId = BaselineId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_effective_patches_for_patch_baseline_output()
@@ -4191,7 +4188,7 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
     name = "DescribeInstanceAssociationsStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceAssociationStatusInfos")
   )
   input <- .ssm$describe_instance_associations_status_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_associations_status_output()
@@ -4203,23 +4200,24 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 }
 .ssm$operations$describe_instance_associations_status <- ssm_describe_instance_associations_status
 
-#' Describes one or more of your managed nodes, including information about
-#' the operating system platform, the version of SSM Agent installed on the
-#' managed node, node status, and so on
+#' Provides information about one or more of your managed nodes, including
+#' the operating system platform, SSM Agent version, association status,
+#' and IP address
 #'
 #' @description
-#' Describes one or more of your managed nodes, including information about
-#' the operating system platform, the version of SSM Agent installed on the
-#' managed node, node status, and so on.
+#' Provides information about one or more of your managed nodes, including
+#' the operating system platform, SSM Agent version, association status,
+#' and IP address. This operation does not return information for nodes
+#' that are either Stopped or Terminated.
 #' 
-#' If you specify one or more managed node IDs, it returns information for
-#' those managed nodes. If you don't specify node IDs, it returns
+#' If you specify one or more node IDs, the operation returns information
+#' for those managed nodes. If you don't specify node IDs, it returns
 #' information for all your managed nodes. If you specify a node ID that
 #' isn't valid or a node that you don't own, you receive an error.
 #' 
-#' The `IamRole` field for this API operation is the Identity and Access
-#' Management (IAM) role assigned to on-premises managed nodes. This call
-#' doesn't return the IAM role for EC2 instances.
+#' The `IamRole` field returned for this API operation is the Identity and
+#' Access Management (IAM) role assigned to on-premises managed nodes. This
+#' operation does not return the IAM role for EC2 instances.
 #'
 #' @usage
 #' ssm_describe_instance_information(InstanceInformationFilterList,
@@ -4233,11 +4231,12 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #' an exception error.
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' managed nodes. You can filter based on tags applied to your managed
-#' nodes. Use this `Filters` data type instead of
-#' `InstanceInformationFilterList`, which is deprecated.
+#' nodes. Tag filters can't be combined with other filter types. Use this
+#' `Filters` data type instead of `InstanceInformationFilterList`, which is
+#' deprecated.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
-#' next set of results.
+#' next set of results. The default value is 10 items.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
@@ -4321,7 +4320,7 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
     name = "DescribeInstanceInformation",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceInformationList")
   )
   input <- .ssm$describe_instance_information_input(InstanceInformationFilterList = InstanceInformationFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_information_output()
@@ -4408,7 +4407,7 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
     name = "DescribeInstancePatchStates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates")
   )
   input <- .ssm$describe_instance_patch_states_input(InstanceIds = InstanceIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patch_states_output()
@@ -4512,7 +4511,7 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
     name = "DescribeInstancePatchStatesForPatchGroup",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates")
   )
   input <- .ssm$describe_instance_patch_states_for_patch_group_input(PatchGroup = PatchGroup, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patch_states_for_patch_group_output()
@@ -4611,7 +4610,7 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
     name = "DescribeInstancePatches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches")
   )
   input <- .ssm$describe_instance_patches_input(InstanceId = InstanceId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patches_output()
@@ -4692,7 +4691,7 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
     name = "DescribeInventoryDeletions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InventoryDeletions")
   )
   input <- .ssm$describe_inventory_deletions_input(DeletionId = DeletionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_inventory_deletions_output()
@@ -4784,7 +4783,7 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
     name = "DescribeMaintenanceWindowExecutionTaskInvocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskInvocationIdentities")
   )
   input <- .ssm$describe_maintenance_window_execution_task_invocations_input(WindowExecutionId = WindowExecutionId, TaskId = TaskId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_execution_task_invocations_output()
@@ -4882,7 +4881,7 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
     name = "DescribeMaintenanceWindowExecutionTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskIdentities")
   )
   input <- .ssm$describe_maintenance_window_execution_tasks_input(WindowExecutionId = WindowExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_execution_tasks_output()
@@ -4969,7 +4968,7 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
     name = "DescribeMaintenanceWindowExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutions")
   )
   input <- .ssm$describe_maintenance_window_executions_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_executions_output()
@@ -5054,7 +5053,7 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
     name = "DescribeMaintenanceWindowSchedule",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledWindowExecutions")
   )
   input <- .ssm$describe_maintenance_window_schedule_input(WindowId = WindowId, Targets = Targets, ResourceType = ResourceType, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_schedule_output()
@@ -5138,7 +5137,7 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
     name = "DescribeMaintenanceWindowTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets")
   )
   input <- .ssm$describe_maintenance_window_targets_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_targets_output()
@@ -5253,7 +5252,7 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
     name = "DescribeMaintenanceWindowTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tasks")
   )
   input <- .ssm$describe_maintenance_window_tasks_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_tasks_output()
@@ -5332,7 +5331,7 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
     name = "DescribeMaintenanceWindows",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities")
   )
   input <- .ssm$describe_maintenance_windows_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_windows_output()
@@ -5405,7 +5404,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
     name = "DescribeMaintenanceWindowsForTarget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities")
   )
   input <- .ssm$describe_maintenance_windows_for_target_input(Targets = Targets, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_windows_for_target_output()
@@ -5422,8 +5421,8 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' @description
 #' Query a set of OpsItems. You must have permission in Identity and Access
 #' Management (IAM) to query a list of OpsItems. For more information, see
-#' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' [Set up
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -5487,6 +5486,10 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #'     Operations: Contains
 #' 
 #' -   Key: AutomationId
+#' 
+#'     Operations: Equals
+#' 
+#' -   Key: AccountId
 #' 
 #'     Operations: Equals
 #' 
@@ -5576,7 +5579,7 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
     name = "DescribeOpsItems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsItemSummaries")
   )
   input <- .ssm$describe_ops_items_input(OpsItemFilters = OpsItemFilters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_ops_items_output()
@@ -5685,7 +5688,7 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
     name = "DescribeParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ssm$describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_parameters_output()
@@ -5769,7 +5772,7 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
     name = "DescribePatchBaselines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BaselineIdentities")
   )
   input <- .ssm$describe_patch_baselines_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_patch_baselines_output()
@@ -5911,7 +5914,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
     name = "DescribePatchGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Mappings")
   )
   input <- .ssm$describe_patch_groups_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .ssm$describe_patch_groups_output()
@@ -6030,7 +6033,7 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
     name = "DescribePatchProperties",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Properties")
   )
   input <- .ssm$describe_patch_properties_input(OperatingSystem = OperatingSystem, Property = Property, PatchSet = PatchSet, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_patch_properties_output()
@@ -6117,7 +6120,7 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
     name = "DescribeSessions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Sessions")
   )
   input <- .ssm$describe_sessions_input(State = State, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssm$describe_sessions_output()
@@ -7041,7 +7044,7 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
     name = "GetInventory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities")
   )
   input <- .ssm$get_inventory_input(Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_inventory_output()
@@ -7118,7 +7121,7 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
     name = "GetInventorySchema",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
   )
   input <- .ssm$get_inventory_schema_input(TypeName = TypeName, NextToken = NextToken, MaxResults = MaxResults, Aggregator = Aggregator, SubType = SubType)
   output <- .ssm$get_inventory_schema_output()
@@ -7560,8 +7563,8 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' @description
 #' Get information about an OpsItem by using the ID. You must have
 #' permission in Identity and Access Management (IAM) to view information
-#' about an OpsItem. For more information, see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' about an OpsItem. For more information, see [Set up
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -7827,7 +7830,7 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
     name = "GetOpsSummary",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities")
   )
   input <- .ssm$get_ops_summary_input(SyncName = SyncName, Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_ops_summary_output()
@@ -7987,7 +7990,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
     name = "GetParameterHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ssm$get_parameter_history_input(Name = Name, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_parameter_history_output()
@@ -8178,7 +8181,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
     name = "GetParametersByPath",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ssm$get_parameters_by_path_input(Path = Path, Recursive = Recursive, ParameterFilters = ParameterFilters, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_parameters_by_path_output()
@@ -8408,7 +8411,7 @@ ssm_get_resource_policies <- function(ResourceArn, NextToken = NULL, MaxResults 
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Policies")
   )
   input <- .ssm$get_resource_policies_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_resource_policies_output()
@@ -8714,7 +8717,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
     name = "ListAssociationVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationVersions")
   )
   input <- .ssm$list_association_versions_input(AssociationId = AssociationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_association_versions_output()
@@ -8821,7 +8824,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
     name = "ListAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
   )
   input <- .ssm$list_associations_input(AssociationFilterList = AssociationFilterList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_associations_output()
@@ -8945,7 +8948,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
     name = "ListCommandInvocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CommandInvocations")
   )
   input <- .ssm$list_command_invocations_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, Details = Details)
   output <- .ssm$list_command_invocations_output()
@@ -9082,7 +9085,7 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
     name = "ListCommands",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Commands")
   )
   input <- .ssm$list_commands_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssm$list_commands_output()
@@ -9181,7 +9184,7 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
     name = "ListComplianceItems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceItems")
   )
   input <- .ssm$list_compliance_items_input(Filters = Filters, ResourceIds = ResourceIds, ResourceTypes = ResourceTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_compliance_items_output()
@@ -9275,7 +9278,7 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
     name = "ListComplianceSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceSummaryItems")
   )
   input <- .ssm$list_compliance_summaries_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_compliance_summaries_output()
@@ -9430,7 +9433,7 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
     name = "ListDocumentVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentVersions")
   )
   input <- .ssm$list_document_versions_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_document_versions_output()
@@ -9546,7 +9549,7 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
     name = "ListDocuments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentIdentifiers")
   )
   input <- .ssm$list_documents_input(DocumentFilterList = DocumentFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_documents_output()
@@ -9704,7 +9707,7 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
     name = "ListOpsItemEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .ssm$list_ops_item_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_item_events_output()
@@ -9795,7 +9798,7 @@ ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, Ma
     name = "ListOpsItemRelatedItems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .ssm$list_ops_item_related_items_input(OpsItemId = OpsItemId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_item_related_items_output()
@@ -9872,7 +9875,7 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
     name = "ListOpsMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsMetadataList")
   )
   input <- .ssm$list_ops_metadata_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_metadata_output()
@@ -9975,7 +9978,7 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
     name = "ListResourceComplianceSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceComplianceSummaryItems")
   )
   input <- .ssm$list_resource_compliance_summaries_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_resource_compliance_summaries_output()
@@ -10090,7 +10093,7 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
     name = "ListResourceDataSync",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceDataSyncItems")
   )
   input <- .ssm$list_resource_data_sync_input(SyncType = SyncType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_resource_data_sync_output()
@@ -11566,9 +11569,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' must escape the first two options by using a backslash. If you specify a
 #' version number, then you don't need to use the backslash. For example:
 #' 
-#' --document-version "$DEFAULT"
+#' --document-version "\$DEFAULT"
 #' 
-#' --document-version "$LATEST"
+#' --document-version "\$LATEST"
 #' 
 #' --document-version "3"
 #' @param DocumentHash The Sha256 or Sha1 hash created by the system when the document was
@@ -13870,8 +13873,8 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' @description
 #' Edit or change an OpsItem. You must have permission in Identity and
 #' Access Management (IAM) to update an OpsItem. For more information, see
-#' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' [Set up
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -13914,7 +13917,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
 #' [Creating OpsItems
-#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems)
+#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OperationalDataToDelete Keys that you want to remove from the OperationalData map.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
@@ -13927,7 +13930,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' resource.
 #' @param Status The OpsItem status. Status can be `Open`, `In Progress`, or `Resolved`.
 #' For more information, see [Editing OpsItem
-#' details](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html#OpsCenter-working-with-OpsItems-editing-details)
+#' details](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem.
 #' @param Title A short heading that describes the nature of the OpsItem and the

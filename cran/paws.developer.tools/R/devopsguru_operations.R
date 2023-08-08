@@ -349,7 +349,7 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
     name = "DescribeOrganizationResourceCollectionHealth",
     http_method = "POST",
     http_path = "/organization/health/resource-collection",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Account", "Service", "Tags"))
   )
   input <- .devopsguru$describe_organization_resource_collection_health_input(OrganizationResourceCollectionType = OrganizationResourceCollectionType, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .devopsguru$describe_organization_resource_collection_health_output()
@@ -389,7 +389,7 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
     name = "DescribeResourceCollectionHealth",
     http_method = "GET",
     http_path = "/accounts/health/resource-collection/{ResourceCollectionType}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Service", "Tags"))
   )
   input <- .devopsguru$describe_resource_collection_health_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$describe_resource_collection_health_output()
@@ -448,7 +448,7 @@ devopsguru_get_cost_estimation <- function(NextToken = NULL) {
     name = "GetCostEstimation",
     http_method = "GET",
     http_path = "/cost-estimation",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("Status", "TotalCost", "TimeRange", "ResourceCollection"), output_token = "NextToken", result_key = list("Costs"))
   )
   input <- .devopsguru$get_cost_estimation_input(NextToken = NextToken)
   output <- .devopsguru$get_cost_estimation_output()
@@ -482,7 +482,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
     name = "GetResourceCollection",
     http_method = "GET",
     http_path = "/resource-collections/{ResourceCollectionType}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ResourceCollection"), output_token = "NextToken", result_key = list("ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags"))
   )
   input <- .devopsguru$get_resource_collection_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$get_resource_collection_output()
@@ -521,7 +521,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
     name = "ListAnomaliesForInsight",
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ReactiveAnomalies", "ProactiveAnomalies"))
   )
   input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
   output <- .devopsguru$list_anomalies_for_insight_output()
@@ -555,7 +555,7 @@ devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, N
     name = "ListAnomalousLogGroups",
     http_method = "POST",
     http_path = "/list-log-anomalies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("InsightId", "AnomalousLogGroups"))
   )
   input <- .devopsguru$list_anomalous_log_groups_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_anomalous_log_groups_output()
@@ -591,7 +591,7 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
     name = "ListEvents",
     http_method = "POST",
     http_path = "/events",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .devopsguru$list_events_output()
@@ -626,7 +626,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
     name = "ListInsights",
     http_method = "POST",
     http_path = "/insights",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_insights_output()
@@ -662,7 +662,7 @@ devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NUL
     name = "ListMonitoredResources",
     http_method = "POST",
     http_path = "/monitoredResources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("MonitoredResourceIdentifiers"))
   )
   input <- .devopsguru$list_monitored_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_monitored_resources_output()
@@ -692,7 +692,7 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
     name = "ListNotificationChannels",
     http_method = "POST",
     http_path = "/channels",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Channels")
   )
   input <- .devopsguru$list_notification_channels_input(NextToken = NextToken)
   output <- .devopsguru$list_notification_channels_output()
@@ -728,7 +728,7 @@ devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NUL
     name = "ListOrganizationInsights",
     http_method = "POST",
     http_path = "/organization/insights",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_organization_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken)
   output <- .devopsguru$list_organization_insights_output()
@@ -761,7 +761,7 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale 
     name = "ListRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Recommendations")
   )
   input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken, Locale = Locale, AccountId = AccountId)
   output <- .devopsguru$list_recommendations_output()
@@ -858,7 +858,7 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
     name = "SearchInsights",
     http_method = "POST",
     http_path = "/insights/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_insights_input(StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_insights_output()
@@ -896,7 +896,7 @@ devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, 
     name = "SearchOrganizationInsights",
     http_method = "POST",
     http_path = "/organization/insights/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_organization_insights_input(AccountIds = AccountIds, StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_organization_insights_output()

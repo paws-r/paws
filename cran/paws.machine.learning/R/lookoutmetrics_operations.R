@@ -317,7 +317,7 @@ lookoutmetrics_describe_anomaly_detection_executions <- function(AnomalyDetector
     name = "DescribeAnomalyDetectionExecutions",
     http_method = "POST",
     http_path = "/DescribeAnomalyDetectionExecutions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$describe_anomaly_detection_executions_input(AnomalyDetectorArn = AnomalyDetectorArn, Timestamp = Timestamp, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$describe_anomaly_detection_executions_output()
@@ -499,7 +499,7 @@ lookoutmetrics_get_feedback <- function(AnomalyDetectorArn, AnomalyGroupTimeSeri
     name = "GetFeedback",
     http_method = "POST",
     http_path = "/GetFeedback",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$get_feedback_input(AnomalyDetectorArn = AnomalyDetectorArn, AnomalyGroupTimeSeriesFeedback = AnomalyGroupTimeSeriesFeedback, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$get_feedback_output()
@@ -561,7 +561,7 @@ lookoutmetrics_list_alerts <- function(AnomalyDetectorArn = NULL, NextToken = NU
     name = "ListAlerts",
     http_method = "POST",
     http_path = "/ListAlerts",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$list_alerts_input(AnomalyDetectorArn = AnomalyDetectorArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lookoutmetrics$list_alerts_output()
@@ -593,7 +593,7 @@ lookoutmetrics_list_anomaly_detectors <- function(MaxResults = NULL, NextToken =
     name = "ListAnomalyDetectors",
     http_method = "POST",
     http_path = "/ListAnomalyDetectors",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$list_anomaly_detectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$list_anomaly_detectors_output()
@@ -630,7 +630,7 @@ lookoutmetrics_list_anomaly_group_related_metrics <- function(AnomalyDetectorArn
     name = "ListAnomalyGroupRelatedMetrics",
     http_method = "POST",
     http_path = "/ListAnomalyGroupRelatedMetrics",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$list_anomaly_group_related_metrics_input(AnomalyDetectorArn = AnomalyDetectorArn, AnomalyGroupId = AnomalyGroupId, RelationshipTypeFilter = RelationshipTypeFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$list_anomaly_group_related_metrics_output()
@@ -663,7 +663,7 @@ lookoutmetrics_list_anomaly_group_summaries <- function(AnomalyDetectorArn, Sens
     name = "ListAnomalyGroupSummaries",
     http_method = "POST",
     http_path = "/ListAnomalyGroupSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$list_anomaly_group_summaries_input(AnomalyDetectorArn = AnomalyDetectorArn, SensitivityThreshold = SensitivityThreshold, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$list_anomaly_group_summaries_output()
@@ -697,7 +697,7 @@ lookoutmetrics_list_anomaly_group_time_series <- function(AnomalyDetectorArn, An
     name = "ListAnomalyGroupTimeSeries",
     http_method = "POST",
     http_path = "/ListAnomalyGroupTimeSeries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$list_anomaly_group_time_series_input(AnomalyDetectorArn = AnomalyDetectorArn, AnomalyGroupId = AnomalyGroupId, MetricName = MetricName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$list_anomaly_group_time_series_output()
@@ -730,7 +730,7 @@ lookoutmetrics_list_metric_sets <- function(AnomalyDetectorArn = NULL, MaxResult
     name = "ListMetricSets",
     http_method = "POST",
     http_path = "/ListMetricSets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .lookoutmetrics$list_metric_sets_input(AnomalyDetectorArn = AnomalyDetectorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutmetrics$list_metric_sets_output()

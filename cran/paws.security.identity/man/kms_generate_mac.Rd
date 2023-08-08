@@ -5,7 +5,13 @@
 \title{Generates a hash-based message authentication code (HMAC) for a message
 using an HMAC KMS key and a MAC algorithm that the key supports}
 \usage{
-kms_generate_mac(Message, KeyId, MacAlgorithm, GrantTokens = NULL)
+kms_generate_mac(
+  Message,
+  KeyId,
+  MacAlgorithm,
+  GrantTokens = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Message}{[required] The message to be hashed. Specify a message of up to 4,096 bytes.
@@ -34,6 +40,11 @@ Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{

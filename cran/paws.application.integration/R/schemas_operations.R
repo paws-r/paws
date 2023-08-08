@@ -519,7 +519,7 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
     name = "ListDiscoverers",
     http_method = "GET",
     http_path = "/v1/discoverers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Discoverers")
   )
   input <- .schemas$list_discoverers_input(DiscovererIdPrefix = DiscovererIdPrefix, Limit = Limit, NextToken = NextToken, SourceArnPrefix = SourceArnPrefix)
   output <- .schemas$list_discoverers_output()
@@ -555,7 +555,7 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
     name = "ListRegistries",
     http_method = "GET",
     http_path = "/v1/registries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Registries")
   )
   input <- .schemas$list_registries_input(Limit = Limit, NextToken = NextToken, RegistryNamePrefix = RegistryNamePrefix, Scope = Scope)
   output <- .schemas$list_registries_output()
@@ -589,7 +589,7 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
     name = "ListSchemaVersions",
     http_method = "GET",
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "SchemaVersions")
   )
   input <- .schemas$list_schema_versions_input(Limit = Limit, NextToken = NextToken, RegistryName = RegistryName, SchemaName = SchemaName)
   output <- .schemas$list_schema_versions_output()
@@ -624,7 +624,7 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
     name = "ListSchemas",
     http_method = "GET",
     http_path = "/v1/registries/name/{registryName}/schemas",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Schemas")
   )
   input <- .schemas$list_schemas_input(Limit = Limit, NextToken = NextToken, RegistryName = RegistryName, SchemaNamePrefix = SchemaNamePrefix)
   output <- .schemas$list_schemas_output()
@@ -751,7 +751,7 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
     name = "SearchSchemas",
     http_method = "GET",
     http_path = "/v1/registries/name/{registryName}/schemas/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Schemas")
   )
   input <- .schemas$search_schemas_input(Keywords = Keywords, Limit = Limit, NextToken = NextToken, RegistryName = RegistryName)
   output <- .schemas$search_schemas_output()

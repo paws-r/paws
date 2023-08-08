@@ -22,7 +22,8 @@ ec2_create_volume(
 )
 }
 \arguments{
-\item{AvailabilityZone}{[required] The Availability Zone in which to create the volume.}
+\item{AvailabilityZone}{[required] The ID of the Availability Zone in which to create the volume. For
+example, \verb{us-east-1a}.}
 
 \item{Encrypted}{Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to \code{true} depends on the volume origin (new or from

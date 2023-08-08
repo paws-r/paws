@@ -12,7 +12,7 @@ NULL
 #' @usage
 #' comprehendmedical_describe_entities_detection_v2_job(JobId)
 #'
-#' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
 #' [`start_entities_detection_v2_job`][comprehendmedical_start_entities_detection_v2_job]
 #' operation returns this identifier in its response.
 #'
@@ -167,7 +167,7 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' @usage
 #' comprehendmedical_describe_phi_detection_job(JobId)
 #'
-#' @param JobId &#91;required&#93; The identifier that Comprehend Medical; generated for the job. The
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend Medical generated for the job. The
 #' [`start_phi_detection_job`][comprehendmedical_start_phi_detection_job]
 #' operation returns this identifier in its response.
 #'
@@ -399,14 +399,13 @@ comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
 #' 
 #' Inspects the clinical text for a variety of medical entities and returns
 #' specific information about them such as entity category, location, and
-#' confidence score on that information .
+#' confidence score on that information.
 #'
 #' @usage
 #' comprehendmedical_detect_entities(Text)
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string containing the clinical content being examined for
-#' entities. Each string must contain fewer than 20,000 bytes of
-#' characters.
+#' entities.
 #'
 #' @return
 #' A list with the following syntax:
@@ -531,8 +530,7 @@ comprehendmedical_detect_entities <- function(Text) {
 #' comprehendmedical_detect_entities_v2(Text)
 #'
 #' @param Text &#91;required&#93; A UTF-8 string containing the clinical content being examined for
-#' entities. Each string must contain fewer than 20,000 bytes of
-#' characters.
+#' entities.
 #'
 #' @return
 #' A list with the following syntax:
@@ -644,8 +642,7 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #' comprehendmedical_detect_phi(Text)
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string containing the clinical content being examined for
-#' PHI entities. Each string must contain fewer than 20,000 bytes of
-#' characters.
+#' PHI entities.
 #'
 #' @return
 #' A list with the following syntax:
@@ -735,8 +732,7 @@ comprehendmedical_detect_phi <- function(Text) {
 #' @usage
 #' comprehendmedical_infer_icd10cm(Text)
 #'
-#' @param Text &#91;required&#93; The input text used for analysis. The input for InferICD10CM is a string
-#' from 1 to 10000 characters.
+#' @param Text &#91;required&#93; The input text used for analysis.
 #'
 #' @return
 #' A list with the following syntax:
@@ -832,8 +828,7 @@ comprehendmedical_infer_icd10cm <- function(Text) {
 #' @usage
 #' comprehendmedical_infer_rx_norm(Text)
 #'
-#' @param Text &#91;required&#93; The input text used for analysis. The input for InferRxNorm is a string
-#' from 1 to 10000 characters.
+#' @param Text &#91;required&#93; The input text used for analysis.
 #'
 #' @return
 #' A list with the following syntax:
@@ -926,8 +921,7 @@ comprehendmedical_infer_rx_norm <- function(Text) {
 #' @usage
 #' comprehendmedical_infer_snomedct(Text)
 #'
-#' @param Text &#91;required&#93; The input text to be analyzed using InferSNOMEDCT. The text should be a
-#' string with 1 to 10000 characters.
+#' @param Text &#91;required&#93; The input text to be analyzed using InferSNOMEDCT.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1213,12 +1207,12 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
 }
 .comprehendmedical$operations$list_icd10cm_inference_jobs <- comprehendmedical_list_icd10cm_inference_jobs
 
-#' Gets a list of protected health information (PHI) detection jobs that
-#' you have submitted
+#' Gets a list of protected health information (PHI) detection jobs you
+#' have submitted
 #'
 #' @description
-#' Gets a list of protected health information (PHI) detection jobs that
-#' you have submitted.
+#' Gets a list of protected health information (PHI) detection jobs you
+#' have submitted.
 #'
 #' @usage
 #' comprehendmedical_list_phi_detection_jobs(Filter, NextToken, MaxResults)
@@ -1511,17 +1505,17 @@ comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextTo
 #' input data for the job.
 #' @param OutputDataConfig &#91;required&#93; The output configuration that specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Comprehend Medical; read access to your input
-#' data. For more information, see [Role-Based Permissions Required for
-#' Asynchronous
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Comprehend Medical; generates one for you.
+#' token, Amazon Comprehend Medical generates one for you.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
-#' language. Comprehend Medical; processes files in US English (en).
+#' language. Amazon Comprehend Medical processes files in US English (en).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1589,13 +1583,13 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Comprehend Medical; read access to your input
-#' data. For more information, see [Role-Based Permissions Required for
-#' Asynchronous
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Comprehend Medical; generates one.
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -1666,13 +1660,13 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Comprehend Medical; read access to your input
-#' data. For more information, see [Role-Based Permissions Required for
-#' Asynchronous
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Comprehend Medical; generates one.
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same
@@ -1744,13 +1738,13 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Comprehend Medical; read access to your input
-#' data. For more information, see [Role-Based Permissions Required for
-#' Asynchronous
+#' (IAM) role that grants Amazon Comprehend Medical read access to your
+#' input data. For more information, see [Role-Based Permissions Required
+#' for Asynchronous
 #' Operations](https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med).
 #' @param JobName The identifier of the job.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
-#' token, Comprehend Medical; generates one.
+#' token, Amazon Comprehend Medical generates one.
 #' @param KMSKey An AWS Key Management Service key to encrypt your output files. If you
 #' do not specify a key, the files are written in plain text.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. All documents must be in the same

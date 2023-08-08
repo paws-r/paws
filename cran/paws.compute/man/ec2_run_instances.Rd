@@ -58,9 +58,7 @@ in the \emph{Amazon EC2 User Guide}.}
 be specified here or in a launch template.}
 
 \item{InstanceType}{The instance type. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
-in the \emph{Amazon EC2 User Guide}.
-
-Default: \code{m1.small}}
+in the \emph{Amazon EC2 User Guide}.}
 
 \item{Ipv6AddressCount}{The number of IPv6 addresses to associate with the primary network
 interface. Amazon EC2 chooses the IPv6 addresses from the range of your
@@ -277,8 +275,9 @@ preference defaults to \code{open}, which enables it to run in any open
 Capacity Reservation that has matching attributes (instance type,
 platform, Availability Zone).}
 
-\item{HibernationOptions}{Indicates whether an instance is enabled for hibernation. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate your instance}
+\item{HibernationOptions}{Indicates whether an instance is enabled for hibernation. This parameter
+is valid only if the instance meets the \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html}{hibernation prerequisites}.
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html}{Hibernate your instance}
 in the \emph{Amazon EC2 User Guide}.
 
 You can't enable hibernation and Amazon Web Services Nitro Enclaves on
@@ -297,7 +296,8 @@ You can't enable Amazon Web Services Nitro Enclaves and hibernation on
 the same instance.}
 
 \item{PrivateDnsNameOptions}{The options for the instance hostname. The default values are inherited
-from the subnet.}
+from the subnet. Applies only if creating a network interface, not
+attaching an existing one.}
 
 \item{MaintenanceOptions}{The maintenance and recovery options for the instance.}
 

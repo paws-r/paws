@@ -2,8 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_clusters}
 \alias{rds_describe_db_clusters}
-\title{Returns information about Amazon Aurora DB clusters and Multi-AZ DB
-clusters}
+\title{Describes existing Amazon Aurora DB clusters and Multi-AZ DB clusters}
 \usage{
 rds_describe_db_clusters(
   DBClusterIdentifier = NULL,
@@ -15,18 +14,18 @@ rds_describe_db_clusters(
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier or the Amazon Resource Name
-(ARN) of the DB cluster. If this parameter is specified, information
-from only the specific DB cluster is returned. This parameter isn't
+(ARN) of the DB cluster. If this parameter is specified, information for
+only the specific DB cluster is returned. This parameter isn't
 case-sensitive.
 
 Constraints:
 \itemize{
-\item If supplied, must match an existing DBClusterIdentifier.
+\item If supplied, must match an existing DB cluster identifier.
 }}
 
 \item{Filters}{A filter that specifies one or more DB clusters to describe.
 
-Supported filters:
+Supported Filters:
 \itemize{
 \item \code{clone-group-id} - Accepts clone group identifiers. The results list
 only includes information about the DB clusters associated with
@@ -58,12 +57,11 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
-\item{IncludeShared}{Optional Boolean parameter that specifies whether the output includes
-information about clusters shared from other Amazon Web Services
-accounts.}
+\item{IncludeShared}{Specifies whether the output includes information about clusters shared
+from other Amazon Web Services accounts.}
 }
 \description{
-Returns information about Amazon Aurora DB clusters and Multi-AZ DB clusters. This API supports pagination.
+Describes existing Amazon Aurora DB clusters and Multi-AZ DB clusters. This API supports pagination.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_clusters/} for full documentation.
 }

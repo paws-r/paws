@@ -3,6 +3,18 @@
 #' @include appstream_service.R
 NULL
 
+.appstream$associate_app_block_builder_app_block_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$associate_app_block_builder_app_block_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilderAppBlockAssociation = structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .appstream$associate_application_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -77,13 +89,37 @@ NULL
 
 .appstream$create_app_block_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PostSetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), PackagingType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appstream$create_app_block_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlock = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(AppBlock = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PostSetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), PackagingType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AppBlockErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$create_app_block_builder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$create_app_block_builder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$create_app_block_builder_streaming_url_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilderName = structure(logical(0), tags = list(type = "string")), Validity = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$create_app_block_builder_streaming_url_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StreamingURL = structure(logical(0), tags = list(type = "string")), Expires = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -231,6 +267,18 @@ NULL
   return(populate(args, shape))
 }
 
+.appstream$delete_app_block_builder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$delete_app_block_builder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .appstream$delete_application_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -351,6 +399,30 @@ NULL
   return(populate(args, shape))
 }
 
+.appstream$describe_app_block_builder_app_block_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$describe_app_block_builder_app_block_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilderAppBlockAssociations = structure(list(structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$describe_app_block_builders_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Names = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$describe_app_block_builders_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilders = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .appstream$describe_app_blocks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -359,7 +431,7 @@ NULL
 
 .appstream$describe_app_blocks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AppBlocks = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(AppBlocks = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), SourceS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), PostSetupScriptDetails = structure(list(ScriptS3Location = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutablePath = structure(logical(0), tags = list(type = "string")), ExecutableParameters = structure(logical(0), tags = list(type = "string")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), PackagingType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), AppBlockErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -531,6 +603,18 @@ NULL
   return(populate(args, shape))
 }
 
+.appstream$disassociate_app_block_builder_app_block_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockArn = structure(logical(0), tags = list(type = "string")), AppBlockBuilderName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$disassociate_app_block_builder_app_block_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .appstream$disassociate_application_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FleetName = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -639,6 +723,18 @@ NULL
   return(populate(args, shape))
 }
 
+.appstream$start_app_block_builder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$start_app_block_builder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .appstream$start_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -660,6 +756,18 @@ NULL
 .appstream$start_image_builder_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ImageBuilder = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), ImageArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), InstanceType = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), DomainJoinInfo = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NetworkAccessConfiguration = structure(list(EniPrivateIpAddress = structure(logical(0), tags = list(type = "string")), EniId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ImageBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), AppstreamAgentVersion = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$stop_app_block_builder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$stop_app_block_builder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -708,6 +816,18 @@ NULL
 .appstream$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$update_app_block_builder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttributesToDelete = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appstream$update_app_block_builder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AppBlockBuilder = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Platform = structure(logical(0), tags = list(type = "string")), InstanceType = structure(logical(0), tags = list(type = "string")), EnableDefaultInternetAccess = structure(logical(0), tags = list(type = "boolean")), IamRoleArn = structure(logical(0), tags = list(type = "string")), VpcConfig = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), AppBlockBuilderErrors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), StateChangeReason = structure(list(Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AccessEndpoints = structure(list(structure(list(EndpointType = structure(logical(0), tags = list(type = "string")), VpceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -874,7 +874,7 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
     name = "ListAttacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttackSummaries")
   )
   input <- .shield$list_attacks_input(ResourceArns = ResourceArns, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .shield$list_attacks_output()
@@ -930,7 +930,7 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
     name = "ListProtectionGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protection_groups_output()
@@ -986,7 +986,7 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
     name = "ListProtections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Protections")
   )
   input <- .shield$list_protections_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protections_output()
@@ -1039,7 +1039,7 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
     name = "ListResourcesInProtectionGroup",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .shield$list_resources_in_protection_group_input(ProtectionGroupId = ProtectionGroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .shield$list_resources_in_protection_group_output()

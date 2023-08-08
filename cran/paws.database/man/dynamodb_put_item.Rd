@@ -14,7 +14,8 @@ dynamodb_put_item(
   ConditionalOperator = NULL,
   ConditionExpression = NULL,
   ExpressionAttributeNames = NULL,
-  ExpressionAttributeValues = NULL
+  ExpressionAttributeValues = NULL,
+  ReturnValuesOnConditionCheckFailure = NULL
 )
 }
 \arguments{
@@ -154,6 +155,13 @@ You could then use these values in an expression, such as this:
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
+
+\item{ReturnValuesOnConditionCheckFailure}{An optional parameter that returns the item attributes for a
+\code{\link[=dynamodb_put_item]{put_item}} operation that failed a condition check.
+
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No read capacity units are consumed.}
 }
 \description{
 Creates a new item, or replaces an old item with a new item. If an item that has the same primary key as the new item already exists in the specified table, the new item completely replaces the existing item. You can perform a conditional put operation (add a new item if one with the specified primary key doesn't exist), or replace an existing item if it has certain attribute values. You can return the item's attribute values in the same operation, using the \code{ReturnValues} parameter.

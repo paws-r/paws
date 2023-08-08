@@ -291,7 +291,7 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
     name = "GetFindingsReportAccountSummary",
     http_method = "GET",
     http_path = "/internal/findingsReports",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .codeguruprofiler$get_findings_report_account_summary_input(dailyReportsOnly = dailyReportsOnly, maxResults = maxResults, nextToken = nextToken)
   output <- .codeguruprofiler$get_findings_report_account_summary_output()
@@ -527,7 +527,7 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
     name = "ListFindingsReports",
     http_method = "GET",
     http_path = "/internal/profilingGroups/{profilingGroupName}/findingsReports",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .codeguruprofiler$list_findings_reports_input(dailyReportsOnly = dailyReportsOnly, endTime = endTime, maxResults = maxResults, nextToken = nextToken, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$list_findings_reports_output()
@@ -589,7 +589,7 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
     name = "ListProfileTimes",
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/profileTimes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "profileTimes")
   )
   input <- .codeguruprofiler$list_profile_times_input(endTime = endTime, maxResults = maxResults, nextToken = nextToken, orderBy = orderBy, period = period, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$list_profile_times_output()
@@ -640,7 +640,7 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
     name = "ListProfilingGroups",
     http_method = "GET",
     http_path = "/profilingGroups",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .codeguruprofiler$list_profiling_groups_input(includeDescription = includeDescription, maxResults = maxResults, nextToken = nextToken)
   output <- .codeguruprofiler$list_profiling_groups_output()

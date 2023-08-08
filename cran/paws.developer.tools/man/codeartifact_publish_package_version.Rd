@@ -29,7 +29,9 @@ does not include dashes or spaces.}
 to.}
 
 \item{format}{[required] A format that specifies the type of the package version with the
-requested asset file.}
+requested asset file.
+
+The only supported value is \code{generic}.}
 
 \item{namespace}{The namespace of the package version to publish.}
 

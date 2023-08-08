@@ -11,7 +11,7 @@ NULL
 
 .connectwisdomservice$create_assistant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistant = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(assistant = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .connectwisdomservice$create_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(session = structure(list(description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(session = structure(list(description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .connectwisdomservice$get_assistant_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistant = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(assistant = structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,7 +191,7 @@ NULL
 
 .connectwisdomservice$get_session_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(session = structure(list(description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(session = structure(list(description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), sessionArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .connectwisdomservice$list_assistants_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(assistantSummaries = structure(list(structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(assistantSummaries = structure(list(structure(list(assistantArn = structure(logical(0), tags = list(type = "string")), assistantId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), integrationConfiguration = structure(list(topicIntegrationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), serverSideEncryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

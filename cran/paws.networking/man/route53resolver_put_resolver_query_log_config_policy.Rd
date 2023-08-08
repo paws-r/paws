@@ -24,7 +24,6 @@ section of the statement:
 \itemize{
 \item \code{route53resolver:AssociateResolverQueryLogConfig}
 \item \code{route53resolver:DisassociateResolverQueryLogConfig}
-\item \code{route53resolver:ListResolverQueryLogConfigAssociations}
 \item \code{route53resolver:ListResolverQueryLogConfigs}
 }
 

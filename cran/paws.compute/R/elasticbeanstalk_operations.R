@@ -729,7 +729,7 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
     name = "DescribeApplicationVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ApplicationVersions")
   )
   input <- .elasticbeanstalk$describe_application_versions_input(ApplicationName = ApplicationName, VersionLabels = VersionLabels, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_application_versions_output()
@@ -759,7 +759,7 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
     name = "DescribeApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Applications")
   )
   input <- .elasticbeanstalk$describe_applications_input(ApplicationNames = ApplicationNames)
   output <- .elasticbeanstalk$describe_applications_output()
@@ -801,7 +801,7 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
     name = "DescribeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Options")
   )
   input <- .elasticbeanstalk$describe_configuration_options_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, Options = Options)
   output <- .elasticbeanstalk$describe_configuration_options_output()
@@ -915,7 +915,7 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
     name = "DescribeEnvironmentManagedActionHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "ManagedActionHistoryItems")
   )
   input <- .elasticbeanstalk$describe_environment_managed_action_history_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, NextToken = NextToken, MaxItems = MaxItems)
   output <- .elasticbeanstalk$describe_environment_managed_action_history_output()
@@ -1038,7 +1038,7 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
     name = "DescribeEnvironments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Environments")
   )
   input <- .elasticbeanstalk$describe_environments_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, EnvironmentIds = EnvironmentIds, EnvironmentNames = EnvironmentNames, IncludeDeleted = IncludeDeleted, IncludedDeletedBackTo = IncludedDeletedBackTo, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_environments_output()
@@ -1092,7 +1092,7 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Events")
   )
   input <- .elasticbeanstalk$describe_events_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, TemplateName = TemplateName, EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, PlatformArn = PlatformArn, RequestId = RequestId, Severity = Severity, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_events_output()
@@ -1216,7 +1216,7 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
     name = "ListAvailableSolutionStacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "SolutionStacks")
   )
   input <- .elasticbeanstalk$list_available_solution_stacks_input()
   output <- .elasticbeanstalk$list_available_solution_stacks_output()
@@ -1284,7 +1284,7 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
     name = "ListPlatformBranches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .elasticbeanstalk$list_platform_branches_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$list_platform_branches_output()
@@ -1321,7 +1321,7 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
     name = "ListPlatformVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "PlatformSummaryList")
   )
   input <- .elasticbeanstalk$list_platform_versions_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$list_platform_versions_output()

@@ -480,7 +480,7 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
     name = "GetBotAliases",
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_aliases_input(botName = botName, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_aliases_output()
@@ -555,7 +555,7 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
     name = "GetBotChannelAssociations",
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_channel_associations_input(botName = botName, botAlias = botAlias, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_channel_associations_output()
@@ -590,7 +590,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
     name = "GetBotVersions",
     http_method = "GET",
     http_path = "/bots/{name}/versions/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_bot_versions_output()
@@ -627,7 +627,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
     name = "GetBots",
     http_method = "GET",
     http_path = "/bots/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bots_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bots_output()
@@ -700,7 +700,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
     name = "GetBuiltinIntents",
     http_method = "GET",
     http_path = "/builtins/intents/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_builtin_intents_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_intents_output()
@@ -738,7 +738,7 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
     name = "GetBuiltinSlotTypes",
     http_method = "GET",
     http_path = "/builtins/slottypes/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_builtin_slot_types_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_slot_types_output()
@@ -865,7 +865,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
     name = "GetIntentVersions",
     http_method = "GET",
     http_path = "/intents/{name}/versions/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_intent_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_intent_versions_output()
@@ -902,7 +902,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
     name = "GetIntents",
     http_method = "GET",
     http_path = "/intents/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_intents_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_intents_output()
@@ -973,7 +973,7 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
     name = "GetMigrations",
     http_method = "GET",
     http_path = "/migrations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelbuildingservice$get_migrations_output()
@@ -1038,7 +1038,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
     name = "GetSlotTypeVersions",
     http_method = "GET",
     http_path = "/slottypes/{name}/versions/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_slot_type_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_slot_type_versions_output()
@@ -1075,7 +1075,7 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
     name = "GetSlotTypes",
     http_method = "GET",
     http_path = "/slottypes/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_slot_types_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_slot_types_output()

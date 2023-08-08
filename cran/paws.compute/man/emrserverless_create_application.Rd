@@ -23,7 +23,7 @@ emrserverless_create_application(
 \arguments{
 \item{name}{The name of the application.}
 
-\item{releaseLabel}{[required] The EMR release associated with the application.}
+\item{releaseLabel}{[required] The Amazon EMR release associated with the application.}
 
 \item{type}{[required] The type of application you want to start, such as Spark or Hive.}
 

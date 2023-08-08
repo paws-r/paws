@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_authorize_security_group_egress}
 \alias{ec2_authorize_security_group_egress}
-\title{[VPC only] Adds the specified outbound (egress) rules to a
-security group for use with a VPC}
+\title{Adds the specified outbound (egress) rules to a security group for use
+with a VPC}
 \usage{
 ec2_authorize_security_group_egress(
   DryRun = NULL,
@@ -47,7 +47,7 @@ security group.}
 security group.}
 }
 \description{
-[VPC only] Adds the specified outbound (egress) rules to a security group for use with a VPC.
+Adds the specified outbound (egress) rules to a security group for use with a VPC.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_authorize_security_group_egress/} for full documentation.
 }

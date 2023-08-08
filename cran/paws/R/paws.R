@@ -35,17 +35,40 @@
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -64,8 +87,20 @@
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -124,8 +159,13 @@
 #'
 #' @rdname apprunner
 #' @export
-apprunner <- function(config = list()) {
-  paws.compute::apprunner(config)
+apprunner <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::apprunner(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Batch
@@ -154,17 +194,40 @@ apprunner <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -183,8 +246,20 @@ apprunner <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -234,8 +309,13 @@ apprunner <- function(config = list()) {
 #'
 #' @rdname batch
 #' @export
-batch <- function(config = list()) {
-  paws.compute::batch(config)
+batch <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::batch(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Braket
@@ -253,17 +333,40 @@ batch <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -282,8 +385,20 @@ batch <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -320,8 +435,13 @@ batch <- function(config = list()) {
 #'
 #' @rdname braket
 #' @export
-braket <- function(config = list()) {
-  paws.compute::braket(config)
+braket <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::braket(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Compute Optimizer
@@ -347,17 +467,40 @@ braket <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -376,8 +519,20 @@ braket <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -422,8 +577,13 @@ braket <- function(config = list()) {
 #'
 #' @rdname computeoptimizer
 #' @export
-computeoptimizer <- function(config = list()) {
-  paws.compute::computeoptimizer(config)
+computeoptimizer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::computeoptimizer(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elastic Compute Cloud
@@ -461,17 +621,40 @@ computeoptimizer <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -490,19 +673,28 @@ computeoptimizer <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
 #' svc <- ec2()
-#' # This example allocates an Elastic IP address to use with an instance in
-#' # a VPC.
-#' svc$allocate_address(
-#'   Domain = "vpc"
-#' )
+#' # This example allocates an Elastic IP address.
+#' svc$allocate_address()
 #' }
 #'
 #' @section Operations:
@@ -537,14 +729,14 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table} \tab Associates the specified attachment with the specified transit gateway route table\cr
 #'  \link[paws.compute:ec2_associate_trunk_interface]{associate_trunk_interface} \tab This API action is currently in limited preview only\cr
 #'  \link[paws.compute:ec2_associate_vpc_cidr_block]{associate_vpc_cidr_block} \tab Associates a CIDR block with your VPC\cr
-#'  \link[paws.compute:ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab We are retiring EC2-Classic\cr
+#'  \link[paws.compute:ec2_attach_classic_link_vpc]{attach_classic_link_vpc} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_attach_internet_gateway]{attach_internet_gateway} \tab Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC\cr
 #'  \link[paws.compute:ec2_attach_network_interface]{attach_network_interface} \tab Attaches a network interface to an instance\cr
 #'  \link[paws.compute:ec2_attach_verified_access_trust_provider]{attach_verified_access_trust_provider} \tab Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon Web Services Verified Access instance\cr
 #'  \link[paws.compute:ec2_attach_volume]{attach_volume} \tab Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name\cr
 #'  \link[paws.compute:ec2_attach_vpn_gateway]{attach_vpn_gateway} \tab Attaches a virtual private gateway to a VPC\cr
 #'  \link[paws.compute:ec2_authorize_client_vpn_ingress]{authorize_client_vpn_ingress} \tab Adds an ingress authorization rule to a Client VPN endpoint\cr
-#'  \link[paws.compute:ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab &#91;VPC only&#93; Adds the specified outbound (egress) rules to a security group for use with a VPC\cr
+#'  \link[paws.compute:ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab Adds the specified outbound (egress) rules to a security group for use with a VPC\cr
 #'  \link[paws.compute:ec2_authorize_security_group_ingress]{authorize_security_group_ingress} \tab Adds the specified inbound (ingress) rules to a security group\cr
 #'  \link[paws.compute:ec2_bundle_instance]{bundle_instance} \tab Bundles an Amazon instance store-backed Windows instance\cr
 #'  \link[paws.compute:ec2_cancel_bundle_task]{cancel_bundle_task} \tab Cancels a bundling operation for an instance store-backed Windows instance\cr
@@ -573,7 +765,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_create_default_vpc]{create_default_vpc} \tab Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone\cr
 #'  \link[paws.compute:ec2_create_dhcp_options]{create_dhcp_options} \tab Creates a set of DHCP options for your VPC\cr
 #'  \link[paws.compute:ec2_create_egress_only_internet_gateway]{create_egress_only_internet_gateway} \tab &#91;IPv6 only&#93; Creates an egress-only internet gateway for your VPC\cr
-#'  \link[paws.compute:ec2_create_fleet]{create_fleet} \tab Launches an EC2 Fleet\cr
+#'  \link[paws.compute:ec2_create_fleet]{create_fleet} \tab Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances\cr
 #'  \link[paws.compute:ec2_create_flow_logs]{create_flow_logs} \tab Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC\cr
 #'  \link[paws.compute:ec2_create_fpga_image]{create_fpga_image} \tab Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP)\cr
 #'  \link[paws.compute:ec2_create_image]{create_image} \tab Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped\cr
@@ -636,7 +828,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_create_verified_access_trust_provider]{create_verified_access_trust_provider} \tab A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices\cr
 #'  \link[paws.compute:ec2_create_volume]{create_volume} \tab Creates an EBS volume that can be attached to an instance in the same Availability Zone\cr
 #'  \link[paws.compute:ec2_create_vpc]{create_vpc} \tab Creates a VPC with the specified CIDR blocks\cr
-#'  \link[paws.compute:ec2_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates a VPC endpoint for a specified service\cr
+#'  \link[paws.compute:ec2_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates a VPC endpoint\cr
 #'  \link[paws.compute:ec2_create_vpc_endpoint_connection_notification]{create_vpc_endpoint_connection_notification} \tab Creates a connection notification for a specified VPC endpoint or VPC endpoint service\cr
 #'  \link[paws.compute:ec2_create_vpc_endpoint_service_configuration]{create_vpc_endpoint_service_configuration} \tab Creates a VPC endpoint service to which service consumers (Amazon Web Services accounts, users, and IAM roles) can connect\cr
 #'  \link[paws.compute:ec2_create_vpc_peering_connection]{create_vpc_peering_connection} \tab Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection\cr
@@ -736,7 +928,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 #'  \link[paws.compute:ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 #'  \link[paws.compute:ec2_describe_carrier_gateways]{describe_carrier_gateways} \tab Describes one or more of your carrier gateways\cr
-#'  \link[paws.compute:ec2_describe_classic_link_instances]{describe_classic_link_instances} \tab Describes one or more of your linked EC2-Classic instances\cr
+#'  \link[paws.compute:ec2_describe_classic_link_instances]{describe_classic_link_instances} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_describe_client_vpn_authorization_rules]{describe_client_vpn_authorization_rules} \tab Describes the authorization rules for a specified Client VPN endpoint\cr
 #'  \link[paws.compute:ec2_describe_client_vpn_connections]{describe_client_vpn_connections} \tab Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint\cr
 #'  \link[paws.compute:ec2_describe_client_vpn_endpoints]{describe_client_vpn_endpoints} \tab Describes one or more Client VPN endpoints in the account\cr
@@ -817,7 +1009,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_describe_route_tables]{describe_route_tables} \tab Describes one or more of your route tables\cr
 #'  \link[paws.compute:ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 #'  \link[paws.compute:ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
-#'  \link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab &#91;VPC only&#93; Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
+#'  \link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
 #'  \link[paws.compute:ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 #'  \link[paws.compute:ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
 #'  \link[paws.compute:ec2_describe_snapshot_attribute]{describe_snapshot_attribute} \tab Describes the specified attribute of the specified snapshot\cr
@@ -829,7 +1021,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_describe_spot_fleet_requests]{describe_spot_fleet_requests} \tab Describes your Spot Fleet requests\cr
 #'  \link[paws.compute:ec2_describe_spot_instance_requests]{describe_spot_instance_requests} \tab Describes the specified Spot Instance requests\cr
 #'  \link[paws.compute:ec2_describe_spot_price_history]{describe_spot_price_history} \tab Describes the Spot price history\cr
-#'  \link[paws.compute:ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab &#91;VPC only&#93; Describes the stale security group rules for security groups in a specified VPC\cr
+#'  \link[paws.compute:ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab Describes the stale security group rules for security groups in a specified VPC\cr
 #'  \link[paws.compute:ec2_describe_store_image_tasks]{describe_store_image_tasks} \tab Describes the progress of the AMI store tasks\cr
 #'  \link[paws.compute:ec2_describe_subnets]{describe_subnets} \tab Describes one or more of your subnets\cr
 #'  \link[paws.compute:ec2_describe_tags]{describe_tags} \tab Describes the specified tags for your EC2 resources\cr
@@ -857,8 +1049,8 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_describe_volumes_modifications]{describe_volumes_modifications} \tab Describes the most recent volume modification request for the specified EBS volumes\cr
 #'  \link[paws.compute:ec2_describe_volume_status]{describe_volume_status} \tab Describes the status of the specified volumes\cr
 #'  \link[paws.compute:ec2_describe_vpc_attribute]{describe_vpc_attribute} \tab Describes the specified attribute of the specified VPC\cr
-#'  \link[paws.compute:ec2_describe_vpc_classic_link]{describe_vpc_classic_link} \tab Describes the ClassicLink status of one or more VPCs\cr
-#'  \link[paws.compute:ec2_describe_vpc_classic_link_dns_support]{describe_vpc_classic_link_dns_support} \tab We are retiring EC2-Classic\cr
+#'  \link[paws.compute:ec2_describe_vpc_classic_link]{describe_vpc_classic_link} \tab This action is deprecated\cr
+#'  \link[paws.compute:ec2_describe_vpc_classic_link_dns_support]{describe_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_describe_vpc_endpoint_connection_notifications]{describe_vpc_endpoint_connection_notifications} \tab Describes the connection notifications for VPC endpoints and VPC endpoint services\cr
 #'  \link[paws.compute:ec2_describe_vpc_endpoint_connections]{describe_vpc_endpoint_connections} \tab Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance\cr
 #'  \link[paws.compute:ec2_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes your VPC endpoints\cr
@@ -869,7 +1061,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_describe_vpcs]{describe_vpcs} \tab Describes one or more of your VPCs\cr
 #'  \link[paws.compute:ec2_describe_vpn_connections]{describe_vpn_connections} \tab Describes one or more of your VPN connections\cr
 #'  \link[paws.compute:ec2_describe_vpn_gateways]{describe_vpn_gateways} \tab Describes one or more of your virtual private gateways\cr
-#'  \link[paws.compute:ec2_detach_classic_link_vpc]{detach_classic_link_vpc} \tab We are retiring EC2-Classic\cr
+#'  \link[paws.compute:ec2_detach_classic_link_vpc]{detach_classic_link_vpc} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_detach_internet_gateway]{detach_internet_gateway} \tab Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC\cr
 #'  \link[paws.compute:ec2_detach_network_interface]{detach_network_interface} \tab Detaches a network interface from an instance\cr
 #'  \link[paws.compute:ec2_detach_verified_access_trust_provider]{detach_verified_access_trust_provider} \tab Detaches the specified Amazon Web Services Verified Access trust provider from the specified Amazon Web Services Verified Access instance\cr
@@ -885,8 +1077,8 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
 #'  \link[paws.compute:ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table\cr
 #'  \link[paws.compute:ec2_disable_vgw_route_propagation]{disable_vgw_route_propagation} \tab Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC\cr
-#'  \link[paws.compute:ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab Disables ClassicLink for a VPC\cr
-#'  \link[paws.compute:ec2_disable_vpc_classic_link_dns_support]{disable_vpc_classic_link_dns_support} \tab Disables ClassicLink DNS support for a VPC\cr
+#'  \link[paws.compute:ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab This action is deprecated\cr
+#'  \link[paws.compute:ec2_disable_vpc_classic_link_dns_support]{disable_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_disassociate_address]{disassociate_address} \tab Disassociates an Elastic IP address from the instance or network interface it's associated with\cr
 #'  \link[paws.compute:ec2_disassociate_client_vpn_target_network]{disassociate_client_vpn_target_network} \tab Disassociates a target network from the specified Client VPN endpoint\cr
 #'  \link[paws.compute:ec2_disassociate_enclave_certificate_iam_role]{disassociate_enclave_certificate_iam_role} \tab Disassociates an IAM role from an Certificate Manager (ACM) certificate\cr
@@ -913,8 +1105,8 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table\cr
 #'  \link[paws.compute:ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation} \tab Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC\cr
 #'  \link[paws.compute:ec2_enable_volume_io]{enable_volume_io} \tab Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent\cr
-#'  \link[paws.compute:ec2_enable_vpc_classic_link]{enable_vpc_classic_link} \tab We are retiring EC2-Classic\cr
-#'  \link[paws.compute:ec2_enable_vpc_classic_link_dns_support]{enable_vpc_classic_link_dns_support} \tab We are retiring EC2-Classic\cr
+#'  \link[paws.compute:ec2_enable_vpc_classic_link]{enable_vpc_classic_link} \tab This action is deprecated\cr
+#'  \link[paws.compute:ec2_enable_vpc_classic_link_dns_support]{enable_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 #'  \link[paws.compute:ec2_export_client_vpn_client_certificate_revocation_list]{export_client_vpn_client_certificate_revocation_list} \tab Downloads the client certificate revocation list for the specified Client VPN endpoint\cr
 #'  \link[paws.compute:ec2_export_client_vpn_client_configuration]{export_client_vpn_client_configuration} \tab Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint\cr
 #'  \link[paws.compute:ec2_export_image]{export_image} \tab Exports an Amazon Machine Image (AMI) to a VM file\cr
@@ -964,7 +1156,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_get_vpn_tunnel_replacement_status]{get_vpn_tunnel_replacement_status} \tab Get details of available tunnel endpoint maintenance\cr
 #'  \link[paws.compute:ec2_import_client_vpn_client_certificate_revocation_list]{import_client_vpn_client_certificate_revocation_list} \tab Uploads a client certificate revocation list to the specified Client VPN endpoint\cr
 #'  \link[paws.compute:ec2_import_image]{import_image} \tab To import your virtual machines (VMs) with a console-based experience, you can use the Import virtual machine images to Amazon Web Services template in the Migration Hub Orchestrator console\cr
-#'  \link[paws.compute:ec2_import_instance]{import_instance} \tab Creates an import instance task using metadata from the specified disk image\cr
+#'  \link[paws.compute:ec2_import_instance]{import_instance} \tab We recommend that you use the ImportImage API\cr
 #'  \link[paws.compute:ec2_import_key_pair]{import_key_pair} \tab Imports the public key from an RSA or ED25519 key pair that you created with a third-party tool\cr
 #'  \link[paws.compute:ec2_import_snapshot]{import_snapshot} \tab Imports a disk into an EBS snapshot\cr
 #'  \link[paws.compute:ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image\cr
@@ -1028,7 +1220,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_modify_vpc_endpoint_service_configuration]{modify_vpc_endpoint_service_configuration} \tab Modifies the attributes of your VPC endpoint service configuration\cr
 #'  \link[paws.compute:ec2_modify_vpc_endpoint_service_payer_responsibility]{modify_vpc_endpoint_service_payer_responsibility} \tab Modifies the payer responsibility for your VPC endpoint service\cr
 #'  \link[paws.compute:ec2_modify_vpc_endpoint_service_permissions]{modify_vpc_endpoint_service_permissions} \tab Modifies the permissions for your VPC endpoint service\cr
-#'  \link[paws.compute:ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab We are retiring EC2-Classic\cr
+#'  \link[paws.compute:ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab Modifies the VPC peering connection options on one side of a VPC peering connection\cr
 #'  \link[paws.compute:ec2_modify_vpc_tenancy]{modify_vpc_tenancy} \tab Modifies the instance tenancy attribute of the specified VPC\cr
 #'  \link[paws.compute:ec2_modify_vpn_connection]{modify_vpn_connection} \tab Modifies the customer gateway or the target gateway of an Amazon Web Services Site-to-Site VPN connection\cr
 #'  \link[paws.compute:ec2_modify_vpn_connection_options]{modify_vpn_connection_options} \tab Modifies the connection options for your Site-to-Site VPN connection\cr
@@ -1079,7 +1271,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_restore_snapshot_from_recycle_bin]{restore_snapshot_from_recycle_bin} \tab Restores a snapshot from the Recycle Bin\cr
 #'  \link[paws.compute:ec2_restore_snapshot_tier]{restore_snapshot_tier} \tab Restores an archived Amazon EBS snapshot for use temporarily or permanently, or modifies the restore period or restore type for a snapshot that was previously temporarily restored\cr
 #'  \link[paws.compute:ec2_revoke_client_vpn_ingress]{revoke_client_vpn_ingress} \tab Removes an ingress authorization rule from a Client VPN endpoint\cr
-#'  \link[paws.compute:ec2_revoke_security_group_egress]{revoke_security_group_egress} \tab &#91;VPC only&#93; Removes the specified outbound (egress) rules from a security group for EC2-VPC\cr
+#'  \link[paws.compute:ec2_revoke_security_group_egress]{revoke_security_group_egress} \tab Removes the specified outbound (egress) rules from the specified security group\cr
 #'  \link[paws.compute:ec2_revoke_security_group_ingress]{revoke_security_group_ingress} \tab Removes the specified inbound (ingress) rules from a security group\cr
 #'  \link[paws.compute:ec2_run_instances]{run_instances} \tab Launches the specified number of instances using an AMI for which you have permissions\cr
 #'  \link[paws.compute:ec2_run_scheduled_instances]{run_scheduled_instances} \tab Launches the specified Scheduled Instances\cr
@@ -1098,7 +1290,7 @@ computeoptimizer <- function(config = list()) {
 #'  \link[paws.compute:ec2_unassign_private_ip_addresses]{unassign_private_ip_addresses} \tab Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface\cr
 #'  \link[paws.compute:ec2_unassign_private_nat_gateway_address]{unassign_private_nat_gateway_address} \tab Unassigns secondary private IPv4 addresses from a private NAT gateway\cr
 #'  \link[paws.compute:ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance\cr
-#'  \link[paws.compute:ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab &#91;VPC only&#93; Updates the description of an egress (outbound) security group rule\cr
+#'  \link[paws.compute:ec2_update_security_group_rule_descriptions_egress]{update_security_group_rule_descriptions_egress} \tab Updates the description of an egress (outbound) security group rule\cr
 #'  \link[paws.compute:ec2_update_security_group_rule_descriptions_ingress]{update_security_group_rule_descriptions_ingress} \tab Updates the description of an ingress (inbound) security group rule\cr
 #'  \link[paws.compute:ec2_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 #' }
@@ -1111,8 +1303,13 @@ computeoptimizer <- function(config = list()) {
 #'
 #' @rdname ec2
 #' @export
-ec2 <- function(config = list()) {
-  paws.compute::ec2(config)
+ec2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::ec2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS EC2 Instance Connect
@@ -1126,17 +1323,40 @@ ec2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1155,8 +1375,20 @@ ec2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1187,8 +1419,13 @@ ec2 <- function(config = list()) {
 #'
 #' @rdname ec2instanceconnect
 #' @export
-ec2instanceconnect <- function(config = list()) {
-  paws.compute::ec2instanceconnect(config)
+ec2instanceconnect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::ec2instanceconnect(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon EC2 Container Registry
@@ -1213,17 +1450,40 @@ ec2instanceconnect <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1242,8 +1502,20 @@ ec2instanceconnect <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1315,8 +1587,13 @@ ec2instanceconnect <- function(config = list()) {
 #'
 #' @rdname ecr
 #' @export
-ecr <- function(config = list()) {
-  paws.compute::ecr(config)
+ecr <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::ecr(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elastic Container Registry Public
@@ -1337,17 +1614,40 @@ ecr <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1366,8 +1666,20 @@ ecr <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1414,8 +1726,13 @@ ecr <- function(config = list()) {
 #'
 #' @rdname ecrpublic
 #' @export
-ecrpublic <- function(config = list()) {
-  paws.compute::ecrpublic(config)
+ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::ecrpublic(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon EC2 Container Service
@@ -1446,17 +1763,40 @@ ecrpublic <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1475,8 +1815,20 @@ ecrpublic <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1557,8 +1909,13 @@ ecrpublic <- function(config = list()) {
 #'
 #' @rdname ecs
 #' @export
-ecs <- function(config = list()) {
-  paws.compute::ecs(config)
+ecs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::ecs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elastic Kubernetes Service
@@ -1582,17 +1939,40 @@ ecs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1611,8 +1991,20 @@ ecs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1684,8 +2076,13 @@ ecs <- function(config = list()) {
 #'
 #' @rdname eks
 #' @export
-eks <- function(config = list()) {
-  paws.compute::eks(config)
+eks <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::eks(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Elastic Beanstalk
@@ -1715,17 +2112,40 @@ eks <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1744,8 +2164,20 @@ eks <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1818,8 +2250,13 @@ eks <- function(config = list()) {
 #'
 #' @rdname elasticbeanstalk
 #' @export
-elasticbeanstalk <- function(config = list()) {
-  paws.compute::elasticbeanstalk(config)
+elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::elasticbeanstalk(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon EMR Containers
@@ -1854,17 +2291,40 @@ elasticbeanstalk <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1883,8 +2343,20 @@ elasticbeanstalk <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -1928,18 +2400,23 @@ elasticbeanstalk <- function(config = list()) {
 #'
 #' @rdname emrcontainers
 #' @export
-emrcontainers <- function(config = list()) {
-  paws.compute::emrcontainers(config)
+emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::emrcontainers(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' EMR Serverless
 #'
 #' @description
-#' Amazon EMR Serverless is a new deployment option for Amazon EMR. EMR
-#' Serverless provides a serverless runtime environment that simplifies
+#' Amazon EMR Serverless is a new deployment option for Amazon EMR. Amazon
+#' EMR Serverless provides a serverless runtime environment that simplifies
 #' running analytics applications using the latest open source frameworks
-#' such as Apache Spark and Apache Hive. With EMR Serverless, you don’t
-#' have to configure, optimize, secure, or operate clusters to run
+#' such as Apache Spark and Apache Hive. With Amazon EMR Serverless, you
+#' don’t have to configure, optimize, secure, or operate clusters to run
 #' applications with these frameworks.
 #' 
 #' The API reference to Amazon EMR Serverless is `emr-serverless`. The
@@ -1960,17 +2437,40 @@ emrcontainers <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -1989,8 +2489,20 @@ emrcontainers <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -2008,7 +2520,7 @@ emrcontainers <- function(config = list()) {
 #'  \link[paws.compute:emrserverless_create_application]{create_application} \tab Creates an application\cr
 #'  \link[paws.compute:emrserverless_delete_application]{delete_application} \tab Deletes an application\cr
 #'  \link[paws.compute:emrserverless_get_application]{get_application} \tab Displays detailed information about a specified application\cr
-#'  \link[paws.compute:emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Returns a URL to access the job run dashboard\cr
+#'  \link[paws.compute:emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Creates and returns a URL that you can use to access the application UIs for a job run\cr
 #'  \link[paws.compute:emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
 #'  \link[paws.compute:emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
 #'  \link[paws.compute:emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
@@ -2029,8 +2541,13 @@ emrcontainers <- function(config = list()) {
 #'
 #' @rdname emrserverless
 #' @export
-emrserverless <- function(config = list()) {
-  paws.compute::emrserverless(config)
+emrserverless <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::emrserverless(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' EC2 Image Builder
@@ -2046,17 +2563,40 @@ emrserverless <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -2075,8 +2615,20 @@ emrserverless <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -2156,8 +2708,13 @@ emrserverless <- function(config = list()) {
 #'
 #' @rdname imagebuilder
 #' @export
-imagebuilder <- function(config = list()) {
-  paws.compute::imagebuilder(config)
+imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::imagebuilder(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Lambda
@@ -2244,17 +2801,40 @@ imagebuilder <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -2273,8 +2853,20 @@ imagebuilder <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -2364,8 +2956,13 @@ imagebuilder <- function(config = list()) {
 #'
 #' @rdname lambda
 #' @export
-lambda <- function(config = list()) {
-  paws.compute::lambda(config)
+lambda <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::lambda(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lightsail
@@ -2397,17 +2994,40 @@ lambda <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -2426,8 +3046,20 @@ lambda <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -2610,8 +3242,13 @@ lambda <- function(config = list()) {
 #'
 #' @rdname lightsail
 #' @export
-lightsail <- function(config = list()) {
-  paws.compute::lightsail(config)
+lightsail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::lightsail(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Proton
@@ -2779,17 +3416,40 @@ lightsail <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -2808,8 +3468,20 @@ lightsail <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -2841,6 +3513,7 @@ lightsail <- function(config = list()) {
 #'  \link[paws.compute:proton_create_service_template_version]{create_service_template_version} \tab Create a new major or minor version of a service template\cr
 #'  \link[paws.compute:proton_create_template_sync_config]{create_template_sync_config} \tab Set up a template to create new template versions automatically by tracking a linked repository\cr
 #'  \link[paws.compute:proton_delete_component]{delete_component} \tab Delete an Proton component resource\cr
+#'  \link[paws.compute:proton_delete_deployment]{delete_deployment} \tab Delete the deployment\cr
 #'  \link[paws.compute:proton_delete_environment]{delete_environment} \tab Delete an environment\cr
 #'  \link[paws.compute:proton_delete_environment_account_connection]{delete_environment_account_connection} \tab In an environment account, delete an environment account connection\cr
 #'  \link[paws.compute:proton_delete_environment_template]{delete_environment_template} \tab If no other major or minor versions of an environment template exist, delete the environment template\cr
@@ -2853,6 +3526,7 @@ lightsail <- function(config = list()) {
 #'  \link[paws.compute:proton_delete_template_sync_config]{delete_template_sync_config} \tab Delete a template sync configuration\cr
 #'  \link[paws.compute:proton_get_account_settings]{get_account_settings} \tab Get detail data for Proton account-wide settings\cr
 #'  \link[paws.compute:proton_get_component]{get_component} \tab Get detailed data for a component\cr
+#'  \link[paws.compute:proton_get_deployment]{get_deployment} \tab Get detailed data for a deployment\cr
 #'  \link[paws.compute:proton_get_environment]{get_environment} \tab Get detailed data for an environment\cr
 #'  \link[paws.compute:proton_get_environment_account_connection]{get_environment_account_connection} \tab In an environment account, get the detailed data for an environment account connection\cr
 #'  \link[paws.compute:proton_get_environment_template]{get_environment_template} \tab Get detailed data for an environment template\cr
@@ -2872,6 +3546,7 @@ lightsail <- function(config = list()) {
 #'  \link[paws.compute:proton_list_component_outputs]{list_component_outputs} \tab Get a list of component Infrastructure as Code (IaC) outputs\cr
 #'  \link[paws.compute:proton_list_component_provisioned_resources]{list_component_provisioned_resources} \tab List provisioned resources for a component with details\cr
 #'  \link[paws.compute:proton_list_components]{list_components} \tab List components with summary data\cr
+#'  \link[paws.compute:proton_list_deployments]{list_deployments} \tab List deployments\cr
 #'  \link[paws.compute:proton_list_environment_account_connections]{list_environment_account_connections} \tab View a list of environment account connections\cr
 #'  \link[paws.compute:proton_list_environment_outputs]{list_environment_outputs} \tab List the infrastructure as code outputs for your environment\cr
 #'  \link[paws.compute:proton_list_environment_provisioned_resources]{list_environment_provisioned_resources} \tab List the provisioned resources for your environment\cr
@@ -2917,8 +3592,13 @@ lightsail <- function(config = list()) {
 #'
 #' @rdname proton
 #' @export
-proton <- function(config = list()) {
-  paws.compute::proton(config)
+proton <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::proton(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWSServerlessApplicationRepository
@@ -2962,17 +3642,40 @@ proton <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -2991,8 +3694,20 @@ proton <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3030,8 +3745,13 @@ proton <- function(config = list()) {
 #'
 #' @rdname serverlessapplicationrepository
 #' @export
-serverlessapplicationrepository <- function(config = list()) {
-  paws.compute::serverlessapplicationrepository(config)
+serverlessapplicationrepository <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.compute::serverlessapplicationrepository(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Backup
@@ -3048,17 +3768,40 @@ serverlessapplicationrepository <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3077,8 +3820,20 @@ serverlessapplicationrepository <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3174,8 +3929,13 @@ serverlessapplicationrepository <- function(config = list()) {
 #'
 #' @rdname backup
 #' @export
-backup <- function(config = list()) {
-  paws.storage::backup(config)
+backup <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::backup(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Backup Storage
@@ -3187,17 +3947,40 @@ backup <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3216,8 +3999,20 @@ backup <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3250,8 +4045,13 @@ backup <- function(config = list()) {
 #'
 #' @rdname backupstorage
 #' @export
-backupstorage <- function(config = list()) {
-  paws.storage::backupstorage(config)
+backupstorage <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::backupstorage(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Data Lifecycle Manager
@@ -3271,17 +4071,40 @@ backupstorage <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3300,8 +4123,20 @@ backupstorage <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3333,8 +4168,13 @@ backupstorage <- function(config = list()) {
 #'
 #' @rdname dlm
 #' @export
-dlm <- function(config = list()) {
-  paws.storage::dlm(config)
+dlm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::dlm(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elastic Block Store
@@ -3375,17 +4215,40 @@ dlm <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3404,8 +4267,20 @@ dlm <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3435,8 +4310,13 @@ dlm <- function(config = list()) {
 #'
 #' @rdname ebs
 #' @export
-ebs <- function(config = list()) {
-  paws.storage::ebs(config)
+ebs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::ebs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elastic File System
@@ -3456,17 +4336,40 @@ ebs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3485,8 +4388,20 @@ ebs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3551,8 +4466,13 @@ ebs <- function(config = list()) {
 #'
 #' @rdname efs
 #' @export
-efs <- function(config = list()) {
-  paws.storage::efs(config)
+efs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::efs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' FinSpace Public API
@@ -3564,17 +4484,40 @@ efs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3593,8 +4536,20 @@ efs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3649,8 +4604,13 @@ efs <- function(config = list()) {
 #'
 #' @rdname finspacedata
 #' @export
-finspacedata <- function(config = list()) {
-  paws.storage::finspacedata(config)
+finspacedata <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::finspacedata(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon FSx
@@ -3663,17 +4623,40 @@ finspacedata <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3692,8 +4675,20 @@ finspacedata <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3760,8 +4755,13 @@ finspacedata <- function(config = list()) {
 #'
 #' @rdname fsx
 #' @export
-fsx <- function(config = list()) {
-  paws.storage::fsx(config)
+fsx <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::fsx(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Glacier
@@ -3807,17 +4807,40 @@ fsx <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3836,8 +4859,20 @@ fsx <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3898,8 +4933,13 @@ fsx <- function(config = list()) {
 #'
 #' @rdname glacier
 #' @export
-glacier <- function(config = list()) {
-  paws.storage::glacier(config)
+glacier <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::glacier(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Recycle Bin
@@ -3929,17 +4969,40 @@ glacier <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -3958,8 +5021,20 @@ glacier <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -3993,8 +5068,13 @@ glacier <- function(config = list()) {
 #'
 #' @rdname recyclebin
 #' @export
-recyclebin <- function(config = list()) {
-  paws.storage::recyclebin(config)
+recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::recyclebin(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Storage Service
@@ -4005,17 +5085,40 @@ recyclebin <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4034,8 +5137,20 @@ recyclebin <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4161,8 +5276,13 @@ recyclebin <- function(config = list()) {
 #'
 #' @rdname s3
 #' @export
-s3 <- function(config = list()) {
-  paws.storage::s3(config)
+s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::s3(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS S3 Control
@@ -4175,17 +5295,40 @@ s3 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4204,8 +5347,20 @@ s3 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4293,8 +5448,13 @@ s3 <- function(config = list()) {
 #'
 #' @rdname s3control
 #' @export
-s3control <- function(config = list()) {
-  paws.storage::s3control(config)
+s3control <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::s3control(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon S3 on Outposts
@@ -4306,17 +5466,40 @@ s3control <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4335,8 +5518,20 @@ s3control <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4365,8 +5560,13 @@ s3control <- function(config = list()) {
 #'
 #' @rdname s3outposts
 #' @export
-s3outposts <- function(config = list()) {
-  paws.storage::s3outposts(config)
+s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::s3outposts(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Storage Gateway
@@ -4440,17 +5640,40 @@ s3outposts <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4469,8 +5692,20 @@ s3outposts <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4591,8 +5826,13 @@ s3outposts <- function(config = list()) {
 #'
 #' @rdname storagegateway
 #' @export
-storagegateway <- function(config = list()) {
-  paws.storage::storagegateway(config)
+storagegateway <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::storagegateway(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon DynamoDB Accelerator (DAX)
@@ -4610,17 +5850,40 @@ storagegateway <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4639,8 +5902,20 @@ storagegateway <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4685,30 +5960,62 @@ storagegateway <- function(config = list()) {
 #'
 #' @rdname dax
 #' @export
-dax <- function(config = list()) {
-  paws.database::dax(config)
+dax <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::dax(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon DocumentDB with MongoDB compatibility
 #'
 #' @description
-#' Amazon DocumentDB API documentation
+#' Amazon DocumentDB is a fast, reliable, and fully managed database
+#' service. Amazon DocumentDB makes it easy to set up, operate, and scale
+#' MongoDB-compatible databases in the cloud. With Amazon DocumentDB, you
+#' can run the same application code and use the same drivers and tools
+#' that you use with MongoDB.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4727,8 +6034,20 @@ dax <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4805,8 +6124,13 @@ dax <- function(config = list()) {
 #'
 #' @rdname docdb
 #' @export
-docdb <- function(config = list()) {
-  paws.database::docdb(config)
+docdb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::docdb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon DynamoDB
@@ -4837,17 +6161,40 @@ docdb <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -4866,8 +6213,20 @@ docdb <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -4976,8 +6335,13 @@ docdb <- function(config = list()) {
 #'
 #' @rdname dynamodb
 #' @export
-dynamodb <- function(config = list()) {
-  paws.database::dynamodb(config)
+dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::dynamodb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon DynamoDB Streams
@@ -4995,17 +6359,40 @@ dynamodb <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5024,8 +6411,20 @@ dynamodb <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5054,8 +6453,13 @@ dynamodb <- function(config = list()) {
 #'
 #' @rdname dynamodbstreams
 #' @export
-dynamodbstreams <- function(config = list()) {
-  paws.database::dynamodbstreams(config)
+dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::dynamodbstreams(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon ElastiCache
@@ -5078,17 +6482,40 @@ dynamodbstreams <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5107,8 +6534,20 @@ dynamodbstreams <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5197,8 +6636,13 @@ dynamodbstreams <- function(config = list()) {
 #'
 #' @rdname elasticache
 #' @export
-elasticache <- function(config = list()) {
-  paws.database::elasticache(config)
+elasticache <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::elasticache(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Keyspaces
@@ -5239,17 +6683,40 @@ elasticache <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5268,8 +6735,20 @@ elasticache <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5306,8 +6785,13 @@ elasticache <- function(config = list()) {
 #'
 #' @rdname keyspaces
 #' @export
-keyspaces <- function(config = list()) {
-  paws.database::keyspaces(config)
+keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::keyspaces(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Lake Formation
@@ -5321,17 +6805,40 @@ keyspaces <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5350,8 +6857,20 @@ keyspaces <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5422,8 +6941,13 @@ keyspaces <- function(config = list()) {
 #'
 #' @rdname lakeformation
 #' @export
-lakeformation <- function(config = list()) {
-  paws.database::lakeformation(config)
+lakeformation <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::lakeformation(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon MemoryDB
@@ -5441,17 +6965,40 @@ lakeformation <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5470,8 +7017,20 @@ lakeformation <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5533,8 +7092,13 @@ lakeformation <- function(config = list()) {
 #'
 #' @rdname memorydb
 #' @export
-memorydb <- function(config = list()) {
-  paws.database::memorydb(config)
+memorydb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::memorydb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Neptune
@@ -5566,17 +7130,40 @@ memorydb <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5595,8 +7182,20 @@ memorydb <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5689,8 +7288,13 @@ memorydb <- function(config = list()) {
 #'
 #' @rdname neptune
 #' @export
-neptune <- function(config = list()) {
-  paws.database::neptune(config)
+neptune <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::neptune(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon QLDB
@@ -5702,17 +7306,40 @@ neptune <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5731,8 +7358,20 @@ neptune <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5776,8 +7415,13 @@ neptune <- function(config = list()) {
 #'
 #' @rdname qldb
 #' @export
-qldb <- function(config = list()) {
-  paws.database::qldb(config)
+qldb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::qldb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon QLDB Session
@@ -5806,17 +7450,40 @@ qldb <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5835,8 +7502,20 @@ qldb <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -5861,8 +7540,13 @@ qldb <- function(config = list()) {
 #'
 #' @rdname qldbsession
 #' @export
-qldbsession <- function(config = list()) {
-  paws.database::qldbsession(config)
+qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::qldbsession(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Relational Database Service
@@ -5923,17 +7607,40 @@ qldbsession <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -5952,8 +7659,20 @@ qldbsession <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6017,18 +7736,18 @@ qldbsession <- function(config = list()) {
 #'  \link[paws.database:rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group\cr
 #'  \link[paws.database:rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup\cr
 #'  \link[paws.database:rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
-#'  \link[paws.database:rds_describe_blue_green_deployments]{describe_blue_green_deployments} \tab Returns information about blue/green deployments\cr
+#'  \link[paws.database:rds_describe_blue_green_deployments]{describe_blue_green_deployments} \tab Describes one or more blue/green deployments\cr
 #'  \link[paws.database:rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account\cr
 #'  \link[paws.database:rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
 #'  \link[paws.database:rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
 #'  \link[paws.database:rds_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
 #'  \link[paws.database:rds_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group\cr
-#'  \link[paws.database:rds_describe_db_clusters]{describe_db_clusters} \tab Returns information about Amazon Aurora DB clusters and Multi-AZ DB clusters\cr
+#'  \link[paws.database:rds_describe_db_clusters]{describe_db_clusters} \tab Describes existing Amazon Aurora DB clusters and Multi-AZ DB clusters\cr
 #'  \link[paws.database:rds_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
 #'  \link[paws.database:rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about DB cluster snapshots\cr
 #'  \link[paws.database:rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available DB engines\cr
 #'  \link[paws.database:rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances\cr
-#'  \link[paws.database:rds_describe_db_instances]{describe_db_instances} \tab Returns information about provisioned RDS instances\cr
+#'  \link[paws.database:rds_describe_db_instances]{describe_db_instances} \tab Describes provisioned RDS instances\cr
 #'  \link[paws.database:rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance\cr
 #'  \link[paws.database:rds_describe_db_parameter_groups]{describe_db_parameter_groups} \tab Returns a list of DBParameterGroup descriptions\cr
 #'  \link[paws.database:rds_describe_db_parameters]{describe_db_parameters} \tab Returns the detailed parameter list for a particular DB parameter group\cr
@@ -6063,7 +7782,7 @@ qldbsession <- function(config = list()) {
 #'  \link[paws.database:rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override\cr
 #'  \link[paws.database:rds_modify_current_db_cluster_capacity]{modify_current_db_cluster_capacity} \tab Set the capacity of an Aurora Serverless v1 DB cluster to a specific value\cr
 #'  \link[paws.database:rds_modify_custom_db_engine_version]{modify_custom_db_engine_version} \tab Modifies the status of a custom engine version (CEV)\cr
-#'  \link[paws.database:rds_modify_db_cluster]{modify_db_cluster} \tab Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB cluster\cr
+#'  \link[paws.database:rds_modify_db_cluster]{modify_db_cluster} \tab Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB cluster\cr
 #'  \link[paws.database:rds_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Aurora DB cluster\cr
 #'  \link[paws.database:rds_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group\cr
 #'  \link[paws.database:rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB cluster snapshot\cr
@@ -6076,7 +7795,7 @@ qldbsession <- function(config = list()) {
 #'  \link[paws.database:rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
 #'  \link[paws.database:rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
 #'  \link[paws.database:rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
-#'  \link[paws.database:rds_modify_global_cluster]{modify_global_cluster} \tab Modify a setting for an Amazon Aurora global cluster\cr
+#'  \link[paws.database:rds_modify_global_cluster]{modify_global_cluster} \tab Modifies a setting for an Amazon Aurora global cluster\cr
 #'  \link[paws.database:rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
 #'  \link[paws.database:rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
 #'  \link[paws.database:rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster\cr
@@ -6119,8 +7838,13 @@ qldbsession <- function(config = list()) {
 #'
 #' @rdname rds
 #' @export
-rds <- function(config = list()) {
-  paws.database::rds(config)
+rds <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::rds(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS RDS DataService
@@ -6143,17 +7867,40 @@ rds <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6172,8 +7919,20 @@ rds <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6203,8 +7962,13 @@ rds <- function(config = list()) {
 #'
 #' @rdname rdsdataservice
 #' @export
-rdsdataservice <- function(config = list()) {
-  paws.database::rdsdataservice(config)
+rdsdataservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::rdsdataservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Redshift
@@ -6243,17 +8007,40 @@ rdsdataservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6272,8 +8059,20 @@ rdsdataservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6304,6 +8103,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[paws.database:redshift_create_cluster_security_group]{create_cluster_security_group} \tab Creates a new Amazon Redshift security group\cr
 #'  \link[paws.database:redshift_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a manual snapshot of the specified cluster\cr
 #'  \link[paws.database:redshift_create_cluster_subnet_group]{create_cluster_subnet_group} \tab Creates a new Amazon Redshift subnet group\cr
+#'  \link[paws.database:redshift_create_custom_domain_association]{create_custom_domain_association} \tab Used to create a custom domain name for a cluster\cr
 #'  \link[paws.database:redshift_create_endpoint_access]{create_endpoint_access} \tab Creates a Redshift-managed VPC endpoint\cr
 #'  \link[paws.database:redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
 #'  \link[paws.database:redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
@@ -6320,6 +8120,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[paws.database:redshift_delete_cluster_security_group]{delete_cluster_security_group} \tab Deletes an Amazon Redshift security group\cr
 #'  \link[paws.database:redshift_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Deletes the specified manual snapshot\cr
 #'  \link[paws.database:redshift_delete_cluster_subnet_group]{delete_cluster_subnet_group} \tab Deletes the specified cluster subnet group\cr
+#'  \link[paws.database:redshift_delete_custom_domain_association]{delete_custom_domain_association} \tab Contains information about deleting a custom domain association for a cluster\cr
 #'  \link[paws.database:redshift_delete_endpoint_access]{delete_endpoint_access} \tab Deletes a Redshift-managed VPC endpoint\cr
 #'  \link[paws.database:redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription\cr
 #'  \link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
@@ -6341,6 +8142,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[paws.database:redshift_describe_cluster_subnet_groups]{describe_cluster_subnet_groups} \tab Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups\cr
 #'  \link[paws.database:redshift_describe_cluster_tracks]{describe_cluster_tracks} \tab Returns a list of all the available maintenance tracks\cr
 #'  \link[paws.database:redshift_describe_cluster_versions]{describe_cluster_versions} \tab Returns descriptions of the available Amazon Redshift cluster versions\cr
+#'  \link[paws.database:redshift_describe_custom_domain_associations]{describe_custom_domain_associations} \tab Contains information for custom domain associations for a cluster\cr
 #'  \link[paws.database:redshift_describe_data_shares]{describe_data_shares} \tab Shows the status of any inbound or outbound datashares available in the specified account\cr
 #'  \link[paws.database:redshift_describe_data_shares_for_consumer]{describe_data_shares_for_consumer} \tab Returns a list of datashares where the account identifier being called is a consumer account identifier\cr
 #'  \link[paws.database:redshift_describe_data_shares_for_producer]{describe_data_shares_for_producer} \tab Returns a list of datashares when the account identifier being called is a producer account identifier\cr
@@ -6386,6 +8188,7 @@ rdsdataservice <- function(config = list()) {
 #'  \link[paws.database:redshift_modify_cluster_snapshot]{modify_cluster_snapshot} \tab Modifies the settings for a snapshot\cr
 #'  \link[paws.database:redshift_modify_cluster_snapshot_schedule]{modify_cluster_snapshot_schedule} \tab Modifies a snapshot schedule for a cluster\cr
 #'  \link[paws.database:redshift_modify_cluster_subnet_group]{modify_cluster_subnet_group} \tab Modifies a cluster subnet group to include the specified list of VPC subnets\cr
+#'  \link[paws.database:redshift_modify_custom_domain_association]{modify_custom_domain_association} \tab Contains information for changing a custom domain association\cr
 #'  \link[paws.database:redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
 #'  \link[paws.database:redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
 #'  \link[paws.database:redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
@@ -6416,8 +8219,13 @@ rdsdataservice <- function(config = list()) {
 #'
 #' @rdname redshift
 #' @export
-redshift <- function(config = list()) {
-  paws.database::redshift(config)
+redshift <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::redshift(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Redshift Data API Service
@@ -6436,17 +8244,40 @@ redshift <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6465,8 +8296,20 @@ redshift <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6500,8 +8343,13 @@ redshift <- function(config = list()) {
 #'
 #' @rdname redshiftdataapiservice
 #' @export
-redshiftdataapiservice <- function(config = list()) {
-  paws.database::redshiftdataapiservice(config)
+redshiftdataapiservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::redshiftdataapiservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Redshift Serverless
@@ -6527,17 +8375,40 @@ redshiftdataapiservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6556,8 +8427,20 @@ redshiftdataapiservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6621,8 +8504,13 @@ redshiftdataapiservice <- function(config = list()) {
 #'
 #' @rdname redshiftserverless
 #' @export
-redshiftserverless <- function(config = list()) {
-  paws.database::redshiftserverless(config)
+redshiftserverless <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::redshiftserverless(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon SimpleDB
@@ -6652,17 +8540,40 @@ redshiftserverless <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6681,8 +8592,20 @@ redshiftserverless <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6716,8 +8639,13 @@ redshiftserverless <- function(config = list()) {
 #'
 #' @rdname simpledb
 #' @export
-simpledb <- function(config = list()) {
-  paws.database::simpledb(config)
+simpledb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::simpledb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Timestream Query
@@ -6729,17 +8657,40 @@ simpledb <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6758,8 +8709,20 @@ simpledb <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6796,8 +8759,13 @@ simpledb <- function(config = list()) {
 #'
 #' @rdname timestreamquery
 #' @export
-timestreamquery <- function(config = list()) {
-  paws.database::timestreamquery(config)
+timestreamquery <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::timestreamquery(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Timestream Write
@@ -6824,17 +8792,40 @@ timestreamquery <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6853,8 +8844,20 @@ timestreamquery <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -6897,8 +8900,13 @@ timestreamquery <- function(config = list()) {
 #'
 #' @rdname timestreamwrite
 #' @export
-timestreamwrite <- function(config = list()) {
-  paws.database::timestreamwrite(config)
+timestreamwrite <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::timestreamwrite(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon API Gateway
@@ -6914,17 +8922,40 @@ timestreamwrite <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -6943,8 +8974,20 @@ timestreamwrite <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7088,8 +9131,13 @@ timestreamwrite <- function(config = list()) {
 #'
 #' @rdname apigateway
 #' @export
-apigateway <- function(config = list()) {
-  paws.networking::apigateway(config)
+apigateway <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::apigateway(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AmazonApiGatewayManagementApi
@@ -7107,17 +9155,40 @@ apigateway <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7136,8 +9207,20 @@ apigateway <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7164,8 +9247,13 @@ apigateway <- function(config = list()) {
 #'
 #' @rdname apigatewaymanagementapi
 #' @export
-apigatewaymanagementapi <- function(config = list()) {
-  paws.networking::apigatewaymanagementapi(config)
+apigatewaymanagementapi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::apigatewaymanagementapi(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AmazonApiGatewayV2
@@ -7177,17 +9265,40 @@ apigatewaymanagementapi <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7206,8 +9317,20 @@ apigatewaymanagementapi <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7303,8 +9426,13 @@ apigatewaymanagementapi <- function(config = list()) {
 #'
 #' @rdname apigatewayv2
 #' @export
-apigatewayv2 <- function(config = list()) {
-  paws.networking::apigatewayv2(config)
+apigatewayv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::apigatewayv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS App Mesh
@@ -7334,17 +9462,40 @@ apigatewayv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7363,8 +9514,20 @@ apigatewayv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7426,8 +9589,13 @@ apigatewayv2 <- function(config = list()) {
 #'
 #' @rdname appmesh
 #' @export
-appmesh <- function(config = list()) {
-  paws.networking::appmesh(config)
+appmesh <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::appmesh(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Backup Gateway
@@ -7454,17 +9622,40 @@ appmesh <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7483,8 +9674,20 @@ appmesh <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7533,8 +9736,13 @@ appmesh <- function(config = list()) {
 #'
 #' @rdname backupgateway
 #' @export
-backupgateway <- function(config = list()) {
-  paws.networking::backupgateway(config)
+backupgateway <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::backupgateway(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudFront
@@ -7549,17 +9757,40 @@ backupgateway <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7578,8 +9809,20 @@ backupgateway <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7709,8 +9952,13 @@ backupgateway <- function(config = list()) {
 #'
 #' @rdname cloudfront
 #' @export
-cloudfront <- function(config = list()) {
-  paws.networking::cloudfront(config)
+cloudfront <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::cloudfront(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Direct Connect
@@ -7731,17 +9979,40 @@ cloudfront <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7760,8 +10031,20 @@ cloudfront <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7848,8 +10131,13 @@ cloudfront <- function(config = list()) {
 #'
 #' @rdname directconnect
 #' @export
-directconnect <- function(config = list()) {
-  paws.networking::directconnect(config)
+directconnect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::directconnect(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Elastic Load Balancing
@@ -7888,17 +10176,40 @@ directconnect <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -7917,8 +10228,20 @@ directconnect <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -7984,8 +10307,13 @@ directconnect <- function(config = list()) {
 #'
 #' @rdname elb
 #' @export
-elb <- function(config = list()) {
-  paws.networking::elb(config)
+elb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::elb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Elastic Load Balancing
@@ -8025,17 +10353,40 @@ elb <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -8054,8 +10405,20 @@ elb <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -8126,8 +10489,13 @@ elb <- function(config = list()) {
 #'
 #' @rdname elbv2
 #' @export
-elbv2 <- function(config = list()) {
-  paws.networking::elbv2(config)
+elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::elbv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Global Accelerator
@@ -8206,17 +10574,40 @@ elbv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -8235,8 +10626,20 @@ elbv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -8309,8 +10712,13 @@ elbv2 <- function(config = list()) {
 #'
 #' @rdname globalaccelerator
 #' @export
-globalaccelerator <- function(config = list()) {
-  paws.networking::globalaccelerator(config)
+globalaccelerator <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::globalaccelerator(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Network Firewall
@@ -8397,17 +10805,40 @@ globalaccelerator <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -8426,8 +10857,20 @@ globalaccelerator <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -8487,8 +10930,13 @@ globalaccelerator <- function(config = list()) {
 #'
 #' @rdname networkfirewall
 #' @export
-networkfirewall <- function(config = list()) {
-  paws.networking::networkfirewall(config)
+networkfirewall <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::networkfirewall(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Network Manager
@@ -8502,17 +10950,40 @@ networkfirewall <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -8531,8 +11002,20 @@ networkfirewall <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -8641,8 +11124,13 @@ networkfirewall <- function(config = list()) {
 #'
 #' @rdname networkmanager
 #' @export
-networkmanager <- function(config = list()) {
-  paws.networking::networkmanager(config)
+networkmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::networkmanager(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Route 53
@@ -8673,17 +11161,40 @@ networkmanager <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -8702,8 +11213,20 @@ networkmanager <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -8793,7 +11316,7 @@ networkmanager <- function(config = list()) {
 #'  \link[paws.networking:route53_update_health_check]{update_health_check} \tab Updates an existing health check\cr
 #'  \link[paws.networking:route53_update_hosted_zone_comment]{update_hosted_zone_comment} \tab Updates the comment for a specified hosted zone\cr
 #'  \link[paws.networking:route53_update_traffic_policy_comment]{update_traffic_policy_comment} \tab Updates the comment for a specified traffic policy version\cr
-#'  \link[paws.networking:route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version
+#'  \link[paws.networking:route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab After you submit a UpdateTrafficPolicyInstance request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition
 #' }
 #'
 #' @return
@@ -8804,8 +11327,13 @@ networkmanager <- function(config = list()) {
 #'
 #' @rdname route53
 #' @export
-route53 <- function(config = list()) {
-  paws.networking::route53(config)
+route53 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::route53(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Route 53 Domains
@@ -8818,17 +11346,40 @@ route53 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -8847,8 +11398,20 @@ route53 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -8906,8 +11469,13 @@ route53 <- function(config = list()) {
 #'
 #' @rdname route53domains
 #' @export
-route53domains <- function(config = list()) {
-  paws.networking::route53domains(config)
+route53domains <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::route53domains(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Route53 Recovery Cluster
@@ -8974,17 +11542,40 @@ route53domains <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9003,8 +11594,20 @@ route53domains <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9032,8 +11635,13 @@ route53domains <- function(config = list()) {
 #'
 #' @rdname route53recoverycluster
 #' @export
-route53recoverycluster <- function(config = list()) {
-  paws.networking::route53recoverycluster(config)
+route53recoverycluster <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::route53recoverycluster(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Route53 Recovery Control Config
@@ -9046,17 +11654,40 @@ route53recoverycluster <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9075,8 +11706,20 @@ route53recoverycluster <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9123,8 +11766,13 @@ route53recoverycluster <- function(config = list()) {
 #'
 #' @rdname route53recoverycontrolconfig
 #' @export
-route53recoverycontrolconfig <- function(config = list()) {
-  paws.networking::route53recoverycontrolconfig(config)
+route53recoverycontrolconfig <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::route53recoverycontrolconfig(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Route53 Recovery Readiness
@@ -9136,17 +11784,40 @@ route53recoverycontrolconfig <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9165,8 +11836,20 @@ route53recoverycontrolconfig <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9222,8 +11905,13 @@ route53recoverycontrolconfig <- function(config = list()) {
 #'
 #' @rdname route53recoveryreadiness
 #' @export
-route53recoveryreadiness <- function(config = list()) {
-  paws.networking::route53recoveryreadiness(config)
+route53recoveryreadiness <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::route53recoveryreadiness(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Route 53 Resolver
@@ -9275,17 +11963,40 @@ route53recoveryreadiness <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9304,8 +12015,20 @@ route53recoveryreadiness <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9326,12 +12049,14 @@ route53recoveryreadiness <- function(config = list()) {
 #'  \link[paws.networking:route53resolver_create_firewall_domain_list]{create_firewall_domain_list} \tab Creates an empty firewall domain list for use in DNS Firewall rules\cr
 #'  \link[paws.networking:route53resolver_create_firewall_rule]{create_firewall_rule} \tab Creates a single DNS Firewall rule in the specified rule group, using the specified domain list\cr
 #'  \link[paws.networking:route53resolver_create_firewall_rule_group]{create_firewall_rule_group} \tab Creates an empty DNS Firewall rule group for filtering DNS network traffic in a VPC\cr
+#'  \link[paws.networking:route53resolver_create_outpost_resolver]{create_outpost_resolver} \tab Creates an Route 53 Resolver on an Outpost\cr
 #'  \link[paws.networking:route53resolver_create_resolver_endpoint]{create_resolver_endpoint} \tab Creates a Resolver endpoint\cr
 #'  \link[paws.networking:route53resolver_create_resolver_query_log_config]{create_resolver_query_log_config} \tab Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs\cr
 #'  \link[paws.networking:route53resolver_create_resolver_rule]{create_resolver_rule} \tab For DNS queries that originate in your VPCs, specifies which Resolver endpoint the queries pass through, one domain name that you want to forward to your network, and the IP addresses of the DNS resolvers in your network\cr
 #'  \link[paws.networking:route53resolver_delete_firewall_domain_list]{delete_firewall_domain_list} \tab Deletes the specified domain list\cr
 #'  \link[paws.networking:route53resolver_delete_firewall_rule]{delete_firewall_rule} \tab Deletes the specified firewall rule\cr
 #'  \link[paws.networking:route53resolver_delete_firewall_rule_group]{delete_firewall_rule_group} \tab Deletes the specified firewall rule group\cr
+#'  \link[paws.networking:route53resolver_delete_outpost_resolver]{delete_outpost_resolver} \tab Deletes a Resolver on the Outpost\cr
 #'  \link[paws.networking:route53resolver_delete_resolver_endpoint]{delete_resolver_endpoint} \tab Deletes a Resolver endpoint\cr
 #'  \link[paws.networking:route53resolver_delete_resolver_query_log_config]{delete_resolver_query_log_config} \tab Deletes a query logging configuration\cr
 #'  \link[paws.networking:route53resolver_delete_resolver_rule]{delete_resolver_rule} \tab Deletes a Resolver rule\cr
@@ -9344,6 +12069,7 @@ route53recoveryreadiness <- function(config = list()) {
 #'  \link[paws.networking:route53resolver_get_firewall_rule_group]{get_firewall_rule_group} \tab Retrieves the specified firewall rule group\cr
 #'  \link[paws.networking:route53resolver_get_firewall_rule_group_association]{get_firewall_rule_group_association} \tab Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule group\cr
 #'  \link[paws.networking:route53resolver_get_firewall_rule_group_policy]{get_firewall_rule_group_policy} \tab Returns the Identity and Access Management (Amazon Web Services IAM) policy for sharing the specified rule group\cr
+#'  \link[paws.networking:route53resolver_get_outpost_resolver]{get_outpost_resolver} \tab Gets information about a specified Resolver on the Outpost, such as its instance count and type, name, and the current status of the Resolver\cr
 #'  \link[paws.networking:route53resolver_get_resolver_config]{get_resolver_config} \tab Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 #'  \link[paws.networking:route53resolver_get_resolver_dnssec_config]{get_resolver_dnssec_config} \tab Gets DNSSEC validation information for a specified resource\cr
 #'  \link[paws.networking:route53resolver_get_resolver_endpoint]{get_resolver_endpoint} \tab Gets information about a specified Resolver endpoint, such as whether it's an inbound or an outbound Resolver endpoint, and the current status of the endpoint\cr
@@ -9360,6 +12086,7 @@ route53recoveryreadiness <- function(config = list()) {
 #'  \link[paws.networking:route53resolver_list_firewall_rule_group_associations]{list_firewall_rule_group_associations} \tab Retrieves the firewall rule group associations that you have defined\cr
 #'  \link[paws.networking:route53resolver_list_firewall_rule_groups]{list_firewall_rule_groups} \tab Retrieves the minimal high-level information for the rule groups that you have defined\cr
 #'  \link[paws.networking:route53resolver_list_firewall_rules]{list_firewall_rules} \tab Retrieves the firewall rules that you have defined for the specified firewall rule group\cr
+#'  \link[paws.networking:route53resolver_list_outpost_resolvers]{list_outpost_resolvers} \tab Lists all the Resolvers on Outposts that were created using the current Amazon Web Services account\cr
 #'  \link[paws.networking:route53resolver_list_resolver_configs]{list_resolver_configs} \tab Retrieves the Resolver configurations that you have defined\cr
 #'  \link[paws.networking:route53resolver_list_resolver_dnssec_configs]{list_resolver_dnssec_configs} \tab Lists the configurations for DNSSEC validation that are associated with the current Amazon Web Services account\cr
 #'  \link[paws.networking:route53resolver_list_resolver_endpoint_ip_addresses]{list_resolver_endpoint_ip_addresses} \tab Gets the IP addresses for a specified Resolver endpoint\cr
@@ -9378,6 +12105,7 @@ route53recoveryreadiness <- function(config = list()) {
 #'  \link[paws.networking:route53resolver_update_firewall_domains]{update_firewall_domains} \tab Updates the firewall domain list from an array of domain specifications\cr
 #'  \link[paws.networking:route53resolver_update_firewall_rule]{update_firewall_rule} \tab Updates the specified firewall rule\cr
 #'  \link[paws.networking:route53resolver_update_firewall_rule_group_association]{update_firewall_rule_group_association} \tab Changes the association of a FirewallRuleGroup with a VPC\cr
+#'  \link[paws.networking:route53resolver_update_outpost_resolver]{update_outpost_resolver} \tab You can use UpdateOutpostResolver to update the instance count, type, or name of a Resolver on an Outpost\cr
 #'  \link[paws.networking:route53resolver_update_resolver_config]{update_resolver_config} \tab Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud\cr
 #'  \link[paws.networking:route53resolver_update_resolver_dnssec_config]{update_resolver_dnssec_config} \tab Updates an existing DNSSEC validation configuration\cr
 #'  \link[paws.networking:route53resolver_update_resolver_endpoint]{update_resolver_endpoint} \tab Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint\cr
@@ -9392,8 +12120,13 @@ route53recoveryreadiness <- function(config = list()) {
 #'
 #' @rdname route53resolver
 #' @export
-route53resolver <- function(config = list()) {
-  paws.networking::route53resolver(config)
+route53resolver <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::route53resolver(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Cloud Map
@@ -9413,17 +12146,40 @@ route53resolver <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9442,8 +12198,20 @@ route53resolver <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9496,8 +12264,13 @@ route53resolver <- function(config = list()) {
 #'
 #' @rdname servicediscovery
 #' @export
-servicediscovery <- function(config = list()) {
-  paws.networking::servicediscovery(config)
+servicediscovery <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::servicediscovery(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Cloud9
@@ -9558,17 +12331,40 @@ servicediscovery <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9587,8 +12383,20 @@ servicediscovery <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9631,8 +12439,13 @@ servicediscovery <- function(config = list()) {
 #'
 #' @rdname cloud9
 #' @export
-cloud9 <- function(config = list()) {
-  paws.developer.tools::cloud9(config)
+cloud9 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::cloud9(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Cloud Control API
@@ -9646,17 +12459,40 @@ cloud9 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9675,8 +12511,20 @@ cloud9 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9708,8 +12556,13 @@ cloud9 <- function(config = list()) {
 #'
 #' @rdname cloudcontrolapi
 #' @export
-cloudcontrolapi <- function(config = list()) {
-  paws.developer.tools::cloudcontrolapi(config)
+cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::cloudcontrolapi(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodeBuild
@@ -9732,17 +12585,40 @@ cloudcontrolapi <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -9761,8 +12637,20 @@ cloudcontrolapi <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -9831,8 +12719,13 @@ cloudcontrolapi <- function(config = list()) {
 #'
 #' @rdname codebuild
 #' @export
-codebuild <- function(config = list()) {
-  paws.developer.tools::codebuild(config)
+codebuild <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codebuild(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' CodeArtifact
@@ -10060,17 +12953,40 @@ codebuild <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -10089,8 +13005,20 @@ codebuild <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -10152,8 +13080,13 @@ codebuild <- function(config = list()) {
 #'
 #' @rdname codeartifact
 #' @export
-codeartifact <- function(config = list()) {
-  paws.developer.tools::codeartifact(config)
+codeartifact <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codeartifact(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodeCommit
@@ -10472,17 +13405,40 @@ codeartifact <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -10501,8 +13457,20 @@ codeartifact <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -10603,8 +13571,13 @@ codeartifact <- function(config = list()) {
 #'
 #' @rdname codecommit
 #' @export
-codecommit <- function(config = list()) {
-  paws.developer.tools::codecommit(config)
+codecommit <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codecommit(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodeDeploy
@@ -10694,17 +13667,40 @@ codecommit <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -10723,8 +13719,20 @@ codecommit <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -10795,8 +13803,13 @@ codecommit <- function(config = list()) {
 #'
 #' @rdname codedeploy
 #' @export
-codedeploy <- function(config = list()) {
-  paws.developer.tools::codedeploy(config)
+codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codedeploy(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CodeGuru Profiler
@@ -10831,17 +13844,40 @@ codedeploy <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -10860,8 +13896,20 @@ codedeploy <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -10908,8 +13956,13 @@ codedeploy <- function(config = list()) {
 #'
 #' @rdname codeguruprofiler
 #' @export
-codeguruprofiler <- function(config = list()) {
-  paws.developer.tools::codeguruprofiler(config)
+codeguruprofiler <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codeguruprofiler(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CodeGuru Reviewer
@@ -10937,17 +13990,40 @@ codeguruprofiler <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -10966,8 +14042,20 @@ codeguruprofiler <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11005,8 +14093,13 @@ codeguruprofiler <- function(config = list()) {
 #'
 #' @rdname codegurureviewer
 #' @export
-codegurureviewer <- function(config = list()) {
-  paws.developer.tools::codegurureviewer(config)
+codegurureviewer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codegurureviewer(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodePipeline
@@ -11171,17 +14264,40 @@ codegurureviewer <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11200,8 +14316,20 @@ codegurureviewer <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11264,8 +14392,13 @@ codegurureviewer <- function(config = list()) {
 #'
 #' @rdname codepipeline
 #' @export
-codepipeline <- function(config = list()) {
-  paws.developer.tools::codepipeline(config)
+codepipeline <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codepipeline(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodeStar
@@ -11339,17 +14472,40 @@ codepipeline <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11368,8 +14524,20 @@ codepipeline <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11411,8 +14579,13 @@ codepipeline <- function(config = list()) {
 #'
 #' @rdname codestar
 #' @export
-codestar <- function(config = list()) {
-  paws.developer.tools::codestar(config)
+codestar <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codestar(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodeStar connections
@@ -11494,17 +14667,40 @@ codestar <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11523,8 +14719,20 @@ codestar <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11560,8 +14768,13 @@ codestar <- function(config = list()) {
 #'
 #' @rdname codestarconnections
 #' @export
-codestarconnections <- function(config = list()) {
-  paws.developer.tools::codestarconnections(config)
+codestarconnections <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codestarconnections(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CodeStar Notifications
@@ -11630,17 +14843,40 @@ codestarconnections <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11659,8 +14895,20 @@ codestarconnections <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11697,8 +14945,13 @@ codestarconnections <- function(config = list()) {
 #'
 #' @rdname codestarnotifications
 #' @export
-codestarnotifications <- function(config = list()) {
-  paws.developer.tools::codestarnotifications(config)
+codestarnotifications <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codestarnotifications(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Elastic Disaster Recovery Service
@@ -11710,17 +14963,40 @@ codestarnotifications <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11739,8 +15015,20 @@ codestarnotifications <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11811,8 +15099,13 @@ codestarnotifications <- function(config = list()) {
 #'
 #' @rdname drs
 #' @export
-drs <- function(config = list()) {
-  paws.developer.tools::drs(config)
+drs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::drs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon DevOps Guru
@@ -11844,17 +15137,40 @@ drs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11873,8 +15189,20 @@ drs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -11929,8 +15257,13 @@ drs <- function(config = list()) {
 #'
 #' @rdname devopsguru
 #' @export
-devopsguru <- function(config = list()) {
-  paws.developer.tools::devopsguru(config)
+devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::devopsguru(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Fault Injection Simulator
@@ -11945,17 +15278,40 @@ devopsguru <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -11974,8 +15330,20 @@ devopsguru <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12015,8 +15383,13 @@ devopsguru <- function(config = list()) {
 #'
 #' @rdname fis
 #' @export
-fis <- function(config = list()) {
-  paws.developer.tools::fis(config)
+fis <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::fis(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Well-Architected Tool
@@ -12035,17 +15408,40 @@ fis <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12064,8 +15460,20 @@ fis <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12145,8 +15553,13 @@ fis <- function(config = list()) {
 #'
 #' @rdname wellarchitected
 #' @export
-wellarchitected <- function(config = list()) {
-  paws.developer.tools::wellarchitected(config)
+wellarchitected <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::wellarchitected(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS X-Ray
@@ -12160,17 +15573,40 @@ wellarchitected <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12189,8 +15625,20 @@ wellarchitected <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12244,8 +15692,13 @@ wellarchitected <- function(config = list()) {
 #'
 #' @rdname xray
 #' @export
-xray <- function(config = list()) {
-  paws.developer.tools::xray(config)
+xray <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::xray(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Prometheus Service
@@ -12257,17 +15710,40 @@ xray <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12286,8 +15762,20 @@ xray <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12332,8 +15820,13 @@ xray <- function(config = list()) {
 #'
 #' @rdname prometheusservice
 #' @export
-prometheusservice <- function(config = list()) {
-  paws.management::prometheusservice(config)
+prometheusservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::prometheusservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Application Auto Scaling
@@ -12406,17 +15899,40 @@ prometheusservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12435,8 +15951,20 @@ prometheusservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12478,8 +16006,13 @@ prometheusservice <- function(config = list()) {
 #'
 #' @rdname applicationautoscaling
 #' @export
-applicationautoscaling <- function(config = list()) {
-  paws.management::applicationautoscaling(config)
+applicationautoscaling <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::applicationautoscaling(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudWatch Application Insights
@@ -12504,17 +16037,40 @@ applicationautoscaling <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12533,21 +16089,34 @@ applicationautoscaling <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
 #' svc <- applicationinsights()
-#' svc$create_application(
+#' svc$add_workload(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.management:applicationinsights_add_workload]{add_workload} \tab Adds a workload to a component\cr
 #'  \link[paws.management:applicationinsights_create_application]{create_application} \tab Adds an application that is created from a resource group\cr
 #'  \link[paws.management:applicationinsights_create_component]{create_component} \tab Creates a custom component by grouping similar standalone instances to monitor\cr
 #'  \link[paws.management:applicationinsights_create_log_pattern]{create_log_pattern} \tab Adds an log pattern to a LogPatternSet\cr
@@ -12562,6 +16131,7 @@ applicationautoscaling <- function(config = list()) {
 #'  \link[paws.management:applicationinsights_describe_observation]{describe_observation} \tab Describes an anomaly or error with the application\cr
 #'  \link[paws.management:applicationinsights_describe_problem]{describe_problem} \tab Describes an application problem\cr
 #'  \link[paws.management:applicationinsights_describe_problem_observations]{describe_problem_observations} \tab Describes the anomalies or errors associated with the problem\cr
+#'  \link[paws.management:applicationinsights_describe_workload]{describe_workload} \tab Describes a workload and its configuration\cr
 #'  \link[paws.management:applicationinsights_list_applications]{list_applications} \tab Lists the IDs of the applications that you are monitoring\cr
 #'  \link[paws.management:applicationinsights_list_components]{list_components} \tab Lists the auto-grouped, standalone, and custom components of the application\cr
 #'  \link[paws.management:applicationinsights_list_configuration_history]{list_configuration_history} \tab Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights\cr
@@ -12569,12 +16139,16 @@ applicationautoscaling <- function(config = list()) {
 #'  \link[paws.management:applicationinsights_list_log_pattern_sets]{list_log_pattern_sets} \tab Lists the log pattern sets in the specific application\cr
 #'  \link[paws.management:applicationinsights_list_problems]{list_problems} \tab Lists the problems with your application\cr
 #'  \link[paws.management:applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application\cr
+#'  \link[paws.management:applicationinsights_list_workloads]{list_workloads} \tab Lists the workloads that are configured on a given component\cr
+#'  \link[paws.management:applicationinsights_remove_workload]{remove_workload} \tab Remove workload from a component\cr
 #'  \link[paws.management:applicationinsights_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified application\cr
 #'  \link[paws.management:applicationinsights_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified application\cr
 #'  \link[paws.management:applicationinsights_update_application]{update_application} \tab Updates the application\cr
 #'  \link[paws.management:applicationinsights_update_component]{update_component} \tab Updates the custom component name and/or the list of resources that make up the component\cr
 #'  \link[paws.management:applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component\cr
-#'  \link[paws.management:applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet
+#'  \link[paws.management:applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet\cr
+#'  \link[paws.management:applicationinsights_update_problem]{update_problem} \tab Updates the visibility of the problem or specifies the problem as RESOLVED\cr
+#'  \link[paws.management:applicationinsights_update_workload]{update_workload} \tab Adds a workload to a component
 #' }
 #'
 #' @return
@@ -12585,8 +16159,13 @@ applicationautoscaling <- function(config = list()) {
 #'
 #' @rdname applicationinsights
 #' @export
-applicationinsights <- function(config = list()) {
-  paws.management::applicationinsights(config)
+applicationinsights <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::applicationinsights(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Application Cost Profiler
@@ -12608,17 +16187,40 @@ applicationinsights <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12637,8 +16239,20 @@ applicationinsights <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12668,8 +16282,13 @@ applicationinsights <- function(config = list()) {
 #'
 #' @rdname applicationcostprofiler
 #' @export
-applicationcostprofiler <- function(config = list()) {
-  paws.management::applicationcostprofiler(config)
+applicationcostprofiler <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::applicationcostprofiler(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Audit Manager
@@ -12717,17 +16336,40 @@ applicationcostprofiler <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12746,8 +16388,20 @@ applicationcostprofiler <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12766,7 +16420,7 @@ applicationcostprofiler <- function(config = list()) {
 #'  \link[paws.management:auditmanager_batch_create_delegation_by_assessment]{batch_create_delegation_by_assessment} \tab Creates a batch of delegations for an assessment in Audit Manager\cr
 #'  \link[paws.management:auditmanager_batch_delete_delegation_by_assessment]{batch_delete_delegation_by_assessment} \tab Deletes a batch of delegations for an assessment in Audit Manager\cr
 #'  \link[paws.management:auditmanager_batch_disassociate_assessment_report_evidence]{batch_disassociate_assessment_report_evidence} \tab Disassociates a list of evidence from an assessment report in Audit Manager\cr
-#'  \link[paws.management:auditmanager_batch_import_evidence_to_assessment_control]{batch_import_evidence_to_assessment_control} \tab Uploads one or more pieces of evidence to a control in an Audit Manager assessment\cr
+#'  \link[paws.management:auditmanager_batch_import_evidence_to_assessment_control]{batch_import_evidence_to_assessment_control} \tab Adds one or more pieces of evidence to a control in an Audit Manager assessment\cr
 #'  \link[paws.management:auditmanager_create_assessment]{create_assessment} \tab Creates an assessment in Audit Manager\cr
 #'  \link[paws.management:auditmanager_create_assessment_framework]{create_assessment_framework} \tab Creates a custom framework in Audit Manager\cr
 #'  \link[paws.management:auditmanager_create_assessment_report]{create_assessment_report} \tab Creates an assessment report for the specified assessment\cr
@@ -12779,23 +16433,24 @@ applicationcostprofiler <- function(config = list()) {
 #'  \link[paws.management:auditmanager_deregister_account]{deregister_account} \tab Deregisters an account in Audit Manager\cr
 #'  \link[paws.management:auditmanager_deregister_organization_admin_account]{deregister_organization_admin_account} \tab Removes the specified Amazon Web Services account as a delegated administrator for Audit Manager\cr
 #'  \link[paws.management:auditmanager_disassociate_assessment_report_evidence_folder]{disassociate_assessment_report_evidence_folder} \tab Disassociates an evidence folder from the specified assessment report in Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_account_status]{get_account_status} \tab Returns the registration status of an account in Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_assessment]{get_assessment} \tab Returns an assessment from Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_assessment_framework]{get_assessment_framework} \tab Returns a framework from Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_assessment_report_url]{get_assessment_report_url} \tab Returns the URL of an assessment report in Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_change_logs]{get_change_logs} \tab Returns a list of changelogs from Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_control]{get_control} \tab Returns a control from Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_delegations]{get_delegations} \tab Returns a list of delegations from an audit owner to a delegate\cr
-#'  \link[paws.management:auditmanager_get_evidence]{get_evidence} \tab Returns evidence from Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_evidence_by_evidence_folder]{get_evidence_by_evidence_folder} \tab Returns all evidence from a specified evidence folder in Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_evidence_folder]{get_evidence_folder} \tab Returns an evidence folder from the specified assessment in Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_evidence_folders_by_assessment]{get_evidence_folders_by_assessment} \tab Returns the evidence folders from a specified assessment in Audit Manager\cr
-#'  \link[paws.management:auditmanager_get_evidence_folders_by_assessment_control]{get_evidence_folders_by_assessment_control} \tab Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment\cr
+#'  \link[paws.management:auditmanager_get_account_status]{get_account_status} \tab Gets the registration status of an account in Audit Manager\cr
+#'  \link[paws.management:auditmanager_get_assessment]{get_assessment} \tab Gets information about a specified assessment\cr
+#'  \link[paws.management:auditmanager_get_assessment_framework]{get_assessment_framework} \tab Gets information about a specified framework\cr
+#'  \link[paws.management:auditmanager_get_assessment_report_url]{get_assessment_report_url} \tab Gets the URL of an assessment report in Audit Manager\cr
+#'  \link[paws.management:auditmanager_get_change_logs]{get_change_logs} \tab Gets a list of changelogs from Audit Manager\cr
+#'  \link[paws.management:auditmanager_get_control]{get_control} \tab Gets information about a specified control\cr
+#'  \link[paws.management:auditmanager_get_delegations]{get_delegations} \tab Gets a list of delegations from an audit owner to a delegate\cr
+#'  \link[paws.management:auditmanager_get_evidence]{get_evidence} \tab Gets information about a specified evidence item\cr
+#'  \link[paws.management:auditmanager_get_evidence_by_evidence_folder]{get_evidence_by_evidence_folder} \tab Gets all evidence from a specified evidence folder in Audit Manager\cr
+#'  \link[paws.management:auditmanager_get_evidence_file_upload_url]{get_evidence_file_upload_url} \tab Creates a presigned Amazon S3 URL that can be used to upload a file as manual evidence\cr
+#'  \link[paws.management:auditmanager_get_evidence_folder]{get_evidence_folder} \tab Gets an evidence folder from a specified assessment in Audit Manager\cr
+#'  \link[paws.management:auditmanager_get_evidence_folders_by_assessment]{get_evidence_folders_by_assessment} \tab Gets the evidence folders from a specified assessment in Audit Manager\cr
+#'  \link[paws.management:auditmanager_get_evidence_folders_by_assessment_control]{get_evidence_folders_by_assessment_control} \tab Gets a list of evidence folders that are associated with a specified control in an Audit Manager assessment\cr
 #'  \link[paws.management:auditmanager_get_insights]{get_insights} \tab Gets the latest analytics data for all your current active assessments\cr
 #'  \link[paws.management:auditmanager_get_insights_by_assessment]{get_insights_by_assessment} \tab Gets the latest analytics data for a specific active assessment\cr
-#'  \link[paws.management:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Returns the name of the delegated Amazon Web Services administrator account for the organization\cr
-#'  \link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Returns a list of all of the Amazon Web Services that you can choose to include in your assessment\cr
-#'  \link[paws.management:auditmanager_get_settings]{get_settings} \tab Returns the settings for the specified Amazon Web Services account\cr
+#'  \link[paws.management:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Gets the name of the delegated Amazon Web Services administrator account for a specified organization\cr
+#'  \link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Gets a list of all of the Amazon Web Services that you can choose to include in your assessment\cr
+#'  \link[paws.management:auditmanager_get_settings]{get_settings} \tab Gets the settings for a specified Amazon Web Services account\cr
 #'  \link[paws.management:auditmanager_list_assessment_control_insights_by_control_domain]{list_assessment_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain and a specific active assessment\cr
 #'  \link[paws.management:auditmanager_list_assessment_frameworks]{list_assessment_frameworks} \tab Returns a list of the frameworks that are available in the Audit Manager framework library\cr
 #'  \link[paws.management:auditmanager_list_assessment_framework_share_requests]{list_assessment_framework_share_requests} \tab Returns a list of sent or received share requests for custom frameworks in Audit Manager\cr
@@ -12832,8 +16487,13 @@ applicationcostprofiler <- function(config = list()) {
 #'
 #' @rdname auditmanager
 #' @export
-auditmanager <- function(config = list()) {
-  paws.management::auditmanager(config)
+auditmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::auditmanager(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Auto Scaling
@@ -12854,17 +16514,40 @@ auditmanager <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -12883,8 +16566,20 @@ auditmanager <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -12978,8 +16673,13 @@ auditmanager <- function(config = list()) {
 #'
 #' @rdname autoscaling
 #' @export
-autoscaling <- function(config = list()) {
-  paws.management::autoscaling(config)
+autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::autoscaling(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Auto Scaling Plans
@@ -13019,17 +16719,40 @@ autoscaling <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13048,8 +16771,20 @@ autoscaling <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13079,8 +16814,13 @@ autoscaling <- function(config = list()) {
 #'
 #' @rdname autoscalingplans
 #' @export
-autoscalingplans <- function(config = list()) {
-  paws.management::autoscalingplans(config)
+autoscalingplans <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::autoscalingplans(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CloudFormation
@@ -13115,17 +16855,40 @@ autoscalingplans <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13144,8 +16907,20 @@ autoscalingplans <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13203,6 +16978,7 @@ autoscalingplans <- function(config = list()) {
 #'  \link[paws.management:cloudformation_list_change_sets]{list_change_sets} \tab Returns the ID and status of each active change set for a stack\cr
 #'  \link[paws.management:cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and Region in which you call this action\cr
 #'  \link[paws.management:cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value\cr
+#'  \link[paws.management:cloudformation_list_stack_instance_resource_drifts]{list_stack_instance_resource_drifts} \tab Returns drift information for resources in a stack instance\cr
 #'  \link[paws.management:cloudformation_list_stack_instances]{list_stack_instances} \tab Returns summary information about stack instances that are associated with the specified stack set\cr
 #'  \link[paws.management:cloudformation_list_stack_resources]{list_stack_resources} \tab Returns descriptions of all resources of the specified stack\cr
 #'  \link[paws.management:cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter\cr
@@ -13238,8 +17014,13 @@ autoscalingplans <- function(config = list()) {
 #'
 #' @rdname cloudformation
 #' @export
-cloudformation <- function(config = list()) {
-  paws.management::cloudformation(config)
+cloudformation <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudformation(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CloudTrail
@@ -13276,17 +17057,40 @@ cloudformation <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13305,8 +17109,20 @@ cloudformation <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13376,8 +17192,13 @@ cloudformation <- function(config = list()) {
 #'
 #' @rdname cloudtrail
 #' @export
-cloudtrail <- function(config = list()) {
-  paws.management::cloudtrail(config)
+cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudtrail(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Config
@@ -13415,17 +17236,40 @@ cloudtrail <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13444,8 +17288,20 @@ cloudtrail <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13561,8 +17417,13 @@ cloudtrail <- function(config = list()) {
 #'
 #' @rdname configservice
 #' @export
-configservice <- function(config = list()) {
-  paws.management::configservice(config)
+configservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::configservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudWatch Events
@@ -13594,17 +17455,40 @@ configservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13623,8 +17507,20 @@ configservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13699,8 +17595,13 @@ configservice <- function(config = list()) {
 #'
 #' @rdname cloudwatchevents
 #' @export
-cloudwatchevents <- function(config = list()) {
-  paws.management::cloudwatchevents(config)
+cloudwatchevents <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatchevents(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudWatch Evidently
@@ -13724,17 +17625,40 @@ cloudwatchevents <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13753,8 +17677,20 @@ cloudwatchevents <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13816,8 +17752,13 @@ cloudwatchevents <- function(config = list()) {
 #'
 #' @rdname cloudwatchevidently
 #' @export
-cloudwatchevidently <- function(config = list()) {
-  paws.management::cloudwatchevidently(config)
+cloudwatchevidently <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatchevidently(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' FinSpace User Environment Management service
@@ -13830,17 +17771,40 @@ cloudwatchevidently <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13859,8 +17823,20 @@ cloudwatchevidently <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13918,8 +17894,13 @@ cloudwatchevidently <- function(config = list()) {
 #'
 #' @rdname finspace
 #' @export
-finspace <- function(config = list()) {
-  paws.management::finspace(config)
+finspace <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::finspace(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Managed Grafana
@@ -13942,17 +17923,40 @@ finspace <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -13971,8 +17975,20 @@ finspace <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -13997,6 +18013,7 @@ finspace <- function(config = list()) {
 #'  \link[paws.management:managedgrafana_disassociate_license]{disassociate_license} \tab Removes the Grafana Enterprise license from a workspace\cr
 #'  \link[paws.management:managedgrafana_list_permissions]{list_permissions} \tab Lists the users and groups who have the Grafana Admin and Editor roles in this workspace\cr
 #'  \link[paws.management:managedgrafana_list_tags_for_resource]{list_tags_for_resource} \tab The ListTagsForResource operation returns the tags that are associated with the Amazon Managed Service for Grafana resource specified by the resourceArn\cr
+#'  \link[paws.management:managedgrafana_list_versions]{list_versions} \tab Lists available versions of Grafana\cr
 #'  \link[paws.management:managedgrafana_list_workspaces]{list_workspaces} \tab Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace\cr
 #'  \link[paws.management:managedgrafana_tag_resource]{tag_resource} \tab The TagResource operation associates tags with an Amazon Managed Grafana resource\cr
 #'  \link[paws.management:managedgrafana_untag_resource]{untag_resource} \tab The UntagResource operation removes the association of the tag with the Amazon Managed Grafana resource\cr
@@ -14014,8 +18031,13 @@ finspace <- function(config = list()) {
 #'
 #' @rdname managedgrafana
 #' @export
-managedgrafana <- function(config = list()) {
-  paws.management::managedgrafana(config)
+managedgrafana <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::managedgrafana(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Health APIs and Notifications
@@ -14087,17 +18109,40 @@ managedgrafana <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14116,8 +18161,20 @@ managedgrafana <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -14154,8 +18211,13 @@ managedgrafana <- function(config = list()) {
 #'
 #' @rdname health
 #' @export
-health <- function(config = list()) {
-  paws.management::health(config)
+health <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::health(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS License Manager
@@ -14168,17 +18230,40 @@ health <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14197,8 +18282,20 @@ health <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -14272,8 +18369,13 @@ health <- function(config = list()) {
 #'
 #' @rdname licensemanager
 #' @export
-licensemanager <- function(config = list()) {
-  paws.management::licensemanager(config)
+licensemanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::licensemanager(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS License Manager User Subscriptions
@@ -14287,17 +18389,40 @@ licensemanager <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14316,8 +18441,20 @@ licensemanager <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -14352,8 +18489,13 @@ licensemanager <- function(config = list()) {
 #'
 #' @rdname licensemanagerusersubscriptions
 #' @export
-licensemanagerusersubscriptions <- function(config = list()) {
-  paws.management::licensemanagerusersubscriptions(config)
+licensemanagerusersubscriptions <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::licensemanagerusersubscriptions(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudWatch Logs
@@ -14399,17 +18541,40 @@ licensemanagerusersubscriptions <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14428,8 +18593,20 @@ licensemanagerusersubscriptions <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -14443,7 +18620,7 @@ licensemanagerusersubscriptions <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.management:cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified KMS key with the specified log group\cr
+#'  \link[paws.management:cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified KMS key with either one log group in the account, or with all stored CloudWatch Logs query insights results in the account\cr
 #'  \link[paws.management:cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
 #'  \link[paws.management:cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket\cr
 #'  \link[paws.management:cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
@@ -14468,7 +18645,7 @@ licensemanagerusersubscriptions <- function(config = list()) {
 #'  \link[paws.management:cloudwatchlogs_describe_query_definitions]{describe_query_definitions} \tab This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions\cr
 #'  \link[paws.management:cloudwatchlogs_describe_resource_policies]{describe_resource_policies} \tab Lists the resource policies in this account\cr
 #'  \link[paws.management:cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters} \tab Lists the subscription filters for the specified log group\cr
-#'  \link[paws.management:cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated KMS key from the specified log group\cr
+#'  \link[paws.management:cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account\cr
 #'  \link[paws.management:cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_get_data_protection_policy]{get_data_protection_policy} \tab Returns information about a log group data protection policy\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
@@ -14504,8 +18681,13 @@ licensemanagerusersubscriptions <- function(config = list()) {
 #'
 #' @rdname cloudwatchlogs
 #' @export
-cloudwatchlogs <- function(config = list()) {
-  paws.management::cloudwatchlogs(config)
+cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatchlogs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudWatch
@@ -14533,17 +18715,40 @@ cloudwatchlogs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14562,8 +18767,20 @@ cloudwatchlogs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -14625,8 +18842,13 @@ cloudwatchlogs <- function(config = list()) {
 #'
 #' @rdname cloudwatch
 #' @export
-cloudwatch <- function(config = list()) {
-  paws.management::cloudwatch(config)
+cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatch(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS OpsWorks
@@ -14721,17 +18943,40 @@ cloudwatch <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14750,8 +18995,20 @@ cloudwatch <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -14849,8 +19106,13 @@ cloudwatch <- function(config = list()) {
 #'
 #' @rdname opsworks
 #' @export
-opsworks <- function(config = list()) {
-  paws.management::opsworks(config)
+opsworks <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::opsworks(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS OpsWorks CM
@@ -14930,17 +19192,40 @@ opsworks <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -14959,8 +19244,20 @@ opsworks <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15003,8 +19300,13 @@ opsworks <- function(config = list()) {
 #'
 #' @rdname opsworkscm
 #' @export
-opsworkscm <- function(config = list()) {
-  paws.management::opsworkscm(config)
+opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::opsworkscm(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Organizations
@@ -15085,17 +19387,40 @@ opsworkscm <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15114,8 +19439,20 @@ opsworkscm <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15198,8 +19535,13 @@ opsworkscm <- function(config = list()) {
 #'
 #' @rdname organizations
 #' @export
-organizations <- function(config = list()) {
-  paws.management::organizations(config)
+organizations <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::organizations(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Performance Insights
@@ -15238,17 +19580,40 @@ organizations <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15267,8 +19632,20 @@ organizations <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15298,8 +19675,13 @@ organizations <- function(config = list()) {
 #'
 #' @rdname pi
 #' @export
-pi <- function(config = list()) {
-  paws.management::pi(config)
+pi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::pi(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Resilience Hub
@@ -15317,17 +19699,40 @@ pi <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15346,8 +19751,20 @@ pi <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15423,8 +19840,13 @@ pi <- function(config = list()) {
 #'
 #' @rdname resiliencehub
 #' @export
-resiliencehub <- function(config = list()) {
-  paws.management::resiliencehub(config)
+resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::resiliencehub(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Resource Groups
@@ -15471,17 +19893,40 @@ resiliencehub <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15500,8 +19945,20 @@ resiliencehub <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15543,8 +20000,13 @@ resiliencehub <- function(config = list()) {
 #'
 #' @rdname resourcegroups
 #' @export
-resourcegroups <- function(config = list()) {
-  paws.management::resourcegroups(config)
+resourcegroups <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::resourcegroups(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Resource Groups Tagging API
@@ -15556,17 +20018,40 @@ resourcegroups <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15585,8 +20070,20 @@ resourcegroups <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15618,8 +20115,13 @@ resourcegroups <- function(config = list()) {
 #'
 #' @rdname resourcegroupstaggingapi
 #' @export
-resourcegroupstaggingapi <- function(config = list()) {
-  paws.management::resourcegroupstaggingapi(config)
+resourcegroupstaggingapi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::resourcegroupstaggingapi(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' CloudWatch RUM
@@ -15643,17 +20145,40 @@ resourcegroupstaggingapi <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15672,8 +20197,20 @@ resourcegroupstaggingapi <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15714,8 +20251,13 @@ resourcegroupstaggingapi <- function(config = list()) {
 #'
 #' @rdname cloudwatchrum
 #' @export
-cloudwatchrum <- function(config = list()) {
-  paws.management::cloudwatchrum(config)
+cloudwatchrum <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatchrum(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Service Quotas
@@ -15731,17 +20273,40 @@ cloudwatchrum <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15760,8 +20325,20 @@ cloudwatchrum <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15804,8 +20381,13 @@ cloudwatchrum <- function(config = list()) {
 #'
 #' @rdname servicequotas
 #' @export
-servicequotas <- function(config = list()) {
-  paws.management::servicequotas(config)
+servicequotas <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::servicequotas(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Service Catalog
@@ -15824,17 +20406,40 @@ servicequotas <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -15853,8 +20458,20 @@ servicequotas <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -15968,8 +20585,13 @@ servicequotas <- function(config = list()) {
 #'
 #' @rdname servicecatalog
 #' @export
-servicecatalog <- function(config = list()) {
-  paws.management::servicecatalog(config)
+servicecatalog <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::servicecatalog(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Service Catalog App Registry
@@ -15985,17 +20607,40 @@ servicecatalog <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16014,8 +20659,20 @@ servicecatalog <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16063,8 +20720,13 @@ servicecatalog <- function(config = list()) {
 #'
 #' @rdname appregistry
 #' @export
-appregistry <- function(config = list()) {
-  paws.management::appregistry(config)
+appregistry <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::appregistry(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Systems Manager (SSM)
@@ -16085,7 +20747,7 @@ appregistry <- function(config = list()) {
 #' 
 #' -   For information about each of the capabilities that comprise Systems
 #'     Manager, see [Systems Manager
-#'     capabilities](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/#systems-manager-capabilities)
+#'     capabilities](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/)
 #'     in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' -   For details about predefined runbooks for Automation, a capability
@@ -16103,17 +20765,40 @@ appregistry <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16132,8 +20817,20 @@ appregistry <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16187,7 +20884,7 @@ appregistry <- function(config = list()) {
 #'  \link[paws.management:ssm_describe_effective_instance_associations]{describe_effective_instance_associations} \tab All associations for the managed node(s)\cr
 #'  \link[paws.management:ssm_describe_effective_patches_for_patch_baseline]{describe_effective_patches_for_patch_baseline} \tab Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline\cr
 #'  \link[paws.management:ssm_describe_instance_associations_status]{describe_instance_associations_status} \tab The status of the associations for the managed node(s)\cr
-#'  \link[paws.management:ssm_describe_instance_information]{describe_instance_information} \tab Describes one or more of your managed nodes, including information about the operating system platform, the version of SSM Agent installed on the managed node, node status, and so on\cr
+#'  \link[paws.management:ssm_describe_instance_information]{describe_instance_information} \tab Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address\cr
 #'  \link[paws.management:ssm_describe_instance_patches]{describe_instance_patches} \tab Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node\cr
 #'  \link[paws.management:ssm_describe_instance_patch_states]{describe_instance_patch_states} \tab Retrieves the high-level patch state of one or more managed nodes\cr
 #'  \link[paws.management:ssm_describe_instance_patch_states_for_patch_group]{describe_instance_patch_states_for_patch_group} \tab Retrieves the high-level patch state for the managed nodes in the specified patch group\cr
@@ -16295,8 +20992,13 @@ appregistry <- function(config = list()) {
 #'
 #' @rdname ssm
 #' @export
-ssm <- function(config = list()) {
-  paws.management::ssm(config)
+ssm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::ssm(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Systems Manager Incident Manager Contacts
@@ -16318,17 +21020,40 @@ ssm <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16347,8 +21072,20 @@ ssm <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16411,8 +21148,13 @@ ssm <- function(config = list()) {
 #'
 #' @rdname ssmcontacts
 #' @export
-ssmcontacts <- function(config = list()) {
-  paws.management::ssmcontacts(config)
+ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::ssmcontacts(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Systems Manager Incident Manager
@@ -16434,17 +21176,40 @@ ssmcontacts <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16463,8 +21228,20 @@ ssmcontacts <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16517,8 +21294,13 @@ ssmcontacts <- function(config = list()) {
 #'
 #' @rdname ssmincidents
 #' @export
-ssmincidents <- function(config = list()) {
-  paws.management::ssmincidents(config)
+ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::ssmincidents(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Support
@@ -16588,17 +21370,40 @@ ssmincidents <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16617,8 +21422,20 @@ ssmincidents <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16658,8 +21475,13 @@ ssmincidents <- function(config = list()) {
 #'
 #' @rdname support
 #' @export
-support <- function(config = list()) {
-  paws.management::support(config)
+support <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::support(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Synthetics
@@ -16689,17 +21511,40 @@ support <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16718,8 +21563,20 @@ support <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16764,8 +21621,13 @@ support <- function(config = list()) {
 #'
 #' @rdname synthetics
 #' @export
-synthetics <- function(config = list()) {
-  paws.management::synthetics(config)
+synthetics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::synthetics(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Augmented AI Runtime
@@ -16813,17 +21675,40 @@ synthetics <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16842,8 +21727,20 @@ synthetics <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -16872,8 +21769,13 @@ synthetics <- function(config = list()) {
 #'
 #' @rdname augmentedairuntime
 #' @export
-augmentedairuntime <- function(config = list()) {
-  paws.machine.learning::augmentedairuntime(config)
+augmentedairuntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::augmentedairuntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Comprehend
@@ -16888,17 +21790,40 @@ augmentedairuntime <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -16917,8 +21842,20 @@ augmentedairuntime <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17026,31 +21963,65 @@ augmentedairuntime <- function(config = list()) {
 #'
 #' @rdname comprehend
 #' @export
-comprehend <- function(config = list()) {
-  paws.machine.learning::comprehend(config)
+comprehend <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::comprehend(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Comprehend Medical
 #'
 #' @description
-#' Comprehend Medical; extracts structured information from unstructured
-#' clinical text. Use these actions to gain insight in your documents.
+#' Amazon Comprehend Medical extracts structured information from
+#' unstructured clinical text. Use these actions to gain insight in your
+#' documents. Amazon Comprehend Medical only detects entities in English
+#' language texts. Amazon Comprehend Medical places limits on the sizes of
+#' files allowed for different API operations. To learn more, see
+#' [Guidelines and
+#' quotas](https://docs.aws.amazon.com/comprehend-medical/latest/dev/comprehendmedical-quotas.html)
+#' in the *Amazon Comprehend Medical Developer Guide*.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17069,8 +22040,20 @@ comprehend <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17097,7 +22080,7 @@ comprehend <- function(config = list()) {
 #'  \link[paws.machine.learning:comprehendmedical_infer_snomedct]{infer_snomedct} \tab InferSNOMEDCT detects possible medical concepts as entities and links them to codes from the Systematized Nomenclature of Medicine, Clinical Terms (SNOMED-CT) ontology\cr
 #'  \link[paws.machine.learning:comprehendmedical_list_entities_detection_v2_jobs]{list_entities_detection_v2_jobs} \tab Gets a list of medical entity detection jobs that you have submitted\cr
 #'  \link[paws.machine.learning:comprehendmedical_list_icd10cm_inference_jobs]{list_icd10cm_inference_jobs} \tab Gets a list of InferICD10CM jobs that you have submitted\cr
-#'  \link[paws.machine.learning:comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs that you have submitted\cr
+#'  \link[paws.machine.learning:comprehendmedical_list_phi_detection_jobs]{list_phi_detection_jobs} \tab Gets a list of protected health information (PHI) detection jobs you have submitted\cr
 #'  \link[paws.machine.learning:comprehendmedical_list_rx_norm_inference_jobs]{list_rx_norm_inference_jobs} \tab Gets a list of InferRxNorm jobs that you have submitted\cr
 #'  \link[paws.machine.learning:comprehendmedical_list_snomedct_inference_jobs]{list_snomedct_inference_jobs} \tab Gets a list of InferSNOMEDCT jobs a user has submitted\cr
 #'  \link[paws.machine.learning:comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job} \tab Starts an asynchronous medical entity detection job for a collection of documents\cr
@@ -17120,8 +22103,13 @@ comprehend <- function(config = list()) {
 #'
 #' @rdname comprehendmedical
 #' @export
-comprehendmedical <- function(config = list()) {
-  paws.machine.learning::comprehendmedical(config)
+comprehendmedical <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::comprehendmedical(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elastic  Inference
@@ -17142,17 +22130,40 @@ comprehendmedical <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17171,8 +22182,20 @@ comprehendmedical <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17202,8 +22225,13 @@ comprehendmedical <- function(config = list()) {
 #'
 #' @rdname elasticinference
 #' @export
-elasticinference <- function(config = list()) {
-  paws.machine.learning::elasticinference(config)
+elasticinference <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::elasticinference(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Forecast Query Service
@@ -17215,17 +22243,40 @@ elasticinference <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17244,8 +22295,20 @@ elasticinference <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17271,8 +22334,13 @@ elasticinference <- function(config = list()) {
 #'
 #' @rdname forecastqueryservice
 #' @export
-forecastqueryservice <- function(config = list()) {
-  paws.machine.learning::forecastqueryservice(config)
+forecastqueryservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::forecastqueryservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Forecast Service
@@ -17284,17 +22352,40 @@ forecastqueryservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17313,8 +22404,20 @@ forecastqueryservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17401,8 +22504,13 @@ forecastqueryservice <- function(config = list()) {
 #'
 #' @rdname forecastservice
 #' @export
-forecastservice <- function(config = list()) {
-  paws.machine.learning::forecastservice(config)
+forecastservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::forecastservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Fraud Detector
@@ -17433,17 +22541,40 @@ forecastservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17462,8 +22593,20 @@ forecastservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17560,8 +22703,13 @@ forecastservice <- function(config = list()) {
 #'
 #' @rdname frauddetector
 #' @export
-frauddetector <- function(config = list()) {
-  paws.machine.learning::frauddetector(config)
+frauddetector <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::frauddetector(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lex Model Building Service
@@ -17577,17 +22725,40 @@ frauddetector <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17606,8 +22777,20 @@ frauddetector <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17675,8 +22858,13 @@ frauddetector <- function(config = list()) {
 #'
 #' @rdname lexmodelbuildingservice
 #' @export
-lexmodelbuildingservice <- function(config = list()) {
-  paws.machine.learning::lexmodelbuildingservice(config)
+lexmodelbuildingservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::lexmodelbuildingservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lex Model Building V2
@@ -17687,17 +22875,40 @@ lexmodelbuildingservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17716,8 +22927,20 @@ lexmodelbuildingservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17789,8 +23012,13 @@ lexmodelbuildingservice <- function(config = list()) {
 #'  \link[paws.machine.learning:lexmodelsv2_list_custom_vocabulary_items]{list_custom_vocabulary_items} \tab Paginated list of custom vocabulary items for a given bot locale's custom vocabulary\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_exports]{list_exports} \tab Lists the exports for a bot, bot locale, or custom vocabulary\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_imports]{list_imports} \tab Lists the imports for a bot, bot locale, or custom vocabulary\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_intent_metrics]{list_intent_metrics} \tab Retrieves summary metrics for the intents in your bot\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_intent_paths]{list_intent_paths} \tab Retrieves summary statistics for a path of intents that users take over sessions with your bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_intents]{list_intents} \tab Get a list of intents that meet the specified criteria\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_intent_stage_metrics]{list_intent_stage_metrics} \tab Retrieves summary metrics for the stages within intents in your bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_recommended_intents]{list_recommended_intents} \tab Gets a list of recommended intents provided by the bot recommendation that you can use in your bot\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_session_analytics_data]{list_session_analytics_data} \tab Retrieves a list of metadata for individual user sessions with your bot\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_session_metrics]{list_session_metrics} \tab Retrieves summary metrics for the user sessions with your bot\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_slots]{list_slots} \tab Gets a list of slots that match the specified criteria\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_slot_types]{list_slot_types} \tab Gets a list of slot types that match the specified criteria\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a resource\cr
@@ -17798,6 +23026,8 @@ lexmodelbuildingservice <- function(config = list()) {
 #'  \link[paws.machine.learning:lexmodelsv2_list_test_executions]{list_test_executions} \tab The list of test set executions\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_test_set_records]{list_test_set_records} \tab The list of test set records\cr
 #'  \link[paws.machine.learning:lexmodelsv2_list_test_sets]{list_test_sets} \tab The list of the test sets\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_utterance_analytics_data]{list_utterance_analytics_data} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
+#'  \link[paws.machine.learning:lexmodelsv2_list_utterance_metrics]{list_utterance_metrics} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 #'  \link[paws.machine.learning:lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
 #'  \link[paws.machine.learning:lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
 #'  \link[paws.machine.learning:lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr
@@ -17826,8 +23056,13 @@ lexmodelbuildingservice <- function(config = list()) {
 #'
 #' @rdname lexmodelsv2
 #' @export
-lexmodelsv2 <- function(config = list()) {
-  paws.machine.learning::lexmodelsv2(config)
+lexmodelsv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::lexmodelsv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lex Runtime Service
@@ -17850,17 +23085,40 @@ lexmodelsv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17879,8 +23137,20 @@ lexmodelsv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17909,8 +23179,13 @@ lexmodelsv2 <- function(config = list()) {
 #'
 #' @rdname lexruntimeservice
 #' @export
-lexruntimeservice <- function(config = list()) {
-  paws.machine.learning::lexruntimeservice(config)
+lexruntimeservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::lexruntimeservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lex Runtime V2
@@ -17923,17 +23198,40 @@ lexruntimeservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -17952,8 +23250,20 @@ lexruntimeservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -17982,8 +23292,13 @@ lexruntimeservice <- function(config = list()) {
 #'
 #' @rdname lexruntimev2
 #' @export
-lexruntimev2 <- function(config = list()) {
-  paws.machine.learning::lexruntimev2(config)
+lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::lexruntimev2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lookout for Equipment
@@ -17997,17 +23312,40 @@ lexruntimev2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18026,8 +23364,20 @@ lexruntimev2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18084,8 +23434,13 @@ lexruntimev2 <- function(config = list()) {
 #'
 #' @rdname lookoutequipment
 #' @export
-lookoutequipment <- function(config = list()) {
-  paws.machine.learning::lookoutequipment(config)
+lookoutequipment <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::lookoutequipment(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Lookout for Metrics
@@ -18093,23 +23448,47 @@ lookoutequipment <- function(config = list()) {
 #' @description
 #' This is the *Amazon Lookout for Metrics API Reference*. For an
 #' introduction to the service with tutorials for getting started, visit
-#' Amazon Lookout for Metrics Developer Guide.
+#' [Amazon Lookout for Metrics Developer
+#' Guide](https://docs.aws.amazon.com/lookoutmetrics/latest/dev/).
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18128,8 +23507,20 @@ lookoutequipment <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18183,8 +23574,13 @@ lookoutequipment <- function(config = list()) {
 #'
 #' @rdname lookoutmetrics
 #' @export
-lookoutmetrics <- function(config = list()) {
-  paws.machine.learning::lookoutmetrics(config)
+lookoutmetrics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::lookoutmetrics(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Machine Learning
@@ -18196,17 +23592,40 @@ lookoutmetrics <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18225,8 +23644,20 @@ lookoutmetrics <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18278,8 +23709,13 @@ lookoutmetrics <- function(config = list()) {
 #'
 #' @rdname machinelearning
 #' @export
-machinelearning <- function(config = list()) {
-  paws.machine.learning::machinelearning(config)
+machinelearning <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::machinelearning(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Panorama
@@ -18296,17 +23732,40 @@ machinelearning <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18325,8 +23784,20 @@ machinelearning <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18384,8 +23855,13 @@ machinelearning <- function(config = list()) {
 #'
 #' @rdname panorama
 #' @export
-panorama <- function(config = list()) {
-  paws.machine.learning::panorama(config)
+panorama <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::panorama(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Personalize
@@ -18398,17 +23874,40 @@ panorama <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18427,8 +23926,20 @@ panorama <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18506,6 +24017,7 @@ panorama <- function(config = list()) {
 #'  \link[paws.machine.learning:personalize_tag_resource]{tag_resource} \tab Add a list of tags to a resource\cr
 #'  \link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Remove tags that are attached to a resource\cr
 #'  \link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter\cr
+#'  \link[paws.machine.learning:personalize_update_dataset]{update_dataset} \tab Update a dataset to replace its schema with a new or existing one\cr
 #'  \link[paws.machine.learning:personalize_update_metric_attribution]{update_metric_attribution} \tab Updates a metric attribution\cr
 #'  \link[paws.machine.learning:personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration
 #' }
@@ -18518,8 +24030,13 @@ panorama <- function(config = list()) {
 #'
 #' @rdname personalize
 #' @export
-personalize <- function(config = list()) {
-  paws.machine.learning::personalize(config)
+personalize <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::personalize(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Personalize Events
@@ -18534,17 +24051,40 @@ personalize <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18563,8 +24103,20 @@ personalize <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18591,8 +24143,13 @@ personalize <- function(config = list()) {
 #'
 #' @rdname personalizeevents
 #' @export
-personalizeevents <- function(config = list()) {
-  paws.machine.learning::personalizeevents(config)
+personalizeevents <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::personalizeevents(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Personalize Runtime
@@ -18603,17 +24160,40 @@ personalizeevents <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18632,8 +24212,20 @@ personalizeevents <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18659,8 +24251,13 @@ personalizeevents <- function(config = list()) {
 #'
 #' @rdname personalizeruntime
 #' @export
-personalizeruntime <- function(config = list()) {
-  paws.machine.learning::personalizeruntime(config)
+personalizeruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::personalizeruntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Polly
@@ -18678,17 +24275,40 @@ personalizeruntime <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18707,8 +24327,20 @@ personalizeruntime <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -18742,8 +24374,13 @@ personalizeruntime <- function(config = list()) {
 #'
 #' @rdname polly
 #' @export
-polly <- function(config = list()) {
-  paws.machine.learning::polly(config)
+polly <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::polly(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Rekognition
@@ -18906,17 +24543,40 @@ polly <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -18935,8 +24595,20 @@ polly <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19041,8 +24713,13 @@ polly <- function(config = list()) {
 #'
 #' @rdname rekognition
 #' @export
-rekognition <- function(config = list()) {
-  paws.machine.learning::rekognition(config)
+rekognition <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::rekognition(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon SageMaker Service
@@ -19062,17 +24739,40 @@ rekognition <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19091,8 +24791,20 @@ rekognition <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19115,8 +24827,8 @@ rekognition <- function(config = list()) {
 #'  \link[paws.machine.learning:sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
 #'  \link[paws.machine.learning:sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
 #'  \link[paws.machine.learning:sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
-#'  \link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job\cr
-#'  \link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Amazon SageMaker AutoML job that uses non-tabular data such as images or text for Computer Vision or Natural Language Processing problems\cr
+#'  \link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
+#'  \link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
 #'  \link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
 #'  \link[paws.machine.learning:sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
 #'  \link[paws.machine.learning:sagemaker_create_context]{create_context} \tab Creates a context\cr
@@ -19215,8 +24927,8 @@ rekognition <- function(config = list()) {
 #'  \link[paws.machine.learning:sagemaker_describe_app]{describe_app} \tab Describes the app\cr
 #'  \link[paws.machine.learning:sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
 #'  \link[paws.machine.learning:sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
-#'  \link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker AutoML job\cr
-#'  \link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an Amazon SageMaker AutoML V2 job\cr
+#'  \link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an AutoML job created by calling CreateAutoMLJob\cr
+#'  \link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
 #'  \link[paws.machine.learning:sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 #'  \link[paws.machine.learning:sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -19335,6 +25047,7 @@ rekognition <- function(config = list()) {
 #'  \link[paws.machine.learning:sagemaker_list_pipelines]{list_pipelines} \tab Gets a list of pipelines\cr
 #'  \link[paws.machine.learning:sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters\cr
 #'  \link[paws.machine.learning:sagemaker_list_projects]{list_projects} \tab Gets a list of the projects in an Amazon Web Services account\cr
+#'  \link[paws.machine.learning:sagemaker_list_resource_catalogs]{list_resource_catalogs} \tab Lists Amazon SageMaker Catalogs based on given filters and orders\cr
 #'  \link[paws.machine.learning:sagemaker_list_spaces]{list_spaces} \tab Lists spaces\cr
 #'  \link[paws.machine.learning:sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
 #'  \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Studio Lifecycle Configurations in your Amazon Web Services Account\cr
@@ -19386,7 +25099,7 @@ rekognition <- function(config = list()) {
 #'  \link[paws.machine.learning:sagemaker_update_endpoint]{update_endpoint} \tab Deploys the new EndpointConfig specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous EndpointConfig (there is no availability loss)\cr
 #'  \link[paws.machine.learning:sagemaker_update_endpoint_weights_and_capacities]{update_endpoint_weights_and_capacities} \tab Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint\cr
 #'  \link[paws.machine.learning:sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment\cr
-#'  \link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group\cr
+#'  \link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group by either adding features or updating the online store configuration\cr
 #'  \link[paws.machine.learning:sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
 #'  \link[paws.machine.learning:sagemaker_update_hub]{update_hub} \tab Update a hub\cr
 #'  \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
@@ -19418,8 +25131,13 @@ rekognition <- function(config = list()) {
 #'
 #' @rdname sagemaker
 #' @export
-sagemaker <- function(config = list()) {
-  paws.machine.learning::sagemaker(config)
+sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::sagemaker(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Sagemaker Edge Manager
@@ -19432,17 +25150,40 @@ sagemaker <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19461,8 +25202,20 @@ sagemaker <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19489,8 +25242,13 @@ sagemaker <- function(config = list()) {
 #'
 #' @rdname sagemakeredgemanager
 #' @export
-sagemakeredgemanager <- function(config = list()) {
-  paws.machine.learning::sagemakeredgemanager(config)
+sagemakeredgemanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::sagemakeredgemanager(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon SageMaker Feature Store Runtime
@@ -19515,17 +25273,40 @@ sagemakeredgemanager <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19544,8 +25325,20 @@ sagemakeredgemanager <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19562,7 +25355,7 @@ sagemakeredgemanager <- function(config = list()) {
 #'  \link[paws.machine.learning:sagemakerfeaturestoreruntime_batch_get_record]{batch_get_record} \tab Retrieves a batch of Records from a FeatureGroup\cr
 #'  \link[paws.machine.learning:sagemakerfeaturestoreruntime_delete_record]{delete_record} \tab Deletes a Record from a FeatureGroup in the OnlineStore\cr
 #'  \link[paws.machine.learning:sagemakerfeaturestoreruntime_get_record]{get_record} \tab Use for OnlineStore serving from a FeatureStore\cr
-#'  \link[paws.machine.learning:sagemakerfeaturestoreruntime_put_record]{put_record} \tab Used for data ingestion into the FeatureStore
+#'  \link[paws.machine.learning:sagemakerfeaturestoreruntime_put_record]{put_record} \tab The PutRecord API is used to ingest a list of Records into your feature group
 #' }
 #'
 #' @return
@@ -19573,8 +25366,13 @@ sagemakeredgemanager <- function(config = list()) {
 #'
 #' @rdname sagemakerfeaturestoreruntime
 #' @export
-sagemakerfeaturestoreruntime <- function(config = list()) {
-  paws.machine.learning::sagemakerfeaturestoreruntime(config)
+sagemakerfeaturestoreruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::sagemakerfeaturestoreruntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon SageMaker Runtime
@@ -19586,17 +25384,40 @@ sagemakerfeaturestoreruntime <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19615,8 +25436,20 @@ sagemakerfeaturestoreruntime <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19642,8 +25475,13 @@ sagemakerfeaturestoreruntime <- function(config = list()) {
 #'
 #' @rdname sagemakerruntime
 #' @export
-sagemakerruntime <- function(config = list()) {
-  paws.machine.learning::sagemakerruntime(config)
+sagemakerruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::sagemakerruntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Textract
@@ -19657,17 +25495,40 @@ sagemakerruntime <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19686,8 +25547,20 @@ sagemakerruntime <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19724,8 +25597,13 @@ sagemakerruntime <- function(config = list()) {
 #'
 #' @rdname textract
 #' @export
-textract <- function(config = list()) {
-  paws.machine.learning::textract(config)
+textract <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::textract(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Transcribe Service
@@ -19751,17 +25629,40 @@ textract <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19780,8 +25681,20 @@ textract <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19844,8 +25757,13 @@ textract <- function(config = list()) {
 #'
 #' @rdname transcribeservice
 #' @export
-transcribeservice <- function(config = list()) {
-  paws.machine.learning::transcribeservice(config)
+transcribeservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::transcribeservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Translate
@@ -19858,17 +25776,40 @@ transcribeservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19887,8 +25828,20 @@ transcribeservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -19931,8 +25884,13 @@ transcribeservice <- function(config = list()) {
 #'
 #' @rdname translate
 #' @export
-translate <- function(config = list()) {
-  paws.machine.learning::translate(config)
+translate <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::translate(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Voice ID
@@ -19946,17 +25904,40 @@ translate <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -19975,8 +25956,20 @@ translate <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20029,8 +26022,13 @@ translate <- function(config = list()) {
 #'
 #' @rdname voiceid
 #' @export
-voiceid <- function(config = list()) {
-  paws.machine.learning::voiceid(config)
+voiceid <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::voiceid(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Athena
@@ -20062,17 +26060,40 @@ voiceid <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20091,8 +26112,20 @@ voiceid <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20184,8 +26217,13 @@ voiceid <- function(config = list()) {
 #'
 #' @rdname athena
 #' @export
-athena <- function(config = list()) {
-  paws.analytics::athena(config)
+athena <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::athena(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudSearch
@@ -20210,17 +26248,40 @@ athena <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20239,8 +26300,20 @@ athena <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20290,8 +26363,13 @@ athena <- function(config = list()) {
 #'
 #' @rdname cloudsearch
 #' @export
-cloudsearch <- function(config = list()) {
-  paws.analytics::cloudsearch(config)
+cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::cloudsearch(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudSearch Domain
@@ -20316,17 +26394,40 @@ cloudsearch <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20345,8 +26446,20 @@ cloudsearch <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20373,8 +26486,13 @@ cloudsearch <- function(config = list()) {
 #'
 #' @rdname cloudsearchdomain
 #' @export
-cloudsearchdomain <- function(config = list()) {
-  paws.analytics::cloudsearchdomain(config)
+cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::cloudsearchdomain(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Data Pipeline
@@ -20408,17 +26526,40 @@ cloudsearchdomain <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20437,8 +26578,20 @@ cloudsearchdomain <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20481,8 +26634,13 @@ cloudsearchdomain <- function(config = list()) {
 #'
 #' @rdname datapipeline
 #' @export
-datapipeline <- function(config = list()) {
-  paws.analytics::datapipeline(config)
+datapipeline <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::datapipeline(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Elasticsearch Service
@@ -20510,17 +26668,40 @@ datapipeline <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20539,8 +26720,20 @@ datapipeline <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20614,8 +26807,13 @@ datapipeline <- function(config = list()) {
 #'
 #' @rdname elasticsearchservice
 #' @export
-elasticsearchservice <- function(config = list()) {
-  paws.analytics::elasticsearchservice(config)
+elasticsearchservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::elasticsearchservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon EMR
@@ -20631,17 +26829,40 @@ elasticsearchservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20660,8 +26881,20 @@ elasticsearchservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20709,6 +26942,7 @@ elasticsearchservice <- function(config = list()) {
 #'  \link[paws.analytics:emr_list_steps]{list_steps} \tab Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request or filter by StepStates\cr
 #'  \link[paws.analytics:emr_list_studios]{list_studios} \tab Returns a list of all Amazon EMR Studios associated with the Amazon Web Services account\cr
 #'  \link[paws.analytics:emr_list_studio_session_mappings]{list_studio_session_mappings} \tab Returns a list of all user or group session mappings for the Amazon EMR Studio specified by StudioId\cr
+#'  \link[paws.analytics:emr_list_supported_instance_types]{list_supported_instance_types} \tab A list of the instance types that Amazon EMR supports\cr
 #'  \link[paws.analytics:emr_modify_cluster]{modify_cluster} \tab Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID\cr
 #'  \link[paws.analytics:emr_modify_instance_fleet]{modify_instance_fleet} \tab Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID\cr
 #'  \link[paws.analytics:emr_modify_instance_groups]{modify_instance_groups} \tab ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group\cr
@@ -20738,8 +26972,13 @@ elasticsearchservice <- function(config = list()) {
 #'
 #' @rdname emr
 #' @export
-emr <- function(config = list()) {
-  paws.analytics::emr(config)
+emr <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::emr(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Kinesis Firehose
@@ -20756,17 +26995,40 @@ emr <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20785,8 +27047,20 @@ emr <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -20822,8 +27096,13 @@ emr <- function(config = list()) {
 #'
 #' @rdname firehose
 #' @export
-firehose <- function(config = list()) {
-  paws.analytics::firehose(config)
+firehose <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::firehose(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Glue
@@ -20837,17 +27116,40 @@ firehose <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -20866,8 +27168,20 @@ firehose <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21093,8 +27407,13 @@ firehose <- function(config = list()) {
 #'
 #' @rdname glue
 #' @export
-glue <- function(config = list()) {
-  paws.analytics::glue(config)
+glue <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::glue(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Glue DataBrew
@@ -21110,17 +27429,40 @@ glue <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -21139,8 +27481,20 @@ glue <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21208,14 +27562,19 @@ glue <- function(config = list()) {
 #'
 #' @rdname gluedatabrew
 #' @export
-gluedatabrew <- function(config = list()) {
-  paws.analytics::gluedatabrew(config)
+gluedatabrew <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::gluedatabrew(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon HealthLake
 #'
 #' @description
-#' Amazon HealthLake is a HIPAA eligibile service that allows customers to
+#' AWS HealthLake is a HIPAA eligibile service that allows customers to
 #' store, transform, query, and analyze their FHIR-formatted data in a
 #' consistent fashion in the cloud.
 #'
@@ -21223,17 +27582,40 @@ gluedatabrew <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -21252,8 +27634,20 @@ gluedatabrew <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21267,19 +27661,19 @@ gluedatabrew <- function(config = list()) {
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a Data Store that can ingest and export FHIR formatted data\cr
-#'  \link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a Data Store\cr
-#'  \link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR Data Store, including the Data Store ID, Data Store ARN, Data Store name, Data Store status, created at, Data Store type version, and Data Store endpoint\cr
+#'  \link[paws.analytics:healthlake_create_fhir_datastore]{create_fhir_datastore} \tab Creates a data store that can ingest and export FHIR formatted data\cr
+#'  \link[paws.analytics:healthlake_delete_fhir_datastore]{delete_fhir_datastore} \tab Deletes a data store\cr
+#'  \link[paws.analytics:healthlake_describe_fhir_datastore]{describe_fhir_datastore} \tab Gets the properties associated with the FHIR data store, including the data store ID, data store ARN, data store name, data store status, when the data store was created, data store type version, and the data store's endpoint\cr
 #'  \link[paws.analytics:healthlake_describe_fhir_export_job]{describe_fhir_export_job} \tab Displays the properties of a FHIR export job, including the ID, ARN, name, and the status of the job\cr
 #'  \link[paws.analytics:healthlake_describe_fhir_import_job]{describe_fhir_import_job} \tab Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job\cr
-#'  \link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status\cr
+#'  \link[paws.analytics:healthlake_list_fhir_datastores]{list_fhir_datastores} \tab Lists all FHIR data stores that are in the user’s account, regardless of data store status\cr
 #'  \link[paws.analytics:healthlake_list_fhir_export_jobs]{list_fhir_export_jobs} \tab Lists all FHIR export jobs associated with an account and their statuses\cr
 #'  \link[paws.analytics:healthlake_list_fhir_import_jobs]{list_fhir_import_jobs} \tab Lists all FHIR import jobs associated with an account and their statuses\cr
-#'  \link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a Data Store\cr
+#'  \link[paws.analytics:healthlake_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all existing tags associated with a data store\cr
 #'  \link[paws.analytics:healthlake_start_fhir_export_job]{start_fhir_export_job} \tab Begins a FHIR export job\cr
 #'  \link[paws.analytics:healthlake_start_fhir_import_job]{start_fhir_import_job} \tab Begins a FHIR Import job\cr
-#'  \link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specified key and value tag to a Data Store\cr
-#'  \link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a Data Store
+#'  \link[paws.analytics:healthlake_tag_resource]{tag_resource} \tab Adds a user specified key and value tag to a data store\cr
+#'  \link[paws.analytics:healthlake_untag_resource]{untag_resource} \tab Removes tags from a data store
 #' }
 #'
 #' @return
@@ -21290,8 +27684,13 @@ gluedatabrew <- function(config = list()) {
 #'
 #' @rdname healthlake
 #' @export
-healthlake <- function(config = list()) {
-  paws.analytics::healthlake(config)
+healthlake <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::healthlake(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Interactive Video Service
@@ -21495,7 +27894,7 @@ healthlake <- function(config = list()) {
 #'     your data into a single PutMetadata call.) At most 155 requests per
 #'     second per account are allowed.
 #' 
-#' **PlaybackKeyPair Endpoints**
+#' **Private Channel Endpoints**
 #' 
 #' For more information, see [Setting Up Private
 #' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
@@ -21519,6 +27918,17 @@ healthlake <- function(config = list()) {
 #' -   `delete_playback_key_pair` — Deletes
 #'     a specified authorization key pair. This invalidates future viewer
 #'     tokens generated using the key pair’s `privateKey`.
+#' 
+#' -   `start_viewer_session_revocation`
+#'     — Starts the process of revoking the viewer session associated with
+#'     a specified channel ARN and viewer ID. Optionally, you can provide a
+#'     version to revoke viewer sessions less than and including that
+#'     version.
+#' 
+#' -   `batch_start_viewer_session_revocation`
+#'     — Performs
+#'     `start_viewer_session_revocation`
+#'     on multiple channel ARN and viewer ID pairs simultaneously.
 #' 
 #' **RecordingConfiguration Endpoints**
 #' 
@@ -21552,17 +27962,40 @@ healthlake <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -21581,8 +28014,20 @@ healthlake <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21598,6 +28043,7 @@ healthlake <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[paws.analytics:ivs_batch_get_channel]{batch_get_channel} \tab Performs GetChannel on multiple ARNs simultaneously\cr
 #'  \link[paws.analytics:ivs_batch_get_stream_key]{batch_get_stream_key} \tab Performs GetStreamKey on multiple ARNs simultaneously\cr
+#'  \link[paws.analytics:ivs_batch_start_viewer_session_revocation]{batch_start_viewer_session_revocation} \tab Performs StartViewerSessionRevocation on multiple channel ARN and viewer ID pairs simultaneously\cr
 #'  \link[paws.analytics:ivs_create_channel]{create_channel} \tab Creates a new channel and an associated stream key to start streaming\cr
 #'  \link[paws.analytics:ivs_create_recording_configuration]{create_recording_configuration} \tab Creates a new recording configuration, used to enable recording to Amazon S3\cr
 #'  \link[paws.analytics:ivs_create_stream_key]{create_stream_key} \tab Creates a stream key, used to initiate a stream, for the specified channel ARN\cr
@@ -21620,6 +28066,7 @@ healthlake <- function(config = list()) {
 #'  \link[paws.analytics:ivs_list_stream_sessions]{list_stream_sessions} \tab Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed\cr
 #'  \link[paws.analytics:ivs_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about Amazon Web Services tags for the specified ARN\cr
 #'  \link[paws.analytics:ivs_put_metadata]{put_metadata} \tab Inserts metadata into the active stream of the specified channel\cr
+#'  \link[paws.analytics:ivs_start_viewer_session_revocation]{start_viewer_session_revocation} \tab Starts the process of revoking the viewer session associated with a specified channel ARN and viewer ID\cr
 #'  \link[paws.analytics:ivs_stop_stream]{stop_stream} \tab Disconnects the incoming RTMPS stream for the specified channel\cr
 #'  \link[paws.analytics:ivs_tag_resource]{tag_resource} \tab Adds or updates tags for the Amazon Web Services resource with the specified ARN\cr
 #'  \link[paws.analytics:ivs_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
@@ -21634,8 +28081,13 @@ healthlake <- function(config = list()) {
 #'
 #' @rdname ivs
 #' @export
-ivs <- function(config = list()) {
-  paws.analytics::ivs(config)
+ivs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::ivs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Managed Streaming for Kafka
@@ -21647,17 +28099,40 @@ ivs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -21676,8 +28151,20 @@ ivs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21703,6 +28190,7 @@ ivs <- function(config = list()) {
 #'  \link[paws.analytics:kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
 #'  \link[paws.analytics:kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[paws.analytics:kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
+#'  \link[paws.analytics:kafka_describe_cluster_operation_v2]{describe_cluster_operation_v2} \tab Returns a description of the cluster operation specified by the ARN\cr
 #'  \link[paws.analytics:kafka_describe_cluster_v2]{describe_cluster_v2} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[paws.analytics:kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
 #'  \link[paws.analytics:kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
@@ -21712,6 +28200,7 @@ ivs <- function(config = list()) {
 #'  \link[paws.analytics:kafka_get_compatible_kafka_versions]{get_compatible_kafka_versions} \tab Gets the Apache Kafka versions to which you can update the MSK cluster\cr
 #'  \link[paws.analytics:kafka_list_client_vpc_connections]{list_client_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
 #'  \link[paws.analytics:kafka_list_cluster_operations]{list_cluster_operations} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
+#'  \link[paws.analytics:kafka_list_cluster_operations_v2]{list_cluster_operations_v2} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
 #'  \link[paws.analytics:kafka_list_clusters]{list_clusters} \tab Returns a list of all the MSK clusters in the current Region\cr
 #'  \link[paws.analytics:kafka_list_clusters_v2]{list_clusters_v2} \tab Returns a list of all the MSK clusters in the current Region\cr
 #'  \link[paws.analytics:kafka_list_configuration_revisions]{list_configuration_revisions} \tab Returns a list of all the MSK configurations in this Region\cr
@@ -21746,8 +28235,13 @@ ivs <- function(config = list()) {
 #'
 #' @rdname kafka
 #' @export
-kafka <- function(config = list()) {
-  paws.analytics::kafka(config)
+kafka <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kafka(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Managed Streaming for Kafka Connect
@@ -21758,17 +28252,40 @@ kafka <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -21787,8 +28304,20 @@ kafka <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21824,8 +28353,13 @@ kafka <- function(config = list()) {
 #'
 #' @rdname kafkaconnect
 #' @export
-kafkaconnect <- function(config = list()) {
-  paws.analytics::kafkaconnect(config)
+kafkaconnect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kafkaconnect(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWSKendraFrontendService
@@ -21837,17 +28371,40 @@ kafkaconnect <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -21866,8 +28423,20 @@ kafkaconnect <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -21932,7 +28501,8 @@ kafkaconnect <- function(config = list()) {
 #'  \link[paws.analytics:kendra_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a specified resource\cr
 #'  \link[paws.analytics:kendra_list_thesauri]{list_thesauri} \tab Lists the thesauri for an index\cr
 #'  \link[paws.analytics:kendra_put_principal_mapping]{put_principal_mapping} \tab Maps users to their groups so that you only need to provide the user ID when you issue the query\cr
-#'  \link[paws.analytics:kendra_query]{query} \tab Searches an active index\cr
+#'  \link[paws.analytics:kendra_query]{query} \tab Searches an index given an input query\cr
+#'  \link[paws.analytics:kendra_retrieve]{retrieve} \tab Retrieves relevant passages or text excerpts given an input query\cr
 #'  \link[paws.analytics:kendra_start_data_source_sync_job]{start_data_source_sync_job} \tab Starts a synchronization job for a data source connector\cr
 #'  \link[paws.analytics:kendra_stop_data_source_sync_job]{stop_data_source_sync_job} \tab Stops a synchronization job that is currently running\cr
 #'  \link[paws.analytics:kendra_submit_feedback]{submit_feedback} \tab Enables you to provide feedback to Amazon Kendra to improve the performance of your index\cr
@@ -21956,8 +28526,13 @@ kafkaconnect <- function(config = list()) {
 #'
 #' @rdname kendra
 #' @export
-kendra <- function(config = list()) {
-  paws.analytics::kendra(config)
+kendra <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kendra(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Kinesis
@@ -21972,17 +28547,40 @@ kendra <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22001,8 +28599,20 @@ kendra <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22054,8 +28664,13 @@ kendra <- function(config = list()) {
 #'
 #' @rdname kinesis
 #' @export
-kinesis <- function(config = list()) {
-  paws.analytics::kinesis(config)
+kinesis <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kinesis(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Kinesis Analytics
@@ -22075,17 +28690,40 @@ kinesis <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22104,8 +28742,20 @@ kinesis <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22149,8 +28799,13 @@ kinesis <- function(config = list()) {
 #'
 #' @rdname kinesisanalytics
 #' @export
-kinesisanalytics <- function(config = list()) {
-  paws.analytics::kinesisanalytics(config)
+kinesisanalytics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kinesisanalytics(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Kinesis Analytics
@@ -22166,17 +28821,40 @@ kinesisanalytics <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22195,8 +28873,20 @@ kinesisanalytics <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22251,8 +28941,13 @@ kinesisanalytics <- function(config = list()) {
 #'
 #' @rdname kinesisanalyticsv2
 #' @export
-kinesisanalyticsv2 <- function(config = list()) {
-  paws.analytics::kinesisanalyticsv2(config)
+kinesisanalyticsv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kinesisanalyticsv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Mechanical Turk
@@ -22264,17 +28959,40 @@ kinesisanalyticsv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22293,8 +29011,20 @@ kinesisanalyticsv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22357,8 +29087,13 @@ kinesisanalyticsv2 <- function(config = list()) {
 #'
 #' @rdname mturk
 #' @export
-mturk <- function(config = list()) {
-  paws.analytics::mturk(config)
+mturk <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::mturk(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon OpenSearch Service
@@ -22383,17 +29118,40 @@ mturk <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22412,8 +29170,20 @@ mturk <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22491,8 +29261,13 @@ mturk <- function(config = list()) {
 #'
 #' @rdname opensearchservice
 #' @export
-opensearchservice <- function(config = list()) {
-  paws.analytics::opensearchservice(config)
+opensearchservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::opensearchservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon QuickSight
@@ -22510,17 +29285,40 @@ opensearchservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22539,8 +29337,20 @@ opensearchservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22610,6 +29420,8 @@ opensearchservice <- function(config = list()) {
 #'  \link[paws.analytics:quicksight_describe_dashboard]{describe_dashboard} \tab Provides a summary for a dashboard\cr
 #'  \link[paws.analytics:quicksight_describe_dashboard_definition]{describe_dashboard_definition} \tab Provides a detailed description of the definition of a dashboard\cr
 #'  \link[paws.analytics:quicksight_describe_dashboard_permissions]{describe_dashboard_permissions} \tab Describes read and write permissions for a dashboard\cr
+#'  \link[paws.analytics:quicksight_describe_dashboard_snapshot_job]{describe_dashboard_snapshot_job} \tab Describes an existing snapshot job\cr
+#'  \link[paws.analytics:quicksight_describe_dashboard_snapshot_job_result]{describe_dashboard_snapshot_job_result} \tab Describes the result of an existing snapshot job that has finished running\cr
 #'  \link[paws.analytics:quicksight_describe_data_set]{describe_data_set} \tab Describes a dataset\cr
 #'  \link[paws.analytics:quicksight_describe_data_set_permissions]{describe_data_set_permissions} \tab Describes the permissions on a dataset\cr
 #'  \link[paws.analytics:quicksight_describe_data_set_refresh_properties]{describe_data_set_refresh_properties} \tab Describes the refresh properties of a dataset\cr
@@ -22681,6 +29493,7 @@ opensearchservice <- function(config = list()) {
 #'  \link[paws.analytics:quicksight_search_groups]{search_groups} \tab Use the SearchGroups operation to search groups in a specified Amazon QuickSight namespace using the supplied filters\cr
 #'  \link[paws.analytics:quicksight_start_asset_bundle_export_job]{start_asset_bundle_export_job} \tab Starts an Asset Bundle export job\cr
 #'  \link[paws.analytics:quicksight_start_asset_bundle_import_job]{start_asset_bundle_import_job} \tab Starts an Asset Bundle import job\cr
+#'  \link[paws.analytics:quicksight_start_dashboard_snapshot_job]{start_dashboard_snapshot_job} \tab Starts an asynchronous job that generates a dashboard snapshot\cr
 #'  \link[paws.analytics:quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource\cr
 #'  \link[paws.analytics:quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource\cr
 #'  \link[paws.analytics:quicksight_update_account_customization]{update_account_customization} \tab Updates Amazon QuickSight customizations for the current Amazon Web Services Region\cr
@@ -22722,8 +29535,13 @@ opensearchservice <- function(config = list()) {
 #'
 #' @rdname quicksight
 #' @export
-quicksight <- function(config = list()) {
-  paws.analytics::quicksight(config)
+quicksight <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::quicksight(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Access Analyzer
@@ -22751,17 +29569,40 @@ quicksight <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22780,8 +29621,20 @@ quicksight <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22833,8 +29686,13 @@ quicksight <- function(config = list()) {
 #'
 #' @rdname accessanalyzer
 #' @export
-accessanalyzer <- function(config = list()) {
-  paws.security.identity::accessanalyzer(config)
+accessanalyzer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::accessanalyzer(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Account
@@ -22846,17 +29704,40 @@ accessanalyzer <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22875,8 +29756,20 @@ accessanalyzer <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22909,8 +29802,13 @@ accessanalyzer <- function(config = list()) {
 #'
 #' @rdname account
 #' @export
-account <- function(config = list()) {
-  paws.security.identity::account(config)
+account <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::account(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Certificate Manager
@@ -22927,17 +29825,40 @@ account <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -22956,8 +29877,20 @@ account <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -22996,8 +29929,13 @@ account <- function(config = list()) {
 #'
 #' @rdname acm
 #' @export
-acm <- function(config = list()) {
-  paws.security.identity::acm(config)
+acm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::acm(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Certificate Manager Private Certificate Authority
@@ -23032,17 +29970,40 @@ acm <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23061,8 +30022,20 @@ acm <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23109,8 +30082,13 @@ acm <- function(config = list()) {
 #'
 #' @rdname acmpca
 #' @export
-acmpca <- function(config = list()) {
-  paws.security.identity::acmpca(config)
+acmpca <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::acmpca(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudDirectory
@@ -23132,17 +30110,40 @@ acmpca <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23161,8 +30162,20 @@ acmpca <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23252,8 +30265,13 @@ acmpca <- function(config = list()) {
 #'
 #' @rdname clouddirectory
 #' @export
-clouddirectory <- function(config = list()) {
-  paws.security.identity::clouddirectory(config)
+clouddirectory <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::clouddirectory(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon CloudHSM
@@ -23277,17 +30295,40 @@ clouddirectory <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23306,8 +30347,20 @@ clouddirectory <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23351,8 +30404,13 @@ clouddirectory <- function(config = list()) {
 #'
 #' @rdname cloudhsm
 #' @export
-cloudhsm <- function(config = list()) {
-  paws.security.identity::cloudhsm(config)
+cloudhsm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::cloudhsm(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS CloudHSM V2
@@ -23366,17 +30424,40 @@ cloudhsm <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23395,8 +30476,20 @@ cloudhsm <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23435,8 +30528,13 @@ cloudhsm <- function(config = list()) {
 #'
 #' @rdname cloudhsmv2
 #' @export
-cloudhsmv2 <- function(config = list()) {
-  paws.security.identity::cloudhsmv2(config)
+cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::cloudhsmv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Cognito Identity
@@ -23468,17 +30566,40 @@ cloudhsmv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23497,8 +30618,20 @@ cloudhsmv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23545,8 +30678,13 @@ cloudhsmv2 <- function(config = list()) {
 #'
 #' @rdname cognitoidentity
 #' @export
-cognitoidentity <- function(config = list()) {
-  paws.security.identity::cognitoidentity(config)
+cognitoidentity <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::cognitoidentity(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Cognito Identity Provider
@@ -23566,17 +30704,40 @@ cognitoidentity <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23595,8 +30756,20 @@ cognitoidentity <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23721,8 +30894,13 @@ cognitoidentity <- function(config = list()) {
 #'
 #' @rdname cognitoidentityprovider
 #' @export
-cognitoidentityprovider <- function(config = list()) {
-  paws.security.identity::cognitoidentityprovider(config)
+cognitoidentityprovider <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::cognitoidentityprovider(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Cognito Sync
@@ -23753,17 +30931,40 @@ cognitoidentityprovider <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23782,8 +30983,20 @@ cognitoidentityprovider <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23824,8 +31037,13 @@ cognitoidentityprovider <- function(config = list()) {
 #'
 #' @rdname cognitosync
 #' @export
-cognitosync <- function(config = list()) {
-  paws.security.identity::cognitosync(config)
+cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::cognitosync(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Detective
@@ -23910,17 +31128,40 @@ cognitosync <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -23939,8 +31180,20 @@ cognitosync <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -23988,8 +31241,13 @@ cognitosync <- function(config = list()) {
 #'
 #' @rdname detective
 #' @export
-detective <- function(config = list()) {
-  paws.security.identity::detective(config)
+detective <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::detective(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Directory Service
@@ -24019,17 +31277,40 @@ detective <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24048,8 +31329,20 @@ detective <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24140,8 +31433,13 @@ detective <- function(config = list()) {
 #'
 #' @rdname directoryservice
 #' @export
-directoryservice <- function(config = list()) {
-  paws.security.identity::directoryservice(config)
+directoryservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::directoryservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Firewall Management Service
@@ -24161,17 +31459,40 @@ directoryservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24190,8 +31511,20 @@ directoryservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24257,8 +31590,13 @@ directoryservice <- function(config = list()) {
 #'
 #' @rdname fms
 #' @export
-fms <- function(config = list()) {
-  paws.security.identity::fms(config)
+fms <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::fms(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon GuardDuty
@@ -24292,17 +31630,40 @@ fms <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24321,8 +31682,20 @@ fms <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24360,7 +31733,7 @@ fms <- function(config = list()) {
 #'  \link[paws.security.identity:guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator\cr
 #'  \link[paws.security.identity:guardduty_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 #'  \link[paws.security.identity:guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
-#'  \link[paws.security.identity:guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (to the current administrator account) specified by the account IDs\cr
+#'  \link[paws.security.identity:guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs\cr
 #'  \link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator\cr
 #'  \link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[paws.security.identity:guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
@@ -24377,7 +31750,7 @@ fms <- function(config = list()) {
 #'  \link[paws.security.identity:guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 #'  \link[paws.security.identity:guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 #'  \link[paws.security.identity:guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
-#'  \link[paws.security.identity:guardduty_invite_members]{invite_members} \tab Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account\cr
+#'  \link[paws.security.identity:guardduty_invite_members]{invite_members} \tab Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API\cr
 #'  \link[paws.security.identity:guardduty_list_coverage]{list_coverage} \tab Lists coverage details for your GuardDuty account\cr
 #'  \link[paws.security.identity:guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources\cr
 #'  \link[paws.security.identity:guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters\cr
@@ -24414,8 +31787,13 @@ fms <- function(config = list()) {
 #'
 #' @rdname guardduty
 #' @export
-guardduty <- function(config = list()) {
-  paws.security.identity::guardduty(config)
+guardduty <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::guardduty(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Identity and Access Management
@@ -24436,17 +31814,40 @@ guardduty <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24465,8 +31866,20 @@ guardduty <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24547,6 +31960,7 @@ guardduty <- function(config = list()) {
 #'  \link[paws.security.identity:iam_get_group_policy]{get_group_policy} \tab Retrieves the specified inline policy document that is embedded in the specified IAM group\cr
 #'  \link[paws.security.identity:iam_get_instance_profile]{get_instance_profile} \tab Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role\cr
 #'  \link[paws.security.identity:iam_get_login_profile]{get_login_profile} \tab Retrieves the user name for the specified IAM user\cr
+#'  \link[paws.security.identity:iam_get_mfa_device]{get_mfa_device} \tab Retrieves information about an MFA device for a specified user\cr
 #'  \link[paws.security.identity:iam_get_open_id_connect_provider]{get_open_id_connect_provider} \tab Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM\cr
 #'  \link[paws.security.identity:iam_get_organizations_access_report]{get_organizations_access_report} \tab Retrieves the service last accessed data report for Organizations that was previously generated using the GenerateOrganizationsAccessReport operation\cr
 #'  \link[paws.security.identity:iam_get_policy]{get_policy} \tab Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached\cr
@@ -24652,8 +32066,13 @@ guardduty <- function(config = list()) {
 #'
 #' @rdname iam
 #' @export
-iam <- function(config = list()) {
-  paws.security.identity::iam(config)
+iam <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::iam(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS SSO Identity Store
@@ -24671,17 +32090,40 @@ iam <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24700,8 +32142,20 @@ iam <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24744,8 +32198,13 @@ iam <- function(config = list()) {
 #'
 #' @rdname identitystore
 #' @export
-identitystore <- function(config = list()) {
-  paws.security.identity::identitystore(config)
+identitystore <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::identitystore(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Inspector
@@ -24760,17 +32219,40 @@ identitystore <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24789,8 +32271,20 @@ identitystore <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24861,8 +32355,13 @@ identitystore <- function(config = list()) {
 #'
 #' @rdname inspector
 #' @export
-inspector <- function(config = list()) {
-  paws.security.identity::inspector(config)
+inspector <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::inspector(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Inspector2
@@ -24876,17 +32375,40 @@ inspector <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -24905,8 +32427,20 @@ inspector <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -24922,12 +32456,15 @@ inspector <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[paws.security.identity:inspector2_associate_member]{associate_member} \tab Associates an Amazon Web Services account with an Amazon Inspector delegated administrator\cr
 #'  \link[paws.security.identity:inspector2_batch_get_account_status]{batch_get_account_status} \tab Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment\cr
+#'  \link[paws.security.identity:inspector2_batch_get_code_snippet]{batch_get_code_snippet} \tab Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in\cr
 #'  \link[paws.security.identity:inspector2_batch_get_free_trial_info]{batch_get_free_trial_info} \tab Gets free trial status for multiple Amazon Web Services accounts\cr
 #'  \link[paws.security.identity:inspector2_batch_get_member_ec_2_deep_inspection_status]{batch_get_member_ec_2_deep_inspection_status} \tab Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization\cr
 #'  \link[paws.security.identity:inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status} \tab Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization\cr
 #'  \link[paws.security.identity:inspector2_cancel_findings_report]{cancel_findings_report} \tab Cancels the given findings report\cr
+#'  \link[paws.security.identity:inspector2_cancel_sbom_export]{cancel_sbom_export} \tab Cancels a software bill of materials (SBOM) report\cr
 #'  \link[paws.security.identity:inspector2_create_filter]{create_filter} \tab Creates a filter resource using specified filter criteria\cr
 #'  \link[paws.security.identity:inspector2_create_findings_report]{create_findings_report} \tab Creates a finding report\cr
+#'  \link[paws.security.identity:inspector2_create_sbom_export]{create_sbom_export} \tab Creates a software bill of materials (SBOM) report\cr
 #'  \link[paws.security.identity:inspector2_delete_filter]{delete_filter} \tab Deletes a filter resource\cr
 #'  \link[paws.security.identity:inspector2_describe_organization_configuration]{describe_organization_configuration} \tab Describe Amazon Inspector configuration settings for an Amazon Web Services organization\cr
 #'  \link[paws.security.identity:inspector2_disable]{disable} \tab Disables Amazon Inspector scans for one or more Amazon Web Services accounts\cr
@@ -24938,8 +32475,10 @@ inspector <- function(config = list()) {
 #'  \link[paws.security.identity:inspector2_get_configuration]{get_configuration} \tab Retrieves setting configurations for Inspector scans\cr
 #'  \link[paws.security.identity:inspector2_get_delegated_admin_account]{get_delegated_admin_account} \tab Retrieves information about the Amazon Inspector delegated administrator for your organization\cr
 #'  \link[paws.security.identity:inspector2_get_ec_2_deep_inspection_configuration]{get_ec_2_deep_inspection_configuration} \tab Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account\cr
+#'  \link[paws.security.identity:inspector2_get_encryption_key]{get_encryption_key} \tab Gets an encryption key\cr
 #'  \link[paws.security.identity:inspector2_get_findings_report_status]{get_findings_report_status} \tab Gets the status of a findings report\cr
 #'  \link[paws.security.identity:inspector2_get_member]{get_member} \tab Gets member information for your organization\cr
+#'  \link[paws.security.identity:inspector2_get_sbom_export]{get_sbom_export} \tab Gets details of a software bill of materials (SBOM) report\cr
 #'  \link[paws.security.identity:inspector2_list_account_permissions]{list_account_permissions} \tab Lists the permissions an account has to configure Amazon Inspector\cr
 #'  \link[paws.security.identity:inspector2_list_coverage]{list_coverage} \tab Lists coverage details for you environment\cr
 #'  \link[paws.security.identity:inspector2_list_coverage_statistics]{list_coverage_statistics} \tab Lists Amazon Inspector coverage statistics for your environment\cr
@@ -24950,11 +32489,13 @@ inspector <- function(config = list()) {
 #'  \link[paws.security.identity:inspector2_list_members]{list_members} \tab List members associated with the Amazon Inspector delegated administrator for your organization\cr
 #'  \link[paws.security.identity:inspector2_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags attached to a given resource\cr
 #'  \link[paws.security.identity:inspector2_list_usage_totals]{list_usage_totals} \tab Lists the Amazon Inspector usage totals over the last 30 days\cr
+#'  \link[paws.security.identity:inspector2_reset_encryption_key]{reset_encryption_key} \tab Resets an encryption key\cr
 #'  \link[paws.security.identity:inspector2_search_vulnerabilities]{search_vulnerabilities} \tab Lists Amazon Inspector coverage details for a specific vulnerability\cr
 #'  \link[paws.security.identity:inspector2_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 #'  \link[paws.security.identity:inspector2_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 #'  \link[paws.security.identity:inspector2_update_configuration]{update_configuration} \tab Updates setting configurations for your Amazon Inspector account\cr
 #'  \link[paws.security.identity:inspector2_update_ec_2_deep_inspection_configuration]{update_ec_2_deep_inspection_configuration} \tab Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account\cr
+#'  \link[paws.security.identity:inspector2_update_encryption_key]{update_encryption_key} \tab Updates an encryption key\cr
 #'  \link[paws.security.identity:inspector2_update_filter]{update_filter} \tab Specifies the action that is to be applied to the findings that match the filter\cr
 #'  \link[paws.security.identity:inspector2_update_organization_configuration]{update_organization_configuration} \tab Updates the configurations for your Amazon Inspector organization\cr
 #'  \link[paws.security.identity:inspector2_update_org_ec_2_deep_inspection_configuration]{update_org_ec_2_deep_inspection_configuration} \tab Updates the Amazon Inspector deep inspection custom paths for your organization
@@ -24968,8 +32509,13 @@ inspector <- function(config = list()) {
 #'
 #' @rdname inspector2
 #' @export
-inspector2 <- function(config = list()) {
-  paws.security.identity::inspector2(config)
+inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::inspector2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Key Management Service
@@ -25077,17 +32623,40 @@ inspector2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25106,8 +32675,20 @@ inspector2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25182,8 +32763,13 @@ inspector2 <- function(config = list()) {
 #'
 #' @rdname kms
 #' @export
-kms <- function(config = list()) {
-  paws.security.identity::kms(config)
+kms <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::kms(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Macie
@@ -25206,17 +32792,40 @@ kms <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25235,8 +32844,20 @@ kms <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25267,8 +32888,13 @@ kms <- function(config = list()) {
 #'
 #' @rdname macie
 #' @export
-macie <- function(config = list()) {
-  paws.security.identity::macie(config)
+macie <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::macie(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Macie 2
@@ -25280,17 +32906,40 @@ macie <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25309,8 +32958,20 @@ macie <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25413,8 +33074,13 @@ macie <- function(config = list()) {
 #'
 #' @rdname macie2
 #' @export
-macie2 <- function(config = list()) {
-  paws.security.identity::macie2(config)
+macie2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::macie2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Resource Access Manager
@@ -25440,17 +33106,40 @@ macie2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25469,8 +33158,20 @@ macie2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25528,8 +33229,13 @@ macie2 <- function(config = list()) {
 #'
 #' @rdname ram
 #' @export
-ram <- function(config = list()) {
-  paws.security.identity::ram(config)
+ram <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::ram(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' IAM Roles Anywhere
@@ -25560,17 +33266,40 @@ ram <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25589,8 +33318,20 @@ ram <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25642,8 +33383,13 @@ ram <- function(config = list()) {
 #'
 #' @rdname iamrolesanywhere
 #' @export
-iamrolesanywhere <- function(config = list()) {
-  paws.security.identity::iamrolesanywhere(config)
+iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::iamrolesanywhere(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Secrets Manager
@@ -25696,17 +33442,40 @@ iamrolesanywhere <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25725,8 +33494,20 @@ iamrolesanywhere <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25776,8 +33557,13 @@ iamrolesanywhere <- function(config = list()) {
 #'
 #' @rdname secretsmanager
 #' @export
-secretsmanager <- function(config = list()) {
-  paws.security.identity::secretsmanager(config)
+secretsmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::secretsmanager(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS SecurityHub
@@ -25837,17 +33623,40 @@ secretsmanager <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -25866,8 +33675,20 @@ secretsmanager <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -25963,8 +33784,13 @@ secretsmanager <- function(config = list()) {
 #'
 #' @rdname securityhub
 #' @export
-securityhub <- function(config = list()) {
-  paws.security.identity::securityhub(config)
+securityhub <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::securityhub(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Shield
@@ -25983,17 +33809,40 @@ securityhub <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26012,8 +33861,20 @@ securityhub <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26073,8 +33934,13 @@ securityhub <- function(config = list()) {
 #'
 #' @rdname shield
 #' @export
-shield <- function(config = list()) {
-  paws.security.identity::shield(config)
+shield <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::shield(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Single Sign-On
@@ -26107,17 +33973,40 @@ shield <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26136,8 +34025,20 @@ shield <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26165,8 +34066,13 @@ shield <- function(config = list()) {
 #'
 #' @rdname sso
 #' @export
-sso <- function(config = list()) {
-  paws.security.identity::sso(config)
+sso <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::sso(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Single Sign-On Admin
@@ -26207,17 +34113,40 @@ sso <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26236,8 +34165,20 @@ sso <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26298,8 +34239,13 @@ sso <- function(config = list()) {
 #'
 #' @rdname ssoadmin
 #' @export
-ssoadmin <- function(config = list()) {
-  paws.security.identity::ssoadmin(config)
+ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::ssoadmin(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS SSO OIDC
@@ -26353,17 +34299,40 @@ ssoadmin <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26382,8 +34351,20 @@ ssoadmin <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26410,8 +34391,13 @@ ssoadmin <- function(config = list()) {
 #'
 #' @rdname ssooidc
 #' @export
-ssooidc <- function(config = list()) {
-  paws.security.identity::ssooidc(config)
+ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::ssooidc(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Security Token Service
@@ -26429,17 +34415,40 @@ ssooidc <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26458,8 +34467,20 @@ ssooidc <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26513,8 +34534,13 @@ ssooidc <- function(config = list()) {
 #'
 #' @rdname sts
 #' @export
-sts <- function(config = list()) {
-  paws.security.identity::sts(config)
+sts <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::sts(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS WAF
@@ -26546,17 +34572,40 @@ sts <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26575,8 +34624,20 @@ sts <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26679,8 +34740,13 @@ sts <- function(config = list()) {
 #'
 #' @rdname waf
 #' @export
-waf <- function(config = list()) {
-  paws.security.identity::waf(config)
+waf <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::waf(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS WAF Regional
@@ -26716,17 +34782,40 @@ waf <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26745,8 +34834,20 @@ waf <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -26853,8 +34954,13 @@ waf <- function(config = list()) {
 #'
 #' @rdname wafregional
 #' @export
-wafregional <- function(config = list()) {
-  paws.security.identity::wafregional(config)
+wafregional <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::wafregional(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS WAFV2
@@ -26935,17 +35041,40 @@ wafregional <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -26964,8 +35093,20 @@ wafregional <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27042,8 +35183,13 @@ wafregional <- function(config = list()) {
 #'
 #' @rdname wafv2
 #' @export
-wafv2 <- function(config = list()) {
-  paws.security.identity::wafv2(config)
+wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::wafv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon EventBridge
@@ -27075,17 +35221,40 @@ wafv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27104,8 +35273,20 @@ wafv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27185,8 +35366,13 @@ wafv2 <- function(config = list()) {
 #'
 #' @rdname eventbridge
 #' @export
-eventbridge <- function(config = list()) {
-  paws.application.integration::eventbridge(config)
+eventbridge <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::eventbridge(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Location Service
@@ -27199,17 +35385,40 @@ eventbridge <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27228,8 +35437,20 @@ eventbridge <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27249,11 +35470,11 @@ eventbridge <- function(config = list()) {
 #'  \link[paws.application.integration:locationservice_batch_evaluate_geofences]{batch_evaluate_geofences} \tab Evaluates device positions against the geofence geometries from a given geofence collection\cr
 #'  \link[paws.application.integration:locationservice_batch_get_device_position]{batch_get_device_position} \tab Lists the latest device positions for requested devices\cr
 #'  \link[paws.application.integration:locationservice_batch_put_geofence]{batch_put_geofence} \tab A batch request for storing geofence geometries into a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request\cr
-#'  \link[paws.application.integration:locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads position update data for one or more devices to a tracker resource\cr
+#'  \link[paws.application.integration:locationservice_batch_update_device_position]{batch_update_device_position} \tab Uploads position update data for one or more devices to a tracker resource (up to 10 devices per batch)\cr
 #'  \link[paws.application.integration:locationservice_calculate_route]{calculate_route} \tab Calculates a route given the following required parameters: DeparturePosition and DestinationPosition\cr
 #'  \link[paws.application.integration:locationservice_calculate_route_matrix]{calculate_route_matrix} \tab Calculates a route matrix given the following required parameters: DeparturePositions and DestinationPositions\cr
 #'  \link[paws.application.integration:locationservice_create_geofence_collection]{create_geofence_collection} \tab Creates a geofence collection, which manages and stores geofences\cr
-#'  \link[paws.application.integration:locationservice_create_key]{create_key} \tab Creates an API key resource in your Amazon Web Services account, which lets you grant geo:GetMap* actions for Amazon Location Map resources to the API key bearer\cr
+#'  \link[paws.application.integration:locationservice_create_key]{create_key} \tab Creates an API key resource in your Amazon Web Services account, which lets you grant actions for Amazon Location resources to the API key bearer\cr
 #'  \link[paws.application.integration:locationservice_create_map]{create_map} \tab Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers\cr
 #'  \link[paws.application.integration:locationservice_create_place_index]{create_place_index} \tab Creates a place index resource in your Amazon Web Services account\cr
 #'  \link[paws.application.integration:locationservice_create_route_calculator]{create_route_calculator} \tab Creates a route calculator resource in your Amazon Web Services account\cr
@@ -27311,8 +35532,13 @@ eventbridge <- function(config = list()) {
 #'
 #' @rdname locationservice
 #' @export
-locationservice <- function(config = list()) {
-  paws.application.integration::locationservice(config)
+locationservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::locationservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AmazonMQ
@@ -27328,17 +35554,40 @@ locationservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27357,8 +35606,20 @@ locationservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27390,6 +35651,7 @@ locationservice <- function(config = list()) {
 #'  \link[paws.application.integration:mq_list_configurations]{list_configurations} \tab Returns a list of all configurations\cr
 #'  \link[paws.application.integration:mq_list_tags]{list_tags} \tab Lists tags for a resource\cr
 #'  \link[paws.application.integration:mq_list_users]{list_users} \tab Returns a list of all ActiveMQ users\cr
+#'  \link[paws.application.integration:mq_promote]{promote} \tab Promotes a data replication replica broker to the primary broker role\cr
 #'  \link[paws.application.integration:mq_reboot_broker]{reboot_broker} \tab Reboots a broker\cr
 #'  \link[paws.application.integration:mq_update_broker]{update_broker} \tab Adds a pending configuration change to a broker\cr
 #'  \link[paws.application.integration:mq_update_configuration]{update_configuration} \tab Updates the specified configuration\cr
@@ -27404,8 +35666,13 @@ locationservice <- function(config = list()) {
 #'
 #' @rdname mq
 #' @export
-mq <- function(config = list()) {
-  paws.application.integration::mq(config)
+mq <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::mq(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AmazonMWAA
@@ -27461,17 +35728,40 @@ mq <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27490,8 +35780,20 @@ mq <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27526,8 +35828,13 @@ mq <- function(config = list()) {
 #'
 #' @rdname mwaa
 #' @export
-mwaa <- function(config = list()) {
-  paws.application.integration::mwaa(config)
+mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::mwaa(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Schemas
@@ -27539,17 +35846,40 @@ mwaa <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27568,8 +35898,20 @@ mwaa <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27624,8 +35966,13 @@ mwaa <- function(config = list()) {
 #'
 #' @rdname schemas
 #' @export
-schemas <- function(config = list()) {
-  paws.application.integration::schemas(config)
+schemas <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::schemas(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Step Functions
@@ -27657,17 +36004,40 @@ schemas <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27686,8 +36056,20 @@ schemas <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27703,20 +36085,27 @@ schemas <- function(config = list()) {
 #' \tabular{ll}{
 #'  \link[paws.application.integration:sfn_create_activity]{create_activity} \tab Creates an activity\cr
 #'  \link[paws.application.integration:sfn_create_state_machine]{create_state_machine} \tab Creates a state machine\cr
+#'  \link[paws.application.integration:sfn_create_state_machine_alias]{create_state_machine_alias} \tab Creates an alias for a state machine that points to one or two versions of the same state machine\cr
 #'  \link[paws.application.integration:sfn_delete_activity]{delete_activity} \tab Deletes an activity\cr
 #'  \link[paws.application.integration:sfn_delete_state_machine]{delete_state_machine} \tab Deletes a state machine\cr
+#'  \link[paws.application.integration:sfn_delete_state_machine_alias]{delete_state_machine_alias} \tab Deletes a state machine alias\cr
+#'  \link[paws.application.integration:sfn_delete_state_machine_version]{delete_state_machine_version} \tab Deletes a state machine version\cr
 #'  \link[paws.application.integration:sfn_describe_activity]{describe_activity} \tab Describes an activity\cr
-#'  \link[paws.application.integration:sfn_describe_execution]{describe_execution} \tab Provides all information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata\cr
+#'  \link[paws.application.integration:sfn_describe_execution]{describe_execution} \tab Provides information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata\cr
 #'  \link[paws.application.integration:sfn_describe_map_run]{describe_map_run} \tab Provides information about a Map Run's configuration, progress, and results\cr
 #'  \link[paws.application.integration:sfn_describe_state_machine]{describe_state_machine} \tab Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration\cr
+#'  \link[paws.application.integration:sfn_describe_state_machine_alias]{describe_state_machine_alias} \tab Returns details about a state machine alias\cr
 #'  \link[paws.application.integration:sfn_describe_state_machine_for_execution]{describe_state_machine_for_execution} \tab Provides information about a state machine's definition, its execution role ARN, and configuration\cr
 #'  \link[paws.application.integration:sfn_get_activity_task]{get_activity_task} \tab Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine\cr
 #'  \link[paws.application.integration:sfn_get_execution_history]{get_execution_history} \tab Returns the history of the specified execution as a list of events\cr
 #'  \link[paws.application.integration:sfn_list_activities]{list_activities} \tab Lists the existing activities\cr
 #'  \link[paws.application.integration:sfn_list_executions]{list_executions} \tab Lists all executions of a state machine or a Map Run\cr
 #'  \link[paws.application.integration:sfn_list_map_runs]{list_map_runs} \tab Lists all Map Runs that were started by a given state machine execution\cr
+#'  \link[paws.application.integration:sfn_list_state_machine_aliases]{list_state_machine_aliases} \tab Lists aliases for a specified state machine ARN\cr
 #'  \link[paws.application.integration:sfn_list_state_machines]{list_state_machines} \tab Lists the existing state machines\cr
+#'  \link[paws.application.integration:sfn_list_state_machine_versions]{list_state_machine_versions} \tab Lists versions for the specified state machine Amazon Resource Name (ARN)\cr
 #'  \link[paws.application.integration:sfn_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a given resource\cr
+#'  \link[paws.application.integration:sfn_publish_state_machine_version]{publish_state_machine_version} \tab Creates a version from the current revision of a state machine\cr
 #'  \link[paws.application.integration:sfn_send_task_failure]{send_task_failure} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken failed\cr
 #'  \link[paws.application.integration:sfn_send_task_heartbeat]{send_task_heartbeat} \tab Used by activity workers and task states using the callback pattern to report to Step Functions that the task represented by the specified taskToken is still making progress\cr
 #'  \link[paws.application.integration:sfn_send_task_success]{send_task_success} \tab Used by activity workers and task states using the callback pattern to report that the task identified by the taskToken completed successfully\cr
@@ -27726,7 +36115,8 @@ schemas <- function(config = list()) {
 #'  \link[paws.application.integration:sfn_tag_resource]{tag_resource} \tab Add a tag to a Step Functions resource\cr
 #'  \link[paws.application.integration:sfn_untag_resource]{untag_resource} \tab Remove a tag from a Step Functions resource\cr
 #'  \link[paws.application.integration:sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
-#'  \link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration
+#'  \link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, or loggingConfiguration\cr
+#'  \link[paws.application.integration:sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration
 #' }
 #'
 #' @return
@@ -27737,8 +36127,13 @@ schemas <- function(config = list()) {
 #'
 #' @rdname sfn
 #' @export
-sfn <- function(config = list()) {
-  paws.application.integration::sfn(config)
+sfn <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::sfn(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Notification Service
@@ -27769,17 +36164,40 @@ sfn <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27798,8 +36216,20 @@ sfn <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27865,8 +36295,13 @@ sfn <- function(config = list()) {
 #'
 #' @rdname sns
 #' @export
-sns <- function(config = list()) {
-  paws.application.integration::sns(config)
+sns <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::sns(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Queue Service
@@ -27922,17 +36357,40 @@ sns <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -27951,8 +36409,20 @@ sns <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -27980,7 +36450,7 @@ sns <- function(config = list()) {
 #'  \link[paws.application.integration:sqs_list_message_move_tasks]{list_message_move_tasks} \tab Gets the most recent message movement tasks (up to 10) under a specific source queue\cr
 #'  \link[paws.application.integration:sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr
 #'  \link[paws.application.integration:sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue\cr
-#'  \link[paws.application.integration:sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter\cr
+#'  \link[paws.application.integration:sqs_purge_queue]{purge_queue} \tab Deletes available messages in a queue (including in-flight messages) specified by the QueueURL parameter\cr
 #'  \link[paws.application.integration:sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue\cr
 #'  \link[paws.application.integration:sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter\cr
 #'  \link[paws.application.integration:sqs_send_message]{send_message} \tab Delivers a message to the specified queue\cr
@@ -27999,8 +36469,13 @@ sns <- function(config = list()) {
 #'
 #' @rdname sqs
 #' @export
-sqs <- function(config = list()) {
-  paws.application.integration::sqs(config)
+sqs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::sqs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Workflow Service
@@ -28025,17 +36500,40 @@ sqs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28054,8 +36552,20 @@ sqs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28116,8 +36626,13 @@ sqs <- function(config = list()) {
 #'
 #' @rdname swf
 #' @export
-swf <- function(config = list()) {
-  paws.application.integration::swf(config)
+swf <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::swf(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWSBillingConductor
@@ -28148,17 +36663,40 @@ swf <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28177,8 +36715,20 @@ swf <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28233,8 +36783,13 @@ swf <- function(config = list()) {
 #'
 #' @rdname billingconductor
 #' @export
-billingconductor <- function(config = list()) {
-  paws.cost.management::billingconductor(config)
+billingconductor <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::billingconductor(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Budgets
@@ -28291,17 +36846,40 @@ billingconductor <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28320,8 +36898,20 @@ billingconductor <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28368,8 +36958,13 @@ billingconductor <- function(config = list()) {
 #'
 #' @rdname budgets
 #' @export
-budgets <- function(config = list()) {
-  paws.cost.management::budgets(config)
+budgets <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::budgets(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Cost and Usage Report Service
@@ -28394,17 +36989,40 @@ budgets <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28423,8 +37041,20 @@ budgets <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28454,8 +37084,13 @@ budgets <- function(config = list()) {
 #'
 #' @rdname costandusagereportservice
 #' @export
-costandusagereportservice <- function(config = list()) {
-  paws.cost.management::costandusagereportservice(config)
+costandusagereportservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::costandusagereportservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Cost Explorer Service
@@ -28481,17 +37116,40 @@ costandusagereportservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28510,8 +37168,20 @@ costandusagereportservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28544,6 +37214,7 @@ costandusagereportservice <- function(config = list()) {
 #'  \link[paws.cost.management:costexplorer_get_reservation_purchase_recommendation]{get_reservation_purchase_recommendation} \tab Gets recommendations for reservation purchases\cr
 #'  \link[paws.cost.management:costexplorer_get_reservation_utilization]{get_reservation_utilization} \tab Retrieves the reservation utilization for your account\cr
 #'  \link[paws.cost.management:costexplorer_get_rightsizing_recommendation]{get_rightsizing_recommendation} \tab Creates recommendations that help you save cost by identifying idle and underutilized Amazon EC2 instances\cr
+#'  \link[paws.cost.management:costexplorer_get_savings_plan_purchase_recommendation_details]{get_savings_plan_purchase_recommendation_details} \tab Retrieves the details for a Savings Plan recommendation\cr
 #'  \link[paws.cost.management:costexplorer_get_savings_plans_coverage]{get_savings_plans_coverage} \tab Retrieves the Savings Plans covered for your account\cr
 #'  \link[paws.cost.management:costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation} \tab Retrieves the Savings Plans recommendations for your account\cr
 #'  \link[paws.cost.management:costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization} \tab Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity\cr
@@ -28559,7 +37230,7 @@ costandusagereportservice <- function(config = list()) {
 #'  \link[paws.cost.management:costexplorer_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
 #'  \link[paws.cost.management:costexplorer_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 #'  \link[paws.cost.management:costexplorer_update_anomaly_monitor]{update_anomaly_monitor} \tab Updates an existing cost anomaly monitor\cr
-#'  \link[paws.cost.management:costexplorer_update_anomaly_subscription]{update_anomaly_subscription} \tab Updates an existing cost anomaly monitor subscription\cr
+#'  \link[paws.cost.management:costexplorer_update_anomaly_subscription]{update_anomaly_subscription} \tab Updates an existing cost anomaly subscription\cr
 #'  \link[paws.cost.management:costexplorer_update_cost_allocation_tags_status]{update_cost_allocation_tags_status} \tab Updates status for cost allocation tags in bulk, with maximum batch size of 20\cr
 #'  \link[paws.cost.management:costexplorer_update_cost_category_definition]{update_cost_category_definition} \tab Updates an existing Cost Category
 #' }
@@ -28572,8 +37243,13 @@ costandusagereportservice <- function(config = list()) {
 #'
 #' @rdname costexplorer
 #' @export
-costexplorer <- function(config = list()) {
-  paws.cost.management::costexplorer(config)
+costexplorer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::costexplorer(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Marketplace Catalog Service
@@ -28592,17 +37268,40 @@ costexplorer <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28621,8 +37320,20 @@ costexplorer <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28658,8 +37369,13 @@ costexplorer <- function(config = list()) {
 #'
 #' @rdname marketplacecatalog
 #' @export
-marketplacecatalog <- function(config = list()) {
-  paws.cost.management::marketplacecatalog(config)
+marketplacecatalog <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::marketplacecatalog(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Marketplace Commerce Analytics
@@ -28671,17 +37387,40 @@ marketplacecatalog <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28700,8 +37439,20 @@ marketplacecatalog <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28727,8 +37478,13 @@ marketplacecatalog <- function(config = list()) {
 #'
 #' @rdname marketplacecommerceanalytics
 #' @export
-marketplacecommerceanalytics <- function(config = list()) {
-  paws.cost.management::marketplacecommerceanalytics(config)
+marketplacecommerceanalytics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::marketplacecommerceanalytics(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Marketplace Entitlement Service
@@ -28751,17 +37507,40 @@ marketplacecommerceanalytics <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28780,8 +37559,20 @@ marketplacecommerceanalytics <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28806,8 +37597,13 @@ marketplacecommerceanalytics <- function(config = list()) {
 #'
 #' @rdname marketplaceentitlementservice
 #' @export
-marketplaceentitlementservice <- function(config = list()) {
-  paws.cost.management::marketplaceentitlementservice(config)
+marketplaceentitlementservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::marketplaceentitlementservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWSMarketplace Metering
@@ -28866,23 +37662,46 @@ marketplaceentitlementservice <- function(config = list()) {
 #' records with the `eventName` of
 #' `batch_meter_usage`. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -28901,8 +37720,20 @@ marketplaceentitlementservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -28930,27 +37761,39 @@ marketplaceentitlementservice <- function(config = list()) {
 #'
 #' @rdname marketplacemetering
 #' @export
-marketplacemetering <- function(config = list()) {
-  paws.cost.management::marketplacemetering(config)
+marketplacemetering <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::marketplacemetering(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Price List Service
 #'
 #' @description
-#' Amazon Web Services Price List API is a centralized and convenient way
-#' to programmatically query Amazon Web Services for services, products,
-#' and pricing information. The Amazon Web Services Price List uses
-#' standardized product attributes such as `Location`, `Storage Class`, and
-#' `Operating System`, and provides prices at the SKU level. You can use
-#' the Amazon Web Services Price List to build cost control and scenario
-#' planning tools, reconcile billing data, forecast future spend for
-#' budgeting purposes, and provide cost benefit analysis that compare your
-#' internal workloads with Amazon Web Services.
+#' The Amazon Web Services Price List API is a centralized and convenient
+#' way to programmatically query Amazon Web Services for services,
+#' products, and pricing information. The Amazon Web Services Price List
+#' uses standardized product attributes such as `Location`,
+#' `Storage Class`, and `Operating System`, and provides prices at the SKU
+#' level. You can use the Amazon Web Services Price List to do the
+#' following:
+#' 
+#' -   Build cost control and scenario planning tools
+#' 
+#' -   Reconcile billing data
+#' 
+#' -   Forecast future spend for budgeting purposes
+#' 
+#' -   Provide cost benefit analysis that compare your internal workloads
+#'     with Amazon Web Services
 #' 
 #' Use `GetServices` without a service code to retrieve the service codes
-#' for all AWS services, then `GetServices` with a service code to retrieve
-#' the attribute names for that service. After you have the service code
-#' and attribute names, you can use
+#' for all Amazon Web Services, then `GetServices` with a service code to
+#' retrieve the attribute names for that service. After you have the
+#' service code and attribute names, you can use
 #' `get_attribute_values` to see what
 #' values are available for an attribute. With the service code and an
 #' attribute name and value, you can use
@@ -28958,10 +37801,8 @@ marketplacemetering <- function(config = list()) {
 #' you're interested in, such as an `AmazonEC2` instance, with a
 #' `Provisioned IOPS` `volumeType`.
 #' 
-#' Service Endpoint
-#' 
-#' Amazon Web Services Price List service API provides the following two
-#' endpoints:
+#' You can use the following endpoints for the Amazon Web Services Price
+#' List API:
 #' 
 #' -   https://api.pricing.us-east-1.amazonaws.com
 #' 
@@ -28971,17 +37812,40 @@ marketplacemetering <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29000,19 +37864,28 @@ marketplacemetering <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
 #' svc <- pricing()
-#' # Retrieves the service for the given Service Code.
 #' svc$describe_services(
-#'   FormatVersion = "aws_v1",
-#'   MaxResults = 1L,
-#'   ServiceCode = "AmazonEC2"
+#'   Foo = 123
 #' )
 #' }
 #'
@@ -29033,8 +37906,13 @@ marketplacemetering <- function(config = list()) {
 #'
 #' @rdname pricing
 #' @export
-pricing <- function(config = list()) {
-  paws.cost.management::pricing(config)
+pricing <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::pricing(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AWS Savings Plans
@@ -29051,17 +37929,40 @@ pricing <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29080,8 +37981,20 @@ pricing <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29114,8 +38027,13 @@ pricing <- function(config = list()) {
 #'
 #' @rdname savingsplans
 #' @export
-savingsplans <- function(config = list()) {
-  paws.cost.management::savingsplans(config)
+savingsplans <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::savingsplans(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Connect Service
@@ -29144,17 +38062,40 @@ savingsplans <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29173,8 +38114,20 @@ savingsplans <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29229,7 +38182,9 @@ savingsplans <- function(config = list()) {
 #'  \link[paws.customer.engagement:connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_delete_prompt]{delete_prompt} \tab Deletes a prompt\cr
+#'  \link[paws.customer.engagement:connect_delete_queue]{delete_queue} \tab Deletes a queue\cr
 #'  \link[paws.customer.engagement:connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
+#'  \link[paws.customer.engagement:connect_delete_routing_profile]{delete_routing_profile} \tab Deletes a routing profile\cr
 #'  \link[paws.customer.engagement:connect_delete_rule]{delete_rule} \tab Deletes a rule for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_delete_security_profile]{delete_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
@@ -29318,14 +38273,15 @@ savingsplans <- function(config = list()) {
 #'  \link[paws.customer.engagement:connect_put_user_status]{put_user_status} \tab Changes the current status of a user or agent in Amazon Connect\cr
 #'  \link[paws.customer.engagement:connect_release_phone_number]{release_phone_number} \tab Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call\cr
+#'  \link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call or screen\cr
 #'  \link[paws.customer.engagement:connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
-#'  \link[paws.customer.engagement:connect_search_queues]{search_queues} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_search_queues]{search_queues} \tab Searches queues in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_quick_connects]{search_quick_connects} \tab Searches quick connects in an Amazon Connect instance, with optional filtering\cr
-#'  \link[paws.customer.engagement:connect_search_routing_profiles]{search_routing_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-#'  \link[paws.customer.engagement:connect_search_security_profiles]{search_security_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_search_resource_tags]{search_resource_tags} \tab Searches tags used in an Amazon Connect instance using optional search criteria\cr
+#'  \link[paws.customer.engagement:connect_search_routing_profiles]{search_routing_profiles} \tab Searches routing profiles in an Amazon Connect instance, with optional filtering\cr
+#'  \link[paws.customer.engagement:connect_search_security_profiles]{search_security_profiles} \tab Searches security profiles in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
 #'  \link[paws.customer.engagement:connect_start_chat_contact]{start_chat_contact} \tab Initiates a flow to start a new chat for the customer\cr
@@ -29338,7 +38294,7 @@ savingsplans <- function(config = list()) {
 #'  \link[paws.customer.engagement:connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 #'  \link[paws.customer.engagement:connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
 #'  \link[paws.customer.engagement:connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call\cr
+#'  \link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call or screen\cr
 #'  \link[paws.customer.engagement:connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[paws.customer.engagement:connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
 #'  \link[paws.customer.engagement:connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
@@ -29391,8 +38347,13 @@ savingsplans <- function(config = list()) {
 #'
 #' @rdname connect
 #' @export
-connect <- function(config = list()) {
-  paws.customer.engagement::connect(config)
+connect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::connect(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AmazonConnectCampaignService
@@ -29404,17 +38365,40 @@ connect <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29433,8 +38417,20 @@ connect <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29480,8 +38476,13 @@ connect <- function(config = list()) {
 #'
 #' @rdname connectcampaignservice
 #' @export
-connectcampaignservice <- function(config = list()) {
-  paws.customer.engagement::connectcampaignservice(config)
+connectcampaignservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::connectcampaignservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Connect Contact Lens
@@ -29503,17 +38504,40 @@ connectcampaignservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29532,8 +38556,20 @@ connectcampaignservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29558,8 +38594,13 @@ connectcampaignservice <- function(config = list()) {
 #'
 #' @rdname connectcontactlens
 #' @export
-connectcontactlens <- function(config = list()) {
-  paws.customer.engagement::connectcontactlens(config)
+connectcontactlens <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::connectcontactlens(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Connect Participant Service
@@ -29582,17 +38623,40 @@ connectcontactlens <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29611,8 +38675,20 @@ connectcontactlens <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29644,8 +38720,13 @@ connectcontactlens <- function(config = list()) {
 #'
 #' @rdname connectparticipant
 #' @export
-connectparticipant <- function(config = list()) {
-  paws.customer.engagement::connectparticipant(config)
+connectparticipant <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::connectparticipant(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Connect Wisdom Service
@@ -29662,17 +38743,40 @@ connectparticipant <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29691,8 +38795,20 @@ connectparticipant <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29747,8 +38863,13 @@ connectparticipant <- function(config = list()) {
 #'
 #' @rdname connectwisdomservice
 #' @export
-connectwisdomservice <- function(config = list()) {
-  paws.customer.engagement::connectwisdomservice(config)
+connectwisdomservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::connectwisdomservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Connect Customer Profiles
@@ -29767,17 +38888,40 @@ connectwisdomservice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29796,8 +38940,20 @@ connectwisdomservice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -29836,6 +38992,7 @@ connectwisdomservice <- function(config = list()) {
 #'  \link[paws.customer.engagement:customerprofiles_get_matches]{get_matches} \tab Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_profile_object_type]{get_profile_object_type} \tab Returns the object types for a specific domain\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_profile_object_type_template]{get_profile_object_type_template} \tab Returns the template information for a specific object type\cr
+#'  \link[paws.customer.engagement:customerprofiles_get_similar_profiles]{get_similar_profiles} \tab Returns a set of profiles that belong to the same matching group using the matchId or profileId\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_workflow]{get_workflow} \tab Get details of specified workflow\cr
 #'  \link[paws.customer.engagement:customerprofiles_get_workflow_steps]{get_workflow_steps} \tab Get granular list of steps in workflow\cr
 #'  \link[paws.customer.engagement:customerprofiles_list_account_integrations]{list_account_integrations} \tab Lists all of the integrations associated to a specific URI in the AWS account\cr
@@ -29848,6 +39005,7 @@ connectwisdomservice <- function(config = list()) {
 #'  \link[paws.customer.engagement:customerprofiles_list_profile_objects]{list_profile_objects} \tab Returns a list of objects associated with a profile of a given ProfileObjectType\cr
 #'  \link[paws.customer.engagement:customerprofiles_list_profile_object_types]{list_profile_object_types} \tab Lists all of the templates available within the service\cr
 #'  \link[paws.customer.engagement:customerprofiles_list_profile_object_type_templates]{list_profile_object_type_templates} \tab Lists all of the template information for object types\cr
+#'  \link[paws.customer.engagement:customerprofiles_list_rule_based_matches]{list_rule_based_matches} \tab Returns a set of MatchIds that belong to the given domain\cr
 #'  \link[paws.customer.engagement:customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr
 #'  \link[paws.customer.engagement:customerprofiles_list_workflows]{list_workflows} \tab Query to list all workflows\cr
 #'  \link[paws.customer.engagement:customerprofiles_merge_profiles]{merge_profiles} \tab Runs an AWS Lambda job that does the following:\cr
@@ -29870,8 +39028,13 @@ connectwisdomservice <- function(config = list()) {
 #'
 #' @rdname customerprofiles
 #' @export
-customerprofiles <- function(config = list()) {
-  paws.customer.engagement::customerprofiles(config)
+customerprofiles <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::customerprofiles(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Pinpoint
@@ -29883,17 +39046,40 @@ customerprofiles <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -29912,8 +39098,20 @@ customerprofiles <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -30064,8 +39262,13 @@ customerprofiles <- function(config = list()) {
 #'
 #' @rdname pinpoint
 #' @export
-pinpoint <- function(config = list()) {
-  paws.customer.engagement::pinpoint(config)
+pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::pinpoint(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Pinpoint Email Service
@@ -30115,17 +39318,40 @@ pinpoint <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -30144,8 +39370,20 @@ pinpoint <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -30211,8 +39449,13 @@ pinpoint <- function(config = list()) {
 #'
 #' @rdname pinpointemail
 #' @export
-pinpointemail <- function(config = list()) {
-  paws.customer.engagement::pinpointemail(config)
+pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::pinpointemail(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Pinpoint SMS and Voice Service
@@ -30224,17 +39467,40 @@ pinpointemail <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -30253,8 +39519,20 @@ pinpointemail <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -30286,8 +39564,13 @@ pinpointemail <- function(config = list()) {
 #'
 #' @rdname pinpointsmsvoice
 #' @export
-pinpointsmsvoice <- function(config = list()) {
-  paws.customer.engagement::pinpointsmsvoice(config)
+pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::pinpointsmsvoice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Pinpoint SMS Voice V2
@@ -30318,17 +39601,40 @@ pinpointsmsvoice <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -30347,8 +39653,20 @@ pinpointsmsvoice <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -30415,16 +39733,22 @@ pinpointsmsvoice <- function(config = list()) {
 #'
 #' @rdname pinpointsmsvoicev2
 #' @export
-pinpointsmsvoicev2 <- function(config = list()) {
-  paws.customer.engagement::pinpointsmsvoicev2(config)
+pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::pinpointsmsvoicev2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Email Service
 #'
 #' @description
-#' This document contains reference information for the Amazon Simple Email
-#' Service (Amazon SES) API, version 2010-12-01. This document is best used
-#' in conjunction with the [Amazon SES Developer
+#' This document contains reference information for the [Amazon Simple
+#' Email Service](https://aws.amazon.com/ses/) (Amazon SES) API, version
+#' 2010-12-01. This document is best used in conjunction with the [Amazon
+#' SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
 #' 
 #' For a list of Amazon SES endpoints to use in service requests, see
@@ -30437,17 +39761,40 @@ pinpointsmsvoicev2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -30466,8 +39813,20 @@ pinpointsmsvoicev2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -30565,8 +39924,13 @@ pinpointsmsvoicev2 <- function(config = list()) {
 #'
 #' @rdname ses
 #' @export
-ses <- function(config = list()) {
-  paws.customer.engagement::ses(config)
+ses <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::ses(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Simple Email Service
@@ -30587,17 +39951,40 @@ ses <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -30616,8 +40003,20 @@ ses <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -30730,8 +40129,13 @@ ses <- function(config = list()) {
 #'
 #' @rdname sesv2
 #' @export
-sesv2 <- function(config = list()) {
-  paws.customer.engagement::sesv2(config)
+sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::sesv2(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon AppStream
@@ -30765,17 +40169,40 @@ sesv2 <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -30794,21 +40221,34 @@ sesv2 <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
 #' svc <- appstream()
-#' svc$associate_application_fleet(
+#' svc$associate_app_block_builder_app_block(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.end.user.computing:appstream_associate_app_block_builder_app_block]{associate_app_block_builder_app_block} \tab Associates the specified app block builder with the specified app block\cr
 #'  \link[paws.end.user.computing:appstream_associate_application_fleet]{associate_application_fleet} \tab Associates the specified application with the specified fleet\cr
 #'  \link[paws.end.user.computing:appstream_associate_application_to_entitlement]{associate_application_to_entitlement} \tab Associates an application to entitle\cr
 #'  \link[paws.end.user.computing:appstream_associate_fleet]{associate_fleet} \tab Associates the specified fleet with the specified stack\cr
@@ -30816,6 +40256,8 @@ sesv2 <- function(config = list()) {
 #'  \link[paws.end.user.computing:appstream_batch_disassociate_user_stack]{batch_disassociate_user_stack} \tab Disassociates the specified users from the specified stacks\cr
 #'  \link[paws.end.user.computing:appstream_copy_image]{copy_image} \tab Copies the image within the same region or to a new region within the same AWS account\cr
 #'  \link[paws.end.user.computing:appstream_create_app_block]{create_app_block} \tab Creates an app block\cr
+#'  \link[paws.end.user.computing:appstream_create_app_block_builder]{create_app_block_builder} \tab Creates an app block builder\cr
+#'  \link[paws.end.user.computing:appstream_create_app_block_builder_streaming_url]{create_app_block_builder_streaming_url} \tab Creates a URL to start a create app block builder streaming session\cr
 #'  \link[paws.end.user.computing:appstream_create_application]{create_application} \tab Creates an application\cr
 #'  \link[paws.end.user.computing:appstream_create_directory_config]{create_directory_config} \tab Creates a Directory Config object in AppStream 2\cr
 #'  \link[paws.end.user.computing:appstream_create_entitlement]{create_entitlement} \tab Creates a new entitlement\cr
@@ -30828,6 +40270,7 @@ sesv2 <- function(config = list()) {
 #'  \link[paws.end.user.computing:appstream_create_usage_report_subscription]{create_usage_report_subscription} \tab Creates a usage report subscription\cr
 #'  \link[paws.end.user.computing:appstream_create_user]{create_user} \tab Creates a new user in the user pool\cr
 #'  \link[paws.end.user.computing:appstream_delete_app_block]{delete_app_block} \tab Deletes an app block\cr
+#'  \link[paws.end.user.computing:appstream_delete_app_block_builder]{delete_app_block_builder} \tab Deletes an app block builder\cr
 #'  \link[paws.end.user.computing:appstream_delete_application]{delete_application} \tab Deletes an application\cr
 #'  \link[paws.end.user.computing:appstream_delete_directory_config]{delete_directory_config} \tab Deletes the specified Directory Config object from AppStream 2\cr
 #'  \link[paws.end.user.computing:appstream_delete_entitlement]{delete_entitlement} \tab Deletes the specified entitlement\cr
@@ -30838,6 +40281,8 @@ sesv2 <- function(config = list()) {
 #'  \link[paws.end.user.computing:appstream_delete_stack]{delete_stack} \tab Deletes the specified stack\cr
 #'  \link[paws.end.user.computing:appstream_delete_usage_report_subscription]{delete_usage_report_subscription} \tab Disables usage report generation\cr
 #'  \link[paws.end.user.computing:appstream_delete_user]{delete_user} \tab Deletes a user from the user pool\cr
+#'  \link[paws.end.user.computing:appstream_describe_app_block_builder_app_block_associations]{describe_app_block_builder_app_block_associations} \tab Retrieves a list that describes one or more app block builder associations\cr
+#'  \link[paws.end.user.computing:appstream_describe_app_block_builders]{describe_app_block_builders} \tab Retrieves a list that describes one or more app block builders\cr
 #'  \link[paws.end.user.computing:appstream_describe_app_blocks]{describe_app_blocks} \tab Retrieves a list that describes one or more app blocks\cr
 #'  \link[paws.end.user.computing:appstream_describe_application_fleet_associations]{describe_application_fleet_associations} \tab Retrieves a list that describes one or more application fleet associations\cr
 #'  \link[paws.end.user.computing:appstream_describe_applications]{describe_applications} \tab Retrieves a list that describes one or more applications\cr
@@ -30853,6 +40298,7 @@ sesv2 <- function(config = list()) {
 #'  \link[paws.end.user.computing:appstream_describe_users]{describe_users} \tab Retrieves a list that describes one or more specified users in the user pool\cr
 #'  \link[paws.end.user.computing:appstream_describe_user_stack_associations]{describe_user_stack_associations} \tab Retrieves a list that describes the UserStackAssociation objects\cr
 #'  \link[paws.end.user.computing:appstream_disable_user]{disable_user} \tab Disables the specified user in the user pool\cr
+#'  \link[paws.end.user.computing:appstream_disassociate_app_block_builder_app_block]{disassociate_app_block_builder_app_block} \tab Disassociates a specified app block builder from a specified app block\cr
 #'  \link[paws.end.user.computing:appstream_disassociate_application_fleet]{disassociate_application_fleet} \tab Disassociates the specified application from the fleet\cr
 #'  \link[paws.end.user.computing:appstream_disassociate_application_from_entitlement]{disassociate_application_from_entitlement} \tab Deletes the specified application from the specified entitlement\cr
 #'  \link[paws.end.user.computing:appstream_disassociate_fleet]{disassociate_fleet} \tab Disassociates the specified fleet from the specified stack\cr
@@ -30862,12 +40308,15 @@ sesv2 <- function(config = list()) {
 #'  \link[paws.end.user.computing:appstream_list_associated_stacks]{list_associated_stacks} \tab Retrieves the name of the stack with which the specified fleet is associated\cr
 #'  \link[paws.end.user.computing:appstream_list_entitled_applications]{list_entitled_applications} \tab Retrieves a list of entitled applications\cr
 #'  \link[paws.end.user.computing:appstream_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of all tags for the specified AppStream 2\cr
+#'  \link[paws.end.user.computing:appstream_start_app_block_builder]{start_app_block_builder} \tab Starts an app block builder\cr
 #'  \link[paws.end.user.computing:appstream_start_fleet]{start_fleet} \tab Starts the specified fleet\cr
 #'  \link[paws.end.user.computing:appstream_start_image_builder]{start_image_builder} \tab Starts the specified image builder\cr
+#'  \link[paws.end.user.computing:appstream_stop_app_block_builder]{stop_app_block_builder} \tab Stops an app block builder\cr
 #'  \link[paws.end.user.computing:appstream_stop_fleet]{stop_fleet} \tab Stops the specified fleet\cr
 #'  \link[paws.end.user.computing:appstream_stop_image_builder]{stop_image_builder} \tab Stops the specified image builder\cr
 #'  \link[paws.end.user.computing:appstream_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified AppStream 2\cr
 #'  \link[paws.end.user.computing:appstream_untag_resource]{untag_resource} \tab Disassociates one or more specified tags from the specified AppStream 2\cr
+#'  \link[paws.end.user.computing:appstream_update_app_block_builder]{update_app_block_builder} \tab Updates an app block builder\cr
 #'  \link[paws.end.user.computing:appstream_update_application]{update_application} \tab Updates the specified application\cr
 #'  \link[paws.end.user.computing:appstream_update_directory_config]{update_directory_config} \tab Updates the specified Directory Config object in AppStream 2\cr
 #'  \link[paws.end.user.computing:appstream_update_entitlement]{update_entitlement} \tab Updates the specified entitlement\cr
@@ -30884,8 +40333,13 @@ sesv2 <- function(config = list()) {
 #'
 #' @rdname appstream
 #' @export
-appstream <- function(config = list()) {
-  paws.end.user.computing::appstream(config)
+appstream <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::appstream(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon Interactive Video Service Chat
@@ -31083,17 +40537,40 @@ appstream <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31112,8 +40589,20 @@ appstream <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31154,8 +40643,13 @@ appstream <- function(config = list()) {
 #'
 #' @rdname ivschat
 #' @export
-ivschat <- function(config = list()) {
-  paws.end.user.computing::ivschat(config)
+ivschat <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::ivschat(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' AmazonNimbleStudio
@@ -31173,17 +40667,40 @@ ivschat <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31202,8 +40719,20 @@ ivschat <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31276,8 +40805,13 @@ ivschat <- function(config = list()) {
 #'
 #' @rdname nimblestudio
 #' @export
-nimblestudio <- function(config = list()) {
-  paws.end.user.computing::nimblestudio(config)
+nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::nimblestudio(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon WorkDocs
@@ -31335,17 +40869,40 @@ nimblestudio <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31364,8 +40921,20 @@ nimblestudio <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31433,8 +41002,13 @@ nimblestudio <- function(config = list()) {
 #'
 #' @rdname workdocs
 #' @export
-workdocs <- function(config = list()) {
-  paws.end.user.computing::workdocs(config)
+workdocs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::workdocs(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon WorkLink
@@ -31454,17 +41028,40 @@ workdocs <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31483,8 +41080,20 @@ workdocs <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31541,8 +41150,13 @@ workdocs <- function(config = list()) {
 #'
 #' @rdname worklink
 #' @export
-worklink <- function(config = list()) {
-  paws.end.user.computing::worklink(config)
+worklink <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::worklink(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon WorkMail
@@ -31585,17 +41199,40 @@ worklink <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31614,8 +41251,20 @@ worklink <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31719,8 +41368,13 @@ worklink <- function(config = list()) {
 #'
 #' @rdname workmail
 #' @export
-workmail <- function(config = list()) {
-  paws.end.user.computing::workmail(config)
+workmail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::workmail(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon WorkMail Message Flow
@@ -31733,17 +41387,40 @@ workmail <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31762,8 +41439,20 @@ workmail <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31789,8 +41478,13 @@ workmail <- function(config = list()) {
 #'
 #' @rdname workmailmessageflow
 #' @export
-workmailmessageflow <- function(config = list()) {
-  paws.end.user.computing::workmailmessageflow(config)
+workmailmessageflow <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::workmailmessageflow(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon WorkSpaces
@@ -31829,17 +41523,40 @@ workmailmessageflow <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31858,8 +41575,20 @@ workmailmessageflow <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -31948,8 +41677,13 @@ workmailmessageflow <- function(config = list()) {
 #'
 #' @rdname workspaces
 #' @export
-workspaces <- function(config = list()) {
-  paws.end.user.computing::workspaces(config)
+workspaces <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::workspaces(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }
 
 #' Amazon WorkSpaces Web
@@ -31968,17 +41702,40 @@ workspaces <- function(config = list()) {
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
 #' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
 #' \item{\strong{access_key_id}:} {AWS access key ID}
 #' \item{\strong{secret_access_key}:} {AWS secret access key}
 #' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 #' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
 #'
 #' @section Service syntax:
 #' ```
@@ -31997,8 +41754,20 @@ workspaces <- function(config = list()) {
 #'     region = "string",
 #'     close_connection = "logical",
 #'     timeout = "numeric",
-#'     s3_force_path_style = "logical"
-#'   )
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
 #' )
 #' ```
 #'
@@ -32080,6 +41849,11 @@ workspaces <- function(config = list()) {
 #'
 #' @rdname workspacesweb
 #' @export
-workspacesweb <- function(config = list()) {
-  paws.end.user.computing::workspacesweb(config)
+workspacesweb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.end.user.computing::workspacesweb(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
 }

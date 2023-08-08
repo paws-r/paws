@@ -18,15 +18,15 @@ cloudwatchlogs_start_query(
 \item{logGroupName}{The log group on which to perform the query.
 
 A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
-exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}
-or \code{logGroupIdentifiers}.}
+exactly one of the following parameters: \code{logGroupName},
+\code{logGroupNames}, or \code{logGroupIdentifiers}.}
 
 \item{logGroupNames}{The list of log groups to be queried. You can include up to 50 log
 groups.
 
 A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
-exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}
-or \code{logGroupIdentifiers}.}
+exactly one of the following parameters: \code{logGroupName},
+\code{logGroupNames}, or \code{logGroupIdentifiers}.}
 
 \item{logGroupIdentifiers}{The list of log groups to query. You can include up to 50 log groups.
 
@@ -38,8 +38,8 @@ definition must also be defined in the monitoring account.
 If you specify an ARN, the ARN can't end with an asterisk (*).
 
 A \code{\link[=cloudwatchlogs_start_query]{start_query}} operation must include
-exactly one of the following parameters: \code{logGroupName}, \code{logGroupNames}
-or \code{logGroupIdentifiers}.}
+exactly one of the following parameters: \code{logGroupName},
+\code{logGroupNames}, or \code{logGroupIdentifiers}.}
 
 \item{startTime}{[required] The beginning of the time range to query. The range is inclusive, so the
 specified start time is included in the query. Specified as epoch time,

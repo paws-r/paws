@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_import_instance}
 \alias{ec2_import_instance}
-\title{Creates an import instance task using metadata from the specified disk
-image}
+\title{We recommend that you use the ImportImage API}
 \usage{
 ec2_import_instance(
   Description = NULL,
@@ -28,7 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Platform}{[required] The instance operating system.}
 }
 \description{
-Creates an import instance task using metadata from the specified disk image.
+We recommend that you use the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html}{\code{import_image}} API. For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html}{Importing a VM as an image using VM Import/Export} in the \emph{VM Import/Export User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_import_instance/} for full documentation.
 }

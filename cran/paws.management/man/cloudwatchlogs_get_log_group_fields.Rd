@@ -17,9 +17,9 @@ cloudwatchlogs_get_log_group_fields(
 You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
 both.}
 
-\item{time}{The time to set as the center of the query. If you specify \code{time}, the
-15 minutes before this time are queries. If you omit \code{time}, the 8
-minutes before and 8 minutes after this time are searched.
+\item{time}{The time to set as the center of the query. If you specify \code{time}, the 8
+minutes before and 8 minutes after this time are searched. If you omit
+\code{time}, the most recent 15 minutes up to the current time are searched.
 
 The \code{time} value is specified as epoch time, which is the number of
 seconds since \verb{January 1, 1970, 00:00:00 UTC}.}

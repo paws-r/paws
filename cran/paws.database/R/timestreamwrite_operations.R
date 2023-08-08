@@ -312,7 +312,7 @@ timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults =
     name = "ListBatchLoadTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_batch_load_tasks_input(NextToken = NextToken, MaxResults = MaxResults, TaskStatus = TaskStatus)
   output <- .timestreamwrite$list_batch_load_tasks_output()
@@ -346,7 +346,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_databases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_databases_output()
@@ -382,7 +382,7 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_tables_input(DatabaseName = DatabaseName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_tables_output()

@@ -397,7 +397,7 @@ route53recoveryreadiness_get_cell_readiness_summary <- function(CellName, MaxRes
     name = "GetCellReadinessSummary",
     http_method = "GET",
     http_path = "/cellreadiness/{cellName}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness"))
   )
   input <- .route53recoveryreadiness$get_cell_readiness_summary_input(CellName = CellName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$get_cell_readiness_summary_output()
@@ -460,7 +460,7 @@ route53recoveryreadiness_get_readiness_check_resource_status <- function(MaxResu
     name = "GetReadinessCheckResourceStatus",
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}/resource/{resourceIdentifier}/status",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules", non_aggregate_keys = list("Readiness"))
   )
   input <- .route53recoveryreadiness$get_readiness_check_resource_status_input(MaxResults = MaxResults, NextToken = NextToken, ReadinessCheckName = ReadinessCheckName, ResourceIdentifier = ResourceIdentifier)
   output <- .route53recoveryreadiness$get_readiness_check_resource_status_output()
@@ -491,7 +491,7 @@ route53recoveryreadiness_get_readiness_check_status <- function(MaxResults = NUL
     name = "GetReadinessCheckStatus",
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}/status",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources", non_aggregate_keys = list("Readiness", "Messages"))
   )
   input <- .route53recoveryreadiness$get_readiness_check_status_input(MaxResults = MaxResults, NextToken = NextToken, ReadinessCheckName = ReadinessCheckName)
   output <- .route53recoveryreadiness$get_readiness_check_status_output()
@@ -553,7 +553,7 @@ route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxRes
     name = "GetRecoveryGroupReadinessSummary",
     http_method = "GET",
     http_path = "/recoverygroupreadiness/{recoveryGroupName}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness"))
   )
   input <- .route53recoveryreadiness$get_recovery_group_readiness_summary_input(MaxResults = MaxResults, NextToken = NextToken, RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$get_recovery_group_readiness_summary_output()
@@ -613,7 +613,7 @@ route53recoveryreadiness_list_cells <- function(MaxResults = NULL, NextToken = N
     name = "ListCells",
     http_method = "GET",
     http_path = "/cells",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Cells")
   )
   input <- .route53recoveryreadiness$list_cells_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_cells_output()
@@ -644,7 +644,7 @@ route53recoveryreadiness_list_cross_account_authorizations <- function(MaxResult
     name = "ListCrossAccountAuthorizations",
     http_method = "GET",
     http_path = "/crossaccountauthorizations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAuthorizations")
   )
   input <- .route53recoveryreadiness$list_cross_account_authorizations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_cross_account_authorizations_output()
@@ -674,7 +674,7 @@ route53recoveryreadiness_list_readiness_checks <- function(MaxResults = NULL, Ne
     name = "ListReadinessChecks",
     http_method = "GET",
     http_path = "/readinesschecks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks")
   )
   input <- .route53recoveryreadiness$list_readiness_checks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_readiness_checks_output()
@@ -704,7 +704,7 @@ route53recoveryreadiness_list_recovery_groups <- function(MaxResults = NULL, Nex
     name = "ListRecoveryGroups",
     http_method = "GET",
     http_path = "/recoverygroups",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryGroups")
   )
   input <- .route53recoveryreadiness$list_recovery_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_recovery_groups_output()
@@ -734,7 +734,7 @@ route53recoveryreadiness_list_resource_sets <- function(MaxResults = NULL, NextT
     name = "ListResourceSets",
     http_method = "GET",
     http_path = "/resourcesets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceSets")
   )
   input <- .route53recoveryreadiness$list_resource_sets_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_resource_sets_output()
@@ -766,7 +766,7 @@ route53recoveryreadiness_list_rules <- function(MaxResults = NULL, NextToken = N
     name = "ListRules",
     http_method = "GET",
     http_path = "/rules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules")
   )
   input <- .route53recoveryreadiness$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType)
   output <- .route53recoveryreadiness$list_rules_output()

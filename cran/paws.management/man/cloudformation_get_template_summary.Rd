@@ -9,7 +9,8 @@ cloudformation_get_template_summary(
   TemplateURL = NULL,
   StackName = NULL,
   StackSetName = NULL,
-  CallAs = NULL
+  CallAs = NULL,
+  TemplateSummaryConfig = NULL
 )
 }
 \arguments{
@@ -59,6 +60,10 @@ administrator in the management account. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
 in the \emph{CloudFormation User Guide}.
 }}
+
+\item{TemplateSummaryConfig}{Specifies options for the
+\code{\link[=cloudformation_get_template_summary]{get_template_summary}} API
+action.}
 }
 \description{
 Returns information about a new or existing template. The \code{\link[=cloudformation_get_template_summary]{get_template_summary}} action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack or stack set.

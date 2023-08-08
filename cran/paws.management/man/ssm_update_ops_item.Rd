@@ -51,7 +51,7 @@ Use the \verb{/aws/resources} key in OperationalData to specify a related
 resource in the request. Use the \verb{/aws/automations} key in
 OperationalData to associate an Automation runbook with the OpsItem. To
 view Amazon Web Services CLI example commands that use these keys, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems}{Creating OpsItems manually}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html}{Creating OpsItems manually}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{OperationalDataToDelete}{Keys that you want to remove from the OperationalData map.}
@@ -68,7 +68,7 @@ similar error messages, impacted resources, or statuses for the impacted
 resource.}
 
 \item{Status}{The OpsItem status. Status can be \code{Open}, \verb{In Progress}, or \code{Resolved}.
-For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html#OpsCenter-working-with-OpsItems-editing-details}{Editing OpsItem details}
+For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html}{Editing OpsItem details}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{OpsItemId}{[required] The ID of the OpsItem.}
@@ -95,7 +95,7 @@ Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 \item{OpsItemArn}{The OpsItem Amazon Resource Name (ARN).}
 }
 \description{
-Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html}{Set up OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_update_ops_item/} for full documentation.
 }

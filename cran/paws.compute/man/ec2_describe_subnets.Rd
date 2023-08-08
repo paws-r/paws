@@ -13,7 +13,7 @@ ec2_describe_subnets(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone for the subnet. You can
 also use \code{availabilityZone} as the filter name.
@@ -80,7 +80,7 @@ regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the subnet.
 }}
 
-\item{SubnetIds}{One or more subnet IDs.
+\item{SubnetIds}{The IDs of the subnets.
 
 Default: Describes all your subnets.}
 

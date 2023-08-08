@@ -4,22 +4,47 @@
 \alias{inspector2}
 \title{Inspector2}
 \usage{
-inspector2(config = list())
+inspector2(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -50,8 +75,20 @@ and Amazon ECR environments.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -61,12 +98,15 @@ and Amazon ECR environments.
 \tabular{ll}{
 \link[=inspector2_associate_member]{associate_member} \tab Associates an Amazon Web Services account with an Amazon Inspector delegated administrator\cr
 \link[=inspector2_batch_get_account_status]{batch_get_account_status} \tab Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment\cr
+\link[=inspector2_batch_get_code_snippet]{batch_get_code_snippet} \tab Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in\cr
 \link[=inspector2_batch_get_free_trial_info]{batch_get_free_trial_info} \tab Gets free trial status for multiple Amazon Web Services accounts\cr
 \link[=inspector2_batch_get_member_ec_2_deep_inspection_status]{batch_get_member_ec_2_deep_inspection_status} \tab Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization\cr
 \link[=inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status} \tab Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization\cr
 \link[=inspector2_cancel_findings_report]{cancel_findings_report} \tab Cancels the given findings report\cr
+\link[=inspector2_cancel_sbom_export]{cancel_sbom_export} \tab Cancels a software bill of materials (SBOM) report\cr
 \link[=inspector2_create_filter]{create_filter} \tab Creates a filter resource using specified filter criteria\cr
 \link[=inspector2_create_findings_report]{create_findings_report} \tab Creates a finding report\cr
+\link[=inspector2_create_sbom_export]{create_sbom_export} \tab Creates a software bill of materials (SBOM) report\cr
 \link[=inspector2_delete_filter]{delete_filter} \tab Deletes a filter resource\cr
 \link[=inspector2_describe_organization_configuration]{describe_organization_configuration} \tab Describe Amazon Inspector configuration settings for an Amazon Web Services organization\cr
 \link[=inspector2_disable]{disable} \tab Disables Amazon Inspector scans for one or more Amazon Web Services accounts\cr
@@ -77,8 +117,10 @@ and Amazon ECR environments.
 \link[=inspector2_get_configuration]{get_configuration} \tab Retrieves setting configurations for Inspector scans\cr
 \link[=inspector2_get_delegated_admin_account]{get_delegated_admin_account} \tab Retrieves information about the Amazon Inspector delegated administrator for your organization\cr
 \link[=inspector2_get_ec_2_deep_inspection_configuration]{get_ec_2_deep_inspection_configuration} \tab Retrieves the activation status of Amazon Inspector deep inspection and custom paths associated with your account\cr
+\link[=inspector2_get_encryption_key]{get_encryption_key} \tab Gets an encryption key\cr
 \link[=inspector2_get_findings_report_status]{get_findings_report_status} \tab Gets the status of a findings report\cr
 \link[=inspector2_get_member]{get_member} \tab Gets member information for your organization\cr
+\link[=inspector2_get_sbom_export]{get_sbom_export} \tab Gets details of a software bill of materials (SBOM) report\cr
 \link[=inspector2_list_account_permissions]{list_account_permissions} \tab Lists the permissions an account has to configure Amazon Inspector\cr
 \link[=inspector2_list_coverage]{list_coverage} \tab Lists coverage details for you environment\cr
 \link[=inspector2_list_coverage_statistics]{list_coverage_statistics} \tab Lists Amazon Inspector coverage statistics for your environment\cr
@@ -89,11 +131,13 @@ and Amazon ECR environments.
 \link[=inspector2_list_members]{list_members} \tab List members associated with the Amazon Inspector delegated administrator for your organization\cr
 \link[=inspector2_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags attached to a given resource\cr
 \link[=inspector2_list_usage_totals]{list_usage_totals} \tab Lists the Amazon Inspector usage totals over the last 30 days\cr
+\link[=inspector2_reset_encryption_key]{reset_encryption_key} \tab Resets an encryption key\cr
 \link[=inspector2_search_vulnerabilities]{search_vulnerabilities} \tab Lists Amazon Inspector coverage details for a specific vulnerability\cr
 \link[=inspector2_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 \link[=inspector2_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 \link[=inspector2_update_configuration]{update_configuration} \tab Updates setting configurations for your Amazon Inspector account\cr
 \link[=inspector2_update_ec_2_deep_inspection_configuration]{update_ec_2_deep_inspection_configuration} \tab Activates, deactivates Amazon Inspector deep inspection, or updates custom paths for your account\cr
+\link[=inspector2_update_encryption_key]{update_encryption_key} \tab Updates an encryption key\cr
 \link[=inspector2_update_filter]{update_filter} \tab Specifies the action that is to be applied to the findings that match the filter\cr
 \link[=inspector2_update_organization_configuration]{update_organization_configuration} \tab Updates the configurations for your Amazon Inspector organization\cr
 \link[=inspector2_update_org_ec_2_deep_inspection_configuration]{update_org_ec_2_deep_inspection_configuration} \tab Updates the Amazon Inspector deep inspection custom paths for your organization

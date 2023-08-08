@@ -48,7 +48,8 @@ the Resolver rule that contains the most specific domain name
 (www.example.com).}
 
 \item{TargetIps}{The IPs that you want Resolver to forward DNS queries to. You can
-specify only IPv4 addresses. Separate IP addresses with a space.
+specify either Ipv4 or Ipv6 addresses but not both in the same rule.
+Separate IP addresses with a space.
 
 \code{TargetIps} is available only when the value of \verb{Rule type} is
 \code{FORWARD}.}

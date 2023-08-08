@@ -481,7 +481,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     name = "ListSecretVersionIds",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
   output <- .secretsmanager$list_secret_version_ids_output()
@@ -523,7 +523,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     name = "ListSecrets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
@@ -980,7 +980,9 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
 #' encrypt new secret versions as well as any existing versions with the
-#' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
+#' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. If you
+#' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
+#' not re-ecrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
 #' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
 #' 

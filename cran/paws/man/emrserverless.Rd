@@ -4,22 +4,47 @@
 \alias{emrserverless}
 \title{EMR Serverless}
 \usage{
-emrserverless(config = list())
+emrserverless(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -28,11 +53,11 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon EMR Serverless is a new deployment option for Amazon EMR. EMR
-Serverless provides a serverless runtime environment that simplifies
+Amazon EMR Serverless is a new deployment option for Amazon EMR. Amazon
+EMR Serverless provides a serverless runtime environment that simplifies
 running analytics applications using the latest open source frameworks
-such as Apache Spark and Apache Hive. With EMR Serverless, you don’t
-have to configure, optimize, secure, or operate clusters to run
+such as Apache Spark and Apache Hive. With Amazon EMR Serverless, you
+don’t have to configure, optimize, secure, or operate clusters to run
 applications with these frameworks.
 
 The API reference to Amazon EMR Serverless is \code{emr-serverless}. The
@@ -65,8 +90,20 @@ For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -78,7 +115,7 @@ For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
 \link[paws.compute:emrserverless_create_application]{create_application} \tab Creates an application\cr
 \link[paws.compute:emrserverless_delete_application]{delete_application} \tab Deletes an application\cr
 \link[paws.compute:emrserverless_get_application]{get_application} \tab Displays detailed information about a specified application\cr
-\link[paws.compute:emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Returns a URL to access the job run dashboard\cr
+\link[paws.compute:emrserverless_get_dashboard_for_job_run]{get_dashboard_for_job_run} \tab Creates and returns a URL that you can use to access the application UIs for a job run\cr
 \link[paws.compute:emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
 \link[paws.compute:emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
 \link[paws.compute:emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr

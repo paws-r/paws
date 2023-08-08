@@ -1233,7 +1233,7 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
     name = "ListAccountAssignmentCreationStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsCreationStatus")
   )
   input <- .ssoadmin$list_account_assignment_creation_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_creation_status_output()
@@ -1303,7 +1303,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
     name = "ListAccountAssignmentDeletionStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsDeletionStatus")
   )
   input <- .ssoadmin$list_account_assignment_deletion_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_deletion_status_output()
@@ -1372,7 +1372,7 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
     name = "ListAccountAssignments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignments")
   )
   input <- .ssoadmin$list_account_assignments_input(InstanceArn = InstanceArn, AccountId = AccountId, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_account_assignments_output()
@@ -1437,7 +1437,7 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
     name = "ListAccountsForProvisionedPermissionSet",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountIds")
   )
   input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_accounts_for_provisioned_permission_set_output()
@@ -1501,7 +1501,7 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
     name = "ListCustomerManagedPolicyReferencesInPermissionSet",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomerManagedPolicyReferences")
   )
   input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_output()
@@ -1557,7 +1557,7 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
   )
   input <- .ssoadmin$list_instances_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_instances_output()
@@ -1622,7 +1622,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
     name = "ListManagedPoliciesInPermissionSet",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttachedManagedPolicies")
   )
   input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_managed_policies_in_permission_set_output()
@@ -1692,7 +1692,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
     name = "ListPermissionSetProvisioningStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSetsProvisioningStatus")
   )
   input <- .ssoadmin$list_permission_set_provisioning_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_permission_set_provisioning_status_output()
@@ -1749,7 +1749,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
     name = "ListPermissionSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets")
   )
   input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_permission_sets_output()
@@ -1813,7 +1813,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
     name = "ListPermissionSetsProvisionedToAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets")
   )
   input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(InstanceArn = InstanceArn, AccountId = AccountId, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_permission_sets_provisioned_to_account_output()
@@ -1873,7 +1873,7 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .ssoadmin$list_tags_for_resource_output()

@@ -613,7 +613,7 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
     name = "DescribeCodeCoverages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "codeCoverages")
   )
   input <- .codebuild$describe_code_coverages_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy, minLineCoveragePercentage = minLineCoveragePercentage, maxLineCoveragePercentage = maxLineCoveragePercentage)
   output <- .codebuild$describe_code_coverages_output()
@@ -653,7 +653,7 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
     name = "DescribeTestCases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "testCases")
   )
   input <- .codebuild$describe_test_cases_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$describe_test_cases_output()
@@ -871,7 +871,7 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
     name = "ListBuildBatches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_build_batches_input(filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_output()
@@ -913,7 +913,7 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
     name = "ListBuildBatchesForProject",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_build_batches_for_project_input(projectName = projectName, filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_for_project_output()
@@ -952,7 +952,7 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
     name = "ListBuilds",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_builds_input(sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_output()
@@ -1002,7 +1002,7 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
     name = "ListBuildsForProject",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_builds_for_project_input(projectName = projectName, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_for_project_output()
@@ -1084,7 +1084,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
     name = "ListProjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "projects")
   )
   input <- .codebuild$list_projects_input(sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_projects_output()
@@ -1134,7 +1134,7 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
     name = "ListReportGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups")
   )
   input <- .codebuild$list_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_report_groups_output()
@@ -1182,7 +1182,7 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
     name = "ListReports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports")
   )
   input <- .codebuild$list_reports_input(sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_output()
@@ -1224,7 +1224,7 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
     name = "ListReportsForReportGroup",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports")
   )
   input <- .codebuild$list_reports_for_report_group_input(reportGroupArn = reportGroupArn, nextToken = nextToken, sortOrder = sortOrder, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_for_report_group_output()
@@ -1275,7 +1275,7 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
     name = "ListSharedProjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "projects")
   )
   input <- .codebuild$list_shared_projects_input(sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .codebuild$list_shared_projects_output()
@@ -1326,7 +1326,7 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
     name = "ListSharedReportGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups")
   )
   input <- .codebuild$list_shared_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_shared_report_groups_output()

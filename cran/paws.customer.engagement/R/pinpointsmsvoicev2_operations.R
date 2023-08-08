@@ -542,7 +542,7 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
     name = "DescribeAccountAttributes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAttributes")
   )
   input <- .pinpointsmsvoicev2$describe_account_attributes_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_account_attributes_output()
@@ -574,7 +574,7 @@ pinpointsmsvoicev2_describe_account_limits <- function(NextToken = NULL, MaxResu
     name = "DescribeAccountLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountLimits")
   )
   input <- .pinpointsmsvoicev2$describe_account_limits_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_account_limits_output()
@@ -608,7 +608,7 @@ pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames
     name = "DescribeConfigurationSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationSets")
   )
   input <- .pinpointsmsvoicev2$describe_configuration_sets_input(ConfigurationSetNames = ConfigurationSetNames, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_configuration_sets_output()
@@ -648,7 +648,7 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
     name = "DescribeKeywords",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keywords")
   )
   input <- .pinpointsmsvoicev2$describe_keywords_input(OriginationIdentity = OriginationIdentity, Keywords = Keywords, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_keywords_output()
@@ -682,7 +682,7 @@ pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, Ne
     name = "DescribeOptOutLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptOutLists")
   )
   input <- .pinpointsmsvoicev2$describe_opt_out_lists_input(OptOutListNames = OptOutListNames, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_opt_out_lists_output()
@@ -719,7 +719,7 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
     name = "DescribeOptedOutNumbers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptedOutNumbers")
   )
   input <- .pinpointsmsvoicev2$describe_opted_out_numbers_input(OptOutListName = OptOutListName, OptedOutNumbers = OptedOutNumbers, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_opted_out_numbers_output()
@@ -755,7 +755,7 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
     name = "DescribePhoneNumbers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PhoneNumbers")
   )
   input <- .pinpointsmsvoicev2$describe_phone_numbers_input(PhoneNumberIds = PhoneNumberIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_phone_numbers_output()
@@ -790,7 +790,7 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
     name = "DescribePools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Pools")
   )
   input <- .pinpointsmsvoicev2$describe_pools_input(PoolIds = PoolIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_pools_output()
@@ -824,7 +824,7 @@ pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = N
     name = "DescribeSenderIds",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SenderIds")
   )
   input <- .pinpointsmsvoicev2$describe_sender_ids_input(SenderIds = SenderIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_sender_ids_output()
@@ -856,7 +856,7 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
     name = "DescribeSpendLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SpendLimits")
   )
   input <- .pinpointsmsvoicev2$describe_spend_limits_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_spend_limits_output()
@@ -932,7 +932,7 @@ pinpointsmsvoicev2_list_pool_origination_identities <- function(PoolId, Filters 
     name = "ListPoolOriginationIdentities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OriginationIdentities")
   )
   input <- .pinpointsmsvoicev2$list_pool_origination_identities_input(PoolId = PoolId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$list_pool_origination_identities_output()

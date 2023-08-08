@@ -279,7 +279,7 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
 #' currently supported, but will be implemented in a future update.
 #' @param Name &#91;required&#93; The billing group name. The names must be unique.
 #' @param AccountGrouping &#91;required&#93; The set of accounts that will be under the billing group. The set of
-#' accounts resemble the linked accounts in a consolidated family.
+#' accounts resemble the linked accounts in a consolidated billing family.
 #' @param ComputationPreference &#91;required&#93; The preferences and settings that will be used to compute the Amazon Web
 #' Services charges for a billing group.
 #' @param PrimaryAccountId The account ID that serves as the main account in a billing group.
@@ -303,7 +303,8 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
 #'   AccountGrouping = list(
 #'     LinkedAccountIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     AutoAssociate = TRUE|FALSE
 #'   ),
 #'   ComputationPreference = list(
 #'     PricingPlanArn = "string"
@@ -963,7 +964,7 @@ billingconductor_list_account_associations <- function(BillingPeriod = NULL, Fil
     name = "ListAccountAssociations",
     http_method = "POST",
     http_path = "/list-account-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "LinkedAccounts")
   )
   input <- .billingconductor$list_account_associations_input(BillingPeriod = BillingPeriod, Filters = Filters, NextToken = NextToken)
   output <- .billingconductor$list_account_associations_output()
@@ -1036,7 +1037,7 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
     name = "ListBillingGroupCostReports",
     http_method = "POST",
     http_path = "/list-billing-group-cost-reports",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BillingGroupCostReports")
   )
   input <- .billingconductor$list_billing_group_cost_reports_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_billing_group_cost_reports_output()
@@ -1084,7 +1085,10 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
 #'       CreationTime = 123,
 #'       LastModifiedTime = 123,
 #'       Status = "ACTIVE"|"PRIMARY_ACCOUNT_MISSING",
-#'       StatusReason = "string"
+#'       StatusReason = "string",
+#'       AccountGrouping = list(
+#'         AutoAssociate = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1104,7 +1108,8 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
 #'     PricingPlan = "string",
 #'     Statuses = list(
 #'       "ACTIVE"|"PRIMARY_ACCOUNT_MISSING"
-#'     )
+#'     ),
+#'     AutoAssociate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1119,7 +1124,7 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
     name = "ListBillingGroups",
     http_method = "POST",
     http_path = "/list-billing-groups",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BillingGroups")
   )
   input <- .billingconductor$list_billing_groups_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_billing_groups_output()
@@ -1205,7 +1210,7 @@ billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NU
     name = "ListCustomLineItemVersions",
     http_method = "POST",
     http_path = "/list-custom-line-item-versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomLineItemVersions")
   )
   input <- .billingconductor$list_custom_line_item_versions_input(Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_custom_line_item_versions_output()
@@ -1297,7 +1302,7 @@ billingconductor_list_custom_line_items <- function(BillingPeriod = NULL, MaxRes
     name = "ListCustomLineItems",
     http_method = "POST",
     http_path = "/list-custom-line-items",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomLineItems")
   )
   input <- .billingconductor$list_custom_line_items_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_custom_line_items_output()
@@ -1369,7 +1374,7 @@ billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = 
     name = "ListPricingPlans",
     http_method = "POST",
     http_path = "/list-pricing-plans",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod"), output_token = "NextToken", result_key = "PricingPlans")
   )
   input <- .billingconductor$list_pricing_plans_input(BillingPeriod = BillingPeriod, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_plans_output()
@@ -1429,7 +1434,7 @@ billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(Bil
     name = "ListPricingPlansAssociatedWithPricingRule",
     http_method = "POST",
     http_path = "/list-pricing-plans-associated-with-pricing-rule",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod", "PricingRuleArn"), output_token = "NextToken", result_key = "PricingPlanArns")
   )
   input <- .billingconductor$list_pricing_plans_associated_with_pricing_rule_input(BillingPeriod = BillingPeriod, PricingRuleArn = PricingRuleArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_plans_associated_with_pricing_rule_output()
@@ -1514,7 +1519,7 @@ billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = 
     name = "ListPricingRules",
     http_method = "POST",
     http_path = "/list-pricing-rules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod"), output_token = "NextToken", result_key = "PricingRules")
   )
   input <- .billingconductor$list_pricing_rules_input(BillingPeriod = BillingPeriod, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_rules_output()
@@ -1575,7 +1580,7 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
     name = "ListPricingRulesAssociatedToPricingPlan",
     http_method = "POST",
     http_path = "/list-pricing-rules-associated-to-pricing-plan",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod", "PricingPlanArn"), output_token = "NextToken", result_key = "PricingRuleArns")
   )
   input <- .billingconductor$list_pricing_rules_associated_to_pricing_plan_input(BillingPeriod = BillingPeriod, PricingPlanArn = PricingPlanArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_rules_associated_to_pricing_plan_output()
@@ -1643,7 +1648,7 @@ billingconductor_list_resources_associated_to_custom_line_item <- function(Billi
     name = "ListResourcesAssociatedToCustomLineItem",
     http_method = "POST",
     http_path = "/list-resources-associated-to-custom-line-item",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "Arn"), output_token = "NextToken", result_key = "AssociatedResources")
   )
   input <- .billingconductor$list_resources_associated_to_custom_line_item_input(BillingPeriod = BillingPeriod, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_resources_associated_to_custom_line_item_output()
@@ -1807,7 +1812,7 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @usage
 #' billingconductor_update_billing_group(Arn, Name, Status,
-#'   ComputationPreference, Description)
+#'   ComputationPreference, Description, AccountGrouping)
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the billing group being updated.
 #' @param Name The name of the billing group. The names must be unique to each billing
@@ -1817,6 +1822,8 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param ComputationPreference The preferences and settings that will be used to compute the Amazon Web
 #' Services charges for a billing group.
 #' @param Description A description of the billing group.
+#' @param AccountGrouping Specifies if the billing group has automatic account association
+#' (`AutoAssociate`) enabled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1830,7 +1837,10 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Size = 123,
 #'   LastModifiedTime = 123,
 #'   Status = "ACTIVE"|"PRIMARY_ACCOUNT_MISSING",
-#'   StatusReason = "string"
+#'   StatusReason = "string",
+#'   AccountGrouping = list(
+#'     AutoAssociate = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -1843,7 +1853,10 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #'   ComputationPreference = list(
 #'     PricingPlanArn = "string"
 #'   ),
-#'   Description = "string"
+#'   Description = "string",
+#'   AccountGrouping = list(
+#'     AutoAssociate = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -1852,14 +1865,14 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname billingconductor_update_billing_group
 #'
 #' @aliases billingconductor_update_billing_group
-billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NULL, ComputationPreference = NULL, Description = NULL) {
+billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NULL, ComputationPreference = NULL, Description = NULL, AccountGrouping = NULL) {
   op <- new_operation(
     name = "UpdateBillingGroup",
     http_method = "POST",
     http_path = "/update-billing-group",
     paginator = list()
   )
-  input <- .billingconductor$update_billing_group_input(Arn = Arn, Name = Name, Status = Status, ComputationPreference = ComputationPreference, Description = Description)
+  input <- .billingconductor$update_billing_group_input(Arn = Arn, Name = Name, Status = Status, ComputationPreference = ComputationPreference, Description = Description, AccountGrouping = AccountGrouping)
   output <- .billingconductor$update_billing_group_output()
   config <- get_config()
   svc <- .billingconductor$service(config)

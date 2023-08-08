@@ -2288,7 +2288,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
     name = "DescribePortfolioShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$describe_portfolio_shares_input(PortfolioId = PortfolioId, Type = Type, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_portfolio_shares_output()
@@ -4046,7 +4046,7 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
     name = "GetProvisionedProductOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$get_provisioned_product_outputs_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductName = ProvisionedProductName, OutputKeys = OutputKeys, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$get_provisioned_product_outputs_output()
@@ -4254,7 +4254,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
     name = "ListAcceptedPortfolioShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_accepted_portfolio_shares_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$list_accepted_portfolio_shares_output()
@@ -4318,7 +4318,7 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
     name = "ListBudgetsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_budgets_for_resource_input(AcceptLanguage = AcceptLanguage, ResourceId = ResourceId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_budgets_for_resource_output()
@@ -4389,7 +4389,7 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
     name = "ListConstraintsForPortfolio",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_constraints_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_constraints_for_portfolio_output()
@@ -4476,7 +4476,7 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
     name = "ListLaunchPaths",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_launch_paths_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_launch_paths_output()
@@ -4556,7 +4556,7 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
     name = "ListOrganizationPortfolioAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_organization_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationNodeType = OrganizationNodeType, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_organization_portfolio_access_output()
@@ -4626,7 +4626,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
     name = "ListPortfolioAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationParentId = OrganizationParentId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolio_access_output()
@@ -4694,7 +4694,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
     name = "ListPortfolios",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_output()
@@ -4765,7 +4765,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
     name = "ListPortfoliosForProduct",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_for_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_for_product_output()
@@ -4832,7 +4832,7 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
     name = "ListPrincipalsForPortfolio",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_principals_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_principals_for_portfolio_output()
@@ -5064,7 +5064,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
     name = "ListProvisioningArtifactsForServiceAction",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_provisioning_artifacts_for_service_action_input(ServiceActionId = ServiceActionId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_provisioning_artifacts_for_service_action_output()
@@ -5233,7 +5233,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
     name = "ListResourcesForTagOption",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_resources_for_tag_option_input(TagOptionId = TagOptionId, ResourceType = ResourceType, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_resources_for_tag_option_output()
@@ -5297,7 +5297,7 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
     name = "ListServiceActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_input(AcceptLanguage = AcceptLanguage, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_service_actions_output()
@@ -5369,7 +5369,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
     name = "ListServiceActionsForProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_for_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_service_actions_for_provisioning_artifact_output()
@@ -5505,7 +5505,7 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
     name = "ListTagOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_tag_options_input(Filters = Filters, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_tag_options_output()
@@ -6087,7 +6087,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
     name = "SearchProducts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_input(AcceptLanguage = AcceptLanguage, Filters = Filters, PageSize = PageSize, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken)
   output <- .servicecatalog$search_products_output()
@@ -6205,7 +6205,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
     name = "SearchProductsAsAdmin",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_as_admin_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken, PageSize = PageSize, ProductSource = ProductSource)
   output <- .servicecatalog$search_products_as_admin_output()
@@ -6320,7 +6320,7 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
     name = "SearchProvisionedProducts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$search_provisioned_products_output()

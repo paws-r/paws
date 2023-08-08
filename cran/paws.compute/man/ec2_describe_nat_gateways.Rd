@@ -18,7 +18,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Filter}{One or more filters.
+\item{Filter}{The filters.
 \itemize{
 \item \code{nat-gateway-id} - The ID of the NAT gateway.
 \item \code{state} - The state of the NAT gateway (\code{pending} | \code{failed} |
@@ -40,7 +40,7 @@ page of items, make another request with the token returned in the
 output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NatGatewayIds}{One or more NAT gateway IDs.}
+\item{NatGatewayIds}{The IDs of the NAT gateways.}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}

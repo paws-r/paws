@@ -954,7 +954,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/v1/domains",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "domains")
   )
   input <- .codeartifact$list_domains_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_domains_output()
@@ -1010,7 +1010,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
     name = "ListPackageVersionAssets",
     http_method = "POST",
     http_path = "/v1/package/version/assets",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assets")
   )
   input <- .codeartifact$list_package_version_assets_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_package_version_assets_output()
@@ -1118,7 +1118,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
     name = "ListPackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "versions")
   )
   input <- .codeartifact$list_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, status = status, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken, originType = originType)
   output <- .codeartifact$list_package_versions_output()
@@ -1183,7 +1183,7 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
     name = "ListPackages",
     http_method = "POST",
     http_path = "/v1/packages",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages")
   )
   input <- .codeartifact$list_packages_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, packagePrefix = packagePrefix, maxResults = maxResults, nextToken = nextToken, publish = publish, upstream = upstream)
   output <- .codeartifact$list_packages_output()
@@ -1217,7 +1217,7 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/v1/repositories",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .codeartifact$list_repositories_input(repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_output()
@@ -1256,7 +1256,7 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
     name = "ListRepositoriesInDomain",
     http_method = "POST",
     http_path = "/v1/domain/repositories",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .codeartifact$list_repositories_in_domain_input(domain = domain, domainOwner = domainOwner, administratorAccount = administratorAccount, repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_in_domain_output()
@@ -1313,6 +1313,8 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' to.
 #' @param format &#91;required&#93; A format that specifies the type of the package version with the
 #' requested asset file.
+#' 
+#' The only supported value is `generic`.
 #' @param namespace The namespace of the package version to publish.
 #' @param package &#91;required&#93; The name of the package version to publish.
 #' @param packageVersion &#91;required&#93; The package version to publish (for example, `3.5.2`).

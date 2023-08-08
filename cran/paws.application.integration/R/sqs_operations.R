@@ -6,7 +6,7 @@ NULL
 #' Adds a permission to a queue for a specific principal
 #'
 #' @description
-#' Adds a permission to a queue for a specific [principal](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P). This allows sharing access to the queue.
+#' Adds a permission to a queue for a specific [principal](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P). This allows sharing access to the queue.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sqs_add_permission/](https://www.paws-r-sdk.com/docs/sqs_add_permission/) for full documentation.
 #'
@@ -17,7 +17,7 @@ NULL
 #' `AliceSendMessage`). Maximum 80 characters. Allowed characters include
 #' alphanumeric characters, hyphens (`-`), and underscores (`_`).
 #' @param AWSAccountIds &#91;required&#93; The Amazon Web Services account numbers of the
-#' [principals](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P)
+#' [principals](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P)
 #' who are to receive permission. For information about locating the Amazon
 #' Web Services account identification, see [Your Amazon Web Services
 #' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html#sqs-api-request-authentication)
@@ -62,7 +62,7 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' Cancels a specified message movement task
 #'
 #' @description
-#' Cancels a specified message movement task.
+#' Cancels a specified message movement task. A message movement can only be cancelled when the current status is RUNNING. Cancelling a message movement task does not revert the messages that have already been moved. It can only stop the messages that have not been moved yet.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sqs_cancel_message_move_task/](https://www.paws-r-sdk.com/docs/sqs_cancel_message_move_task/) for full documentation.
 #'
@@ -790,7 +790,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     name = "ListDeadLetterSourceQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "queueUrls")
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
@@ -888,7 +888,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     name = "ListQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueUrls")
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
@@ -900,10 +900,11 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 }
 .sqs$operations$list_queues <- sqs_list_queues
 
-#' Deletes the messages in a queue specified by the QueueURL parameter
+#' Deletes available messages in a queue (including in-flight messages)
+#' specified by the QueueURL parameter
 #'
 #' @description
-#' Deletes the messages in a queue specified by the `QueueURL` parameter.
+#' Deletes available messages in a queue (including in-flight messages) specified by the `QueueURL` parameter.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sqs_purge_queue/](https://www.paws-r-sdk.com/docs/sqs_purge_queue/) for full documentation.
 #'
@@ -1550,7 +1551,10 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #' See [https://www.paws-r-sdk.com/docs/sqs_start_message_move_task/](https://www.paws-r-sdk.com/docs/sqs_start_message_move_task/) for full documentation.
 #'
 #' @param SourceArn &#91;required&#93; The ARN of the queue that contains the messages to be moved to another
-#' queue. Currently, only dead-letter queue (DLQ) ARNs are accepted.
+#' queue. Currently, only ARNs of dead-letter queues (DLQs) whose sources
+#' are other Amazon SQS queues are accepted. DLQs whose sources are non-SQS
+#' queues, such as Lambda or Amazon SNS topics, are not currently
+#' supported.
 #' @param DestinationArn The ARN of the queue that receives the moved messages. You can use this
 #' field to specify the destination queue where you would like to redrive
 #' messages. If this field is left blank, the messages will be redriven

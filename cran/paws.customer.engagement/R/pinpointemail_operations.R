@@ -475,7 +475,7 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
     name = "GetDedicatedIps",
     http_method = "GET",
     http_path = "/v1/email/dedicated-ips",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$get_dedicated_ips_input(PoolName = PoolName, NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$get_dedicated_ips_output()
@@ -668,7 +668,7 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
     name = "ListConfigurationSets",
     http_method = "GET",
     http_path = "/v1/email/configuration-sets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_configuration_sets_output()
@@ -705,7 +705,7 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
     name = "ListDedicatedIpPools",
     http_method = "GET",
     http_path = "/v1/email/dedicated-ip-pools",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_dedicated_ip_pools_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_dedicated_ip_pools_output()
@@ -746,7 +746,7 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
     name = "ListDeliverabilityTestReports",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/test-reports",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_deliverability_test_reports_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_deliverability_test_reports_output()
@@ -791,7 +791,7 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
     name = "ListDomainDeliverabilityCampaigns",
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_domain_deliverability_campaigns_output()
@@ -831,7 +831,7 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
     name = "ListEmailIdentities",
     http_method = "GET",
     http_path = "/v1/email/identities",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .pinpointemail$list_email_identities_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointemail$list_email_identities_output()

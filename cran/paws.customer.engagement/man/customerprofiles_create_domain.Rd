@@ -12,6 +12,7 @@ customerprofiles_create_domain(
   DefaultEncryptionKey = NULL,
   DeadLetterQueueUrl = NULL,
   Matching = NULL,
+  RuleBasedMatching = NULL,
   Tags = NULL
 )
 }
@@ -40,6 +41,16 @@ After the Identity Resolution Job completes, use the
 \code{\link[=customerprofiles_get_matches]{get_matches}} API to return and review
 the results. Or, if you have configured \code{ExportingConfig} in the
 \code{MatchingRequest}, you can download the results from S3.}
+
+\item{RuleBasedMatching}{The process of matching duplicate profiles using the Rule-Based
+matching. If \code{RuleBasedMatching} = true, Amazon Connect Customer
+Profiles will start to match and merge your profiles according to your
+configuration in the \code{RuleBasedMatchingRequest}. You can use the
+\code{\link[=customerprofiles_list_rule_based_matches]{list_rule_based_matches}}
+and \code{\link[=customerprofiles_get_similar_profiles]{get_similar_profiles}} API
+to return and review the results. Also, if you have configured
+\code{ExportingConfig} in the \code{RuleBasedMatchingRequest}, you can download
+the results from S3.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.}
 }

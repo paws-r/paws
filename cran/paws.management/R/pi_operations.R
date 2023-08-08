@@ -101,7 +101,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
     name = "DescribeDimensionKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, AdditionalMetrics = AdditionalMetrics, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$describe_dimension_keys_output()
@@ -280,7 +280,7 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
     name = "GetResourceMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken, PeriodAlignment = PeriodAlignment)
   output <- .pi$get_resource_metrics_output()
@@ -324,7 +324,7 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
     name = "ListAvailableResourceDimensions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$list_available_resource_dimensions_output()
@@ -378,7 +378,7 @@ pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTy
     name = "ListAvailableResourceMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricTypes = MetricTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pi$list_available_resource_metrics_output()

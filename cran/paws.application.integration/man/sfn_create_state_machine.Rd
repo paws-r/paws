@@ -11,7 +11,9 @@ sfn_create_state_machine(
   type = NULL,
   loggingConfiguration = NULL,
   tags = NULL,
-  tracingConfiguration = NULL
+  tracingConfiguration = NULL,
+  publish = NULL,
+  versionDescription = NULL
 )
 }
 \arguments{
@@ -56,6 +58,14 @@ Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
 
 \item{tracingConfiguration}{Selects whether X-Ray tracing is enabled.}
+
+\item{publish}{Set to \code{true} to publish the first version of the state machine during
+creation. The default is \code{false}.}
+
+\item{versionDescription}{Sets description about the state machine version. You can only set the
+description if the \code{publish} parameter is set to \code{true}. Otherwise, if
+you set \code{versionDescription}, but \code{publish} to \code{false}, this API action
+throws \code{ValidationException}.}
 }
 \description{
 Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} in the Step Functions User Guide.

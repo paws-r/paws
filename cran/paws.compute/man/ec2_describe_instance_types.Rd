@@ -28,8 +28,8 @@ in the \emph{Amazon EC2 User Guide}.}
 action based recovery is supported (\code{true} | \code{false}).
 \item \code{bare-metal} - Indicates whether it is a bare metal instance type
 (\code{true} | \code{false}).
-\item \code{burstable-performance-supported} - Indicates whether it is a
-burstable performance instance type (\code{true} | \code{false}).
+\item \code{burstable-performance-supported} - Indicates whether the instance
+type is a burstable performance T instance type (\code{true} | \code{false}).
 \item \code{current-generation} - Indicates whether this instance type is the
 latest generation instance type of an instance family (\code{true} |
 \code{false}).
@@ -102,10 +102,18 @@ cards per instance.
 network interfaces per instance.
 \item \code{network-info.network-performance} - The network performance (for
 example, "25 Gigabit").
+\item \code{nitro-enclaves-support} - Indicates whether Nitro Enclaves is
+supported (\code{supported} | \code{unsupported}).
+\item \code{nitro-tpm-support} - Indicates whether NitroTPM is supported
+(\code{supported} | \code{unsupported}).
+\item \code{nitro-tpm-info.supported-versions} - The supported NitroTPM version
+(\code{2.0}).
 \item \code{processor-info.supported-architecture} - The CPU architecture
 (\code{arm64} | \code{i386} | \code{x86_64}).
 \item \verb{processor-info.sustained-clock-speed-in-ghz} - The CPU clock speed,
 in GHz.
+\item \code{processor-info.supported-features} - The supported CPU features
+(\code{amd-sev-snp}).
 \item \code{supported-boot-mode} - The boot mode (\code{legacy-bios} | \code{uefi}).
 \item \code{supported-root-device-type} - The root device type (\code{ebs} |
 \code{instance-store}).

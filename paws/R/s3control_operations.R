@@ -4106,7 +4106,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     name = "ListAccessPoints",
     http_method = "GET",
     http_path = "/v20180820/accesspoint",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_output()
@@ -4189,7 +4189,7 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
     name = "ListAccessPointsForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ObjectLambdaAccessPointList")
   )
   input <- .s3control$list_access_points_for_object_lambda_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_for_object_lambda_output()
@@ -4289,7 +4289,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
     name = "ListJobs",
     http_method = "GET",
     http_path = "/v20180820/jobs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_jobs_output()
@@ -4385,7 +4385,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
     name = "ListMultiRegionAccessPoints",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_multi_region_access_points_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_multi_region_access_points_output()
@@ -4463,7 +4463,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
     name = "ListRegionalBuckets",
     http_method = "GET",
     http_path = "/v20180820/bucket",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_regional_buckets_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3control$list_regional_buckets_output()
@@ -4530,7 +4530,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
     name = "ListStorageLensConfigurations",
     http_method = "GET",
     http_path = "/v20180820/storagelens",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .s3control$list_storage_lens_configurations_input(AccountId = AccountId, NextToken = NextToken)
   output <- .s3control$list_storage_lens_configurations_output()

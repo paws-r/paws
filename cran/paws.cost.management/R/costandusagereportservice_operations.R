@@ -51,7 +51,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
     name = "DescribeReportDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costandusagereportservice$describe_report_definitions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .costandusagereportservice$describe_report_definitions_output()

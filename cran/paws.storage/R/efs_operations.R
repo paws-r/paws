@@ -472,7 +472,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
     name = "DescribeAccessPoints",
     http_method = "GET",
     http_path = "/2015-02-01/access-points",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$describe_access_points_input(MaxResults = MaxResults, NextToken = NextToken, AccessPointId = AccessPointId, FileSystemId = FileSystemId)
   output <- .efs$describe_access_points_output()
@@ -608,7 +608,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
     name = "DescribeFileSystems",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems")
   )
   input <- .efs$describe_file_systems_input(MaxItems = MaxItems, Marker = Marker, CreationToken = CreationToken, FileSystemId = FileSystemId)
   output <- .efs$describe_file_systems_output()
@@ -786,7 +786,7 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
     name = "DescribeTags",
     http_method = "GET",
     http_path = "/2015-02-01/tags/{FileSystemId}/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems")
   )
   input <- .efs$describe_tags_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId)
   output <- .efs$describe_tags_output()
@@ -822,7 +822,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .efs$list_tags_for_resource_output()

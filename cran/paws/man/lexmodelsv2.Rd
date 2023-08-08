@@ -4,22 +4,47 @@
 \alias{lexmodelsv2}
 \title{Amazon Lex Model Building V2}
 \usage{
-lexmodelsv2(config = list())
+lexmodelsv2(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -48,8 +73,20 @@ Amazon Lex Model Building V2
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -115,8 +152,13 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_list_custom_vocabulary_items]{list_custom_vocabulary_items} \tab Paginated list of custom vocabulary items for a given bot locale's custom vocabulary\cr
 \link[paws.machine.learning:lexmodelsv2_list_exports]{list_exports} \tab Lists the exports for a bot, bot locale, or custom vocabulary\cr
 \link[paws.machine.learning:lexmodelsv2_list_imports]{list_imports} \tab Lists the imports for a bot, bot locale, or custom vocabulary\cr
+\link[paws.machine.learning:lexmodelsv2_list_intent_metrics]{list_intent_metrics} \tab Retrieves summary metrics for the intents in your bot\cr
+\link[paws.machine.learning:lexmodelsv2_list_intent_paths]{list_intent_paths} \tab Retrieves summary statistics for a path of intents that users take over sessions with your bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_intents]{list_intents} \tab Get a list of intents that meet the specified criteria\cr
+\link[paws.machine.learning:lexmodelsv2_list_intent_stage_metrics]{list_intent_stage_metrics} \tab Retrieves summary metrics for the stages within intents in your bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_recommended_intents]{list_recommended_intents} \tab Gets a list of recommended intents provided by the bot recommendation that you can use in your bot\cr
+\link[paws.machine.learning:lexmodelsv2_list_session_analytics_data]{list_session_analytics_data} \tab Retrieves a list of metadata for individual user sessions with your bot\cr
+\link[paws.machine.learning:lexmodelsv2_list_session_metrics]{list_session_metrics} \tab Retrieves summary metrics for the user sessions with your bot\cr
 \link[paws.machine.learning:lexmodelsv2_list_slots]{list_slots} \tab Gets a list of slots that match the specified criteria\cr
 \link[paws.machine.learning:lexmodelsv2_list_slot_types]{list_slot_types} \tab Gets a list of slot types that match the specified criteria\cr
 \link[paws.machine.learning:lexmodelsv2_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a resource\cr
@@ -124,6 +166,8 @@ Amazon Lex Model Building V2
 \link[paws.machine.learning:lexmodelsv2_list_test_executions]{list_test_executions} \tab The list of test set executions\cr
 \link[paws.machine.learning:lexmodelsv2_list_test_set_records]{list_test_set_records} \tab The list of test set records\cr
 \link[paws.machine.learning:lexmodelsv2_list_test_sets]{list_test_sets} \tab The list of the test sets\cr
+\link[paws.machine.learning:lexmodelsv2_list_utterance_analytics_data]{list_utterance_analytics_data} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
+\link[paws.machine.learning:lexmodelsv2_list_utterance_metrics]{list_utterance_metrics} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 \link[paws.machine.learning:lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
 \link[paws.machine.learning:lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
 \link[paws.machine.learning:lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr

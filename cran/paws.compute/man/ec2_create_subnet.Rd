@@ -27,8 +27,7 @@ zone for each subnet.
 
 To create a subnet in a Local Zone, set this value to the Local Zone ID,
 for example \verb{us-west-2-lax-1a}. For information about the Regions that
-support Local Zones, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions}{Available Regions}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+support Local Zones, see \href{https://aws.amazon.com/about-aws/global-infrastructure/localzones/locations/}{Local Zones locations}.
 
 To create a subnet in an Outpost, set this value to the Availability
 Zone for the Outpost and specify the Outpost ARN.}

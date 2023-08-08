@@ -614,7 +614,7 @@ timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken 
     name = "ListScheduledQueries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledQueries")
   )
   input <- .timestreamquery$list_scheduled_queries_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .timestreamquery$list_scheduled_queries_output()
@@ -673,7 +673,7 @@ timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NUL
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .timestreamquery$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
   output <- .timestreamquery$list_tags_for_resource_output()
@@ -962,7 +962,7 @@ timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = N
     name = "Query",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRows", non_aggregate_keys = list( "ColumnInfo", "QueryId", "QueryStatus"), output_token = "NextToken", result_key = "Rows")
   )
   input <- .timestreamquery$query_input(QueryString = QueryString, ClientToken = ClientToken, NextToken = NextToken, MaxRows = MaxRows)
   output <- .timestreamquery$query_output()

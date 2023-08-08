@@ -16,24 +16,65 @@ rds_create_global_cluster(
 )
 }
 \arguments{
-\item{GlobalClusterIdentifier}{The cluster identifier of the new global database cluster. This
-parameter is stored as a lowercase string.}
+\item{GlobalClusterIdentifier}{The cluster identifier for this global database cluster. This parameter
+is stored as a lowercase string.}
 
 \item{SourceDBClusterIdentifier}{The Amazon Resource Name (ARN) to use as the primary cluster of the
-global database. This parameter is optional.}
+global database.
 
-\item{Engine}{The name of the database engine to be used for this DB cluster.}
+If you provide a value for this parameter, don't specify values for the
+following settings because Amazon Aurora uses the values from the
+specified source DB cluster:
+\itemize{
+\item \code{DatabaseName}
+\item \code{Engine}
+\item \code{EngineVersion}
+\item \code{StorageEncrypted}
+}}
 
-\item{EngineVersion}{The engine version of the Aurora global database.}
+\item{Engine}{The database engine to use for this global database cluster.
 
-\item{DeletionProtection}{The deletion protection setting for the new global database. The global
-database can't be deleted when deletion protection is enabled.}
+Valid Values: \code{aurora-mysql | aurora-postgresql}
+
+Constraints:
+\itemize{
+\item Can't be specified if \code{SourceDBClusterIdentifier} is specified. In
+this case, Amazon Aurora uses the engine of the source DB cluster.
+}}
+
+\item{EngineVersion}{The engine version to use for this global database cluster.
+
+Constraints:
+\itemize{
+\item Can't be specified if \code{SourceDBClusterIdentifier} is specified. In
+this case, Amazon Aurora uses the engine version of the source DB
+cluster.
+}}
+
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the new global
+database cluster. The global database can't be deleted when deletion
+protection is enabled.}
 
 \item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. If you
-do not provide a name, Amazon Aurora will not create a database in the
-global database cluster you are creating.}
+don't specify a name, Amazon Aurora doesn't create a database in the
+global database cluster.
 
-\item{StorageEncrypted}{The storage encryption setting for the new global database cluster.}
+Constraints:
+\itemize{
+\item Can't be specified if \code{SourceDBClusterIdentifier} is specified. In
+this case, Amazon Aurora uses the database name from the source DB
+cluster.
+}}
+
+\item{StorageEncrypted}{Specifies whether to enable storage encryption for the new global
+database cluster.
+
+Constraints:
+\itemize{
+\item Can't be specified if \code{SourceDBClusterIdentifier} is specified. In
+this case, Amazon Aurora uses the setting from the source DB
+cluster.
+}}
 }
 \description{
 Creates an Aurora global database spread across multiple Amazon Web Services Regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.

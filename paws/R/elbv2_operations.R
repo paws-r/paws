@@ -1765,7 +1765,7 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
     name = "DescribeListeners",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "Listeners")
   )
   input <- .elbv2$describe_listeners_input(LoadBalancerArn = LoadBalancerArn, ListenerArns = ListenerArns, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_listeners_output()
@@ -1948,7 +1948,7 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
     name = "DescribeLoadBalancers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancers")
   )
   input <- .elbv2$describe_load_balancers_input(LoadBalancerArns = LoadBalancerArns, Names = Names, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_load_balancers_output()
@@ -2465,7 +2465,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
     name = "DescribeTargetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "TargetGroups")
   )
   input <- .elbv2$describe_target_groups_input(LoadBalancerArn = LoadBalancerArn, TargetGroupArns = TargetGroupArns, Names = Names, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_target_groups_output()

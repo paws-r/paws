@@ -205,7 +205,7 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
     name = "DescribeObjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineObjects")
   )
   input <- .datapipeline$describe_objects_input(pipelineId = pipelineId, objectIds = objectIds, evaluateExpressions = evaluateExpressions, marker = marker)
   output <- .datapipeline$describe_objects_output()
@@ -236,7 +236,7 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
     name = "DescribePipelines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "pipelineDescriptionList")
   )
   input <- .datapipeline$describe_pipelines_input(pipelineIds = pipelineIds)
   output <- .datapipeline$describe_pipelines_output()
@@ -333,7 +333,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineIdList")
   )
   input <- .datapipeline$list_pipelines_input(marker = marker)
   output <- .datapipeline$list_pipelines_output()
@@ -454,7 +454,7 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
     name = "QueryObjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", more_results = "hasMoreResults", output_token = "marker", result_key = "ids")
   )
   input <- .datapipeline$query_objects_input(pipelineId = pipelineId, query = query, sphere = sphere, marker = marker, limit = limit)
   output <- .datapipeline$query_objects_output()

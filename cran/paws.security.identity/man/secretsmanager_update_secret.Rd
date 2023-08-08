@@ -38,7 +38,9 @@ This value becomes the \code{VersionId} of the new version.}
 
 \item{KmsKeyId}{The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
 encrypt new secret versions as well as any existing versions with the
-staging labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. For more
+staging labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. If you
+don't have \code{kms:Encrypt} permission to the new key, Secrets Manager does
+not re-ecrypt existing secret versions with the new key. For more
 information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Concepts: Version}.
 
 A key alias is always prefixed by \verb{alias/}, for example

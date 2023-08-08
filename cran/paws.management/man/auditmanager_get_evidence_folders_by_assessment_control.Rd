@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_evidence_folders_by_assessment_control}
 \alias{auditmanager_get_evidence_folders_by_assessment_control}
-\title{Returns a list of evidence folders that are associated with a specified
+\title{Gets a list of evidence folders that are associated with a specified
 control in an Audit Manager assessment}
 \usage{
 auditmanager_get_evidence_folders_by_assessment_control(
@@ -26,7 +26,7 @@ auditmanager_get_evidence_folders_by_assessment_control(
 call.}
 }
 \description{
-Returns a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
+Gets a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
 
 See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence_folders_by_assessment_control/} for full documentation.
 }

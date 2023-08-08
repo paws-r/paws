@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_search_routing_profiles}
 \alias{connect_search_routing_profiles}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Searches routing profiles in an Amazon Connect instance, with optional
+filtering}
 \usage{
 connect_search_routing_profiles(
   InstanceId,
@@ -32,7 +32,7 @@ minimum of 2 characters and a maximum of 25 characters. Any queries with
 character lengths outside of this range will throw invalid results.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Searches routing profiles in an Amazon Connect instance, with optional filtering.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_search_routing_profiles/} for full documentation.
 }

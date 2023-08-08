@@ -38,32 +38,32 @@ a description for the rule.}
 ID or the security group name in the request. For security groups in a
 nondefault VPC, you must specify the security group ID.}
 
-\item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must
-specify either the security group ID or the security group name in the
-request. For security groups in a nondefault VPC, you must specify the
-security group ID.}
+\item{GroupName}{[Default VPC] The name of the security group. You must specify either
+the security group ID or the security group name in the request. For
+security groups in a nondefault VPC, you must specify the security group
+ID.}
 
 \item{IpPermissions}{The sets of IP permissions.}
 
 \item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers}).
 To specify \code{icmpv6}, use a set of IP permissions.
 
-[VPC only] Use \code{-1} to specify all protocols. If you specify \code{-1} or a
-protocol other than \code{tcp}, \code{udp}, or \code{icmp}, traffic on all ports is
-allowed, regardless of any ports you specify.
+Use \code{-1} to specify all protocols. If you specify \code{-1} or a protocol
+other than \code{tcp}, \code{udp}, or \code{icmp}, traffic on all ports is allowed,
+regardless of any ports you specify.
 
 Alternatively, use a set of IP permissions to specify multiple rules and
 a description for the rule.}
 
-\item{SourceSecurityGroupName}{[EC2-Classic, default VPC] The name of the source security group. You
-can't specify this parameter in combination with the following
-parameters: the CIDR IP address range, the start of the port range, the
-IP protocol, and the end of the port range. Creates rules that grant
-full ICMP, UDP, and TCP access. To create a rule with a specific IP
-protocol and port range, use a set of IP permissions instead. For
-EC2-VPC, the source security group must be in the same VPC.}
+\item{SourceSecurityGroupName}{[Default VPC] The name of the source security group. You can't specify
+this parameter in combination with the following parameters: the CIDR IP
+address range, the start of the port range, the IP protocol, and the end
+of the port range. Creates rules that grant full ICMP, UDP, and TCP
+access. To create a rule with a specific IP protocol and port range, use
+a set of IP permissions instead. The source security group must be in
+the same VPC.}
 
-\item{SourceSecurityGroupOwnerId}{[nondefault VPC] The Amazon Web Services account ID for the source
+\item{SourceSecurityGroupOwnerId}{[Nondefault VPC] The Amazon Web Services account ID for the source
 security group, if the source security group is in a different account.
 You can't specify this parameter in combination with the following
 parameters: the CIDR IP address range, the IP protocol, the start of the

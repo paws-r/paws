@@ -8,10 +8,16 @@ Amazon Resource Name (ARN), and configuration}
 sfn_describe_state_machine(stateMachineArn)
 }
 \arguments{
-\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to describe.}
+\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine for which you want
+the information.
+
+If you specify a state machine version ARN, this API returns details
+about that version. The version ARN is a combination of state machine
+ARN and the version number separated by a colon (:). For example,
+\code{stateMachineARN:1}.}
 }
 \description{
-Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration. If the state machine ARN is a qualified state machine ARN, the response returned includes the \code{Map} state's label.
+Provides information about a state machine's definition, its IAM role Amazon Resource Name (ARN), and configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_describe_state_machine/} for full documentation.
 }

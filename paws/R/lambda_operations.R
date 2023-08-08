@@ -538,11 +538,11 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param ParallelizationFactor (Kinesis and DynamoDB Streams only) The number of batches to process
 #' from each shard concurrently.
 #' @param StartingPosition The position in a stream from which to start reading. Required for
-#' Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
-#' `AT_TIMESTAMP` is supported only for Amazon Kinesis streams and Amazon
-#' DocumentDB.
+#' Amazon Kinesis and Amazon DynamoDB Stream event sources. `AT_TIMESTAMP`
+#' is supported only for Amazon Kinesis streams, Amazon DocumentDB, Amazon
+#' MSK, and self-managed Apache Kafka.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
-#' start reading.
+#' start reading. `StartingPositionTimestamp` cannot be in the future.
 #' @param DestinationConfig (Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
 #' standard Amazon SNS topic destination for discarded records.
 #' @param MaximumRecordAgeInSeconds (Kinesis and DynamoDB Streams only) Discard records older than the
@@ -756,10 +756,11 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' for log streaming and X-Ray for request tracing.
 #' 
 #' If the deployment package is a [container
-#' image](https://docs.aws.amazon.com/lambda/latest/dg/), then you set the
-#' package type to `Image`. For a container image, the code property must
-#' include the URI of a container image in the Amazon ECR registry. You do
-#' not need to specify the handler and runtime properties.
+#' image](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html),
+#' then you set the package type to `Image`. For a container image, the
+#' code property must include the URI of a container image in the Amazon
+#' ECR registry. You do not need to specify the handler and runtime
+#' properties.
 #' 
 #' If the deployment package is a [.zip file
 #' archive](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip),
@@ -903,7 +904,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
 #' @param ImageConfig Container image [configuration
-#' values](https://docs.aws.amazon.com/lambda/latest/dg/#configuration-images-settings)
+#' values](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#configuration-images-settings)
 #' that override the values in the container image Dockerfile.
 #' @param CodeSigningConfigArn To enable code signing for this function, specify the ARN of a
 #' code-signing configuration. A code-signing configuration includes a set
@@ -924,7 +925,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -1023,7 +1024,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -1467,7 +1468,8 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' @description
 #' Deletes a Lambda function. To delete a specific function version, use
 #' the `Qualifier` parameter. Otherwise, all versions and aliases are
-#' deleted.
+#' deleted. This doesn't require the user to have explicit permissions for
+#' [`delete_alias`][lambda_delete_alias].
 #' 
 #' To delete Lambda event source mappings that invoke a function, use
 #' [`delete_event_source_mapping`][lambda_delete_event_source_mapping]. For
@@ -2204,7 +2206,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Configuration = list(
 #'     FunctionName = "string",
 #'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'     Role = "string",
 #'     Handler = "string",
 #'     CodeSize = 123,
@@ -2502,7 +2504,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -2821,7 +2823,7 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -2890,7 +2892,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -3569,7 +3571,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
     name = "ListAliases",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .lambda$list_aliases_input(FunctionName = FunctionName, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_aliases_output()
@@ -3638,7 +3640,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListCodeSigningConfigs",
     http_method = "GET",
     http_path = "/2020-04-22/code-signing-configs/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "CodeSigningConfigs")
   )
   input <- .lambda$list_code_signing_configs_input(Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_code_signing_configs_output()
@@ -3799,7 +3801,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
     name = "ListEventSourceMappings",
     http_method = "GET",
     http_path = "/2015-03-31/event-source-mappings/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "EventSourceMappings")
   )
   input <- .lambda$list_event_source_mappings_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_event_source_mappings_output()
@@ -3887,7 +3889,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
     name = "ListFunctionEventInvokeConfigs",
     http_method = "GET",
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config/list",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionEventInvokeConfigs")
   )
   input <- .lambda$list_function_event_invoke_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_event_invoke_configs_output()
@@ -3980,7 +3982,7 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
     name = "ListFunctionUrlConfigs",
     http_method = "GET",
     http_path = "/2021-10-31/functions/{FunctionName}/urls",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionUrlConfigs")
   )
   input <- .lambda$list_function_url_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_url_configs_output()
@@ -4034,7 +4036,7 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4151,7 +4153,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
     name = "ListFunctions",
     http_method = "GET",
     http_path = "/2015-03-31/functions/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Functions")
   )
   input <- .lambda$list_functions_input(MasterRegion = MasterRegion, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_functions_output()
@@ -4209,7 +4211,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
     name = "ListFunctionsByCodeSigningConfig",
     http_method = "GET",
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionArns")
   )
   input <- .lambda$list_functions_by_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_functions_by_code_signing_config_output()
@@ -4259,7 +4261,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'       Description = "string",
 #'       CreatedDate = "string",
 #'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"
+#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"
 #'       ),
 #'       LicenseInfo = "string",
 #'       CompatibleArchitectures = list(
@@ -4273,7 +4275,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123,
@@ -4291,7 +4293,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
     name = "ListLayerVersions",
     http_method = "GET",
     http_path = "/2018-10-31/layers/{LayerName}/versions",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "LayerVersions")
   )
   input <- .lambda$list_layer_versions_input(CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
   output <- .lambda$list_layer_versions_output()
@@ -4346,7 +4348,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'         Description = "string",
 #'         CreatedDate = "string",
 #'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"
+#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"
 #'         ),
 #'         LicenseInfo = "string",
 #'         CompatibleArchitectures = list(
@@ -4361,7 +4363,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Marker = "string",
 #'   MaxItems = 123,
 #'   CompatibleArchitecture = "x86_64"|"arm64"
@@ -4378,7 +4380,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
     name = "ListLayers",
     http_method = "GET",
     http_path = "/2018-10-31/layers",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Layers")
   )
   input <- .lambda$list_layers_input(CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems, CompatibleArchitecture = CompatibleArchitecture)
   output <- .lambda$list_layers_output()
@@ -4456,7 +4458,7 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
     name = "ListProvisionedConcurrencyConfigs",
     http_method = "GET",
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "ProvisionedConcurrencyConfigs")
   )
   input <- .lambda$list_provisioned_concurrency_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_provisioned_concurrency_configs_output()
@@ -4561,7 +4563,7 @@ lambda_list_tags <- function(Resource) {
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4677,7 +4679,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
     name = "ListVersionsByFunction",
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/versions",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Versions")
   )
   input <- .lambda$list_versions_by_function_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_versions_by_function_output()
@@ -4746,7 +4748,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -4767,7 +4769,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -4850,7 +4852,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6121,8 +6123,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' 
 #' If the function's package type is `Image`, then you must specify the
 #' code package in `ImageUri` as the URI of a [container
-#' image](https://docs.aws.amazon.com/lambda/latest/dg/) in the Amazon ECR
-#' registry.
+#' image](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html)
+#' in the Amazon ECR registry.
 #' 
 #' If the function's package type is `Zip`, then you must specify the
 #' deployment package as a [.zip file
@@ -6188,7 +6190,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6441,7 +6443,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6558,7 +6560,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"python3.11",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),

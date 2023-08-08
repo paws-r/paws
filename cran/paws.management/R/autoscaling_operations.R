@@ -1012,7 +1012,7 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
     name = "DescribeAutoScalingGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingGroups")
   )
   input <- .autoscaling$describe_auto_scaling_groups_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords, Filters = Filters)
   output <- .autoscaling$describe_auto_scaling_groups_output()
@@ -1050,7 +1050,7 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
     name = "DescribeAutoScalingInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingInstances")
   )
   input <- .autoscaling$describe_auto_scaling_instances_input(InstanceIds = InstanceIds, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_auto_scaling_instances_output()
@@ -1152,7 +1152,7 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
     name = "DescribeLaunchConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LaunchConfigurations")
   )
   input <- .autoscaling$describe_launch_configurations_input(LaunchConfigurationNames = LaunchConfigurationNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_launch_configurations_output()
@@ -1344,7 +1344,7 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
     name = "DescribeNotificationConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "NotificationConfigurations")
   )
   input <- .autoscaling$describe_notification_configurations_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_notification_configurations_output()
@@ -1385,7 +1385,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
     name = "DescribePolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScalingPolicies")
   )
   input <- .autoscaling$describe_policies_input(AutoScalingGroupName = AutoScalingGroupName, PolicyNames = PolicyNames, PolicyTypes = PolicyTypes, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_policies_output()
@@ -1426,7 +1426,7 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Activities")
   )
   input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, IncludeDeletedGroups = IncludeDeletedGroups, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_scaling_activities_output()
@@ -1499,7 +1499,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScheduledUpdateGroupActions")
   )
   input <- .autoscaling$describe_scheduled_actions_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_scheduled_actions_output()
@@ -1533,7 +1533,7 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Tags")
   )
   input <- .autoscaling$describe_tags_input(Filters = Filters, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_tags_output()
@@ -1606,7 +1606,7 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
     name = "DescribeTrafficSources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_traffic_sources_output()
@@ -1639,7 +1639,7 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
     name = "DescribeWarmPool",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Instances")
   )
   input <- .autoscaling$describe_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_warm_pool_output()
@@ -2245,7 +2245,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' @param ScalingAdjustment The amount by which to scale, based on the specified adjustment type. A
 #' positive value adds to the current capacity while a negative number
 #' removes from the current capacity. For exact capacity, you must specify
-#' a positive value.
+#' a non-negative value.
 #' 
 #' Required if the policy type is `SimpleScaling`. (Not used with any other
 #' policy type.)
@@ -2561,12 +2561,12 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 #'
 #' See [https://www.paws-r-sdk.com/docs/autoscaling_rollback_instance_refresh/](https://www.paws-r-sdk.com/docs/autoscaling_rollback_instance_refresh/) for full documentation.
 #'
-#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #'
 #' @keywords internal
 #'
 #' @rdname autoscaling_rollback_instance_refresh
-autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName = NULL) {
+autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName) {
   op <- new_operation(
     name = "RollbackInstanceRefresh",
     http_method = "POST",

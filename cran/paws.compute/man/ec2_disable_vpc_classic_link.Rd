@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_disable_vpc_classic_link}
 \alias{ec2_disable_vpc_classic_link}
-\title{Disables ClassicLink for a VPC}
+\title{This action is deprecated}
 \usage{
 ec2_disable_vpc_classic_link(DryRun = NULL, VpcId)
 }
@@ -15,7 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
-Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
+This action is deprecated.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_disable_vpc_classic_link/} for full documentation.
 }

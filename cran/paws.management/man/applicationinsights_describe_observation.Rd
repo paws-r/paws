@@ -4,10 +4,12 @@
 \alias{applicationinsights_describe_observation}
 \title{Describes an anomaly or error with the application}
 \usage{
-applicationinsights_describe_observation(ObservationId)
+applicationinsights_describe_observation(ObservationId, AccountId = NULL)
 }
 \arguments{
 \item{ObservationId}{[required] The ID of the observation.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes an anomaly or error with the application.

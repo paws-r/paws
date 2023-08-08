@@ -3,32 +3,58 @@
 #' @include cloudwatchlogs_service.R
 NULL
 
-#' Associates the specified KMS key with the specified log group
+#' Associates the specified KMS key with either one log group in the
+#' account, or with all stored CloudWatch Logs query insights results in
+#' the account
 #'
 #' @description
-#' Associates the specified KMS key with the specified log group.
+#' Associates the specified KMS key with either one log group in the account, or with all stored CloudWatch Logs query insights results in the account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_associate_kms_key/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_associate_kms_key/) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group.
+#' @param logGroupName The name of the log group.
+#' 
+#' In your [`associate_kms_key`][cloudwatchlogs_associate_kms_key]
+#' operation, you must specify either the `resourceIdentifier` parameter or
+#' the `logGroup` parameter, but you can't specify both.
 #' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
 #' data. This must be a symmetric KMS key. For more information, see
 #' [Amazon Resource
 #' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms)
 #' and [Using Symmetric and Asymmetric
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
+#' @param resourceIdentifier Specifies the target for this operation. You must specify one of the
+#' following:
+#' 
+#' -   Specify the following ARN to have future
+#'     [`get_query_results`][cloudwatchlogs_get_query_results] operations
+#'     in this account encrypt the results with the specified KMS key.
+#'     Replace *REGION* and *ACCOUNT_ID* with your Region and account ID.
+#' 
+#'     `arn:aws:logs:REGION:ACCOUNT_ID:query-result:*`
+#' 
+#' -   Specify the ARN of a log group to have CloudWatch Logs use the KMS
+#'     key to encrypt log events that are ingested and stored by that log
+#'     group. The log group ARN must be in the following format. Replace
+#'     *REGION* and *ACCOUNT_ID* with your Region and account ID.
+#' 
+#'     `arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME `
+#' 
+#' In your [`associate_kms_key`][cloudwatchlogs_associate_kms_key]
+#' operation, you must specify either the `resourceIdentifier` parameter or
+#' the `logGroup` parameter, but you can't specify both.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_associate_kms_key
-cloudwatchlogs_associate_kms_key <- function(logGroupName, kmsKeyId) {
+cloudwatchlogs_associate_kms_key <- function(logGroupName = NULL, kmsKeyId, resourceIdentifier = NULL) {
   op <- new_operation(
     name = "AssociateKmsKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$associate_kms_key_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId)
+  input <- .cloudwatchlogs$associate_kms_key_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, resourceIdentifier = resourceIdentifier)
   output <- .cloudwatchlogs$associate_kms_key_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -551,7 +577,7 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
     name = "DescribeDestinations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "destinations")
   )
   input <- .cloudwatchlogs$describe_destinations_input(DestinationNamePrefix = DestinationNamePrefix, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_destinations_output()
@@ -645,7 +671,7 @@ cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGro
     name = "DescribeLogGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups")
   )
   input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts)
   output <- .cloudwatchlogs$describe_log_groups_output()
@@ -706,7 +732,7 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIde
     name = "DescribeLogStreams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logStreams")
   )
   input <- .cloudwatchlogs$describe_log_streams_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNamePrefix = logStreamNamePrefix, orderBy = orderBy, descending = descending, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_log_streams_output()
@@ -747,7 +773,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
     name = "DescribeMetricFilters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "metricFilters")
   )
   input <- .cloudwatchlogs$describe_metric_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit, metricName = metricName, metricNamespace = metricNamespace)
   output <- .cloudwatchlogs$describe_metric_filters_output()
@@ -881,7 +907,7 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
     name = "DescribeSubscriptionFilters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "subscriptionFilters")
   )
   input <- .cloudwatchlogs$describe_subscription_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_subscription_filters_output()
@@ -893,26 +919,53 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 }
 .cloudwatchlogs$operations$describe_subscription_filters <- cloudwatchlogs_describe_subscription_filters
 
-#' Disassociates the associated KMS key from the specified log group
+#' Disassociates the specified KMS key from the specified log group or from
+#' all CloudWatch Logs Insights query results in the account
 #'
 #' @description
-#' Disassociates the associated KMS key from the specified log group.
+#' Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_disassociate_kms_key/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_disassociate_kms_key/) for full documentation.
 #'
-#' @param logGroupName &#91;required&#93; The name of the log group.
+#' @param logGroupName The name of the log group.
+#' 
+#' In your [`disassociate_kms_key`][cloudwatchlogs_disassociate_kms_key]
+#' operation, you must specify either the `resourceIdentifier` parameter or
+#' the `logGroup` parameter, but you can't specify both.
+#' @param resourceIdentifier Specifies the target for this operation. You must specify one of the
+#' following:
+#' 
+#' -   Specify the ARN of a log group to stop having CloudWatch Logs use
+#'     the KMS key to encrypt log events that are ingested and stored by
+#'     that log group. After you run this operation, CloudWatch Logs
+#'     encrypts ingested log events with the default CloudWatch Logs
+#'     method. The log group ARN must be in the following format. Replace
+#'     *REGION* and *ACCOUNT_ID* with your Region and account ID.
+#' 
+#'     `arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME `
+#' 
+#' -   Specify the following ARN to stop using this key to encrypt the
+#'     results of future [`start_query`][cloudwatchlogs_start_query]
+#'     operations in this account. Replace *REGION* and *ACCOUNT_ID* with
+#'     your Region and account ID.
+#' 
+#'     `arn:aws:logs:REGION:ACCOUNT_ID:query-result:*`
+#' 
+#' In your `DisssociateKmsKey` operation, you must specify either the
+#' `resourceIdentifier` parameter or the `logGroup` parameter, but you
+#' can't specify both.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_disassociate_kms_key
-cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
+cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIdentifier = NULL) {
   op <- new_operation(
     name = "DisassociateKmsKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$disassociate_kms_key_input(logGroupName = logGroupName)
+  input <- .cloudwatchlogs$disassociate_kms_key_input(logGroupName = logGroupName, resourceIdentifier = resourceIdentifier)
   output <- .cloudwatchlogs$disassociate_kms_key_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)
@@ -987,7 +1040,7 @@ cloudwatchlogs_filter_log_events <- function(logGroupName = NULL, logGroupIdenti
     name = "FilterLogEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = list("events", "searchedLogStreams"))
   )
   input <- .cloudwatchlogs$filter_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNames = logStreamNames, logStreamNamePrefix = logStreamNamePrefix, startTime = startTime, endTime = endTime, filterPattern = filterPattern, nextToken = nextToken, limit = limit, interleaved = interleaved, unmask = unmask)
   output <- .cloudwatchlogs$filter_log_events_output()
@@ -1079,7 +1132,7 @@ cloudwatchlogs_get_log_events <- function(logGroupName = NULL, logGroupIdentifie
     name = "GetLogEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextForwardToken", result_key = "events")
   )
   input <- .cloudwatchlogs$get_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamName = logStreamName, startTime = startTime, endTime = endTime, nextToken = nextToken, limit = limit, startFromHead = startFromHead, unmask = unmask)
   output <- .cloudwatchlogs$get_log_events_output()
@@ -1103,9 +1156,9 @@ cloudwatchlogs_get_log_events <- function(logGroupName = NULL, logGroupIdentifie
 #' 
 #' You must include either `logGroupIdentifier` or `logGroupName`, but not
 #' both.
-#' @param time The time to set as the center of the query. If you specify `time`, the
-#' 15 minutes before this time are queries. If you omit `time`, the 8
-#' minutes before and 8 minutes after this time are searched.
+#' @param time The time to set as the center of the query. If you specify `time`, the 8
+#' minutes before and 8 minutes after this time are searched. If you omit
+#' `time`, the most recent 15 minutes up to the current time are searched.
 #' 
 #' The `time` value is specified as epoch time, which is the number of
 #' seconds since `January 1, 1970, 00:00:00 UTC`.
@@ -1323,10 +1376,9 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' The JSON specified in `policyDocument` can be up to 30,720 characters.
 #' @param policyType &#91;required&#93; Currently the only valid value for this parameter is
 #' `DATA_PROTECTION_POLICY`.
-#' @param scope Currently the only valid value for this parameter is `GLOBAL`, which
+#' @param scope Currently the only valid value for this parameter is `ALL`, which
 #' specifies that the data protection policy applies to all log groups in
-#' the account. If you omit this parameter, the default of `GLOBAL` is
-#' used.
+#' the account. If you omit this parameter, the default of `ALL` is used.
 #'
 #' @keywords internal
 #'
@@ -1773,14 +1825,14 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' @param logGroupName The log group on which to perform the query.
 #' 
 #' A [`start_query`][cloudwatchlogs_start_query] operation must include
-#' exactly one of the following parameters: `logGroupName`, `logGroupNames`
-#' or `logGroupIdentifiers`.
+#' exactly one of the following parameters: `logGroupName`,
+#' `logGroupNames`, or `logGroupIdentifiers`.
 #' @param logGroupNames The list of log groups to be queried. You can include up to 50 log
 #' groups.
 #' 
 #' A [`start_query`][cloudwatchlogs_start_query] operation must include
-#' exactly one of the following parameters: `logGroupName`, `logGroupNames`
-#' or `logGroupIdentifiers`.
+#' exactly one of the following parameters: `logGroupName`,
+#' `logGroupNames`, or `logGroupIdentifiers`.
 #' @param logGroupIdentifiers The list of log groups to query. You can include up to 50 log groups.
 #' 
 #' You can specify them by the log group name or ARN. If a log group that
@@ -1791,8 +1843,8 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' If you specify an ARN, the ARN can't end with an asterisk (*).
 #' 
 #' A [`start_query`][cloudwatchlogs_start_query] operation must include
-#' exactly one of the following parameters: `logGroupName`, `logGroupNames`
-#' or `logGroupIdentifiers`.
+#' exactly one of the following parameters: `logGroupName`,
+#' `logGroupNames`, or `logGroupIdentifiers`.
 #' @param startTime &#91;required&#93; The beginning of the time range to query. The range is inclusive, so the
 #' specified start time is included in the query. Specified as epoch time,
 #' the number of seconds since `January 1, 1970, 00:00:00 UTC`.

@@ -845,7 +845,7 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
     name = "ListGatewayRoutes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualGateway/{virtualGatewayName}/gatewayRoutes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "gatewayRoutes")
   )
   input <- .appmesh$list_gateway_routes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken, virtualGatewayName = virtualGatewayName)
   output <- .appmesh$list_gateway_routes_output()
@@ -891,7 +891,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
     name = "ListMeshes",
     http_method = "GET",
     http_path = "/v20190125/meshes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "meshes")
   )
   input <- .appmesh$list_meshes_input(limit = limit, nextToken = nextToken)
   output <- .appmesh$list_meshes_output()
@@ -940,7 +940,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
     name = "ListRoutes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "routes")
   )
   input <- .appmesh$list_routes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken, virtualRouterName = virtualRouterName)
   output <- .appmesh$list_routes_output()
@@ -987,7 +987,7 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/v20190125/tags",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "tags")
   )
   input <- .appmesh$list_tags_for_resource_input(limit = limit, nextToken = nextToken, resourceArn = resourceArn)
   output <- .appmesh$list_tags_for_resource_output()
@@ -1037,7 +1037,7 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
     name = "ListVirtualGateways",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualGateways",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualGateways")
   )
   input <- .appmesh$list_virtual_gateways_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_gateways_output()
@@ -1087,7 +1087,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
     name = "ListVirtualNodes",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualNodes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualNodes")
   )
   input <- .appmesh$list_virtual_nodes_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_nodes_output()
@@ -1137,7 +1137,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
     name = "ListVirtualRouters",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualRouters",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualRouters")
   )
   input <- .appmesh$list_virtual_routers_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_routers_output()
@@ -1187,7 +1187,7 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
     name = "ListVirtualServices",
     http_method = "GET",
     http_path = "/v20190125/meshes/{meshName}/virtualServices",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "virtualServices")
   )
   input <- .appmesh$list_virtual_services_input(limit = limit, meshName = meshName, meshOwner = meshOwner, nextToken = nextToken)
   output <- .appmesh$list_virtual_services_output()

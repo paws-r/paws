@@ -5,18 +5,18 @@
 \title{Create an alert manager definition}
 \usage{
 prometheusservice_create_alert_manager_definition(
-  clientToken = NULL,
+  workspaceId,
   data,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
+\item{workspaceId}{[required] The ID of the workspace in which to create the alert manager definition.}
 
 \item{data}{[required] The alert manager definition data.}
 
-\item{workspaceId}{[required] The ID of the workspace in which to create the alert manager definition.}
+\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
+idempotency of the request.}
 }
 \description{
 Create an alert manager definition.

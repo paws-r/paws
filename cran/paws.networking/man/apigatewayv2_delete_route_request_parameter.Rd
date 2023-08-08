@@ -18,7 +18,7 @@ apigatewayv2_delete_route_request_parameter(
 \item{RouteId}{[required] The route ID.}
 }
 \description{
-Deletes a route request parameter.
+Deletes a route request parameter. Supported only for WebSocket APIs.
 
 See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_request_parameter/} for full documentation.
 }

@@ -405,7 +405,7 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
     name = "ListRegions",
     http_method = "POST",
     http_path = "/listRegions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions")
   )
   input <- .account$list_regions_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, RegionOptStatusContains = RegionOptStatusContains)
   output <- .account$list_regions_output()

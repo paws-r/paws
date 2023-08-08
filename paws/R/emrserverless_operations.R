@@ -65,7 +65,7 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'   imageConfiguration, workerTypeSpecifications)
 #'
 #' @param name The name of the application.
-#' @param releaseLabel &#91;required&#93; The EMR release associated with the application.
+#' @param releaseLabel &#91;required&#93; The Amazon EMR release associated with the application.
 #' @param type &#91;required&#93; The type of application you want to start, such as Spark or Hive.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to create. Its value
 #' must be unique for each request.
@@ -328,11 +328,20 @@ emrserverless_get_application <- function(applicationId) {
 }
 .emrserverless$operations$get_application <- emrserverless_get_application
 
-#' Returns a URL to access the job run dashboard
+#' Creates and returns a URL that you can use to access the application UIs
+#' for a job run
 #'
 #' @description
-#' Returns a URL to access the job run dashboard. The generated URL is
-#' valid for one hour, after which you must invoke the API again to
+#' Creates and returns a URL that you can use to access the application UIs
+#' for a job run.
+#' 
+#' For jobs in a running state, the application UI is a live user interface
+#' such as the Spark or Tez web UI. For completed jobs, the application UI
+#' is a persistent application user interface such as the Spark History
+#' Server or persistent Tez UI.
+#' 
+#' The URL is valid for one hour after you generate it. To access the
+#' application UI after that hour elapses, you must invoke the API again to
 #' generate a new URL.
 #'
 #' @usage
@@ -428,6 +437,17 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #'         managedPersistenceMonitoringConfiguration = list(
 #'           enabled = TRUE|FALSE,
 #'           encryptionKeyArn = "string"
+#'         ),
+#'         cloudWatchLoggingConfiguration = list(
+#'           enabled = TRUE|FALSE,
+#'           logGroupName = "string",
+#'           logStreamNamePrefix = "string",
+#'           encryptionKeyArn = "string",
+#'           logTypes = list(
+#'             list(
+#'               "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -563,7 +583,7 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications")
   )
   input <- .emrserverless$list_applications_input(nextToken = nextToken, maxResults = maxResults, states = states)
   output <- .emrserverless$list_applications_output()
@@ -648,7 +668,7 @@ emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResu
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
   )
   input <- .emrserverless$list_job_runs_input(applicationId = applicationId, nextToken = nextToken, maxResults = maxResults, createdAtAfter = createdAtAfter, createdAtBefore = createdAtBefore, states = states)
   output <- .emrserverless$list_job_runs_output()
@@ -824,6 +844,17 @@ emrserverless_start_application <- function(applicationId) {
 #'       managedPersistenceMonitoringConfiguration = list(
 #'         enabled = TRUE|FALSE,
 #'         encryptionKeyArn = "string"
+#'       ),
+#'       cloudWatchLoggingConfiguration = list(
+#'         enabled = TRUE|FALSE,
+#'         logGroupName = "string",
+#'         logStreamNamePrefix = "string",
+#'         encryptionKeyArn = "string",
+#'         logTypes = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1013,7 +1044,7 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' emrserverless_update_application(applicationId, clientToken,
 #'   initialCapacity, maximumCapacity, autoStartConfiguration,
 #'   autoStopConfiguration, networkConfiguration, architecture,
-#'   imageConfiguration, workerTypeSpecifications)
+#'   imageConfiguration, workerTypeSpecifications, releaseLabel)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to update.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to update. Its value
@@ -1039,6 +1070,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' `TezTask` for Hive applications. You can either set image details in
 #' this parameter for each worker type, or in `imageConfiguration` for all
 #' worker types.
+#' @param releaseLabel The Amazon EMR release label for the application. You can change the
+#' release label to use a different release of Amazon EMR.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1153,7 +1186,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'         imageUri = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   releaseLabel = "string"
 #' )
 #' ```
 #'
@@ -1162,14 +1196,14 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname emrserverless_update_application
 #'
 #' @aliases emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, releaseLabel = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
     paginator = list()
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, releaseLabel = releaseLabel)
   output <- .emrserverless$update_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config)

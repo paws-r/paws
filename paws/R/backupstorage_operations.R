@@ -203,7 +203,7 @@ backupstorage_list_chunks <- function(StorageJobId, ObjectToken, MaxResults = NU
     name = "ListChunks",
     http_method = "GET",
     http_path = "/restore-jobs/{jobId}/chunks/{objectToken}/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backupstorage$list_chunks_input(StorageJobId = StorageJobId, ObjectToken = ObjectToken, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupstorage$list_chunks_output()
@@ -280,7 +280,7 @@ backupstorage_list_objects <- function(StorageJobId, StartingObjectName = NULL, 
     name = "ListObjects",
     http_method = "GET",
     http_path = "/restore-jobs/{jobId}/objects/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backupstorage$list_objects_input(StorageJobId = StorageJobId, StartingObjectName = StartingObjectName, StartingObjectPrefix = StartingObjectPrefix, MaxResults = MaxResults, NextToken = NextToken, CreatedBefore = CreatedBefore, CreatedAfter = CreatedAfter)
   output <- .backupstorage$list_objects_output()

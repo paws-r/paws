@@ -93,7 +93,7 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListEndpoints",
     http_method = "GET",
     http_path = "/S3Outposts/ListEndpoints",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .s3outposts$list_endpoints_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3outposts$list_endpoints_output()
@@ -128,7 +128,7 @@ s3outposts_list_outposts_with_s3 <- function(NextToken = NULL, MaxResults = NULL
     name = "ListOutpostsWithS3",
     http_method = "GET",
     http_path = "/S3Outposts/ListOutpostsWithS3",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Outposts")
   )
   input <- .s3outposts$list_outposts_with_s3_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3outposts$list_outposts_with_s3_output()
@@ -161,7 +161,7 @@ s3outposts_list_shared_endpoints <- function(NextToken = NULL, MaxResults = NULL
     name = "ListSharedEndpoints",
     http_method = "GET",
     http_path = "/S3Outposts/ListSharedEndpoints",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .s3outposts$list_shared_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3outposts$list_shared_endpoints_output()

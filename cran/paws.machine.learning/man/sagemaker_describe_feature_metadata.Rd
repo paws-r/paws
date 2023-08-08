@@ -7,7 +7,8 @@
 sagemaker_describe_feature_metadata(FeatureGroupName, FeatureName)
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the feature group containing the feature.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the feature group containing
+the feature.}
 
 \item{FeatureName}{[required] The name of the feature.}
 }

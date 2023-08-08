@@ -679,6 +679,18 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$get_mfa_device_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$get_mfa_device_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), EnableDate = structure(logical(0), tags = list(type = "timestamp")), Certifications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", resultWrapper = "GetMFADeviceResult"))
+  return(populate(args, shape))
+}
+
 .iam$get_open_id_connect_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

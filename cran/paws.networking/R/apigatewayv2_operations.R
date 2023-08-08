@@ -1009,7 +1009,7 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 #' Deletes a route request parameter
 #'
 #' @description
-#' Deletes a route request parameter.
+#' Deletes a route request parameter. Supported only for WebSocket APIs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_request_parameter/](https://www.paws-r-sdk.com/docs/apigatewayv2_delete_route_request_parameter/) for full documentation.
 #'
@@ -2542,8 +2542,9 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' pattern \<action\>:\<header|querystring|path\>.\<location\> where action
 #' can be append, overwrite or remove. For values, you can provide static
 #' values, or map request data, stage variables, or context variables that
-#' are evaluated at runtime. To learn more, see Transforming API requests
-#' and responses.
+#' are evaluated at runtime. To learn more, see [Transforming API requests
+#' and
+#' responses](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
 #' @param RequestTemplates Represents a map of Velocity templates that are applied on the request
 #' payload based on the value of the Content-Type header sent by the
 #' client. The content type value is the key in this map, and the template

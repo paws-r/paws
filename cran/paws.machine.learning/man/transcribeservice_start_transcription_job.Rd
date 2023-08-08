@@ -24,7 +24,8 @@ transcribeservice_start_transcription_job(
   LanguageOptions = NULL,
   Subtitles = NULL,
   Tags = NULL,
-  LanguageIdSettings = NULL
+  LanguageIdSettings = NULL,
+  ToxicityDetection = NULL
 )
 }
 \arguments{
@@ -284,6 +285,13 @@ If you want to include a custom language model with your request but
 \strong{do not} want to use automatic language identification, use instead
 the \verb{parameter with the `LanguageModelName` sub-parameter. If you want to include a custom vocabulary or a custom vocabulary filter (or both) with your request but **do not** want to use automatic language identification, use instead the} parameter with the \code{VocabularyName}
 or \code{VocabularyFilterName} (or both) sub-parameter.}
+
+\item{ToxicityDetection}{Enables toxic speech detection in your transcript. If you include
+\code{ToxicityDetection} in your request, you must also include
+\code{ToxicityCategories}.
+
+For information on the types of toxic speech Amazon Transcribe can
+detect, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/}{Detecting toxic speech}.}
 }
 \description{
 Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request.

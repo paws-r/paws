@@ -374,8 +374,13 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' only, omit this parameter and specify **InstanceType** instead. You
 #' cannot specify **InstanceFamily** and **InstanceType** in the same
 #' request.
-#' @param Quantity &#91;required&#93; The number of Dedicated Hosts to allocate to your account with these
-#' parameters.
+#' @param Quantity The number of Dedicated Hosts to allocate to your account with these
+#' parameters. If you are allocating the Dedicated Hosts on an Outpost, and
+#' you specify **AssetIds**, you can omit this parameter. In this case,
+#' Amazon EC2 allocates a Dedicated Host on each specified hardware asset.
+#' If you specify both **AssetIds** and **Quantity**, then the value that
+#' you specify for **Quantity** must be equal to the number of asset IDs
+#' specified.
 #' @param TagSpecifications The tags to apply to the Dedicated Host during creation.
 #' @param HostRecovery Indicates whether to enable or disable host recovery for the Dedicated
 #' Host. Host recovery is disabled by default. For more information, see
@@ -385,23 +390,39 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' 
 #' Default: `off`
 #' @param OutpostArn The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on
-#' which to allocate the Dedicated Host.
+#' which to allocate the Dedicated Host. If you specify **OutpostArn**, you
+#' can optionally specify **AssetIds**.
+#' 
+#' If you are allocating the Dedicated Host in a Region, omit this
+#' parameter.
 #' @param HostMaintenance Indicates whether to enable or disable host maintenance for the
 #' Dedicated Host. For more information, see [Host
 #' maintenance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-maintenance.html)
 #' in the *Amazon EC2 User Guide*.
+#' @param AssetIds The IDs of the Outpost hardware assets on which to allocate the
+#' Dedicated Hosts. Targeting specific hardware assets on an Outpost can
+#' help to minimize latency between your workloads. This parameter is
+#' supported only if you specify **OutpostArn**. If you are allocating the
+#' Dedicated Hosts in a Region, omit this parameter.
+#' 
+#' -   If you specify this parameter, you can omit **Quantity**. In this
+#'     case, Amazon EC2 allocates a Dedicated Host on each specified
+#'     hardware asset.
+#' 
+#' -   If you specify both **AssetIds** and **Quantity**, then the value
+#'     for **Quantity** must be equal to the number of asset IDs specified.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_hosts
-ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientToken = NULL, InstanceType = NULL, InstanceFamily = NULL, Quantity, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL, HostMaintenance = NULL) {
+ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientToken = NULL, InstanceType = NULL, InstanceFamily = NULL, Quantity = NULL, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL, HostMaintenance = NULL, AssetIds = NULL) {
   op <- new_operation(
     name = "AllocateHosts",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ec2$allocate_hosts_input(AutoPlacement = AutoPlacement, AvailabilityZone = AvailabilityZone, ClientToken = ClientToken, InstanceType = InstanceType, InstanceFamily = InstanceFamily, Quantity = Quantity, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance)
+  input <- .ec2$allocate_hosts_input(AutoPlacement = AutoPlacement, AvailabilityZone = AvailabilityZone, ClientToken = ClientToken, InstanceType = InstanceType, InstanceFamily = InstanceFamily, Quantity = Quantity, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds)
   output <- .ec2$allocate_hosts_output()
   config <- get_config()
   svc <- .ec2$service(config)
@@ -605,11 +626,11 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #' Assigns one or more private IPv4 addresses to a private NAT gateway
 #'
 #' @description
-#' Assigns one or more private IPv4 addresses to a private NAT gateway. For more information, see [Work with NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) in the *Amazon Virtual Private Cloud User Guide*.
+#' Assigns one or more private IPv4 addresses to a private NAT gateway. For more information, see [Work with NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_assign_private_nat_gateway_address/](https://www.paws-r-sdk.com/docs/ec2_assign_private_nat_gateway_address/) for full documentation.
 #'
-#' @param NatGatewayId &#91;required&#93; The NAT gateway ID.
+#' @param NatGatewayId &#91;required&#93; The ID of the NAT gateway.
 #' @param PrivateIpAddresses The private IPv4 addresses you want to assign to the private NAT
 #' gateway.
 #' @param PrivateIpAddressCount The number of private IP addresses to assign to the NAT gateway. You
@@ -902,11 +923,11 @@ ec2_associate_ipam_resource_discovery <- function(DryRun = NULL, IpamId, IpamRes
 #' public NAT gateway
 #'
 #' @description
-#' Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information, see [Work with NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) in the *Amazon Virtual Private Cloud User Guide*.
+#' Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information, see [Work with NAT gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_associate_nat_gateway_address/](https://www.paws-r-sdk.com/docs/ec2_associate_nat_gateway_address/) for full documentation.
 #'
-#' @param NatGatewayId &#91;required&#93; The NAT gateway ID.
+#' @param NatGatewayId &#91;required&#93; The ID of the NAT gateway.
 #' @param AllocationIds &#91;required&#93; The allocation IDs of EIPs that you want to associate with your NAT
 #' gateway.
 #' @param PrivateIpAddresses The private IPv4 addresses that you want to assign to the NAT gateway.
@@ -1213,10 +1234,10 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
 }
 .ec2$operations$associate_vpc_cidr_block <- ec2_associate_vpc_cidr_block
 
-#' We are retiring EC2-Classic
+#' This action is deprecated
 #'
 #' @description
-#' We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see [Migrate from EC2-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_attach_classic_link_vpc/](https://www.paws-r-sdk.com/docs/ec2_attach_classic_link_vpc/) for full documentation.
 #'
@@ -1224,11 +1245,10 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param Groups &#91;required&#93; The ID of one or more of the VPC's security groups. You cannot specify
-#' security groups from a different VPC.
-#' @param InstanceId &#91;required&#93; The ID of an EC2-Classic instance to link to the ClassicLink-enabled
-#' VPC.
-#' @param VpcId &#91;required&#93; The ID of a ClassicLink-enabled VPC.
+#' @param Groups &#91;required&#93; The IDs of the security groups. You cannot specify security groups from
+#' a different VPC.
+#' @param InstanceId &#91;required&#93; The ID of the EC2-Classic instance.
+#' @param VpcId &#91;required&#93; The ID of the ClassicLink-enabled VPC.
 #'
 #' @keywords internal
 #'
@@ -1254,7 +1274,7 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #' enabling connectivity between the internet and the VPC
 #'
 #' @description
-#' Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the [Amazon Virtual Private Cloud User Guide](https://docs.aws.amazon.com/vpc/latest/userguide/).
+#' Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information, see [Internet gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_attach_internet_gateway/](https://www.paws-r-sdk.com/docs/ec2_attach_internet_gateway/) for full documentation.
 #'
@@ -1479,11 +1499,11 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 }
 .ec2$operations$authorize_client_vpn_ingress <- ec2_authorize_client_vpn_ingress
 
-#' &#91;VPC only&#93; Adds the specified outbound (egress) rules to a
-#' security group for use with a VPC
+#' Adds the specified outbound (egress) rules to a security group for use
+#' with a VPC
 #'
 #' @description
-#' \[VPC only\] Adds the specified outbound (egress) rules to a security group for use with a VPC.
+#' Adds the specified outbound (egress) rules to a security group for use with a VPC.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_authorize_security_group_egress/](https://www.paws-r-sdk.com/docs/ec2_authorize_security_group_egress/) for full documentation.
 #'
@@ -1548,29 +1568,29 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' @param GroupId The ID of the security group. You must specify either the security group
 #' ID or the security group name in the request. For security groups in a
 #' nondefault VPC, you must specify the security group ID.
-#' @param GroupName \[EC2-Classic, default VPC\] The name of the security group. You must
-#' specify either the security group ID or the security group name in the
-#' request. For security groups in a nondefault VPC, you must specify the
-#' security group ID.
+#' @param GroupName \[Default VPC\] The name of the security group. You must specify either
+#' the security group ID or the security group name in the request. For
+#' security groups in a nondefault VPC, you must specify the security group
+#' ID.
 #' @param IpPermissions The sets of IP permissions.
 #' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol
 #' Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
 #' To specify `icmpv6`, use a set of IP permissions.
 #' 
-#' \[VPC only\] Use `-1` to specify all protocols. If you specify `-1` or a
-#' protocol other than `tcp`, `udp`, or `icmp`, traffic on all ports is
-#' allowed, regardless of any ports you specify.
+#' Use `-1` to specify all protocols. If you specify `-1` or a protocol
+#' other than `tcp`, `udp`, or `icmp`, traffic on all ports is allowed,
+#' regardless of any ports you specify.
 #' 
 #' Alternatively, use a set of IP permissions to specify multiple rules and
 #' a description for the rule.
-#' @param SourceSecurityGroupName \[EC2-Classic, default VPC\] The name of the source security group. You
-#' can't specify this parameter in combination with the following
-#' parameters: the CIDR IP address range, the start of the port range, the
-#' IP protocol, and the end of the port range. Creates rules that grant
-#' full ICMP, UDP, and TCP access. To create a rule with a specific IP
-#' protocol and port range, use a set of IP permissions instead. For
-#' EC2-VPC, the source security group must be in the same VPC.
-#' @param SourceSecurityGroupOwnerId \[nondefault VPC\] The Amazon Web Services account ID for the source
+#' @param SourceSecurityGroupName \[Default VPC\] The name of the source security group. You can't specify
+#' this parameter in combination with the following parameters: the CIDR IP
+#' address range, the start of the port range, the IP protocol, and the end
+#' of the port range. Creates rules that grant full ICMP, UDP, and TCP
+#' access. To create a rule with a specific IP protocol and port range, use
+#' a set of IP permissions instead. The source security group must be in
+#' the same VPC.
+#' @param SourceSecurityGroupOwnerId \[Nondefault VPC\] The Amazon Web Services account ID for the source
 #' security group, if the source security group is in a different account.
 #' You can't specify this parameter in combination with the following
 #' parameters: the CIDR IP address range, the IP protocol, the start of the
@@ -2750,7 +2770,7 @@ ec2_create_customer_gateway <- function(BgpAsn = NULL, PublicIp = NULL, Certific
 #' specified Availability Zone in your default VPC
 #'
 #' @description
-#' Creates a default subnet with a size `/20` IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see [Creating a default subnet](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet) in the *Amazon Virtual Private Cloud User Guide*.
+#' Creates a default subnet with a size `/20` IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see [Create a default subnet](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_default_subnet/](https://www.paws-r-sdk.com/docs/ec2_create_default_subnet/) for full documentation.
 #'
@@ -2787,7 +2807,7 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL, Ipv6Nativ
 #' subnet in each Availability Zone
 #'
 #' @description
-#' Creates a default VPC with a size `/16` IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see [Default VPC and default subnets](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html) in the *Amazon Virtual Private Cloud User Guide*. You cannot specify the components of the default VPC yourself.
+#' Creates a default VPC with a size `/16` IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see [Default VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html) in the *Amazon VPC User Guide*. You cannot specify the components of the default VPC yourself.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_default_vpc/](https://www.paws-r-sdk.com/docs/ec2_create_default_vpc/) for full documentation.
 #'
@@ -2887,10 +2907,11 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 }
 .ec2$operations$create_egress_only_internet_gateway <- ec2_create_egress_only_internet_gateway
 
-#' Launches an EC2 Fleet
+#' Creates an EC2 Fleet that contains the configuration information for
+#' On-Demand Instances and Spot Instances
 #'
 #' @description
-#' Launches an EC2 Fleet.
+#' Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances. Instances are launched immediately if there is available capacity.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_fleet/](https://www.paws-r-sdk.com/docs/ec2_create_fleet/) for full documentation.
 #'
@@ -3147,19 +3168,20 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' Constraints: 3-128 alphanumeric characters, parentheses (()), square
 #' brackets (\[\]), spaces ( ), periods (.), slashes (/), dashes (-),
 #' single quotes ('), at-signs (@@), or underscores(_)
-#' @param NoReboot By default, when Amazon EC2 creates the new AMI, it reboots the instance
-#' so that it can take snapshots of the attached volumes while data is at
-#' rest, in order to ensure a consistent state. You can set the `NoReboot`
-#' parameter to `true` in the API request, or use the `--no-reboot` option
-#' in the CLI to prevent Amazon EC2 from shutting down and rebooting the
-#' instance.
+#' @param NoReboot Indicates whether or not the instance should be automatically rebooted
+#' before creating the image. Specify one of the following values:
 #' 
-#' If you choose to bypass the shutdown and reboot process by setting the
-#' `NoReboot` parameter to `true` in the API request, or by using the
-#' `--no-reboot` option in the CLI, we can't guarantee the file system
-#' integrity of the created image.
+#' -   `true` - The instance is not rebooted before creating the image.
+#'     This creates crash-consistent snapshots that include only the data
+#'     that has been written to the volumes at the time the snapshots are
+#'     created. Buffered data and data in memory that has not yet been
+#'     written to the volumes is not included in the snapshots.
 #' 
-#' Default: `false` (follow standard reboot process)
+#' -   `false` - The instance is rebooted before creating the image. This
+#'     ensures that all buffered data and data in memory is written to the
+#'     volumes before the snapshots are created.
+#' 
+#' Default: `false`
 #' @param TagSpecifications The tags to apply to the AMI and snapshots on creation. You can tag the
 #' AMI, the snapshots, or both.
 #' 
@@ -3975,19 +3997,18 @@ ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entrie
 #' @param PrivateIpAddress The private IPv4 address to assign to the NAT gateway. If you don't
 #' provide an address, a private IPv4 address will be automatically
 #' assigned.
-#' @param SecondaryAllocationIds Secondary EIP allocation IDs. For more information about secondary
-#' addresses, see [Create a NAT
+#' @param SecondaryAllocationIds Secondary EIP allocation IDs. For more information, see [Create a NAT
 #' gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating)
-#' in the *Amazon Virtual Private Cloud User Guide*.
+#' in the *Amazon VPC User Guide*.
 #' @param SecondaryPrivateIpAddresses Secondary private IPv4 addresses. For more information about secondary
 #' addresses, see [Create a NAT
 #' gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating)
-#' in the *Amazon Virtual Private Cloud User Guide*.
+#' in the *Amazon VPC User Guide*.
 #' @param SecondaryPrivateIpAddressCount \[Private NAT gateway only\] The number of secondary private IPv4
 #' addresses you want to assign to the NAT gateway. For more information
 #' about secondary addresses, see [Create a NAT
 #' gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating)
-#' in the *Amazon Virtual Private Cloud User Guide*.
+#' in the *Amazon VPC User Guide*.
 #'
 #' @keywords internal
 #'
@@ -4656,19 +4677,15 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' 
 #' Constraints: Up to 255 characters in length
 #' 
-#' Constraints for EC2-Classic: ASCII characters
-#' 
-#' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
+#' Valid characters: a-z, A-Z, 0-9, spaces, and
 #' ._-:/()#,@@\[\]+=&;\{\}!$*
 #' @param GroupName &#91;required&#93; The name of the security group.
 #' 
 #' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
 #' 
-#' Constraints for EC2-Classic: ASCII characters
-#' 
-#' Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
+#' Valid characters: a-z, A-Z, 0-9, spaces, and
 #' ._-:/()#,@@\[\]+=&;\{\}!$*
-#' @param VpcId \[EC2-VPC\] The ID of the VPC. Required for EC2-VPC.
+#' @param VpcId The ID of the VPC. Required for a nondefault VPC.
 #' @param TagSpecifications The tags to assign to the security group.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -4898,9 +4915,8 @@ ec2_create_store_image_task <- function(ImageId, Bucket, S3ObjectTags = NULL, Dr
 #' 
 #' To create a subnet in a Local Zone, set this value to the Local Zone ID,
 #' for example `us-west-2-lax-1a`. For information about the Regions that
-#' support Local Zones, see [Available
-#' Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' support Local Zones, see [Local Zones
+#' locations](https://aws.amazon.com/about-aws/global-infrastructure/localzones/locations/).
 #' 
 #' To create a subnet in an Outpost, set this value to the Availability
 #' Zone for the Outpost and specify the Outpost ARN.
@@ -5825,7 +5841,8 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_volume/](https://www.paws-r-sdk.com/docs/ec2_create_volume/) for full documentation.
 #'
-#' @param AvailabilityZone &#91;required&#93; The Availability Zone in which to create the volume.
+#' @param AvailabilityZone &#91;required&#93; The ID of the Availability Zone in which to create the volume. For
+#' example, `us-east-1a`.
 #' @param Encrypted Indicates whether the volume should be encrypted. The effect of setting
 #' the encryption state to `true` depends on the volume origin (new or from
 #' a snapshot), starting encryption state, ownership, and whether
@@ -5961,7 +5978,7 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #' Creates a VPC with the specified CIDR blocks
 #'
 #' @description
-#' Creates a VPC with the specified CIDR blocks. For more information, see [VPC CIDR blocks](https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html#vpc-cidr-blocks) in the *Amazon Virtual Private Cloud User Guide*.
+#' Creates a VPC with the specified CIDR blocks. For more information, see [IP addressing for your VPCs and subnets](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_vpc/](https://www.paws-r-sdk.com/docs/ec2_create_vpc/) for full documentation.
 #'
@@ -6042,10 +6059,10 @@ ec2_create_vpc <- function(CidrBlock = NULL, AmazonProvidedIpv6CidrBlock = NULL,
 }
 .ec2$operations$create_vpc <- ec2_create_vpc
 
-#' Creates a VPC endpoint for a specified service
+#' Creates a VPC endpoint
 #'
 #' @description
-#' Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the [Amazon Web Services PrivateLink Guide](https://docs.aws.amazon.com/vpc/latest/privatelink/).
+#' Creates a VPC endpoint. A VPC endpoint provides a private connection between the specified VPC and the specified endpoint service. You can use an endpoint service provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the [Amazon Web Services PrivateLink User Guide](https://docs.aws.amazon.com/vpc/latest/privatelink/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_vpc_endpoint/](https://www.paws-r-sdk.com/docs/ec2_create_vpc_endpoint/) for full documentation.
 #'
@@ -6056,8 +6073,8 @@ ec2_create_vpc <- function(CidrBlock = NULL, AmazonProvidedIpv6CidrBlock = NULL,
 #' @param VpcEndpointType The type of endpoint.
 #' 
 #' Default: Gateway
-#' @param VpcId &#91;required&#93; The ID of the VPC for the endpoint.
-#' @param ServiceName &#91;required&#93; The service name.
+#' @param VpcId &#91;required&#93; The ID of the VPC.
+#' @param ServiceName &#91;required&#93; The name of the endpoint service.
 #' @param PolicyDocument (Interface and gateway endpoints) A policy to attach to the endpoint
 #' that controls access to the service. The policy must be in valid JSON
 #' format. If this parameter is not specified, we attach a default policy
@@ -7752,11 +7769,10 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_delete_security_group/](https://www.paws-r-sdk.com/docs/ec2_delete_security_group/) for full documentation.
 #'
-#' @param GroupId The ID of the security group. Required for a nondefault VPC.
-#' @param GroupName \[EC2-Classic, default VPC\] The name of the security group. You can
-#' specify either the security group name or the security group ID. For
-#' security groups in a nondefault VPC, you must specify the security group
-#' ID.
+#' @param GroupId The ID of the security group.
+#' @param GroupName \[Default VPC\] The name of the security group. You can specify either
+#' the security group name or the security group ID. For security groups in
+#' a nondefault VPC, you must specify the security group ID.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -9169,7 +9185,7 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
     name = "DescribeAccountAttributes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "AccountAttributes")
   )
   input <- .ec2$describe_account_attributes_input(AttributeNames = AttributeNames, DryRun = DryRun)
   output <- .ec2$describe_account_attributes_output()
@@ -9206,7 +9222,7 @@ ec2_describe_address_transfers <- function(AllocationIds = NULL, NextToken = NUL
     name = "DescribeAddressTransfers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AddressTransfers")
   )
   input <- .ec2$describe_address_transfers_input(AllocationIds = AllocationIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_address_transfers_output()
@@ -9276,7 +9292,7 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
     name = "DescribeAddresses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Addresses")
   )
   input <- .ec2$describe_addresses_input(Filters = Filters, PublicIps = PublicIps, AllocationIds = AllocationIds, DryRun = DryRun)
   output <- .ec2$describe_addresses_output()
@@ -9314,7 +9330,7 @@ ec2_describe_addresses_attribute <- function(AllocationIds = NULL, Attribute = N
     name = "DescribeAddressesAttribute",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Addresses")
   )
   input <- .ec2$describe_addresses_attribute_input(AllocationIds = AllocationIds, Attribute = Attribute, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_addresses_attribute_output()
@@ -9424,7 +9440,7 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
     name = "DescribeAvailabilityZones",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "AvailabilityZones")
   )
   input <- .ec2$describe_availability_zones_input(Filters = Filters, ZoneNames = ZoneNames, ZoneIds = ZoneIds, AllAvailabilityZones = AllAvailabilityZones, DryRun = DryRun)
   output <- .ec2$describe_availability_zones_output()
@@ -9461,7 +9477,7 @@ ec2_describe_aws_network_performance_metric_subscriptions <- function(MaxResults
     name = "DescribeAwsNetworkPerformanceMetricSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .ec2$describe_aws_network_performance_metric_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_aws_network_performance_metric_subscriptions_output()
@@ -9520,7 +9536,7 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
     name = "DescribeBundleTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "BundleTasks")
   )
   input <- .ec2$describe_bundle_tasks_input(BundleIds = BundleIds, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_bundle_tasks_output()
@@ -9557,7 +9573,7 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
     name = "DescribeByoipCidrs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ByoipCidrs")
   )
   input <- .ec2$describe_byoip_cidrs_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_byoip_cidrs_output()
@@ -9608,7 +9624,7 @@ ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds
     name = "DescribeCapacityReservationFleets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationFleets")
   )
   input <- .ec2$describe_capacity_reservation_fleets_input(CapacityReservationFleetIds = CapacityReservationFleetIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_capacity_reservation_fleets_output()
@@ -9730,7 +9746,7 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
     name = "DescribeCapacityReservations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservations")
   )
   input <- .ec2$describe_capacity_reservations_input(CapacityReservationIds = CapacityReservationIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_capacity_reservations_output()
@@ -9788,7 +9804,7 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
     name = "DescribeCarrierGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CarrierGateways")
   )
   input <- .ec2$describe_carrier_gateways_input(CarrierGatewayIds = CarrierGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_carrier_gateways_output()
@@ -9800,14 +9816,14 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 }
 .ec2$operations$describe_carrier_gateways <- ec2_describe_carrier_gateways
 
-#' Describes one or more of your linked EC2-Classic instances
+#' This action is deprecated
 #'
 #' @description
-#' Describes one or more of your linked EC2-Classic instances. This request only returns information about EC2-Classic instances linked to a VPC through ClassicLink. You cannot use this request to return information about other instances.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_classic_link_instances/](https://www.paws-r-sdk.com/docs/ec2_describe_classic_link_instances/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `group-id` - The ID of a VPC security group that's associated with
 #'     the instance.
@@ -9825,14 +9841,11 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 #'     regardless of the tag value.
 #' 
 #' -   `vpc-id` - The ID of the VPC to which the instance is linked.
-#' 
-#'     `vpc-id` - The ID of the VPC that the instance is linked to.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param InstanceIds One or more instance IDs. Must be instances linked to a VPC through
-#' ClassicLink.
+#' @param InstanceIds The instance IDs. Must be instances linked to a VPC through ClassicLink.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -9851,7 +9864,7 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
     name = "DescribeClassicLinkInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
   )
   input <- .ec2$describe_classic_link_instances_input(Filters = Filters, DryRun = DryRun, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_classic_link_instances_output()
@@ -9897,7 +9910,7 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
     name = "DescribeClientVpnAuthorizationRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthorizationRules")
   )
   input <- .ec2$describe_client_vpn_authorization_rules_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun, NextToken = NextToken, Filters = Filters, MaxResults = MaxResults)
   output <- .ec2$describe_client_vpn_authorization_rules_output()
@@ -9942,7 +9955,7 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
     name = "DescribeClientVpnConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Connections")
   )
   input <- .ec2$describe_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_connections_output()
@@ -9984,7 +9997,7 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
     name = "DescribeClientVpnEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnEndpoints")
   )
   input <- .ec2$describe_client_vpn_endpoints_input(ClientVpnEndpointIds = ClientVpnEndpointIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_endpoints_output()
@@ -10030,7 +10043,7 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
     name = "DescribeClientVpnRoutes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes")
   )
   input <- .ec2$describe_client_vpn_routes_input(ClientVpnEndpointId = ClientVpnEndpointId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_routes_output()
@@ -10077,7 +10090,7 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
     name = "DescribeClientVpnTargetNetworks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnTargetNetworks")
   )
   input <- .ec2$describe_client_vpn_target_networks_input(ClientVpnEndpointId = ClientVpnEndpointId, AssociationIds = AssociationIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_target_networks_output()
@@ -10121,7 +10134,7 @@ ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults =
     name = "DescribeCoipPools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CoipPools")
   )
   input <- .ec2$describe_coip_pools_input(PoolIds = PoolIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_coip_pools_output()
@@ -10154,7 +10167,7 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
     name = "DescribeConversionTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ConversionTasks")
   )
   input <- .ec2$describe_conversion_tasks_input(ConversionTaskIds = ConversionTaskIds, DryRun = DryRun)
   output <- .ec2$describe_conversion_tasks_output()
@@ -10214,7 +10227,7 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
     name = "DescribeCustomerGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "CustomerGateways")
   )
   input <- .ec2$describe_customer_gateways_input(CustomerGatewayIds = CustomerGatewayIds, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_customer_gateways_output()
@@ -10236,7 +10249,7 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #' @param DhcpOptionsIds The IDs of one or more DHCP options sets.
 #' 
 #' Default: Describes all your DHCP options sets.
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `dhcp-options-id` - The ID of a DHCP options set.
 #' 
@@ -10275,7 +10288,7 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
     name = "DescribeDhcpOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DhcpOptions")
   )
   input <- .ec2$describe_dhcp_options_input(DhcpOptionsIds = DhcpOptionsIds, Filters = Filters, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_dhcp_options_output()
@@ -10298,14 +10311,14 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param EgressOnlyInternetGatewayIds One or more egress-only internet gateway IDs.
+#' @param EgressOnlyInternetGatewayIds The IDs of the egress-only internet gateways.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
 #' [Pagination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination).
 #' @param NextToken The token returned from a previous paginated request. Pagination
 #' continues from the end of the items returned by the previous request.
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
 #'     resource. Use the tag key in the filter name and the tag value as
@@ -10325,7 +10338,7 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
     name = "DescribeEgressOnlyInternetGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EgressOnlyInternetGateways")
   )
   input <- .ec2$describe_egress_only_internet_gateways_input(DryRun = DryRun, EgressOnlyInternetGatewayIds = EgressOnlyInternetGatewayIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ec2$describe_egress_only_internet_gateways_output()
@@ -10417,7 +10430,7 @@ ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, Expor
     name = "DescribeExportImageTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExportImageTasks")
   )
   input <- .ec2$describe_export_image_tasks_input(DryRun = DryRun, Filters = Filters, ExportImageTaskIds = ExportImageTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_export_image_tasks_output()
@@ -10448,7 +10461,7 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
     name = "DescribeExportTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ExportTasks")
   )
   input <- .ec2$describe_export_tasks_input(ExportTaskIds = ExportTaskIds, Filters = Filters)
   output <- .ec2$describe_export_tasks_output()
@@ -10498,7 +10511,7 @@ ec2_describe_fast_launch_images <- function(ImageIds = NULL, Filters = NULL, Max
     name = "DescribeFastLaunchImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastLaunchImages")
   )
   input <- .ec2$describe_fast_launch_images_input(ImageIds = ImageIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_fast_launch_images_output()
@@ -10547,7 +10560,7 @@ ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NUL
     name = "DescribeFastSnapshotRestores",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastSnapshotRestores")
   )
   input <- .ec2$describe_fast_snapshot_restores_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_fast_snapshot_restores_output()
@@ -10691,7 +10704,7 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
     name = "DescribeFleets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Fleets")
   )
   input <- .ec2$describe_fleets_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, FleetIds = FleetIds, Filters = Filters)
   output <- .ec2$describe_fleets_output()
@@ -10757,7 +10770,7 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
     name = "DescribeFlowLogs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FlowLogs")
   )
   input <- .ec2$describe_flow_logs_input(DryRun = DryRun, Filter = Filter, FlowLogIds = FlowLogIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_flow_logs_output()
@@ -10861,7 +10874,7 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
     name = "DescribeFpgaImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FpgaImages")
   )
   input <- .ec2$describe_fpga_images_input(DryRun = DryRun, FpgaImageIds = FpgaImageIds, Owners = Owners, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_fpga_images_output()
@@ -10912,7 +10925,7 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
     name = "DescribeHostReservationOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OfferingSet")
   )
   input <- .ec2$describe_host_reservation_offerings_input(Filter = Filter, MaxDuration = MaxDuration, MaxResults = MaxResults, MinDuration = MinDuration, NextToken = NextToken, OfferingId = OfferingId)
   output <- .ec2$describe_host_reservation_offerings_output()
@@ -10966,7 +10979,7 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
     name = "DescribeHostReservations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HostReservationSet")
   )
   input <- .ec2$describe_host_reservations_input(Filter = Filter, HostReservationIdSet = HostReservationIdSet, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_host_reservations_output()
@@ -11027,7 +11040,7 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
     name = "DescribeHosts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Hosts")
   )
   input <- .ec2$describe_hosts_input(Filter = Filter, HostIds = HostIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_hosts_output()
@@ -11068,7 +11081,7 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
     name = "DescribeIamInstanceProfileAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IamInstanceProfileAssociations")
   )
   input <- .ec2$describe_iam_instance_profile_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_iam_instance_profile_associations_output()
@@ -11225,8 +11238,8 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' -   If you specify `all`, all public AMIs are returned.
 #' @param Filters The filters.
 #' 
-#' -   `architecture` - The image architecture (`i386` | `x86_64` |
-#'     `arm64`).
+#' -   `architecture` - The image architecture (`i386` | `x86_64` | `arm64`
+#'     | `x86_64_mac` | `arm64_mac`).
 #' 
 #' -   `block-device-mapping.delete-on-termination` - A Boolean value that
 #'     indicates whether the Amazon EBS volume is deleted on instance
@@ -11351,7 +11364,7 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images")
   )
   input <- .ec2$describe_images_input(ExecutableUsers = ExecutableUsers, Filters = Filters, ImageIds = ImageIds, Owners = Owners, IncludeDeprecated = IncludeDeprecated, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_images_output()
@@ -11389,7 +11402,7 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
     name = "DescribeImportImageTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportImageTasks")
   )
   input <- .ec2$describe_import_image_tasks_input(DryRun = DryRun, Filters = Filters, ImportTaskIds = ImportTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_import_image_tasks_output()
@@ -11427,7 +11440,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
     name = "DescribeImportSnapshotTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportSnapshotTasks")
   )
   input <- .ec2$describe_import_snapshot_tasks_input(DryRun = DryRun, Filters = Filters, ImportTaskIds = ImportTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_import_snapshot_tasks_output()
@@ -11531,7 +11544,7 @@ ec2_describe_instance_connect_endpoints <- function(DryRun = NULL, MaxResults = 
     name = "DescribeInstanceConnectEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceConnectEndpoints")
   )
   input <- .ec2$describe_instance_connect_endpoints_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, InstanceConnectEndpointIds = InstanceConnectEndpointIds)
   output <- .ec2$describe_instance_connect_endpoints_output()
@@ -11581,7 +11594,7 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
     name = "DescribeInstanceCreditSpecifications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceCreditSpecifications")
   )
   input <- .ec2$describe_instance_credit_specifications_input(DryRun = DryRun, Filters = Filters, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_credit_specifications_output()
@@ -11685,7 +11698,7 @@ ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWind
     name = "DescribeInstanceEventWindows",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceEventWindows")
   )
   input <- .ec2$describe_instance_event_windows_input(DryRun = DryRun, InstanceEventWindowIds = InstanceEventWindowIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_event_windows_output()
@@ -11782,7 +11795,7 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
     name = "DescribeInstanceStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceStatuses")
   )
   input <- .ec2$describe_instance_status_input(Filters = Filters, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun, IncludeAllInstances = IncludeAllInstances)
   output <- .ec2$describe_instance_status_output()
@@ -11828,7 +11841,7 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
     name = "DescribeInstanceTypeOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypeOfferings")
   )
   input <- .ec2$describe_instance_type_offerings_input(DryRun = DryRun, LocationType = LocationType, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_type_offerings_output()
@@ -11863,8 +11876,8 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' -   `bare-metal` - Indicates whether it is a bare metal instance type
 #'     (`true` | `false`).
 #' 
-#' -   `burstable-performance-supported` - Indicates whether it is a
-#'     burstable performance instance type (`true` | `false`).
+#' -   `burstable-performance-supported` - Indicates whether the instance
+#'     type is a burstable performance T instance type (`true` | `false`).
 #' 
 #' -   `current-generation` - Indicates whether this instance type is the
 #'     latest generation instance type of an instance family (`true` |
@@ -11970,11 +11983,23 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' -   `network-info.network-performance` - The network performance (for
 #'     example, "25 Gigabit").
 #' 
+#' -   `nitro-enclaves-support` - Indicates whether Nitro Enclaves is
+#'     supported (`supported` | `unsupported`).
+#' 
+#' -   `nitro-tpm-support` - Indicates whether NitroTPM is supported
+#'     (`supported` | `unsupported`).
+#' 
+#' -   `nitro-tpm-info.supported-versions` - The supported NitroTPM version
+#'     (`2.0`).
+#' 
 #' -   `processor-info.supported-architecture` - The CPU architecture
 #'     (`arm64` | `i386` | `x86_64`).
 #' 
 #' -   `processor-info.sustained-clock-speed-in-ghz` - The CPU clock speed,
 #'     in GHz.
+#' 
+#' -   `processor-info.supported-features` - The supported CPU features
+#'     (`amd-sev-snp`).
 #' 
 #' -   `supported-boot-mode` - The boot mode (`legacy-bios` | `uefi`).
 #' 
@@ -12016,7 +12041,7 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
     name = "DescribeInstanceTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes")
   )
   input <- .ec2$describe_instance_types_input(DryRun = DryRun, InstanceTypes = InstanceTypes, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_types_output()
@@ -12339,7 +12364,7 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
     name = "DescribeInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Reservations")
   )
   input <- .ec2$describe_instances_input(Filters = Filters, InstanceIds = InstanceIds, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instances_output()
@@ -12358,7 +12383,7 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_internet_gateways/](https://www.paws-r-sdk.com/docs/ec2_describe_internet_gateways/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `attachment.state` - The current state of the attachment between the
 #'     gateway and the VPC (`available`). Present only if a VPC is
@@ -12384,7 +12409,7 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param InternetGatewayIds One or more internet gateway IDs.
+#' @param InternetGatewayIds The IDs of the internet gateways.
 #' 
 #' Default: Describes all your internet gateways.
 #' @param NextToken The token returned from a previous paginated request. Pagination
@@ -12402,7 +12427,7 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
     name = "DescribeInternetGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InternetGateways")
   )
   input <- .ec2$describe_internet_gateways_input(Filters = Filters, DryRun = DryRun, InternetGatewayIds = InternetGatewayIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_internet_gateways_output()
@@ -12440,7 +12465,7 @@ ec2_describe_ipam_pools <- function(DryRun = NULL, Filters = NULL, MaxResults = 
     name = "DescribeIpamPools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPools")
   )
   input <- .ec2$describe_ipam_pools_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamPoolIds = IpamPoolIds)
   output <- .ec2$describe_ipam_pools_output()
@@ -12478,7 +12503,7 @@ ec2_describe_ipam_resource_discoveries <- function(DryRun = NULL, IpamResourceDi
     name = "DescribeIpamResourceDiscoveries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveries")
   )
   input <- .ec2$describe_ipam_resource_discoveries_input(DryRun = DryRun, IpamResourceDiscoveryIds = IpamResourceDiscoveryIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_ipam_resource_discoveries_output()
@@ -12516,7 +12541,7 @@ ec2_describe_ipam_resource_discovery_associations <- function(DryRun = NULL, Ipa
     name = "DescribeIpamResourceDiscoveryAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveryAssociations")
   )
   input <- .ec2$describe_ipam_resource_discovery_associations_input(DryRun = DryRun, IpamResourceDiscoveryAssociationIds = IpamResourceDiscoveryAssociationIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_ipam_resource_discovery_associations_output()
@@ -12554,7 +12579,7 @@ ec2_describe_ipam_scopes <- function(DryRun = NULL, Filters = NULL, MaxResults =
     name = "DescribeIpamScopes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamScopes")
   )
   input <- .ec2$describe_ipam_scopes_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamScopeIds = IpamScopeIds)
   output <- .ec2$describe_ipam_scopes_output()
@@ -12592,7 +12617,7 @@ ec2_describe_ipams <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL,
     name = "DescribeIpams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipams")
   )
   input <- .ec2$describe_ipams_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamIds = IpamIds)
   output <- .ec2$describe_ipams_output()
@@ -12640,7 +12665,7 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
     name = "DescribeIpv6Pools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6Pools")
   )
   input <- .ec2$describe_ipv_6_pools_input(PoolIds = PoolIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun, Filters = Filters)
   output <- .ec2$describe_ipv_6_pools_output()
@@ -12696,7 +12721,7 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
     name = "DescribeKeyPairs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "KeyPairs")
   )
   input <- .ec2$describe_key_pairs_input(Filters = Filters, KeyNames = KeyNames, KeyPairIds = KeyPairIds, DryRun = DryRun, IncludePublicKey = IncludePublicKey)
   output <- .ec2$describe_key_pairs_output()
@@ -12809,7 +12834,7 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
     name = "DescribeLaunchTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplateVersions")
   )
   input <- .ec2$describe_launch_template_versions_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, Versions = Versions, MinVersion = MinVersion, MaxVersion = MaxVersion, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, ResolveAlias = ResolveAlias)
   output <- .ec2$describe_launch_template_versions_output()
@@ -12862,7 +12887,7 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
     name = "DescribeLaunchTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplates")
   )
   input <- .ec2$describe_launch_templates_input(DryRun = DryRun, LaunchTemplateIds = LaunchTemplateIds, LaunchTemplateNames = LaunchTemplateNames, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_launch_templates_output()
@@ -12920,7 +12945,7 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
     name = "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVirtualInterfaceGroupAssociations")
   )
   input <- .ec2$describe_local_gateway_route_table_virtual_interface_group_associations_input(LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_table_virtual_interface_group_associations_output()
@@ -12977,7 +13002,7 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
     name = "DescribeLocalGatewayRouteTableVpcAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVpcAssociations")
   )
   input <- .ec2$describe_local_gateway_route_table_vpc_associations_input(LocalGatewayRouteTableVpcAssociationIds = LocalGatewayRouteTableVpcAssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_table_vpc_associations_output()
@@ -13030,7 +13055,7 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
     name = "DescribeLocalGatewayRouteTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTables")
   )
   input <- .ec2$describe_local_gateway_route_tables_input(LocalGatewayRouteTableIds = LocalGatewayRouteTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_tables_output()
@@ -13079,7 +13104,7 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
     name = "DescribeLocalGatewayVirtualInterfaceGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaceGroups")
   )
   input <- .ec2$describe_local_gateway_virtual_interface_groups_input(LocalGatewayVirtualInterfaceGroupIds = LocalGatewayVirtualInterfaceGroupIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_virtual_interface_groups_output()
@@ -13136,7 +13161,7 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
     name = "DescribeLocalGatewayVirtualInterfaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaces")
   )
   input <- .ec2$describe_local_gateway_virtual_interfaces_input(LocalGatewayVirtualInterfaceIds = LocalGatewayVirtualInterfaceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_virtual_interfaces_output()
@@ -13183,7 +13208,7 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
     name = "DescribeLocalGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGateways")
   )
   input <- .ec2$describe_local_gateways_input(LocalGatewayIds = LocalGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateways_output()
@@ -13228,7 +13253,7 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
     name = "DescribeManagedPrefixLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists")
   )
   input <- .ec2$describe_managed_prefix_lists_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, PrefixListIds = PrefixListIds)
   output <- .ec2$describe_managed_prefix_lists_output()
@@ -13273,7 +13298,7 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
     name = "DescribeMovingAddresses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MovingAddressStatuses")
   )
   input <- .ec2$describe_moving_addresses_input(Filters = Filters, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, PublicIps = PublicIps)
   output <- .ec2$describe_moving_addresses_output()
@@ -13296,7 +13321,7 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param Filter One or more filters.
+#' @param Filter The filters.
 #' 
 #' -   `nat-gateway-id` - The ID of the NAT gateway.
 #' 
@@ -13320,7 +13345,7 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
 #' [Pagination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination).
-#' @param NatGatewayIds One or more NAT gateway IDs.
+#' @param NatGatewayIds The IDs of the NAT gateways.
 #' @param NextToken The token returned from a previous paginated request. Pagination
 #' continues from the end of the items returned by the previous request.
 #'
@@ -13332,7 +13357,7 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
     name = "DescribeNatGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NatGateways")
   )
   input <- .ec2$describe_nat_gateways_input(DryRun = DryRun, Filter = Filter, MaxResults = MaxResults, NatGatewayIds = NatGatewayIds, NextToken = NextToken)
   output <- .ec2$describe_nat_gateways_output()
@@ -13351,7 +13376,7 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_network_acls/](https://www.paws-r-sdk.com/docs/ec2_describe_network_acls/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `association.association-id` - The ID of an association ID for the
 #'     ACL.
@@ -13411,7 +13436,7 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param NetworkAclIds One or more network ACL IDs.
+#' @param NetworkAclIds The IDs of the network ACLs.
 #' 
 #' Default: Describes all your network ACLs.
 #' @param NextToken The token returned from a previous paginated request. Pagination
@@ -13429,7 +13454,7 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
     name = "DescribeNetworkAcls",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkAcls")
   )
   input <- .ec2$describe_network_acls_input(Filters = Filters, DryRun = DryRun, NetworkAclIds = NetworkAclIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_acls_output()
@@ -13472,7 +13497,7 @@ ec2_describe_network_insights_access_scope_analyses <- function(NetworkInsightsA
     name = "DescribeNetworkInsightsAccessScopeAnalyses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopeAnalyses")
   )
   input <- .ec2$describe_network_insights_access_scope_analyses_input(NetworkInsightsAccessScopeAnalysisIds = NetworkInsightsAccessScopeAnalysisIds, NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, AnalysisStartTimeBegin = AnalysisStartTimeBegin, AnalysisStartTimeEnd = AnalysisStartTimeEnd, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_access_scope_analyses_output()
@@ -13510,7 +13535,7 @@ ec2_describe_network_insights_access_scopes <- function(NetworkInsightsAccessSco
     name = "DescribeNetworkInsightsAccessScopes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopes")
   )
   input <- .ec2$describe_network_insights_access_scopes_input(NetworkInsightsAccessScopeIds = NetworkInsightsAccessScopeIds, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_access_scopes_output()
@@ -13557,7 +13582,7 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
     name = "DescribeNetworkInsightsAnalyses",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAnalyses")
   )
   input <- .ec2$describe_network_insights_analyses_input(NetworkInsightsAnalysisIds = NetworkInsightsAnalysisIds, NetworkInsightsPathId = NetworkInsightsPathId, AnalysisStartTime = AnalysisStartTime, AnalysisEndTime = AnalysisEndTime, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_analyses_output()
@@ -13625,7 +13650,7 @@ ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, F
     name = "DescribeNetworkInsightsPaths",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsPaths")
   )
   input <- .ec2$describe_network_insights_paths_input(NetworkInsightsPathIds = NetworkInsightsPathIds, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_paths_output()
@@ -13710,7 +13735,7 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
     name = "DescribeNetworkInterfacePermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfacePermissions")
   )
   input <- .ec2$describe_network_interface_permissions_input(NetworkInterfacePermissionIds = NetworkInterfacePermissionIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_interface_permissions_output()
@@ -13868,7 +13893,7 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
     name = "DescribeNetworkInterfaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfaces")
   )
   input <- .ec2$describe_network_interfaces_input(Filters = Filters, DryRun = DryRun, NetworkInterfaceIds = NetworkInterfaceIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_interfaces_output()
@@ -13929,7 +13954,7 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
     name = "DescribePlacementGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "PlacementGroups")
   )
   input <- .ec2$describe_placement_groups_input(Filters = Filters, DryRun = DryRun, GroupNames = GroupNames, GroupIds = GroupIds)
   output <- .ec2$describe_placement_groups_output()
@@ -13973,7 +13998,7 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
     name = "DescribePrefixLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists")
   )
   input <- .ec2$describe_prefix_lists_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, PrefixListIds = PrefixListIds)
   output <- .ec2$describe_prefix_lists_output()
@@ -14021,7 +14046,7 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
     name = "DescribePrincipalIdFormat",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Principals")
   )
   input <- .ec2$describe_principal_id_format_input(DryRun = DryRun, Resources = Resources, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_principal_id_format_output()
@@ -14065,7 +14090,7 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
     name = "DescribePublicIpv4Pools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PublicIpv4Pools")
   )
   input <- .ec2$describe_public_ipv_4_pools_input(PoolIds = PoolIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_public_ipv_4_pools_output()
@@ -14110,7 +14135,7 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
     name = "DescribeRegions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Regions")
   )
   input <- .ec2$describe_regions_input(Filters = Filters, RegionNames = RegionNames, DryRun = DryRun, AllRegions = AllRegions)
   output <- .ec2$describe_regions_output()
@@ -14153,7 +14178,7 @@ ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NU
     name = "DescribeReplaceRootVolumeTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReplaceRootVolumeTasks")
   )
   input <- .ec2$describe_replace_root_volume_tasks_input(ReplaceRootVolumeTaskIds = ReplaceRootVolumeTaskIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_replace_root_volume_tasks_output()
@@ -14241,7 +14266,7 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
     name = "DescribeReservedInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ReservedInstances")
   )
   input <- .ec2$describe_reserved_instances_input(Filters = Filters, OfferingClass = OfferingClass, ReservedInstancesIds = ReservedInstancesIds, DryRun = DryRun, OfferingType = OfferingType)
   output <- .ec2$describe_reserved_instances_output()
@@ -14283,7 +14308,7 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
     name = "DescribeReservedInstancesListings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "ReservedInstancesListings")
   )
   input <- .ec2$describe_reserved_instances_listings_input(Filters = Filters, ReservedInstancesId = ReservedInstancesId, ReservedInstancesListingId = ReservedInstancesListingId)
   output <- .ec2$describe_reserved_instances_listings_output()
@@ -14347,7 +14372,7 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
     name = "DescribeReservedInstancesModifications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ReservedInstancesModifications")
   )
   input <- .ec2$describe_reserved_instances_modifications_input(Filters = Filters, ReservedInstancesModificationIds = ReservedInstancesModificationIds, NextToken = NextToken)
   output <- .ec2$describe_reserved_instances_modifications_output()
@@ -14454,7 +14479,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
     name = "DescribeReservedInstancesOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedInstancesOfferings")
   )
   input <- .ec2$describe_reserved_instances_offerings_input(AvailabilityZone = AvailabilityZone, Filters = Filters, IncludeMarketplace = IncludeMarketplace, InstanceType = InstanceType, MaxDuration = MaxDuration, MaxInstanceCount = MaxInstanceCount, MinDuration = MinDuration, OfferingClass = OfferingClass, ProductDescription = ProductDescription, ReservedInstancesOfferingIds = ReservedInstancesOfferingIds, DryRun = DryRun, InstanceTenancy = InstanceTenancy, MaxResults = MaxResults, NextToken = NextToken, OfferingType = OfferingType)
   output <- .ec2$describe_reserved_instances_offerings_output()
@@ -14473,7 +14498,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_route_tables/](https://www.paws-r-sdk.com/docs/ec2_describe_route_tables/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `association.route-table-association-id` - The ID of an association
 #'     ID for the route table.
@@ -14547,7 +14572,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param RouteTableIds One or more route table IDs.
+#' @param RouteTableIds The IDs of the route tables.
 #' 
 #' Default: Describes all your route tables.
 #' @param NextToken The token returned from a previous paginated request. Pagination
@@ -14565,7 +14590,7 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
     name = "DescribeRouteTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteTables")
   )
   input <- .ec2$describe_route_tables_input(Filters = Filters, DryRun = DryRun, RouteTableIds = RouteTableIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_route_tables_output()
@@ -14618,7 +14643,7 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
     name = "DescribeScheduledInstanceAvailability",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceAvailabilitySet")
   )
   input <- .ec2$describe_scheduled_instance_availability_input(DryRun = DryRun, Filters = Filters, FirstSlotStartTimeRange = FirstSlotStartTimeRange, MaxResults = MaxResults, MaxSlotDurationInHours = MaxSlotDurationInHours, MinSlotDurationInHours = MinSlotDurationInHours, NextToken = NextToken, Recurrence = Recurrence)
   output <- .ec2$describe_scheduled_instance_availability_output()
@@ -14666,7 +14691,7 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
     name = "DescribeScheduledInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceSet")
   )
   input <- .ec2$describe_scheduled_instances_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, ScheduledInstanceIds = ScheduledInstanceIds, SlotStartTimeRange = SlotStartTimeRange)
   output <- .ec2$describe_scheduled_instances_output()
@@ -14678,12 +14703,11 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 }
 .ec2$operations$describe_scheduled_instances <- ec2_describe_scheduled_instances
 
-#' &#91;VPC only&#93; Describes the VPCs on the other side of a VPC peering
-#' connection that are referencing the security groups you've specified in
-#' this request
+#' Describes the VPCs on the other side of a VPC peering connection that
+#' are referencing the security groups you've specified in this request
 #'
 #' @description
-#' \[VPC only\] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
+#' Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_security_group_references/](https://www.paws-r-sdk.com/docs/ec2_describe_security_group_references/) for full documentation.
 #'
@@ -14752,7 +14776,7 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
     name = "DescribeSecurityGroupRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupRules")
   )
   input <- .ec2$describe_security_group_rules_input(Filters = Filters, SecurityGroupRuleIds = SecurityGroupRuleIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_security_group_rules_output()
@@ -14856,10 +14880,8 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
 #' nondefault VPC.
 #' 
 #' Default: Describes all of your security groups.
-#' @param GroupNames \[EC2-Classic and default VPC only\] The names of the security groups.
-#' You can specify either the security group name or the security group ID.
-#' For security groups in a nondefault VPC, use the `group-name` filter to
-#' describe security groups by name.
+#' @param GroupNames \[Default VPC\] The names of the security groups. You can specify either
+#' the security group name or the security group ID.
 #' 
 #' Default: Describes all of your security groups.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -14882,7 +14904,7 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
     name = "DescribeSecurityGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroups")
   )
   input <- .ec2$describe_security_groups_input(Filters = Filters, GroupIds = GroupIds, GroupNames = GroupNames, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_security_groups_output()
@@ -14966,7 +14988,7 @@ ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, Nex
     name = "DescribeSnapshotTierStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SnapshotTierStatuses")
   )
   input <- .ec2$describe_snapshot_tier_status_input(Filters = Filters, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_snapshot_tier_status_output()
@@ -15057,7 +15079,7 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
   )
   input <- .ec2$describe_snapshots_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, OwnerIds = OwnerIds, RestorableByUserIds = RestorableByUserIds, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$describe_snapshots_output()
@@ -15210,7 +15232,7 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
     name = "DescribeSpotFleetRequests",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotFleetRequestConfigs")
   )
   input <- .ec2$describe_spot_fleet_requests_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestIds = SpotFleetRequestIds)
   output <- .ec2$describe_spot_fleet_requests_output()
@@ -15366,7 +15388,7 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
     name = "DescribeSpotInstanceRequests",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotInstanceRequests")
   )
   input <- .ec2$describe_spot_instance_requests_input(Filters = Filters, DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_spot_instance_requests_output()
@@ -15433,7 +15455,7 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
     name = "DescribeSpotPriceHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPriceHistory")
   )
   input <- .ec2$describe_spot_price_history_input(Filters = Filters, AvailabilityZone = AvailabilityZone, DryRun = DryRun, EndTime = EndTime, InstanceTypes = InstanceTypes, MaxResults = MaxResults, NextToken = NextToken, ProductDescriptions = ProductDescriptions, StartTime = StartTime)
   output <- .ec2$describe_spot_price_history_output()
@@ -15445,11 +15467,11 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
 }
 .ec2$operations$describe_spot_price_history <- ec2_describe_spot_price_history
 
-#' &#91;VPC only&#93; Describes the stale security group rules for security
-#' groups in a specified VPC
+#' Describes the stale security group rules for security groups in a
+#' specified VPC
 #'
 #' @description
-#' \[VPC only\] Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in the same VPC or in a peer VPC, or if they reference a security group in a peer VPC for which the VPC peering connection has been deleted.
+#' Describes the stale security group rules for security groups in a specified VPC. Rules are stale when they reference a deleted security group in the same VPC or in a peer VPC, or if they reference a security group in a peer VPC for which the VPC peering connection has been deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_stale_security_groups/](https://www.paws-r-sdk.com/docs/ec2_describe_stale_security_groups/) for full documentation.
 #'
@@ -15473,7 +15495,7 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
     name = "DescribeStaleSecurityGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StaleSecurityGroupSet")
   )
   input <- .ec2$describe_stale_security_groups_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, VpcId = VpcId)
   output <- .ec2$describe_stale_security_groups_output()
@@ -15523,7 +15545,7 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
     name = "DescribeStoreImageTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StoreImageTaskResults")
   )
   input <- .ec2$describe_store_image_tasks_input(ImageIds = ImageIds, DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_store_image_tasks_output()
@@ -15542,7 +15564,7 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_subnets/](https://www.paws-r-sdk.com/docs/ec2_describe_subnets/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `availability-zone` - The Availability Zone for the subnet. You can
 #'     also use `availabilityZone` as the filter name.
@@ -15631,7 +15653,7 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
 #'     regardless of the tag value.
 #' 
 #' -   `vpc-id` - The ID of the VPC for the subnet.
-#' @param SubnetIds One or more subnet IDs.
+#' @param SubnetIds The IDs of the subnets.
 #' 
 #' Default: Describes all your subnets.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -15653,7 +15675,7 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
     name = "DescribeSubnets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subnets")
   )
   input <- .ec2$describe_subnets_input(Filters = Filters, SubnetIds = SubnetIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_subnets_output()
@@ -15712,7 +15734,7 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .ec2$describe_tags_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_tags_output()
@@ -15754,7 +15776,7 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
     name = "DescribeTrafficMirrorFilters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorFilters")
   )
   input <- .ec2$describe_traffic_mirror_filters_input(TrafficMirrorFilterIds = TrafficMirrorFilterIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_filters_output()
@@ -15813,7 +15835,7 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
     name = "DescribeTrafficMirrorSessions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorSessions")
   )
   input <- .ec2$describe_traffic_mirror_sessions_input(TrafficMirrorSessionIds = TrafficMirrorSessionIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_sessions_output()
@@ -15864,7 +15886,7 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
     name = "DescribeTrafficMirrorTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorTargets")
   )
   input <- .ec2$describe_traffic_mirror_targets_input(TrafficMirrorTargetIds = TrafficMirrorTargetIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_targets_output()
@@ -15928,7 +15950,7 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
     name = "DescribeTransitGatewayAttachments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachments")
   )
   input <- .ec2$describe_transit_gateway_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_attachments_output()
@@ -15973,7 +15995,7 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
     name = "DescribeTransitGatewayConnectPeers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnectPeers")
   )
   input <- .ec2$describe_transit_gateway_connect_peers_input(TransitGatewayConnectPeerIds = TransitGatewayConnectPeerIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_connect_peers_output()
@@ -16025,7 +16047,7 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
     name = "DescribeTransitGatewayConnects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnects")
   )
   input <- .ec2$describe_transit_gateway_connects_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_connects_output()
@@ -16071,7 +16093,7 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
     name = "DescribeTransitGatewayMulticastDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayMulticastDomains")
   )
   input <- .ec2$describe_transit_gateway_multicast_domains_input(TransitGatewayMulticastDomainIds = TransitGatewayMulticastDomainIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_multicast_domains_output()
@@ -16134,7 +16156,7 @@ ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttac
     name = "DescribeTransitGatewayPeeringAttachments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPeeringAttachments")
   )
   input <- .ec2$describe_transit_gateway_peering_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_peering_attachments_output()
@@ -16172,7 +16194,7 @@ ec2_describe_transit_gateway_policy_tables <- function(TransitGatewayPolicyTable
     name = "DescribeTransitGatewayPolicyTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPolicyTables")
   )
   input <- .ec2$describe_transit_gateway_policy_tables_input(TransitGatewayPolicyTableIds = TransitGatewayPolicyTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_policy_tables_output()
@@ -16210,7 +16232,7 @@ ec2_describe_transit_gateway_route_table_announcements <- function(TransitGatewa
     name = "DescribeTransitGatewayRouteTableAnnouncements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTableAnnouncements")
   )
   input <- .ec2$describe_transit_gateway_route_table_announcements_input(TransitGatewayRouteTableAnnouncementIds = TransitGatewayRouteTableAnnouncementIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_route_table_announcements_output()
@@ -16264,7 +16286,7 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
     name = "DescribeTransitGatewayRouteTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTables")
   )
   input <- .ec2$describe_transit_gateway_route_tables_input(TransitGatewayRouteTableIds = TransitGatewayRouteTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_route_tables_output()
@@ -16313,7 +16335,7 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
     name = "DescribeTransitGatewayVpcAttachments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayVpcAttachments")
   )
   input <- .ec2$describe_transit_gateway_vpc_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_vpc_attachments_output()
@@ -16386,7 +16408,7 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
     name = "DescribeTransitGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGateways")
   )
   input <- .ec2$describe_transit_gateways_input(TransitGatewayIds = TransitGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateways_output()
@@ -16429,7 +16451,7 @@ ec2_describe_trunk_interface_associations <- function(AssociationIds = NULL, Dry
     name = "DescribeTrunkInterfaceAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InterfaceAssociations")
   )
   input <- .ec2$describe_trunk_interface_associations_input(AssociationIds = AssociationIds, DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_trunk_interface_associations_output()
@@ -16469,7 +16491,7 @@ ec2_describe_verified_access_endpoints <- function(VerifiedAccessEndpointIds = N
     name = "DescribeVerifiedAccessEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessEndpoints")
   )
   input <- .ec2$describe_verified_access_endpoints_input(VerifiedAccessEndpointIds = VerifiedAccessEndpointIds, VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessGroupId = VerifiedAccessGroupId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_endpoints_output()
@@ -16508,7 +16530,7 @@ ec2_describe_verified_access_groups <- function(VerifiedAccessGroupIds = NULL, V
     name = "DescribeVerifiedAccessGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessGroups")
   )
   input <- .ec2$describe_verified_access_groups_input(VerifiedAccessGroupIds = VerifiedAccessGroupIds, VerifiedAccessInstanceId = VerifiedAccessInstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_groups_output()
@@ -16546,7 +16568,7 @@ ec2_describe_verified_access_instance_logging_configurations <- function(Verifie
     name = "DescribeVerifiedAccessInstanceLoggingConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LoggingConfigurations")
   )
   input <- .ec2$describe_verified_access_instance_logging_configurations_input(VerifiedAccessInstanceIds = VerifiedAccessInstanceIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_instance_logging_configurations_output()
@@ -16584,7 +16606,7 @@ ec2_describe_verified_access_instances <- function(VerifiedAccessInstanceIds = N
     name = "DescribeVerifiedAccessInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessInstances")
   )
   input <- .ec2$describe_verified_access_instances_input(VerifiedAccessInstanceIds = VerifiedAccessInstanceIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_instances_output()
@@ -16623,7 +16645,7 @@ ec2_describe_verified_access_trust_providers <- function(VerifiedAccessTrustProv
     name = "DescribeVerifiedAccessTrustProviders",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessTrustProviders")
   )
   input <- .ec2$describe_verified_access_trust_providers_input(VerifiedAccessTrustProviderIds = VerifiedAccessTrustProviderIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_trust_providers_output()
@@ -16734,7 +16756,7 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
     name = "DescribeVolumeStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumeStatuses")
   )
   input <- .ec2$describe_volume_status_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, VolumeIds = VolumeIds, DryRun = DryRun)
   output <- .ec2$describe_volume_status_output()
@@ -16828,7 +16850,7 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
     name = "DescribeVolumes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Volumes")
   )
   input <- .ec2$describe_volumes_input(Filters = Filters, VolumeIds = VolumeIds, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_volumes_output()
@@ -16895,7 +16917,7 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
     name = "DescribeVolumesModifications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumesModifications")
   )
   input <- .ec2$describe_volumes_modifications_input(DryRun = DryRun, VolumeIds = VolumeIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_volumes_modifications_output()
@@ -16941,14 +16963,14 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 }
 .ec2$operations$describe_vpc_attribute <- ec2_describe_vpc_attribute
 
-#' Describes the ClassicLink status of one or more VPCs
+#' This action is deprecated
 #'
 #' @description
-#' Describes the ClassicLink status of one or more VPCs.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_vpc_classic_link/](https://www.paws-r-sdk.com/docs/ec2_describe_vpc_classic_link/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `is-classic-link-enabled` - Whether the VPC is enabled for
 #'     ClassicLink (`true` | `false`).
@@ -16966,7 +16988,7 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param VpcIds One or more VPCs for which you want to describe the ClassicLink status.
+#' @param VpcIds The VPCs for which you want to describe the ClassicLink status.
 #'
 #' @keywords internal
 #'
@@ -16988,10 +17010,10 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
 }
 .ec2$operations$describe_vpc_classic_link <- ec2_describe_vpc_classic_link
 
-#' We are retiring EC2-Classic
+#' This action is deprecated
 #'
 #' @description
-#' We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see [Migrate from EC2-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_vpc_classic_link_dns_support/](https://www.paws-r-sdk.com/docs/ec2_describe_vpc_classic_link_dns_support/) for full documentation.
 #'
@@ -17001,7 +17023,7 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
 #' [Pagination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination).
 #' @param NextToken The token returned from a previous paginated request. Pagination
 #' continues from the end of the items returned by the previous request.
-#' @param VpcIds One or more VPC IDs.
+#' @param VpcIds The IDs of the VPCs.
 #'
 #' @keywords internal
 #'
@@ -17011,7 +17033,7 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
     name = "DescribeVpcClassicLinkDnsSupport",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs")
   )
   input <- .ec2$describe_vpc_classic_link_dns_support_input(MaxResults = MaxResults, NextToken = NextToken, VpcIds = VpcIds)
   output <- .ec2$describe_vpc_classic_link_dns_support_output()
@@ -17064,7 +17086,7 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
     name = "DescribeVpcEndpointConnectionNotifications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectionNotificationSet")
   )
   input <- .ec2$describe_vpc_endpoint_connection_notifications_input(DryRun = DryRun, ConnectionNotificationId = ConnectionNotificationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_connection_notifications_output()
@@ -17117,7 +17139,7 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
     name = "DescribeVpcEndpointConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpointConnections")
   )
   input <- .ec2$describe_vpc_endpoint_connections_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_connections_output()
@@ -17178,7 +17200,7 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
     name = "DescribeVpcEndpointServiceConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceConfigurations")
   )
   input <- .ec2$describe_vpc_endpoint_service_configurations_input(DryRun = DryRun, ServiceIds = ServiceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_service_configurations_output()
@@ -17224,7 +17246,7 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
     name = "DescribeVpcEndpointServicePermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AllowedPrincipals")
   )
   input <- .ec2$describe_vpc_endpoint_service_permissions_input(DryRun = DryRun, ServiceId = ServiceId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_service_permissions_output()
@@ -17354,7 +17376,7 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
     name = "DescribeVpcEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpoints")
   )
   input <- .ec2$describe_vpc_endpoints_input(DryRun = DryRun, VpcEndpointIds = VpcEndpointIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoints_output()
@@ -17373,7 +17395,7 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_vpc_peering_connections/](https://www.paws-r-sdk.com/docs/ec2_describe_vpc_peering_connections/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `accepter-vpc-info.cidr-block` - The IPv4 CIDR block of the accepter
 #'     VPC.
@@ -17416,7 +17438,7 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
-#' @param VpcPeeringConnectionIds One or more VPC peering connection IDs.
+#' @param VpcPeeringConnectionIds The IDs of the VPC peering connections.
 #' 
 #' Default: Describes all your VPC peering connections.
 #' @param NextToken The token returned from a previous paginated request. Pagination
@@ -17434,7 +17456,7 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
     name = "DescribeVpcPeeringConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcPeeringConnections")
   )
   input <- .ec2$describe_vpc_peering_connections_input(Filters = Filters, DryRun = DryRun, VpcPeeringConnectionIds = VpcPeeringConnectionIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_vpc_peering_connections_output()
@@ -17453,7 +17475,7 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_vpcs/](https://www.paws-r-sdk.com/docs/ec2_describe_vpcs/) for full documentation.
 #'
-#' @param Filters One or more filters.
+#' @param Filters The filters.
 #' 
 #' -   `cidr` - The primary IPv4 CIDR block of the VPC. The CIDR block you
 #'     specify must exactly match the VPC's CIDR block for information to
@@ -17501,7 +17523,7 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #'     regardless of the tag value.
 #' 
 #' -   `vpc-id` - The ID of the VPC.
-#' @param VpcIds One or more VPC IDs.
+#' @param VpcIds The IDs of the VPCs.
 #' 
 #' Default: Describes all your VPCs.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -17523,7 +17545,7 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
     name = "DescribeVpcs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs")
   )
   input <- .ec2$describe_vpcs_input(Filters = Filters, VpcIds = VpcIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_vpcs_output()
@@ -17599,7 +17621,7 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
     name = "DescribeVpnConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "VpnConnections")
   )
   input <- .ec2$describe_vpn_connections_input(Filters = Filters, VpnConnectionIds = VpnConnectionIds, DryRun = DryRun)
   output <- .ec2$describe_vpn_connections_output()
@@ -17665,7 +17687,7 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
     name = "DescribeVpnGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "VpnGateways")
   )
   input <- .ec2$describe_vpn_gateways_input(Filters = Filters, VpnGatewayIds = VpnGatewayIds, DryRun = DryRun)
   output <- .ec2$describe_vpn_gateways_output()
@@ -17677,10 +17699,10 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
 }
 .ec2$operations$describe_vpn_gateways <- ec2_describe_vpn_gateways
 
-#' We are retiring EC2-Classic
+#' This action is deprecated
 #'
 #' @description
-#' We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see [Migrate from EC2-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_detach_classic_link_vpc/](https://www.paws-r-sdk.com/docs/ec2_detach_classic_link_vpc/) for full documentation.
 #'
@@ -18258,10 +18280,10 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = 
 }
 .ec2$operations$disable_vgw_route_propagation <- ec2_disable_vgw_route_propagation
 
-#' Disables ClassicLink for a VPC
+#' This action is deprecated
 #'
 #' @description
-#' Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC that has EC2-Classic instances linked to it.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_disable_vpc_classic_link/](https://www.paws-r-sdk.com/docs/ec2_disable_vpc_classic_link/) for full documentation.
 #'
@@ -18291,10 +18313,10 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 }
 .ec2$operations$disable_vpc_classic_link <- ec2_disable_vpc_classic_link
 
-#' Disables ClassicLink DNS support for a VPC
+#' This action is deprecated
 #'
 #' @description
-#' Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames resolve to public IP addresses when addressed between a linked EC2-Classic instance and instances in the VPC to which it's linked. For more information, see [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_disable_vpc_classic_link_dns_support/](https://www.paws-r-sdk.com/docs/ec2_disable_vpc_classic_link_dns_support/) for full documentation.
 #'
@@ -18524,11 +18546,11 @@ ec2_disassociate_ipam_resource_discovery <- function(DryRun = NULL, IpamResource
 #' gateway
 #'
 #' @description
-#' Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway. You cannot disassociate your primary EIP. For more information, see [Edit secondary IP address associations](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary) in the *Amazon Virtual Private Cloud User Guide*.
+#' Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway. You cannot disassociate your primary EIP. For more information, see [Edit secondary IP address associations](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_disassociate_nat_gateway_address/](https://www.paws-r-sdk.com/docs/ec2_disassociate_nat_gateway_address/) for full documentation.
 #'
-#' @param NatGatewayId &#91;required&#93; The NAT gateway ID.
+#' @param NatGatewayId &#91;required&#93; The ID of the NAT gateway.
 #' @param AssociationIds &#91;required&#93; The association IDs of EIPs that have been associated with the NAT
 #' gateway.
 #' @param MaxDrainDurationSeconds The maximum amount of time to wait (in seconds) before forcibly
@@ -19228,10 +19250,10 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
 }
 .ec2$operations$enable_volume_io <- ec2_enable_volume_io
 
-#' We are retiring EC2-Classic
+#' This action is deprecated
 #'
 #' @description
-#' We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see [Migrate from EC2-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_enable_vpc_classic_link/](https://www.paws-r-sdk.com/docs/ec2_enable_vpc_classic_link/) for full documentation.
 #'
@@ -19261,10 +19283,10 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 }
 .ec2$operations$enable_vpc_classic_link <- ec2_enable_vpc_classic_link
 
-#' We are retiring EC2-Classic
+#' This action is deprecated
 #'
 #' @description
-#' We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see [Migrate from EC2-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' This action is deprecated.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_enable_vpc_classic_link_dns_support/](https://www.paws-r-sdk.com/docs/ec2_enable_vpc_classic_link_dns_support/) for full documentation.
 #'
@@ -19525,7 +19547,7 @@ ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxRes
     name = "GetAssociatedIpv6PoolCidrs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6CidrAssociations")
   )
   input <- .ec2$get_associated_ipv_6_pool_cidrs_input(PoolId = PoolId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_associated_ipv_6_pool_cidrs_output()
@@ -19568,7 +19590,7 @@ ec2_get_aws_network_performance_data <- function(DataQueries = NULL, StartTime =
     name = "GetAwsNetworkPerformanceData",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataResponses")
   )
   input <- .ec2$get_aws_network_performance_data_input(DataQueries = DataQueries, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_aws_network_performance_data_output()
@@ -19906,7 +19928,7 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
     name = "GetGroupsForCapacityReservation",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationGroups")
   )
   input <- .ec2$get_groups_for_capacity_reservation_input(CapacityReservationId = CapacityReservationId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_groups_for_capacity_reservation_output()
@@ -19978,7 +20000,7 @@ ec2_get_instance_types_from_instance_requirements <- function(DryRun = NULL, Arc
     name = "GetInstanceTypesFromInstanceRequirements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes")
   )
   input <- .ec2$get_instance_types_from_instance_requirements_input(DryRun = DryRun, ArchitectureTypes = ArchitectureTypes, VirtualizationTypes = VirtualizationTypes, InstanceRequirements = InstanceRequirements, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_instance_types_from_instance_requirements_output()
@@ -20056,7 +20078,7 @@ ec2_get_ipam_address_history <- function(DryRun = NULL, Cidr, IpamScopeId, VpcId
     name = "GetIpamAddressHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HistoryRecords")
   )
   input <- .ec2$get_ipam_address_history_input(DryRun = DryRun, Cidr = Cidr, IpamScopeId = IpamScopeId, VpcId = VpcId, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_address_history_output()
@@ -20096,7 +20118,7 @@ ec2_get_ipam_discovered_accounts <- function(DryRun = NULL, IpamResourceDiscover
     name = "GetIpamDiscoveredAccounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredAccounts")
   )
   input <- .ec2$get_ipam_discovered_accounts_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, DiscoveryRegion = DiscoveryRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_accounts_output()
@@ -20136,7 +20158,7 @@ ec2_get_ipam_discovered_resource_cidrs <- function(DryRun = NULL, IpamResourceDi
     name = "GetIpamDiscoveredResourceCidrs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredResourceCidrs")
   )
   input <- .ec2$get_ipam_discovered_resource_cidrs_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, ResourceRegion = ResourceRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_resource_cidrs_output()
@@ -20175,7 +20197,7 @@ ec2_get_ipam_pool_allocations <- function(DryRun = NULL, IpamPoolId, IpamPoolAll
     name = "GetIpamPoolAllocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolAllocations")
   )
   input <- .ec2$get_ipam_pool_allocations_input(DryRun = DryRun, IpamPoolId = IpamPoolId, IpamPoolAllocationId = IpamPoolAllocationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_pool_allocations_output()
@@ -20213,7 +20235,7 @@ ec2_get_ipam_pool_cidrs <- function(DryRun = NULL, IpamPoolId, Filters = NULL, M
     name = "GetIpamPoolCidrs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolCidrs")
   )
   input <- .ec2$get_ipam_pool_cidrs_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_pool_cidrs_output()
@@ -20256,7 +20278,7 @@ ec2_get_ipam_resource_cidrs <- function(DryRun = NULL, Filters = NULL, MaxResult
     name = "GetIpamResourceCidrs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceCidrs")
   )
   input <- .ec2$get_ipam_resource_cidrs_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamScopeId = IpamScopeId, IpamPoolId = IpamPoolId, ResourceId = ResourceId, ResourceType = ResourceType, ResourceTag = ResourceTag, ResourceOwner = ResourceOwner)
   output <- .ec2$get_ipam_resource_cidrs_output()
@@ -20327,7 +20349,7 @@ ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId
     name = "GetManagedPrefixListAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixListAssociations")
   )
   input <- .ec2$get_managed_prefix_list_associations_input(DryRun = DryRun, PrefixListId = PrefixListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_managed_prefix_list_associations_output()
@@ -20366,7 +20388,7 @@ ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, Tar
     name = "GetManagedPrefixListEntries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entries")
   )
   input <- .ec2$get_managed_prefix_list_entries_input(DryRun = DryRun, PrefixListId = PrefixListId, TargetVersion = TargetVersion, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_managed_prefix_list_entries_output()
@@ -20403,7 +20425,7 @@ ec2_get_network_insights_access_scope_analysis_findings <- function(NetworkInsig
     name = "GetNetworkInsightsAccessScopeAnalysisFindings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnalysisFindings")
   )
   input <- .ec2$get_network_insights_access_scope_analysis_findings_input(NetworkInsightsAccessScopeAnalysisId = NetworkInsightsAccessScopeAnalysisId, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_network_insights_access_scope_analysis_findings_output()
@@ -20605,7 +20627,7 @@ ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, 
     name = "GetSpotPlacementScores",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPlacementScores")
   )
   input <- .ec2$get_spot_placement_scores_input(InstanceTypes = InstanceTypes, TargetCapacity = TargetCapacity, TargetCapacityUnitType = TargetCapacityUnitType, SingleAvailabilityZone = SingleAvailabilityZone, RegionNames = RegionNames, InstanceRequirementsWithMetadata = InstanceRequirementsWithMetadata, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_spot_placement_scores_output()
@@ -20699,7 +20721,7 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
     name = "GetTransitGatewayAttachmentPropagations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachmentPropagations")
   )
   input <- .ec2$get_transit_gateway_attachment_propagations_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_attachment_propagations_output()
@@ -20750,7 +20772,7 @@ ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGateway
     name = "GetTransitGatewayMulticastDomainAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastDomainAssociations")
   )
   input <- .ec2$get_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_multicast_domain_associations_output()
@@ -20788,7 +20810,7 @@ ec2_get_transit_gateway_policy_table_associations <- function(TransitGatewayPoli
     name = "GetTransitGatewayPolicyTableAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
   )
   input <- .ec2$get_transit_gateway_policy_table_associations_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_policy_table_associations_output()
@@ -20885,7 +20907,7 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
     name = "GetTransitGatewayPrefixListReferences",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPrefixListReferences")
   )
   input <- .ec2$get_transit_gateway_prefix_list_references_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_prefix_list_references_output()
@@ -20931,7 +20953,7 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
     name = "GetTransitGatewayRouteTableAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
   )
   input <- .ec2$get_transit_gateway_route_table_associations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_route_table_associations_output()
@@ -20977,7 +20999,7 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
     name = "GetTransitGatewayRouteTablePropagations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTablePropagations")
   )
   input <- .ec2$get_transit_gateway_route_table_propagations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_route_table_propagations_output()
@@ -21137,7 +21159,7 @@ ec2_get_vpn_connection_device_types <- function(MaxResults = NULL, NextToken = N
     name = "GetVpnConnectionDeviceTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpnConnectionDeviceTypes")
   )
   input <- .ec2$get_vpn_connection_device_types_input(MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_vpn_connection_device_types_output()
@@ -21261,11 +21283,7 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' 
 #' -   Key ID
 #' 
-#' -   Key alias. The alias ARN contains the `arn:aws:kms` namespace,
-#'     followed by the Region of the key, the Amazon Web Services account
-#'     ID of the key owner, the `alias` namespace, and then the key alias.
-#'     For example,
-#'     arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+#' -   Key alias
 #' 
 #' -   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace,
 #'     followed by the Region of the key, the Amazon Web Services account
@@ -21302,7 +21320,9 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' information, see
 #' [Prerequisites](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image)
 #' in the VM Import/Export User Guide.
-#' @param Platform The operating system of the virtual machine.
+#' @param Platform The operating system of the virtual machine. If you import a VM that is
+#' compatible with Unified Extensible Firmware Interface (UEFI) using an
+#' EBS snapshot, you must specify a value for the platform.
 #' 
 #' Valid values: `Windows` | `Linux`
 #' @param RoleName The name of the role to use when not using the default role, 'vmimport'.
@@ -21333,11 +21353,10 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
 }
 .ec2$operations$import_image <- ec2_import_image
 
-#' Creates an import instance task using metadata from the specified disk
-#' image
+#' We recommend that you use the ImportImage API
 #'
 #' @description
-#' Creates an import instance task using metadata from the specified disk image.
+#' We recommend that you use the [`import_image`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html) API. For more information, see [Importing a VM as an image using VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html) in the *VM Import/Export User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_import_instance/](https://www.paws-r-sdk.com/docs/ec2_import_instance/) for full documentation.
 #'
@@ -21438,11 +21457,7 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 #' 
 #' -   Key ID
 #' 
-#' -   Key alias. The alias ARN contains the `arn:aws:kms` namespace,
-#'     followed by the Region of the key, the Amazon Web Services account
-#'     ID of the key owner, the `alias` namespace, and then the key alias.
-#'     For example,
-#'     arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+#' -   Key alias
 #' 
 #' -   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace,
 #'     followed by the Region of the key, the Amazon Web Services account
@@ -21553,7 +21568,7 @@ ec2_list_images_in_recycle_bin <- function(ImageIds = NULL, NextToken = NULL, Ma
     name = "ListImagesInRecycleBin",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images")
   )
   input <- .ec2$list_images_in_recycle_bin_input(ImageIds = ImageIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$list_images_in_recycle_bin_output()
@@ -21593,7 +21608,7 @@ ec2_list_snapshots_in_recycle_bin <- function(MaxResults = NULL, NextToken = NUL
     name = "ListSnapshotsInRecycleBin",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
   )
   input <- .ec2$list_snapshots_in_recycle_bin_input(MaxResults = MaxResults, NextToken = NextToken, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$list_snapshots_in_recycle_bin_output()
@@ -22602,8 +22617,7 @@ ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = N
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param HttpProtocolIpv6 Enables or disables the IPv6 endpoint for the instance metadata service.
-#' This setting applies only if you have enabled the HTTP metadata
-#' endpoint.
+#' Applies only if you enabled the HTTP metadata endpoint.
 #' @param InstanceMetadataTags Set to `enabled` to allow access to instance tags from the instance
 #' metadata. Set to `disabled` to turn off access to instance tags from the
 #' instance metadata. For more information, see [Work with instance tags
@@ -22651,12 +22665,14 @@ ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, 
 #' @param InstanceId &#91;required&#93; The ID of the instance that you are modifying.
 #' @param Tenancy The tenancy for the instance.
 #' 
-#' For T3 instances, you can't change the tenancy from `dedicated` to
-#' `host`, or from `host` to `dedicated`. Attempting to make one of these
-#' unsupported tenancy changes results in the `InvalidTenancy` error code.
+#' For T3 instances, you must launch the instance on a Dedicated Host to
+#' use a tenancy of `host`. You can't change the tenancy from `host` to
+#' `dedicated` or `default`. Attempting to make one of these unsupported
+#' tenancy changes results in an `InvalidRequest` error code.
 #' @param PartitionNumber The number of the partition in which to place the instance. Valid only
 #' if the placement group strategy is set to `partition`.
-#' @param HostResourceGroupArn The ARN of the host resource group in which to place the instance.
+#' @param HostResourceGroupArn The ARN of the host resource group in which to place the instance. The
+#' instance must have a tenancy of `host` to specify this parameter.
 #' @param GroupId The Group Id of a placement group. You must specify the Placement Group
 #' **Group Id** to launch an instance in a shared placement group.
 #'
@@ -24269,10 +24285,11 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
 }
 .ec2$operations$modify_vpc_endpoint_service_permissions <- ec2_modify_vpc_endpoint_service_permissions
 
-#' We are retiring EC2-Classic
+#' Modifies the VPC peering connection options on one side of a VPC peering
+#' connection
 #'
 #' @description
-#' We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see [Migrate from EC2-Classic to a VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Modifies the VPC peering connection options on one side of a VPC peering connection.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_modify_vpc_peering_connection_options/](https://www.paws-r-sdk.com/docs/ec2_modify_vpc_peering_connection_options/) for full documentation.
 #'
@@ -25357,7 +25374,7 @@ ec2_release_hosts <- function(HostIds) {
 #' Release an allocation within an IPAM pool
 #'
 #' @description
-#' Release an allocation within an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations. You can only use this action to release manual allocations. To remove an allocation for a resource without deleting the resource, set its monitored state to false using [`modify_ipam_resource_cidr`][ec2_modify_ipam_resource_cidr]. For more information, see [Release an allocation](https://docs.aws.amazon.com/vpc/latest/ipam/) in the *Amazon VPC IPAM User Guide*.
+#' Release an allocation within an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations. You can only use this action to release manual allocations. To remove an allocation for a resource without deleting the resource, set its monitored state to false using [`modify_ipam_resource_cidr`][ec2_modify_ipam_resource_cidr]. For more information, see [Release an allocation](https://docs.aws.amazon.com/vpc/latest/ipam/release-alloc-ipam.html) in the *Amazon VPC IPAM User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_release_ipam_pool_allocation/](https://www.paws-r-sdk.com/docs/ec2_release_ipam_pool_allocation/) for full documentation.
 #'
@@ -25423,7 +25440,7 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 #' Changes which network ACL a subnet is associated with
 #'
 #' @description
-#' Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/) in the *Amazon Virtual Private Cloud User Guide*.
+#' Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_association/](https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_association/) for full documentation.
 #'
@@ -25458,7 +25475,7 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #' Replaces an entry (rule) in a network ACL
 #'
 #' @description
-#' Replaces an entry (rule) in a network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/) in the *Amazon Virtual Private Cloud User Guide*.
+#' Replaces an entry (rule) in a network ACL. For more information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_entry/](https://www.paws-r-sdk.com/docs/ec2_replace_network_acl_entry/) for full documentation.
 #'
@@ -25565,7 +25582,7 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #' gateway, or virtual private gateway in a VPC
 #'
 #' @description
-#' Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC. After the operation completes, the subnet or gateway uses the routes in the new route table. For more information about route tables, see [Route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) in the *Amazon Virtual Private Cloud User Guide*.
+#' Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC. After the operation completes, the subnet or gateway uses the routes in the new route table. For more information about route tables, see [Route tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_replace_route_table_association/](https://www.paws-r-sdk.com/docs/ec2_replace_route_table_association/) for full documentation.
 #'
@@ -26327,11 +26344,11 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
 }
 .ec2$operations$revoke_client_vpn_ingress <- ec2_revoke_client_vpn_ingress
 
-#' &#91;VPC only&#93; Removes the specified outbound (egress) rules from a
-#' security group for EC2-VPC
+#' Removes the specified outbound (egress) rules from the specified
+#' security group
 #'
 #' @description
-#' \[VPC only\] Removes the specified outbound (egress) rules from a security group for EC2-VPC. This action does not apply to security groups for use in EC2-Classic.
+#' Removes the specified outbound (egress) rules from the specified security group.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_revoke_security_group_egress/](https://www.paws-r-sdk.com/docs/ec2_revoke_security_group_egress/) for full documentation.
 #'
@@ -26385,30 +26402,23 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
 #' @param FromPort If the protocol is TCP or UDP, this is the start of the port range. If
 #' the protocol is ICMP, this is the type number. A value of -1 indicates
 #' all ICMP types.
-#' @param GroupId The ID of the security group. You must specify either the security group
-#' ID or the security group name in the request. For security groups in a
-#' nondefault VPC, you must specify the security group ID.
-#' @param GroupName \[EC2-Classic, default VPC\] The name of the security group. You must
-#' specify either the security group ID or the security group name in the
-#' request. For security groups in a nondefault VPC, you must specify the
-#' security group ID.
+#' @param GroupId The ID of the security group.
+#' @param GroupName \[Default VPC\] The name of the security group. You must specify either
+#' the security group ID or the security group name in the request. For
+#' security groups in a nondefault VPC, you must specify the security group
+#' ID.
 #' @param IpPermissions The sets of IP permissions. You can't specify a source security group
 #' and a CIDR IP address range in the same set of permissions.
 #' @param IpProtocol The IP protocol name (`tcp`, `udp`, `icmp`) or number (see [Protocol
 #' Numbers](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)).
 #' Use `-1` to specify all.
-#' @param SourceSecurityGroupName \[EC2-Classic, default VPC\] The name of the source security group. You
-#' can't specify this parameter in combination with the following
-#' parameters: the CIDR IP address range, the start of the port range, the
-#' IP protocol, and the end of the port range. For EC2-VPC, the source
-#' security group must be in the same VPC. To revoke a specific rule for an
-#' IP protocol and port range, use a set of IP permissions instead.
-#' @param SourceSecurityGroupOwnerId \[EC2-Classic\] The Amazon Web Services account ID of the source
-#' security group, if the source security group is in a different account.
-#' You can't specify this parameter in combination with the following
-#' parameters: the CIDR IP address range, the IP protocol, the start of the
-#' port range, and the end of the port range. To revoke a specific rule for
-#' an IP protocol and port range, use a set of IP permissions instead.
+#' @param SourceSecurityGroupName \[Default VPC\] The name of the source security group. You can't specify
+#' this parameter in combination with the following parameters: the CIDR IP
+#' address range, the start of the port range, the IP protocol, and the end
+#' of the port range. The source security group must be in the same VPC. To
+#' revoke a specific rule for an IP protocol and port range, use a set of
+#' IP permissions instead.
+#' @param SourceSecurityGroupOwnerId Not supported.
 #' @param ToPort If the protocol is TCP or UDP, this is the end of the port range. If the
 #' protocol is ICMP, this is the code. A value of -1 indicates all ICMP
 #' codes.
@@ -26456,8 +26466,6 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' @param InstanceType The instance type. For more information, see [Instance
 #' types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
 #' in the *Amazon EC2 User Guide*.
-#' 
-#' Default: `m1.small`
 #' @param Ipv6AddressCount The number of IPv6 addresses to associate with the primary network
 #' interface. Amazon EC2 chooses the IPv6 addresses from the range of your
 #' subnet. You cannot specify this option and the option to assign specific
@@ -26657,8 +26665,10 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' preference defaults to `open`, which enables it to run in any open
 #' Capacity Reservation that has matching attributes (instance type,
 #' platform, Availability Zone).
-#' @param HibernationOptions Indicates whether an instance is enabled for hibernation. For more
-#' information, see [Hibernate your
+#' @param HibernationOptions Indicates whether an instance is enabled for hibernation. This parameter
+#' is valid only if the instance meets the [hibernation
+#' prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html).
+#' For more information, see [Hibernate your
 #' instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html)
 #' in the *Amazon EC2 User Guide*.
 #' 
@@ -26676,7 +26686,8 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' You can't enable Amazon Web Services Nitro Enclaves and hibernation on
 #' the same instance.
 #' @param PrivateDnsNameOptions The options for the instance hostname. The default values are inherited
-#' from the subnet.
+#' from the subnet. Applies only if creating a network interface, not
+#' attaching an existing one.
 #' @param MaintenanceOptions The maintenance and recovery options for the instance.
 #' @param DisableApiStop Indicates whether an instance is enabled for stop protection. For more
 #' information, see [Stop
@@ -26790,7 +26801,7 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters = 
     name = "SearchLocalGatewayRoutes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes")
   )
   input <- .ec2$search_local_gateway_routes_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$search_local_gateway_routes_output()
@@ -26852,7 +26863,7 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
     name = "SearchTransitGatewayMulticastGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastGroups")
   )
   input <- .ec2$search_transit_gateway_multicast_groups_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$search_transit_gateway_multicast_groups_output()
@@ -27298,11 +27309,11 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
 #' Unassigns secondary private IPv4 addresses from a private NAT gateway
 #'
 #' @description
-#' Unassigns secondary private IPv4 addresses from a private NAT gateway. You cannot unassign your primary private IP. For more information, see [Edit secondary IP address associations](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary) in the *Amazon Virtual Private Cloud User Guide*.
+#' Unassigns secondary private IPv4 addresses from a private NAT gateway. You cannot unassign your primary private IP. For more information, see [Edit secondary IP address associations](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-edit-secondary) in the *Amazon VPC User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_unassign_private_nat_gateway_address/](https://www.paws-r-sdk.com/docs/ec2_unassign_private_nat_gateway_address/) for full documentation.
 #'
-#' @param NatGatewayId &#91;required&#93; The NAT gateway ID.
+#' @param NatGatewayId &#91;required&#93; The ID of the NAT gateway.
 #' @param PrivateIpAddresses &#91;required&#93; The private IPv4 addresses you want to unassign.
 #' @param MaxDrainDurationSeconds The maximum amount of time to wait (in seconds) before forcibly
 #' releasing the IP addresses if connections are still in progress. Default
@@ -27365,11 +27376,10 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 }
 .ec2$operations$unmonitor_instances <- ec2_unmonitor_instances
 
-#' &#91;VPC only&#93; Updates the description of an egress (outbound)
-#' security group rule
+#' Updates the description of an egress (outbound) security group rule
 #'
 #' @description
-#' \[VPC only\] Updates the description of an egress (outbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.
+#' Updates the description of an egress (outbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_update_security_group_rule_descriptions_egress/](https://www.paws-r-sdk.com/docs/ec2_update_security_group_rule_descriptions_egress/) for full documentation.
 #'
@@ -27381,7 +27391,7 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' ID or the security group name in the request. For security groups in a
 #' nondefault VPC, you must specify the security group ID.
 #' @param GroupName \[Default VPC\] The name of the security group. You must specify either
-#' the security group ID or the security group name in the request.
+#' the security group ID or the security group name.
 #' @param IpPermissions The IP permissions for the security group rule. You must specify either
 #' the IP permissions or the description.
 #' @param SecurityGroupRuleDescriptions The description for the egress security group rules. You must specify
@@ -27421,14 +27431,13 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #' @param GroupId The ID of the security group. You must specify either the security group
 #' ID or the security group name in the request. For security groups in a
 #' nondefault VPC, you must specify the security group ID.
-#' @param GroupName \[EC2-Classic, default VPC\] The name of the security group. You must
-#' specify either the security group ID or the security group name in the
-#' request. For security groups in a nondefault VPC, you must specify the
-#' security group ID.
+#' @param GroupName \[Default VPC\] The name of the security group. You must specify either
+#' the security group ID or the security group name. For security groups in
+#' a nondefault VPC, you must specify the security group ID.
 #' @param IpPermissions The IP permissions for the security group rule. You must specify either
 #' IP permissions or a description.
-#' @param SecurityGroupRuleDescriptions \[VPC only\] The description for the ingress security group rules. You
-#' must specify either a description or IP permissions.
+#' @param SecurityGroupRuleDescriptions The description for the ingress security group rules. You must specify
+#' either a description or IP permissions.
 #'
 #' @keywords internal
 #'

@@ -3,17 +3,17 @@
 \name{locationservice_batch_update_device_position}
 \alias{locationservice_batch_update_device_position}
 \title{Uploads position update data for one or more devices to a tracker
-resource}
+resource (up to 10 devices per batch)}
 \usage{
 locationservice_batch_update_device_position(TrackerName, Updates)
 }
 \arguments{
 \item{TrackerName}{[required] The name of the tracker resource to update.}
 
-\item{Updates}{[required] Contains the position update details for each device.}
+\item{Updates}{[required] Contains the position update details for each device, up to 10 devices.}
 }
 \description{
-Uploads position update data for one or more devices to a tracker resource. Amazon Location uses the data when it reports the last known device position and position history. Amazon Location retains location data for 30 days.
+Uploads position update data for one or more devices to a tracker resource (up to 10 devices per batch). Amazon Location uses the data when it reports the last known device position and position history. Amazon Location retains location data for 30 days.
 
 See \url{https://www.paws-r-sdk.com/docs/locationservice_batch_update_device_position/} for full documentation.
 }

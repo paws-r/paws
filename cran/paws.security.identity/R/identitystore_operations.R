@@ -480,7 +480,7 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
     name = "ListGroupMemberships",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships")
   )
   input <- .identitystore$list_group_memberships_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_output()
@@ -526,7 +526,7 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
     name = "ListGroupMembershipsForMember",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships")
   )
   input <- .identitystore$list_group_memberships_for_member_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_for_member_output()
@@ -573,7 +573,7 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Groups")
   )
   input <- .identitystore$list_groups_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_groups_output()
@@ -620,7 +620,7 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users")
   )
   input <- .identitystore$list_users_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_users_output()

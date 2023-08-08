@@ -4,22 +4,47 @@
 \alias{guardduty}
 \title{Amazon GuardDuty}
 \usage{
-guardduty(config = list())
+guardduty(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -70,8 +95,20 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -103,7 +140,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[paws.security.identity:guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator\cr
 \link[paws.security.identity:guardduty_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 \link[paws.security.identity:guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
-\link[paws.security.identity:guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (to the current administrator account) specified by the account IDs\cr
+\link[paws.security.identity:guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs\cr
 \link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator\cr
 \link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 \link[paws.security.identity:guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
@@ -120,7 +157,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[paws.security.identity:guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 \link[paws.security.identity:guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 \link[paws.security.identity:guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
-\link[paws.security.identity:guardduty_invite_members]{invite_members} \tab Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account\cr
+\link[paws.security.identity:guardduty_invite_members]{invite_members} \tab Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API\cr
 \link[paws.security.identity:guardduty_list_coverage]{list_coverage} \tab Lists coverage details for your GuardDuty account\cr
 \link[paws.security.identity:guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources\cr
 \link[paws.security.identity:guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters\cr

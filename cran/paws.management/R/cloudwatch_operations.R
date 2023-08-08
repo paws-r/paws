@@ -220,7 +220,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
     name = "DescribeAlarmHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AlarmHistoryItems")
   )
   input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
   output <- .cloudwatch$describe_alarm_history_output()
@@ -298,7 +298,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
     name = "DescribeAlarms",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = list("MetricAlarms", "CompositeAlarms"))
   )
   input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .cloudwatch$describe_alarms_output()
@@ -337,7 +337,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
     name = "DescribeAlarmsForMetric",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "MetricAlarms")
   )
   input <- .cloudwatch$describe_alarms_for_metric_input(MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit)
   output <- .cloudwatch$describe_alarms_for_metric_output()
@@ -384,7 +384,7 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
     name = "DescribeAnomalyDetectors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnomalyDetectors")
   )
   input <- .cloudwatch$describe_anomaly_detectors_input(NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, AnomalyDetectorTypes = AnomalyDetectorTypes)
   output <- .cloudwatch$describe_anomaly_detectors_output()
@@ -416,7 +416,7 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
     name = "DescribeInsightRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$describe_insight_rules_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$describe_insight_rules_output()
@@ -723,7 +723,7 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
     name = "GetMetricData",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxDatapoints", output_token = "NextToken", result_key = list("MetricDataResults", "Messages"))
   )
   input <- .cloudwatch$get_metric_data_input(MetricDataQueries = MetricDataQueries, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, ScanBy = ScanBy, MaxDatapoints = MaxDatapoints, LabelOptions = LabelOptions)
   output <- .cloudwatch$get_metric_data_output()
@@ -969,7 +969,7 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
     name = "ListDashboards",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "DashboardEntries")
   )
   input <- .cloudwatch$list_dashboards_input(DashboardNamePrefix = DashboardNamePrefix, NextToken = NextToken)
   output <- .cloudwatch$list_dashboards_output()
@@ -1004,7 +1004,7 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
     name = "ListManagedInsightRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$list_managed_insight_rules_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_managed_insight_rules_output()
@@ -1035,7 +1035,7 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
     name = "ListMetricStreams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$list_metric_streams_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_metric_streams_output()
@@ -1087,7 +1087,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
     name = "ListMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "Metrics", "OwningAccounts"))
   )
   input <- .cloudwatch$list_metrics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, NextToken = NextToken, RecentlyActive = RecentlyActive, IncludeLinkedAccounts = IncludeLinkedAccounts, OwningAccount = OwningAccount)
   output <- .cloudwatch$list_metrics_output()

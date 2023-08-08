@@ -36,6 +36,8 @@ identify and organize your resources and to control access to resources.}
 format, a CSV format that includes customs attributes in a header, and a
 JSON format that includes custom attributes.
 
+The default format is CSV.
+
 The format must match the format of the file stored in the S3 bucket
 identified in the \code{S3Path} parameter.
 

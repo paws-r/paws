@@ -126,7 +126,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
     name = "BatchGetItem",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys")
   )
   input <- .dynamodb$batch_get_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_get_item_output()
@@ -603,18 +603,25 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' For more information on expression attribute values, see [Condition
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
+#' @param ReturnValuesOnConditionCheckFailure An optional parameter that returns the item attributes for a
+#' [`delete_item`][dynamodb_delete_item] operation that failed a condition
+#' check.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_delete_item
-dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOperator = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
+dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOperator = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL, ReturnValuesOnConditionCheckFailure = NULL) {
   op <- new_operation(
     name = "DeleteItem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$delete_item_input(TableName = TableName, Key = Key, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
+  input <- .dynamodb$delete_item_input(TableName = TableName, Key = Key, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$delete_item_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -747,7 +754,7 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 #' Returns the regional endpoint information
 #'
 #' @description
-#' Returns the regional endpoint information. This action must be included in your VPC endpoint policies, or access to the DescribeEndpoints API will be denied. For more information on policy permissions, please see [Internetwork traffic privacy](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints).
+#' Returns the regional endpoint information. For more information on policy permissions, please see [Internetwork traffic privacy](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/inter-network-traffic-privacy.html#inter-network-traffic-DescribeEndpoints).
 #'
 #' See [https://www.paws-r-sdk.com/docs/dynamodb_describe_endpoints/](https://www.paws-r-sdk.com/docs/dynamodb_describe_endpoints/) for full documentation.
 #'
@@ -1123,18 +1130,25 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' before DynamoDB reaches this limit, it stops the operation and returns
 #' the matching values up to the limit, and a key in `LastEvaluatedKey` to
 #' apply in a subsequent operation to continue the operation.
+#' @param ReturnValuesOnConditionCheckFailure An optional parameter that returns the item attributes for an
+#' [`execute_statement`][dynamodb_execute_statement] operation that failed
+#' a condition check.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_statement
-dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL, ReturnConsumedCapacity = NULL, Limit = NULL) {
+dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL, ReturnConsumedCapacity = NULL, Limit = NULL, ReturnValuesOnConditionCheckFailure = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit)
+  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$execute_statement_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -1451,7 +1465,7 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
     name = "ListContributorInsights",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .dynamodb$list_contributor_insights_input(TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .dynamodb$list_contributor_insights_output()
@@ -1484,7 +1498,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
     name = "ListExports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .dynamodb$list_exports_input(TableArn = TableArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dynamodb$list_exports_output()
@@ -1556,7 +1570,7 @@ dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = 
     name = "ListImports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken")
   )
   input <- .dynamodb$list_imports_input(TableArn = TableArn, PageSize = PageSize, NextToken = NextToken)
   output <- .dynamodb$list_imports_output()
@@ -1590,7 +1604,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames")
   )
   input <- .dynamodb$list_tables_input(ExclusiveStartTableName = ExclusiveStartTableName, Limit = Limit)
   output <- .dynamodb$list_tables_output()
@@ -1773,18 +1787,24 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' For more information on expression attribute values, see [Condition
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
+#' @param ReturnValuesOnConditionCheckFailure An optional parameter that returns the item attributes for a
+#' [`put_item`][dynamodb_put_item] operation that failed a condition check.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_put_item
-dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ConditionalOperator = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
+dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ConditionalOperator = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL, ReturnValuesOnConditionCheckFailure = NULL) {
   op <- new_operation(
     name = "PutItem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$put_item_input(TableName = TableName, Item = Item, Expected = Expected, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionalOperator = ConditionalOperator, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
+  input <- .dynamodb$put_item_input(TableName = TableName, Item = Item, Expected = Expected, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionalOperator = ConditionalOperator, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$put_item_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -2079,7 +2099,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
     name = "Query",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
   )
   input <- .dynamodb$query_input(TableName = TableName, IndexName = IndexName, Select = Select, AttributesToGet = AttributesToGet, Limit = Limit, ConsistentRead = ConsistentRead, KeyConditions = KeyConditions, QueryFilter = QueryFilter, ConditionalOperator = ConditionalOperator, ScanIndexForward = ScanIndexForward, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, KeyConditionExpression = KeyConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
   output <- .dynamodb$query_output()
@@ -2412,7 +2432,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
     name = "Scan",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
   )
   input <- .dynamodb$scan_input(TableName = TableName, IndexName = IndexName, AttributesToGet = AttributesToGet, Limit = Limit, Select = Select, ScanFilter = ScanFilter, ConditionalOperator = ConditionalOperator, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, TotalSegments = TotalSegments, Segment = Segment, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ConsistentRead = ConsistentRead)
   output <- .dynamodb$scan_output()
@@ -2942,18 +2962,25 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' For more information on expression attribute values, see [Condition
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
+#' @param ReturnValuesOnConditionCheckFailure An optional parameter that returns the item attributes for an
+#' [`update_item`][dynamodb_update_item] operation that failed a condition
+#' check.
+#' 
+#' There is no additional cost associated with requesting a return value
+#' aside from the small network and processing overhead of receiving a
+#' larger response. No read capacity units are consumed.
 #'
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_item
-dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expected = NULL, ConditionalOperator = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, UpdateExpression = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
+dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expected = NULL, ConditionalOperator = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, UpdateExpression = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL, ReturnValuesOnConditionCheckFailure = NULL) {
   op <- new_operation(
     name = "UpdateItem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$update_item_input(TableName = TableName, Key = Key, AttributeUpdates = AttributeUpdates, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, UpdateExpression = UpdateExpression, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
+  input <- .dynamodb$update_item_input(TableName = TableName, Key = Key, AttributeUpdates = AttributeUpdates, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, UpdateExpression = UpdateExpression, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$update_item_output()
   config <- get_config()
   svc <- .dynamodb$service(config)

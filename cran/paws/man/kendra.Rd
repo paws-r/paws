@@ -4,22 +4,42 @@
 \alias{kendra}
 \title{AWSKendraFrontendService}
 \usage{
-kendra(config = list())
+kendra(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -48,8 +68,20 @@ Amazon Kendra is a service for indexing large document sets.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -108,7 +140,8 @@ Amazon Kendra is a service for indexing large document sets.
 \link[paws.analytics:kendra_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a specified resource\cr
 \link[paws.analytics:kendra_list_thesauri]{list_thesauri} \tab Lists the thesauri for an index\cr
 \link[paws.analytics:kendra_put_principal_mapping]{put_principal_mapping} \tab Maps users to their groups so that you only need to provide the user ID when you issue the query\cr
-\link[paws.analytics:kendra_query]{query} \tab Searches an active index\cr
+\link[paws.analytics:kendra_query]{query} \tab Searches an index given an input query\cr
+\link[paws.analytics:kendra_retrieve]{retrieve} \tab Retrieves relevant passages or text excerpts given an input query\cr
 \link[paws.analytics:kendra_start_data_source_sync_job]{start_data_source_sync_job} \tab Starts a synchronization job for a data source connector\cr
 \link[paws.analytics:kendra_stop_data_source_sync_job]{stop_data_source_sync_job} \tab Stops a synchronization job that is currently running\cr
 \link[paws.analytics:kendra_submit_feedback]{submit_feedback} \tab Enables you to provide feedback to Amazon Kendra to improve the performance of your index\cr

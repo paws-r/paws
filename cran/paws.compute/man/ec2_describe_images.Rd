@@ -34,8 +34,8 @@ also returned.
 
 \item{Filters}{The filters.
 \itemize{
-\item \code{architecture} - The image architecture (\code{i386} | \code{x86_64} |
-\code{arm64}).
+\item \code{architecture} - The image architecture (\code{i386} | \code{x86_64} | \code{arm64}
+| \code{x86_64_mac} | \code{arm64_mac}).
 \item \code{block-device-mapping.delete-on-termination} - A Boolean value that
 indicates whether the Amazon EBS volume is deleted on instance
 termination.

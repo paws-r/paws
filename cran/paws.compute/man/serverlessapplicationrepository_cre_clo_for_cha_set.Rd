@@ -50,9 +50,9 @@ CAPABILITY_RESOURCE_POLICY:
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM:Policy},
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html}{AWS::ApplicationAutoScaling::ScalingPolicy},
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html}{AWS::S3::BucketPolicy},
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html}{AWS::SQS::QueuePolicy},
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::SQS::QueuePolicy},
 and
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html}{AWS::SNS:TopicPolicy}.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topicpolicy.html}{AWS::SNS:TopicPolicy}.
 
 Applications that contain one or more nested applications require you to
 specify CAPABILITY_AUTO_EXPAND.

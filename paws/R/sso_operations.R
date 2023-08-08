@@ -115,7 +115,7 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
     name = "ListAccountRoles",
     http_method = "GET",
     http_path = "/assignment/roles",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "roleList")
   )
   input <- .sso$list_account_roles_input(nextToken = nextToken, maxResults = maxResults, accessToken = accessToken, accountId = accountId)
   output <- .sso$list_account_roles_output()
@@ -182,7 +182,7 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
     name = "ListAccounts",
     http_method = "GET",
     http_path = "/assignment/accounts",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountList")
   )
   input <- .sso$list_accounts_input(nextToken = nextToken, maxResults = maxResults, accessToken = accessToken)
   output <- .sso$list_accounts_output()

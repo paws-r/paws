@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_update_security_group_rule_descriptions_egress}
 \alias{ec2_update_security_group_rule_descriptions_egress}
-\title{[VPC only] Updates the description of an egress (outbound)
-security group rule}
+\title{Updates the description of an egress (outbound) security group rule}
 \usage{
 ec2_update_security_group_rule_descriptions_egress(
   DryRun = NULL,
@@ -24,7 +23,7 @@ ID or the security group name in the request. For security groups in a
 nondefault VPC, you must specify the security group ID.}
 
 \item{GroupName}{[Default VPC] The name of the security group. You must specify either
-the security group ID or the security group name in the request.}
+the security group ID or the security group name.}
 
 \item{IpPermissions}{The IP permissions for the security group rule. You must specify either
 the IP permissions or the description.}
@@ -33,7 +32,7 @@ the IP permissions or the description.}
 either the description or the IP permissions.}
 }
 \description{
-[VPC only] Updates the description of an egress (outbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.
+Updates the description of an egress (outbound) security group rule. You can replace an existing description, or add a description to a rule that did not have one previously. You can remove a description for a security group rule by omitting the description parameter in the request.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_update_security_group_rule_descriptions_egress/} for full documentation.
 }

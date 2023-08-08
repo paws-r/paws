@@ -19,7 +19,7 @@ redshift_revoke_snapshot_access(
 message to revoke access.}
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This
-parameter is required if your IAM user or role has a policy containing a
+parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.}
 

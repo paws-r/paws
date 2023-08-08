@@ -12,10 +12,42 @@ sfn_start_execution(
 )
 }
 \arguments{
-\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.}
+\item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.
 
-\item{name}{The name of the execution. This name must be unique for your Amazon Web
-Services account, region, and state machine for 90 days. For more
+The \code{stateMachineArn} parameter accepts one of the following inputs:
+\itemize{
+\item \strong{An unqualified state machine ARN} – Refers to a state machine ARN
+that isn't qualified with a version or alias ARN. The following is
+an example of an unqualified state machine ARN.
+
+\verb{arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>}
+
+Step Functions doesn't associate state machine executions that you
+start with an unqualified ARN with a version. This is true even if
+that version uses the same revision that the execution used.
+\item \strong{A state machine version ARN} – Refers to a version ARN, which is
+a combination of state machine ARN and the version number separated
+by a colon (:). The following is an example of the ARN for version
+10.
+
+\verb{arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>:10}
+
+Step Functions doesn't associate executions that you start with a
+version ARN with any aliases that point to that version.
+\item \strong{A state machine alias ARN} – Refers to an alias ARN, which is a
+combination of state machine ARN and the alias name separated by a
+colon (:). The following is an example of the ARN for an alias named
+\code{PROD}.
+
+\verb{arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>}
+
+Step Functions associates executions that you start with an alias
+ARN with that alias and the state machine version used for that
+execution.
+}}
+
+\item{name}{Optional name of the execution. This name must be unique for your Amazon
+Web Services account, Region, and state machine for 90 days. For more
 information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{Step Functions Developer Guide}.
 
@@ -48,7 +80,7 @@ in UTF-8 encoding.}
 the request payload.}
 }
 \description{
-Starts a state machine execution. If the given state machine Amazon Resource Name (ARN) is a qualified state machine ARN, it will fail with ValidationException.
+Starts a state machine execution.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_start_execution/} for full documentation.
 }

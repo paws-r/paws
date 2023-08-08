@@ -18,9 +18,13 @@ route53resolver_update_resolver_endpoint(
 \item{Name}{The name of the Resolver endpoint that you want to update.}
 
 \item{ResolverEndpointType}{Specifies the endpoint type for what type of IP address the endpoint
-uses to forward DNS queries.}
+uses to forward DNS queries.
 
-\item{UpdateIpAddresses}{Updates the Resolver endpoint type to IpV4, Ipv6, or dual-stack.}
+Updating to \code{IPV6} type isn't currently supported.}
+
+\item{UpdateIpAddresses}{Specifies the IPv6 address when you update the Resolver endpoint from
+IPv4 to dual-stack. If you don't specify an IPv6 address, one will be
+automatically chosen from your subnet.}
 }
 \description{
 Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
