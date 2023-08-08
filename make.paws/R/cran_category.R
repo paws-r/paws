@@ -83,7 +83,10 @@ copy_files <- function(name, from, to) {
   for (r in resources) {
     copy <- list.files(file.path(from, r$dir), pattern = sprintf(r$pattern, name), full.names = TRUE)
     if (length(copy) == 0) {
-      warning(sprintf("No %s files found for %s\n", r$dir, name))
+      # skip warning as there is no reexports files in tests
+      if (r$dir == "tests/testthat" & name != "reexports") {
+        warning(sprintf("No %s files found for %s\n", r$dir, name))
+      }
       next
     }
     fs::file_copy(copy, file.path(to, r$dir), overwrite = TRUE)
