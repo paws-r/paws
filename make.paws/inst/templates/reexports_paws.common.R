@@ -12,7 +12,7 @@ paws.common::paginate_sapply
 
 #' @importFrom paws.common list_paginators
 #' @export
-list_paginators
+paws.common::list_paginators
 
 #' @importFrom paws.common config
 #' @export
