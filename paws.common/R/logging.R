@@ -31,7 +31,7 @@
 #' @param timestamp_fmt character for timestamp format, see [format.POSIXct()].
 #' @examples
 #' # log to a file
-#' temp_file = tempfile()
+#' temp_file <- tempfile()
 #' paws_config_log(file = temp_file)
 #' unlink(temp_file)
 #'
@@ -43,15 +43,16 @@
 #' @export
 paws_config_log <- function(level = 2L,
                             file = "",
-                            timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"){
+                            timestamp_fmt = "%Y-%m-%d %H:%M:%OS3") {
   stopifnot(
     "`level` must be integer" = is.integer(level),
     "`file` must be character" = is.character(file),
     "`timestamp_fmt` must be character" = is.character(timestamp_fmt)
   )
   # create directory if doesn't exist
-  if (grepl("/", file))
+  if (grepl("/", file)) {
     dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
+  }
 
   log_config <- list(
     paws.log_level = level,
@@ -70,30 +71,30 @@ paws_logging_opt <- list(
 
 # Help parse log messages that contain % i.e. encoded urls
 parse_msg <- function(...) {
-  if(length(list(...)) == 1) paste(...) else sprintf(...)
+  if (length(list(...)) == 1) paste(...) else sprintf(...)
 }
 
 log_debug <- function(...) {
-  if (isTRUE(getOption('paws.log_level') >= 4L)) {
-    log_msg('DEBUG', parse_msg(...))
+  if (isTRUE(getOption("paws.log_level") >= 4L)) {
+    log_msg("DEBUG", parse_msg(...))
   }
 }
 
 log_info <- function(...) {
-  if (isTRUE(getOption('paws.log_level') >= 3L)) {
-    log_msg('INFO', parse_msg(...))
+  if (isTRUE(getOption("paws.log_level") >= 3L)) {
+    log_msg("INFO", parse_msg(...))
   }
 }
 
 log_warn <- function(...) {
-  if (isTRUE(getOption('paws.log_level') >= 2L)) {
-    log_msg('WARN', parse_msg(...))
+  if (isTRUE(getOption("paws.log_level") >= 2L)) {
+    log_msg("WARN", parse_msg(...))
   }
 }
 
 log_error <- function(...) {
-  if (isTRUE(getOption('paws.log_level') >= 1L)) {
-    log_msg('ERROR', parse_msg(...))
+  if (isTRUE(getOption("paws.log_level") >= 1L)) {
+    log_msg("ERROR", parse_msg(...))
   }
 }
 
@@ -101,7 +102,7 @@ log_msg <- function(lvl, msg) {
   log_file <- getOption("paws.log_file")
   now <- strftime(Sys.time(), "%Y-%m-%d %H:%M:%OS3")
   cat(
-    sprintf('%s [%s]: %s\n', log_color(lvl), now, msg),
+    sprintf("%s [%s]: %s\n", log_color(lvl), now, msg),
     file = log_file,
     append = TRUE
   )
@@ -114,15 +115,15 @@ log_color <- function(lvl) {
     INFO = style_info,
     WARN = style_warn,
     ERROR = style_error,
-    stop('unknown level: ', lvl)
+    stop("unknown level: ", lvl)
   )
   color(lvl)
 }
 
 # paws https verbose wrapper
-with_paws_verbose <- function(expr, ...){
+with_paws_verbose <- function(expr, ...) {
   # skip if log level <= 2L
-  if (isTRUE(getOption('paws.log_level') >= 3L)) {
+  if (isTRUE(getOption("paws.log_level") >= 3L)) {
     with_config(paws_verbose(...), expr)
   } else {
     expr
@@ -134,13 +135,13 @@ with_paws_verbose <- function(expr, ...){
 paws_verbose <- function(data_out = TRUE, data_in = FALSE, ssl = FALSE) {
   Debug <- function(type, msg) {
     switch(type + 1,
-           text =                            prefix_debug("*  ", msg),
-           headerIn =                        prefix_info("<- ", msg),
-           headerOut =                       prefix_info("-> ", msg),
-           dataIn =     if (data_in)         prefix_info("<<  ", msg, TRUE),
-           dataOut =    if (data_out)        prefix_info(">> ", msg, TRUE),
-           sslDataIn =  if (ssl && data_in)  prefix_info("*< ", msg, TRUE),
-           sslDataOut = if (ssl && data_out) prefix_info("*> ", msg, TRUE)
+      text = prefix_debug("*  ", msg),
+      headerIn = prefix_info("<- ", msg),
+      headerOut = prefix_info("-> ", msg),
+      dataIn = if (data_in) prefix_info("<<  ", msg, TRUE),
+      dataOut = if (data_out) prefix_info(">> ", msg, TRUE),
+      sslDataIn = if (ssl && data_in) prefix_info("*< ", msg, TRUE),
+      sslDataOut = if (ssl && data_out) prefix_info("*> ", msg, TRUE)
     )
   }
   httr::config(debugfunction = Debug, verbose = TRUE)
@@ -161,12 +162,12 @@ prefix_debug <- function(prefix, x) {
   log_debug(out)
 }
 
-init_log_config <- function(){
+init_log_config <- function() {
   #---- set up logging ----
   log_opt_name <- names(paws_logging_opt)
 
   # check R options for log settings
-  r_options <-lapply(log_opt_name, getOption)
+  r_options <- lapply(log_opt_name, getOption)
   names(r_options) <- log_opt_name
   paws_logging_opt <- modifyList(
     paws_logging_opt, Filter(Negate(is.null), r_options)
@@ -174,8 +175,9 @@ init_log_config <- function(){
 
   # check environment variables for log settings
   env_options <- lapply(
-    gsub('.', '_', toupper(log_opt_name), fixed = TRUE),
-    Sys.getenv, unset = NA
+    gsub(".", "_", toupper(log_opt_name), fixed = TRUE),
+    Sys.getenv,
+    unset = NA
   )
   names(env_options) <- c(log_opt_name)
   paws_logging_opt <- modifyList(
@@ -189,16 +191,16 @@ init_log_config <- function(){
 
 init_log_styles <- function() {
   # set up log colors
-  if (requireNamespace("crayon", quietly = TRUE) && crayon::has_color()){
+  if (requireNamespace("crayon", quietly = TRUE) && crayon::has_color()) {
     style_error <- crayon::make_style("#BB3333", colors = 256)
     style_warn <- crayon::make_style("#EEBB50", colors = 256)
     style_info <- function(...) paste(...)
-    style_debug  <- crayon::make_style("#808080", grey = TRUE)
+    style_debug <- crayon::make_style("#808080", grey = TRUE)
   } else {
     style_error <- function(...) paste(...)
     style_warn <- style_error
     style_info <- style_error
-    style_debug  <- style_error
+    style_debug <- style_error
   }
 
   # make color functions available inside the package

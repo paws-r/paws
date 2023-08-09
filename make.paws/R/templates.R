@@ -11,7 +11,6 @@ template <- function(x) {
 # Returns a string by rendering a template, replacing variables enclosed with
 # ${} with corresponding named argument values in `...`.
 render <- function(template, ...) {
-
   # makes str_interp much faster, due to underlying call to
   # parse(keep.source=getOption("keep.source"))
   op <- options(keep.source = FALSE)
@@ -48,8 +47,11 @@ make_call <- function(function_name, args) {
   for (i in seq_along(args)) {
     key <- names(args)[i]
     value <- args[[i]]
-    if (!is.null(key) && key != "") el <- sprintf("%s = %s", key, value)
-    else el <- value
+    if (!is.null(key) && key != "") {
+      el <- sprintf("%s = %s", key, value)
+    } else {
+      el <- value
+    }
     args_fmt <- c(args_fmt, el)
   }
   args_fmt <- paste(args_fmt, collapse = ", ")

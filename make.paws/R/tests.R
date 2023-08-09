@@ -80,7 +80,9 @@ skipped_operation <- function(operation, api) {
 get_skipped_operations <- function(api) {
   service <- package_name(api)
   skip <- tests_config[[service]]$skip
-  if (is.null(skip)) return(character(0))
+  if (is.null(skip)) {
+    return(character(0))
+  }
   patterns <- sprintf("^%s$", gsub("\\*", ".*", skip))
   patterns
 }
@@ -90,11 +92,11 @@ get_test_args <- function(operation, api) {
   test_args <- list()
   if (!has_required_params(operation, api)) {
     args <- list(args = list(), outcome = NA)
-    test_args[[length(test_args)+1]] <- args
+    test_args[[length(test_args) + 1]] <- args
   }
   if (has_params(operation, api, "MaxResults")) {
     args <- list(args = list(MaxResults = 20), outcome = NA)
-    test_args[[length(test_args)+1]] <- args
+    test_args[[length(test_args) + 1]] <- args
   }
   return(test_args)
 }

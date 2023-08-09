@@ -46,7 +46,6 @@ Request <- struct(
   config = Config(),
   client_info = ClientInfo(),
   handlers = Handlers(),
-
   retryer = list(),
   time = 0,
   operation = "",
@@ -65,13 +64,9 @@ Request <- struct(
   signed_header_vals = list(),
   last_signed_at = NULL,
   disable_follow_redirects = FALSE,
-
   expire_time = 0,
-
   context = list(),
-
   built = FALSE,
-
   safe_body = ""
 )
 
@@ -103,7 +98,6 @@ Request <- struct(
 #'
 #' @export
 new_request <- function(client, operation, params, data, dest = NULL) {
-
   method <- operation$http_method
   if (is.null(method)) {
     method <- "POST"
@@ -128,7 +122,6 @@ new_request <- function(client, operation, params, data, dest = NULL) {
     config = client$config,
     client_info = client$client_info,
     handlers = client$handlers,
-
     retryer = NULL, # Implement retryers.
     time = Sys.time(),
     expire_time = 0,
@@ -162,7 +155,6 @@ new_request <- function(client, operation, params, data, dest = NULL) {
 #'
 #' @export
 send_request <- function(request) {
-
   request <- sign(request)
 
   if (!is.null(request$error)) {

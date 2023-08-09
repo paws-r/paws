@@ -13,7 +13,8 @@ make_docs_long <- function(operation, api) {
   rdname <- make_doc_rdname(operation, api)
   alias <- make_doc_alias(operation, api)
   docs <- glue::glue_collapse(
-    c(title,
+    c(
+      title,
       description,
       usage,
       params,
@@ -22,7 +23,8 @@ make_docs_long <- function(operation, api) {
       examples,
       "#' @keywords internal",
       rdname,
-      alias),
+      alias
+    ),
     sep = "\n#'\n"
   )
   return(as.character(docs))
@@ -36,12 +38,14 @@ make_docs_short <- function(operation, api) {
   params <- make_doc_params(operation, api)
   rdname <- make_doc_rdname(operation, api)
   docs <- glue::glue_collapse(
-    c(title,
+    c(
+      title,
       description,
       link_to_web_docs,
       params,
       "#' @keywords internal",
-      rdname),
+      rdname
+    ),
     sep = "\n#'\n"
   )
   return(as.character(docs))
@@ -67,8 +71,11 @@ make_doc_desc <- function(operation, api) {
 # Make a short description of the operation with only the first paragraph.
 make_doc_desc_short <- function(operation, api) {
   docs <- convert(operation$documentation, package_name(api), links = get_links(api))
-  if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
-  else docs <- first_paragraph(docs)
+  if (length(docs) == 1 && docs == "") {
+    docs <- get_operation_title(operation)
+  } else {
+    docs <- first_paragraph(docs)
+  }
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   description <- paste("#' @description", description, sep = "\n")
@@ -147,7 +154,8 @@ make_doc_request <- function(operation, api) {
     call <- unmask(clean_example(call), masks)
     call <- paste("```", call, "```", sep = "\n")
     accepted_params <- comment(paste(c("@section Request syntax:", call),
-                                     collapse = "\n"), "#'")
+      collapse = "\n"
+    ), "#'")
     return(accepted_params)
   }
   return("")
@@ -177,7 +185,9 @@ make_doc_value <- function(operation, api) {
 
 # Return a string with an operation example's arguments.
 make_doc_example_args <- function(input) {
-  if (length(input) == 0) return("")
+  if (length(input) == 0) {
+    return("")
+  }
   args <- paste(trimws(utils::capture.output(dput(input))), collapse = "")
   result <- gsub("^list\\((.*)\\)$", "\\1", args)
   result <- gsub('\\\\+"', '"', result) # Delete escapes before quotes.
@@ -204,8 +214,8 @@ make_doc_example <- function(example, op_name) {
     first_quote <- quotes[1]
     last_quote <- quotes[length(quotes)]
     first <- substr(x, 1, first_quote)
-    middle <- substr(x, first_quote+1, nchar(x)-1)
-    middle <- paste0(substr(middle, 1, 80-nchar(first)-5), "...")
+    middle <- substr(x, first_quote + 1, nchar(x) - 1)
+    middle <- paste0(substr(middle, 1, 80 - nchar(first) - 5), "...")
     middle <- escape_unmatched_chars(middle, '"')
     middle <- escape_unmatched_pairs(middle, c("{" = "}"))
     last <- substr(x, last_quote, nchar(x))
@@ -225,7 +235,9 @@ make_doc_example <- function(example, op_name) {
 make_doc_examples <- function(operation, api) {
   func <- sprintf("svc$%s", get_operation_name(operation))
   examples <- lapply(operation$examples, make_doc_example, op_name = func)
-  if (length(examples) == 0) return(NULL)
+  if (length(examples) == 0) {
+    return(NULL)
+  }
   result <- paste(examples, collapse = "\n\n")
   result <- paste(c("@examples", "\\dontrun{", result, "}"), collapse = "\n")
   result <- comment(result, "#'")
@@ -262,7 +274,9 @@ first_paragraph <- function(x) {
 # Get the first sentence from a block of text.
 first_sentence <- function(x) {
   if (is.list(x)) x <- as.character(x)
-  if (length(x) == 1 && x == "") return("")
+  if (length(x) == 1 && x == "") {
+    return("")
+  }
   first <- strsplit(x, "\\.")[[1]][[1]]
   return(first)
 }
@@ -286,18 +300,20 @@ convert_headings_to_bold <- function(s) {
 
 # Add comment characters at the beginning of each line of the given string.
 comment <- function(s, char = "#") {
-  if (length(s) == 0) return(char)
+  if (length(s) == 0) {
+    return(char)
+  }
   lines <- strsplit(s, "\n", fixed = TRUE)[[1]]
   result <- paste(char, lines, sep = " ", collapse = "\n")
   return(result)
 }
 
-comment_bold <- function(x){
+comment_bold <- function(x) {
   sprintf("\\strong{%s}", x)
 }
 
 # create roxygen2 list from list
-comment_list_item <- function(items = list()){
+comment_list_item <- function(items = list()) {
   items_names <- names(items)
   items_list <- setNames(character(length(items_names)), items_names)
   for (i in items_names) {
@@ -310,11 +326,12 @@ comment_list_item <- function(items = list()){
   return(paste(items_list, collapse = "\n"))
 }
 
-comment_list_itemize <- function(items){
+comment_list_itemize <- function(items) {
   paste(
     "\\itemize{",
     comment_list_item(items),
-    "}", sep = "\n"
+    "}",
+    sep = "\n"
   )
 }
 
@@ -347,7 +364,9 @@ comment_list_itemize <- function(items){
 #'
 #' @noRd
 convert <- function(docs, service = "", links = c()) {
-  if (is.null(docs) || docs == "") return("")
+  if (is.null(docs) || docs == "") {
+    return("")
+  }
   docs <- trimws(docs)
   cached_expr(list("convert", docs = docs, service = service), {
     if (!grepl("^<", docs)) {
@@ -363,7 +382,9 @@ convert <- function(docs, service = "", links = c()) {
 # Clean an HTML string to avoid issues that result in invalid Rd
 # R documentation files.
 clean_html <- function(text, links = c()) {
-  if (length(text) == 1 && text == "") return("")
+  if (length(text) == 1 && text == "") {
+    return("")
+  }
   html <- xml2::read_html(text)
   as.character(clean_html_node(html, links))
 }
@@ -371,8 +392,7 @@ clean_html <- function(text, links = c()) {
 # Clean an HTML node.
 # Note: This function, and all the clean_html functions, modify their inputs.
 clean_html_node <- function(node, links = c()) {
-  switch(
-    xml2::xml_name(node),
+  switch(xml2::xml_name(node),
     a = clean_html_a(node, links),
     code = clean_html_code(node, links),
     dt = clean_html_dt(node),
@@ -393,7 +413,6 @@ clean_html_code <- function(node, links = c()) {
   # Replace API operation names with links to corresponding R function names.
   internal_link <- links[[trimws(text)]]
   if (!is.null(internal_link)) {
-
     # Don't add a link if this node is already within a link.
     parent <- xml2::xml_parent(node)
     if (xml2::xml_name(parent) == "a") {
@@ -427,7 +446,6 @@ clean_html_code <- function(node, links = c()) {
 # Use package documentation for links to other operations.
 # Check that external links are valid, and if not replace them with the link text.
 clean_html_a <- function(node, links = c()) {
-
   # If the link appears to be to another operation, make it point to the
   # package's documentation for the operation.
   text <- xml2::xml_text(node)
@@ -443,9 +461,13 @@ clean_html_a <- function(node, links = c()) {
   }
 
   url <- xml2::xml_attr(node, "href")
-  if (length(url) == 0 || is.na(url)) return(NULL)
+  if (length(url) == 0 || is.na(url)) {
+    return(NULL)
+  }
 
-  if (startsWith(url, "mailto:")) return(NULL)
+  if (startsWith(url, "mailto:")) {
+    return(NULL)
+  }
 
   # Add hostname to relative AWS documentation links.
   if (!is.null(url) && grepl("^[a-zA-Z0-9\\-]+/", url)) {
@@ -590,10 +612,12 @@ fix_internal_links <- function(x) {
 # Convert an R list to a string.
 # The resulting string will not be valid for lists whose names are invalid.
 list_to_string <- function(x, quote = TRUE) {
-
   if (is.atomic(x) && length(x) == 1 && is.null(names(x))) {
-    if (quote && is.character(x)) s <- sprintf('"%s"', x)
-    else s <- as.character(x)
+    if (quote && is.character(x)) {
+      s <- sprintf('"%s"', x)
+    } else {
+      s <- as.character(x)
+    }
     return(s)
   }
 
@@ -601,8 +625,11 @@ list_to_string <- function(x, quote = TRUE) {
   for (i in seq_along(x)) {
     key <- names(x)[i]
     value <- list_to_string(x[[i]], quote)
-    if (!is.null(key) && key != "") s <- sprintf("%s = %s", key, value)
-    else s <- value
+    if (!is.null(key) && key != "") {
+      s <- sprintf("%s = %s", key, value)
+    } else {
+      s <- value
+    }
     if (i > 1) s <- paste0(", ", s)
     result <- paste0(result, s)
   }
@@ -632,8 +659,7 @@ add_example_values <- function(shape) {
       t <- "enum"
       enum <- tag_get(shape, "enum")
     }
-    result <- switch(
-      t,
+    result <- switch(t,
       blob = "raw",
       boolean = "TRUE|FALSE",
       double = "123.0",
@@ -657,7 +683,9 @@ add_example_values <- function(shape) {
 # Format examples
 clean_example <- function(s) {
   # If empty return an empty string
-  if (!nchar(s)) return("")
+  if (!nchar(s)) {
+    return("")
+  }
 
   # A stack to hold open perens
   open_perens <- c()
@@ -670,9 +698,9 @@ clean_example <- function(s) {
   tab_string <- paste0(rep(" ", num_spaces), collapse = "")
 
   # The output string
-  cleaned <- vector("character",nchar(s))
+  cleaned <- vector("character", nchar(s))
 
-  for (i in 1:nchar(s)){
+  for (i in 1:nchar(s)) {
     # Get the next character
     prev_character <- substr(s, i - 1, i - 1)
     current_character <- substr(s, i, i)
@@ -686,12 +714,10 @@ clean_example <- function(s) {
         open_quotes <- FALSE
       }
       cleaned[[i]] <- current_character
-
     } else if (current_character == '"') {
       # If there is a quotation mark format next characters normally
       open_quotes <- TRUE
       cleaned[[i]] <- current_character
-
     } else if (current_character == "(" & next_character != ")") {
       # Start a new line after each open peren and increase indent
 
@@ -699,7 +725,6 @@ clean_example <- function(s) {
       open_perens <- c(open_perens, "(")
       indents <- paste0(rep(tab_string, length(open_perens)), collapse = "")
       cleaned[[i]] <- paste0("(\n", indents)
-
     } else if (current_character == ")" & prev_character != "(") {
       # Reduce tab and start new line after each closing peren
 
@@ -711,15 +736,13 @@ clean_example <- function(s) {
       }
       indents <- paste0(rep(tab_string, length(open_perens)), collapse = "")
       cleaned[[i]] <- paste0("\n", indents, ")")
-
     } else if (current_character == ",") {
       # Add new line after every comma
 
       indents <- paste0(rep(tab_string, max(length(open_perens) - 1, 0)), collapse = "")
-      space_number <- (if(substr(s, i + 1, i + 1) == " ") num_spaces - 1 else num_spaces)
-      final_tab = paste0(rep(" ", space_number), collapse = "")
+      space_number <- (if (substr(s, i + 1, i + 1) == " ") num_spaces - 1 else num_spaces)
+      final_tab <- paste0(rep(" ", space_number), collapse = "")
       cleaned[[i]] <- paste0(",\n", indents, final_tab)
-
     } else {
       # Add other characters to new output string
       cleaned[[i]] <- current_character

@@ -35,8 +35,10 @@ get_credentials <- function(credentials) {
 
 # Return whether a creds object has at least the minimum data needed to
 # authenticate.
-is_credentials_provided <- function(creds, window = 5 * 60){
-  if (is.null(creds)) return(FALSE)
+is_credentials_provided <- function(creds, window = 5 * 60) {
+  if (is.null(creds)) {
+    return(FALSE)
+  }
   if (!is.null(creds$access_token) && creds$access_token != "") {
     return(TRUE)
   }

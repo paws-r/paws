@@ -1,5 +1,5 @@
-escape_mode = c(
-  "encodeHost","encodeZone","encodePath",
+escape_mode <- c(
+  "encodeHost", "encodeZone", "encodePath",
   "encodePathSegment", "encodeQueryComponent", "encodeFragment"
 )
 test_that("check all escape modes", {
@@ -20,7 +20,7 @@ test_that("check all escape modes", {
 
 test_that("check if non-ascci characters are correctly encoded", {
   string <- "なでçãкатынü"
-  actual = paws_url_encoder(string)
+  actual <- paws_url_encoder(string)
   expect_equal(
     actual,
     "%E3%81%AA%E3%81%A7%C3%A7%C3%A3%D0%BA%D0%B0%D1%82%D1%8B%D0%BD%C3%BC"
@@ -30,18 +30,18 @@ test_that("check if non-ascci characters are correctly encoded", {
 test_that("check if encoded url is correctly decoded", {
   string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~`!@#$%^&*()=+[{]}\\|;:'\",<>/? "
 
-  url = paste0(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
-  url_encode = paws_url_encoder(url)
-  actual = unescape(url_encode)
+  url <- paste0(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
+  url_encode <- paws_url_encoder(url)
+  actual <- unescape(url_encode)
   expect_equal(actual, url)
 })
 
 test_that("check if non-encoded url is correctly decoded", {
   string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~"
 
-  url = paste(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
-  url_encode = paws_url_encoder(url)
-  actual = unescape(url_encode)
+  url <- paste(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
+  url_encode <- paws_url_encoder(url)
+  actual <- unescape(url_encode)
 
   expect_equal(actual, url)
 })

@@ -44,13 +44,13 @@ test_that("check local check_pkgs remove notes", {
     list(notes = "baz"),
     cycle = T
   )
-  mockery::stub(check_pkgs, 'devtools::check_built', mock_devtools_check_built)
+  mockery::stub(check_pkgs, "devtools::check_built", mock_devtools_check_built)
 
   check <- check_pkgs(c("paws", "paws.cat1", "paws.cat2"))
 
   expect_equal(check, list(
-    paws = list(errors="foo", warnings="bar"),
-    paws.cat1 = list(errors="foo", warnings="bar")
+    paws = list(errors = "foo", warnings = "bar"),
+    paws.cat1 = list(errors = "foo", warnings = "bar")
   ))
 })
 
@@ -61,26 +61,26 @@ test_that("check local check_pkgs keep notes", {
     list(notes = "baz"),
     cycle = T
   )
-  mockery::stub(check_pkgs, 'devtools::check_built', mock_devtools_check_built)
+  mockery::stub(check_pkgs, "devtools::check_built", mock_devtools_check_built)
 
   check <- check_pkgs(c("paws", "paws.cat1", "paws.cat2"), keep_notes = T)
 
   expect_equal(check, list(
-    paws = list(errors="foo", warnings="bar"),
-    paws.cat1 = list(errors="foo", warnings="bar", notes = "cho"),
-    paws.cat2 = list(errors=NULL, warnings=NULL, notes="baz")
+    paws = list(errors = "foo", warnings = "bar"),
+    paws.cat1 = list(errors = "foo", warnings = "bar", notes = "cho"),
+    paws.cat2 = list(errors = NULL, warnings = NULL, notes = "baz")
   ))
 })
 
 test_that("check paws_check_local_sub_cat", {
   mock_list_paws_pkgs <- mock2(file.path("dummy", c("paws", "paws.cat1", "paws.cat2", "paws.cat1.p1", "paws.cat1.p2")))
-  mock_check_pkgs <- mock2(list(paws = list(errors="foo", warnings="bar")))
-  mockery::stub(paws_check_local_sub_cat, 'check_pkgs', mock_check_pkgs)
-  mockery::stub(paws_check_local_sub_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mock_check_pkgs <- mock2(list(paws = list(errors = "foo", warnings = "bar")))
+  mockery::stub(paws_check_local_sub_cat, "check_pkgs", mock_check_pkgs)
+  mockery::stub(paws_check_local_sub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_local_sub_cat("dummy")
 
-  expect_equal(check, list(paws = list(errors="foo", warnings="bar")))
+  expect_equal(check, list(paws = list(errors = "foo", warnings = "bar")))
   expect_equal(mock_arg(mock_check_pkgs), list(
     file.path("dummy", c("paws.cat1.p1", "paws.cat1.p2")),
     FALSE
@@ -88,11 +88,11 @@ test_that("check paws_check_local_sub_cat", {
 })
 
 test_that("check paws_check_local_cat", {
-  mock_list_paws_pkgs <- mock2(file.path("dummy",c("paws", "paws.cat1", "paws.cat2", "paws.cat1.p1", "paws.cat1.p2")))
+  mock_list_paws_pkgs <- mock2(file.path("dummy", c("paws", "paws.cat1", "paws.cat2", "paws.cat1.p1", "paws.cat1.p2")))
 
-  mock_check_pkgs <- mock2(list(paws.cat1 = list(errors="foo", warnings="bar")))
-  mockery::stub(paws_check_local_cat, 'check_pkgs', mock_check_pkgs)
-  mockery::stub(paws_check_local_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mock_check_pkgs <- mock2(list(paws.cat1 = list(errors = "foo", warnings = "bar")))
+  mockery::stub(paws_check_local_cat, "check_pkgs", mock_check_pkgs)
+  mockery::stub(paws_check_local_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_local_cat("dummy")
 
@@ -100,20 +100,20 @@ test_that("check paws_check_local_cat", {
     file.path("dummy", c("paws.cat1", "paws.cat2")),
     FALSE
   ))
-  expect_equal(check, list(paws.cat1 = list(errors="foo", warnings="bar")))
+  expect_equal(check, list(paws.cat1 = list(errors = "foo", warnings = "bar")))
 })
 
 test_that("check paws_check_local", {
-  mock_paws_check_local_sub_cat <- mock2(list("paws.cat1" = list(errors="foo", warnings="bar")))
+  mock_paws_check_local_sub_cat <- mock2(list("paws.cat1" = list(errors = "foo", warnings = "bar")))
   mock_paws_check_local_cat <- mock2(list())
   mock_check_pkgs <- mock2(list())
-  mockery::stub(paws_check_local, 'paws_check_local_sub_cat', mock_paws_check_local_sub_cat)
-  mockery::stub(paws_check_local, 'paws_check_local_cat', mock_paws_check_local_cat)
-  mockery::stub(paws_check_local, 'check_pkgs', mock_check_pkgs)
+  mockery::stub(paws_check_local, "paws_check_local_sub_cat", mock_paws_check_local_sub_cat)
+  mockery::stub(paws_check_local, "paws_check_local_cat", mock_paws_check_local_cat)
+  mockery::stub(paws_check_local, "check_pkgs", mock_check_pkgs)
 
   check <- paws_check_local()
 
-  expect_equal(check, list(paws.cat1 = list(errors="foo", warnings="bar")))
+  expect_equal(check, list(paws.cat1 = list(errors = "foo", warnings = "bar")))
 })
 
 test_that("check paws_check_url", {
@@ -124,21 +124,21 @@ test_that("check paws_check_url", {
     "cho",
     cycle = T
   )
-  mockery::stub(paws_check_url, 'urlchecker::url_check', mock_url_check)
-  mockery::stub(paws_check_url, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_check_url, "urlchecker::url_check", mock_url_check)
+  mockery::stub(paws_check_url, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_url("dummy")
   expect_equal(
     sapply(mockery::mock_args(mock_url_check), function(x) x[[1]]),
-    file.path("dummy",c("paws", "paws.cat1", "paws.cat2"))
+    file.path("dummy", c("paws", "paws.cat1", "paws.cat2"))
   )
 })
 
 test_that("check paws_check_rhub_sub_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
   mock_check_rhub <- mock2()
-  mockery::stub(paws_check_rhub_sub_cat, 'devtools::check_rhub', mock_check_rhub)
-  mockery::stub(paws_check_rhub_sub_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_check_rhub_sub_cat, "devtools::check_rhub", mock_check_rhub)
+  mockery::stub(paws_check_rhub_sub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_rhub_sub_cat()
 
@@ -151,8 +151,8 @@ test_that("check paws_check_rhub_sub_cat", {
 test_that("check paws_check_rhub_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
   mock_check_rhub <- mock2()
-  mockery::stub(paws_check_rhub_cat, 'devtools::check_rhub', mock_check_rhub)
-  mockery::stub(paws_check_rhub_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_check_rhub_cat, "devtools::check_rhub", mock_check_rhub)
+  mockery::stub(paws_check_rhub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_rhub_cat()
 
@@ -166,8 +166,8 @@ test_that("check paws_check_win_devel_sub_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
 
   mock_check_rhub <- mock2()
-  mockery::stub(paws_check_win_devel_sub_cat, 'devtools::check_win_devel', mock_check_rhub)
-  mockery::stub(paws_check_win_devel_sub_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_check_win_devel_sub_cat, "devtools::check_win_devel", mock_check_rhub)
+  mockery::stub(paws_check_win_devel_sub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_win_devel_sub_cat()
 
@@ -181,8 +181,8 @@ test_that("check paws_check_win_devel_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
 
   mock_check_rhub <- mock2()
-  mockery::stub(paws_check_win_devel_cat, 'devtools::check_win_devel', mock_check_rhub)
-  mockery::stub(paws_check_win_devel_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_check_win_devel_cat, "devtools::check_win_devel", mock_check_rhub)
+  mockery::stub(paws_check_win_devel_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_check_win_devel_cat()
 
@@ -196,8 +196,8 @@ test_that("check paws_release_sub_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
 
   mock_release <- mock2()
-  mockery::stub(paws_release_sub_cat, 'devtools::submit_cran', mock_release)
-  mockery::stub(paws_release_sub_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_release_sub_cat, "devtools::submit_cran", mock_release)
+  mockery::stub(paws_release_sub_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_release_sub_cat()
 
@@ -211,8 +211,8 @@ test_that("check paws_release_cat", {
   mock_list_paws_pkgs <- mock2(c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2"))
 
   mock_release <- mock2()
-  mockery::stub(paws_release_cat, 'devtools::submit_cran', mock_release)
-  mockery::stub(paws_release_cat, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_release_cat, "devtools::submit_cran", mock_release)
+  mockery::stub(paws_release_cat, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_release_cat()
 
@@ -226,10 +226,10 @@ test_that("check paws_install", {
   mock_list_paws_pkgs <- mock2(file.path("dummy", c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2")))
   mock_install_local <- mock2()
   mock_install_local_pkg_list <- mock2()
-  mockery::stub(paws_install, 'devtools::install_local', mock_install_local)
-  mockery::stub(paws_install, 'install_local_pkg_list', mock_install_local_pkg_list)
-  mockery::stub(paws_install, 'install_local_pkg_list', mock_install_local_pkg_list)
-  mockery::stub(paws_install, 'list_paws_pkgs', mock_list_paws_pkgs)
+  mockery::stub(paws_install, "devtools::install_local", mock_install_local)
+  mockery::stub(paws_install, "install_local_pkg_list", mock_install_local_pkg_list)
+  mockery::stub(paws_install, "install_local_pkg_list", mock_install_local_pkg_list)
+  mockery::stub(paws_install, "list_paws_pkgs", mock_list_paws_pkgs)
 
   check <- paws_install("dummy")
 
@@ -250,8 +250,8 @@ test_that("check paws_install", {
 test_that("check paws_uninstall", {
   mock_installed_packages <- mock2(list(Package = c("paws", "paws.cat1", "paws.cat2")))
   mock_remove_packages <- mock2()
-  mockery::stub(paws_uninstall, 'installed.packages', mock_installed_packages)
-  mockery::stub(paws_uninstall, 'remove.packages', mock_remove_packages)
+  mockery::stub(paws_uninstall, "installed.packages", mock_installed_packages)
+  mockery::stub(paws_uninstall, "remove.packages", mock_remove_packages)
 
   paws_uninstall()
 
@@ -272,9 +272,9 @@ test_that("check paws_check_pkg_size", {
       "path" = paste0(c("paws", "paws.cat1", "paws.cat2"), "_123.tar.gz")
     )
   )
-  mockery::stub(paws_check_pkg_size, 'list_paws_pkgs', mock_list_paws_pkgs)
-  mockery::stub(paws_check_pkg_size, 'devtools::build', mock_devtools_build)
-  mockery::stub(paws_check_pkg_size, 'fs::dir_info', mock_dir_info)
+  mockery::stub(paws_check_pkg_size, "list_paws_pkgs", mock_list_paws_pkgs)
+  mockery::stub(paws_check_pkg_size, "devtools::build", mock_devtools_build)
+  mockery::stub(paws_check_pkg_size, "fs::dir_info", mock_dir_info)
 
   dir_info <- paws_check_pkg_size()
 
@@ -326,16 +326,16 @@ test_that("check paws_build_cran_comments", {
   )
   mock_write_line <- mock2()
   mockery::stub(
-    paws_build_cran_comments, 'list_paws_pkgs', mock_list_paws_pkgs
+    paws_build_cran_comments, "list_paws_pkgs", mock_list_paws_pkgs
   )
   mockery::stub(
-    paws_build_cran_comments, 'paws_check_pkg_size', mock_paws_check_pkg_size
+    paws_build_cran_comments, "paws_check_pkg_size", mock_paws_check_pkg_size
   )
   mockery::stub(
-    paws_build_cran_comments, 'paws_check_local', mock_paws_check_local
+    paws_build_cran_comments, "paws_check_local", mock_paws_check_local
   )
   mockery::stub(
-    paws_build_cran_comments, 'writeLines', mock_write_line
+    paws_build_cran_comments, "writeLines", mock_write_line
   )
 
   paws_build_cran_comments(in_dir = "made_up")
@@ -388,16 +388,16 @@ test_that("check paws_build_cran_comments from cache", {
   )
   mock_write_line <- mock2()
   mockery::stub(
-    paws_build_cran_comments, 'desc::desc_get_deps', mock_desc_get_deps
+    paws_build_cran_comments, "desc::desc_get_deps", mock_desc_get_deps
   )
   mockery::stub(
-    paws_build_cran_comments, 'list_paws_pkgs', mock_list_paws_pkgs
+    paws_build_cran_comments, "list_paws_pkgs", mock_list_paws_pkgs
   )
   mockery::stub(
-    paws_build_cran_comments, 'paws_check_pkg_size', mock_paws_check_pkg_size
+    paws_build_cran_comments, "paws_check_pkg_size", mock_paws_check_pkg_size
   )
   mockery::stub(
-    paws_build_cran_comments, 'writeLines', mock_write_line
+    paws_build_cran_comments, "writeLines", mock_write_line
   )
 
   paws_build_cran_comments(
@@ -429,7 +429,7 @@ test_that("check paws_build_cran_comments from cache", {
 test_that("check if version is updated correctly", {
   mock_writelines <- mock2()
   mockery::stub(
-    paws_update_version, 'writeLines', mock_writelines
+    paws_update_version, "writeLines", mock_writelines
   )
   paws_update_version(dir = "dummy/paws", version = "0.8.0")
 
@@ -450,10 +450,10 @@ test_that("check if script html span link formatted", {
     writeLines(lines, temp2)
   })
   mockery::stub(
-    remove_html_span_r, 'writeLines', mock_writelines_1
+    remove_html_span_r, "writeLines", mock_writelines_1
   )
   mockery::stub(
-    remove_html_span_rd, 'writeLines', mock_writelines_2
+    remove_html_span_rd, "writeLines", mock_writelines_2
   )
   remove_html_span_r("dummy/scripts/script.R")
   remove_html_span_rd("dummy/scripts/script.Rd")
@@ -464,4 +464,3 @@ test_that("check if script html span link formatted", {
   expect_equal(actual_rd_script, readLines("dummy/scripts/expected_script.Rd"))
   unlink(c(temp1, temp2))
 })
-

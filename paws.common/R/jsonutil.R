@@ -6,7 +6,9 @@ decode_json <- function(raw) {
 
 # Read a JSON string into an R list object.
 json_to_list <- function(string) {
-  if (length(string) == 0 || string == "") return(list())
+  if (length(string) == 0 || string == "") {
+    return(list())
+  }
   l <- jsonlite::fromJSON(
     string,
     simplifyVector = FALSE,
@@ -25,8 +27,7 @@ json_build <- function(object) {
 }
 
 json_build_any <- function(values) {
-  build_fn <- switch(
-    type(values),
+  build_fn <- switch(type(values),
     structure = json_build_structure,
     list = json_build_list,
     map = json_build_map,
@@ -37,7 +38,6 @@ json_build_any <- function(values) {
 }
 
 json_build_structure <- function(values) {
-
   # TODO: Implement is valid check.
 
   payload_name <- tag_get(values, "payload")
@@ -111,8 +111,7 @@ json_build_map <- function(values) {
 }
 
 json_build_scalar <- function(values) {
-  s <- switch(
-    tag_get(values, "type"),
+  s <- switch(tag_get(values, "type"),
     blob = sprintf('"%s"', convert_blob(values)),
     boolean = convert_boolean(values),
     double = as.character(values),
@@ -166,8 +165,7 @@ json_convert_string <- function(string) {
 # Convert an API response in `node` to the shape given in `interface`.
 json_parse <- function(node, interface) {
   t <- type(interface)
-  parse_fn <- switch(
-    t,
+  parse_fn <- switch(t,
     structure = json_parse_structure,
     map = json_parse_map,
     list = json_parse_list,
@@ -181,7 +179,9 @@ json_parse_structure <- function(node, interface) {
   # If interface is empty (output shape is incomplete), return the output data.
   # Only needed because output shapes have fixed depth, and some services,
   # e.g. DynamoDB, can return data of arbitrary depth.
-  if (length(interface) == 0) return(node)
+  if (length(interface) == 0) {
+    return(node)
+  }
 
   result <- interface
 
@@ -204,11 +204,15 @@ json_parse_structure <- function(node, interface) {
 }
 
 json_parse_list <- function(node, interface) {
-  if (length(node) == 0) return(list())
+  if (length(node) == 0) {
+    return(list())
+  }
   # If interface is empty (output shape is incomplete), return the output data.
   # Only needed because output shapes have fixed depth, and some services,
   # e.g. DynamoDB, can return data of arbitrary depth.
-  if (length(interface) == 0) return(node)
+  if (length(interface) == 0) {
+    return(node)
+  }
   names(node) <- NULL
   result <- lapply(node, function(x) json_parse(x, interface[[1]]))
   if (type(interface[[1]]) == "scalar") {
@@ -221,14 +225,15 @@ json_parse_map <- function(node, interface) {
   # If interface is empty (output shape is incomplete), return the output data.
   # Only needed because output shapes have fixed depth, and some services,
   # e.g. DynamoDB, can return data of arbitrary depth.
-  if (length(interface) == 0) return(node)
+  if (length(interface) == 0) {
+    return(node)
+  }
   result <- list()
   for (name in names(node)) {
     parsed <- json_parse(node[[name]], interface[[1]])
     result[[name]] <- parsed
   }
   return(result)
-
 }
 
 json_parse_scalar <- function(node, interface) {
@@ -236,8 +241,7 @@ json_parse_scalar <- function(node, interface) {
   if (t == "") {
     return(interface)
   }
-  convert <- switch(
-    t,
+  convert <- switch(t,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,

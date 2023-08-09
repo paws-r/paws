@@ -251,8 +251,10 @@ test_that("Other Scalar Case1", {
       Fourth = Scalar(type = "integer"),
       Second = Scalar(type = "boolean"),
       Third = Scalar(type = "float"),
-      .tags = list(locationName = "OperationRequest",
-                    xmlURI = "https://foo/")
+      .tags = list(
+        locationName = "OperationRequest",
+        xmlURI = "https://foo/"
+      )
     )
     return(populate(args, interface))
   }
@@ -330,8 +332,10 @@ test_that("NonFlattened List With LocationName Case1", {
     interface <- Structure(
       ListParam = List(
         Scalar(type = "string"),
-        .tags = list(locationName = "AlternateName",
-                      locationNameList = "NotMember")
+        .tags = list(
+          locationName = "AlternateName",
+          locationNameList = "NotMember"
+        )
       ),
       .tags = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
@@ -410,26 +414,29 @@ test_that("List of Structures Case1", {
   op_input_test <- function(ListParam) {
     args <- list(ListParam = ListParam)
     interface <- Structure(
-        ListParam = List(
-          Structure(
-            Element = Scalar(type = "string",
-                             .tags = list(locationName = "value")
-                             )
-          ),
-          .tags = list(flattened = "true", locationName = "item")
+      ListParam = List(
+        Structure(
+          Element = Scalar(
+            type = "string",
+            .tags = list(locationName = "value")
+          )
         ),
-        .tags = list(locationName = "OperationRequest",
-                      xmlURI = "https://foo/")
+        .tags = list(flattened = "true", locationName = "item")
+      ),
+      .tags = list(
+        locationName = "OperationRequest",
+        xmlURI = "https://foo/"
+      )
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      ListParam = list(
-          list(Element = "one"),
-          list(Element = "two"),
-          list(Element = "three")
-      )
+    ListParam = list(
+      list(Element = "one"),
+      list(Element = "two"),
+      list(Element = "three")
+    )
   )
 
   req <- new_request(svc, op_test, input, NULL)
@@ -443,17 +450,19 @@ test_that("Blob Case1", {
   op_input_test <- function(StructureParam) {
     args <- list(StructureParam = StructureParam)
     interface <- Structure(
-        StructureParam = Structure(
-          B = Scalar(type = "blob", .tags = list(locationName = "b"))
-        ),
-        .tags = list(locationName = "OperationRequest",
-                      xmlURI = "https://foo/")
+      StructureParam = Structure(
+        B = Scalar(type = "blob", .tags = list(locationName = "b"))
+      ),
+      .tags = list(
+        locationName = "OperationRequest",
+        xmlURI = "https://foo/"
+      )
     )
     return(populate(args, interface))
   }
 
   input <- op_input_test(
-      StructureParam = list(B = list(charToRaw("foo")))
+    StructureParam = list(B = list(charToRaw("foo")))
   )
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
@@ -531,7 +540,7 @@ test_that("parameters with no provided arguments are dropped", {
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
-  expect_equal(r, '<OperationRequest><Nested><Foo><Bar>abc123</Bar></Foo></Nested></OperationRequest>')
+  expect_equal(r, "<OperationRequest><Nested><Foo><Bar>abc123</Bar></Foo></Nested></OperationRequest>")
 })
 
 #-------------------------------------------------------------------------------

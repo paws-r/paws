@@ -31,8 +31,11 @@ restjson_unmarshal_error <- function(request) {
   code <- request$http_response$header[["X-Amzn-Errortype"]]
   if (is.null(code)) code <- error$code
   if (is.null(code)) code <- error$`__type`
-  if (is.null(code)) code <- ""
-  else code <- strsplit(code, ":")[[1]][1]
+  if (is.null(code)) {
+    code <- ""
+  } else {
+    code <- strsplit(code, ":")[[1]][1]
+  }
 
   message <- ""
   if (!is.null(error$message)) message <- error$message

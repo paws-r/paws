@@ -47,8 +47,9 @@ test_that("make_operation", {
   a <- make_operation(operation, api, make_docs_long)
   a <- gsub(" +\n", "\n", a)
 
-  e <- gsub("\n {4}", "\n",
-   "#' Foo
+  e <- gsub(
+    "\n {4}", "\n",
+    "#' Foo
     #'
     #' @description
     #' Foo.
@@ -99,7 +100,8 @@ test_that("make_operation", {
       response <- send_request(request)
       return(response)
     }
-    .api$operations$operation <- api_operation")
+    .api$operations$operation <- api_operation"
+  )
 
   actual <- formatR::tidy_source(text = a, output = FALSE)
   expected <- formatR::tidy_source(text = e, output = FALSE)

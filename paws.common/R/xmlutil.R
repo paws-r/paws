@@ -6,7 +6,9 @@ decode_xml <- function(raw) {
 
 # Convert an XML string to an R list.
 xml_to_list <- function(value) {
-  if (is_empty(value)) return(NULL)
+  if (is_empty(value)) {
+    return(NULL)
+  }
   result <- xml2::as_list(xml2::read_xml(value))
   return(result)
 }
@@ -24,7 +26,9 @@ list_to_xml <- function(value) {
 add_xmlns <- function(xml_list, xmlns = "") {
   result <- xml_list
   attr(result, "xmlns") <- xmlns
-  if (!is.list(result)) return(result)
+  if (!is.list(result)) {
+    return(result)
+  }
   for (i in seq_along(result)) {
     result[[i]] <- add_xmlns(result[[i]], xmlns)
   }
@@ -67,14 +71,14 @@ xml_build_body <- function(request) {
 }
 
 xml_build <- function(params) {
-
   location <- tag_get(params, "location")
-  if (location != "") return(NULL)
+  if (location != "") {
+    return(NULL)
+  }
 
   t <- type(params)
 
-  build_fn <- switch(
-    t,
+  build_fn <- switch(t,
     structure = xml_build_structure,
     list = xml_build_list,
     xml_build_scalar
@@ -111,12 +115,16 @@ xml_build_structure <- function(params) {
     }
   }
   # Check cache list for default elements
-  if (all(sapply(parsed_result, is_empty_xml))) return(NULL)
+  if (all(sapply(parsed_result, is_empty_xml))) {
+    return(NULL)
+  }
   return(result)
 }
 
 xml_build_list <- function(params) {
-  if (length(params) == 0) return(list())
+  if (length(params) == 0) {
+    return(list())
+  }
   children <- lapply(params, function(x) xml_build(x))
 
   location_name <- tag_get(params, "locationName")
@@ -140,10 +148,11 @@ xml_build_scalar <- function(params) {
   # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
   # `list(foo = "abc")`.
   data <- unlist(params)
-  if (length(data) == 0) return(NULL)
+  if (length(data) == 0) {
+    return(NULL)
+  }
   t <- tag_get(params, "type")
-  convert <- switch(
-    t,
+  convert <- switch(t,
     blob = raw_to_base64,
     boolean = convert_boolean,
     double = as.numeric,
@@ -161,7 +170,9 @@ xml_build_scalar <- function(params) {
 
 # Unmarshal `data` provided as a list into the shape in `interface`.
 xml_unmarshal <- function(data, interface, result_name = NULL) {
-  if (is.null(data)) return(interface)
+  if (is.null(data)) {
+    return(interface)
+  }
 
   # help to parse xml:
   # https://github.com/paws-r/paws/issues/501
@@ -200,8 +211,7 @@ xml_unmarshal_error <- function(data, status_code) {
 #   `list(Reservations = foo, NextToken = bar)`.
 xml_parse <- function(node, interface) {
   t <- type(interface)
-  parse_fn <- switch(
-    t,
+  parse_fn <- switch(t,
     structure = xml_parse_structure,
     map = xml_parse_map,
     list = xml_parse_list,
@@ -248,7 +258,9 @@ xml_parse_structure <- function(node, interface) {
 }
 
 xml_parse_list <- function(node, interface) {
-  if (length(node) == 0) return(list())
+  if (length(node) == 0) {
+    return(list())
+  }
   names(node) <- NULL
   result <- lapply(node, function(x) xml_parse(x, interface[[1]]))
   if (type(interface[[1]]) == "scalar") {
@@ -258,7 +270,9 @@ xml_parse_list <- function(node, interface) {
 }
 
 xml_parse_map <- function(node, interface) {
-  if (length(node) == 0) return(list())
+  if (length(node) == 0) {
+    return(list())
+  }
   result <- list()
   multiple_entries <- length(unique(names(node))) == 1
   if (multiple_entries) {
@@ -291,8 +305,7 @@ xml_parse_scalar <- function(node, interface) {
   # `list(foo = "abc")`.
   data <- unlist(node)
   t <- tag_get(interface, "type")
-  convert <- switch(
-    t,
+  convert <- switch(t,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,

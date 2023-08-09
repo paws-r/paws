@@ -57,53 +57,52 @@ test_that("check if retry_api_call doesn't retry", {
 ########################################################################
 
 test_that("check paginate_update_fn", {
-    dummy_internal <- function(paginator) {
-      paginator
-    }
-    dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
-      op <- dummy_internal(paginator = list(
-          input_token = "NextToken",
-          output_token = "NextToken",
-          limit_key = "MaxKey",
-          result_key = "Contents"
-        )
-      )
-      list(NextToken=NextToken, MaxKey=MaxKey)
-    }
-
-    mock_environmentName <- mock2("paws.storage")
-    mockery::stub(paginate_update_fn, "environmentName", mock_environmentName)
-    actual <- paginate_update_fn(substitute(dummy_op(x = "hi")), PageSize = 10, StartingToken = "token1")
-    expect_fn <- substitute(dummy_op(x = "hi", NextToken = "token1", MaxKey = 10))
-    expect_paginator <- list(
+  dummy_internal <- function(paginator) {
+    paginator
+  }
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
+    op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
+  }
 
-    expect_equal(actual$fn, expect_fn)
-    expect_equal(actual$paginator, expect_paginator)
+  mock_environmentName <- mock2("paws.storage")
+  mockery::stub(paginate_update_fn, "environmentName", mock_environmentName)
+  actual <- paginate_update_fn(substitute(dummy_op(x = "hi")), PageSize = 10, StartingToken = "token1")
+  expect_fn <- substitute(dummy_op(x = "hi", NextToken = "token1", MaxKey = 10))
+  expect_paginator <- list(
+    input_token = "NextToken",
+    output_token = "NextToken",
+    limit_key = "MaxKey",
+    result_key = "Contents"
+  )
+
+  expect_equal(actual$fn, expect_fn)
+  expect_equal(actual$paginator, expect_paginator)
 })
 
 test_that("check paginate_update_fn non paws operation", {
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
 
   expect_error(
     paginate_update_fn(
-      substitute(dummy_op(x = "hi")), PageSize = 10, StartingToken = "token1"
+      substitute(dummy_op(x = "hi")),
+      PageSize = 10, StartingToken = "token1"
     ),
     "Unknown method:.*. Please check service methods and try again."
   )
@@ -113,16 +112,17 @@ test_that("check paginate_update_fn unable to paginate", {
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list())
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
 
   mock_environmentName <- mock2("paws.storage")
   mockery::stub(paginate_update_fn, "environmentName", mock_environmentName)
   expect_error(
     paginate_update_fn(
-      substitute(dummy_op(x = "hi")), PageSize = 10, StartingToken = "token1"
+      substitute(dummy_op(x = "hi")),
+      PageSize = 10, StartingToken = "token1"
     ),
     "Method:.*is unable to paginate"
   )
@@ -134,19 +134,17 @@ test_that("check paginate_update_fn unable to paginate", {
 ########################################################################
 
 test_that("check paginate", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
-        input_token = "NextToken",
-        output_token = "NextToken",
-        limit_key = "MaxKey",
-        result_key = "Contents"
-      )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(dummy_op(x = "hi")))
 
@@ -189,19 +187,17 @@ test_that("check paginate", {
 })
 
 test_that("check paginate do.call", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(do.call(dummy_op, list(x = "hi"))))
 
@@ -244,19 +240,17 @@ test_that("check paginate do.call", {
 })
 
 test_that("check paginate restrict MaxItems", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(do.call(dummy_op, list(x = "hi"))))
 
@@ -301,19 +295,17 @@ test_that("check paginate restrict MaxItems", {
 ########################################################################
 
 test_that("check paginate_xapply", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
 
   mock_retry_api_call <- mock2(
@@ -338,7 +330,9 @@ test_that("check paginate_xapply", {
       limit_key = "MaxKey",
       result_key = "Contents"
     ),
-    FUN = function(resp) {resp},
+    FUN = function(resp) {
+      resp
+    },
     MaxRetries = 5,
     MaxItems = NULL
   )
@@ -353,19 +347,17 @@ test_that("check paginate_xapply", {
 })
 
 test_that("check paginate_xapply restrict MaxItems", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
 
   mock_retry_api_call <- mock2(
@@ -389,7 +381,9 @@ test_that("check paginate_xapply restrict MaxItems", {
       limit_key = "MaxKey",
       result_key = "Contents"
     ),
-    FUN = function(resp) {resp},
+    FUN = function(resp) {
+      resp
+    },
     MaxRetries = 5,
     MaxItems = 2
   )
@@ -407,19 +401,17 @@ test_that("check paginate_xapply restrict MaxItems", {
 # paginate_lapply
 ########################################################################
 test_that("check paginate_lapply", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(dummy_op(x = "hi")))
 
@@ -440,26 +432,26 @@ test_that("check paginate_lapply", {
   mockery::stub(paginate_lapply, "paginate_update_fn", mock_paginate_update_fn)
   mockery::stub(paginate_lapply, "paginate_xapply", mock_paginate_xapply)
 
-  actual <- paginate_lapply("dummy", \(resp) {resp})
+  actual <- paginate_lapply("dummy", \(resp) {
+    resp
+  })
   actual_fn <- mock_arg(mock_paginate_update_fn)[[1]]
 
   expect_equal(actual_fn, substitute(dummy_op(x = "hi")))
 })
 
 test_that("check paginate_lapply do.call modified operation", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
-        input_token = "NextToken",
-        output_token = "NextToken",
-        limit_key = "MaxKey",
-        result_key = "Contents"
-      )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(do.call(dummy_op, list(x = "hi"))))
 
@@ -480,7 +472,9 @@ test_that("check paginate_lapply do.call modified operation", {
   mockery::stub(paginate_lapply, "paginate_update_fn", mock_paginate_update_fn)
   mockery::stub(paginate_lapply, "paginate_xapply", mock_paginate_xapply)
 
-  actual <- paginate_lapply("dummy", \(resp) {resp})
+  actual <- paginate_lapply("dummy", \(resp) {
+    resp
+  })
   actual_fn <- mock_arg(mock_paginate_update_fn)[[1]]
 
   expect_equal(actual_fn, substitute(dummy_op(x = "hi")))
@@ -490,19 +484,17 @@ test_that("check paginate_lapply do.call modified operation", {
 # paginate_sapply
 ########################################################################
 test_that("check paginate_sapply", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(dummy_op(x = "hi")))
 
@@ -523,26 +515,26 @@ test_that("check paginate_sapply", {
   mockery::stub(paginate_sapply, "paginate_update_fn", mock_paginate_update_fn)
   mockery::stub(paginate_sapply, "paginate_xapply", mock_paginate_xapply)
 
-  actual <- paginate_sapply("dummy", \(resp) {resp})
+  actual <- paginate_sapply("dummy", \(resp) {
+    resp
+  })
   actual_fn <- mock_arg(mock_paginate_update_fn)[[1]]
 
   expect_equal(actual_fn, substitute(dummy_op(x = "hi")))
 })
 
 test_that("check paginate_sapply do.call modified operation", {
-
   dummy_internal <- function(paginator) {
     paginator
   }
-  dummy_op <- function(x, NextToken=NULL, MaxKey=NULL) {
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
     op <- dummy_internal(paginator = list(
       input_token = "NextToken",
       output_token = "NextToken",
       limit_key = "MaxKey",
       result_key = "Contents"
-    )
-    )
-    list(NextToken=NextToken, MaxKey=MaxKey)
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
   }
   mock_substitute <- mock2(substitute(do.call(dummy_op, list(x = "hi"))))
 
@@ -563,7 +555,9 @@ test_that("check paginate_sapply do.call modified operation", {
   mockery::stub(paginate_sapply, "paginate_update_fn", mock_paginate_update_fn)
   mockery::stub(paginate_sapply, "paginate_xapply", mock_paginate_xapply)
 
-  actual <- paginate_sapply("dummy", \(resp) {resp})
+  actual <- paginate_sapply("dummy", \(resp) {
+    resp
+  })
   actual_fn <- mock_arg(mock_paginate_update_fn)[[1]]
 
   expect_equal(actual_fn, substitute(dummy_op(x = "hi")))
