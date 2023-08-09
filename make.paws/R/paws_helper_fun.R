@@ -48,7 +48,8 @@ build_service_parameter <- function(param) {
 #' @export
 paws_service_param_fn <- function(dir = "../paws.common") {
   file <- system.file(
-    file.path("templates","service_parameter_helper.R"), package = "make.paws"
+    file.path("templates", "service_parameter_helper.R"),
+    package = "make.paws"
   )
   r_file <- readLines(file)
 

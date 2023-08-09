@@ -339,7 +339,7 @@ build_body_digest <- function(ctx) {
   if (hash == "") {
     include_sha256_header <- (
       ctx$unsigned_payload ||
-      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier")
+        ctx$service_name %in% c("s3", "s3-object-lambda", "glacier")
     )
     s3_presign <- (
       ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda")

@@ -1,5 +1,5 @@
 IDEMPOTENCY_TOKEN_FILL_TAG <- "idempotencyToken"
-IDEMPOTENCY_RAND_FN <- function() sample(0:(2^8-1), 1)
+IDEMPOTENCY_RAND_FN <- function() sample(0:(2^8 - 1), 1)
 
 # Return whether the idempotency token can be automatically set.
 can_set_idempotency_token <- function(value) {

@@ -50,7 +50,6 @@ test_that("make_tests", {
     metadata = list(
       serviceAbbreviation = "api"
     ),
-
     operations = list(
       CreateFoo = list(
         name = "CreateFoo"
@@ -71,7 +70,6 @@ test_that("make_tests", {
         )
       )
     ),
-
     shapes = list(
       DescribeFooShape = list(
         members = list(

@@ -13,8 +13,7 @@ query_parse_value <- function(values, value, prefix, tag, is_ec2 = FALSE) {
   if (!is_valid(value)) {
     return(values)
   }
-  parse_fn <- switch(
-    type(value),
+  parse_fn <- switch(type(value),
     structure = query_parse_structure,
     list = query_parse_list,
     map = query_parse_map,
@@ -67,7 +66,9 @@ query_parse_structure <- function(values, value, prefix, tag, is_ec2 = FALSE) {
 }
 
 query_parse_list <- function(values, value, prefix, tag, is_ec2 = FALSE) {
-  if (!is_valid(value)) return(values)
+  if (!is_valid(value)) {
+    return(values)
+  }
 
   if (!is_ec2 && tag_get(value, "flattened") == "") {
     list_name <- tag_get(value, "locationNameList")
@@ -81,7 +82,6 @@ query_parse_list <- function(values, value, prefix, tag, is_ec2 = FALSE) {
   for (i in seq_along(value)) {
     field <- value[[i]]
     if (length(field) > 0) {
-
       # TODO: Call query_parse_scalar for an array of bytes.
 
       if (prefix == "") {
@@ -97,7 +97,9 @@ query_parse_list <- function(values, value, prefix, tag, is_ec2 = FALSE) {
 }
 
 query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
-  if (!is_valid(value)) return(values)
+  if (!is_valid(value)) {
+    return(values)
+  }
 
   if (!is_ec2 && tag_get(value, "flattened") == "") {
     prefix <- paste(prefix, "entry", sep = ".")
@@ -107,7 +109,6 @@ query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
   # will be one R list element with no name, which we shouldn't process.
   map_entries <- !is.null(names(value))
   if (map_entries) {
-
     # Sort the map entries by key name, while preserving object attributes.
     value[1:length(value)] <- value[sort(names(value))]
 
@@ -115,9 +116,9 @@ query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
       map_key <- names(value)[i]
       map_value <- value[[map_key]]
 
-      key_name = tag_get(value, "locationNameKey")
+      key_name <- tag_get(value, "locationNameKey")
       if (key_name == "") key_name <- "key"
-      value_name = tag_get(value, "locationNameValue")
+      value_name <- tag_get(value, "locationNameValue")
       if (value_name == "") value_name <- "value"
 
       # Serialize the key.
@@ -144,7 +145,9 @@ query_parse_map <- function(values, value, prefix, tag, is_ec2 = FALSE) {
 }
 
 query_parse_scalar <- function(values, value, prefix, tag, is_ec2 = FALSE) {
-  if (!is_valid(value)) return(values)
+  if (!is_valid(value)) {
+    return(values)
+  }
   values[prefix] <- convert_type(value, timestamp_format = "iso8601")
   return(values)
 }

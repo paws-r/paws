@@ -62,7 +62,6 @@ test_that("new_service null cfgs", {
 
   expect_equal(names(service$config), names(Config()))
   expect_equal(service$config$region, "region")
-
 })
 
 test_that("new_service adds customizations", {
@@ -109,8 +108,9 @@ test_that("test custom config credentials take priority", {
 
   expect_equal(service$config$region, "cfgs_region")
   expect_equal(service$config$credentials$creds$access_key_id, "cfgs_key")
-  expect_equal(service$config$credentials$creds$secret_access_key,
-               "cfgs_secret")
+  expect_equal(
+    service$config$credentials$creds$secret_access_key,
+    "cfgs_secret"
+  )
   expect_equal(service$config$credentials$profile, "cfgs_profile")
-
 })

@@ -58,7 +58,6 @@ test_that("credentials expired", {
   )
 
   expect_true(is_credentials_provided(creds))
-
 })
 
 #-------------------------------------------------------------------------------
@@ -102,7 +101,6 @@ service <- function(config = list()) {
 }
 
 test_that("credentials are cached", {
-
   # Use provided credentials.
   creds <- list(access_key_id = "foo", secret_access_key = "bar")
   svc <- service(config = list(credentials = list(creds = creds)))

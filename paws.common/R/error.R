@@ -43,7 +43,7 @@ aws_error <- function(e, call = sys.call(-1), use_call = FALSE) {
     http_class <- paste0("http_", unique(c(e$status_code, status_type, "error")))
   }
   if (!use_call) {
-    call = NULL
+    call <- NULL
   }
 
   structure(

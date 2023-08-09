@@ -44,21 +44,27 @@ test_that("cache basics", {
 })
 
 test_that("spot checking detects changing results", {
-
   op <- options(cache.spotcheck.level = 1)
   on.exit(options(op), add = TRUE)
 
   with_cache_dir(tempfile(), {
-    cached_expr("key1", { 1 })
+    cached_expr("key1", {
+      1
+    })
 
     # This will fail spot checking because it re-uses the same
     # key as slow_operation()
     expect_warning(
-      cached_expr("key1", { 2 }),
-      "spot-check")
+      cached_expr("key1", {
+        2
+      }),
+      "spot-check"
+    )
 
     # This won't fail spot checking because the level is 0
     options(cache.spotcheck.level = 0)
-    cached_expr("key1", { 3 })
+    cached_expr("key1", {
+      3
+    })
   })
 })

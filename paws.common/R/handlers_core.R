@@ -4,8 +4,10 @@ sdk_version_user_agent_handler <- function(request) {
   r_version <- getRversion()
   r_os <- R.Version()$os
   r_arch <- R.Version()$arch
-  user_agent <- sprintf("paws/%s (R%s; %s; %s)",
-                        paws_version, r_version, r_os, r_arch)
+  user_agent <- sprintf(
+    "paws/%s (R%s; %s; %s)",
+    paws_version, r_version, r_os, r_arch
+  )
   request$http_request$header["User-Agent"] <- user_agent
   return(request)
 }
@@ -49,7 +51,6 @@ get_content_length <- function(content) {
 
 # Ensure that the request's signature doesn't expire before it is sent.
 validate_req_sig_handler <- function(request) {
-
   # TODO: Implement anonymous access.
   # if (request$config$credentials == CREDENTIALS$anonymous_credentials) {
   #   return(request)

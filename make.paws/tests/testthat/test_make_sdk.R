@@ -84,7 +84,6 @@ path_docs <- file.path(path, "docs")
 #-------------------------------------------------------------------------------
 
 test_that("make_sdk", {
-
   categories <- list(
     list(
       name = "bar",
@@ -94,7 +93,9 @@ test_that("make_sdk", {
     )
   )
 
-  test_get_categories <- function() return(categories)
+  test_get_categories <- function() {
+    return(categories)
+  }
 
   # Override the categories for testing.
   assignInNamespace("get_categories", test_get_categories, "make.paws")
@@ -136,7 +137,9 @@ test_that("make_sdk with sub categories", {
     )
   )
 
-  test_get_categories <- function() return(categories)
+  test_get_categories <- function() {
+    return(categories)
+  }
 
   # Override the categories for testing.
   assignInNamespace("get_categories", test_get_categories, "make.paws")

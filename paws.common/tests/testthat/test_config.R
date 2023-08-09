@@ -40,7 +40,7 @@ test_that("get_config optional parameter update", {
     cfgs = list(sts_regional_endpoint = "legacy")
   )
   actual <- svc$operation()
-  expect_equivalent(actual$sts_regional_endpoint , "legacy")
+  expect_equivalent(actual$sts_regional_endpoint, "legacy")
 })
 
 test_that("set_config", {
@@ -129,57 +129,57 @@ services/"
   imdsv1_behaviour <- function(http_request) {
     # mock behaviour of the imdsv1 metadata service in case it gets an
     # imdsv2 request
-    if (http_request$url$scheme=="http"
-        && http_request$method=="PUT"
-        && http_request$url$path=="/latest/api/token") {
-        # ignore this as this only available in IMDSv2.
+    if (http_request$url$scheme == "http" &&
+      http_request$method == "PUT" &&
+      http_request$url$path == "/latest/api/token") {
+      # ignore this as this only available in IMDSv2.
       mock_imdsv1_response_for_imdsv2_request <- HttpResponse(
         status_code = 404,
         header = c(
-          "Server"="EC2ws",
-          "Connection"="Close",
-          "Content-Type"="text/plain",
-          "Content-Length"="0"
+          "Server" = "EC2ws",
+          "Connection" = "Close",
+          "Content-Type" = "text/plain",
+          "Content-Length" = "0"
         ),
         content_length = 0L,
         body = charToRaw("")
       )
-      return (mock_imdsv1_response_for_imdsv2_request)
+      return(mock_imdsv1_response_for_imdsv2_request)
     }
     # mock behaviour of the imdsv1 metadata service
-    if (http_request$url$scheme=="http"
-      && http_request$method=="GET"
-      && grepl("meta-data", http_request$url$path)) {
+    if (http_request$url$scheme == "http" &&
+      http_request$method == "GET" &&
+      grepl("meta-data", http_request$url$path)) {
       # provide response according to IMDSv1
       mock_imdsv1_metadata_response <- HttpResponse(
         status_code = 200,
         header = c(
-          "Server"="EC2ws",
-          "Connection"="Close",
-          "Content-Type"="text/plain",
-          "Content-Length"="297"
+          "Server" = "EC2ws",
+          "Connection" = "Close",
+          "Content-Type" = "text/plain",
+          "Content-Length" = "297"
         ),
         content_length = 297L,
         body = charToRaw(valid_metadata_response)
       )
-      return (mock_imdsv1_metadata_response)
+      return(mock_imdsv1_metadata_response)
     }
     # if there is an invalid request in general return a HTTP error code
     mock_imdsv1_response_invalid_request <- HttpResponse(
       status_code = 405,
       header = c(
-        "Server"="EC2ws",
-        "Connection"="Close",
-        "Content-Type"="text/plain",
-        "Content-Length"="0"
+        "Server" = "EC2ws",
+        "Connection" = "Close",
+        "Content-Type" = "text/plain",
+        "Content-Length" = "0"
       ),
       content_length = 0L,
       body = charToRaw("")
     )
-    return (mock_imdsv1_response_invalid_request)
+    return(mock_imdsv1_response_invalid_request)
   }
   mock_imdsv1_behaviour <- mock2(side_effect = imdsv1_behaviour)
-  mockery::stub(get_instance_metadata, 'issue', mock_imdsv1_behaviour)
+  mockery::stub(get_instance_metadata, "issue", mock_imdsv1_behaviour)
   actual <- get_instance_metadata()
 
   expect_equal(mock_call_no(mock_imdsv1_behaviour), 2)
@@ -218,63 +218,63 @@ services/"
   test_aws_token <- "AWSTESTINGTokENZZ-XXXXxxxXXXx2XXx1X45XXxXXxX-XxXXxxxXx=="
   imdsv2_behaviour <- function(http_request) {
     # mock behaviour of the imdsv2 metadata service
-    if (http_request$url$scheme=="http"
-      && http_request$method=="PUT"
-      && http_request$url$path=="/latest/api/token"
-      && !is.na(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]])
-      && !is.na(as.numeric(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]))
-      ) {
+    if (http_request$url$scheme == "http" &&
+      http_request$method == "PUT" &&
+      http_request$url$path == "/latest/api/token" &&
+      !is.na(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]) &&
+      !is.na(as.numeric(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]))
+    ) {
       # provide a valid IMDSv2 metadata service token
       mock_imdsv2_token_response <- HttpResponse(
         status_code = 200,
         header = c(
-        "Server"="EC2ws",
-        "Connection"="Close",
-        "Content-Type"="text/plain",
-        "Content-Length"="56"
+          "Server" = "EC2ws",
+          "Connection" = "Close",
+          "Content-Type" = "text/plain",
+          "Content-Length" = "56"
         ),
         content_length = 56L,
         body = charToRaw(test_aws_token)
       )
-      return (mock_imdsv2_token_response)
+      return(mock_imdsv2_token_response)
     }
     # mock behaviour of the imdsv2 metadata service
-    if (http_request$url$scheme=="http"
-      && http_request$method=="GET"
-      && grepl("meta-data", http_request$url$path)
-      && !is.na(http_request$header[["X-aws-ec2-metadata-token"]])
-      && http_request$header[["X-aws-ec2-metadata-token"]]==test_aws_token
-      ) {
+    if (http_request$url$scheme == "http" &&
+      http_request$method == "GET" &&
+      grepl("meta-data", http_request$url$path) &&
+      !is.na(http_request$header[["X-aws-ec2-metadata-token"]]) &&
+      http_request$header[["X-aws-ec2-metadata-token"]] == test_aws_token
+    ) {
       # provide response according to IMDSv1
       mock_imdsv2_metadata_response <- HttpResponse(
         status_code = 200,
         header = c(
-          "Server"="EC2ws","Connection"="Close",
-          "Content-Type"="text/plain",
-          "Content-Length"="297",
-          "X-Aws-Ec2-Metadata-Token-Ttl-Seconds"="21587"
+          "Server" = "EC2ws", "Connection" = "Close",
+          "Content-Type" = "text/plain",
+          "Content-Length" = "297",
+          "X-Aws-Ec2-Metadata-Token-Ttl-Seconds" = "21587"
         ),
         content_length = 297L,
         body = charToRaw(valid_metadata_response)
       )
-      return (mock_imdsv2_metadata_response)
+      return(mock_imdsv2_metadata_response)
     }
     # if there is an invalid request in general return a HTTP error code
     mock_imdsv1_response_invalid_request <- HttpResponse(
       status_code = 405,
       header = c(
-        "Server"="EC2ws",
-        "Connection"="Close",
-        "Content-Type"="text/plain",
-        "Content-Length"="0"
+        "Server" = "EC2ws",
+        "Connection" = "Close",
+        "Content-Type" = "text/plain",
+        "Content-Length" = "0"
       ),
       content_length = 0L,
       body = charToRaw("")
     )
-    return (mock_imdsv1_response_invalid_request)
+    return(mock_imdsv1_response_invalid_request)
   }
   mock_imdsv2_behaviour <- mock2(side_effect = imdsv2_behaviour)
-  mockery::stub(get_instance_metadata, 'issue', mock_imdsv2_behaviour)
+  mockery::stub(get_instance_metadata, "issue", mock_imdsv2_behaviour)
   actual <- get_instance_metadata()
 
   expect_equal(mock_call_no(mock_imdsv2_behaviour), 2)
@@ -287,8 +287,8 @@ services/"
 test_that("get sso legacy credentials", {
   mock_get_config_file_path <- mock2("data_sso_ini")
   mock_sso_credential_process <- mock2(invisible(TRUE))
-  mockery::stub(config_file_provider, 'get_config_file_path', mock_get_config_file_path)
-  mockery::stub(config_file_provider, 'sso_credential_process', mock_sso_credential_process)
+  mockery::stub(config_file_provider, "get_config_file_path", mock_get_config_file_path)
+  mockery::stub(config_file_provider, "sso_credential_process", mock_sso_credential_process)
   config_file_provider("legacy_sso")
 
   expect_equal(mock_arg(mock_sso_credential_process), list(
@@ -299,8 +299,8 @@ test_that("get sso legacy credentials", {
 test_that("get sso credentials", {
   mock_get_config_file_path <- mock2("data_sso_ini")
   mock_sso_credential_process <- mock2(invisible(TRUE))
-  mockery::stub(config_file_provider, 'get_config_file_path', mock_get_config_file_path)
-  mockery::stub(config_file_provider, 'sso_credential_process', mock_sso_credential_process)
+  mockery::stub(config_file_provider, "get_config_file_path", mock_get_config_file_path)
+  mockery::stub(config_file_provider, "sso_credential_process", mock_sso_credential_process)
   config_file_provider("sso")
 
   expect_equal(mock_arg(mock_sso_credential_process), list(
@@ -329,10 +329,10 @@ test_that("sso_credential_process legacy", {
   ))
   mock_Creds <- mock2(TRUE)
   mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
-  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
-  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
-  mockery::stub(sso_credential_process, 'sso', mock_sso)
-  mockery::stub(sso_credential_process, 'Creds', mock_Creds)
+  mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
+  mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
+  mockery::stub(sso_credential_process, "sso", mock_sso)
+  mockery::stub(sso_credential_process, "Creds", mock_Creds)
 
   cred <- sso_credential_process(
     NULL, "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
@@ -342,7 +342,8 @@ test_that("sso_credential_process legacy", {
   expect_true(
     grepl(
       "c7aaaf71fcc8777ae2475525ed049d39fe16c484",
-      mock_arg(mock_fromJSON)[[1]])
+      mock_arg(mock_fromJSON)[[1]]
+    )
   )
   expect_equal(mock_arg(mock_Creds), list(
     access_key_id = "hello",
@@ -373,10 +374,10 @@ test_that("sso_credential_process", {
   ))
   mock_Creds <- mock2(TRUE)
   mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
-  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
-  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
-  mockery::stub(sso_credential_process, 'sso', mock_sso)
-  mockery::stub(sso_credential_process, 'Creds', mock_Creds)
+  mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
+  mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
+  mockery::stub(sso_credential_process, "sso", mock_sso)
+  mockery::stub(sso_credential_process, "Creds", mock_Creds)
 
   cred <- sso_credential_process(
     "my-sso", "https://my-sso-portal.awsapps.com/start", "123456789011", "us-east-1", "readOnly"
@@ -386,7 +387,8 @@ test_that("sso_credential_process", {
   expect_true(
     grepl(
       "0ad374308c5a4e22f723adf10145eafad7c4031c",
-      mock_arg(mock_fromJSON)[[1]])
+      mock_arg(mock_fromJSON)[[1]]
+    )
   )
   expect_equal(mock_arg(mock_Creds), list(
     access_key_id = "hello",
@@ -398,7 +400,7 @@ test_that("sso_credential_process", {
 
 test_that("check sso_cache doesn't exist legacy", {
   mock_file_exists <- mock2(FALSE)
-  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+  mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
 
   expect_error(
     sso_credential_process(
@@ -410,7 +412,7 @@ test_that("check sso_cache doesn't exist legacy", {
 
 test_that("check sso_cache doesn't exist", {
   mock_file_exists <- mock2(FALSE)
-  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
+  mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
 
 
   expect_error(
@@ -431,8 +433,8 @@ test_that("check for invalid token, missing accessToken", {
     clientSecret = "zap",
     registrationExpiresAt = "2023-01-01T12:00:00Z"
   ))
-  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
-  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
+  mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
+  mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
 
   expect_error(
     sso_credential_process(
@@ -452,8 +454,8 @@ test_that("check for invalid token, missing expiresAt", {
     clientSecret = "zap",
     registrationExpiresAt = "2023-01-01T12:00:00Z"
   ))
-  mockery::stub(sso_credential_process, 'file.exists', mock_file_exists)
-  mockery::stub(sso_credential_process, 'jsonlite::fromJSON', mock_fromJSON)
+  mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
+  mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
 
   expect_error(
     sso_credential_process(
@@ -571,7 +573,7 @@ test_that("merge_config config and param config", {
 
   # check if list config is modified by list param config
   actual3 <- merge_config(
-    list(credentials=list(profile = "dummy"), endpoint = "endpoint1", region = "eu-west-1"),
+    list(credentials = list(profile = "dummy"), endpoint = "endpoint1", region = "eu-west-1"),
     list(credentials = list(profile = "edited"), endpoint = "my-endpoint", region = "us-east-1")
   )
 

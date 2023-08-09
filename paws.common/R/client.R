@@ -111,8 +111,7 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
 }
 
 set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {
-  switch(
-    sts_regional_endpoint,
+  switch(sts_regional_endpoint,
     "legacy" = "sts.amazonaws.com",
     "regional" = "sts.{region}.amazonaws.com",
     endpoint
@@ -120,8 +119,7 @@ set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {
 }
 
 set_sts_signing_region <- function(sts_regional_endpoint, region) {
-  switch(
-    sts_regional_endpoint,
+  switch(sts_regional_endpoint,
     "legacy" = "us-east-1",
     "regional" = region
   )

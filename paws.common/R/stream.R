@@ -32,14 +32,14 @@ stream_decode_messages <- function(messages) {
 stream_decode_message <- function(messages, offset) {
   template <- list(
     list(name = "message_length", type = "number", length = 4),
-    list(name = "header_length",  type = "number", length = 4),
-    list(name = "prelude_crc",    type = "binary", length = 4),
-    list(name = "header",         type = "binary", length = "header_length"),
-    list(name = "payload",        type = "string", length = "message_length - header_length - 16"),
-    list(name = "message_crc",    type = "binary", length = 4)
+    list(name = "header_length", type = "number", length = 4),
+    list(name = "prelude_crc", type = "binary", length = 4),
+    list(name = "header", type = "binary", length = "header_length"),
+    list(name = "payload", type = "string", length = "message_length - header_length - 16"),
+    list(name = "message_crc", type = "binary", length = 4)
   )
   start <- offset
-  message_length <- stream_decode_number(messages[start:(start+4-1)])
+  message_length <- stream_decode_number(messages[start:(start + 4 - 1)])
   stop <- start + message_length
   result <- stream_decode_chunk(messages[start:stop], template)
   result$header <- stream_decode_headers(result$header)
@@ -62,11 +62,11 @@ stream_decode_headers <- function(headers) {
 # Decode a single header.
 stream_decode_header <- function(header, offset) {
   template <- list(
-    list(name = "name_length",  type = "number", length = 1),
-    list(name = "name",         type = "string", length = "name_length"),
-    list(name = "value_type",   type = "number", length = 1),
+    list(name = "name_length", type = "number", length = 1),
+    list(name = "name", type = "string", length = "name_length"),
+    list(name = "value_type", type = "number", length = 1),
     list(name = "value_length", type = "number", length = 2),
-    list(name = "value",        type = "string", length = "value_length")
+    list(name = "value", type = "string", length = "value_length")
   )
   result <- stream_decode_chunk(header[offset:length(header)], template)
   return(result)
@@ -75,15 +75,14 @@ stream_decode_header <- function(header, offset) {
 # Decode a binary message given `template`.
 stream_decode_chunk <- function(message, template) {
   start <- 1
-  result  <- new.env()
+  result <- new.env()
   for (element in template) {
     name <- element$name
     length <- element$length
     if (is.character(length)) length <- eval(parse(text = length), envir = result)
     stop <- start + length - 1
     data <- message[start:stop]
-    data <- switch(
-      element$type,
+    data <- switch(element$type,
       "binary" = data,
       "number" = stream_decode_number(data),
       "string" = stream_decode_string(data)

@@ -9,9 +9,9 @@ jsonrpc_build <- function(request) {
   }
 
   if (!is_empty(request$client_info$target_prefix) || (!is.null(body) && body != "{}")) {
-     request <- set_body(request, body)
+    request <- set_body(request, body)
   }
-  if (!is_empty(request$client_info$target_prefix))  {
+  if (!is_empty(request$client_info$target_prefix)) {
     target <- paste0(request$client_info$target_prefix, ".", request$operation$name)
     request$http_request$header["X-Amz-Target"] <- target
   }

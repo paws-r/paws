@@ -24,8 +24,9 @@ parse_url <- function(url) {
   if (is.null(p$hostname)) p$hostname <- ""
   if (!is.null(p$port)) p$hostname <- paste0(p$hostname, ":", p$port)
   raw_path <- p$path
-  if (raw_path == "") raw_path <- "/"
-  else if (substr(raw_path, 1, 1) != "/") raw_path <- paste0("/", raw_path)
+  if (raw_path == "") {
+    raw_path <- "/"
+  } else if (substr(raw_path, 1, 1) != "/") raw_path <- paste0("/", raw_path)
   path <- unescape(raw_path)
   escaped_path <- escape(raw_path, "encodePath")
   if (escaped_path == raw_path) raw_path <- ""
@@ -47,37 +48,47 @@ build_url <- function(url) {
   } else {
     return("")
   }
-  prefix <- function(prefix, x) {if (nzchar(x)) paste0(prefix, x)}
-  l <- paste0(l, if (nzchar(url$raw_path)) url$raw_path else url$path,
+  prefix <- function(prefix, x) {
+    if (nzchar(x)) paste0(prefix, x)
+  }
+  l <- paste0(
+    l, if (nzchar(url$raw_path)) url$raw_path else url$path,
     prefix("?", url$raw_query), prefix("#", url$fragment)
   )
   return(l)
 }
 
 # helper function to filter out empty elements within build_query_string
-query_empty <- function(params) {(is.null(params) || length(params) == 0)}
+query_empty <- function(params) {
+  (is.null(params) || length(params) == 0)
+}
 
 # Encode a list into a query string.
 # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
-build_query_string <- function(params){
+build_query_string <- function(params) {
   # Remove empty elements from params
   params_filter <- Filter(Negate(query_empty), params)
 
   # Exit function if params_filter is empty to prevent Warning message:
   # In is.na(x) : is.na() applied to non-(list or vector) of type 'NULL'
   # in older versions of R
-  if (query_empty(params_filter)) return("")
+  if (query_empty(params_filter)) {
+    return("")
+  }
 
   # convert query elements and escape them
   params_filter <- lapply(
-    params_filter, function(element) {query_escape(query_convert(element))}
+    params_filter, function(element) {
+      query_escape(query_convert(element))
+    }
   )
 
   # Build query string for each element
   params <- lapply(
     sort(names(params_filter)), function(name) {
       paste(name, params_filter[[name]], sep = "=", collapse = "&")
-  })
+    }
+  )
 
   # build query string
   return(paste(params, collapse = "&"))
@@ -90,7 +101,11 @@ parse_query_string <- function(query) {
   for (el in strsplit(query, "&")[[1]]) {
     pair <- strsplit(el, "=")[[1]]
     key <- pair[1]
-    value <- if(length(pair)>1){pair[2]}else{""}
+    value <- if (length(pair) > 1) {
+      pair[2]
+    } else {
+      ""
+    }
     res_len <- length(result[[key]])
     result[[key]][res_len + 1] <- query_unescape(value)
   }
@@ -115,7 +130,7 @@ query_escape <- function(string) {
 }
 
 # Escape strings so they can be safely included in a URL.
-escape <- function(string, mode){
+escape <- function(string, mode) {
   # Ensure anything going to paws_url_encoder is a string
   string <- as.character(string)
   # base characters that won't be encoded
@@ -123,7 +138,8 @@ escape <- function(string, mode){
     # host and zone characters that won't be encoded
     host_zone_pattern <- "][!$&'()*+,;=:<>\""
     return(
-      paws_url_encoder(string, host_zone_pattern))
+      paws_url_encoder(string, host_zone_pattern)
+    )
   }
   # path and path segment characters that won't be encoded
   path_pattern <- "$&+,/;:=?@"

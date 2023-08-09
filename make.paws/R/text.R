@@ -13,7 +13,9 @@ read_utf8 <- function(file) {
 
 # Convert HTML to other formats using Pandoc.
 html_to <- function(html, to) {
-  if (is.null(html)) return("")
+  if (is.null(html)) {
+    return("")
+  }
 
   cached_expr(list("html_to", html = html, to = to), {
     temp_in <- tempfile()

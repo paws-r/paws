@@ -8,7 +8,9 @@ svc <- Client(
   )
 )
 svc$handlers$build <- HandlerList(restjson_build)
-options(idempotency_rand_fn = function() {0})
+options(idempotency_rand_fn = function() {
+  0
+})
 
 test_that("no parameters", {
   op1 <- Operation(
@@ -548,7 +550,7 @@ test_that("string payload", {
   req <- build(req)
   r <- req$http_request
   expect_equal(build_url(r$url), "https://test/path")
-  expect_equal(r$body, 'bar')
+  expect_equal(r$body, "bar")
 })
 
 op22 <- Operation(

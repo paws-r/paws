@@ -45,9 +45,11 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(data)) {
-    request$error <- Error("SerializationError",
-                           "failed to read from query HTTP response body",
-                           request$http_response$status_code)
+    request$error <- Error(
+      "SerializationError",
+      "failed to read from query HTTP response body",
+      request$http_response$status_code
+    )
     return(request)
   }
 
@@ -57,9 +59,11 @@ query_unmarshal_error <- function(request) {
   )
 
   if (is.null(error)) {
-    request$error <- Error("SerializationError",
-                           "failed to decode query XML error response",
-                           request$http_response$status_code)
+    request$error <- Error(
+      "SerializationError",
+      "failed to decode query XML error response",
+      request$http_response$status_code
+    )
     return(request)
   }
 

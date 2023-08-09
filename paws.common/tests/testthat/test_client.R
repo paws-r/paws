@@ -36,13 +36,16 @@ test_that("client_config uses custom endpoint", {
   cfgs$endpoint <- "https://test.us-west-2.amazonaws.com"
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com",
-                                global = FALSE)
-    ),
+    endpoints = list("*" = list(
+      endpoint = "dynamodb.{region}.amazonaws.com",
+      global = FALSE
+    )),
     cfgs = cfgs
   )
-  expect_equal("https://test.us-west-2.amazonaws.com",
-               client_cfg$config$endpoint)
+  expect_equal(
+    "https://test.us-west-2.amazonaws.com",
+    client_cfg$config$endpoint
+  )
 })
 
 test_that("client_config uses custom region", {
@@ -51,13 +54,16 @@ test_that("client_config uses custom region", {
   cfgs$region <- "test_region"
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com",
-                                global = FALSE)
-    ),
+    endpoints = list("*" = list(
+      endpoint = "dynamodb.{region}.amazonaws.com",
+      global = FALSE
+    )),
     cfgs = cfgs
   )
-  expect_equal("test_region",
-               client_cfg$config$region)
+  expect_equal(
+    "test_region",
+    client_cfg$config$region
+  )
 })
 
 test_that("client_config uses custom credentials", {
@@ -69,15 +75,22 @@ test_that("client_config uses custom credentials", {
 
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com",
-                                global = FALSE)
-    ),
+    endpoints = list("*" = list(
+      endpoint = "dynamodb.{region}.amazonaws.com",
+      global = FALSE
+    )),
     cfgs = cfgs
   )
-  expect_equal("test_key",
-               client_cfg$config$credentials$creds$access_key_id)
-  expect_equal("test_secret",
-               client_cfg$config$credentials$creds$secret_access_key)
-  expect_equal("test_profile",
-               client_cfg$config$credentials$profile)
+  expect_equal(
+    "test_key",
+    client_cfg$config$credentials$creds$access_key_id
+  )
+  expect_equal(
+    "test_secret",
+    client_cfg$config$credentials$creds$secret_access_key
+  )
+  expect_equal(
+    "test_profile",
+    client_cfg$config$credentials$profile
+  )
 })

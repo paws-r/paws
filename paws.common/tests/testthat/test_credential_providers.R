@@ -29,7 +29,7 @@ test_that("env_provider", {
 test_that("get_creds_from_sts_resp()", {
   test_access_key_id <- "AccessKeyId"
   test_secret_access_key <- "SecretAccessKey"
-  test_session_token <-  "SessionToken"
+  test_session_token <- "SessionToken"
   test_expiration <- structure(1136214245, class = c("POSIXct", "POSIXt"), tzone = "GMT")
 
   test_response <- list(
@@ -55,5 +55,3 @@ test_that("get_creds_from_sts_resp()", {
   expect_equal(test_creds$session_token, test_session_token)
   expect_equal(test_creds$expiration, test_expiration)
 })
-
-
