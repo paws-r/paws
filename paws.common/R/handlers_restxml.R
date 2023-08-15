@@ -20,7 +20,8 @@ restxml_unmarshal <- function(request) {
   if (t == "structure" || t == "") {
     data <- request$http_response$body
     interface <- request$data
-    request$data <- xml_unmarshal(data, interface)
+    result_name <- paste0(request$operation$name, "Result")
+    request$data <- xml_unmarshal(data, interface, result_name)
   } else {
     request <- rest_unmarshal(request)
   }

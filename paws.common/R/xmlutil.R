@@ -177,12 +177,17 @@ xml_build_scalar <- function(params) {
 #   return(result)
 # }
 
-xml_unmarshal <- function(raw_data, interface = NULL) {
+xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
   if (is_empty(raw_data)) {
     return(interface)
   }
 
   data <- xml2::read_xml(raw_data, encoding = "utf8")
+
+  if (result_name %in% names(interface)) {
+    interface <- interface[[result_name]]
+  }
+
   out <- xml_parse(data, interface)
 
   return(out)

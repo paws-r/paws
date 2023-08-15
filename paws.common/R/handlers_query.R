@@ -26,7 +26,8 @@ query_build <- function(request) {
 query_unmarshal <- function(request) {
   data <- request$http_response$body
   interface <- request$data
-  request$data <- xml_unmarshal(data, interface)
+  result_name <- paste0(request$operation$name, "Result")
+  request$data <- xml_unmarshal(data, interface, result_name)
   return(request)
 }
 
