@@ -18,9 +18,9 @@ restxml_unmarshal_meta <- function(request) {
 restxml_unmarshal <- function(request) {
   t <- rest_payload_type(request$data)
   if (t == "structure" || t == "") {
+    data <- request$http_response$body
     interface <- request$data
-    xml <- xml2::read_xml(request$http_response$body)
-    request$data <- decode_xml(xml, interface)
+    request$data <- xml_unmarshal(data, interface)
   } else {
     request <- rest_unmarshal(request)
   }
