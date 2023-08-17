@@ -21,9 +21,10 @@ ec2query_build <- function(request) {
 
 # Unmarshal the response from an EC2 protocol response.
 ec2query_unmarshal <- function(request) {
-  body <- decode_xml(request$http_response$body)
-  data <- body[[1]]
-  request$data <- xml_parse(data, request$data)
+  body <- xml2::read_xml(request$http_response$body, encoding = "utf8")
+  interface <- request$data
+  # data <- body[[1]]
+  request$data <- xml_parse(body, interface)
   return(request)
 }
 
