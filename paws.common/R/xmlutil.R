@@ -183,15 +183,22 @@ xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
   }
 
   data <- xml2::read_xml(raw_data, encoding = "utf8")
-  root <- xml2::xml_contents(data)
-  xml_nms <- xml2::xml_name(root)
+
 
   # drop a level if result_name is known in interface
   # https://github.com/paws-r/paws/issues/501
   if (result_name %in% names(interface)) {
     interface <- interface[[result_name]]
+    return(xml_parse(data, interface))
+  }
+
+  if (result_name %in% names(interface)) {
+    interface <- interface[[result_name]]
     return(xml_parse(root, interface))
   }
+
+  root <- xml2::xml_contents(data)
+  xml_nms <- xml2::xml_name(root)
 
   if (!is.null(result_name) && result_name %in% xml_nms) {
     root <- xml2::xml_contents(root)
@@ -232,7 +239,11 @@ xml_parse <- function(data, interface) {
   for (i in seq_along(interface)) {
     interface_i <- interface[[i]]
     tags_i <- attr(interface_i, "tags")
-    if (!is.null(tags_i[["locationName"]])) {
+    flattened <- tags_i[["flattened"]]
+
+    if (isTRUE(flattened) && !is.null(tags_i[["locationNameList"]])) {
+      key <- tags_i[["locationNameList"]]
+    } else if (!is.null(tags_i[["locationName"]])) {
       key <- tags_i[["locationName"]]
     } else {
       key <- nms[[i]]
@@ -259,10 +270,7 @@ xml_parse <- function(data, interface) {
 
 
 parse_xml_elt <- function(xml_elts, interface_i, tags_i) {
-  n <- length(xml_elts)
-
   tag_type <- tags_i[["type"]]
-
   t <- type(interface_i)
   parse_fn <- switch(t,
     structure = xml_parse_structure,
@@ -276,7 +284,7 @@ parse_xml_elt <- function(xml_elts, interface_i, tags_i) {
   return(result)
 }
 
-xml_parse_structure <- function(xml_elts, interface_i, tags_i, type = NULL) {
+xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
   result <- xml_parse(xml2::xml_contents(xml_elts), interface_i)
 
   flattened <- tags_i[["flattened"]]
@@ -291,7 +299,7 @@ xml_parse_structure <- function(xml_elts, interface_i, tags_i, type = NULL) {
   return(result)
 }
 
-xml_parse_map <- function(xml_elts, interface_i,  tags_i, type = NULL) {
+xml_parse_map <- function(xml_elts, interface_i,  tags_i, tag_type = NULL) {
   if (length(xml_elts) == 0) {
     return(list())
   }
@@ -336,8 +344,20 @@ xml_parse_map_entry <- function(xml_elts_i, interface_i, key_name, value_name, f
   return(result)
 }
 
-xml_parse_list <- function(xml_elts, interface_i, tags_i, type = NULL) {
-  result <- xml_parse(xml2::xml_contents(xml_elts), interface_i[[1]])
+xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
+
+  contents <- xml2::xml_contents(xml_elts)
+  xml_nms <- xml2::xml_name(contents)
+  nms <- names(interface_i[[1]])
+
+  if (is.null(nms) || any(xml_nms %in% nms)) {
+    result <- xml_parse(contents, interface_i[[1]])
+  } else {
+    result <- lapply(contents, function(x) {
+      xml_parse(xml2::xml_contents(x), interface_i[[1]])
+    })
+  }
+
   flattened <- tags_i[["flattened"]]
 
   if (type(interface_i[[1]]) == "scalar") {
@@ -353,10 +373,10 @@ xml_parse_list <- function(xml_elts, interface_i, tags_i, type = NULL) {
   return(result)
 }
 
-xml_parse_scalar <- function(xml_elts, interface_i, tags_i, type = NULL) {
+xml_parse_scalar <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
   results <- vapply(xml_elts, xml2::xml_text, FUN.VALUE = character(1))
 
-  convert <- switch(type,
+  convert <- switch(tag_type,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,
@@ -364,7 +384,10 @@ xml_parse_scalar <- function(xml_elts, interface_i, tags_i, type = NULL) {
     integer = as.numeric,
     long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
-    as.character
+    function(x) {
+      if (identical(x, "")) x <- NULL
+      as.character(x)
+    }
   )
   result <- convert(results)
   names(result) <- names(interface_i)
