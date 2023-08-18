@@ -23,8 +23,8 @@ ec2query_build <- function(request) {
 ec2query_unmarshal <- function(request) {
   body <- xml2::read_xml(request$http_response$body, encoding = "utf8")
   interface <- request$data
-  # data <- body[[1]]
-  request$data <- xml_parse(body, interface)
+  data <- xml2::xml_contents(body)
+  request$data <- xml_parse(data, interface)
   return(request)
 }
 
