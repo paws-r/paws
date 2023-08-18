@@ -228,7 +228,7 @@ xml_parse <- function(data, interface) {
   }
   data_nms <- xml2::xml_name(data)
 
-  result <- vector("list", length = length(nms))
+  result <- vector("list", length = length(interface))
   for (i in seq_along(interface)) {
     interface_i <- interface[[i]]
     tags_i <- attr(interface_i, "tags")
@@ -371,8 +371,8 @@ xml_parse_scalar <- function(xml_elts, interface_i, tags_i, type = NULL) {
   return(result)
 }
 
-default_parse_xml <- function(interface_i, tags_i) {
-  type <- tags_i[["type"]]
+default_parse_xml <- function(interface_i, tags_i, default = NULL) {
+  tag_type <- tags_i[["type"]]
 
   t <- type(interface_i)
   parse_fn <- switch(t,
@@ -381,51 +381,69 @@ default_parse_xml <- function(interface_i, tags_i) {
     list = default_parse_list,
     default_parse_scalar
   )
-  return(parse_fn(interface_i, type))
+  return(parse_fn(interface_i, tag_type, default))
 }
 
-default_parse_structure <- function(interface_i, type = NULL) {
-  nms <- names(interface_i)
-  result <- list()
-  for (nm in nms) {
-    tags_i <- attr(interface_i[[nm]], "tags")
-    result[[nm]] <- default_parse_xml(interface_i[[nm]], tags_i)
+default_parse_structure <- function(interface_i, tag_type = NULL, default = NULL) {
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
   }
+  nms <- names(interface_i)
+  result <- vector("list", len_interface_i)
+  for (i in seq_along(interface_i)) {
+    tags_i <- attr(interface_i[[i]], "tags")
+    result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, default)
+  }
+  names(result) <- nms
+  return(result)
+}
+
+default_parse_map <- function(interface_i, tag_type = NULL, default = NULL) {
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
+  }
+  nms <- names(interface_i)
+  result <- vector("list", len_interface_i)
+  for (i in seq_along(interface_i)) {
+    tags_i <- attr(interface_i[[i]], "tags")
+    result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, list())
+  }
+  names(result) <- nms
   return(list(result))
 }
 
-default_parse_map <- function(interface_i, type = NULL) {
-  nms <- names(interface_i)
-  result <- list()
-  for (nm in nms) {
-    tags_i <- attr(interface_i[[nm]], "tags")
-    result[[nm]] <- default_parse_xml(interface_i[[nm]], tags_i)
-  }
-  return(list(result))
-}
-
-default_parse_list <- function(interface_i, type = NULL) {
+default_parse_list <- function(interface_i, tag_type = NULL, default = NULL) {
   interface_i <- interface_i[[1]]
-  nms <- names(interface_i)
-  result <- list()
-  for (nm in nms) {
-    tags_i <- attr(interface_i[[nm]], "tags")
-    result[[nm]] <- default_parse_xml(interface_i[[nm]], tags_i)
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
   }
-  return(list(result))
+  nms <- names(interface_i)
+  result <- vector("list", len_interface_i)
+  for (i in seq_along(interface_i)) {
+    tags_i <- attr(interface_i[[i]], "tags")
+    result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, list())
+  }
+  names(result) <- nms
+  return(result)
 }
 
-xml_scalar_default <- function(interface, default) {if (length(interface) > 0) interface else default}
+xml_scalar_default <- function(interface, default) {
+  if (length(interface) > 0) interface else default
+}
 
-default_parse_scalar <- function(interface_i, type = NULL) {
-  result <- switch(type,
+default_parse_scalar <- function(interface_i, tag_type = NULL, default = NULL) {
+  default_value <- default %||% character()
+  result <- switch(tag_type,
     integer = xml_scalar_default(interface_i, numeric()),
     double = xml_scalar_default(interface_i, numeric()),
     long = xml_scalar_default(interface_i, numeric()),
     float = xml_scalar_default(interface_i, numeric()),
     timestamp = xml_scalar_default(interface_i, as.POSIXct(NULL)),
     boolean = xml_scalar_default(interface_i, logical()),
-    xml_scalar_default(interface_i, character())
+    xml_scalar_default(interface_i, default_value)
   )
   return(result)
 }
