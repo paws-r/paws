@@ -339,9 +339,18 @@ xml_parse_map_entry <- function(xml_elts_i, interface_i, key_name, value_name, f
 
 xml_parse_list <- function(xml_elts, interface_i, tags_i, type = NULL) {
   result <- xml_parse(xml_elts, interface_i[[1]])
+  flattened <- tags_i[["flattened"]]
+
   if (type(interface_i[[1]]) == "scalar") {
     result <- unlist(result)
   }
+
+  # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
+  # a list interface though it isn't a list?!
+  if (isTRUE(flattened) && is.list(result)) {
+    result <- transpose(result)
+  }
+
   return(result)
 }
 
