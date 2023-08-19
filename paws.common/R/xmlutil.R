@@ -183,18 +183,17 @@ xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
   }
 
   data <- xml2::read_xml(raw_data, encoding = "utf8")
+  xml_nms <- xml2::xml_name(data)
 
-
-  # drop a level if result_name is known in interface
+  # drop a level if result_name is known in data
   # https://github.com/paws-r/paws/issues/501
-  if (result_name %in% names(interface)) {
-    interface <- interface[[result_name]]
-    return(xml_parse(data, interface))
-  }
-
-  if (result_name %in% names(interface)) {
-    interface <- interface[[result_name]]
-    return(xml_parse(root, interface))
+  if (!is.null(result_name) && result_name %in% xml_nms) {
+    if (inherits(data, "xml_document")) {
+      data <- xml2::xml_contents(data)
+    }
+    result <- list()
+    result[[result_name]] <- xml_parse(data, interface[[result_name]])
+    return(result)
   }
 
   root <- xml2::xml_contents(data)
