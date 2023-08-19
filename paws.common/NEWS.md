@@ -1,4 +1,5 @@
 # paws.common 0.5.9
+* use known interface when parsing xml (@619) improving performance by 3-6x. thanks to @mgirlich for raising, implementing initial method and testing.
 * add expiration parameter to creds
 * add signature_version to config
 * add the ability to paginate paws methods (#30)
